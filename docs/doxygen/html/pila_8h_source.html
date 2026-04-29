@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: Archivo de código fuente pila.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('pila_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">pila.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="pila_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef PILA_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define PILA_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">typedef</span> <span class="keyword">struct </span>nodo <a class="code hl_typedef" href="cola_8h.html#a46556b0fd3be65be11d967516d9866f1">Nodo</a>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="struct_pila.html">   14</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="struct_pila.html#a118cec25a42ca281a13c0bd1fa38e656">   15</a></span>    <a class="code hl_typedef" href="cola_8h.html#a46556b0fd3be65be11d967516d9866f1">Nodo</a> *<a class="code hl_variable" href="struct_pila.html#a118cec25a42ca281a13c0bd1fa38e656">tope</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>} <a class="code hl_struct" href="struct_pila.html">Pila</a>;</div>
+</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keywordtype">void</span> <a class="code hl_function" href="pila_8h.html#ae12380b4d2c9076a7d8c72926698b110">pila_inicializar</a>(<a class="code hl_struct" href="struct_pila.html">Pila</a> *pila);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keywordtype">bool</span> <a class="code hl_function" href="pila_8h.html#a840144340a2a9bd0f5c9a5c2d56fb349">pila_push</a>(<a class="code hl_struct" href="struct_pila.html">Pila</a> *pila, <span class="keywordtype">int</span> valor);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keywordtype">bool</span> <a class="code hl_function" href="pila_8h.html#add1b5f83a35a6a37bd13afc0882d54f5">pila_pop</a>(<a class="code hl_struct" href="struct_pila.html">Pila</a> *pila, <span class="keywordtype">int</span> *valor);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keywordtype">void</span> <a class="code hl_function" href="pila_8h.html#a2d166454a437fb04a7569f20d959dc09">pila_destruir</a>(<a class="code hl_struct" href="struct_pila.html">Pila</a> *pila);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keywordtype">int</span> <a class="code hl_function" href="pila_8h.html#a4bf8b75069bf45c648f5d31ba8fa3b46">pila_contar</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_pila.html">Pila</a> *pila);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keywordtype">bool</span> <a class="code hl_function" href="pila_8h.html#aff86723186db8b65021caa57fd632dfb">pila_vacia</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_pila.html">Pila</a> *pila);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keywordtype">int</span> <a class="code hl_function" href="pila_8h.html#a6e0c8b858853a3ff0299740fbf64c63d">pila_copiar_valores</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_pila.html">Pila</a> *pila, <span class="keywordtype">int</span> *destino, <span class="keywordtype">int</span> capacidad);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keywordtype">void</span> <a class="code hl_function" href="pila_8h.html#a6386145a5e57884cd140e6c72956d888">pila_formatear</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_pila.html">Pila</a> *pila, <span class="keywordtype">char</span> *destino, <span class="keywordtype">size_t</span> capacidad);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="acola_8h_html_a46556b0fd3be65be11d967516d9866f1"><div class="ttname"><a href="cola_8h.html#a46556b0fd3be65be11d967516d9866f1">Nodo</a></div><div class="ttdeci">struct nodo Nodo</div><div class="ttdef"><b>Definition</b> <a href="cola_8h_source.html#l00012">cola.h:12</a></div></div>
+<div class="ttc" id="apila_8h_html_a2d166454a437fb04a7569f20d959dc09"><div class="ttname"><a href="pila_8h.html#a2d166454a437fb04a7569f20d959dc09">pila_destruir</a></div><div class="ttdeci">void pila_destruir(Pila *pila)</div><div class="ttdoc">Libera todos los nodos de la pila.</div><div class="ttdef"><b>Definition</b> <a href="pila_8c_source.html#l00110">pila.c:110</a></div></div>
+<div class="ttc" id="apila_8h_html_a4bf8b75069bf45c648f5d31ba8fa3b46"><div class="ttname"><a href="pila_8h.html#a4bf8b75069bf45c648f5d31ba8fa3b46">pila_contar</a></div><div class="ttdeci">int pila_contar(const Pila *pila)</div><div class="ttdoc">Retorna la cantidad de nodos.</div><div class="ttdef"><b>Definition</b> <a href="pila_8c_source.html#l00137">pila.c:137</a></div></div>
+<div class="ttc" id="apila_8h_html_a6386145a5e57884cd140e6c72956d888"><div class="ttname"><a href="pila_8h.html#a6386145a5e57884cd140e6c72956d888">pila_formatear</a></div><div class="ttdeci">void pila_formatear(const Pila *pila, char *destino, size_t capacidad)</div><div class="ttdoc">Genera una representacion textual de la pila.</div><div class="ttdef"><b>Definition</b> <a href="pila_8c_source.html#l00227">pila.c:227</a></div></div>
+<div class="ttc" id="apila_8h_html_a6e0c8b858853a3ff0299740fbf64c63d"><div class="ttname"><a href="pila_8h.html#a6e0c8b858853a3ff0299740fbf64c63d">pila_copiar_valores</a></div><div class="ttdeci">int pila_copiar_valores(const Pila *pila, int *destino, int capacidad)</div><div class="ttdoc">Copia los valores de la pila en un arreglo destino.</div><div class="ttdef"><b>Definition</b> <a href="pila_8c_source.html#l00186">pila.c:186</a></div></div>
+<div class="ttc" id="apila_8h_html_a840144340a2a9bd0f5c9a5c2d56fb349"><div class="ttname"><a href="pila_8h.html#a840144340a2a9bd0f5c9a5c2d56fb349">pila_push</a></div><div class="ttdeci">bool pila_push(Pila *pila, int valor)</div><div class="ttdoc">Inserta un valor en el tope de la pila.</div><div class="ttdef"><b>Definition</b> <a href="pila_8c_source.html#l00048">pila.c:48</a></div></div>
+<div class="ttc" id="apila_8h_html_add1b5f83a35a6a37bd13afc0882d54f5"><div class="ttname"><a href="pila_8h.html#add1b5f83a35a6a37bd13afc0882d54f5">pila_pop</a></div><div class="ttdeci">bool pila_pop(Pila *pila, int *valor)</div><div class="ttdoc">Extrae el valor del tope si existe.</div><div class="ttdef"><b>Definition</b> <a href="pila_8c_source.html#l00083">pila.c:83</a></div></div>
+<div class="ttc" id="apila_8h_html_ae12380b4d2c9076a7d8c72926698b110"><div class="ttname"><a href="pila_8h.html#ae12380b4d2c9076a7d8c72926698b110">pila_inicializar</a></div><div class="ttdeci">void pila_inicializar(Pila *pila)</div><div class="ttdoc">Inicializa una pila vacia.</div><div class="ttdef"><b>Definition</b> <a href="pila_8c_source.html#l00023">pila.c:23</a></div></div>
+<div class="ttc" id="apila_8h_html_aff86723186db8b65021caa57fd632dfb"><div class="ttname"><a href="pila_8h.html#aff86723186db8b65021caa57fd632dfb">pila_vacia</a></div><div class="ttdeci">bool pila_vacia(const Pila *pila)</div><div class="ttdoc">Indica si la pila esta vacia.</div><div class="ttdef"><b>Definition</b> <a href="pila_8c_source.html#l00162">pila.c:162</a></div></div>
+<div class="ttc" id="astruct_pila_html"><div class="ttname"><a href="struct_pila.html">Pila</a></div><div class="ttdef"><b>Definition</b> <a href="#l00014">pila.h:14</a></div></div>
+<div class="ttc" id="astruct_pila_html_a118cec25a42ca281a13c0bd1fa38e656"><div class="ttname"><a href="struct_pila.html#a118cec25a42ca281a13c0bd1fa38e656">Pila::tope</a></div><div class="ttdeci">Nodo * tope</div><div class="ttdef"><b>Definition</b> <a href="#l00015">pila.h:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="pila_8h.html">pila.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

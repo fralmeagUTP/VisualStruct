@@ -1,0 +1,44 @@
+var main_8c =
+[
+    [ "CODE_HISTORY_CAPACITY", "main_8c.html#a1ed35852aa9ff6e1cdd9b337f01d5870", null ],
+    [ "InputFocus", "main_8c.html#a65b30dbecdd0853f3d01374fb40d7c08", [
+      [ "INPUT_NONE", "main_8c.html#a65b30dbecdd0853f3d01374fb40d7c08ad635d6b1496fa2fba6f87068d4193246", null ],
+      [ "INPUT_VALOR", "main_8c.html#a65b30dbecdd0853f3d01374fb40d7c08ae83b9aed549f33affddb7d1a3e8f9804", null ],
+      [ "INPUT_PRIORIDAD", "main_8c.html#a65b30dbecdd0853f3d01374fb40d7c08a34e54a75ca6c65340db8bb914ebe4d8d", null ]
+    ] ],
+    [ "ScreenMode", "main_8c.html#aefe4cd50ac123b6c800eede74968a353", [
+      [ "SCREEN_HOME", "main_8c.html#aefe4cd50ac123b6c800eede74968a353a57bd76f002798f63a253af342c73392e", null ],
+      [ "SCREEN_VISUALIZER", "main_8c.html#aefe4cd50ac123b6c800eede74968a353aa9620c75110ed93e7e217291c5f8e3a5", null ],
+      [ "SCREEN_HELP", "main_8c.html#aefe4cd50ac123b6c800eede74968a353a03d47535d3ba04edd770ace117420d4c", null ]
+    ] ],
+    [ "append_code_history", "main_8c.html#ac68399f128e65c0ecc9da6a7595277fb", null ],
+    [ "apply_input_focus", "main_8c.html#a7b95ba98bdb60099e7bf0e9d44788751", null ],
+    [ "clamp_float", "main_8c.html#a4372a297a9cbc9d2bc6b4fc4f3a725d5", null ],
+    [ "count_text_lines", "main_8c.html#a1c979dd4b6445843e4881bf7a8f03608", null ],
+    [ "draw_active_view", "main_8c.html#a136653aa94ab717b27a314ad325ef6dd", null ],
+    [ "draw_context_controls", "main_8c.html#a1ee96216319e58d6819a078c6028cb43", null ],
+    [ "draw_help_screen", "main_8c.html#a485bc574d9f8c1c422c3b4817ba571ea", null ],
+    [ "draw_home_card", "main_8c.html#a77079dcec78d7922ef19f630a76ba8bd", null ],
+    [ "draw_home_icon", "main_8c.html#af7d5fd8caf96e66d590ebef8d38a8595", null ],
+    [ "draw_home_screen", "main_8c.html#ac829ba6a0af32f92d2d3839747b9110c", null ],
+    [ "draw_scrollable_multiline_text", "main_8c.html#abf6cecb88ec964635339066065ebfa63", null ],
+    [ "draw_scrollbar", "main_8c.html#a6174d639c73f9e3c5303f0006959cdf7", null ],
+    [ "draw_ui_multiline", "main_8c.html#aaed93e600f2db89c988047b141a40035", null ],
+    [ "edit_active_input", "main_8c.html#af9057b726cb7aeffff7619769f0e8d6f", null ],
+    [ "estructura_cantidad", "main_8c.html#ab0b4b4460ee52151bc707c49c0ab15fe", null ],
+    [ "estructura_descripcion", "main_8c.html#af2d1ecb02599f201f31c547ef940d260", null ],
+    [ "estructura_from_shortcut", "main_8c.html#a2b0d772b5382f7ea0228df883f7449d7", null ],
+    [ "estructura_nombre", "main_8c.html#adca7682ec95e4139b194a1eecd8ea6d6", null ],
+    [ "get_app_help_text", "main_8c.html#ab29b34545eecaf06d2f080a8a93930ea", null ],
+    [ "handle_keyboard", "main_8c.html#a48dd9e88677d1786078941aae8012577", null ],
+    [ "handle_navigation_keyboard", "main_8c.html#ac25dcf47afd61bde8c48e0e2884e56f2", null ],
+    [ "main", "main_8c.html#a840291bc02cba5474a4cb46a9b9566fe", null ],
+    [ "operacion_nombre", "main_8c.html#a83073f8573840486a92e6a745b4ea6cf", null ],
+    [ "parse_int_text", "main_8c.html#a01b825fc3266f6b3ca5c331a5667fe9a", null ],
+    [ "sync_input_buffers", "main_8c.html#a9df5d2e9d6f7b867c5f4994c0b76e925", null ],
+    [ "APP_HELP_TEXT_PART1", "main_8c.html#a2c333d877ee3459a7cda32b4292f692a", null ],
+    [ "APP_HELP_TEXT_PART1B", "main_8c.html#a04dfd51a506fcbb018f16ba1d1fec688", null ],
+    [ "APP_HELP_TEXT_PART2", "main_8c.html#aa57811c14fe892f49077bcde669cf218", null ],
+    [ "APP_HELP_TEXT_PART3", "main_8c.html#a7ad37c7e848e354455117bc9e8cee130", null ],
+    [ "APP_HELP_TEXT_PART4", "main_8c.html#a3ae5143acac32dfc524d41fc2bbd6db7", null ]
+];

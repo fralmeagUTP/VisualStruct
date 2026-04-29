@@ -1,0 +1,37 @@
+var app__state_8h =
+[
+    [ "AppState", "struct_app_state.html", "struct_app_state" ],
+    [ "TipoEstructura", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6", [
+      [ "ESTRUCTURA_PILA", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6af11df1085912c3f2ab53d4bb453867b4", null ],
+      [ "ESTRUCTURA_COLA", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a973a65123dc5ff5ef05b6a36d9f15bfa", null ],
+      [ "ESTRUCTURA_COLA_PRIORIDAD", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a2dabb13bba1952a9e6f7609ab71bdc05", null ],
+      [ "ESTRUCTURA_LISTA", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a41a17370323282b2af4ef2ca3071c1c7", null ]
+    ] ],
+    [ "TipoOperacion", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776", [
+      [ "OPERACION_NINGUNA", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776a2564063c60c93f874cddf9eb18e0b4e4", null ],
+      [ "OPERACION_INICIALIZAR", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776af359fe423d2f4ef71f91cd788f95d9e5", null ],
+      [ "OPERACION_INSERTAR", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776a54aeb9dd3aa3e564da09bf528b011dc5", null ],
+      [ "OPERACION_INSERTAR_INICIO", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776ac5e0a1d2b9884481b8c45e0e0b6206e0", null ],
+      [ "OPERACION_INSERTAR_FINAL", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776a01685b44a648cc62f437502a499e3e8c", null ],
+      [ "OPERACION_ELIMINAR", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776a103c1e449924ddbbe4cd8e647ce054e3", null ],
+      [ "OPERACION_BUSCAR", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776a61938f65ae1663c586e77b06ae4ed1cd", null ],
+      [ "OPERACION_INVERTIR", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776a8f4d1dc35d6f56cd3c8498076dbffb99", null ],
+      [ "OPERACION_VACIAR", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776a8e57c4a24bae6bc52f40a8b924e9e943", null ]
+    ] ],
+    [ "app_state_ajustar_prioridad", "app__state_8h.html#a36b6bf7a760d9edd415998ad4ca69f3a", null ],
+    [ "app_state_ajustar_valor", "app__state_8h.html#a977416497520634dde6afa0135ea956f", null ],
+    [ "app_state_init", "app__state_8h.html#ac98f3937b8c68c08d699bdf8708fe09a", null ],
+    [ "app_state_operacion_buscar", "app__state_8h.html#afb7c2a89fd3e6c630bda1bb4e871ffc6", null ],
+    [ "app_state_operacion_eliminar", "app__state_8h.html#a96a70f09cb2567a06266136c07951dd6", null ],
+    [ "app_state_operacion_inicializar", "app__state_8h.html#a24a6594f990a8730104d95389dabb7cd", null ],
+    [ "app_state_operacion_insertar", "app__state_8h.html#a4ac75d475ced6f35a9e43aae6d749e8b", null ],
+    [ "app_state_operacion_invertir", "app__state_8h.html#af3fc18d79fc2396a8cfabf09dfd99f02", null ],
+    [ "app_state_operacion_lista_insertar_final", "app__state_8h.html#ae667f109ee17d7b74090f42b3803d7c8", null ],
+    [ "app_state_operacion_lista_insertar_inicio", "app__state_8h.html#a0594b9292adbce5f64036aeb4bbea163", null ],
+    [ "app_state_operacion_vaciar", "app__state_8h.html#aafb9a085e0863b9d4dcc7597f2d5b6d5", null ],
+    [ "app_state_set_estructura", "app__state_8h.html#a881246241a07b177b3accd398ba24e8d", null ],
+    [ "app_state_set_prioridad", "app__state_8h.html#a6037881f01b6bdc4a7f5e1aac242f1db", null ],
+    [ "app_state_set_valor", "app__state_8h.html#acb58e00364449839751d40d46a42c97b", null ],
+    [ "app_state_shutdown", "app__state_8h.html#ab0848d4e5b9603c944d52adc414517ed", null ],
+    [ "app_state_update_visuals", "app__state_8h.html#a519fb0bfbed97e86227626f3e0bb6593", null ]
+];

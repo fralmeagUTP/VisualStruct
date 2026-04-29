@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: Archivo de código fuente cola_prioridad.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('cola__prioridad_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">cola_prioridad.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="cola__prioridad_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef COLA_PRIORIDAD_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define COLA_PRIORIDAD_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="cola__prioridad_8h.html#a59198cbfd1ac474be62bc07b5a89e610">   12</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>cp_nodo <a class="code hl_typedef" href="cola__prioridad_8h.html#a59198cbfd1ac474be62bc07b5a89e610">CPNodo</a>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="struct_cola_prioridad.html">   14</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="struct_cola_prioridad.html#a562bae14bb794ee628c2f9c39b96a5dd">   15</a></span>    <a class="code hl_typedef" href="cola__prioridad_8h.html#a59198cbfd1ac474be62bc07b5a89e610">CPNodo</a> *<a class="code hl_variable" href="struct_cola_prioridad.html#a562bae14bb794ee628c2f9c39b96a5dd">delante</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="struct_cola_prioridad.html#aebbbf808e29594873d0f19016f422866">   16</a></span>    <a class="code hl_typedef" href="cola__prioridad_8h.html#a59198cbfd1ac474be62bc07b5a89e610">CPNodo</a> *<a class="code hl_variable" href="struct_cola_prioridad.html#aebbbf808e29594873d0f19016f422866">atras</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>} <a class="code hl_struct" href="struct_cola_prioridad.html">ColaPrioridad</a>;</div>
+</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">void</span> <a class="code hl_function" href="cola__prioridad_8h.html#a5125a2d4bd415413ee81677c6f204d1d">cp_inicializar</a>(<a class="code hl_struct" href="struct_cola_prioridad.html">ColaPrioridad</a> *cola);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keywordtype">bool</span> <a class="code hl_function" href="cola__prioridad_8h.html#ab490b9b32489eb2d1f92f2508751c657">cp_encolar</a>(<a class="code hl_struct" href="struct_cola_prioridad.html">ColaPrioridad</a> *cola, <span class="keywordtype">int</span> valor, <span class="keywordtype">int</span> prioridad);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keywordtype">bool</span> <a class="code hl_function" href="cola__prioridad_8h.html#acfad1e653d22e18a85f71ba277090527">cp_desencolar</a>(<a class="code hl_struct" href="struct_cola_prioridad.html">ColaPrioridad</a> *cola, <span class="keywordtype">int</span> *valor, <span class="keywordtype">int</span> *prioridad);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordtype">bool</span> <a class="code hl_function" href="cola__prioridad_8h.html#a85e67c6ceba5771acc8ed5eb198990a3">cp_vacia</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_cola_prioridad.html">ColaPrioridad</a> *cola);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keywordtype">int</span> <a class="code hl_function" href="cola__prioridad_8h.html#a66ccc413a0eb8dd4255d9145366d24be">cp_contar</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_cola_prioridad.html">ColaPrioridad</a> *cola);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keywordtype">int</span> <a class="code hl_function" href="cola__prioridad_8h.html#a5f3ac991f8cc2373582a9a5f05a115cf">cp_copiar_items</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_cola_prioridad.html">ColaPrioridad</a> *cola, <span class="keywordtype">int</span> *valores, <span class="keywordtype">int</span> *prioridades, <span class="keywordtype">int</span> capacidad);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keywordtype">void</span> <a class="code hl_function" href="cola__prioridad_8h.html#a6159307f4378c612b23b0374958f509e">cp_formatear</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_cola_prioridad.html">ColaPrioridad</a> *cola, <span class="keywordtype">char</span> *destino, <span class="keywordtype">size_t</span> capacidad);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keywordtype">void</span> <a class="code hl_function" href="cola__prioridad_8h.html#a5707ee53a64811106abf701af5d65621">cp_vaciar</a>(<a class="code hl_struct" href="struct_cola_prioridad.html">ColaPrioridad</a> *cola);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="acola__prioridad_8h_html_a5125a2d4bd415413ee81677c6f204d1d"><div class="ttname"><a href="cola__prioridad_8h.html#a5125a2d4bd415413ee81677c6f204d1d">cp_inicializar</a></div><div class="ttdeci">void cp_inicializar(ColaPrioridad *cola)</div><div class="ttdoc">Inicializa una cola de prioridad vacia.</div><div class="ttdef"><b>Definition</b> <a href="cola__prioridad_8c_source.html#l00023">cola_prioridad.c:23</a></div></div>
+<div class="ttc" id="acola__prioridad_8h_html_a5707ee53a64811106abf701af5d65621"><div class="ttname"><a href="cola__prioridad_8h.html#a5707ee53a64811106abf701af5d65621">cp_vaciar</a></div><div class="ttdeci">void cp_vaciar(ColaPrioridad *cola)</div><div class="ttdoc">Libera todos los nodos de la cola.</div><div class="ttdef"><b>Definition</b> <a href="cola__prioridad_8c_source.html#l00299">cola_prioridad.c:299</a></div></div>
+<div class="ttc" id="acola__prioridad_8h_html_a59198cbfd1ac474be62bc07b5a89e610"><div class="ttname"><a href="cola__prioridad_8h.html#a59198cbfd1ac474be62bc07b5a89e610">CPNodo</a></div><div class="ttdeci">struct cp_nodo CPNodo</div><div class="ttdef"><b>Definition</b> <a href="#l00012">cola_prioridad.h:12</a></div></div>
+<div class="ttc" id="acola__prioridad_8h_html_a5f3ac991f8cc2373582a9a5f05a115cf"><div class="ttname"><a href="cola__prioridad_8h.html#a5f3ac991f8cc2373582a9a5f05a115cf">cp_copiar_items</a></div><div class="ttdeci">int cp_copiar_items(const ColaPrioridad *cola, int *valores, int *prioridades, int capacidad)</div><div class="ttdoc">Copia valor/prioridad de cada elemento.</div><div class="ttdef"><b>Definition</b> <a href="cola__prioridad_8c_source.html#l00204">cola_prioridad.c:204</a></div></div>
+<div class="ttc" id="acola__prioridad_8h_html_a6159307f4378c612b23b0374958f509e"><div class="ttname"><a href="cola__prioridad_8h.html#a6159307f4378c612b23b0374958f509e">cp_formatear</a></div><div class="ttdeci">void cp_formatear(const ColaPrioridad *cola, char *destino, size_t capacidad)</div><div class="ttdoc">Genera una representacion textual de la cola.</div><div class="ttdef"><b>Definition</b> <a href="cola__prioridad_8c_source.html#l00245">cola_prioridad.c:245</a></div></div>
+<div class="ttc" id="acola__prioridad_8h_html_a66ccc413a0eb8dd4255d9145366d24be"><div class="ttname"><a href="cola__prioridad_8h.html#a66ccc413a0eb8dd4255d9145366d24be">cp_contar</a></div><div class="ttdeci">int cp_contar(const ColaPrioridad *cola)</div><div class="ttdoc">Retorna la cantidad de nodos.</div><div class="ttdef"><b>Definition</b> <a href="cola__prioridad_8c_source.html#l00168">cola_prioridad.c:168</a></div></div>
+<div class="ttc" id="acola__prioridad_8h_html_a85e67c6ceba5771acc8ed5eb198990a3"><div class="ttname"><a href="cola__prioridad_8h.html#a85e67c6ceba5771acc8ed5eb198990a3">cp_vacia</a></div><div class="ttdeci">bool cp_vacia(const ColaPrioridad *cola)</div><div class="ttdoc">Indica si la cola esta vacia.</div><div class="ttdef"><b>Definition</b> <a href="cola__prioridad_8c_source.html#l00151">cola_prioridad.c:151</a></div></div>
+<div class="ttc" id="acola__prioridad_8h_html_ab490b9b32489eb2d1f92f2508751c657"><div class="ttname"><a href="cola__prioridad_8h.html#ab490b9b32489eb2d1f92f2508751c657">cp_encolar</a></div><div class="ttdeci">bool cp_encolar(ColaPrioridad *cola, int valor, int prioridad)</div><div class="ttdoc">Encola un valor con prioridad asociada.</div><div class="ttdef"><b>Definition</b> <a href="cola__prioridad_8c_source.html#l00052">cola_prioridad.c:52</a></div></div>
+<div class="ttc" id="acola__prioridad_8h_html_acfad1e653d22e18a85f71ba277090527"><div class="ttname"><a href="cola__prioridad_8h.html#acfad1e653d22e18a85f71ba277090527">cp_desencolar</a></div><div class="ttdeci">bool cp_desencolar(ColaPrioridad *cola, int *valor, int *prioridad)</div><div class="ttdoc">Desencola el elemento de mayor prioridad efectiva.</div><div class="ttdef"><b>Definition</b> <a href="cola__prioridad_8c_source.html#l00099">cola_prioridad.c:99</a></div></div>
+<div class="ttc" id="astruct_cola_prioridad_html"><div class="ttname"><a href="struct_cola_prioridad.html">ColaPrioridad</a></div><div class="ttdef"><b>Definition</b> <a href="#l00014">cola_prioridad.h:14</a></div></div>
+<div class="ttc" id="astruct_cola_prioridad_html_a562bae14bb794ee628c2f9c39b96a5dd"><div class="ttname"><a href="struct_cola_prioridad.html#a562bae14bb794ee628c2f9c39b96a5dd">ColaPrioridad::delante</a></div><div class="ttdeci">CPNodo * delante</div><div class="ttdef"><b>Definition</b> <a href="#l00015">cola_prioridad.h:15</a></div></div>
+<div class="ttc" id="astruct_cola_prioridad_html_aebbbf808e29594873d0f19016f422866"><div class="ttname"><a href="struct_cola_prioridad.html#aebbbf808e29594873d0f19016f422866">ColaPrioridad::atras</a></div><div class="ttdeci">CPNodo * atras</div><div class="ttdef"><b>Definition</b> <a href="#l00016">cola_prioridad.h:16</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="cola__prioridad_8h.html">cola_prioridad.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

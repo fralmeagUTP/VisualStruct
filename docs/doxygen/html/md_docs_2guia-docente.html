@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: Guia Docente</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('md_docs_2guia-docente.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Guia Docente </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md29"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
+Proposito</h1>
+<p>Esta aplicacion esta pensada para explicar operaciones de estructuras secuenciales mostrando tres planos al mismo tiempo:</p>
+<ul>
+<li>estado grafico de la estructura</li>
+<li>historial de codigo C relacionado con cada operacion ejecutada</li>
+<li>explicacion breve con complejidad</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
+Secuencia sugerida para clase</h1>
+<ol type="1">
+<li>Seleccionar la estructura a estudiar.</li>
+<li>Inicializar o vaciar para partir de un estado conocido.</li>
+<li>Insertar algunos elementos variando <span class="tt">valor</span> y <span class="tt">prioridad</span>.</li>
+<li>Pedir al estudiante que anticipe el resultado de la siguiente operacion.</li>
+<li>Ejecutar la accion y comparar la prediccion con el cambio visual.</li>
+<li>Relacionar el resultado con el snippet y la complejidad mostrada.</li>
+<li>Al finalizar una secuencia, usar <span class="tt">Limpiar</span> en el panel de codigo para comenzar un nuevo bloque didactico.</li>
+<li>Usar <span class="tt">F1</span> para abrir la ayuda interna cuando se necesite reforzar conceptos de uso o arquitectura.</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md32"></a>
+Ideas por estructura</h1>
+<h2><a class="el" href="struct_pila.html">Pila</a></h2>
+<ul>
+<li>Explicar LIFO con varias inserciones seguidas y un <span class="tt">pop</span>.</li>
+<li>Usar el marcador de tope para reforzar el concepto.</li>
+</ul>
+<h2><a class="el" href="struct_cola.html">Cola</a></h2>
+<ul>
+<li>Contrastar <span class="tt">FRONT</span> y <span class="tt">BACK</span>.</li>
+<li>Mostrar como el elemento que entra ultimo no es el primero en salir.</li>
+</ul>
+<h2><a class="el" href="struct_cola.html">Cola</a> de prioridad</h2>
+<ul>
+<li>Variar prioridades para discutir por que el orden visual de insercion no siempre coincide con la salida.</li>
+<li>Usar el indicador <span class="tt">OUT</span> para anticipar el siguiente elemento extraido.</li>
+</ul>
+<h2><a class="el" href="struct_lista.html">Lista</a></h2>
+<ul>
+<li>Demostrar insercion al inicio y al final.</li>
+<li>Ejecutar busqueda para remarcar coincidencias.</li>
+<li>Invertir la lista y observar el efecto estructural.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md33"></a>
+Recomendaciones de uso</h1>
+<ul>
+<li>Mantener pocos elementos al inicio para que el patron sea evidente.</li>
+<li>Pedir predicciones antes de pulsar el boton de operacion.</li>
+<li>Repetir una misma secuencia cambiando un solo valor para comparar comportamientos.</li>
+<li>Usar los mensajes de estado y el panel de traza como apoyo para estudiantes que recien comienzan.</li>
+<li>Aprovechar el historial de codigo para reconstruir toda la secuencia ejecutada sin depender de memoria de pasos previos.</li>
+<li>Integrar la pantalla de ayuda como apoyo transversal para aclarar modulos, atajos y errores comunes.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
+Limitaciones actuales</h1>
+<ul>
+<li>La visualizacion prioriza claridad pedagogica sobre animaciones complejas.</li>
+<li>El proyecto cubre estructuras secuenciales basicas del MVP.</li>
+<li>El material en <span class="tt">src/legacy</span> no representa la arquitectura vigente. </li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

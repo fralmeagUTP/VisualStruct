@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: QA de Visualizacion de Ventanas</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('md_docs_2qa-visualizacion-ventanas.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">QA de Visualizacion de Ventanas </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md46"></a></p>
+<p>Este documento define una prueba manual reproducible para validar layout, legibilidad y uso de espacio en la app VisualStruct.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md47"></a>
+Objetivo</h1>
+<p>Verificar que no existan solapes, recortes ni zonas inutiles en los paneles de la interfaz al cambiar tamano de ventana y estructura activa.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md48"></a>
+Preparacion</h1>
+<ol type="1">
+<li>Compilar el proyecto:</li>
+</ol>
+<div class="fragment"><div class="line">gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state.c src/code_viewer.c src/algorithm_trace.c src/pila_view.c src/cola_view.c src/cola_prioridad_view.c src/lista_view.c src/pila.c src/cola.c src/cola_prioridad.c src/lista.c -o visualstruct_qa_layout -lraylib -lopengl32 -lgdi32 -lwinmm</div>
+</div><!-- fragment --><ol type="1">
+<li>Ejecutar:</li>
+</ol>
+<div class="fragment"><div class="line">./visualstruct_qa_layout.exe</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md49"></a>
+Matriz de prueba (resolucion)</h1>
+<ol type="1">
+<li>1100x680 (minima)</li>
+<li>1280x760 (base)</li>
+<li>1366x768</li>
+<li>1600x900</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md50"></a>
+Escenarios funcionales por estructura</h1>
+<ol type="1">
+<li><a class="el" href="struct_pila.html">Pila</a>:</li>
+</ol>
+<ul>
+<li>Inicializar, insertar 8 valores, eliminar 3</li>
+<li>Confirmar scroll vertical de pila y estado TOPE visible</li>
+</ul>
+<ol type="1">
+<li><a class="el" href="struct_cola.html">Cola</a>:</li>
+</ol>
+<ul>
+<li>Inicializar, encolar 12 valores</li>
+<li>Confirmar scroll horizontal de cola con rueda y drag de barra</li>
+<li>Confirmar etiqueta FRONT/BACK visible sin recorte</li>
+</ul>
+<ol type="1">
+<li><a class="el" href="struct_cola.html">Cola</a> de prioridad:</li>
+</ol>
+<ul>
+<li>Insertar valores con prioridades variadas</li>
+<li>Verificar nodo OUT y lectura de V/P sin solape</li>
+</ul>
+<ol type="1">
+<li><a class="el" href="struct_lista.html">Lista</a>:</li>
+</ol>
+<ul>
+<li>Insertar inicio/final, buscar, eliminar, invertir</li>
+<li>Verificar HEAD/NULL visibles y flechas de enlace claras</li>
+</ul>
+<ol type="1">
+<li>Ayuda interna:</li>
+</ol>
+<ul>
+<li>Abrir con <span class="tt">F1</span> desde menu principal</li>
+<li>Verificar titulo, subtitulo, boton <span class="tt">Volver</span> y area de texto con scroll</li>
+<li>Cerrar con <span class="tt">F1</span> y confirmar retorno a pantalla previa</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md51"></a>
+Checklist de visualizacion</h1>
+<ol type="1">
+<li>Panel lateral:</li>
+</ol>
+<ul>
+<li>Botones del menu visibles y clicables</li>
+<li>Seccion de contexto (Seleccion actual, Elementos, ayuda) no pisa inputs</li>
+<li>Inputs Valor/Prioridad no se recortan</li>
+<li>Prioridad solo aparece en <a class="el" href="struct_cola.html">Cola</a> de prioridad</li>
+<li>Si el alto disponible es bajo, la ayuda se compacta sin superponerse</li>
+</ul>
+<ol type="1">
+<li>Panel central:</li>
+</ol>
+<ul>
+<li>Controles de operacion no invaden el lienzo grafico</li>
+<li>Lienzo muestra nodos completos sin cortar etiquetas</li>
+<li>Si aparece "Modo compacto", no se superpone al titulo</li>
+</ul>
+<ol type="1">
+<li>Panel derecho (Codigo C Asociado):</li>
+</ol>
+<ul>
+<li>Caja de resumen superior legible</li>
+<li>Snippet visible desde la primera linea</li>
+<li>Scroll vertical operativo cuando hay codigo largo</li>
+<li>Botones del encabezado (incluye <span class="tt">Limpiar</span>) visibles y sin solape</li>
+</ul>
+<ol type="1">
+<li>Panel inferior (Operacion, Traza y Complejidad):</li>
+</ol>
+<ul>
+<li>Caja Resumen sin texto cortado</li>
+<li>Caja Traza con titulo visible y scroll funcional</li>
+<li>Estado (OK/Error/Estado) no se superpone a otros elementos</li>
+</ul>
+<ol type="1">
+<li>Pantalla de ayuda:</li>
+</ol>
+<ul>
+<li>La banda superior (titulo, descripcion y <span class="tt">Volver</span>) no se recorta</li>
+<li>El bloque de texto largo mantiene legibilidad y margen interno</li>
+<li>Scrollbar de ayuda visible cuando el contenido excede el viewport</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md52"></a>
+Criterios de aceptacion</h1>
+<ol type="1">
+<li>Cero solapes visibles entre textos, botones y cajas.</li>
+<li>Cero recortes de texto en secciones clave (Resumen, Traza, Sidebar).</li>
+<li>Scroll funcional donde aplique (cola, codigo, traza, pila).</li>
+<li>Navegacion estable al cambiar entre estructuras y volver al menu principal.</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md53"></a>
+Registro de hallazgos</h1>
+<p>Usar esta plantilla por hallazgo:</p>
+<ul>
+<li>Resolucion:</li>
+<li>Estructura activa:</li>
+<li>Zona afectada (Sidebar/Centro/Derecha/Inferior):</li>
+<li>Descripcion:</li>
+<li>Pasos para reproducir:</li>
+<li>Resultado esperado:</li>
+<li>Resultado actual:</li>
+<li>Severidad (Alta/Media/Baja):</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md54"></a>
+Hallazgos corregidos en esta iteracion</h1>
+<ol type="1">
+<li>Sidebar con solape entre ayuda y campos de entrada en resoluciones ajustadas.</li>
+</ol>
+<ul>
+<li>Solucion: layout adaptativo por altura disponible y version compacta de ayuda.</li>
+</ul>
+<ol type="1">
+<li>Campo Prioridad visible en estructuras donde no aplica.</li>
+</ol>
+<ul>
+<li>Solucion: render condicional exclusivo para <a class="el" href="struct_cola.html">Cola</a> de prioridad.</li>
+</ul>
+<ol type="1">
+<li>Texto de error de prioridad mostrado fuera de contexto.</li>
+</ol>
+<ul>
+<li>Solucion: validacion y mensaje visibles solo cuando la estructura activa usa prioridad. </li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

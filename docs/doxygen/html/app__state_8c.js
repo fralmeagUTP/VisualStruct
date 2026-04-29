@@ -1,0 +1,25 @@
+var app__state_8c =
+[
+    [ "APP_FEEDBACK_DURATION", "app__state_8c.html#aaec36976e13b21e47ce70714cfbd3dd3", null ],
+    [ "APP_PANEL_PULSE_DURATION", "app__state_8c.html#af6c2cb4fe8c3d3dbd2ce9847ea269f21", null ],
+    [ "APP_SWITCH_DURATION", "app__state_8c.html#a35600fc861a659cca3ade1b1dd85c403", null ],
+    [ "app_state_ajustar_prioridad", "app__state_8c.html#a36b6bf7a760d9edd415998ad4ca69f3a", null ],
+    [ "app_state_ajustar_valor", "app__state_8c.html#a977416497520634dde6afa0135ea956f", null ],
+    [ "app_state_init", "app__state_8c.html#ac98f3937b8c68c08d699bdf8708fe09a", null ],
+    [ "app_state_operacion_buscar", "app__state_8c.html#afb7c2a89fd3e6c630bda1bb4e871ffc6", null ],
+    [ "app_state_operacion_eliminar", "app__state_8c.html#a96a70f09cb2567a06266136c07951dd6", null ],
+    [ "app_state_operacion_inicializar", "app__state_8c.html#a24a6594f990a8730104d95389dabb7cd", null ],
+    [ "app_state_operacion_insertar", "app__state_8c.html#a4ac75d475ced6f35a9e43aae6d749e8b", null ],
+    [ "app_state_operacion_invertir", "app__state_8c.html#af3fc18d79fc2396a8cfabf09dfd99f02", null ],
+    [ "app_state_operacion_lista_insertar_final", "app__state_8c.html#ae667f109ee17d7b74090f42b3803d7c8", null ],
+    [ "app_state_operacion_lista_insertar_inicio", "app__state_8c.html#a0594b9292adbce5f64036aeb4bbea163", null ],
+    [ "app_state_operacion_vaciar", "app__state_8c.html#aafb9a085e0863b9d4dcc7597f2d5b6d5", null ],
+    [ "app_state_set_estructura", "app__state_8c.html#a881246241a07b177b3accd398ba24e8d", null ],
+    [ "app_state_set_prioridad", "app__state_8c.html#a6037881f01b6bdc4a7f5e1aac242f1db", null ],
+    [ "app_state_set_valor", "app__state_8c.html#acb58e00364449839751d40d46a42c97b", null ],
+    [ "app_state_shutdown", "app__state_8c.html#ab0848d4e5b9603c944d52adc414517ed", null ],
+    [ "app_state_update_visuals", "app__state_8c.html#a519fb0bfbed97e86227626f3e0bb6593", null ],
+    [ "clamp_int", "app__state_8c.html#abbdf3c169ca7f1f9c234463a578ade4c", null ],
+    [ "set_message", "app__state_8c.html#a139e2bb887da1955f9b16ed00436cb3e", null ],
+    [ "trigger_feedback", "app__state_8c.html#a84c10ff87a95543f7bc01e3d112bd57a", null ]
+];

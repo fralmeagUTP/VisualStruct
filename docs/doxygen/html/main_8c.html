@@ -1,0 +1,1476 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: Referencia del archivo main.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('main_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia del archivo main.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Punto de entrada y orquestacion principal de la app VisualStruct.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &quot;raylib.h&quot;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="algorithm__trace_8h_source.html">algorithm_trace.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="app__state_8h_source.html">app_state.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="code__viewer_8h_source.html">code_viewer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cola__prioridad__view_8h_source.html">cola_prioridad_view.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cola__view_8h_source.html">cola_view.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lista__view_8h_source.html">lista_view.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="pila__view_8h_source.html">pila_view.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ui_8h_source.html">ui.h</a>&quot;</code><br />
+</div>
+<p><a href="main_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+defines</h2></td></tr>
+<tr class="memitem:a1ed35852aa9ff6e1cdd9b337f01d5870" id="r_a1ed35852aa9ff6e1cdd9b337f01d5870"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a1ed35852aa9ff6e1cdd9b337f01d5870">CODE_HISTORY_CAPACITY</a>&#160;&#160;&#160;65536</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumeraciones</h2></td></tr>
+<tr class="memitem:a65b30dbecdd0853f3d01374fb40d7c08" id="r_a65b30dbecdd0853f3d01374fb40d7c08"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08">InputFocus</a> { <a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08ad635d6b1496fa2fba6f87068d4193246">INPUT_NONE</a> = 0
+, <a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08ae83b9aed549f33affddb7d1a3e8f9804">INPUT_VALOR</a>
+, <a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08a34e54a75ca6c65340db8bb914ebe4d8d">INPUT_PRIORIDAD</a>
+ }</td></tr>
+<tr class="memitem:aefe4cd50ac123b6c800eede74968a353" id="r_aefe4cd50ac123b6c800eede74968a353"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#aefe4cd50ac123b6c800eede74968a353">ScreenMode</a> { <a class="el" href="#aefe4cd50ac123b6c800eede74968a353a57bd76f002798f63a253af342c73392e">SCREEN_HOME</a> = 0
+, <a class="el" href="#aefe4cd50ac123b6c800eede74968a353aa9620c75110ed93e7e217291c5f8e3a5">SCREEN_VISUALIZER</a>
+, <a class="el" href="#aefe4cd50ac123b6c800eede74968a353a03d47535d3ba04edd770ace117420d4c">SCREEN_HELP</a>
+ }</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:ac68399f128e65c0ecc9da6a7595277fb" id="r_ac68399f128e65c0ecc9da6a7595277fb"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ac68399f128e65c0ecc9da6a7595277fb">append_code_history</a> (char *history, size_t capacity, int *entries, const <a class="el" href="struct_app_state.html">AppState</a> *app, const char *snippet)</td></tr>
+<tr class="memdesc:ac68399f128e65c0ecc9da6a7595277fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega una nueva entrada de snippet al historial acumulado de codigo.  <br /></td></tr>
+<tr class="memitem:a7b95ba98bdb60099e7bf0e9d44788751" id="r_a7b95ba98bdb60099e7bf0e9d44788751"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a7b95ba98bdb60099e7bf0e9d44788751">apply_input_focus</a> (<a class="el" href="struct_app_state.html">AppState</a> *app, <a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08">InputFocus</a> focus, const char *text)</td></tr>
+<tr class="memdesc:a7b95ba98bdb60099e7bf0e9d44788751"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aplica el contenido textual de una caja de entrada al estado global.  <br /></td></tr>
+<tr class="memitem:a4372a297a9cbc9d2bc6b4fc4f3a725d5" id="r_a4372a297a9cbc9d2bc6b4fc4f3a725d5"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#a4372a297a9cbc9d2bc6b4fc4f3a725d5">clamp_float</a> (float value, float min, float max)</td></tr>
+<tr class="memdesc:a4372a297a9cbc9d2bc6b4fc4f3a725d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limita un valor flotante a un rango cerrado.  <br /></td></tr>
+<tr class="memitem:a1c979dd4b6445843e4881bf7a8f03608" id="r_a1c979dd4b6445843e4881bf7a8f03608"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a1c979dd4b6445843e4881bf7a8f03608">count_text_lines</a> (const char *text)</td></tr>
+<tr class="memdesc:a1c979dd4b6445843e4881bf7a8f03608"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cuenta lineas de un bloque de texto multilínea.  <br /></td></tr>
+<tr class="memitem:a136653aa94ab717b27a314ad325ef6dd" id="r_a136653aa94ab717b27a314ad325ef6dd"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a136653aa94ab717b27a314ad325ef6dd">draw_active_view</a> (const <a class="el" href="struct_app_state.html">AppState</a> *state, Rectangle panel, float content_top_y)</td></tr>
+<tr class="memdesc:a136653aa94ab717b27a314ad325ef6dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Despacha el render de la vista grafica segun la estructura seleccionada.  <br /></td></tr>
+<tr class="memitem:a1ee96216319e58d6819a078c6028cb43" id="r_a1ee96216319e58d6819a078c6028cb43"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#a1ee96216319e58d6819a078c6028cb43">draw_context_controls</a> (<a class="el" href="struct_app_state.html">AppState</a> *app, Rectangle panel, bool *is_compact_mode)</td></tr>
+<tr class="memdesc:a1ee96216319e58d6819a078c6028cb43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja los controles contextuales de operacion sobre el panel central.  <br /></td></tr>
+<tr class="memitem:a485bc574d9f8c1c422c3b4817ba571ea" id="r_a485bc574d9f8c1c422c3b4817ba571ea"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a485bc574d9f8c1c422c3b4817ba571ea">draw_help_screen</a> (const <a class="el" href="struct_u_i_layout.html">UILayout</a> *layout, float *help_scroll)</td></tr>
+<tr class="memdesc:a485bc574d9f8c1c422c3b4817ba571ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja la pantalla de ayuda detallada y retorna true si se solicita salir.  <br /></td></tr>
+<tr class="memitem:a77079dcec78d7922ef19f630a76ba8bd" id="r_a77079dcec78d7922ef19f630a76ba8bd"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a77079dcec78d7922ef19f630a76ba8bd">draw_home_card</a> (Rectangle card, const char *title, const char *description, <a class="el" href="app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6">TipoEstructura</a> tipo, bool is_selected)</td></tr>
+<tr class="memdesc:a77079dcec78d7922ef19f630a76ba8bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja una tarjeta de estructura y retorna true si se presiona Visualizar.  <br /></td></tr>
+<tr class="memitem:af7d5fd8caf96e66d590ebef8d38a8595" id="r_af7d5fd8caf96e66d590ebef8d38a8595"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#af7d5fd8caf96e66d590ebef8d38a8595">draw_home_icon</a> (<a class="el" href="app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6">TipoEstructura</a> tipo, Rectangle icon_circle)</td></tr>
+<tr class="memdesc:af7d5fd8caf96e66d590ebef8d38a8595"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja una tarjeta de estructura y retorna true si se presiona Visualizar.  <br /></td></tr>
+<tr class="memitem:ac829ba6a0af32f92d2d3839747b9110c" id="r_ac829ba6a0af32f92d2d3839747b9110c"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ac829ba6a0af32f92d2d3839747b9110c">draw_home_screen</a> (const <a class="el" href="struct_u_i_layout.html">UILayout</a> *layout, <a class="el" href="struct_app_state.html">AppState</a> *app, <a class="el" href="#aefe4cd50ac123b6c800eede74968a353">ScreenMode</a> *mode, int *home_selected, bool activate_selected)</td></tr>
+<tr class="memdesc:ac829ba6a0af32f92d2d3839747b9110c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja la portada de estructuras y permite seleccionar una para visualizar.  <br /></td></tr>
+<tr class="memitem:abf6cecb88ec964635339066065ebfa63" id="r_abf6cecb88ec964635339066065ebfa63"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#abf6cecb88ec964635339066065ebfa63">draw_scrollable_multiline_text</a> (const char *text, Rectangle viewport, int font_size, Color color, float offset_y)</td></tr>
+<tr class="memdesc:abf6cecb88ec964635339066065ebfa63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja texto multilínea dentro de un viewport con clipping y desplazamiento vertical.  <br /></td></tr>
+<tr class="memitem:a6174d639c73f9e3c5303f0006959cdf7" id="r_a6174d639c73f9e3c5303f0006959cdf7"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a6174d639c73f9e3c5303f0006959cdf7">draw_scrollbar</a> (Rectangle track, float content_height, float viewport_height, float offset)</td></tr>
+<tr class="memdesc:a6174d639c73f9e3c5303f0006959cdf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja la barra de scroll proporcional para paneles textuales.  <br /></td></tr>
+<tr class="memitem:aaed93e600f2db89c988047b141a40035" id="r_aaed93e600f2db89c988047b141a40035"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#aaed93e600f2db89c988047b141a40035">draw_ui_multiline</a> (const char *text, float x, float y, float font_size, float spacing, Color color)</td></tr>
+<tr class="memdesc:aaed93e600f2db89c988047b141a40035"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja texto multilínea simple separando por salto de línea.  <br /></td></tr>
+<tr class="memitem:af9057b726cb7aeffff7619769f0e8d6f" id="r_af9057b726cb7aeffff7619769f0e8d6f"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#af9057b726cb7aeffff7619769f0e8d6f">edit_active_input</a> (char *buffer, size_t size)</td></tr>
+<tr class="memdesc:af9057b726cb7aeffff7619769f0e8d6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualiza el buffer de la caja de entrada activa usando teclado.  <br /></td></tr>
+<tr class="memitem:ab0b4b4460ee52151bc707c49c0ab15fe" id="r_ab0b4b4460ee52151bc707c49c0ab15fe"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#ab0b4b4460ee52151bc707c49c0ab15fe">estructura_cantidad</a> (const <a class="el" href="struct_app_state.html">AppState</a> *state)</td></tr>
+<tr class="memdesc:ab0b4b4460ee52151bc707c49c0ab15fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna la cantidad de elementos de la estructura actualmente seleccionada.  <br /></td></tr>
+<tr class="memitem:af2d1ecb02599f201f31c547ef940d260" id="r_af2d1ecb02599f201f31c547ef940d260"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#af2d1ecb02599f201f31c547ef940d260">estructura_descripcion</a> (<a class="el" href="app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6">TipoEstructura</a> tipo)</td></tr>
+<tr class="memdesc:af2d1ecb02599f201f31c547ef940d260"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna una descripcion corta para la estructura seleccionada.  <br /></td></tr>
+<tr class="memitem:a2b0d772b5382f7ea0228df883f7449d7" id="r_a2b0d772b5382f7ea0228df883f7449d7"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a2b0d772b5382f7ea0228df883f7449d7">estructura_from_shortcut</a> (void)</td></tr>
+<tr class="memdesc:a2b0d772b5382f7ea0228df883f7449d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna la estructura asociada a un atajo numerico, o -1 si no aplica.  <br /></td></tr>
+<tr class="memitem:adca7682ec95e4139b194a1eecd8ea6d6" id="r_adca7682ec95e4139b194a1eecd8ea6d6"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#adca7682ec95e4139b194a1eecd8ea6d6">estructura_nombre</a> (<a class="el" href="app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6">TipoEstructura</a> tipo)</td></tr>
+<tr class="memdesc:adca7682ec95e4139b194a1eecd8ea6d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convierte el enum de estructura activa a texto legible para la UI.  <br /></td></tr>
+<tr class="memitem:ab29b34545eecaf06d2f080a8a93930ea" id="r_ab29b34545eecaf06d2f080a8a93930ea"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#ab29b34545eecaf06d2f080a8a93930ea">get_app_help_text</a> (void)</td></tr>
+<tr class="memdesc:ab29b34545eecaf06d2f080a8a93930ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatena los bloques de ayuda para evitar literales demasiado largos en compilacion.  <br /></td></tr>
+<tr class="memitem:a48dd9e88677d1786078941aae8012577" id="r_a48dd9e88677d1786078941aae8012577"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a48dd9e88677d1786078941aae8012577">handle_keyboard</a> (<a class="el" href="struct_app_state.html">AppState</a> *app)</td></tr>
+<tr class="memdesc:a48dd9e88677d1786078941aae8012577"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atiende atajos globales de teclado para entradas y operaciones.  <br /></td></tr>
+<tr class="memitem:ac25dcf47afd61bde8c48e0e2884e56f2" id="r_ac25dcf47afd61bde8c48e0e2884e56f2"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ac25dcf47afd61bde8c48e0e2884e56f2">handle_navigation_keyboard</a> (<a class="el" href="#aefe4cd50ac123b6c800eede74968a353">ScreenMode</a> *mode, <a class="el" href="struct_app_state.html">AppState</a> *app, int *home_selected, bool *activate_selected)</td></tr>
+<tr class="memdesc:ac25dcf47afd61bde8c48e0e2884e56f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestiona navegación de alto nivel entre menu principal y visualizador.  <br /></td></tr>
+<tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe" id="r_a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
+<tr class="memitem:a83073f8573840486a92e6a745b4ea6cf" id="r_a83073f8573840486a92e6a745b4ea6cf"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#a83073f8573840486a92e6a745b4ea6cf">operacion_nombre</a> (<a class="el" href="app__state_8h.html#af12172166a85efb2c6a53de3facb2776">TipoOperacion</a> operacion)</td></tr>
+<tr class="memdesc:a83073f8573840486a92e6a745b4ea6cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convierte el enum de operacion a texto legible para el historial.  <br /></td></tr>
+<tr class="memitem:a01b825fc3266f6b3ca5c331a5667fe9a" id="r_a01b825fc3266f6b3ca5c331a5667fe9a"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a01b825fc3266f6b3ca5c331a5667fe9a">parse_int_text</a> (const char *text, int *value)</td></tr>
+<tr class="memdesc:a01b825fc3266f6b3ca5c331a5667fe9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valida si un texto representa un entero sintacticamente valido.  <br /></td></tr>
+<tr class="memitem:a9df5d2e9d6f7b867c5f4994c0b76e925" id="r_a9df5d2e9d6f7b867c5f4994c0b76e925"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a9df5d2e9d6f7b867c5f4994c0b76e925">sync_input_buffers</a> (const <a class="el" href="struct_app_state.html">AppState</a> *app, char *value_text, size_t value_size, char *priority_text, size_t priority_size, <a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08">InputFocus</a> focus)</td></tr>
+<tr class="memdesc:a9df5d2e9d6f7b867c5f4994c0b76e925"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sincroniza los buffers de texto editables con el estado real de entrada.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a2c333d877ee3459a7cda32b4292f692a" id="r_a2c333d877ee3459a7cda32b4292f692a"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#a2c333d877ee3459a7cda32b4292f692a">APP_HELP_TEXT_PART1</a></td></tr>
+<tr class="memitem:a04dfd51a506fcbb018f16ba1d1fec688" id="r_a04dfd51a506fcbb018f16ba1d1fec688"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#a04dfd51a506fcbb018f16ba1d1fec688">APP_HELP_TEXT_PART1B</a></td></tr>
+<tr class="memitem:aa57811c14fe892f49077bcde669cf218" id="r_aa57811c14fe892f49077bcde669cf218"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#aa57811c14fe892f49077bcde669cf218">APP_HELP_TEXT_PART2</a></td></tr>
+<tr class="memitem:a7ad37c7e848e354455117bc9e8cee130" id="r_a7ad37c7e848e354455117bc9e8cee130"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#a7ad37c7e848e354455117bc9e8cee130">APP_HELP_TEXT_PART3</a></td></tr>
+<tr class="memitem:a3ae5143acac32dfc524d41fc2bbd6db7" id="r_a3ae5143acac32dfc524d41fc2bbd6db7"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#a3ae5143acac32dfc524d41fc2bbd6db7">APP_HELP_TEXT_PART4</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Punto de entrada y orquestacion principal de la app VisualStruct. </p>
+
+<p class="definition">Definición en el archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentación de «define»</h2>
+<a id="a1ed35852aa9ff6e1cdd9b337f01d5870" name="a1ed35852aa9ff6e1cdd9b337f01d5870"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ed35852aa9ff6e1cdd9b337f01d5870">&#9670;&#160;</a></span>CODE_HISTORY_CAPACITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CODE_HISTORY_CAPACITY&#160;&#160;&#160;65536</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00020">20</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01067">main()</a>.</p>
+
+</div>
+</div>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Documentación de enumeraciones</h2>
+<a id="a65b30dbecdd0853f3d01374fb40d7c08" name="a65b30dbecdd0853f3d01374fb40d7c08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65b30dbecdd0853f3d01374fb40d7c08">&#9670;&#160;</a></span>InputFocus</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08">InputFocus</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Valores de enumeraciones</th></tr><tr><td class="fieldname"><a id="a65b30dbecdd0853f3d01374fb40d7c08ad635d6b1496fa2fba6f87068d4193246" name="a65b30dbecdd0853f3d01374fb40d7c08ad635d6b1496fa2fba6f87068d4193246"></a>INPUT_NONE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a65b30dbecdd0853f3d01374fb40d7c08ae83b9aed549f33affddb7d1a3e8f9804" name="a65b30dbecdd0853f3d01374fb40d7c08ae83b9aed549f33affddb7d1a3e8f9804"></a>INPUT_VALOR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a65b30dbecdd0853f3d01374fb40d7c08a34e54a75ca6c65340db8bb914ebe4d8d" name="a65b30dbecdd0853f3d01374fb40d7c08a34e54a75ca6c65340db8bb914ebe4d8d"></a>INPUT_PRIORIDAD&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00117">117</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="aefe4cd50ac123b6c800eede74968a353" name="aefe4cd50ac123b6c800eede74968a353"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefe4cd50ac123b6c800eede74968a353">&#9670;&#160;</a></span>ScreenMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#aefe4cd50ac123b6c800eede74968a353">ScreenMode</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Valores de enumeraciones</th></tr><tr><td class="fieldname"><a id="aefe4cd50ac123b6c800eede74968a353a57bd76f002798f63a253af342c73392e" name="aefe4cd50ac123b6c800eede74968a353a57bd76f002798f63a253af342c73392e"></a>SCREEN_HOME&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aefe4cd50ac123b6c800eede74968a353aa9620c75110ed93e7e217291c5f8e3a5" name="aefe4cd50ac123b6c800eede74968a353aa9620c75110ed93e7e217291c5f8e3a5"></a>SCREEN_VISUALIZER&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aefe4cd50ac123b6c800eede74968a353a03d47535d3ba04edd770ace117420d4c" name="aefe4cd50ac123b6c800eede74968a353a03d47535d3ba04edd770ace117420d4c"></a>SCREEN_HELP&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00123">123</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
+<a id="ac68399f128e65c0ecc9da6a7595277fb" name="ac68399f128e65c0ecc9da6a7595277fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac68399f128e65c0ecc9da6a7595277fb">&#9670;&#160;</a></span>append_code_history()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void append_code_history </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>history</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>capacity</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>entries</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_app_state.html">AppState</a> *</td>          <td class="paramname"><span class="paramname"><em>app</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>snippet</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Agrega una nueva entrada de snippet al historial acumulado de codigo. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00063">63</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00036">AppState::estructura_activa</a>, <a class="el" href="main_8c_source.html#l00023">estructura_nombre()</a>, <a class="el" href="app__state_8h_source.html#l00049">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00037">AppState::operacion_actual</a>, <a class="el" href="main_8c_source.html#l00039">operacion_nombre()</a> y <a class="el" href="app__state_8h_source.html#l00047">AppState::ultima_operacion_ok</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01067">main()</a>.</p>
+
+</div>
+</div>
+<a id="a7b95ba98bdb60099e7bf0e9d44788751" name="a7b95ba98bdb60099e7bf0e9d44788751"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b95ba98bdb60099e7bf0e9d44788751">&#9670;&#160;</a></span>apply_input_focus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void apply_input_focus </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_app_state.html">AppState</a> *</td>          <td class="paramname"><span class="paramname"><em>app</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08">InputFocus</a></td>          <td class="paramname"><span class="paramname"><em>focus</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>text</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aplica el contenido textual de una caja de entrada al estado global. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01013">1013</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00124">app_state_set_prioridad()</a>, <a class="el" href="app__state_8c_source.html#l00106">app_state_set_valor()</a>, <a class="el" href="main_8c_source.html#l00120">INPUT_PRIORIDAD</a> y <a class="el" href="main_8c_source.html#l00119">INPUT_VALOR</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01067">main()</a>.</p>
+
+</div>
+</div>
+<a id="a4372a297a9cbc9d2bc6b4fc4f3a725d5" name="a4372a297a9cbc9d2bc6b4fc4f3a725d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4372a297a9cbc9d2bc6b4fc4f3a725d5">&#9670;&#160;</a></span>clamp_float()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float clamp_float </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>min</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>max</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Limita un valor flotante a un rango cerrado. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00419">419</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00757">draw_help_screen()</a> y <a class="el" href="main_8c_source.html#l01067">main()</a>.</p>
+
+</div>
+</div>
+<a id="a1c979dd4b6445843e4881bf7a8f03608" name="a1c979dd4b6445843e4881bf7a8f03608"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c979dd4b6445843e4881bf7a8f03608">&#9670;&#160;</a></span>count_text_lines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int count_text_lines </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>text</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Cuenta lineas de un bloque de texto multilínea. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00402">402</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00757">draw_help_screen()</a> y <a class="el" href="main_8c_source.html#l01067">main()</a>.</p>
+
+</div>
+</div>
+<a id="a136653aa94ab717b27a314ad325ef6dd" name="a136653aa94ab717b27a314ad325ef6dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a136653aa94ab717b27a314ad325ef6dd">&#9670;&#160;</a></span>draw_active_view()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void draw_active_view </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_app_state.html">AppState</a> *</td>          <td class="paramname"><span class="paramname"><em>state</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Rectangle</td>          <td class="paramname"><span class="paramname"><em>panel</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>content_top_y</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Despacha el render de la vista grafica segun la estructura seleccionada. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00808">808</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00045">AppState::animacion_cambio_estructura</a>, <a class="el" href="app__state_8h_source.html#l00046">AppState::animacion_pulso_panel</a>, <a class="el" href="cola__prioridad__view_8c_source.html#l00056">cola_prioridad_view_draw()</a>, <a class="el" href="cola__view_8c_source.html#l00030">cola_view_draw()</a>, <a class="el" href="app__state_8h_source.html#l00036">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00018">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00017">ESTRUCTURA_PILA</a>, <a class="el" href="lista__view_8c_source.html#l00030">lista_view_draw()</a> y <a class="el" href="pila__view_8c_source.html#l00030">pila_view_draw()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01067">main()</a>.</p>
+
+</div>
+</div>
+<a id="a1ee96216319e58d6819a078c6028cb43" name="a1ee96216319e58d6819a078c6028cb43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ee96216319e58d6819a078c6028cb43">&#9670;&#160;</a></span>draw_context_controls()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float draw_context_controls </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_app_state.html">AppState</a> *</td>          <td class="paramname"><span class="paramname"><em>app</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Rectangle</td>          <td class="paramname"><span class="paramname"><em>panel</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *</td>          <td class="paramname"><span class="paramname"><em>is_compact_mode</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dibuja los controles contextuales de operacion sobre el panel central. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00851">851</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00374">app_state_operacion_buscar()</a>, <a class="el" href="app__state_8c_source.html#l00311">app_state_operacion_eliminar()</a>, <a class="el" href="app__state_8c_source.html#l00162">app_state_operacion_inicializar()</a>, <a class="el" href="app__state_8c_source.html#l00200">app_state_operacion_insertar()</a>, <a class="el" href="app__state_8c_source.html#l00399">app_state_operacion_invertir()</a>, <a class="el" href="app__state_8c_source.html#l00287">app_state_operacion_lista_insertar_final()</a>, <a class="el" href="app__state_8c_source.html#l00263">app_state_operacion_lista_insertar_inicio()</a>, <a class="el" href="app__state_8c_source.html#l00420">app_state_operacion_vaciar()</a>, <a class="el" href="app__state_8h_source.html#l00036">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00018">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00017">ESTRUCTURA_PILA</a>, <a class="el" href="ui_8c_source.html#l00325">ui_button()</a> y <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01067">main()</a>.</p>
+
+</div>
+</div>
+<a id="a485bc574d9f8c1c422c3b4817ba571ea" name="a485bc574d9f8c1c422c3b4817ba571ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a485bc574d9f8c1c422c3b4817ba571ea">&#9670;&#160;</a></span>draw_help_screen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool draw_help_screen </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_u_i_layout.html">UILayout</a> *</td>          <td class="paramname"><span class="paramname"><em>layout</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>help_scroll</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dibuja la pantalla de ayuda detallada y retorna true si se solicita salir. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00757">757</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="ui_8h_source.html#l00022">UILayout::bottom</a>, <a class="el" href="main_8c_source.html#l00419">clamp_float()</a>, <a class="el" href="main_8c_source.html#l00402">count_text_lines()</a>, <a class="el" href="main_8c_source.html#l00475">draw_scrollable_multiline_text()</a>, <a class="el" href="main_8c_source.html#l00450">draw_scrollbar()</a>, <a class="el" href="main_8c_source.html#l00743">get_app_help_text()</a>, <a class="el" href="ui_8h_source.html#l00019">UILayout::sidebar</a>, <a class="el" href="ui_8c_source.html#l00325">ui_button()</a> y <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01067">main()</a>.</p>
+
+</div>
+</div>
+<a id="a77079dcec78d7922ef19f630a76ba8bd" name="a77079dcec78d7922ef19f630a76ba8bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77079dcec78d7922ef19f630a76ba8bd">&#9670;&#160;</a></span>draw_home_card()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool draw_home_card </td>
+          <td>(</td>
+          <td class="paramtype">Rectangle</td>          <td class="paramname"><span class="paramname"><em>card</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>title</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>description</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6">TipoEstructura</a></td>          <td class="paramname"><span class="paramname"><em>tipo</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>is_selected</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dibuja una tarjeta de estructura y retorna true si se presiona Visualizar. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00248">248</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="main_8c_source.html#l00175">draw_home_icon()</a>, <a class="el" href="main_8c_source.html#l00146">draw_ui_multiline()</a>, <a class="el" href="ui_8c_source.html#l00325">ui_button()</a>, <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a> y <a class="el" href="ui_8c_source.html#l00070">ui_measure_text()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00284">draw_home_screen()</a>.</p>
+
+</div>
+</div>
+<a id="af7d5fd8caf96e66d590ebef8d38a8595" name="af7d5fd8caf96e66d590ebef8d38a8595"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7d5fd8caf96e66d590ebef8d38a8595">&#9670;&#160;</a></span>draw_home_icon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void draw_home_icon </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6">TipoEstructura</a></td>          <td class="paramname"><span class="paramname"><em>tipo</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Rectangle</td>          <td class="paramname"><span class="paramname"><em>icon_circle</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dibuja una tarjeta de estructura y retorna true si se presiona Visualizar. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00175">175</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00018">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_LISTA</a> y <a class="el" href="app__state_8h_source.html#l00017">ESTRUCTURA_PILA</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00248">draw_home_card()</a>.</p>
+
+</div>
+</div>
+<a id="ac829ba6a0af32f92d2d3839747b9110c" name="ac829ba6a0af32f92d2d3839747b9110c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac829ba6a0af32f92d2d3839747b9110c">&#9670;&#160;</a></span>draw_home_screen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void draw_home_screen </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_u_i_layout.html">UILayout</a> *</td>          <td class="paramname"><span class="paramname"><em>layout</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_app_state.html">AppState</a> *</td>          <td class="paramname"><span class="paramname"><em>app</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#aefe4cd50ac123b6c800eede74968a353">ScreenMode</a> *</td>          <td class="paramname"><span class="paramname"><em>mode</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>home_selected</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>activate_selected</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dibuja la portada de estructuras y permite seleccionar una para visualizar. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00284">284</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00081">app_state_set_estructura()</a>, <a class="el" href="ui_8h_source.html#l00022">UILayout::bottom</a>, <a class="el" href="main_8c_source.html#l00248">draw_home_card()</a>, <a class="el" href="app__state_8h_source.html#l00018">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="main_8c_source.html#l00130">estructura_descripcion()</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00017">ESTRUCTURA_PILA</a>, <a class="el" href="main_8c_source.html#l00125">SCREEN_VISUALIZER</a>, <a class="el" href="ui_8h_source.html#l00019">UILayout::sidebar</a>, <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a> y <a class="el" href="ui_8c_source.html#l00070">ui_measure_text()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01067">main()</a>.</p>
+
+</div>
+</div>
+<a id="abf6cecb88ec964635339066065ebfa63" name="abf6cecb88ec964635339066065ebfa63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf6cecb88ec964635339066065ebfa63">&#9670;&#160;</a></span>draw_scrollable_multiline_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void draw_scrollable_multiline_text </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>text</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Rectangle</td>          <td class="paramname"><span class="paramname"><em>viewport</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>font_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>offset_y</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dibuja texto multilínea dentro de un viewport con clipping y desplazamiento vertical. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00475">475</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00757">draw_help_screen()</a> y <a class="el" href="main_8c_source.html#l01067">main()</a>.</p>
+
+</div>
+</div>
+<a id="a6174d639c73f9e3c5303f0006959cdf7" name="a6174d639c73f9e3c5303f0006959cdf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6174d639c73f9e3c5303f0006959cdf7">&#9670;&#160;</a></span>draw_scrollbar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void draw_scrollbar </td>
+          <td>(</td>
+          <td class="paramtype">Rectangle</td>          <td class="paramname"><span class="paramname"><em>track</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>content_height</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>viewport_height</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>offset</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dibuja la barra de scroll proporcional para paneles textuales. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00450">450</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00757">draw_help_screen()</a> y <a class="el" href="main_8c_source.html#l01067">main()</a>.</p>
+
+</div>
+</div>
+<a id="aaed93e600f2db89c988047b141a40035" name="aaed93e600f2db89c988047b141a40035"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaed93e600f2db89c988047b141a40035">&#9670;&#160;</a></span>draw_ui_multiline()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void draw_ui_multiline </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>text</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>font_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>spacing</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dibuja texto multilínea simple separando por salto de línea. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00146">146</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00248">draw_home_card()</a>.</p>
+
+</div>
+</div>
+<a id="af9057b726cb7aeffff7619769f0e8d6f" name="af9057b726cb7aeffff7619769f0e8d6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9057b726cb7aeffff7619769f0e8d6f">&#9670;&#160;</a></span>edit_active_input()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void edit_active_input </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Actualiza el buffer de la caja de entrada activa usando teclado. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01047">1047</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01067">main()</a>.</p>
+
+</div>
+</div>
+<a id="ab0b4b4460ee52151bc707c49c0ab15fe" name="ab0b4b4460ee52151bc707c49c0ab15fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0b4b4460ee52151bc707c49c0ab15fe">&#9670;&#160;</a></span>estructura_cantidad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int estructura_cantidad </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_app_state.html">AppState</a> *</td>          <td class="paramname"><span class="paramname"><em>state</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retorna la cantidad de elementos de la estructura actualmente seleccionada. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00430">430</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00052">AppState::cola</a>, <a class="el" href="cola_8c_source.html#l00135">cola_contar()</a>, <a class="el" href="app__state_8h_source.html#l00053">AppState::cola_prioridad</a>, <a class="el" href="cola__prioridad_8c_source.html#l00168">cp_contar()</a>, <a class="el" href="app__state_8h_source.html#l00036">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00018">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00017">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00054">AppState::lista</a>, <a class="el" href="lista_8c_source.html#l00519">lista_contar()</a>, <a class="el" href="app__state_8h_source.html#l00051">AppState::pila</a> y <a class="el" href="pila_8c_source.html#l00137">pila_contar()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01067">main()</a>.</p>
+
+</div>
+</div>
+<a id="af2d1ecb02599f201f31c547ef940d260" name="af2d1ecb02599f201f31c547ef940d260"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2d1ecb02599f201f31c547ef940d260">&#9670;&#160;</a></span>estructura_descripcion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * estructura_descripcion </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6">TipoEstructura</a></td>          <td class="paramname"><span class="paramname"><em>tipo</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retorna una descripcion corta para la estructura seleccionada. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00130">130</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00018">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_LISTA</a> y <a class="el" href="app__state_8h_source.html#l00017">ESTRUCTURA_PILA</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00284">draw_home_screen()</a>.</p>
+
+</div>
+</div>
+<a id="a2b0d772b5382f7ea0228df883f7449d7" name="a2b0d772b5382f7ea0228df883f7449d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b0d772b5382f7ea0228df883f7449d7">&#9670;&#160;</a></span>estructura_from_shortcut()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int estructura_from_shortcut </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retorna la estructura asociada a un atajo numerico, o -1 si no aplica. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00101">101</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00018">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_LISTA</a> y <a class="el" href="app__state_8h_source.html#l00017">ESTRUCTURA_PILA</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00356">handle_navigation_keyboard()</a>.</p>
+
+</div>
+</div>
+<a id="adca7682ec95e4139b194a1eecd8ea6d6" name="adca7682ec95e4139b194a1eecd8ea6d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adca7682ec95e4139b194a1eecd8ea6d6">&#9670;&#160;</a></span>estructura_nombre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * estructura_nombre </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6">TipoEstructura</a></td>          <td class="paramname"><span class="paramname"><em>tipo</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convierte el enum de estructura activa a texto legible para la UI. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00023">23</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00018">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_LISTA</a> y <a class="el" href="app__state_8h_source.html#l00017">ESTRUCTURA_PILA</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00063">append_code_history()</a> y <a class="el" href="main_8c_source.html#l01067">main()</a>.</p>
+
+</div>
+</div>
+<a id="ab29b34545eecaf06d2f080a8a93930ea" name="ab29b34545eecaf06d2f080a8a93930ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab29b34545eecaf06d2f080a8a93930ea">&#9670;&#160;</a></span>get_app_help_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * get_app_help_text </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Concatena los bloques de ayuda para evitar literales demasiado largos en compilacion. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00743">743</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="main_8c_source.html#l00514">APP_HELP_TEXT_PART1</a>, <a class="el" href="main_8c_source.html#l00619">APP_HELP_TEXT_PART1B</a>, <a class="el" href="main_8c_source.html#l00638">APP_HELP_TEXT_PART2</a>, <a class="el" href="main_8c_source.html#l00692">APP_HELP_TEXT_PART3</a> y <a class="el" href="main_8c_source.html#l00712">APP_HELP_TEXT_PART4</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00757">draw_help_screen()</a>.</p>
+
+</div>
+</div>
+<a id="a48dd9e88677d1786078941aae8012577" name="a48dd9e88677d1786078941aae8012577"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48dd9e88677d1786078941aae8012577">&#9670;&#160;</a></span>handle_keyboard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void handle_keyboard </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_app_state.html">AppState</a> *</td>          <td class="paramname"><span class="paramname"><em>app</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Atiende atajos globales de teclado para entradas y operaciones. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00961">961</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00115">app_state_ajustar_prioridad()</a>, <a class="el" href="app__state_8c_source.html#l00097">app_state_ajustar_valor()</a>, <a class="el" href="app__state_8c_source.html#l00374">app_state_operacion_buscar()</a>, <a class="el" href="app__state_8c_source.html#l00311">app_state_operacion_eliminar()</a>, <a class="el" href="app__state_8c_source.html#l00162">app_state_operacion_inicializar()</a>, <a class="el" href="app__state_8c_source.html#l00200">app_state_operacion_insertar()</a>, <a class="el" href="app__state_8c_source.html#l00399">app_state_operacion_invertir()</a>, <a class="el" href="app__state_8c_source.html#l00287">app_state_operacion_lista_insertar_final()</a>, <a class="el" href="app__state_8c_source.html#l00263">app_state_operacion_lista_insertar_inicio()</a>, <a class="el" href="app__state_8c_source.html#l00420">app_state_operacion_vaciar()</a>, <a class="el" href="app__state_8h_source.html#l00036">AppState::estructura_activa</a> y <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_LISTA</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01067">main()</a>.</p>
+
+</div>
+</div>
+<a id="ac25dcf47afd61bde8c48e0e2884e56f2" name="ac25dcf47afd61bde8c48e0e2884e56f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac25dcf47afd61bde8c48e0e2884e56f2">&#9670;&#160;</a></span>handle_navigation_keyboard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void handle_navigation_keyboard </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#aefe4cd50ac123b6c800eede74968a353">ScreenMode</a> *</td>          <td class="paramname"><span class="paramname"><em>mode</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_app_state.html">AppState</a> *</td>          <td class="paramname"><span class="paramname"><em>app</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>home_selected</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *</td>          <td class="paramname"><span class="paramname"><em>activate_selected</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gestiona navegación de alto nivel entre menu principal y visualizador. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00356">356</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00081">app_state_set_estructura()</a>, <a class="el" href="app__state_8h_source.html#l00036">AppState::estructura_activa</a>, <a class="el" href="main_8c_source.html#l00101">estructura_from_shortcut()</a>, <a class="el" href="main_8c_source.html#l00126">SCREEN_HELP</a>, <a class="el" href="main_8c_source.html#l00124">SCREEN_HOME</a> y <a class="el" href="main_8c_source.html#l00125">SCREEN_VISUALIZER</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01067">main()</a>.</p>
+
+</div>
+</div>
+<a id="a840291bc02cba5474a4cb46a9b9566fe" name="a840291bc02cba5474a4cb46a9b9566fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a840291bc02cba5474a4cb46a9b9566fe">&#9670;&#160;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01067">1067</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="algorithm__trace_8c_source.html#l00009">algorithm_trace_get_info()</a>, <a class="el" href="app__state_8c_source.html#l00042">app_state_init()</a>, <a class="el" href="app__state_8c_source.html#l00081">app_state_set_estructura()</a>, <a class="el" href="app__state_8c_source.html#l00069">app_state_shutdown()</a>, <a class="el" href="app__state_8c_source.html#l00133">app_state_update_visuals()</a>, <a class="el" href="main_8c_source.html#l00063">append_code_history()</a>, <a class="el" href="main_8c_source.html#l01013">apply_input_focus()</a>, <a class="el" href="ui_8h_source.html#l00022">UILayout::bottom</a>, <a class="el" href="ui_8h_source.html#l00020">UILayout::center</a>, <a class="el" href="main_8c_source.html#l00419">clamp_float()</a>, <a class="el" href="main_8c_source.html#l00020">CODE_HISTORY_CAPACITY</a>, <a class="el" href="code__viewer_8c_source.html#l00009">code_viewer_get_snippet()</a>, <a class="el" href="main_8c_source.html#l00402">count_text_lines()</a>, <a class="el" href="main_8c_source.html#l00808">draw_active_view()</a>, <a class="el" href="main_8c_source.html#l00851">draw_context_controls()</a>, <a class="el" href="main_8c_source.html#l00757">draw_help_screen()</a>, <a class="el" href="main_8c_source.html#l00284">draw_home_screen()</a>, <a class="el" href="main_8c_source.html#l00475">draw_scrollable_multiline_text()</a>, <a class="el" href="main_8c_source.html#l00450">draw_scrollbar()</a>, <a class="el" href="main_8c_source.html#l01047">edit_active_input()</a>, <a class="el" href="algorithm__trace_8h_source.html#l00014">AlgorithmInfo::espacio</a>, <a class="el" href="app__state_8h_source.html#l00036">AppState::estructura_activa</a>, <a class="el" href="main_8c_source.html#l00430">estructura_cantidad()</a>, <a class="el" href="app__state_8h_source.html#l00018">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_LISTA</a>, <a class="el" href="main_8c_source.html#l00023">estructura_nombre()</a>, <a class="el" href="app__state_8h_source.html#l00017">ESTRUCTURA_PILA</a>, <a class="el" href="main_8c_source.html#l00961">handle_keyboard()</a>, <a class="el" href="main_8c_source.html#l00356">handle_navigation_keyboard()</a>, <a class="el" href="main_8c_source.html#l00118">INPUT_NONE</a>, <a class="el" href="main_8c_source.html#l00120">INPUT_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00040">AppState::input_prioridad</a>, <a class="el" href="main_8c_source.html#l00119">INPUT_VALOR</a>, <a class="el" href="app__state_8h_source.html#l00039">AppState::input_valor</a>, <a class="el" href="app__state_8h_source.html#l00049">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00037">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00024">OPERACION_NINGUNA</a>, <a class="el" href="app__state_8h_source.html#l00048">AppState::operacion_serial</a>, <a class="el" href="main_8c_source.html#l01028">parse_int_text()</a>, <a class="el" href="algorithm__trace_8h_source.html#l00012">AlgorithmInfo::pasos</a>, <a class="el" href="ui_8h_source.html#l00021">UILayout::right</a>, <a class="el" href="main_8c_source.html#l00126">SCREEN_HELP</a>, <a class="el" href="main_8c_source.html#l00124">SCREEN_HOME</a>, <a class="el" href="main_8c_source.html#l00125">SCREEN_VISUALIZER</a>, <a class="el" href="ui_8h_source.html#l00019">UILayout::sidebar</a>, <a class="el" href="main_8c_source.html#l01002">sync_input_buffers()</a>, <a class="el" href="algorithm__trace_8h_source.html#l00013">AlgorithmInfo::tiempo</a>, <a class="el" href="ui_8c_source.html#l00325">ui_button()</a>, <a class="el" href="ui_8c_source.html#l00287">ui_draw_footer()</a>, <a class="el" href="ui_8c_source.html#l00226">ui_draw_header()</a>, <a class="el" href="ui_8c_source.html#l00315">ui_draw_panel()</a>, <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a>, <a class="el" href="ui_8c_source.html#l00176">ui_get_layout()</a>, <a class="el" href="ui_8c_source.html#l00110">ui_init()</a>, <a class="el" href="ui_8c_source.html#l00349">ui_input_box()</a>, <a class="el" href="ui_8c_source.html#l00166">ui_set_size()</a>, <a class="el" href="ui_8c_source.html#l00376">ui_sidebar_button()</a>, <a class="el" href="ui_8c_source.html#l00398">ui_unload()</a> y <a class="el" href="app__state_8h_source.html#l00047">AppState::ultima_operacion_ok</a>.</p>
+
+</div>
+</div>
+<a id="a83073f8573840486a92e6a745b4ea6cf" name="a83073f8573840486a92e6a745b4ea6cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83073f8573840486a92e6a745b4ea6cf">&#9670;&#160;</a></span>operacion_nombre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * operacion_nombre </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="app__state_8h.html#af12172166a85efb2c6a53de3facb2776">TipoOperacion</a></td>          <td class="paramname"><span class="paramname"><em>operacion</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convierte el enum de operacion a texto legible para el historial. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00039">39</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00030">OPERACION_BUSCAR</a>, <a class="el" href="app__state_8h_source.html#l00029">OPERACION_ELIMINAR</a>, <a class="el" href="app__state_8h_source.html#l00025">OPERACION_INICIALIZAR</a>, <a class="el" href="app__state_8h_source.html#l00026">OPERACION_INSERTAR</a>, <a class="el" href="app__state_8h_source.html#l00028">OPERACION_INSERTAR_FINAL</a>, <a class="el" href="app__state_8h_source.html#l00027">OPERACION_INSERTAR_INICIO</a>, <a class="el" href="app__state_8h_source.html#l00031">OPERACION_INVERTIR</a> y <a class="el" href="app__state_8h_source.html#l00032">OPERACION_VACIAR</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00063">append_code_history()</a>.</p>
+
+</div>
+</div>
+<a id="a01b825fc3266f6b3ca5c331a5667fe9a" name="a01b825fc3266f6b3ca5c331a5667fe9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01b825fc3266f6b3ca5c331a5667fe9a">&#9670;&#160;</a></span>parse_int_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool parse_int_text </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>text</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Valida si un texto representa un entero sintacticamente valido. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01028">1028</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01067">main()</a>.</p>
+
+</div>
+</div>
+<a id="a9df5d2e9d6f7b867c5f4994c0b76e925" name="a9df5d2e9d6f7b867c5f4994c0b76e925"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9df5d2e9d6f7b867c5f4994c0b76e925">&#9670;&#160;</a></span>sync_input_buffers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sync_input_buffers </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_app_state.html">AppState</a> *</td>          <td class="paramname"><span class="paramname"><em>app</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>value_text</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>value_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>priority_text</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>priority_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08">InputFocus</a></td>          <td class="paramname"><span class="paramname"><em>focus</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sincroniza los buffers de texto editables con el estado real de entrada. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01002">1002</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="main_8c_source.html#l00120">INPUT_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00040">AppState::input_prioridad</a>, <a class="el" href="main_8c_source.html#l00119">INPUT_VALOR</a> y <a class="el" href="app__state_8h_source.html#l00039">AppState::input_valor</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01067">main()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentación de variables</h2>
+<a id="a2c333d877ee3459a7cda32b4292f692a" name="a2c333d877ee3459a7cda32b4292f692a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c333d877ee3459a7cda32b4292f692a">&#9670;&#160;</a></span>APP_HELP_TEXT_PART1</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* APP_HELP_TEXT_PART1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00514">514</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00743">get_app_help_text()</a>.</p>
+
+</div>
+</div>
+<a id="a04dfd51a506fcbb018f16ba1d1fec688" name="a04dfd51a506fcbb018f16ba1d1fec688"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04dfd51a506fcbb018f16ba1d1fec688">&#9670;&#160;</a></span>APP_HELP_TEXT_PART1B</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* APP_HELP_TEXT_PART1B</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Valor inicial:</b><div class="fragment"><div class="line">                                   =</div>
+<div class="line"><span class="stringliteral">&quot;============================================================\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;G) MODULO DE VISTA GRAFICA\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;============================================================\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;La vista grafica representa el estado real de la estructura activa.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;No inventa datos: dibuja snapshots obtenidos desde los TAD.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;Indicadores frecuentes:\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- NEW: insercion reciente.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- POP / OUT / DEL: eliminacion reciente.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- FRONT/BACK en cola, HEAD/NULL en lista.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;Navegacion dentro de la vista:\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- Pila: scroll vertical con rueda del mouse.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- Cola, Lista y Cola de Prioridad: scroll horizontal.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- En listas largas, usa el scroll para inspeccionar extremos.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;============================================================\n&quot;</span></div>
+</div><!-- fragment -->
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00619">619</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00743">get_app_help_text()</a>.</p>
+
+</div>
+</div>
+<a id="aa57811c14fe892f49077bcde669cf218" name="aa57811c14fe892f49077bcde669cf218"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa57811c14fe892f49077bcde669cf218">&#9670;&#160;</a></span>APP_HELP_TEXT_PART2</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* APP_HELP_TEXT_PART2</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00638">638</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00743">get_app_help_text()</a>.</p>
+
+</div>
+</div>
+<a id="a7ad37c7e848e354455117bc9e8cee130" name="a7ad37c7e848e354455117bc9e8cee130"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ad37c7e848e354455117bc9e8cee130">&#9670;&#160;</a></span>APP_HELP_TEXT_PART3</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* APP_HELP_TEXT_PART3</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Valor inicial:</b><div class="fragment"><div class="line">                                  =</div>
+<div class="line"><span class="stringliteral">&quot;K) ERRORES COMUNES Y COMO INTERPRETARLOS\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;============================================================\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;1. \&quot;Error\&quot; tras eliminar:\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- Suele ocurrir cuando intentas eliminar en una estructura vacia.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- Solucion: insertar primero o inicializar y repetir secuencia.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;2. Prioridad invalida:\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- La prioridad debe estar en 1..99.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- Revisa el campo y confirma con Enter.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;3. No encuentro un nodo en pantalla:\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- Puede estar fuera del area visible.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- Usa el scroll del panel grafico para desplazarte.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;4. Historial muy largo:\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- Usa Limpiar para iniciar un nuevo bloque de trabajo.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;============================================================\n&quot;</span></div>
+</div><!-- fragment -->
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00692">692</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00743">get_app_help_text()</a>.</p>
+
+</div>
+</div>
+<a id="a3ae5143acac32dfc524d41fc2bbd6db7" name="a3ae5143acac32dfc524d41fc2bbd6db7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ae5143acac32dfc524d41fc2bbd6db7">&#9670;&#160;</a></span>APP_HELP_TEXT_PART4</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* APP_HELP_TEXT_PART4</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Valor inicial:</b><div class="fragment"><div class="line">                                  =</div>
+<div class="line"><span class="stringliteral">&quot;L) ARQUITECTURA TECNICA (RESUMEN)\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;============================================================\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;Archivos principales:\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- src/main.c: ciclo principal, eventos, navegacion y render.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- src/app_state.c: reglas de negocio y despacho de operaciones.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- src/ui.c: widgets, layout y estilo visual compartido.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- src/*_view.c: dibujo especifico por estructura.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- src/code_viewer.c: snippets C por operacion.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- src/algorithm_trace.c: texto de traza y complejidades.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- src/pila.c, cola.c, cola_prioridad.c, lista.c: TAD puros en C.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;Principio clave de diseno:\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- La UI no altera nodos directamente.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- Toda modificacion pasa por AppState y por la API publica de los TAD.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;============================================================\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M) PROPUESTA DE SESION DE ESTUDIO (10-15 MIN)\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;============================================================\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;1. Elige una estructura y pulsa Inicializar.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;2. Inserta 3 valores y anticipa el resultado de eliminar.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;3. Ejecuta eliminar y verifica grafico + historial + traza.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;4. Repite con valores diferentes.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;5. Limpia historial y cambia de estructura.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;6. Compara diferencias de comportamiento y complejidad.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;CIERRE\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;Si usas esta ayuda como referencia durante la practica,\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;podras entender no solo que hace la app, sino por que lo hace asi.\n&quot;</span></div>
+</div><!-- fragment -->
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00712">712</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00743">get_app_help_text()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="main_8c.html">main.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

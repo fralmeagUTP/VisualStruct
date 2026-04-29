@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['edit_5factive_5finput_0',['edit_active_input',['../main_8c.html#af9057b726cb7aeffff7619769f0e8d6f',1,'main.c']]],
+  ['ejecucion_1',['Flujo de ejecucion',['../md_docs_2architecture.html#autotoc_md13',1,'']]],
+  ['en_20c_20con_20raylib_2',['Visualizador de Estructuras de Datos Secuenciales en C con Raylib',['../index.html',1,'']]],
+  ['en_20esta_20iteracion_3',['Hallazgos corregidos en esta iteracion',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md54',1,'']]],
+  ['en_20vs_20code_4',['IntelliSense en VS Code',['../index.html#autotoc_md3',1,'']]],
+  ['escenarios_20funcionales_20por_20estructura_5',['Escenarios funcionales por estructura',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md50',1,'']]],
+  ['espacio_6',['espacio',['../struct_algorithm_info.html#a783b7c6b22c600b7b16c1f19783b3865',1,'AlgorithmInfo']]],
+  ['esperada_7',['Documentacion minima esperada',['../md_docs_2contribucion.html#autotoc_md27',1,'']]],
+  ['esta_20iteracion_8',['Hallazgos corregidos en esta iteracion',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md54',1,'']]],
+  ['estado_20actual_9',['Estado Actual',['../index.html#autotoc_md9',1,'']]],
+  ['estructura_10',['estructura',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md50',1,'Escenarios funcionales por estructura'],['../md_docs_2guia-docente.html#autotoc_md32',1,'Ideas por estructura']]],
+  ['estructura_20de_20carpetas_11',['Estructura de Carpetas',['../index.html#autotoc_md8',1,'']]],
+  ['estructura_20nueva_12',['Cuando agregues una estructura nueva',['../md_docs_2contribucion.html#autotoc_md25',1,'']]],
+  ['estructura_5factiva_13',['estructura_activa',['../struct_app_state.html#ab0afe29767dcf9175a1d78c2beb90b8a',1,'AppState']]],
+  ['estructura_5fcantidad_14',['estructura_cantidad',['../main_8c.html#ab0b4b4460ee52151bc707c49c0ab15fe',1,'main.c']]],
+  ['estructura_5fcola_15',['ESTRUCTURA_COLA',['../app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a973a65123dc5ff5ef05b6a36d9f15bfa',1,'app_state.h']]],
+  ['estructura_5fcola_5fprioridad_16',['ESTRUCTURA_COLA_PRIORIDAD',['../app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a2dabb13bba1952a9e6f7609ab71bdc05',1,'app_state.h']]],
+  ['estructura_5fdescripcion_17',['estructura_descripcion',['../main_8c.html#af2d1ecb02599f201f31c547ef940d260',1,'main.c']]],
+  ['estructura_5ffrom_5fshortcut_18',['estructura_from_shortcut',['../main_8c.html#a2b0d772b5382f7ea0228df883f7449d7',1,'main.c']]],
+  ['estructura_5flista_19',['ESTRUCTURA_LISTA',['../app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a41a17370323282b2af4ef2ca3071c1c7',1,'app_state.h']]],
+  ['estructura_5fnombre_20',['estructura_nombre',['../main_8c.html#adca7682ec95e4139b194a1eecd8ea6d6',1,'main.c']]],
+  ['estructura_5fpila_21',['ESTRUCTURA_PILA',['../app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6af11df1085912c3f2ab53d4bb453867b4',1,'app_state.h']]],
+  ['estructuras_20de_20datos_20secuenciales_20en_20c_20con_20raylib_22',['Visualizador de Estructuras de Datos Secuenciales en C con Raylib',['../index.html',1,'']]],
+  ['extension_23',['Puntos de extension',['../md_docs_2architecture.html#autotoc_md16',1,'']]]
+];

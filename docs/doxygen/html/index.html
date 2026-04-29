@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: Visualizador de Estructuras de Datos Secuenciales en C con Raylib</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('index.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Visualizador de Estructuras de Datos Secuenciales en C con Raylib </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
+Objetivo</h1>
+<p>Aplicacion de escritorio para apoyo docente en la Universidad Tecnologica de Pereira. El sistema visualiza estructuras secuenciales en C estandar mostrando simultaneamente representacion grafica, operacion, codigo asociado, traza y complejidad.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+Requisitos</h1>
+<ul>
+<li>GCC con soporte C11</li>
+<li>Raylib instalada en el sistema</li>
+<li>Windows, Linux o macOS con librerias graficas compatibles</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+IntelliSense en VS Code</h1>
+<ul>
+<li>Se incluye <span class="tt">.vscode/c_cpp_properties.json</span> con <span class="tt">includePath</span> apuntando a <span class="tt">C:/msys64/mingw64/include</span>.</li>
+<li>Si tu instalacion de Raylib usa otra ruta, ajusta ese archivo para que VS Code resuelva <span class="tt">raylib.h</span> sin advertencias.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
+Compilacion</h1>
+<h2>Opcion 1: Makefile</h2>
+<div class="fragment"><div class="line">make</div>
+</div><!-- fragment --><h2>Opcion 2: Comando directo (Windows/MinGW)</h2>
+<div class="fragment"><div class="line">gcc -std=c11 -Wall -Wextra -pedantic -Iinclude \</div>
+<div class="line">  src/main.c src/ui.c src/app_state.c src/code_viewer.c src/algorithm_trace.c \</div>
+<div class="line">  src/pila_view.c src/cola_view.c src/cola_prioridad_view.c src/lista_view.c \</div>
+<div class="line">  src/pila.c src/cola.c src/cola_prioridad.c src/lista.c \</div>
+<div class="line">  -o visualstruct -lraylib -lopengl32 -lgdi32 -lwinmm</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+Documentacion Tecnica</h1>
+<h2>Generar con Doxygen</h2>
+<div class="fragment"><div class="line">doxygen Doxyfile</div>
+</div><!-- fragment --><h2>Salida esperada</h2>
+<ul>
+<li>HTML en <span class="tt">docs/doxygen/html/index.html</span></li>
+<li>Se documenta solo la aplicacion activa y se excluye <span class="tt">src/legacy</span></li>
+</ul>
+<h2>Documentos incluidos</h2>
+<ul>
+<li><span class="tt"><a class="el" href="architecture_8md.html">docs/architecture.md</a></span>: mapa tecnico de capas, flujo y extension.</li>
+<li><span class="tt"><a class="el" href="guia-docente_8md.html">docs/guia-docente.md</a></span>: sugerencias de uso en clase y secuencias de demostracion.</li>
+<li><span class="tt"><a class="el" href="contribucion_8md.html">docs/contribucion.md</a></span>: reglas para extender el proyecto sin romper la arquitectura actual.</li>
+<li><span class="tt"><a class="el" href="qa-manual_8md.html">docs/qa-manual.md</a></span>: checklist de verificacion manual para UI, operaciones y paneles pedagogicos.</li>
+<li><span class="tt"><a class="el" href="qa-visualizacion-ventanas_8md.html">docs/qa-visualizacion-ventanas.md</a></span>: verificacion de layout, legibilidad y uso de espacio.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+Uso Basico</h1>
+<ol type="1">
+<li>Ejecutar la aplicacion.</li>
+<li>Seleccionar estructura en el menu lateral: <a class="el" href="struct_pila.html">Pila</a>, <a class="el" href="struct_cola.html">Cola</a>, <a class="el" href="struct_cola.html">Cola</a> de Prioridad o <a class="el" href="struct_lista.html">Lista</a>.</li>
+<li>Usar los botones contextuales del panel central para ejecutar operaciones segun la estructura activa.</li>
+<li>Editar <span class="tt">valor</span> y <span class="tt">prioridad</span> directamente en el panel lateral o usar teclado.</li>
+<li>Ajustar <span class="tt">valor</span> con <span class="tt">UP/DOWN</span>.</li>
+<li>Ajustar <span class="tt">prioridad</span> con <span class="tt">LEFT/RIGHT</span> cuando la estructura activa sea <a class="el" href="struct_cola.html">Cola</a> de Prioridad.</li>
+<li>Observar simultaneamente panel central (grafico), panel derecho (codigo C con historial acumulado) y panel inferior (traza y complejidad).</li>
+<li>Usar el boton <span class="tt">Limpiar</span> del panel de codigo para reiniciar el historial cuando se quiera comenzar una nueva secuencia.</li>
+<li>Abrir <span class="tt">Ayuda (F1)</span> para consultar explicaciones detalladas de cada modulo funcional y tecnico.</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+Controles Actuales</h1>
+<ul>
+<li><span class="tt">I</span>: inicializar estructura activa</li>
+<li><span class="tt">A</span>: insertar/push/encolar o insertar al final en lista</li>
+<li><span class="tt">Z</span>: insertar al inicio en lista</li>
+<li><span class="tt">D</span>: eliminar/pop/desencolar</li>
+<li><span class="tt">B</span>: buscar en lista</li>
+<li><span class="tt">R</span>: invertir lista</li>
+<li><span class="tt">V</span>: vaciar estructura activa</li>
+<li><span class="tt">UP/DOWN</span>: cambiar valor</li>
+<li><span class="tt">LEFT/RIGHT</span>: cambiar prioridad</li>
+<li><span class="tt">ENTER</span>: confirmar valor/prioridad editados en los campos laterales</li>
+<li><span class="tt">F1</span>: abrir/cerrar pantalla de ayuda detallada</li>
+<li><span class="tt">H</span> o <span class="tt">ESC</span> (en visualizador): volver al menu principal</li>
+<li><span class="tt">Mouse wheel</span> sobre panel central en Cola/Lista/Cola de Prioridad: desplazamiento horizontal para navegar nodos fuera de ancho</li>
+<li><span class="tt">Mouse wheel</span> sobre panel central en <a class="el" href="struct_pila.html">Pila</a>: desplazamiento vertical</li>
+<li>Boton <span class="tt">Limpiar</span> en panel de codigo: reinicia el historial de snippets</li>
+<li>Boton lateral <span class="tt">Ayuda (F1)</span>: acceso guiado al manual interno</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+Estructura de Carpetas</h1>
+<ul>
+<li>include/: encabezados publicos</li>
+<li>src/: implementaciones activas de la aplicacion unificada</li>
+<li>src/legacy/: demos antiguas con <span class="tt"><a class="el" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a></span> propio, conservadas como referencia de migracion</li>
+<li>assets/: logos y recursos visuales</li>
+<li>assets/fons/: fuentes tipograficas externas usadas por encabezado, pie y controles</li>
+<li>docs/: documentacion del proyecto</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+Estado Actual</h1>
+<p>Arquitectura unificada operativa: app unica, estado global desacoplado, vistas por estructura, controles contextuales, ayuda interna detallada, historial de snippets C por operacion, complejidades base del MVP y feedback animado breve en inserciones/eliminaciones.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+Notas de Arquitectura</h1>
+<ul>
+<li>La app actual usa un unico punto de entrada en <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span>.</li>
+<li>Los archivos legacy <span class="tt">*_raylib.c</span> ya no forman parte del build principal.</li>
+<li>Los TAD permanecen separados de Raylib en <span class="tt">src/*.c</span> y <span class="tt">include/*.h</span>. </li>
+</ul>
+</div></div><!-- PageDoc -->
+<a href="doxygen_crawl.html"></a>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

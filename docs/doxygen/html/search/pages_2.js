@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['c_20con_20raylib_0',['Visualizador de Estructuras de Datos Secuenciales en C con Raylib',['../index.html',1,'']]],
+  ['cambies_20un_20tad_1',['Cuando cambies un TAD',['../md_docs_2contribucion.html#autotoc_md23',1,'']]],
+  ['cambio_2',['Validacion recomendada antes de cerrar un cambio',['../md_docs_2contribucion.html#autotoc_md28',1,'']]],
+  ['capas_20y_20responsabilidades_3',['Capas y responsabilidades',['../md_docs_2architecture.html#autotoc_md14',1,'']]],
+  ['carpetas_4',['Estructura de Carpetas',['../index.html#autotoc_md8',1,'']]],
+  ['cerrar_20un_20cambio_5',['Validacion recomendada antes de cerrar un cambio',['../md_docs_2contribucion.html#autotoc_md28',1,'']]],
+  ['checklist_20de_20visualizacion_6',['Checklist de visualizacion',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md51',1,'']]],
+  ['chequeos_20globales_7',['Chequeos globales',['../md_docs_2qa-manual.html#autotoc_md38',1,'']]],
+  ['clase_8',['Secuencia sugerida para clase',['../md_docs_2guia-docente.html#autotoc_md31',1,'']]],
+  ['code_9',['IntelliSense en VS Code',['../index.html#autotoc_md3',1,'']]],
+  ['cola_10',['Cola',['../md_docs_2qa-manual.html#autotoc_md40',1,'']]],
+  ['cola_20de_20prioridad_11',['Cola de prioridad',['../md_docs_2qa-manual.html#autotoc_md41',1,'']]],
+  ['compilacion_12',['Compilacion',['../index.html#autotoc_md4',1,'']]],
+  ['con_20raylib_13',['Visualizador de Estructuras de Datos Secuenciales en C con Raylib',['../index.html',1,'']]],
+  ['contribucion_14',['Guia de Contribucion',['../md_docs_2contribucion.html',1,'']]],
+  ['controlados_20por_20la_20refactorizacion_15',['Riesgos controlados por la refactorizacion',['../md_docs_2architecture.html#autotoc_md19',1,'']]],
+  ['controles_20actuales_16',['Controles Actuales',['../index.html#autotoc_md7',1,'']]],
+  ['corregidos_20en_20esta_20iteracion_17',['Hallazgos corregidos en esta iteracion',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md54',1,'']]],
+  ['criterios_20de_20aceptacion_18',['Criterios de aceptacion',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md52',1,'']]],
+  ['criterios_20de_20salida_19',['Criterios de salida',['../md_docs_2qa-manual.html#autotoc_md45',1,'']]],
+  ['cuando_20agregues_20una_20estructura_20nueva_20',['Cuando agregues una estructura nueva',['../md_docs_2contribucion.html#autotoc_md25',1,'']]],
+  ['cuando_20agregues_20una_20operacion_20nueva_21',['Cuando agregues una operacion nueva',['../md_docs_2contribucion.html#autotoc_md24',1,'']]],
+  ['cuando_20cambies_20un_20tad_22',['Cuando cambies un TAD',['../md_docs_2contribucion.html#autotoc_md23',1,'']]],
+  ['cuando_20toques_20la_20ui_23',['Cuando toques la UI',['../md_docs_2contribucion.html#autotoc_md26',1,'']]]
+];

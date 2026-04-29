@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: Guia de Pruebas Manuales</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('md_docs_2qa-manual.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Guia de Pruebas Manuales </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md35"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md36"></a>
+Objetivo</h1>
+<p>Esta guia define una verificacion manual minima para confirmar que la app unificada mantiene comportamiento correcto y feedback pedagogico consistente.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md37"></a>
+Preparacion</h1>
+<ol type="1">
+<li>Compilar la aplicacion.</li>
+<li>Ejecutar el binario generado.</li>
+<li>Verificar que carguen la ventana principal, el menu lateral y los paneles de codigo y traza.</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md38"></a>
+Chequeos globales</h1>
+<ul>
+<li>Cambiar entre <a class="el" href="struct_pila.html">Pila</a>, <a class="el" href="struct_cola.html">Cola</a>, <a class="el" href="struct_cola.html">Cola</a> de Prioridad y <a class="el" href="struct_lista.html">Lista</a> desde la barra lateral.</li>
+<li>Verificar que el titulo, los botones contextuales y el conteo de elementos cambian con la estructura activa.</li>
+<li>Confirmar que los campos <span class="tt">Valor</span> y <span class="tt">Prioridad</span> aceptan edicion.</li>
+<li>Escribir una entrada invalida y comprobar que la caja se marca en rojo.</li>
+<li>Verificar que el estado de operacion muestre mensaje coherente tras acciones validas e invalidas.</li>
+<li>Abrir/cerrar ayuda con <span class="tt">F1</span> desde menu principal y visualizador sin bloqueos.</li>
+<li>Abrir ayuda desde boton lateral <span class="tt">Ayuda (F1)</span> y verificar retorno correcto con <span class="tt">Volver</span> o <span class="tt">ESC</span>.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md39"></a>
+Pila</h1>
+<ol type="1">
+<li>Inicializar la pila.</li>
+<li>Insertar tres valores distintos.</li>
+<li>Confirmar que el ultimo insertado aparece en el tope y con marca <span class="tt">NEW</span>.</li>
+<li>Eliminar un elemento.</li>
+<li>Verificar que el tope cambia y que aparece el nodo fantasma con <span class="tt">POP</span>.</li>
+<li>Vaciar y confirmar el mensaje <span class="tt"><a class="el" href="struct_pila.html">Pila</a> vacia</span>.</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md40"></a>
+Cola</h1>
+<ol type="1">
+<li>Inicializar la cola.</li>
+<li>Insertar al menos tres valores (idealmente mas de los que caben sin scroll).</li>
+<li>Confirmar que aparecen <span class="tt">FRONT</span> y <span class="tt">BACK</span> en posiciones correctas.</li>
+<li>Usar rueda del mouse sobre el panel central y verificar desplazamiento horizontal.</li>
+<li>Eliminar un elemento.</li>
+<li>Verificar avance del frente y presencia del nodo fantasma <span class="tt">OUT</span>.</li>
+<li>Vaciar y confirmar el mensaje <span class="tt"><a class="el" href="struct_cola.html">Cola</a> vacia</span>.</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md41"></a>
+Cola de prioridad</h1>
+<ol type="1">
+<li>Inicializar la estructura.</li>
+<li>Insertar varios elementos con prioridades distintas (incluyendo mas de los visibles en ancho).</li>
+<li>Verificar que la marca <span class="tt">OUT</span> coincida con la menor prioridad.</li>
+<li>Usar rueda del mouse sobre el panel central y verificar desplazamiento horizontal.</li>
+<li>Eliminar un elemento.</li>
+<li>Confirmar que el nodo fantasma muestra <span class="tt">V:</span> y <span class="tt">P:</span> correctos.</li>
+<li>Editar una prioridad invalida y comprobar feedback en rojo.</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md42"></a>
+Lista</h1>
+<ol type="1">
+<li>Inicializar la lista.</li>
+<li>Insertar un valor al inicio y otro al final; luego agregar suficientes nodos para forzar overflow horizontal.</li>
+<li>Confirmar presencia de <span class="tt">HEAD</span> y <span class="tt">NULL</span>.</li>
+<li>Usar rueda del mouse sobre el panel central y verificar desplazamiento horizontal.</li>
+<li>Buscar un valor existente y verificar resaltado.</li>
+<li>Invertir la lista y observar cambio de orden.</li>
+<li>Eliminar y verificar nodo fantasma <span class="tt">DEL</span>.</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md43"></a>
+Paneles pedagogicos</h1>
+<ul>
+<li>Tras cada operacion, revisar que el panel <span class="tt">Codigo C Asociado (Historial)</span> agregue una nueva entrada con estructura, operacion y snippet.</li>
+<li>Presionar <span class="tt">Limpiar</span> en el panel de codigo y confirmar que el historial se reinicia.</li>
+<li>Confirmar que la traza textual y la complejidad cambian con la operacion actual.</li>
+<li>Probar scroll en panel de codigo y panel de traza cuando el texto excede el espacio visible.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md44"></a>
+Pantalla de ayuda</h1>
+<ul>
+<li>Verificar que el contenido sea extenso y legible en resolucion minima y base.</li>
+<li>Confirmar scroll vertical funcional dentro del cuerpo de ayuda.</li>
+<li>Validar que <span class="tt">F1</span> alterna apertura/cierre de ayuda conservando el contexto previo.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md45"></a>
+Criterios de salida</h1>
+<p>Se considera aceptable una iteracion si:</p>
+<ul>
+<li>no hay cierres inesperados</li>
+<li>la estructura visible coincide con la operacion aplicada</li>
+<li>el feedback visual de error funciona</li>
+<li>snippet, traza y complejidad permanecen sincronizados con la accion</li>
+<li>la app sigue compilando despues del cambio evaluado </li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

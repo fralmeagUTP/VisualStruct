@@ -1,0 +1,473 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: Referencia del archivo pila.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('pila_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia del archivo pila.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>API de pila LIFO basada en lista enlazada simple.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+</div>
+<p><a href="pila_8h_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Estructuras de datos</h2></td></tr>
+<tr class="memitem:Pila" id="r_Pila"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="struct_pila.html">Pila</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:a4bf8b75069bf45c648f5d31ba8fa3b46" id="r_a4bf8b75069bf45c648f5d31ba8fa3b46"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a4bf8b75069bf45c648f5d31ba8fa3b46">pila_contar</a> (const <a class="el" href="struct_pila.html">Pila</a> *pila)</td></tr>
+<tr class="memdesc:a4bf8b75069bf45c648f5d31ba8fa3b46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna la cantidad de nodos.  <br /></td></tr>
+<tr class="memitem:a6e0c8b858853a3ff0299740fbf64c63d" id="r_a6e0c8b858853a3ff0299740fbf64c63d"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a6e0c8b858853a3ff0299740fbf64c63d">pila_copiar_valores</a> (const <a class="el" href="struct_pila.html">Pila</a> *pila, int *destino, int capacidad)</td></tr>
+<tr class="memdesc:a6e0c8b858853a3ff0299740fbf64c63d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copia los valores de la pila en un arreglo destino.  <br /></td></tr>
+<tr class="memitem:a2d166454a437fb04a7569f20d959dc09" id="r_a2d166454a437fb04a7569f20d959dc09"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2d166454a437fb04a7569f20d959dc09">pila_destruir</a> (<a class="el" href="struct_pila.html">Pila</a> *pila)</td></tr>
+<tr class="memdesc:a2d166454a437fb04a7569f20d959dc09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libera todos los nodos de la pila.  <br /></td></tr>
+<tr class="memitem:a6386145a5e57884cd140e6c72956d888" id="r_a6386145a5e57884cd140e6c72956d888"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a6386145a5e57884cd140e6c72956d888">pila_formatear</a> (const <a class="el" href="struct_pila.html">Pila</a> *pila, char *destino, size_t capacidad)</td></tr>
+<tr class="memdesc:a6386145a5e57884cd140e6c72956d888"><td class="mdescLeft">&#160;</td><td class="mdescRight">Genera una representacion textual de la pila.  <br /></td></tr>
+<tr class="memitem:ae12380b4d2c9076a7d8c72926698b110" id="r_ae12380b4d2c9076a7d8c72926698b110"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ae12380b4d2c9076a7d8c72926698b110">pila_inicializar</a> (<a class="el" href="struct_pila.html">Pila</a> *pila)</td></tr>
+<tr class="memdesc:ae12380b4d2c9076a7d8c72926698b110"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa una pila vacia.  <br /></td></tr>
+<tr class="memitem:add1b5f83a35a6a37bd13afc0882d54f5" id="r_add1b5f83a35a6a37bd13afc0882d54f5"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#add1b5f83a35a6a37bd13afc0882d54f5">pila_pop</a> (<a class="el" href="struct_pila.html">Pila</a> *pila, int *valor)</td></tr>
+<tr class="memdesc:add1b5f83a35a6a37bd13afc0882d54f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extrae el valor del tope si existe.  <br /></td></tr>
+<tr class="memitem:a840144340a2a9bd0f5c9a5c2d56fb349" id="r_a840144340a2a9bd0f5c9a5c2d56fb349"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a840144340a2a9bd0f5c9a5c2d56fb349">pila_push</a> (<a class="el" href="struct_pila.html">Pila</a> *pila, int valor)</td></tr>
+<tr class="memdesc:a840144340a2a9bd0f5c9a5c2d56fb349"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserta un valor en el tope de la pila.  <br /></td></tr>
+<tr class="memitem:aff86723186db8b65021caa57fd632dfb" id="r_aff86723186db8b65021caa57fd632dfb"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aff86723186db8b65021caa57fd632dfb">pila_vacia</a> (const <a class="el" href="struct_pila.html">Pila</a> *pila)</td></tr>
+<tr class="memdesc:aff86723186db8b65021caa57fd632dfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indica si la pila esta vacia.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>API de pila LIFO basada en lista enlazada simple. </p>
+
+<p class="definition">Definición en el archivo <a class="el" href="pila_8h_source.html">pila.h</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
+<a id="a4bf8b75069bf45c648f5d31ba8fa3b46" name="a4bf8b75069bf45c648f5d31ba8fa3b46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bf8b75069bf45c648f5d31ba8fa3b46">&#9670;&#160;</a></span>pila_contar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pila_contar </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_pila.html">Pila</a> *</td>          <td class="paramname"><span class="paramname"><em>pila</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retorna la cantidad de nodos. </p>
+<p>Retorna la cantidad de nodos.</p>
+<p>Recorre la lista enlazada desde <code>tope</code> hasta el último nodo, incrementando un contador en cada paso.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pila</td><td>Puntero constante a la <a class="el" href="struct_pila.html">Pila</a> a consultar.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Número de nodos en la pila (&gt;= 0). Retorna 0 si <code class="param">pila</code> es NULL.</dd></dl>
+<dl class="section note"><dt>Nota</dt><dd>Complejidad temporal: O(n), donde n es el número de elementos. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="pila_8c_source.html#l00137">137</a> del archivo <a class="el" href="pila_8c_source.html">pila.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00430">estructura_cantidad()</a>.</p>
+
+</div>
+</div>
+<a id="a6e0c8b858853a3ff0299740fbf64c63d" name="a6e0c8b858853a3ff0299740fbf64c63d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e0c8b858853a3ff0299740fbf64c63d">&#9670;&#160;</a></span>pila_copiar_valores()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pila_copiar_valores </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_pila.html">Pila</a> *</td>          <td class="paramname"><span class="paramname"><em>pila</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>destino</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>capacidad</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copia los valores de la pila en un arreglo destino. </p>
+<p>Copia los valores de la pila en un arreglo destino.</p>
+<p>Recorre la pila desde el tope copiando cada valor entero en <code class="param">destino</code>. El índice 0 del arreglo corresponde al elemento del tope (el último insertado). La copia se detiene cuando se agota la pila o se alcanza <code class="param">capacidad</code>. La pila no se modifica.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pila</td><td>Puntero constante a la <a class="el" href="struct_pila.html">Pila</a> de origen. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">destino</td><td>Arreglo donde se almacenarán los valores copiados. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">capacidad</td><td>Número máximo de elementos que caben en <code class="param">destino</code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Número de elementos efectivamente copiados (0 a <code class="param">capacidad</code>). Retorna 0 si <code class="param">pila</code>, <code class="param">destino</code> son NULL o <code class="param">capacidad</code> &lt;= 0.</dd></dl>
+<dl class="section pre"><dt>Precondición</dt><dd><code class="param">destino</code> debe apuntar a un bloque con espacio para al menos <code class="param">capacidad</code> enteros. </dd></dl>
+<dl class="section note"><dt>Nota</dt><dd>Complejidad temporal: O(min(n, capacidad)). </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="pila_8c_source.html#l00186">186</a> del archivo <a class="el" href="pila_8c_source.html">pila.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="pila__view_8c_source.html#l00030">pila_view_draw()</a>.</p>
+
+</div>
+</div>
+<a id="a2d166454a437fb04a7569f20d959dc09" name="a2d166454a437fb04a7569f20d959dc09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d166454a437fb04a7569f20d959dc09">&#9670;&#160;</a></span>pila_destruir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pila_destruir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_pila.html">Pila</a> *</td>          <td class="paramname"><span class="paramname"><em>pila</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Libera todos los nodos de la pila. </p>
+<p>Libera todos los nodos de la pila.</p>
+<p>Recorre la pila desde el tope hasta el fondo llamando a <code>free()</code> en cada nodo. Al finalizar, <code>tope</code> queda en NULL. Equivalente a llamar <a class="el" href="#add1b5f83a35a6a37bd13afc0882d54f5" title="Extrae el valor del tope si existe.">pila_pop()</a> repetidamente hasta vaciar, pero más eficiente.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">pila</td><td>Puntero a la <a class="el" href="struct_pila.html">Pila</a> a destruir. Si es NULL la función no hace nada.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section post"><dt>Postcondición</dt><dd>La pila queda en el mismo estado que tras <a class="el" href="#ae12380b4d2c9076a7d8c72926698b110" title="Inicializa una pila vacia.">pila_inicializar()</a>. </dd></dl>
+<dl class="section note"><dt>Nota</dt><dd>Complejidad temporal: O(n), donde n es el número de elementos. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="pila_8c_source.html#l00110">110</a> del archivo <a class="el" href="pila_8c_source.html">pila.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00162">app_state_operacion_inicializar()</a>, <a class="el" href="app__state_8c_source.html#l00420">app_state_operacion_vaciar()</a> y <a class="el" href="app__state_8c_source.html#l00069">app_state_shutdown()</a>.</p>
+
+</div>
+</div>
+<a id="a6386145a5e57884cd140e6c72956d888" name="a6386145a5e57884cd140e6c72956d888"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6386145a5e57884cd140e6c72956d888">&#9670;&#160;</a></span>pila_formatear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pila_formatear </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_pila.html">Pila</a> *</td>          <td class="paramname"><span class="paramname"><em>pila</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>destino</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>capacidad</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Genera una representacion textual de la pila. </p>
+<p>Genera una representacion textual de la pila.</p>
+<p>Escribe en <code class="param">destino</code> una cadena con el formato: </p><div class="fragment"><div class="line">Tope -&gt; v1 | v2 | ... | vN</div>
+</div><!-- fragment --><p> donde <code>v1</code> es el tope y <code>vN</code> el elemento del fondo. Si la pila está vacía escribe <code>"Pila vacia"</code>. La cadena siempre queda terminada en <code>'\0'</code> si <code class="param">capacidad</code> &gt;= 1.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pila</td><td>Puntero constante a la <a class="el" href="struct_pila.html">Pila</a> a representar. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">destino</td><td>Buffer de caracteres donde se escribirá el resultado. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">capacidad</td><td>Tamaño en bytes del buffer <code class="param">destino</code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondición</dt><dd><code class="param">destino</code> debe apuntar a un buffer de al menos <code class="param">capacidad</code> bytes. </dd></dl>
+<dl class="section post"><dt>Postcondición</dt><dd><code class="param">destino</code> contiene una cadena terminada en <code>'\0'</code>. </dd></dl>
+<dl class="section note"><dt>Nota</dt><dd>Si el contenido es más largo que <code class="param">capacidad</code>, se trunca de forma segura (usa <code>snprintf</code> internamente). </dd>
+<dd>
+Si <code class="param">destino</code> es NULL o <code class="param">capacidad</code> es 0, la función no hace nada. </dd>
+<dd>
+Complejidad temporal: O(n), donde n es el número de elementos. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="pila_8c_source.html#l00227">227</a> del archivo <a class="el" href="pila_8c_source.html">pila.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
+
+</div>
+</div>
+<a id="ae12380b4d2c9076a7d8c72926698b110" name="ae12380b4d2c9076a7d8c72926698b110"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae12380b4d2c9076a7d8c72926698b110">&#9670;&#160;</a></span>pila_inicializar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pila_inicializar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_pila.html">Pila</a> *</td>          <td class="paramname"><span class="paramname"><em>pila</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inicializa una pila vacia. </p>
+<p>Inicializa una pila vacia.</p>
+<p>Establece <code>tope</code> a NULL. Debe ser la primera llamada antes de operar sobre la <a class="el" href="struct_pila.html">Pila</a>. No reserva memoria dinámica.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">pila</td><td>Puntero a la <a class="el" href="struct_pila.html">Pila</a> que se va a inicializar. Si es NULL la función no hace nada.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondición</dt><dd><code class="param">pila</code> apunta a un bloque de memoria válido. </dd></dl>
+<dl class="section post"><dt>Postcondición</dt><dd>La pila queda vacía y lista para usarse. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="pila_8c_source.html#l00023">23</a> del archivo <a class="el" href="pila_8c_source.html">pila.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00042">app_state_init()</a> y <a class="el" href="app__state_8c_source.html#l00162">app_state_operacion_inicializar()</a>.</p>
+
+</div>
+</div>
+<a id="add1b5f83a35a6a37bd13afc0882d54f5" name="add1b5f83a35a6a37bd13afc0882d54f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add1b5f83a35a6a37bd13afc0882d54f5">&#9670;&#160;</a></span>pila_pop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool pila_pop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_pila.html">Pila</a> *</td>          <td class="paramname"><span class="paramname"><em>pila</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>valor</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Extrae el valor del tope si existe. </p>
+<p>Extrae el valor del tope si existe.</p>
+<p>Elimina el nodo apuntado por <code>tope</code>, escribe su valor en <code class="param">*valor</code> y libera la memoria del nodo. El nuevo <code>tope</code> pasa a ser el nodo que estaba inmediatamente debajo.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">pila</td><td>Puntero a la <a class="el" href="struct_pila.html">Pila</a> de origen. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">valor</td><td>Puntero donde se almacenará el valor extraído.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd><code>true</code> si se extrajo un elemento correctamente. </dd>
+<dd>
+<code>false</code> si <code class="param">pila</code> o <code class="param">valor</code> son NULL, o la pila está vacía.</dd></dl>
+<dl class="section pre"><dt>Precondición</dt><dd>La <a class="el" href="struct_pila.html">Pila</a> debe contener al menos un elemento. </dd></dl>
+<dl class="section post"><dt>Postcondición</dt><dd>El tamaño de la pila disminuye en 1. </dd></dl>
+<dl class="section note"><dt>Nota</dt><dd>Complejidad temporal: O(1). </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="pila_8c_source.html#l00083">83</a> del archivo <a class="el" href="pila_8c_source.html">pila.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00311">app_state_operacion_eliminar()</a>.</p>
+
+</div>
+</div>
+<a id="a840144340a2a9bd0f5c9a5c2d56fb349" name="a840144340a2a9bd0f5c9a5c2d56fb349"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a840144340a2a9bd0f5c9a5c2d56fb349">&#9670;&#160;</a></span>pila_push()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool pila_push </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_pila.html">Pila</a> *</td>          <td class="paramname"><span class="paramname"><em>pila</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>valor</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inserta un valor en el tope de la pila. </p>
+<p>Inserta un valor en el tope de la pila.</p>
+<p>Reserva dinámicamente un nuevo <code><a class="el" href="cola_8h.html#a46556b0fd3be65be11d967516d9866f1">Nodo</a></code>, almacena <code class="param">valor</code> en él y lo coloca encima del nodo actual apuntado por <code>tope</code>. El nuevo nodo enlaza al antiguo tope a través de su puntero <code>sgte</code>.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">pila</td><td>Puntero a la <a class="el" href="struct_pila.html">Pila</a> destino. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">valor</td><td>Valor entero a insertar.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd><code>true</code> si el nodo fue creado e insertado correctamente. </dd>
+<dd>
+<code>false</code> si <code class="param">pila</code> es NULL o <code>malloc()</code> falla.</dd></dl>
+<dl class="section pre"><dt>Precondición</dt><dd>La <a class="el" href="struct_pila.html">Pila</a> debe haber sido inicializada con <a class="el" href="#ae12380b4d2c9076a7d8c72926698b110" title="Inicializa una pila vacia.">pila_inicializar()</a>. </dd></dl>
+<dl class="section post"><dt>Postcondición</dt><dd>El tamaño de la pila aumenta en 1. </dd></dl>
+<dl class="section note"><dt>Nota</dt><dd>Complejidad temporal: O(1). </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="pila_8c_source.html#l00048">48</a> del archivo <a class="el" href="pila_8c_source.html">pila.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00200">app_state_operacion_insertar()</a>.</p>
+
+</div>
+</div>
+<a id="aff86723186db8b65021caa57fd632dfb" name="aff86723186db8b65021caa57fd632dfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff86723186db8b65021caa57fd632dfb">&#9670;&#160;</a></span>pila_vacia()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool pila_vacia </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_pila.html">Pila</a> *</td>          <td class="paramname"><span class="paramname"><em>pila</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indica si la pila esta vacia. </p>
+<p>Indica si la pila esta vacia.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pila</td><td>Puntero constante a la <a class="el" href="struct_pila.html">Pila</a> a consultar.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd><code>true</code> si <code class="param">pila</code> es NULL o su puntero <code>tope</code> es NULL. </dd>
+<dd>
+<code>false</code> si la pila tiene al menos un elemento.</dd></dl>
+<dl class="section note"><dt>Nota</dt><dd>Complejidad temporal: O(1). </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="pila_8c_source.html#l00162">162</a> del archivo <a class="el" href="pila_8c_source.html">pila.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="pila_8h.html">pila.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>
