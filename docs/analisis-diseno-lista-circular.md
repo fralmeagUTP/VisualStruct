@@ -89,7 +89,7 @@ Invariante principal:
 - Home: quinta tarjeta para `Lista Circular`.
 - Sidebar: nuevo boton `Lista Circular`.
 - Atajos directos: `5` para seleccionar circular.
-- Ciclo de `TAB`: ahora rota entre cinco estructuras.
+- Ciclo de `TAB`: ahora rota entre seis estructuras.
 
 ## 5.2 Controles contextuales
 Comparte el set de siete operaciones de `Lista`:
@@ -139,13 +139,13 @@ Se considera implementada correctamente cuando:
 ## 8. Riesgos y mitigaciones
 - Riesgo: romper contratos de listas existentes.
   - Mitigacion: no alterar API de `lista.h`; nuevo TAD aislado.
-- Riesgo: inconsistencias de navegacion por pasar de 4 a 5 estructuras.
-  - Mitigacion: revisar todos los `% 4` y atajos hardcodeados.
+- Riesgo: inconsistencias de navegacion por pasar de 4 a 5 estructuras y luego de 5 a 6.
+  - Mitigacion: revisar todos los modulos de navegacion (`% 4`, `% 5`) y atajos hardcodeados.
 - Riesgo: degradacion visual en resoluciones bajas por tarjeta extra.
   - Mitigacion: ajustar ancho de cards y validar con QA de ventanas.
 
 ## 9. Plan de pruebas minimo
 1. Pruebas funcionales de las 7 operaciones en lista circular.
-2. Pruebas de navegacion (`1..5`, `TAB`, `H`, `F1`).
+2. Pruebas de navegacion (`1..6`, `TAB`, `H`, `F1`).
 3. Pruebas de paneles pedagogicos (historial, traza, complejidad).
 4. Pruebas de layout y scroll en resoluciones de la matriz QA.

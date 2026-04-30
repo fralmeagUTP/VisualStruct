@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['ui_0',['Cuando toques la UI',['../md_docs_2contribucion.html#autotoc_md42',1,'']]],
+  ['ui_0',['Cuando toques la UI',['../md_docs_2contribucion.html#autotoc_md52',1,'']]],
   ['ui_2ec_1',['ui.c',['../ui_8c.html',1,'']]],
   ['ui_2eh_2',['ui.h',['../ui_8h.html',1,'']]],
   ['ui_5fbutton_3',['ui_button',['../ui_8h.html#a870fa41831ea81dc71f38f239ba9e3b9',1,'ui_button(Rectangle bounds, const char *label, bool active):&#160;ui.c'],['../ui_8c.html#a870fa41831ea81dc71f38f239ba9e3b9',1,'ui_button(Rectangle bounds, const char *label, bool active):&#160;ui.c']]],
@@ -20,10 +20,10 @@ var searchData=
   ['ultima_5foperacion_5fok_17',['ultima_operacion_ok',['../struct_app_state.html#a745b69eea69c629e6ef5cd3b1060c160',1,'AppState']]],
   ['ultima_5fprioridad_18',['ultima_prioridad',['../struct_app_state.html#a3e809871b7494d0af796d24576acc3b0',1,'AppState']]],
   ['ultimo_5fvalor_19',['ultimo_valor',['../struct_app_state.html#a2ee626204f627ce71021dc86b4afe888',1,'AppState']]],
-  ['un_20cambio_20',['Validacion recomendada antes de cerrar un cambio',['../md_docs_2contribucion.html#autotoc_md44',1,'']]],
-  ['un_20tad_21',['Cuando cambies un TAD',['../md_docs_2contribucion.html#autotoc_md39',1,'']]],
-  ['una_20estructura_20nueva_22',['Cuando agregues una estructura nueva',['../md_docs_2contribucion.html#autotoc_md41',1,'']]],
-  ['una_20operacion_20nueva_23',['Cuando agregues una operacion nueva',['../md_docs_2contribucion.html#autotoc_md40',1,'']]],
-  ['uso_24',['Recomendaciones de uso',['../md_docs_2guia-docente.html#autotoc_md49',1,'']]],
+  ['un_20cambio_20',['Validacion recomendada antes de cerrar un cambio',['../md_docs_2contribucion.html#autotoc_md54',1,'']]],
+  ['un_20tad_21',['Cuando cambies un TAD',['../md_docs_2contribucion.html#autotoc_md49',1,'']]],
+  ['una_20estructura_20nueva_22',['Cuando agregues una estructura nueva',['../md_docs_2contribucion.html#autotoc_md51',1,'']]],
+  ['una_20operacion_20nueva_23',['Cuando agregues una operacion nueva',['../md_docs_2contribucion.html#autotoc_md50',1,'']]],
+  ['uso_24',['Recomendaciones de uso',['../md_docs_2guia-docente.html#autotoc_md59',1,'']]],
   ['uso_20basico_25',['Uso Basico',['../index.html#autotoc_md6',1,'']]]
 ];

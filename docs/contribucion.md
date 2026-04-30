@@ -33,7 +33,7 @@ Esta guia resume como extender o modificar el proyecto sin romper la separacion 
 4. Integrar seleccion, controles y render en `src/main.c`.
 5. Documentar arquitectura y guia docente si la estructura cambia el alcance del proyecto.
 
-Referencia vigente: `lista_circular` ya esta integrada como ejemplo completo de extension transversal
+Referencia vigente: `lista_circular` y `sublista` ya estan integradas como ejemplos completos de extension transversal
 (TAD + AppState + vista + snippets + trazas + ayuda + QA docs).
 
 ## Cuando toques la UI

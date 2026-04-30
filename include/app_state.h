@@ -8,6 +8,7 @@
 #include "lista.h"
 #include "lista_circular.h"
 #include "pila.h"
+#include "sublista.h"
 
 /**
  * @file app_state.h
@@ -19,7 +20,8 @@ typedef enum {
     ESTRUCTURA_COLA,
     ESTRUCTURA_COLA_PRIORIDAD,
     ESTRUCTURA_LISTA,
-    ESTRUCTURA_LISTA_CIRCULAR
+    ESTRUCTURA_LISTA_CIRCULAR,
+    ESTRUCTURA_SUBLISTA
 } TipoEstructura;
 
 typedef enum {
@@ -31,6 +33,8 @@ typedef enum {
     OPERACION_ELIMINAR,
     OPERACION_BUSCAR,
     OPERACION_INVERTIR,
+    OPERACION_SUBLISTA_INSERTAR_HIJO,
+    OPERACION_SUBLISTA_ELIMINAR_HIJO,
     OPERACION_VACIAR
 } TipoOperacion;
 
@@ -43,10 +47,12 @@ typedef struct {
     int ultimo_valor;
     int ultima_prioridad;
     int coincidencias_busqueda;
+    int sublista_padre_activo;
     float animacion_feedback;
     float animacion_cambio_estructura;
     float animacion_pulso_panel;
     bool ultima_operacion_ok;
+    bool sublista_padre_activo_ok;
     unsigned int operacion_serial;
     char mensaje_operacion[256];
 
@@ -55,6 +61,7 @@ typedef struct {
     ColaPrioridad cola_prioridad;
     Lista lista;
     ListaCircular lista_circular;
+    Nodo *sublista;
 } AppState;
 
 /** @brief Inicializa estado global y TADs base. */
@@ -84,10 +91,14 @@ void app_state_operacion_lista_insertar_inicio(AppState *state);
 void app_state_operacion_lista_insertar_final(AppState *state);
 /** @brief Ejecuta operacion eliminar/desencolar/pop segun estructura activa. */
 void app_state_operacion_eliminar(AppState *state);
-/** @brief Ejecuta busqueda en lista o lista circular. */
+/** @brief Ejecuta busqueda en lista, lista circular o seleccion de padre en sublistas. */
 void app_state_operacion_buscar(AppState *state);
 /** @brief Ejecuta inversion en lista o lista circular. */
 void app_state_operacion_invertir(AppState *state);
+/** @brief Inserta un hijo en el padre activo del TAD Sublista. */
+void app_state_operacion_sublista_insertar_hijo(AppState *state);
+/** @brief Elimina un hijo del padre activo del TAD Sublista. */
+void app_state_operacion_sublista_eliminar_hijo(AppState *state);
 /** @brief Ejecuta vaciado/destruccion logica segun estructura activa. */
 void app_state_operacion_vaciar(AppState *state);
 

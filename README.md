@@ -23,8 +23,8 @@ make
 ```bash
 gcc -std=c11 -Wall -Wextra -pedantic -Iinclude \
   src/main.c src/ui.c src/app_state.c src/code_viewer.c src/algorithm_trace.c \
-  src/pila_view.c src/cola_view.c src/cola_prioridad_view.c src/lista_view.c src/lista_circular_view.c \
-  src/pila.c src/cola.c src/cola_prioridad.c src/lista.c src/lista_circular.c \
+  src/pila_view.c src/cola_view.c src/cola_prioridad_view.c src/lista_view.c src/lista_circular_view.c src/sublista_view.c \
+  src/pila.c src/cola.c src/cola_prioridad.c src/lista.c src/lista_circular.c src/sublista.c \
   -o visualstruct -lraylib -lopengl32 -lgdi32 -lwinmm
 ```
 
@@ -45,10 +45,11 @@ doxygen Doxyfile
 - `docs/qa-manual.md`: checklist de verificacion manual para UI, operaciones y paneles pedagogicos.
 - `docs/qa-visualizacion-ventanas.md`: verificacion de layout, legibilidad y uso de espacio.
 - `docs/analisis-diseno-lista-circular.md`: analisis tecnico y de interfaz para la funcionalidad de lista circular.
+- `docs/analisis-diseno-sublistas.md`: analisis funcional y tecnico del TAD jerarquico de sublistas.
 
 ## Uso Basico
 1. Ejecutar la aplicacion.
-2. Seleccionar estructura en el menu lateral: Pila, Cola, Cola de Prioridad, Lista o Lista Circular.
+2. Seleccionar estructura en el menu lateral: Pila, Cola, Cola de Prioridad, Lista, Lista Circular o Sublistas.
 3. Usar los botones contextuales del panel central para ejecutar operaciones segun la estructura activa.
 4. Editar `valor` y `prioridad` directamente en el panel lateral o usar teclado.
 5. Ajustar `valor` con `UP/DOWN`.
@@ -59,11 +60,11 @@ doxygen Doxyfile
 
 ## Controles Actuales
 - `I`: inicializar estructura activa
-- `A`: insertar/push/encolar o insertar al final en lista/lista circular
-- `Z`: insertar al inicio en lista/lista circular
+- `A`: insertar/push/encolar, insertar al final en lista/lista circular, o insertar padre en sublistas
+- `Z`: insertar al inicio en lista/lista circular o insertar hijo en sublistas
 - `D`: eliminar/pop/desencolar
-- `B`: buscar en lista/lista circular
-- `R`: invertir lista/lista circular
+- `B`: buscar en lista/lista circular o seleccionar padre activo en sublistas
+- `R`: invertir lista/lista circular o eliminar hijo en sublistas
 - `V`: vaciar estructura activa
 - `UP/DOWN`: cambiar valor
 - `LEFT/RIGHT`: cambiar prioridad
@@ -84,7 +85,7 @@ doxygen Doxyfile
 - docs/: documentacion del proyecto
 
 ## Estado Actual
-Arquitectura unificada operativa: app unica, estado global desacoplado, vistas por estructura (incluyendo Lista Circular), controles contextuales, ayuda interna detallada, historial de snippets C por operacion, complejidades base del MVP y feedback animado breve en inserciones/eliminaciones.
+Arquitectura unificada operativa: app unica, estado global desacoplado, vistas por estructura (incluyendo Lista Circular y Sublistas), controles contextuales, ayuda interna detallada, historial de snippets C por operacion, complejidades base del MVP y feedback animado breve en inserciones/eliminaciones.
 
 ## Notas de Arquitectura
 - La app actual usa un unico punto de entrada en `src/main.c`.

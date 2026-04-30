@@ -1,5 +1,6 @@
 var pila_8c =
 [
+    [ "nodo", "structnodo.html", "structnodo" ],
     [ "pila_contar", "pila_8c.html#a4bf8b75069bf45c648f5d31ba8fa3b46", null ],
     [ "pila_copiar_valores", "pila_8c.html#a6e0c8b858853a3ff0299740fbf64c63d", null ],
     [ "pila_destruir", "pila_8c.html#a2d166454a437fb04a7569f20d959dc09", null ],

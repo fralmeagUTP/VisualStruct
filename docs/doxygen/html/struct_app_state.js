@@ -16,6 +16,9 @@ var struct_app_state =
     [ "operacion_animada", "struct_app_state.html#a4903d6d67b35be65c78aebe182ed3512", null ],
     [ "operacion_serial", "struct_app_state.html#a84a5888278a2dfbdab5997e6448260f7", null ],
     [ "pila", "struct_app_state.html#a1425e3b59c5505432ebeec929689e3cc", null ],
+    [ "sublista", "struct_app_state.html#a098b3eb46e3940994b7eba42a420d9ff", null ],
+    [ "sublista_padre_activo", "struct_app_state.html#a000b00ebd670e4c1859dfcf2ba1afb8e", null ],
+    [ "sublista_padre_activo_ok", "struct_app_state.html#ae5666cb0040a764c0d3f68fa9140f3f2", null ],
     [ "ultima_operacion_ok", "struct_app_state.html#a745b69eea69c629e6ef5cd3b1060c160", null ],
     [ "ultima_prioridad", "struct_app_state.html#a3e809871b7494d0af796d24576acc3b0", null ],
     [ "ultimo_valor", "struct_app_state.html#a2ee626204f627ce71021dc86b4afe888", null ]

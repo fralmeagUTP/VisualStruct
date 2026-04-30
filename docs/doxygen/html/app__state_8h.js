@@ -6,7 +6,8 @@ var app__state_8h =
       [ "ESTRUCTURA_COLA", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a973a65123dc5ff5ef05b6a36d9f15bfa", null ],
       [ "ESTRUCTURA_COLA_PRIORIDAD", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a2dabb13bba1952a9e6f7609ab71bdc05", null ],
       [ "ESTRUCTURA_LISTA", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a41a17370323282b2af4ef2ca3071c1c7", null ],
-      [ "ESTRUCTURA_LISTA_CIRCULAR", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a5792059a3b19d9ea2122f8b4ed48a6ae", null ]
+      [ "ESTRUCTURA_LISTA_CIRCULAR", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a5792059a3b19d9ea2122f8b4ed48a6ae", null ],
+      [ "ESTRUCTURA_SUBLISTA", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a4410c8cd058777f5dff9b49794535771", null ]
     ] ],
     [ "TipoOperacion", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776", [
       [ "OPERACION_NINGUNA", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776a2564063c60c93f874cddf9eb18e0b4e4", null ],
@@ -17,6 +18,8 @@ var app__state_8h =
       [ "OPERACION_ELIMINAR", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776a103c1e449924ddbbe4cd8e647ce054e3", null ],
       [ "OPERACION_BUSCAR", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776a61938f65ae1663c586e77b06ae4ed1cd", null ],
       [ "OPERACION_INVERTIR", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776a8f4d1dc35d6f56cd3c8498076dbffb99", null ],
+      [ "OPERACION_SUBLISTA_INSERTAR_HIJO", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776ad64fa995c2f47684cbe15121722bf20a", null ],
+      [ "OPERACION_SUBLISTA_ELIMINAR_HIJO", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776a3e144a8e777c6e0fd4fc07716b25513c", null ],
       [ "OPERACION_VACIAR", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776a8e57c4a24bae6bc52f40a8b924e9e943", null ]
     ] ],
     [ "app_state_ajustar_prioridad", "app__state_8h.html#a36b6bf7a760d9edd415998ad4ca69f3a", null ],
@@ -29,6 +32,8 @@ var app__state_8h =
     [ "app_state_operacion_invertir", "app__state_8h.html#af3fc18d79fc2396a8cfabf09dfd99f02", null ],
     [ "app_state_operacion_lista_insertar_final", "app__state_8h.html#ae667f109ee17d7b74090f42b3803d7c8", null ],
     [ "app_state_operacion_lista_insertar_inicio", "app__state_8h.html#a0594b9292adbce5f64036aeb4bbea163", null ],
+    [ "app_state_operacion_sublista_eliminar_hijo", "app__state_8h.html#add932885153f83aadeeb780e602eca8d", null ],
+    [ "app_state_operacion_sublista_insertar_hijo", "app__state_8h.html#aa442eeb0093f47277aa1e1d79a925b85", null ],
     [ "app_state_operacion_vaciar", "app__state_8h.html#aafb9a085e0863b9d4dcc7597f2d5b6d5", null ],
     [ "app_state_set_estructura", "app__state_8h.html#a881246241a07b177b3accd398ba24e8d", null ],
     [ "app_state_set_prioridad", "app__state_8h.html#a6037881f01b6bdc4a7f5e1aac242f1db", null ],

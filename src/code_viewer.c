@@ -120,6 +120,36 @@ const char *code_viewer_get_snippet(TipoEstructura estructura, TipoOperacion ope
         }
         return "ListaCircular lc;\n"
                "lcir_inicializar(&lc);";
+    case ESTRUCTURA_SUBLISTA:
+        if (operacion == OPERACION_INICIALIZAR) {
+            return "Nodo *raiz = NULL;\n"
+                   "sublista_inicializar(&raiz);";
+        }
+        if (operacion == OPERACION_INSERTAR) {
+            return "Nodo *padre = sublista_insertar_padre_final(&raiz, valor_padre);\n"
+                   "bool ok = (padre != NULL);";
+        }
+        if (operacion == OPERACION_BUSCAR) {
+            return "Nodo *padre = sublista_buscar_padre(raiz, valor_padre);\n"
+                   "/* si existe, queda seleccionado como padre activo */";
+        }
+        if (operacion == OPERACION_ELIMINAR) {
+            return "bool ok = sublista_eliminar_padre_primero(&raiz, valor_padre);";
+        }
+        if (operacion == OPERACION_SUBLISTA_INSERTAR_HIJO) {
+            return "Nodo *padre = sublista_buscar_padre(raiz, padre_activo);\n"
+                   "bool ok = sublista_insertar_hijo_final(padre, valor_hijo);";
+        }
+        if (operacion == OPERACION_SUBLISTA_ELIMINAR_HIJO) {
+            return "Nodo *padre = sublista_buscar_padre(raiz, padre_activo);\n"
+                   "bool ok = sublista_eliminar_hijo_primero(padre, valor_hijo);";
+        }
+        if (operacion == OPERACION_VACIAR) {
+            return "sublista_destruir(&raiz);\n"
+                   "sublista_inicializar(&raiz);";
+        }
+        return "Nodo *raiz = NULL;\n"
+               "sublista_inicializar(&raiz);";
     default:
         return "// Operacion no disponible";
     }

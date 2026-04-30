@@ -13,6 +13,8 @@ var app__state_8c =
     [ "app_state_operacion_invertir", "app__state_8c.html#af3fc18d79fc2396a8cfabf09dfd99f02", null ],
     [ "app_state_operacion_lista_insertar_final", "app__state_8c.html#ae667f109ee17d7b74090f42b3803d7c8", null ],
     [ "app_state_operacion_lista_insertar_inicio", "app__state_8c.html#a0594b9292adbce5f64036aeb4bbea163", null ],
+    [ "app_state_operacion_sublista_eliminar_hijo", "app__state_8c.html#add932885153f83aadeeb780e602eca8d", null ],
+    [ "app_state_operacion_sublista_insertar_hijo", "app__state_8c.html#aa442eeb0093f47277aa1e1d79a925b85", null ],
     [ "app_state_operacion_vaciar", "app__state_8c.html#aafb9a085e0863b9d4dcc7597f2d5b6d5", null ],
     [ "app_state_set_estructura", "app__state_8c.html#a881246241a07b177b3accd398ba24e8d", null ],
     [ "app_state_set_prioridad", "app__state_8c.html#a6037881f01b6bdc4a7f5e1aac242f1db", null ],

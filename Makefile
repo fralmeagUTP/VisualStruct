@@ -14,11 +14,13 @@ SRC = \
 	src/cola_prioridad_view.c \
 	src/lista_view.c \
 	src/lista_circular_view.c \
+	src/sublista_view.c \
 	src/pila.c \
 	src/cola.c \
 	src/cola_prioridad.c \
 	src/lista.c \
-	src/lista_circular.c
+	src/lista_circular.c \
+	src/sublista.c
 
 TARGET = visualstruct
 

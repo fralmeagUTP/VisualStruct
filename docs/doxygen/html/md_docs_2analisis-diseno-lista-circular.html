@@ -201,7 +201,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-lista-circular.html','',''); 
 <li>Home: quinta tarjeta para <span class="tt"><a class="el" href="struct_lista.html">Lista</a> Circular</span>.</li>
 <li>Sidebar: nuevo boton <span class="tt"><a class="el" href="struct_lista.html">Lista</a> Circular</span>.</li>
 <li>Atajos directos: <span class="tt">5</span> para seleccionar circular.</li>
-<li>Ciclo de <span class="tt">TAB</span>: ahora rota entre cinco estructuras.</li>
+<li>Ciclo de <span class="tt">TAB</span>: ahora rota entre seis estructuras.</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
 5.2 Controles contextuales</h1>
@@ -271,8 +271,8 @@ $(function(){initNavTree('md_docs_2analisis-diseno-lista-circular.html','',''); 
 <li>Mitigacion: no alterar API de <span class="tt"><a class="el" href="lista_8h.html" title="API de lista enlazada simple con cabeza.">lista.h</a></span>; nuevo TAD aislado.</li>
 </ul>
 </li>
-<li>Riesgo: inconsistencias de navegacion por pasar de 4 a 5 estructuras.<ul>
-<li>Mitigacion: revisar todos los <span class="tt">% 4</span> y atajos hardcodeados.</li>
+<li>Riesgo: inconsistencias de navegacion por pasar de 4 a 5 estructuras y luego de 5 a 6.<ul>
+<li>Mitigacion: revisar todos los modulos de navegacion (<span class="tt">% 4</span>, <span class="tt">% 5</span>) y atajos hardcodeados.</li>
 </ul>
 </li>
 <li>Riesgo: degradacion visual en resoluciones bajas por tarjeta extra.<ul>
@@ -284,7 +284,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-lista-circular.html','',''); 
 9. Plan de pruebas minimo</h1>
 <ol type="1">
 <li>Pruebas funcionales de las 7 operaciones en lista circular.</li>
-<li>Pruebas de navegacion (<span class="tt">1..5</span>, <span class="tt">TAB</span>, <span class="tt">H</span>, <span class="tt">F1</span>).</li>
+<li>Pruebas de navegacion (<span class="tt">1..6</span>, <span class="tt">TAB</span>, <span class="tt">H</span>, <span class="tt">F1</span>).</li>
 <li>Pruebas de paneles pedagogicos (historial, traza, complejidad).</li>
 <li>Pruebas de layout y scroll en resoluciones de la matriz QA. </li>
 </ol>

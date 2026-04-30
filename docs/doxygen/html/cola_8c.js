@@ -1,5 +1,6 @@
 var cola_8c =
 [
+    [ "nodo", "structnodo.html", "structnodo" ],
     [ "cola_contar", "cola_8c.html#a807529b3bacd5cd224e35931cfbbb72e", null ],
     [ "cola_copiar_valores", "cola_8c.html#a1abae5c5193e0b79cee0eea46a27a54a", null ],
     [ "cola_desencolar", "cola_8c.html#a458270c0be83aaa8ec3c8149b3542774", null ],

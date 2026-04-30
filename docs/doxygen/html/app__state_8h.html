@@ -101,6 +101,7 @@ $(function(){initNavTree('app__state_8h.html','',''); });
 <code>#include &quot;<a class="el" href="lista_8h_source.html">lista.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="lista__circular_8h_source.html">lista_circular.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="pila_8h_source.html">pila.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sublista_8h_source.html">sublista.h</a>&quot;</code><br />
 </div>
 <p><a href="app__state_8h_source.html">Ir al código fuente de este archivo.</a></p>
 <table class="memberdecls">
@@ -117,6 +118,7 @@ Enumeraciones</h2></td></tr>
 , <a class="el" href="#ad3ecc3533311a0714ffa3b53775243b6a41a17370323282b2af4ef2ca3071c1c7">ESTRUCTURA_LISTA</a>
 , <br />
 &#160;&#160;<a class="el" href="#ad3ecc3533311a0714ffa3b53775243b6a5792059a3b19d9ea2122f8b4ed48a6ae">ESTRUCTURA_LISTA_CIRCULAR</a>
+, <a class="el" href="#ad3ecc3533311a0714ffa3b53775243b6a4410c8cd058777f5dff9b49794535771">ESTRUCTURA_SUBLISTA</a>
 <br />
  }</td></tr>
 <tr class="memitem:af12172166a85efb2c6a53de3facb2776" id="r_af12172166a85efb2c6a53de3facb2776"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#af12172166a85efb2c6a53de3facb2776">TipoOperacion</a> { <br />
@@ -130,7 +132,9 @@ Enumeraciones</h2></td></tr>
 , <a class="el" href="#af12172166a85efb2c6a53de3facb2776a61938f65ae1663c586e77b06ae4ed1cd">OPERACION_BUSCAR</a>
 , <a class="el" href="#af12172166a85efb2c6a53de3facb2776a8f4d1dc35d6f56cd3c8498076dbffb99">OPERACION_INVERTIR</a>
 , <br />
-&#160;&#160;<a class="el" href="#af12172166a85efb2c6a53de3facb2776a8e57c4a24bae6bc52f40a8b924e9e943">OPERACION_VACIAR</a>
+&#160;&#160;<a class="el" href="#af12172166a85efb2c6a53de3facb2776ad64fa995c2f47684cbe15121722bf20a">OPERACION_SUBLISTA_INSERTAR_HIJO</a>
+, <a class="el" href="#af12172166a85efb2c6a53de3facb2776a3e144a8e777c6e0fd4fc07716b25513c">OPERACION_SUBLISTA_ELIMINAR_HIJO</a>
+, <a class="el" href="#af12172166a85efb2c6a53de3facb2776a8e57c4a24bae6bc52f40a8b924e9e943">OPERACION_VACIAR</a>
 <br />
  }</td></tr>
 </table><table class="memberdecls">
@@ -143,7 +147,7 @@ Funciones</h2></td></tr>
 <tr class="memitem:ac98f3937b8c68c08d699bdf8708fe09a" id="r_ac98f3937b8c68c08d699bdf8708fe09a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ac98f3937b8c68c08d699bdf8708fe09a">app_state_init</a> (<a class="el" href="struct_app_state.html">AppState</a> *state)</td></tr>
 <tr class="memdesc:ac98f3937b8c68c08d699bdf8708fe09a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa estado global y TADs base.  <br /></td></tr>
 <tr class="memitem:afb7c2a89fd3e6c630bda1bb4e871ffc6" id="r_afb7c2a89fd3e6c630bda1bb4e871ffc6"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#afb7c2a89fd3e6c630bda1bb4e871ffc6">app_state_operacion_buscar</a> (<a class="el" href="struct_app_state.html">AppState</a> *state)</td></tr>
-<tr class="memdesc:afb7c2a89fd3e6c630bda1bb4e871ffc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ejecuta busqueda (solo lista en MVP).  <br /></td></tr>
+<tr class="memdesc:afb7c2a89fd3e6c630bda1bb4e871ffc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ejecuta busqueda en lista, lista circular o seleccion de padre en sublistas.  <br /></td></tr>
 <tr class="memitem:a96a70f09cb2567a06266136c07951dd6" id="r_a96a70f09cb2567a06266136c07951dd6"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a96a70f09cb2567a06266136c07951dd6">app_state_operacion_eliminar</a> (<a class="el" href="struct_app_state.html">AppState</a> *state)</td></tr>
 <tr class="memdesc:a96a70f09cb2567a06266136c07951dd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ejecuta operacion eliminar/desencolar/pop segun estructura activa.  <br /></td></tr>
 <tr class="memitem:a24a6594f990a8730104d95389dabb7cd" id="r_a24a6594f990a8730104d95389dabb7cd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a24a6594f990a8730104d95389dabb7cd">app_state_operacion_inicializar</a> (<a class="el" href="struct_app_state.html">AppState</a> *state)</td></tr>
@@ -151,11 +155,15 @@ Funciones</h2></td></tr>
 <tr class="memitem:a4ac75d475ced6f35a9e43aae6d749e8b" id="r_a4ac75d475ced6f35a9e43aae6d749e8b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a4ac75d475ced6f35a9e43aae6d749e8b">app_state_operacion_insertar</a> (<a class="el" href="struct_app_state.html">AppState</a> *state)</td></tr>
 <tr class="memdesc:a4ac75d475ced6f35a9e43aae6d749e8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ejecuta operacion insertar/encolar/push segun estructura activa.  <br /></td></tr>
 <tr class="memitem:af3fc18d79fc2396a8cfabf09dfd99f02" id="r_af3fc18d79fc2396a8cfabf09dfd99f02"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af3fc18d79fc2396a8cfabf09dfd99f02">app_state_operacion_invertir</a> (<a class="el" href="struct_app_state.html">AppState</a> *state)</td></tr>
-<tr class="memdesc:af3fc18d79fc2396a8cfabf09dfd99f02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ejecuta inversion (solo lista en MVP).  <br /></td></tr>
+<tr class="memdesc:af3fc18d79fc2396a8cfabf09dfd99f02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ejecuta inversion en lista o lista circular.  <br /></td></tr>
 <tr class="memitem:ae667f109ee17d7b74090f42b3803d7c8" id="r_ae667f109ee17d7b74090f42b3803d7c8"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ae667f109ee17d7b74090f42b3803d7c8">app_state_operacion_lista_insertar_final</a> (<a class="el" href="struct_app_state.html">AppState</a> *state)</td></tr>
-<tr class="memdesc:ae667f109ee17d7b74090f42b3803d7c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserta al final cuando la estructura activa es lista.  <br /></td></tr>
+<tr class="memdesc:ae667f109ee17d7b74090f42b3803d7c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserta al final cuando la estructura activa es lista o lista circular.  <br /></td></tr>
 <tr class="memitem:a0594b9292adbce5f64036aeb4bbea163" id="r_a0594b9292adbce5f64036aeb4bbea163"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0594b9292adbce5f64036aeb4bbea163">app_state_operacion_lista_insertar_inicio</a> (<a class="el" href="struct_app_state.html">AppState</a> *state)</td></tr>
-<tr class="memdesc:a0594b9292adbce5f64036aeb4bbea163"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserta al inicio cuando la estructura activa es lista.  <br /></td></tr>
+<tr class="memdesc:a0594b9292adbce5f64036aeb4bbea163"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserta al inicio cuando la estructura activa es lista o lista circular.  <br /></td></tr>
+<tr class="memitem:add932885153f83aadeeb780e602eca8d" id="r_add932885153f83aadeeb780e602eca8d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#add932885153f83aadeeb780e602eca8d">app_state_operacion_sublista_eliminar_hijo</a> (<a class="el" href="struct_app_state.html">AppState</a> *state)</td></tr>
+<tr class="memdesc:add932885153f83aadeeb780e602eca8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elimina un hijo del padre activo del TAD <a class="el" href="sublista_8h.html#a17b24a46f4db6f24ce92369542476181">Sublista</a>.  <br /></td></tr>
+<tr class="memitem:aa442eeb0093f47277aa1e1d79a925b85" id="r_aa442eeb0093f47277aa1e1d79a925b85"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa442eeb0093f47277aa1e1d79a925b85">app_state_operacion_sublista_insertar_hijo</a> (<a class="el" href="struct_app_state.html">AppState</a> *state)</td></tr>
+<tr class="memdesc:aa442eeb0093f47277aa1e1d79a925b85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserta un hijo en el padre activo del TAD <a class="el" href="sublista_8h.html#a17b24a46f4db6f24ce92369542476181">Sublista</a>.  <br /></td></tr>
 <tr class="memitem:aafb9a085e0863b9d4dcc7597f2d5b6d5" id="r_aafb9a085e0863b9d4dcc7597f2d5b6d5"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aafb9a085e0863b9d4dcc7597f2d5b6d5">app_state_operacion_vaciar</a> (<a class="el" href="struct_app_state.html">AppState</a> *state)</td></tr>
 <tr class="memdesc:aafb9a085e0863b9d4dcc7597f2d5b6d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ejecuta vaciado/destruccion logica segun estructura activa.  <br /></td></tr>
 <tr class="memitem:a881246241a07b177b3accd398ba24e8d" id="r_a881246241a07b177b3accd398ba24e8d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a881246241a07b177b3accd398ba24e8d">app_state_set_estructura</a> (<a class="el" href="struct_app_state.html">AppState</a> *state, <a class="el" href="#ad3ecc3533311a0714ffa3b53775243b6">TipoEstructura</a> estructura)</td></tr>
@@ -191,9 +199,10 @@ Funciones</h2></td></tr>
 <tr><td class="fieldname"><a id="ad3ecc3533311a0714ffa3b53775243b6a2dabb13bba1952a9e6f7609ab71bdc05" name="ad3ecc3533311a0714ffa3b53775243b6a2dabb13bba1952a9e6f7609ab71bdc05"></a>ESTRUCTURA_COLA_PRIORIDAD&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad3ecc3533311a0714ffa3b53775243b6a41a17370323282b2af4ef2ca3071c1c7" name="ad3ecc3533311a0714ffa3b53775243b6a41a17370323282b2af4ef2ca3071c1c7"></a>ESTRUCTURA_LISTA&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad3ecc3533311a0714ffa3b53775243b6a5792059a3b19d9ea2122f8b4ed48a6ae" name="ad3ecc3533311a0714ffa3b53775243b6a5792059a3b19d9ea2122f8b4ed48a6ae"></a>ESTRUCTURA_LISTA_CIRCULAR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad3ecc3533311a0714ffa3b53775243b6a4410c8cd058777f5dff9b49794535771" name="ad3ecc3533311a0714ffa3b53775243b6a4410c8cd058777f5dff9b49794535771"></a>ESTRUCTURA_SUBLISTA&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definición en la línea <a class="el" href="app__state_8h_source.html#l00017">17</a> del archivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="app__state_8h_source.html#l00018">18</a> del archivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
 
 </div>
 </div>
@@ -217,10 +226,12 @@ Funciones</h2></td></tr>
 <tr><td class="fieldname"><a id="af12172166a85efb2c6a53de3facb2776a103c1e449924ddbbe4cd8e647ce054e3" name="af12172166a85efb2c6a53de3facb2776a103c1e449924ddbbe4cd8e647ce054e3"></a>OPERACION_ELIMINAR&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af12172166a85efb2c6a53de3facb2776a61938f65ae1663c586e77b06ae4ed1cd" name="af12172166a85efb2c6a53de3facb2776a61938f65ae1663c586e77b06ae4ed1cd"></a>OPERACION_BUSCAR&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af12172166a85efb2c6a53de3facb2776a8f4d1dc35d6f56cd3c8498076dbffb99" name="af12172166a85efb2c6a53de3facb2776a8f4d1dc35d6f56cd3c8498076dbffb99"></a>OPERACION_INVERTIR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af12172166a85efb2c6a53de3facb2776ad64fa995c2f47684cbe15121722bf20a" name="af12172166a85efb2c6a53de3facb2776ad64fa995c2f47684cbe15121722bf20a"></a>OPERACION_SUBLISTA_INSERTAR_HIJO&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af12172166a85efb2c6a53de3facb2776a3e144a8e777c6e0fd4fc07716b25513c" name="af12172166a85efb2c6a53de3facb2776a3e144a8e777c6e0fd4fc07716b25513c"></a>OPERACION_SUBLISTA_ELIMINAR_HIJO&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af12172166a85efb2c6a53de3facb2776a8e57c4a24bae6bc52f40a8b924e9e943" name="af12172166a85efb2c6a53de3facb2776a8e57c4a24bae6bc52f40a8b924e9e943"></a>OPERACION_VACIAR&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definición en la línea <a class="el" href="app__state_8h_source.html#l00025">25</a> del archivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="app__state_8h_source.html#l00027">27</a> del archivo <a class="el" href="app__state_8h_source.html">app_state.h</a>.</p>
 
 </div>
 </div>
@@ -247,11 +258,11 @@ Funciones</h2></td></tr>
 <p>Incrementa/decrementa prioridad de entrada [1..99]. </p>
 <p>Incrementa/decrementa prioridad de entrada [1..99]. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00117">117</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00121">121</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00019">clamp_int()</a> y <a class="el" href="app__state_8h_source.html#l00042">AppState::input_prioridad</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00019">clamp_int()</a> y <a class="el" href="app__state_8h_source.html#l00046">AppState::input_prioridad</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01004">handle_keyboard()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01089">handle_keyboard()</a>.</p>
 
 </div>
 </div>
@@ -277,11 +288,11 @@ Funciones</h2></td></tr>
 <p>Incrementa/decrementa el valor de entrada principal. </p>
 <p>Incrementa/decrementa el valor de entrada principal. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00099">99</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00103">103</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00041">AppState::input_valor</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00045">AppState::input_valor</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01004">handle_keyboard()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01089">handle_keyboard()</a>.</p>
 
 </div>
 </div>
@@ -305,9 +316,9 @@ Funciones</h2></td></tr>
 
 <p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00042">42</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00047">AppState::animacion_cambio_estructura</a>, <a class="el" href="app__state_8h_source.html#l00046">AppState::animacion_feedback</a>, <a class="el" href="app__state_8h_source.html#l00048">AppState::animacion_pulso_panel</a>, <a class="el" href="app__state_8h_source.html#l00045">AppState::coincidencias_busqueda</a>, <a class="el" href="app__state_8h_source.html#l00054">AppState::cola</a>, <a class="el" href="cola_8c_source.html#l00020">cola_inicializar()</a>, <a class="el" href="app__state_8h_source.html#l00055">AppState::cola_prioridad</a>, <a class="el" href="cola__prioridad_8c_source.html#l00023">cp_inicializar()</a>, <a class="el" href="app__state_8h_source.html#l00038">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00018">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00042">AppState::input_prioridad</a>, <a class="el" href="app__state_8h_source.html#l00041">AppState::input_valor</a>, <a class="el" href="lista__circular_8c_source.html#l00021">lcir_inicializar()</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00032">lista_inicializar()</a>, <a class="el" href="app__state_8h_source.html#l00051">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00039">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00040">AppState::operacion_animada</a>, <a class="el" href="app__state_8h_source.html#l00027">OPERACION_INICIALIZAR</a>, <a class="el" href="app__state_8h_source.html#l00026">OPERACION_NINGUNA</a>, <a class="el" href="app__state_8h_source.html#l00050">AppState::operacion_serial</a>, <a class="el" href="app__state_8h_source.html#l00053">AppState::pila</a>, <a class="el" href="pila_8c_source.html#l00023">pila_inicializar()</a> y <a class="el" href="app__state_8h_source.html#l00049">AppState::ultima_operacion_ok</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00052">AppState::animacion_cambio_estructura</a>, <a class="el" href="app__state_8h_source.html#l00051">AppState::animacion_feedback</a>, <a class="el" href="app__state_8h_source.html#l00053">AppState::animacion_pulso_panel</a>, <a class="el" href="app__state_8h_source.html#l00049">AppState::coincidencias_busqueda</a>, <a class="el" href="app__state_8h_source.html#l00060">AppState::cola</a>, <a class="el" href="cola_8c_source.html#l00020">cola_inicializar()</a>, <a class="el" href="app__state_8h_source.html#l00061">AppState::cola_prioridad</a>, <a class="el" href="cola__prioridad_8c_source.html#l00023">cp_inicializar()</a>, <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00046">AppState::input_prioridad</a>, <a class="el" href="app__state_8h_source.html#l00045">AppState::input_valor</a>, <a class="el" href="lista__circular_8c_source.html#l00021">lcir_inicializar()</a>, <a class="el" href="app__state_8h_source.html#l00062">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00063">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00032">lista_inicializar()</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00043">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00044">AppState::operacion_animada</a>, <a class="el" href="app__state_8h_source.html#l00029">OPERACION_INICIALIZAR</a>, <a class="el" href="app__state_8h_source.html#l00028">OPERACION_NINGUNA</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::operacion_serial</a>, <a class="el" href="app__state_8h_source.html#l00059">AppState::pila</a>, <a class="el" href="pila_8c_source.html#l00023">pila_inicializar()</a>, <a class="el" href="app__state_8h_source.html#l00064">AppState::sublista</a>, <a class="el" href="sublista_8c_source.html#l00044">sublista_inicializar()</a>, <a class="el" href="app__state_8h_source.html#l00050">AppState::sublista_padre_activo</a>, <a class="el" href="app__state_8h_source.html#l00055">AppState::sublista_padre_activo_ok</a> y <a class="el" href="app__state_8h_source.html#l00054">AppState::ultima_operacion_ok</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01111">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
 
 </div>
 </div>
@@ -326,14 +337,14 @@ Funciones</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Ejecuta busqueda (solo lista en MVP). </p>
-<p>Ejecuta busqueda (solo lista en MVP). </p>
+<p>Ejecuta busqueda en lista, lista circular o seleccion de padre en sublistas. </p>
+<p>Ejecuta busqueda en lista, lista circular o seleccion de padre en sublistas. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00427">427</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00469">469</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00045">AppState::coincidencias_busqueda</a>, <a class="el" href="app__state_8h_source.html#l00038">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00041">AppState::input_valor</a>, <a class="el" href="lista__circular_8c_source.html#l00079">lcir_buscar_posiciones()</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::lista</a>, <a class="el" href="lista_8c_source.html#l00230">lista_buscar_posiciones()</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::lista_circular</a>, <a class="el" href="app__state_8h_source.html#l00051">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00039">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00032">OPERACION_BUSCAR</a>, <a class="el" href="app__state_8h_source.html#l00050">AppState::operacion_serial</a>, <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>, <a class="el" href="app__state_8c_source.html#l00035">trigger_feedback()</a> y <a class="el" href="app__state_8h_source.html#l00049">AppState::ultima_operacion_ok</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00049">AppState::coincidencias_busqueda</a>, <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="app__state_8h_source.html#l00045">AppState::input_valor</a>, <a class="el" href="lista__circular_8c_source.html#l00079">lcir_buscar_posiciones()</a>, <a class="el" href="app__state_8h_source.html#l00062">AppState::lista</a>, <a class="el" href="lista_8c_source.html#l00230">lista_buscar_posiciones()</a>, <a class="el" href="app__state_8h_source.html#l00063">AppState::lista_circular</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00043">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00034">OPERACION_BUSCAR</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::operacion_serial</a>, <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>, <a class="el" href="app__state_8h_source.html#l00064">AppState::sublista</a>, <a class="el" href="sublista_8c_source.html#l00077">sublista_buscar_padre()</a>, <a class="el" href="app__state_8h_source.html#l00050">AppState::sublista_padre_activo</a>, <a class="el" href="app__state_8h_source.html#l00055">AppState::sublista_padre_activo_ok</a>, <a class="el" href="app__state_8c_source.html#l00035">trigger_feedback()</a> y <a class="el" href="app__state_8h_source.html#l00054">AppState::ultima_operacion_ok</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00892">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01004">handle_keyboard()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00957">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01089">handle_keyboard()</a>.</p>
 
 </div>
 </div>
@@ -355,11 +366,11 @@ Funciones</h2></td></tr>
 <p>Ejecuta operacion eliminar/desencolar/pop segun estructura activa. </p>
 <p>Ejecuta operacion eliminar/desencolar/pop segun estructura activa. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00352">352</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00378">378</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00054">AppState::cola</a>, <a class="el" href="cola_8c_source.html#l00074">cola_desencolar()</a>, <a class="el" href="app__state_8h_source.html#l00055">AppState::cola_prioridad</a>, <a class="el" href="cola__prioridad_8c_source.html#l00099">cp_desencolar()</a>, <a class="el" href="app__state_8h_source.html#l00038">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00018">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00041">AppState::input_valor</a>, <a class="el" href="lista__circular_8c_source.html#l00103">lcir_eliminar_primero()</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00272">lista_eliminar_primero()</a>, <a class="el" href="app__state_8h_source.html#l00051">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00039">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00031">OPERACION_ELIMINAR</a>, <a class="el" href="app__state_8h_source.html#l00050">AppState::operacion_serial</a>, <a class="el" href="app__state_8h_source.html#l00053">AppState::pila</a>, <a class="el" href="pila_8c_source.html#l00083">pila_pop()</a>, <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>, <a class="el" href="app__state_8c_source.html#l00035">trigger_feedback()</a>, <a class="el" href="app__state_8h_source.html#l00049">AppState::ultima_operacion_ok</a>, <a class="el" href="app__state_8h_source.html#l00044">AppState::ultima_prioridad</a> y <a class="el" href="app__state_8h_source.html#l00043">AppState::ultimo_valor</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00060">AppState::cola</a>, <a class="el" href="cola_8c_source.html#l00074">cola_desencolar()</a>, <a class="el" href="app__state_8h_source.html#l00061">AppState::cola_prioridad</a>, <a class="el" href="cola__prioridad_8c_source.html#l00099">cp_desencolar()</a>, <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="app__state_8h_source.html#l00045">AppState::input_valor</a>, <a class="el" href="lista__circular_8c_source.html#l00103">lcir_eliminar_primero()</a>, <a class="el" href="app__state_8h_source.html#l00062">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00063">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00272">lista_eliminar_primero()</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00043">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00033">OPERACION_ELIMINAR</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::operacion_serial</a>, <a class="el" href="app__state_8h_source.html#l00059">AppState::pila</a>, <a class="el" href="pila_8c_source.html#l00083">pila_pop()</a>, <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>, <a class="el" href="app__state_8h_source.html#l00064">AppState::sublista</a>, <a class="el" href="sublista_8c_source.html#l00088">sublista_eliminar_padre_primero()</a>, <a class="el" href="app__state_8h_source.html#l00050">AppState::sublista_padre_activo</a>, <a class="el" href="app__state_8h_source.html#l00055">AppState::sublista_padre_activo_ok</a>, <a class="el" href="app__state_8c_source.html#l00035">trigger_feedback()</a>, <a class="el" href="app__state_8h_source.html#l00054">AppState::ultima_operacion_ok</a>, <a class="el" href="app__state_8h_source.html#l00048">AppState::ultima_prioridad</a> y <a class="el" href="app__state_8h_source.html#l00047">AppState::ultimo_valor</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00892">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01004">handle_keyboard()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00957">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01089">handle_keyboard()</a>.</p>
 
 </div>
 </div>
@@ -381,11 +392,11 @@ Funciones</h2></td></tr>
 <p>Ejecuta operacion de inicializar para la estructura activa. </p>
 <p>Ejecuta operacion de inicializar para la estructura activa. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00164">164</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00168">168</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00054">AppState::cola</a>, <a class="el" href="cola_8c_source.html#l00020">cola_inicializar()</a>, <a class="el" href="app__state_8h_source.html#l00055">AppState::cola_prioridad</a>, <a class="el" href="cola_8c_source.html#l00101">cola_vaciar()</a>, <a class="el" href="cola__prioridad_8c_source.html#l00023">cp_inicializar()</a>, <a class="el" href="cola__prioridad_8c_source.html#l00299">cp_vaciar()</a>, <a class="el" href="app__state_8h_source.html#l00038">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00018">ESTRUCTURA_PILA</a>, <a class="el" href="lista__circular_8c_source.html#l00251">lcir_destruir()</a>, <a class="el" href="lista__circular_8c_source.html#l00021">lcir_inicializar()</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00642">lista_destruir()</a>, <a class="el" href="lista_8c_source.html#l00032">lista_inicializar()</a>, <a class="el" href="app__state_8h_source.html#l00039">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00027">OPERACION_INICIALIZAR</a>, <a class="el" href="app__state_8h_source.html#l00050">AppState::operacion_serial</a>, <a class="el" href="app__state_8h_source.html#l00053">AppState::pila</a>, <a class="el" href="pila_8c_source.html#l00110">pila_destruir()</a>, <a class="el" href="pila_8c_source.html#l00023">pila_inicializar()</a>, <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>, <a class="el" href="app__state_8c_source.html#l00035">trigger_feedback()</a> y <a class="el" href="app__state_8h_source.html#l00049">AppState::ultima_operacion_ok</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00060">AppState::cola</a>, <a class="el" href="cola_8c_source.html#l00020">cola_inicializar()</a>, <a class="el" href="app__state_8h_source.html#l00061">AppState::cola_prioridad</a>, <a class="el" href="cola_8c_source.html#l00101">cola_vaciar()</a>, <a class="el" href="cola__prioridad_8c_source.html#l00023">cp_inicializar()</a>, <a class="el" href="cola__prioridad_8c_source.html#l00299">cp_vaciar()</a>, <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="lista__circular_8c_source.html#l00251">lcir_destruir()</a>, <a class="el" href="lista__circular_8c_source.html#l00021">lcir_inicializar()</a>, <a class="el" href="app__state_8h_source.html#l00062">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00063">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00642">lista_destruir()</a>, <a class="el" href="lista_8c_source.html#l00032">lista_inicializar()</a>, <a class="el" href="app__state_8h_source.html#l00043">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00029">OPERACION_INICIALIZAR</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::operacion_serial</a>, <a class="el" href="app__state_8h_source.html#l00059">AppState::pila</a>, <a class="el" href="pila_8c_source.html#l00110">pila_destruir()</a>, <a class="el" href="pila_8c_source.html#l00023">pila_inicializar()</a>, <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>, <a class="el" href="app__state_8h_source.html#l00064">AppState::sublista</a>, <a class="el" href="sublista_8c_source.html#l00281">sublista_destruir()</a>, <a class="el" href="sublista_8c_source.html#l00044">sublista_inicializar()</a>, <a class="el" href="app__state_8h_source.html#l00050">AppState::sublista_padre_activo</a>, <a class="el" href="app__state_8h_source.html#l00055">AppState::sublista_padre_activo_ok</a>, <a class="el" href="app__state_8c_source.html#l00035">trigger_feedback()</a> y <a class="el" href="app__state_8h_source.html#l00054">AppState::ultima_operacion_ok</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00892">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01004">handle_keyboard()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00957">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01089">handle_keyboard()</a>.</p>
 
 </div>
 </div>
@@ -407,11 +418,11 @@ Funciones</h2></td></tr>
 <p>Ejecuta operacion insertar/encolar/push segun estructura activa. </p>
 <p>Ejecuta operacion insertar/encolar/push segun estructura activa. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00207">207</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00218">218</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00054">AppState::cola</a>, <a class="el" href="cola_8c_source.html#l00039">cola_encolar()</a>, <a class="el" href="app__state_8h_source.html#l00055">AppState::cola_prioridad</a>, <a class="el" href="cola__prioridad_8c_source.html#l00052">cp_encolar()</a>, <a class="el" href="app__state_8h_source.html#l00038">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00018">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00042">AppState::input_prioridad</a>, <a class="el" href="app__state_8h_source.html#l00041">AppState::input_valor</a>, <a class="el" href="lista__circular_8c_source.html#l00054">lcir_insertar_final()</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00089">lista_insertar_final()</a>, <a class="el" href="app__state_8h_source.html#l00051">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00039">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00028">OPERACION_INSERTAR</a>, <a class="el" href="app__state_8h_source.html#l00030">OPERACION_INSERTAR_FINAL</a>, <a class="el" href="app__state_8h_source.html#l00050">AppState::operacion_serial</a>, <a class="el" href="app__state_8h_source.html#l00053">AppState::pila</a>, <a class="el" href="pila_8c_source.html#l00048">pila_push()</a>, <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>, <a class="el" href="app__state_8c_source.html#l00035">trigger_feedback()</a>, <a class="el" href="app__state_8h_source.html#l00049">AppState::ultima_operacion_ok</a>, <a class="el" href="app__state_8h_source.html#l00044">AppState::ultima_prioridad</a> y <a class="el" href="app__state_8h_source.html#l00043">AppState::ultimo_valor</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00060">AppState::cola</a>, <a class="el" href="cola_8c_source.html#l00039">cola_encolar()</a>, <a class="el" href="app__state_8h_source.html#l00061">AppState::cola_prioridad</a>, <a class="el" href="cola__prioridad_8c_source.html#l00052">cp_encolar()</a>, <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="app__state_8h_source.html#l00046">AppState::input_prioridad</a>, <a class="el" href="app__state_8h_source.html#l00045">AppState::input_valor</a>, <a class="el" href="lista__circular_8c_source.html#l00054">lcir_insertar_final()</a>, <a class="el" href="app__state_8h_source.html#l00062">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00063">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00089">lista_insertar_final()</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00043">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00030">OPERACION_INSERTAR</a>, <a class="el" href="app__state_8h_source.html#l00032">OPERACION_INSERTAR_FINAL</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::operacion_serial</a>, <a class="el" href="app__state_8h_source.html#l00059">AppState::pila</a>, <a class="el" href="pila_8c_source.html#l00048">pila_push()</a>, <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>, <a class="el" href="app__state_8h_source.html#l00064">AppState::sublista</a>, <a class="el" href="sublista_8c_source.html#l00051">sublista_insertar_padre_final()</a>, <a class="el" href="app__state_8h_source.html#l00050">AppState::sublista_padre_activo</a>, <a class="el" href="app__state_8h_source.html#l00055">AppState::sublista_padre_activo_ok</a>, <a class="el" href="app__state_8c_source.html#l00035">trigger_feedback()</a>, <a class="el" href="app__state_8h_source.html#l00054">AppState::ultima_operacion_ok</a>, <a class="el" href="app__state_8h_source.html#l00048">AppState::ultima_prioridad</a> y <a class="el" href="app__state_8h_source.html#l00047">AppState::ultimo_valor</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00892">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01004">handle_keyboard()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00957">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01089">handle_keyboard()</a>.</p>
 
 </div>
 </div>
@@ -430,14 +441,14 @@ Funciones</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Ejecuta inversion (solo lista en MVP). </p>
-<p>Ejecuta inversion (solo lista en MVP). </p>
+<p>Ejecuta inversion en lista o lista circular. </p>
+<p>Ejecuta inversion en lista o lista circular. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00458">458</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00517">517</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00038">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="lista__circular_8c_source.html#l00139">lcir_invertir()</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00363">lista_invertir()</a>, <a class="el" href="app__state_8h_source.html#l00039">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00033">OPERACION_INVERTIR</a>, <a class="el" href="app__state_8h_source.html#l00050">AppState::operacion_serial</a>, <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>, <a class="el" href="app__state_8c_source.html#l00035">trigger_feedback()</a> y <a class="el" href="app__state_8h_source.html#l00049">AppState::ultima_operacion_ok</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="lista__circular_8c_source.html#l00139">lcir_invertir()</a>, <a class="el" href="app__state_8h_source.html#l00062">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00063">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00363">lista_invertir()</a>, <a class="el" href="app__state_8h_source.html#l00043">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00035">OPERACION_INVERTIR</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::operacion_serial</a>, <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>, <a class="el" href="app__state_8c_source.html#l00035">trigger_feedback()</a> y <a class="el" href="app__state_8h_source.html#l00054">AppState::ultima_operacion_ok</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00892">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01004">handle_keyboard()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00957">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01089">handle_keyboard()</a>.</p>
 
 </div>
 </div>
@@ -456,14 +467,14 @@ Funciones</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Inserta al final cuando la estructura activa es lista. </p>
-<p>Inserta al final cuando la estructura activa es lista. </p>
+<p>Inserta al final cuando la estructura activa es lista o lista circular. </p>
+<p>Inserta al final cuando la estructura activa es lista o lista circular. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00317">317</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00343">343</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00038">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00041">AppState::input_valor</a>, <a class="el" href="lista__circular_8c_source.html#l00054">lcir_insertar_final()</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00089">lista_insertar_final()</a>, <a class="el" href="app__state_8h_source.html#l00051">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00039">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00030">OPERACION_INSERTAR_FINAL</a>, <a class="el" href="app__state_8h_source.html#l00050">AppState::operacion_serial</a>, <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>, <a class="el" href="app__state_8c_source.html#l00035">trigger_feedback()</a>, <a class="el" href="app__state_8h_source.html#l00049">AppState::ultima_operacion_ok</a> y <a class="el" href="app__state_8h_source.html#l00043">AppState::ultimo_valor</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00045">AppState::input_valor</a>, <a class="el" href="lista__circular_8c_source.html#l00054">lcir_insertar_final()</a>, <a class="el" href="app__state_8h_source.html#l00062">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00063">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00089">lista_insertar_final()</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00043">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00032">OPERACION_INSERTAR_FINAL</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::operacion_serial</a>, <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>, <a class="el" href="app__state_8c_source.html#l00035">trigger_feedback()</a>, <a class="el" href="app__state_8h_source.html#l00054">AppState::ultima_operacion_ok</a> y <a class="el" href="app__state_8h_source.html#l00047">AppState::ultimo_valor</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00892">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01004">handle_keyboard()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00957">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01089">handle_keyboard()</a>.</p>
 
 </div>
 </div>
@@ -482,14 +493,66 @@ Funciones</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Inserta al inicio cuando la estructura activa es lista. </p>
-<p>Inserta al inicio cuando la estructura activa es lista. </p>
+<p>Inserta al inicio cuando la estructura activa es lista o lista circular. </p>
+<p>Inserta al inicio cuando la estructura activa es lista o lista circular. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00282">282</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00308">308</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00038">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00041">AppState::input_valor</a>, <a class="el" href="lista__circular_8c_source.html#l00029">lcir_insertar_inicio()</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00056">lista_insertar_inicio()</a>, <a class="el" href="app__state_8h_source.html#l00051">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00039">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00029">OPERACION_INSERTAR_INICIO</a>, <a class="el" href="app__state_8h_source.html#l00050">AppState::operacion_serial</a>, <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>, <a class="el" href="app__state_8c_source.html#l00035">trigger_feedback()</a>, <a class="el" href="app__state_8h_source.html#l00049">AppState::ultima_operacion_ok</a> y <a class="el" href="app__state_8h_source.html#l00043">AppState::ultimo_valor</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00045">AppState::input_valor</a>, <a class="el" href="lista__circular_8c_source.html#l00029">lcir_insertar_inicio()</a>, <a class="el" href="app__state_8h_source.html#l00062">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00063">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00056">lista_insertar_inicio()</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00043">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00031">OPERACION_INSERTAR_INICIO</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::operacion_serial</a>, <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>, <a class="el" href="app__state_8c_source.html#l00035">trigger_feedback()</a>, <a class="el" href="app__state_8h_source.html#l00054">AppState::ultima_operacion_ok</a> y <a class="el" href="app__state_8h_source.html#l00047">AppState::ultimo_valor</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00892">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01004">handle_keyboard()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00957">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01089">handle_keyboard()</a>.</p>
+
+</div>
+</div>
+<a id="add932885153f83aadeeb780e602eca8d" name="add932885153f83aadeeb780e602eca8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add932885153f83aadeeb780e602eca8d">&#9670;&#160;</a></span>app_state_operacion_sublista_eliminar_hijo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void app_state_operacion_sublista_eliminar_hijo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_app_state.html">AppState</a> *</td>          <td class="paramname"><span class="paramname"><em>state</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Elimina un hijo del padre activo del TAD <a class="el" href="sublista_8h.html#a17b24a46f4db6f24ce92369542476181">Sublista</a>. </p>
+<p>Elimina un hijo del padre activo del TAD <a class="el" href="sublista_8h.html#a17b24a46f4db6f24ce92369542476181">Sublista</a>. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00589">589</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="app__state_8h_source.html#l00045">AppState::input_valor</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00043">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::operacion_serial</a>, <a class="el" href="app__state_8h_source.html#l00037">OPERACION_SUBLISTA_ELIMINAR_HIJO</a>, <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>, <a class="el" href="app__state_8h_source.html#l00064">AppState::sublista</a>, <a class="el" href="sublista_8c_source.html#l00077">sublista_buscar_padre()</a>, <a class="el" href="sublista_8c_source.html#l00162">sublista_eliminar_hijo_primero()</a>, <a class="el" href="app__state_8h_source.html#l00050">AppState::sublista_padre_activo</a>, <a class="el" href="app__state_8h_source.html#l00055">AppState::sublista_padre_activo_ok</a>, <a class="el" href="app__state_8c_source.html#l00035">trigger_feedback()</a>, <a class="el" href="app__state_8h_source.html#l00054">AppState::ultima_operacion_ok</a> y <a class="el" href="app__state_8h_source.html#l00047">AppState::ultimo_valor</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00957">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01089">handle_keyboard()</a>.</p>
+
+</div>
+</div>
+<a id="aa442eeb0093f47277aa1e1d79a925b85" name="aa442eeb0093f47277aa1e1d79a925b85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa442eeb0093f47277aa1e1d79a925b85">&#9670;&#160;</a></span>app_state_operacion_sublista_insertar_hijo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void app_state_operacion_sublista_insertar_hijo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_app_state.html">AppState</a> *</td>          <td class="paramname"><span class="paramname"><em>state</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inserta un hijo en el padre activo del TAD <a class="el" href="sublista_8h.html#a17b24a46f4db6f24ce92369542476181">Sublista</a>. </p>
+<p>Inserta un hijo en el padre activo del TAD <a class="el" href="sublista_8h.html#a17b24a46f4db6f24ce92369542476181">Sublista</a>. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00547">547</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="app__state_8h_source.html#l00045">AppState::input_valor</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00043">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::operacion_serial</a>, <a class="el" href="app__state_8h_source.html#l00036">OPERACION_SUBLISTA_INSERTAR_HIJO</a>, <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>, <a class="el" href="app__state_8h_source.html#l00064">AppState::sublista</a>, <a class="el" href="sublista_8c_source.html#l00077">sublista_buscar_padre()</a>, <a class="el" href="sublista_8c_source.html#l00125">sublista_insertar_hijo_final()</a>, <a class="el" href="app__state_8h_source.html#l00050">AppState::sublista_padre_activo</a>, <a class="el" href="app__state_8h_source.html#l00055">AppState::sublista_padre_activo_ok</a>, <a class="el" href="app__state_8c_source.html#l00035">trigger_feedback()</a>, <a class="el" href="app__state_8h_source.html#l00054">AppState::ultima_operacion_ok</a> y <a class="el" href="app__state_8h_source.html#l00047">AppState::ultimo_valor</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00957">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01089">handle_keyboard()</a>.</p>
 
 </div>
 </div>
@@ -511,11 +574,11 @@ Funciones</h2></td></tr>
 <p>Ejecuta vaciado/destruccion logica segun estructura activa. </p>
 <p>Ejecuta vaciado/destruccion logica segun estructura activa. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00488">488</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00631">631</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00054">AppState::cola</a>, <a class="el" href="app__state_8h_source.html#l00055">AppState::cola_prioridad</a>, <a class="el" href="cola_8c_source.html#l00101">cola_vaciar()</a>, <a class="el" href="cola__prioridad_8c_source.html#l00299">cp_vaciar()</a>, <a class="el" href="app__state_8h_source.html#l00038">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00018">ESTRUCTURA_PILA</a>, <a class="el" href="lista__circular_8c_source.html#l00251">lcir_destruir()</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00642">lista_destruir()</a>, <a class="el" href="app__state_8h_source.html#l00039">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00050">AppState::operacion_serial</a>, <a class="el" href="app__state_8h_source.html#l00034">OPERACION_VACIAR</a>, <a class="el" href="app__state_8h_source.html#l00053">AppState::pila</a>, <a class="el" href="pila_8c_source.html#l00110">pila_destruir()</a>, <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>, <a class="el" href="app__state_8c_source.html#l00035">trigger_feedback()</a> y <a class="el" href="app__state_8h_source.html#l00049">AppState::ultima_operacion_ok</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00060">AppState::cola</a>, <a class="el" href="app__state_8h_source.html#l00061">AppState::cola_prioridad</a>, <a class="el" href="cola_8c_source.html#l00101">cola_vaciar()</a>, <a class="el" href="cola__prioridad_8c_source.html#l00299">cp_vaciar()</a>, <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="lista__circular_8c_source.html#l00251">lcir_destruir()</a>, <a class="el" href="app__state_8h_source.html#l00062">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00063">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00642">lista_destruir()</a>, <a class="el" href="app__state_8h_source.html#l00043">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::operacion_serial</a>, <a class="el" href="app__state_8h_source.html#l00038">OPERACION_VACIAR</a>, <a class="el" href="app__state_8h_source.html#l00059">AppState::pila</a>, <a class="el" href="pila_8c_source.html#l00110">pila_destruir()</a>, <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>, <a class="el" href="app__state_8h_source.html#l00064">AppState::sublista</a>, <a class="el" href="sublista_8c_source.html#l00281">sublista_destruir()</a>, <a class="el" href="sublista_8c_source.html#l00044">sublista_inicializar()</a>, <a class="el" href="app__state_8h_source.html#l00050">AppState::sublista_padre_activo</a>, <a class="el" href="app__state_8h_source.html#l00055">AppState::sublista_padre_activo_ok</a>, <a class="el" href="app__state_8c_source.html#l00035">trigger_feedback()</a> y <a class="el" href="app__state_8h_source.html#l00054">AppState::ultima_operacion_ok</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00892">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01004">handle_keyboard()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00957">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01089">handle_keyboard()</a>.</p>
 
 </div>
 </div>
@@ -541,11 +604,11 @@ Funciones</h2></td></tr>
 <p>Cambia la estructura seleccionada en el menu. </p>
 <p>Cambia la estructura seleccionada en el menu. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00083">83</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00087">87</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00047">AppState::animacion_cambio_estructura</a>, <a class="el" href="app__state_8h_source.html#l00046">AppState::animacion_feedback</a>, <a class="el" href="app__state_8h_source.html#l00038">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00039">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00040">AppState::operacion_animada</a>, <a class="el" href="app__state_8h_source.html#l00026">OPERACION_NINGUNA</a> y <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00052">AppState::animacion_cambio_estructura</a>, <a class="el" href="app__state_8h_source.html#l00051">AppState::animacion_feedback</a>, <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00043">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00044">AppState::operacion_animada</a>, <a class="el" href="app__state_8h_source.html#l00028">OPERACION_NINGUNA</a> y <a class="el" href="app__state_8c_source.html#l00030">set_message()</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00311">draw_home_screen()</a>, <a class="el" href="main_8c_source.html#l00391">handle_navigation_keyboard()</a> y <a class="el" href="main_8c_source.html#l01111">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00344">draw_home_screen()</a>, <a class="el" href="main_8c_source.html#l00431">handle_navigation_keyboard()</a> y <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
 
 </div>
 </div>
@@ -571,11 +634,11 @@ Funciones</h2></td></tr>
 <p>Asigna prioridad de entrada dentro del rango valido. </p>
 <p>Asigna prioridad de entrada dentro del rango valido. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00126">126</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00130">130</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00019">clamp_int()</a> y <a class="el" href="app__state_8h_source.html#l00042">AppState::input_prioridad</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00019">clamp_int()</a> y <a class="el" href="app__state_8h_source.html#l00046">AppState::input_prioridad</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01057">apply_input_focus()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01150">apply_input_focus()</a>.</p>
 
 </div>
 </div>
@@ -601,11 +664,11 @@ Funciones</h2></td></tr>
 <p>Asigna un valor de entrada principal. </p>
 <p>Asigna un valor de entrada principal. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00108">108</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00112">112</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00041">AppState::input_valor</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00045">AppState::input_valor</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01057">apply_input_focus()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01150">apply_input_focus()</a>.</p>
 
 </div>
 </div>
@@ -627,11 +690,11 @@ Funciones</h2></td></tr>
 <p>Libera memoria de TADs y limpia estado. </p>
 <p>Libera memoria de TADs y limpia estado. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00070">70</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00073">73</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00054">AppState::cola</a>, <a class="el" href="app__state_8h_source.html#l00055">AppState::cola_prioridad</a>, <a class="el" href="cola_8c_source.html#l00101">cola_vaciar()</a>, <a class="el" href="cola__prioridad_8c_source.html#l00299">cp_vaciar()</a>, <a class="el" href="lista__circular_8c_source.html#l00251">lcir_destruir()</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00642">lista_destruir()</a>, <a class="el" href="app__state_8h_source.html#l00053">AppState::pila</a> y <a class="el" href="pila_8c_source.html#l00110">pila_destruir()</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00060">AppState::cola</a>, <a class="el" href="app__state_8h_source.html#l00061">AppState::cola_prioridad</a>, <a class="el" href="cola_8c_source.html#l00101">cola_vaciar()</a>, <a class="el" href="cola__prioridad_8c_source.html#l00299">cp_vaciar()</a>, <a class="el" href="lista__circular_8c_source.html#l00251">lcir_destruir()</a>, <a class="el" href="app__state_8h_source.html#l00062">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00063">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00642">lista_destruir()</a>, <a class="el" href="app__state_8h_source.html#l00059">AppState::pila</a>, <a class="el" href="pila_8c_source.html#l00110">pila_destruir()</a>, <a class="el" href="app__state_8h_source.html#l00064">AppState::sublista</a> y <a class="el" href="sublista_8c_source.html#l00281">sublista_destruir()</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01111">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
 
 </div>
 </div>
@@ -657,11 +720,11 @@ Funciones</h2></td></tr>
 <p>Avanza animaciones visuales efimeras ligadas al estado. </p>
 <p>Avanza animaciones visuales efimeras ligadas al estado. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00135">135</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="app__state_8c_source.html#l00139">139</a> del archivo <a class="el" href="app__state_8c_source.html">app_state.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00047">AppState::animacion_cambio_estructura</a>, <a class="el" href="app__state_8h_source.html#l00046">AppState::animacion_feedback</a>, <a class="el" href="app__state_8h_source.html#l00048">AppState::animacion_pulso_panel</a>, <a class="el" href="app__state_8c_source.html#l00012">APP_FEEDBACK_DURATION</a>, <a class="el" href="app__state_8c_source.html#l00016">APP_PANEL_PULSE_DURATION</a>, <a class="el" href="app__state_8c_source.html#l00014">APP_SWITCH_DURATION</a>, <a class="el" href="app__state_8h_source.html#l00040">AppState::operacion_animada</a> y <a class="el" href="app__state_8h_source.html#l00026">OPERACION_NINGUNA</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00052">AppState::animacion_cambio_estructura</a>, <a class="el" href="app__state_8h_source.html#l00051">AppState::animacion_feedback</a>, <a class="el" href="app__state_8h_source.html#l00053">AppState::animacion_pulso_panel</a>, <a class="el" href="app__state_8c_source.html#l00012">APP_FEEDBACK_DURATION</a>, <a class="el" href="app__state_8c_source.html#l00016">APP_PANEL_PULSE_DURATION</a>, <a class="el" href="app__state_8c_source.html#l00014">APP_SWITCH_DURATION</a>, <a class="el" href="app__state_8h_source.html#l00044">AppState::operacion_animada</a> y <a class="el" href="app__state_8h_source.html#l00028">OPERACION_NINGUNA</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01111">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
 
 </div>
 </div>

@@ -98,6 +98,10 @@ $(function(){initNavTree('pila_8c.html','',''); });
 </div>
 <p><a href="pila_8c_source.html">Ir al código fuente de este archivo.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Estructuras de datos</h2></td></tr>
+<tr class="memitem:nodo" id="r_nodo"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structnodo.html">nodo</a></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Funciones</h2></td></tr>
 <tr class="memitem:a4bf8b75069bf45c648f5d31ba8fa3b46" id="r_a4bf8b75069bf45c648f5d31ba8fa3b46"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a4bf8b75069bf45c648f5d31ba8fa3b46">pila_contar</a> (const <a class="el" href="struct_pila.html">Pila</a> *pila)</td></tr>
@@ -147,9 +151,9 @@ Funciones</h2></td></tr>
 
 <p class="definition">Definición en la línea <a class="el" href="pila_8c_source.html#l00137">137</a> del archivo <a class="el" href="pila_8c_source.html">pila.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="sublista_8h_source.html#l00021">nodo::sgte</a> y <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00465">estructura_cantidad()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00505">estructura_cantidad()</a>.</p>
 
 </div>
 </div>
@@ -194,7 +198,7 @@ Funciones</h2></td></tr>
 
 <p class="definition">Definición en la línea <a class="el" href="pila_8c_source.html#l00186">186</a> del archivo <a class="el" href="pila_8c_source.html">pila.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="sublista_8h_source.html#l00020">nodo::nro</a>, <a class="el" href="sublista_8h_source.html#l00021">nodo::sgte</a> y <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
 
 <p class="reference">Referenciado por <a class="el" href="pila__view_8c_source.html#l00030">pila_view_draw()</a>.</p>
 
@@ -229,9 +233,9 @@ Funciones</h2></td></tr>
 
 <p class="definition">Definición en la línea <a class="el" href="pila_8c_source.html#l00110">110</a> del archivo <a class="el" href="pila_8c_source.html">pila.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="sublista_8h_source.html#l00021">nodo::sgte</a> y <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00164">app_state_operacion_inicializar()</a>, <a class="el" href="app__state_8c_source.html#l00488">app_state_operacion_vaciar()</a> y <a class="el" href="app__state_8c_source.html#l00070">app_state_shutdown()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00168">app_state_operacion_inicializar()</a>, <a class="el" href="app__state_8c_source.html#l00631">app_state_operacion_vaciar()</a> y <a class="el" href="app__state_8c_source.html#l00073">app_state_shutdown()</a>.</p>
 
 </div>
 </div>
@@ -281,7 +285,7 @@ Complejidad temporal: O(n), donde n es el número de elementos. </dd></dl>
 
 <p class="definition">Definición en la línea <a class="el" href="pila_8c_source.html#l00227">227</a> del archivo <a class="el" href="pila_8c_source.html">pila.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="sublista_8h_source.html#l00020">nodo::nro</a>, <a class="el" href="sublista_8h_source.html#l00021">nodo::sgte</a> y <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
 
 </div>
 </div>
@@ -316,7 +320,7 @@ Complejidad temporal: O(n), donde n es el número de elementos. </dd></dl>
 
 <p class="reference">Hace referencia a <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00042">app_state_init()</a> y <a class="el" href="app__state_8c_source.html#l00164">app_state_operacion_inicializar()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00042">app_state_init()</a> y <a class="el" href="app__state_8c_source.html#l00168">app_state_operacion_inicializar()</a>.</p>
 
 </div>
 </div>
@@ -358,9 +362,9 @@ Complejidad temporal: O(n), donde n es el número de elementos. </dd></dl>
 
 <p class="definition">Definición en la línea <a class="el" href="pila_8c_source.html#l00083">83</a> del archivo <a class="el" href="pila_8c_source.html">pila.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="sublista_8h_source.html#l00020">nodo::nro</a>, <a class="el" href="sublista_8h_source.html#l00021">nodo::sgte</a> y <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00352">app_state_operacion_eliminar()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00378">app_state_operacion_eliminar()</a>.</p>
 
 </div>
 </div>
@@ -402,9 +406,9 @@ Complejidad temporal: O(n), donde n es el número de elementos. </dd></dl>
 
 <p class="definition">Definición en la línea <a class="el" href="pila_8c_source.html#l00048">48</a> del archivo <a class="el" href="pila_8c_source.html">pila.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="sublista_8h_source.html#l00020">nodo::nro</a>, <a class="el" href="sublista_8h_source.html#l00021">nodo::sgte</a> y <a class="el" href="pila_8h_source.html#l00015">Pila::tope</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00207">app_state_operacion_insertar()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00218">app_state_operacion_insertar()</a>.</p>
 
 </div>
 </div>

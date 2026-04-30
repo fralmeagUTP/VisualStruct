@@ -6,7 +6,9 @@ var annotated_dup =
     [ "ColaPrioridad", "struct_cola_prioridad.html", "struct_cola_prioridad" ],
     [ "Lista", "struct_lista.html", "struct_lista" ],
     [ "ListaCircular", "struct_lista_circular.html", "struct_lista_circular" ],
+    [ "nodo", "structnodo.html", "structnodo" ],
     [ "Pila", "struct_pila.html", "struct_pila" ],
+    [ "sublista", "structsublista.html", "structsublista" ],
     [ "UIContext", "struct_u_i_context.html", "struct_u_i_context" ],
     [ "UILayout", "struct_u_i_layout.html", "struct_u_i_layout" ]
 ];

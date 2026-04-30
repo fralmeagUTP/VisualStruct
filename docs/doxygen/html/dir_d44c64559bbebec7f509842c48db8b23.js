@@ -13,5 +13,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "lista_view.h", "lista__view_8h.html", "lista__view_8h" ],
     [ "pila.h", "pila_8h.html", "pila_8h" ],
     [ "pila_view.h", "pila__view_8h.html", "pila__view_8h" ],
+    [ "sublista.h", "sublista_8h.html", "sublista_8h" ],
+    [ "sublista_view.h", "sublista__view_8h.html", "sublista__view_8h" ],
     [ "ui.h", "ui_8h.html", "ui_8h" ]
 ];

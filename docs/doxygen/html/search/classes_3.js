@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pila_0',['Pila',['../struct_pila.html',1,'']]]
+  ['nodo_0',['nodo',['../structnodo.html',1,'']]]
 ];

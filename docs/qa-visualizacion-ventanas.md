@@ -11,7 +11,7 @@ Verificar que no existan solapes, recortes ni zonas inutiles en los paneles de l
 1. Compilar el proyecto:
 
 ```powershell
-gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state.c src/code_viewer.c src/algorithm_trace.c src/pila_view.c src/cola_view.c src/cola_prioridad_view.c src/lista_view.c src/lista_circular_view.c src/pila.c src/cola.c src/cola_prioridad.c src/lista.c src/lista_circular.c -o visualstruct_qa_layout -lraylib -lopengl32 -lgdi32 -lwinmm
+gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state.c src/code_viewer.c src/algorithm_trace.c src/pila_view.c src/cola_view.c src/cola_prioridad_view.c src/lista_view.c src/lista_circular_view.c src/sublista_view.c src/pila.c src/cola.c src/cola_prioridad.c src/lista.c src/lista_circular.c src/sublista.c -o visualstruct_qa_layout -lraylib -lopengl32 -lgdi32 -lwinmm
 ```
 
 2. Ejecutar:
@@ -51,7 +51,12 @@ gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state
 - Verificar etiqueta `HEAD` y retorno circular del ultimo al primero
 - Confirmar scroll horizontal y barra draggable
 
-6. Ayuda interna:
+6. Sublistas:
+- Inicializar, insertar padres, seleccionar padre, insertar/eliminar hijos
+- Verificar resaltado de padre activo y agrupacion visual padre-hijos
+- Confirmar scroll vertical cuando existan suficientes filas
+
+7. Ayuda interna:
 - Abrir con `F1` desde menu principal
 - Verificar titulo, subtitulo, boton `Volver` y area de texto con scroll
 - Cerrar con `F1` y confirmar retorno a pantalla previa
@@ -90,7 +95,7 @@ gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state
 
 1. Cero solapes visibles entre textos, botones y cajas.
 2. Cero recortes de texto en secciones clave (Resumen, Traza, Sidebar).
-3. Scroll funcional donde aplique (cola, lista, lista circular, codigo, traza, pila).
+3. Scroll funcional donde aplique (pila, cola, lista, lista circular, sublistas, codigo y traza).
 4. Navegacion estable al cambiar entre estructuras y volver al menu principal.
 
 ## Registro de hallazgos

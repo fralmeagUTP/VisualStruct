@@ -11,6 +11,7 @@
 #include "lista_view.h"
 #include "lista_circular_view.h"
 #include "pila_view.h"
+#include "sublista_view.h"
 #include "ui.h"
 
 /**
@@ -33,6 +34,8 @@ static const char *estructura_nombre(TipoEstructura tipo) {
         return "Lista Enlazada";
     case ESTRUCTURA_LISTA_CIRCULAR:
         return "Lista Circular";
+    case ESTRUCTURA_SUBLISTA:
+        return "Sublistas";
     default:
         return "N/A";
     }
@@ -55,6 +58,10 @@ static const char *operacion_nombre(TipoOperacion operacion) {
         return "Buscar";
     case OPERACION_INVERTIR:
         return "Invertir";
+    case OPERACION_SUBLISTA_INSERTAR_HIJO:
+        return "Insertar Hijo";
+    case OPERACION_SUBLISTA_ELIMINAR_HIJO:
+        return "Eliminar Hijo";
     case OPERACION_VACIAR:
         return "Vaciar";
     default:
@@ -117,6 +124,9 @@ static int estructura_from_shortcut(void) {
     if (IsKeyPressed(KEY_FIVE)) {
         return ESTRUCTURA_LISTA_CIRCULAR;
     }
+    if (IsKeyPressed(KEY_SIX)) {
+        return ESTRUCTURA_SUBLISTA;
+    }
     return -1;
 }
 
@@ -145,6 +155,8 @@ static const char *estructura_descripcion(TipoEstructura tipo) {
         return "Cada nodo tiene\nprioridad y sale\nprimero el menor valor.";
     case ESTRUCTURA_LISTA_CIRCULAR:
         return "Nodos enlazados\nen ciclo cerrado:\nel ultimo apunta al primero.";
+    case ESTRUCTURA_SUBLISTA:
+        return "Cada nodo padre\ntiene una lista\nde nodos hijo.";
     default:
         return "";
     }
@@ -266,6 +278,27 @@ static void draw_home_icon(TipoEstructura tipo, Rectangle icon_circle) {
         DrawTriangle((Vector2){cx - 23.0f, cy - 10.0f}, (Vector2){cx - 18.0f, cy - 14.0f},
                      (Vector2){cx - 18.0f, cy - 6.0f}, c);
         break;
+    case ESTRUCTURA_SUBLISTA:
+        DrawRectangleRounded((Rectangle){cx - 30.0f, cy - 10.0f, 20.0f, 14.0f}, 0.2f, 4,
+                             Fade(c, 0.18f));
+        DrawRectangleRoundedLinesEx((Rectangle){cx - 30.0f, cy - 10.0f, 20.0f, 14.0f}, 0.2f, 4,
+                                    1.6f, c);
+        DrawLineEx((Vector2){cx - 10.0f, cy - 3.0f}, (Vector2){cx + 2.0f, cy - 3.0f}, 1.8f, c);
+        DrawTriangle((Vector2){cx + 2.0f, cy - 3.0f}, (Vector2){cx - 3.0f, cy - 7.0f},
+                     (Vector2){cx - 3.0f, cy + 1.0f}, c);
+        DrawRectangleRounded((Rectangle){cx + 8.0f, cy - 16.0f, 12.0f, 10.0f}, 0.2f, 4,
+                             Fade(c, 0.18f));
+        DrawRectangleRounded((Rectangle){cx + 8.0f, cy - 2.0f, 12.0f, 10.0f}, 0.2f, 4,
+                             Fade(c, 0.18f));
+        DrawRectangleRounded((Rectangle){cx + 8.0f, cy + 12.0f, 12.0f, 10.0f}, 0.2f, 4,
+                             Fade(c, 0.18f));
+        DrawRectangleRoundedLinesEx((Rectangle){cx + 8.0f, cy - 16.0f, 12.0f, 10.0f}, 0.2f, 4,
+                                    1.5f, c);
+        DrawRectangleRoundedLinesEx((Rectangle){cx + 8.0f, cy - 2.0f, 12.0f, 10.0f}, 0.2f, 4,
+                                    1.5f, c);
+        DrawRectangleRoundedLinesEx((Rectangle){cx + 8.0f, cy + 12.0f, 12.0f, 10.0f}, 0.2f, 4,
+                                    1.5f, c);
+        break;
     default:
         break;
     }
@@ -316,13 +349,14 @@ static void draw_home_screen(const UILayout *layout, AppState *app, ScreenMode *
     Rectangle cards_area = {content.x + 20.0f, content.y + 98.0f, content.width - 40.0f, 360.0f};
     Rectangle info_box = {content.x + 20.0f, cards_area.y + cards_area.height + 20.0f,
                           content.width - 40.0f, 78.0f};
-    float gap = 14.0f;
-    float card_w = (cards_area.width - gap * 4.0f) / 5.0f;
+    float gap = 12.0f;
+    float card_w = (cards_area.width - gap * 5.0f) / 6.0f;
     Rectangle card_pila = {cards_area.x, cards_area.y, card_w, cards_area.height};
     Rectangle card_cola = {card_pila.x + card_w + gap, cards_area.y, card_w, cards_area.height};
     Rectangle card_lista = {card_cola.x + card_w + gap, cards_area.y, card_w, cards_area.height};
     Rectangle card_cp = {card_lista.x + card_w + gap, cards_area.y, card_w, cards_area.height};
     Rectangle card_lc = {card_cp.x + card_w + gap, cards_area.y, card_w, cards_area.height};
+    Rectangle card_sub = {card_lc.x + card_w + gap, cards_area.y, card_w, cards_area.height};
     Rectangle nav_help = {content.x + 20.0f, content.y + 74.0f, content.width - 40.0f, 26.0f};
     int title_w = ui_measure_text("VISUALIZADOR DE ESTRUCTURAS DE DATOS SECUENCIALES", 24.0f,
                                   0.12f, true);
@@ -337,7 +371,7 @@ static void draw_home_screen(const UILayout *layout, AppState *app, ScreenMode *
                  content.x + (content.width - subtitle_w) * 0.5f, content.y + 48.0f, 16.0f,
                  0.14f, (Color){53, 66, 83, 255}, false);
     DrawRectangleRounded(nav_help, 0.25f, 8, Fade((Color){220, 232, 247, 255}, 0.55f));
-    ui_draw_text("Atajos: 1 Pilas  2 Colas  3 Listas  4 Prioridad  5 Circular  |  F1 Ayuda  |  Enter: Visualizar",
+    ui_draw_text("Atajos: 1 Pilas  2 Colas  3 Listas  4 Prioridad  5 Circular  6 Sublistas  |  F1 Ayuda  |  Enter: Visualizar",
                  nav_help.x + 10.0f, nav_help.y + 5.0f, 13.0f, 0.14f,
                  (Color){36, 56, 84, 255}, false);
 
@@ -371,6 +405,12 @@ static void draw_home_screen(const UILayout *layout, AppState *app, ScreenMode *
                        ESTRUCTURA_LISTA_CIRCULAR, *home_selected == 4) ||
         (activate_selected && *home_selected == 4)) {
         app_state_set_estructura(app, ESTRUCTURA_LISTA_CIRCULAR);
+        *mode = SCREEN_VISUALIZER;
+    }
+    if (draw_home_card(card_sub, "SUBLISTAS", estructura_descripcion(ESTRUCTURA_SUBLISTA),
+                       ESTRUCTURA_SUBLISTA, *home_selected == 5) ||
+        (activate_selected && *home_selected == 5)) {
+        app_state_set_estructura(app, ESTRUCTURA_SUBLISTA);
         *mode = SCREEN_VISUALIZER;
     }
 
@@ -408,10 +448,10 @@ static void handle_navigation_keyboard(ScreenMode *mode, AppState *app, int *hom
 
     if (*mode == SCREEN_HOME) {
         if (IsKeyPressed(KEY_RIGHT)) {
-            *home_selected = (*home_selected + 1) % 5;
+            *home_selected = (*home_selected + 1) % 6;
         }
         if (IsKeyPressed(KEY_LEFT)) {
-            *home_selected = (*home_selected + 4) % 5;
+            *home_selected = (*home_selected + 5) % 6;
         }
         if (IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_KP_ENTER) || IsKeyPressed(KEY_SPACE)) {
             *activate_selected = true;
@@ -427,7 +467,7 @@ static void handle_navigation_keyboard(ScreenMode *mode, AppState *app, int *hom
         }
 
         if (IsKeyPressed(KEY_TAB)) {
-            TipoEstructura next = (TipoEstructura)((app->estructura_activa + 1) % 5);
+            TipoEstructura next = (TipoEstructura)((app->estructura_activa + 1) % 6);
             app_state_set_estructura(app, next);
         }
     }
@@ -463,6 +503,9 @@ static float clamp_float(float value, float min, float max) {
 
 /** @brief Retorna la cantidad de elementos de la estructura actualmente seleccionada. */
 static int estructura_cantidad(const AppState *state) {
+    int total;
+    Nodo *padre;
+
     if (state == NULL) {
         return 0;
     }
@@ -478,6 +521,14 @@ static int estructura_cantidad(const AppState *state) {
         return lista_contar(&state->lista);
     case ESTRUCTURA_LISTA_CIRCULAR:
         return lcir_contar(&state->lista_circular);
+    case ESTRUCTURA_SUBLISTA:
+        total = 0;
+        padre = state->sublista;
+        while (padre != NULL) {
+            total += 1 + sublista_contar_hijos(padre);
+            padre = padre->sgte;
+        }
+        return total;
     default:
         return 0;
     }
@@ -574,9 +625,10 @@ static const char *APP_HELP_TEXT_PART1 =
     "- Lista Enlazada\n"
     "- Cola de Prioridad\n"
     "- Lista Circular\n"
+    "- Sublistas\n"
     "\n"
     "Puedes elegir con mouse o teclado:\n"
-    "- Teclas 1..5 para seleccion rapida.\n"
+    "- Teclas 1..6 para seleccion rapida.\n"
     "- Flechas izquierda/derecha para mover el foco.\n"
     "- Enter o Espacio para entrar al visualizador.\n"
     "\n"
@@ -631,6 +683,15 @@ static const char *APP_HELP_TEXT_PART1 =
     "- Invertir\n"
     "- Vaciar\n"
     "\n"
+    "Para Sublistas:\n"
+    "- Inicializar\n"
+    "- Insertar Padre\n"
+    "- Buscar/Seleccionar Padre\n"
+    "- Eliminar Padre\n"
+    "- Insertar Hijo (requiere padre activo)\n"
+    "- Eliminar Hijo (requiere padre activo)\n"
+    "- Vaciar\n"
+    "\n"
     "Buenas practicas didacticas:\n"
     "- Inicializa antes de una demostracion nueva.\n"
     "- Ejecuta secuencias cortas de 3 a 6 pasos.\n"
@@ -669,6 +730,7 @@ static const char *APP_HELP_TEXT_PART1B =
     "Navegacion dentro de la vista:\n"
     "- Pila: scroll vertical con rueda del mouse.\n"
     "- Cola, Lista, Lista Circular y Cola de Prioridad: scroll horizontal.\n"
+    "- Sublistas: scroll vertical para recorrer padres e hijos.\n"
     "- En listas largas, usa el scroll para inspeccionar extremos.\n"
     "\n"
     "============================================================\n";
@@ -713,11 +775,11 @@ static const char *APP_HELP_TEXT_PART2 =
     "============================================================\n"
     "Operaciones:\n"
     "- I: inicializar estructura activa.\n"
-    "- A: insertar (o final en listas).\n"
-    "- Z: insertar al inicio (listas).\n"
+    "- A: insertar (o final en listas, padre en sublistas).\n"
+    "- Z: insertar al inicio (listas) o insertar hijo (sublistas).\n"
     "- D: eliminar.\n"
-    "- B: buscar (listas).\n"
-    "- R: invertir (listas).\n"
+    "- B: buscar (listas) o seleccionar padre (sublistas).\n"
+    "- R: invertir (listas) o eliminar hijo (sublistas).\n"
     "- V: vaciar estructura activa.\n"
     "\n"
     "Entrada numerica:\n"
@@ -757,7 +819,7 @@ static const char *APP_HELP_TEXT_PART4 =
     "- src/*_view.c: dibujo especifico por estructura.\n"
     "- src/code_viewer.c: snippets C por operacion.\n"
     "- src/algorithm_trace.c: texto de traza y complejidades.\n"
-    "- src/pila.c, cola.c, cola_prioridad.c, lista.c, lista_circular.c: TAD puros en C.\n"
+    "- src/pila.c, cola.c, cola_prioridad.c, lista.c, lista_circular.c, sublista.c: TAD puros en C.\n"
     "\n"
     "Principio clave de diseno:\n"
     "- La UI no altera nodos directamente.\n"
@@ -875,6 +937,9 @@ static void draw_active_view(const AppState *state, Rectangle panel, float conte
     case ESTRUCTURA_LISTA_CIRCULAR:
         lista_circular_view_draw(state, area);
         break;
+    case ESTRUCTURA_SUBLISTA:
+        sublista_view_draw(state, area);
+        break;
     default:
         break;
     }
@@ -924,6 +989,9 @@ static float draw_context_controls(AppState *app, Rectangle panel, bool *is_comp
         app->estructura_activa == ESTRUCTURA_LISTA_CIRCULAR) {
         count = 7;
         hint = "Atajos: UP/DOWN valor, Z inicio, A final, B buscar, D eliminar, R invertir";
+    } else if (app->estructura_activa == ESTRUCTURA_SUBLISTA) {
+        count = 7;
+        hint = "Atajos: A padre+, B seleccionar padre, D padre-, Z hijo+, R hijo-";
     } else if (app->estructura_activa == ESTRUCTURA_COLA_PRIORIDAD) {
         count = 4;
         hint = "Atajos: UP/DOWN valor, LEFT/RIGHT prioridad";
@@ -990,6 +1058,23 @@ static float draw_context_controls(AppState *app, Rectangle panel, bool *is_comp
                 app_state_operacion_vaciar(app);
             }
             break;
+        case ESTRUCTURA_SUBLISTA:
+            if (i == 0 && ui_button(btn, "Inicializar (I)", false)) {
+                app_state_operacion_inicializar(app);
+            } else if (i == 1 && ui_button(btn, "Padre + (A)", false)) {
+                app_state_operacion_insertar(app);
+            } else if (i == 2 && ui_button(btn, "Sel Padre (B)", false)) {
+                app_state_operacion_buscar(app);
+            } else if (i == 3 && ui_button(btn, "Padre - (D)", false)) {
+                app_state_operacion_eliminar(app);
+            } else if (i == 4 && ui_button(btn, "Hijo + (Z)", false)) {
+                app_state_operacion_sublista_insertar_hijo(app);
+            } else if (i == 5 && ui_button(btn, "Hijo - (R)", false)) {
+                app_state_operacion_sublista_eliminar_hijo(app);
+            } else if (i == 6 && ui_button(btn, "Vaciar (V)", false)) {
+                app_state_operacion_vaciar(app);
+            }
+            break;
         default:
             break;
         }
@@ -1026,7 +1111,11 @@ static void handle_keyboard(AppState *app) {
         }
     }
     if (IsKeyPressed(KEY_Z)) {
-        app_state_operacion_lista_insertar_inicio(app);
+        if (app->estructura_activa == ESTRUCTURA_SUBLISTA) {
+            app_state_operacion_sublista_insertar_hijo(app);
+        } else {
+            app_state_operacion_lista_insertar_inicio(app);
+        }
     }
     if (IsKeyPressed(KEY_D)) {
         app_state_operacion_eliminar(app);
@@ -1038,7 +1127,11 @@ static void handle_keyboard(AppState *app) {
         app_state_operacion_buscar(app);
     }
     if (IsKeyPressed(KEY_R)) {
-        app_state_operacion_invertir(app);
+        if (app->estructura_activa == ESTRUCTURA_SUBLISTA) {
+            app_state_operacion_sublista_eliminar_hijo(app);
+        } else {
+            app_state_operacion_invertir(app);
+        }
     }
 }
 
@@ -1329,6 +1422,11 @@ int main(void) {
                               app.estructura_activa == ESTRUCTURA_LISTA_CIRCULAR)) {
             app_state_set_estructura(&app, ESTRUCTURA_LISTA_CIRCULAR);
         }
+        btn.y += 50.0f;
+        if (ui_sidebar_button(btn, "Sublistas",
+                              app.estructura_activa == ESTRUCTURA_SUBLISTA)) {
+            app_state_set_estructura(&app, ESTRUCTURA_SUBLISTA);
+        }
 
         DrawLine((int)(layout.sidebar.x + 16.0f), (int)(btn.y + 56.0f),
                  (int)(layout.sidebar.x + layout.sidebar.width - 16.0f), (int)(btn.y + 56.0f),
@@ -1363,10 +1461,10 @@ int main(void) {
             if (available_info_h > 96.0f) {
                 ui_draw_text("Puedes editar los campos o usar atajos.", layout.sidebar.x + 12.0f,
                              help_y, help_size, 0.10f, (Color){66, 76, 86, 255}, false);
-                ui_draw_text("Navegacion: H menu | TAB sig. | 1..5 estructura", layout.sidebar.x + 12.0f,
+                ui_draw_text("Navegacion: H menu | TAB sig. | 1..6 estructura", layout.sidebar.x + 12.0f,
                              nav_y, nav_size, 0.10f, (Color){76, 91, 110, 255}, false);
             } else if (available_info_h > 80.0f) {
-                ui_draw_text("H menu | TAB | 1..5", layout.sidebar.x + 12.0f, nav_y,
+                ui_draw_text("H menu | TAB | 1..6", layout.sidebar.x + 12.0f, nav_y,
                              compact_sidebar ? 10.0f : 11.0f, 0.10f, (Color){76, 91, 110, 255}, false);
             }
 

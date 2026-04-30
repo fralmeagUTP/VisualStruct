@@ -1,5 +1,6 @@
 var lista_8c =
 [
+    [ "nodo", "structnodo.html", "structnodo" ],
     [ "crear_nodo", "lista_8c.html#a6764a68faa6e918a97365f55edf8c86a", null ],
     [ "lista_buscar_posiciones", "lista_8c.html#aef6d64e28bc07b2d0a1304e86ff409ba", null ],
     [ "lista_contar", "lista_8c.html#ac6e7bde80e0dfc770928e1a08c258764", null ],

@@ -9,7 +9,7 @@ La aplicacion principal se compone de los siguientes grupos:
 - `src/code_viewer.c`: snippets C asociados a cada operacion.
 - `src/algorithm_trace.c`: explicaciones paso a paso y complejidades.
 - `src/*_view.c`: visualizacion grafica por estructura.
-- `src/pila.c`, `src/cola.c`, `src/cola_prioridad.c`, `src/lista.c`, `src/lista_circular.c`: TAD desacoplados de Raylib.
+- `src/pila.c`, `src/cola.c`, `src/cola_prioridad.c`, `src/lista.c`, `src/lista_circular.c`, `src/sublista.c`: TAD desacoplados de Raylib.
 - `src/main.c` tambien contiene la pantalla de ayuda interna detallada (`SCREEN_HELP`) con scroll y acceso por `F1`.
 
 ## Flujo de ejecucion
@@ -24,7 +24,7 @@ La app sigue un flujo unico por cuadro:
 
 ## Capas y responsabilidades
 ### Capa de dominio
-- Corresponde a los TAD en `src/pila.c`, `src/cola.c`, `src/cola_prioridad.c`, `src/lista.c` y `src/lista_circular.c`.
+- Corresponde a los TAD en `src/pila.c`, `src/cola.c`, `src/cola_prioridad.c`, `src/lista.c`, `src/lista_circular.c` y `src/sublista.c`.
 - Debe mantenerse independiente de Raylib y de cualquier decision visual.
 
 ### Capa de aplicacion

@@ -56,6 +56,8 @@ void app_state_init(AppState *state) {
     state->ultima_operacion_ok = true;
     state->operacion_serial = 0;
     state->coincidencias_busqueda = 0;
+    state->sublista_padre_activo = 0;
+    state->sublista_padre_activo_ok = false;
     snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
              "Aplicacion inicializada");
 
@@ -64,6 +66,7 @@ void app_state_init(AppState *state) {
     cp_inicializar(&state->cola_prioridad);
     lista_inicializar(&state->lista);
     lcir_inicializar(&state->lista_circular);
+    sublista_inicializar(&state->sublista);
 }
 
 /** @brief Libera la memoria de todas las estructuras al cerrar la app. */
@@ -77,6 +80,7 @@ void app_state_shutdown(AppState *state) {
     cp_vaciar(&state->cola_prioridad);
     lista_destruir(&state->lista);
     lcir_destruir(&state->lista_circular);
+    sublista_destruir(&state->sublista);
 }
 
 /** @brief Cambia la estructura activa y reinicia el contexto operativo. */
@@ -196,6 +200,13 @@ void app_state_operacion_inicializar(AppState *state) {
         lcir_inicializar(&state->lista_circular);
         set_message(state, "Lista circular inicializada");
         break;
+    case ESTRUCTURA_SUBLISTA:
+        sublista_destruir(&state->sublista);
+        sublista_inicializar(&state->sublista);
+        state->sublista_padre_activo = 0;
+        state->sublista_padre_activo_ok = false;
+        set_message(state, "Sublista inicializada");
+        break;
     default:
         break;
     }
@@ -273,6 +284,21 @@ void app_state_operacion_insertar(AppState *state) {
             set_message(state, "lcir_insertar_final fallido");
         }
         break;
+    case ESTRUCTURA_SUBLISTA: {
+        Nodo *padre = sublista_insertar_padre_final(&state->sublista, state->input_valor);
+        state->ultima_operacion_ok = (padre != NULL);
+        if (state->ultima_operacion_ok) {
+            state->ultimo_valor = state->input_valor;
+            state->sublista_padre_activo = state->input_valor;
+            state->sublista_padre_activo_ok = true;
+            trigger_feedback(state, OPERACION_INSERTAR);
+            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                     "sublista_insertar_padre_final(%d)", state->input_valor);
+        } else {
+            set_message(state, "insertar padre fallido");
+        }
+        break;
+    }
     default:
         break;
     }
@@ -418,6 +444,22 @@ void app_state_operacion_eliminar(AppState *state) {
             set_message(state, "valor no encontrado en lista circular");
         }
         break;
+    case ESTRUCTURA_SUBLISTA:
+        state->ultima_operacion_ok =
+            sublista_eliminar_padre_primero(&state->sublista, state->input_valor);
+        if (state->ultima_operacion_ok) {
+            state->ultimo_valor = state->input_valor;
+            if (state->sublista_padre_activo_ok &&
+                state->sublista_padre_activo == state->input_valor) {
+                state->sublista_padre_activo_ok = false;
+            }
+            trigger_feedback(state, OPERACION_ELIMINAR);
+            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                     "sublista_eliminar_padre_primero(%d)", state->input_valor);
+        } else {
+            set_message(state, "padre no encontrado en sublista");
+        }
+        break;
     default:
         break;
     }
@@ -433,6 +475,23 @@ void app_state_operacion_buscar(AppState *state) {
     state->operacion_serial++;
     state->coincidencias_busqueda = 0;
     state->ultima_operacion_ok = false;
+
+    if (state->estructura_activa == ESTRUCTURA_SUBLISTA) {
+        Nodo *padre = sublista_buscar_padre(state->sublista, state->input_valor);
+        state->coincidencias_busqueda = (padre != NULL) ? 1 : 0;
+        state->ultima_operacion_ok = true;
+        if (padre != NULL) {
+            state->sublista_padre_activo = state->input_valor;
+            state->sublista_padre_activo_ok = true;
+            trigger_feedback(state, OPERACION_BUSCAR);
+            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                     "padre activo = %d", state->sublista_padre_activo);
+        } else {
+            trigger_feedback(state, OPERACION_BUSCAR);
+            set_message(state, "padre no encontrado");
+        }
+        return;
+    }
 
     if (state->estructura_activa != ESTRUCTURA_LISTA &&
         state->estructura_activa != ESTRUCTURA_LISTA_CIRCULAR) {
@@ -484,6 +543,90 @@ void app_state_operacion_invertir(AppState *state) {
     }
 }
 
+/** @brief Inserta un hijo sobre el padre activo en el TAD sublista. */
+void app_state_operacion_sublista_insertar_hijo(AppState *state) {
+    Nodo *padre;
+
+    if (state == NULL) {
+        return;
+    }
+
+    state->operacion_actual = OPERACION_SUBLISTA_INSERTAR_HIJO;
+    state->operacion_serial++;
+
+    if (state->estructura_activa != ESTRUCTURA_SUBLISTA) {
+        state->ultima_operacion_ok = false;
+        set_message(state, "Operacion valida solo para Sublistas");
+        return;
+    }
+    if (!state->sublista_padre_activo_ok) {
+        state->ultima_operacion_ok = false;
+        set_message(state, "Seleccione padre con Buscar (B)");
+        return;
+    }
+
+    padre = sublista_buscar_padre(state->sublista, state->sublista_padre_activo);
+    if (padre == NULL) {
+        state->sublista_padre_activo_ok = false;
+        state->ultima_operacion_ok = false;
+        set_message(state, "Padre activo invalido, seleccione nuevamente");
+        return;
+    }
+
+    state->ultima_operacion_ok = sublista_insertar_hijo_final(padre, state->input_valor);
+    if (state->ultima_operacion_ok) {
+        state->ultimo_valor = state->input_valor;
+        trigger_feedback(state, OPERACION_SUBLISTA_INSERTAR_HIJO);
+        snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                 "insertar_hijo(padre=%d, valor=%d)", state->sublista_padre_activo,
+                 state->input_valor);
+    } else {
+        set_message(state, "insertar_hijo fallido");
+    }
+}
+
+/** @brief Elimina la primera ocurrencia de un hijo en el padre activo. */
+void app_state_operacion_sublista_eliminar_hijo(AppState *state) {
+    Nodo *padre;
+
+    if (state == NULL) {
+        return;
+    }
+
+    state->operacion_actual = OPERACION_SUBLISTA_ELIMINAR_HIJO;
+    state->operacion_serial++;
+
+    if (state->estructura_activa != ESTRUCTURA_SUBLISTA) {
+        state->ultima_operacion_ok = false;
+        set_message(state, "Operacion valida solo para Sublistas");
+        return;
+    }
+    if (!state->sublista_padre_activo_ok) {
+        state->ultima_operacion_ok = false;
+        set_message(state, "Seleccione padre con Buscar (B)");
+        return;
+    }
+
+    padre = sublista_buscar_padre(state->sublista, state->sublista_padre_activo);
+    if (padre == NULL) {
+        state->sublista_padre_activo_ok = false;
+        state->ultima_operacion_ok = false;
+        set_message(state, "Padre activo invalido, seleccione nuevamente");
+        return;
+    }
+
+    state->ultima_operacion_ok = sublista_eliminar_hijo_primero(padre, state->input_valor);
+    if (state->ultima_operacion_ok) {
+        state->ultimo_valor = state->input_valor;
+        trigger_feedback(state, OPERACION_SUBLISTA_ELIMINAR_HIJO);
+        snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                 "eliminar_hijo(padre=%d, valor=%d)", state->sublista_padre_activo,
+                 state->input_valor);
+    } else {
+        set_message(state, "hijo no encontrado en padre activo");
+    }
+}
+
 /** @brief Vacia la estructura activa liberando su memoria dinamica. */
 void app_state_operacion_vaciar(AppState *state) {
     if (state == NULL) {
@@ -514,6 +657,13 @@ void app_state_operacion_vaciar(AppState *state) {
     case ESTRUCTURA_LISTA_CIRCULAR:
         lcir_destruir(&state->lista_circular);
         set_message(state, "lista circular vaciada");
+        break;
+    case ESTRUCTURA_SUBLISTA:
+        sublista_destruir(&state->sublista);
+        sublista_inicializar(&state->sublista);
+        state->sublista_padre_activo = 0;
+        state->sublista_padre_activo_ok = false;
+        set_message(state, "sublista vaciada");
         break;
     default:
         break;

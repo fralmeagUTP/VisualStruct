@@ -116,8 +116,8 @@ Compilacion</h1>
 </div><!-- fragment --><h2>Opcion 2: Comando directo (Windows/MinGW)</h2>
 <div class="fragment"><div class="line">gcc -std=c11 -Wall -Wextra -pedantic -Iinclude \</div>
 <div class="line">  src/main.c src/ui.c src/app_state.c src/code_viewer.c src/algorithm_trace.c \</div>
-<div class="line">  src/pila_view.c src/cola_view.c src/cola_prioridad_view.c src/lista_view.c src/lista_circular_view.c \</div>
-<div class="line">  src/pila.c src/cola.c src/cola_prioridad.c src/lista.c src/lista_circular.c \</div>
+<div class="line">  src/pila_view.c src/cola_view.c src/cola_prioridad_view.c src/lista_view.c src/lista_circular_view.c src/sublista_view.c \</div>
+<div class="line">  src/pila.c src/cola.c src/cola_prioridad.c src/lista.c src/lista_circular.c src/sublista.c \</div>
 <div class="line">  -o visualstruct -lraylib -lopengl32 -lgdi32 -lwinmm</div>
 </div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
 Documentacion Tecnica</h1>
@@ -136,12 +136,13 @@ Documentacion Tecnica</h1>
 <li><span class="tt"><a class="el" href="qa-manual_8md.html">docs/qa-manual.md</a></span>: checklist de verificacion manual para UI, operaciones y paneles pedagogicos.</li>
 <li><span class="tt"><a class="el" href="qa-visualizacion-ventanas_8md.html">docs/qa-visualizacion-ventanas.md</a></span>: verificacion de layout, legibilidad y uso de espacio.</li>
 <li><span class="tt"><a class="el" href="analisis-diseno-lista-circular_8md.html">docs/analisis-diseno-lista-circular.md</a></span>: analisis tecnico y de interfaz para la funcionalidad de lista circular.</li>
+<li><span class="tt"><a class="el" href="analisis-diseno-sublistas_8md.html">docs/analisis-diseno-sublistas.md</a></span>: analisis funcional y tecnico del TAD jerarquico de sublistas.</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
 Uso Basico</h1>
 <ol type="1">
 <li>Ejecutar la aplicacion.</li>
-<li>Seleccionar estructura en el menu lateral: <a class="el" href="struct_pila.html">Pila</a>, <a class="el" href="struct_cola.html">Cola</a>, <a class="el" href="struct_cola.html">Cola</a> de Prioridad, <a class="el" href="struct_lista.html">Lista</a> o <a class="el" href="struct_lista.html">Lista</a> Circular.</li>
+<li>Seleccionar estructura en el menu lateral: <a class="el" href="struct_pila.html">Pila</a>, <a class="el" href="struct_cola.html">Cola</a>, <a class="el" href="struct_cola.html">Cola</a> de Prioridad, <a class="el" href="struct_lista.html">Lista</a>, <a class="el" href="struct_lista.html">Lista</a> Circular o Sublistas.</li>
 <li>Usar los botones contextuales del panel central para ejecutar operaciones segun la estructura activa.</li>
 <li>Editar <span class="tt">valor</span> y <span class="tt">prioridad</span> directamente en el panel lateral o usar teclado.</li>
 <li>Ajustar <span class="tt">valor</span> con <span class="tt">UP/DOWN</span>.</li>
@@ -154,11 +155,11 @@ Uso Basico</h1>
 Controles Actuales</h1>
 <ul>
 <li><span class="tt">I</span>: inicializar estructura activa</li>
-<li><span class="tt">A</span>: insertar/push/encolar o insertar al final en lista/lista circular</li>
-<li><span class="tt">Z</span>: insertar al inicio en lista/lista circular</li>
+<li><span class="tt">A</span>: insertar/push/encolar, insertar al final en lista/lista circular, o insertar padre en sublistas</li>
+<li><span class="tt">Z</span>: insertar al inicio en lista/lista circular o insertar hijo en sublistas</li>
 <li><span class="tt">D</span>: eliminar/pop/desencolar</li>
-<li><span class="tt">B</span>: buscar en lista/lista circular</li>
-<li><span class="tt">R</span>: invertir lista/lista circular</li>
+<li><span class="tt">B</span>: buscar en lista/lista circular o seleccionar padre activo en sublistas</li>
+<li><span class="tt">R</span>: invertir lista/lista circular o eliminar hijo en sublistas</li>
 <li><span class="tt">V</span>: vaciar estructura activa</li>
 <li><span class="tt">UP/DOWN</span>: cambiar valor</li>
 <li><span class="tt">LEFT/RIGHT</span>: cambiar prioridad</li>
@@ -182,7 +183,7 @@ Estructura de Carpetas</h1>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
 Estado Actual</h1>
-<p>Arquitectura unificada operativa: app unica, estado global desacoplado, vistas por estructura (incluyendo <a class="el" href="struct_lista.html">Lista</a> Circular), controles contextuales, ayuda interna detallada, historial de snippets C por operacion, complejidades base del MVP y feedback animado breve en inserciones/eliminaciones.</p>
+<p>Arquitectura unificada operativa: app unica, estado global desacoplado, vistas por estructura (incluyendo <a class="el" href="struct_lista.html">Lista</a> Circular y Sublistas), controles contextuales, ayuda interna detallada, historial de snippets C por operacion, complejidades base del MVP y feedback animado breve en inserciones/eliminaciones.</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
 Notas de Arquitectura</h1>
 <ul>

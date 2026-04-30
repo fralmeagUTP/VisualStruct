@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: Analisis y Diseno: Modulo Sublistas</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('md_docs_2analisis-diseno-sublistas.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Analisis y Diseno: Modulo Sublistas </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md27"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
+1. Objetivo de la funcionalidad</h1>
+<p>Incorporar una estructura jerarquica visualizable llamada <span class="tt">Sublistas</span> dentro del modulo de estructuras secuenciales, con modelo padre-hijo y comportamiento pedagogico coherente con el resto de la app.</p>
+<p>La funcionalidad se disena como una estructura independiente de <span class="tt"><a class="el" href="struct_lista.html">Lista</a> Circular</span>.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
+2. Alcance funcional</h1>
+<p>La estructura <span class="tt">Sublistas</span> debe permitir:</p>
+<ol type="1">
+<li>Inicializar</li>
+<li>Insertar nodo padre</li>
+<li>Seleccionar padre activo</li>
+<li>Eliminar nodo padre</li>
+<li>Insertar hijo en el padre activo</li>
+<li>Eliminar hijo en el padre activo</li>
+<li>Vaciar</li>
+</ol>
+<p>Adicionalmente:</p>
+<ul>
+<li>visualizacion clara de agrupacion padre-hijos,</li>
+<li>resaltado del padre activo,</li>
+<li>integracion completa con botones, atajos, snippets, traza y ayuda interna.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
+3. Modelo de datos exigido</h1>
+<p>El diseno adopta exactamente el modelo solicitado:</p>
+<div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structsublista.html">sublista</a> {</div>
+<div class="line">    <span class="keywordtype">int</span> <a class="code hl_variable" href="structsublista.html#ac480a7007b8db5e2aa81b72537eb14b1">nro</a>;</div>
+<div class="line">    <span class="keyword">struct </span><a class="code hl_struct" href="structsublista.html">sublista</a> *<a class="code hl_variable" href="structsublista.html#a9e93fb4fa75f4306e742789cd0dff730">sgte</a>;</div>
+<div class="line">} <a class="code hl_typedef" href="sublista_8h.html#a17b24a46f4db6f24ce92369542476181">Sublista</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structnodo.html">nodo</a> {</div>
+<div class="line">    <span class="keywordtype">int</span> <a class="code hl_variable" href="structnodo.html#ae000794069ef1491c2ebf43b97b66777">nro</a>;</div>
+<div class="line">    <span class="keyword">struct </span><a class="code hl_struct" href="structnodo.html">nodo</a> *<a class="code hl_variable" href="structnodo.html#ae5d8bb1a53096151006a7796c8d4bdc4">sgte</a>;</div>
+<div class="line">    <a class="code hl_typedef" href="sublista_8h.html#a17b24a46f4db6f24ce92369542476181">Sublista</a> *<a class="code hl_variable" href="structnodo.html#a89113ef1f45d18030dac62ab5e16e4cb">sub</a>;</div>
+<div class="line">} <a class="code hl_typedef" href="cola_8h.html#a46556b0fd3be65be11d967516d9866f1">Nodo</a>;</div>
+<div class="ttc" id="acola_8h_html_a46556b0fd3be65be11d967516d9866f1"><div class="ttname"><a href="cola_8h.html#a46556b0fd3be65be11d967516d9866f1">Nodo</a></div><div class="ttdeci">struct nodo Nodo</div><div class="ttdef"><b>Definition</b> <a href="cola_8h_source.html#l00012">cola.h:12</a></div></div>
+<div class="ttc" id="astructnodo_html"><div class="ttname"><a href="structnodo.html">nodo</a></div><div class="ttdef"><b>Definition</b> <a href="sublista_8h_source.html#l00019">sublista.h:19</a></div></div>
+<div class="ttc" id="astructnodo_html_a89113ef1f45d18030dac62ab5e16e4cb"><div class="ttname"><a href="structnodo.html#a89113ef1f45d18030dac62ab5e16e4cb">nodo::sub</a></div><div class="ttdeci">Sublista * sub</div><div class="ttdef"><b>Definition</b> <a href="sublista_8h_source.html#l00022">sublista.h:22</a></div></div>
+<div class="ttc" id="astructnodo_html_ae000794069ef1491c2ebf43b97b66777"><div class="ttname"><a href="structnodo.html#ae000794069ef1491c2ebf43b97b66777">nodo::nro</a></div><div class="ttdeci">int nro</div><div class="ttdef"><b>Definition</b> <a href="sublista_8h_source.html#l00020">sublista.h:20</a></div></div>
+<div class="ttc" id="astructnodo_html_ae5d8bb1a53096151006a7796c8d4bdc4"><div class="ttname"><a href="structnodo.html#ae5d8bb1a53096151006a7796c8d4bdc4">nodo::sgte</a></div><div class="ttdeci">struct nodo * sgte</div><div class="ttdef"><b>Definition</b> <a href="sublista_8h_source.html#l00021">sublista.h:21</a></div></div>
+<div class="ttc" id="astructsublista_html"><div class="ttname"><a href="structsublista.html">sublista</a></div><div class="ttdef"><b>Definition</b> <a href="sublista_8h_source.html#l00013">sublista.h:13</a></div></div>
+<div class="ttc" id="astructsublista_html_a9e93fb4fa75f4306e742789cd0dff730"><div class="ttname"><a href="structsublista.html#a9e93fb4fa75f4306e742789cd0dff730">sublista::sgte</a></div><div class="ttdeci">struct sublista * sgte</div><div class="ttdef"><b>Definition</b> <a href="sublista_8h_source.html#l00015">sublista.h:15</a></div></div>
+<div class="ttc" id="astructsublista_html_ac480a7007b8db5e2aa81b72537eb14b1"><div class="ttname"><a href="structsublista.html#ac480a7007b8db5e2aa81b72537eb14b1">sublista::nro</a></div><div class="ttdeci">int nro</div><div class="ttdef"><b>Definition</b> <a href="sublista_8h_source.html#l00014">sublista.h:14</a></div></div>
+<div class="ttc" id="asublista_8h_html_a17b24a46f4db6f24ce92369542476181"><div class="ttname"><a href="sublista_8h.html#a17b24a46f4db6f24ce92369542476181">Sublista</a></div><div class="ttdeci">struct sublista Sublista</div></div>
+</div><!-- fragment --><h2>Decisiones clave</h2>
+<ul>
+<li>Cada <span class="tt"><a class="el" href="cola_8h.html#a46556b0fd3be65be11d967516d9866f1">Nodo</a></span> padre mantiene su propia sublista a traves de <span class="tt">sub</span>.</li>
+<li>Las sublistas no comparten nodos entre padres.</li>
+<li>La seleccion de contexto recae en el <span class="tt">padre activo</span> almacenado en <span class="tt"><a class="el" href="struct_app_state.html">AppState</a></span>.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
+4. Requerimientos funcionales</h1>
+<h2>RF-01: TAD desacoplado de Raylib</h2>
+<ul>
+<li>API publica en <span class="tt"><a class="el" href="sublista_8h.html" title="TAD de lista de nodos con sublista asociada por nodo padre.">include/sublista.h</a></span>.</li>
+<li>Implementacion en <span class="tt"><a class="el" href="sublista_8c.html">src/sublista.c</a></span> sin dependencias de UI.</li>
+</ul>
+<h2>RF-02: Integracion de estado global</h2>
+<ul>
+<li>Nuevo tipo <span class="tt"><a class="el" href="app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a4410c8cd058777f5dff9b49794535771">ESTRUCTURA_SUBLISTA</a></span>.</li>
+<li>Estado adicional para control de padre activo.</li>
+<li>Operaciones de hijo separadas de operaciones genericas.</li>
+</ul>
+<h2>RF-03: Vista dedicada</h2>
+<ul>
+<li><span class="tt"><a class="el" href="sublista__view_8c.html" title="Renderizado de padres e hijos del TAD Sublista.">src/sublista_view.c</a></span> renderiza padres, hijos, enlaces y seleccion activa.</li>
+<li>Soporta escenarios con overflow vertical.</li>
+</ul>
+<h2>RF-04: Integracion pedagogica</h2>
+<ul>
+<li><span class="tt"><a class="el" href="code__viewer_8c.html" title="Catalogo de snippets C asociados a las operaciones visibles en la UI.">src/code_viewer.c</a></span> incluye snippets por operacion de padres e hijos.</li>
+<li><span class="tt"><a class="el" href="algorithm__trace_8c.html" title="Tabla de mensajes pedagógicos y complejidades por operacion.">src/algorithm_trace.c</a></span> incorpora trazas y complejidades asociadas.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md32"></a>
+5. Complejidad esperada</h1>
+<ul>
+<li>Inicializar: <span class="tt">O(1)</span></li>
+<li>Insertar padre: <span class="tt">O(1)</span> o <span class="tt">O(n)</span> segun estrategia de insercion</li>
+<li>Buscar/seleccionar padre: <span class="tt">O(n)</span></li>
+<li>Eliminar padre: <span class="tt">O(n)</span> (mas liberacion de su sublista)</li>
+<li>Insertar hijo: <span class="tt">O(1)</span> o <span class="tt">O(m)</span> segun insercion en sublista activa</li>
+<li>Eliminar hijo: <span class="tt">O(m)</span></li>
+<li>Vaciar: <span class="tt">O(n + total_hijos)</span></li>
+</ul>
+<p>Donde:</p><ul>
+<li><span class="tt">n</span> = cantidad de padres</li>
+<li><span class="tt">m</span> = cantidad de hijos de un padre concreto</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md33"></a>
+6. Integracion de interfaz</h1>
+<ul>
+<li>Home: sexta tarjeta <span class="tt">Sublistas</span>.</li>
+<li>Sidebar: boton dedicado <span class="tt">Sublistas</span>.</li>
+<li>Atajo directo: tecla <span class="tt">6</span>.</li>
+<li><span class="tt">TAB</span>: rotacion entre seis estructuras.</li>
+<li>Controles:<ul>
+<li><span class="tt">I</span> Inicializar</li>
+<li><span class="tt">A</span> Padre +</li>
+<li><span class="tt">B</span> Seleccionar padre</li>
+<li><span class="tt">D</span> Padre -</li>
+<li><span class="tt">Z</span> Hijo +</li>
+<li><span class="tt">R</span> Hijo -</li>
+<li><span class="tt">V</span> Vaciar</li>
+</ul>
+</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
+7. Criterios de aceptacion</h1>
+<ol type="1">
+<li>Compila con flags estrictos (<span class="tt">-Wall -Wextra -pedantic</span>).</li>
+<li>Sublistas aparece en Home, Sidebar y atajo <span class="tt">6</span>.</li>
+<li>Operaciones de padres e hijos actualizan estado, mensaje y paneles pedagogicos.</li>
+<li>El padre activo cambia por busqueda y se refleja visualmente.</li>
+<li>Eliminar padre libera correctamente sus hijos.</li>
+<li>Ayuda interna y documentos QA quedan sincronizados.</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md35"></a>
+8. Riesgos y mitigaciones</h1>
+<ul>
+<li>Riesgo: confundir <span class="tt">Sublistas</span> con <span class="tt"><a class="el" href="struct_lista.html">Lista</a> Circular</span>.<ul>
+<li>Mitigacion: mantener modulos separados, nombres explicitos y documentacion diferencial.</li>
+</ul>
+</li>
+<li>Riesgo: fugas de memoria al eliminar padres con hijos.<ul>
+<li>Mitigacion: liberar sublista completa antes de destruir nodo padre.</li>
+</ul>
+</li>
+<li>Riesgo: inconsistencias de controles por agregar operaciones de hijo.<ul>
+<li>Mitigacion: centralizar mapeo de atajos y etiquetas en <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span>.</li>
+</ul>
+</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md36"></a>
+9. Plan minimo de pruebas</h1>
+<ol type="1">
+<li>Insertar y eliminar padres sin hijos.</li>
+<li>Insertar hijos en padres distintos y validar independencia.</li>
+<li>Cambiar padre activo repetidamente y verificar que las operaciones de hijo actuen sobre el contexto correcto.</li>
+<li>Eliminar padre con hijos y comprobar que no quedan referencias colgantes.</li>
+<li>Verificar snippet, traza y complejidad para cada operacion. </li>
+</ol>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

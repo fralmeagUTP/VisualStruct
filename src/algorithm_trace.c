@@ -84,6 +84,24 @@ AlgorithmInfo algorithm_trace_get_info(TipoEstructura estructura, TipoOperacion 
             info.tiempo = "O(n)";
         }
         break;
+    case ESTRUCTURA_SUBLISTA:
+        if (operacion == OPERACION_INSERTAR) {
+            info.pasos = "1) Reservar nodo padre. 2) Enlazar al final. 3) Inicializar puntero sub en NULL.";
+            info.tiempo = "O(n)";
+        } else if (operacion == OPERACION_BUSCAR) {
+            info.pasos = "1) Recorrer padres. 2) Comparar valor padre. 3) Guardar padre activo si existe.";
+            info.tiempo = "O(n)";
+        } else if (operacion == OPERACION_ELIMINAR) {
+            info.pasos = "1) Buscar padre objetivo. 2) Liberar todos sus hijos. 3) Desenlazar y liberar padre.";
+            info.tiempo = "O(n + m)";
+        } else if (operacion == OPERACION_SUBLISTA_INSERTAR_HIJO) {
+            info.pasos = "1) Resolver padre activo. 2) Reservar nodo hijo. 3) Enlazar al final de la sublista.";
+            info.tiempo = "O(m)";
+        } else if (operacion == OPERACION_SUBLISTA_ELIMINAR_HIJO) {
+            info.pasos = "1) Resolver padre activo. 2) Buscar primera ocurrencia del hijo. 3) Desenlazar y liberar.";
+            info.tiempo = "O(m)";
+        }
+        break;
     default:
         break;
     }

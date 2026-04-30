@@ -14,5 +14,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "main.c", "main_8c.html", "main_8c" ],
     [ "pila.c", "pila_8c.html", "pila_8c" ],
     [ "pila_view.c", "pila__view_8c.html", "pila__view_8c" ],
+    [ "sublista.c", "sublista_8c.html", "sublista_8c" ],
+    [ "sublista_view.c", "sublista__view_8c.html", "sublista__view_8c" ],
     [ "ui.c", "ui_8c.html", "ui_8c" ]
 ];

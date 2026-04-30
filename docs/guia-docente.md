@@ -41,6 +41,12 @@ Esta aplicacion esta pensada para explicar operaciones de estructuras secuencial
 - Buscar un valor y discutir por que el recorrido debe detenerse al volver a `HEAD`.
 - Invertir y verificar que la estructura sigue cerrada (sin `NULL` final).
 
+### Sublistas
+- Explicar la relacion padre-hijo: cada nodo padre mantiene una sublista propia.
+- Insertar padres y luego hijos para mostrar que cada sublista es independiente.
+- Seleccionar distintos padres con `Buscar` para contrastar contexto activo.
+- Eliminar hijos y padres para discutir impacto local frente a impacto estructural.
+
 ## Recomendaciones de uso
 - Mantener pocos elementos al inicio para que el patron sea evidente.
 - Pedir predicciones antes de pulsar el boton de operacion.
@@ -52,5 +58,5 @@ Esta aplicacion esta pensada para explicar operaciones de estructuras secuencial
 ## Limitaciones actuales
 - La visualizacion prioriza claridad pedagogica sobre animaciones complejas.
 - El proyecto cubre estructuras secuenciales basicas del MVP.
-- Ahora incluye cinco estructuras visualizables: pila, cola, cola de prioridad, lista y lista circular.
+- Ahora incluye seis estructuras visualizables: pila, cola, cola de prioridad, lista, lista circular y sublistas.
 - El material en `src/legacy` no representa la arquitectura vigente.
