@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['validacion_20recomendada_20antes_20de_20cerrar_20un_20cambio_0',['Validacion recomendada antes de cerrar un cambio',['../md_docs_2contribucion.html#autotoc_md28',1,'']]],
-  ['ventanas_1',['QA de Visualizacion de Ventanas',['../md_docs_2qa-visualizacion-ventanas.html',1,'']]],
-  ['visualizacion_2',['Checklist de visualizacion',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md51',1,'']]],
-  ['visualizacion_20de_20ventanas_3',['QA de Visualizacion de Ventanas',['../md_docs_2qa-visualizacion-ventanas.html',1,'']]],
-  ['visualizador_20de_20estructuras_20de_20datos_20secuenciales_20en_20c_20con_20raylib_4',['Visualizador de Estructuras de Datos Secuenciales en C con Raylib',['../index.html',1,'']]],
-  ['vs_20code_5',['IntelliSense en VS Code',['../index.html#autotoc_md3',1,'']]]
+  ['la_20funcionalidad_0',['1. Objetivo de la funcionalidad',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md12',1,'']]],
+  ['la_20refactorizacion_1',['Riesgos controlados por la refactorizacion',['../md_docs_2architecture.html#autotoc_md35',1,'']]],
+  ['la_20ui_2',['Cuando toques la UI',['../md_docs_2contribucion.html#autotoc_md42',1,'']]],
+  ['legacy_3',['Material legacy',['../md_docs_2architecture.html#autotoc_md33',1,'']]],
+  ['limitaciones_20actuales_4',['Limitaciones actuales',['../md_docs_2guia-docente.html#autotoc_md50',1,'']]],
+  ['lista_5',['Lista',['../md_docs_2qa-manual.html#autotoc_md58',1,'']]],
+  ['lista_20circular_6',['Analisis y Diseno: Modulo Lista Circular',['../md_docs_2analisis-diseno-lista-circular.html',1,'']]],
+  ['lista_20circular_7',['Lista circular',['../md_docs_2qa-manual.html#autotoc_md59',1,'']]]
 ];

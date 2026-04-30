@@ -1,16 +1,20 @@
 var searchData=
 [
-  ['paneles_20pedagogicos_0',['Paneles pedagogicos',['../md_docs_2qa-manual.html#autotoc_md43',1,'']]],
-  ['pantalla_20de_20ayuda_1',['Pantalla de ayuda',['../md_docs_2qa-manual.html#autotoc_md44',1,'']]],
-  ['para_20clase_2',['Secuencia sugerida para clase',['../md_docs_2guia-docente.html#autotoc_md31',1,'']]],
-  ['pedagogicos_3',['Paneles pedagogicos',['../md_docs_2qa-manual.html#autotoc_md43',1,'']]],
-  ['pila_4',['Pila',['../md_docs_2qa-manual.html#autotoc_md39',1,'']]],
-  ['por_20estructura_5',['por estructura',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md50',1,'Escenarios funcionales por estructura'],['../md_docs_2guia-docente.html#autotoc_md32',1,'Ideas por estructura']]],
-  ['por_20la_20refactorizacion_6',['Riesgos controlados por la refactorizacion',['../md_docs_2architecture.html#autotoc_md19',1,'']]],
-  ['preparacion_7',['Preparacion',['../md_docs_2qa-manual.html#autotoc_md37',1,'Preparacion'],['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md48',1,'Preparacion']]],
-  ['prioridad_8',['Cola de prioridad',['../md_docs_2qa-manual.html#autotoc_md41',1,'']]],
-  ['proposito_9',['Proposito',['../md_docs_2guia-docente.html#autotoc_md30',1,'']]],
-  ['prueba_20resolucion_10',['Matriz de prueba (resolucion)',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md49',1,'']]],
-  ['pruebas_20manuales_11',['Guia de Pruebas Manuales',['../md_docs_2qa-manual.html',1,'']]],
-  ['puntos_20de_20extension_12',['Puntos de extension',['../md_docs_2architecture.html#autotoc_md16',1,'']]]
+  ['ejecucion_0',['Flujo de ejecucion',['../md_docs_2architecture.html#autotoc_md29',1,'']]],
+  ['en_20c_20con_20raylib_1',['Visualizador de Estructuras de Datos Secuenciales en C con Raylib',['../index.html',1,'']]],
+  ['en_20esta_20iteracion_2',['Hallazgos corregidos en esta iteracion',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md71',1,'']]],
+  ['en_20panel_20central_3',['5.3 Visualizacion en panel central',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md22',1,'']]],
+  ['en_20vs_20code_4',['IntelliSense en VS Code',['../index.html#autotoc_md3',1,'']]],
+  ['escenarios_20funcionales_20por_20estructura_5',['Escenarios funcionales por estructura',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md67',1,'']]],
+  ['esperada_6',['Documentacion minima esperada',['../md_docs_2contribucion.html#autotoc_md43',1,'']]],
+  ['esperadas_7',['4.3 Complejidades esperadas',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md18',1,'']]],
+  ['esta_20iteracion_8',['Hallazgos corregidos en esta iteracion',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md71',1,'']]],
+  ['estado_20actual_9',['Estado Actual',['../index.html#autotoc_md9',1,'']]],
+  ['estructura_10',['estructura',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md67',1,'Escenarios funcionales por estructura'],['../md_docs_2guia-docente.html#autotoc_md48',1,'Ideas por estructura']]],
+  ['estructura_20de_20carpetas_11',['Estructura de Carpetas',['../index.html#autotoc_md8',1,'']]],
+  ['estructura_20de_20datos_20seleccionada_12',['4.1 Estructura de datos seleccionada',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md16',1,'']]],
+  ['estructura_20nueva_13',['Cuando agregues una estructura nueva',['../md_docs_2contribucion.html#autotoc_md41',1,'']]],
+  ['estructuras_20de_20datos_20secuenciales_20en_20c_20con_20raylib_14',['Visualizador de Estructuras de Datos Secuenciales en C con Raylib',['../index.html',1,'']]],
+  ['experiencia_15',['5. Diseno de interfaz y experiencia',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md19',1,'']]],
+  ['extension_16',['Puntos de extension',['../md_docs_2architecture.html#autotoc_md32',1,'']]]
 ];

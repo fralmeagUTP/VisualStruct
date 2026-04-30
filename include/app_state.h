@@ -6,6 +6,7 @@
 #include "cola.h"
 #include "cola_prioridad.h"
 #include "lista.h"
+#include "lista_circular.h"
 #include "pila.h"
 
 /**
@@ -17,7 +18,8 @@ typedef enum {
     ESTRUCTURA_PILA = 0,
     ESTRUCTURA_COLA,
     ESTRUCTURA_COLA_PRIORIDAD,
-    ESTRUCTURA_LISTA
+    ESTRUCTURA_LISTA,
+    ESTRUCTURA_LISTA_CIRCULAR
 } TipoEstructura;
 
 typedef enum {
@@ -52,6 +54,7 @@ typedef struct {
     Cola cola;
     ColaPrioridad cola_prioridad;
     Lista lista;
+    ListaCircular lista_circular;
 } AppState;
 
 /** @brief Inicializa estado global y TADs base. */
@@ -75,15 +78,15 @@ void app_state_update_visuals(AppState *state, float delta_time);
 void app_state_operacion_inicializar(AppState *state);
 /** @brief Ejecuta operacion insertar/encolar/push segun estructura activa. */
 void app_state_operacion_insertar(AppState *state);
-/** @brief Inserta al inicio cuando la estructura activa es lista. */
+/** @brief Inserta al inicio cuando la estructura activa es lista o lista circular. */
 void app_state_operacion_lista_insertar_inicio(AppState *state);
-/** @brief Inserta al final cuando la estructura activa es lista. */
+/** @brief Inserta al final cuando la estructura activa es lista o lista circular. */
 void app_state_operacion_lista_insertar_final(AppState *state);
 /** @brief Ejecuta operacion eliminar/desencolar/pop segun estructura activa. */
 void app_state_operacion_eliminar(AppState *state);
-/** @brief Ejecuta busqueda (solo lista en MVP). */
+/** @brief Ejecuta busqueda en lista o lista circular. */
 void app_state_operacion_buscar(AppState *state);
-/** @brief Ejecuta inversion (solo lista en MVP). */
+/** @brief Ejecuta inversion en lista o lista circular. */
 void app_state_operacion_invertir(AppState *state);
 /** @brief Ejecuta vaciado/destruccion logica segun estructura activa. */
 void app_state_operacion_vaciar(AppState *state);

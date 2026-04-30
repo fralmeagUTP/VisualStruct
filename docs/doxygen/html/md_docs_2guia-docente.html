@@ -92,8 +92,8 @@ $(function(){initNavTree('md_docs_2guia-docente.html','',''); });
   <div class="headertitle"><div class="title">Guia Docente </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md29"></a></p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md45"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md46"></a>
 Proposito</h1>
 <p>Esta aplicacion esta pensada para explicar operaciones de estructuras secuenciales mostrando tres planos al mismo tiempo:</p>
 <ul>
@@ -101,7 +101,7 @@ Proposito</h1>
 <li>historial de codigo C relacionado con cada operacion ejecutada</li>
 <li>explicacion breve con complejidad</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md47"></a>
 Secuencia sugerida para clase</h1>
 <ol type="1">
 <li>Seleccionar la estructura a estudiar.</li>
@@ -113,7 +113,7 @@ Secuencia sugerida para clase</h1>
 <li>Al finalizar una secuencia, usar <span class="tt">Limpiar</span> en el panel de codigo para comenzar un nuevo bloque didactico.</li>
 <li>Usar <span class="tt">F1</span> para abrir la ayuda interna cuando se necesite reforzar conceptos de uso o arquitectura.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md32"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md48"></a>
 Ideas por estructura</h1>
 <h2><a class="el" href="struct_pila.html">Pila</a></h2>
 <ul>
@@ -136,7 +136,14 @@ Ideas por estructura</h1>
 <li>Ejecutar busqueda para remarcar coincidencias.</li>
 <li>Invertir la lista y observar el efecto estructural.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md33"></a>
+<h2><a class="el" href="struct_lista.html">Lista</a> circular</h2>
+<ul>
+<li>Explicar el cierre del ciclo: el ultimo nodo vuelve al primero.</li>
+<li>Comparar insercion al inicio y al final resaltando que ambas mantienen circularidad.</li>
+<li>Buscar un valor y discutir por que el recorrido debe detenerse al volver a <span class="tt">HEAD</span>.</li>
+<li>Invertir y verificar que la estructura sigue cerrada (sin <span class="tt">NULL</span> final).</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md49"></a>
 Recomendaciones de uso</h1>
 <ul>
 <li>Mantener pocos elementos al inicio para que el patron sea evidente.</li>
@@ -146,11 +153,12 @@ Recomendaciones de uso</h1>
 <li>Aprovechar el historial de codigo para reconstruir toda la secuencia ejecutada sin depender de memoria de pasos previos.</li>
 <li>Integrar la pantalla de ayuda como apoyo transversal para aclarar modulos, atajos y errores comunes.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md50"></a>
 Limitaciones actuales</h1>
 <ul>
 <li>La visualizacion prioriza claridad pedagogica sobre animaciones complejas.</li>
 <li>El proyecto cubre estructuras secuenciales basicas del MVP.</li>
+<li>Ahora incluye cinco estructuras visualizables: pila, cola, cola de prioridad, lista y lista circular.</li>
 <li>El material en <span class="tt">src/legacy</span> no representa la arquitectura vigente. </li>
 </ul>
 </div></div><!-- contents -->

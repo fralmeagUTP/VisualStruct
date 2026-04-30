@@ -9,7 +9,7 @@ Esta guia define una verificacion manual minima para confirmar que la app unific
 3. Verificar que carguen la ventana principal, el menu lateral y los paneles de codigo y traza.
 
 ## Chequeos globales
-- Cambiar entre Pila, Cola, Cola de Prioridad y Lista desde la barra lateral.
+- Cambiar entre Pila, Cola, Cola de Prioridad, Lista y Lista Circular desde la barra lateral.
 - Verificar que el titulo, los botones contextuales y el conteo de elementos cambian con la estructura activa.
 - Confirmar que los campos `Valor` y `Prioridad` aceptan edicion.
 - Escribir una entrada invalida y comprobar que la caja se marca en rojo.
@@ -51,6 +51,15 @@ Esta guia define una verificacion manual minima para confirmar que la app unific
 5. Buscar un valor existente y verificar resaltado.
 6. Invertir la lista y observar cambio de orden.
 7. Eliminar y verificar nodo fantasma `DEL`.
+
+## Lista circular
+1. Inicializar la lista circular.
+2. Insertar al inicio y al final al menos 6 valores para forzar overflow horizontal.
+3. Verificar que se muestre `HEAD` y la conexion de retorno (ultimo nodo vuelve al primero).
+4. Usar rueda del mouse sobre el panel central y verificar desplazamiento horizontal.
+5. Buscar un valor existente y comprobar resaltado de coincidencias.
+6. Invertir la lista y validar que se conserva la circularidad.
+7. Eliminar un valor y verificar nodo fantasma `DEL`.
 
 ## Paneles pedagogicos
 - Tras cada operacion, revisar que el panel `Codigo C Asociado (Historial)` agregue una nueva entrada con estructura, operacion y snippet.

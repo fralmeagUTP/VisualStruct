@@ -9,7 +9,7 @@ La aplicacion principal se compone de los siguientes grupos:
 - `src/code_viewer.c`: snippets C asociados a cada operacion.
 - `src/algorithm_trace.c`: explicaciones paso a paso y complejidades.
 - `src/*_view.c`: visualizacion grafica por estructura.
-- `src/pila.c`, `src/cola.c`, `src/cola_prioridad.c`, `src/lista.c`: TAD desacoplados de Raylib.
+- `src/pila.c`, `src/cola.c`, `src/cola_prioridad.c`, `src/lista.c`, `src/lista_circular.c`: TAD desacoplados de Raylib.
 - `src/main.c` tambien contiene la pantalla de ayuda interna detallada (`SCREEN_HELP`) con scroll y acceso por `F1`.
 
 ## Flujo de ejecucion
@@ -24,7 +24,7 @@ La app sigue un flujo unico por cuadro:
 
 ## Capas y responsabilidades
 ### Capa de dominio
-- Corresponde a los TAD en `src/pila.c`, `src/cola.c`, `src/cola_prioridad.c` y `src/lista.c`.
+- Corresponde a los TAD en `src/pila.c`, `src/cola.c`, `src/cola_prioridad.c`, `src/lista.c` y `src/lista_circular.c`.
 - Debe mantenerse independiente de Raylib y de cualquier decision visual.
 
 ### Capa de aplicacion
@@ -54,7 +54,7 @@ Para agregar una nueva estructura o comportamiento docente, el camino esperado e
 2. Extender `TipoEstructura` y `TipoOperacion` en `include/app_state.h`.
 3. Incorporar operaciones en `src/app_state.c`.
 4. Crear una vista dedicada `src/*_view.c`.
-5. Añadir snippet y traza en `src/code_viewer.c` y `src/algorithm_trace.c`.
+5. Anadir snippet y traza en `src/code_viewer.c` y `src/algorithm_trace.c`.
 6. Registrar botones, atajos y rotulos en `src/main.c`.
 
 ## Material legacy

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['hallazgos_0',['Registro de hallazgos',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md53',1,'']]],
-  ['hallazgos_20corregidos_20en_20esta_20iteracion_1',['Hallazgos corregidos en esta iteracion',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md54',1,'']]]
+  ['8_20riesgos_20y_20mitigaciones_0',['8. Riesgos y mitigaciones',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md25',1,'']]]
 ];

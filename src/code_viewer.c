@@ -88,6 +88,38 @@ const char *code_viewer_get_snippet(TipoEstructura estructura, TipoOperacion ope
         }
         return "Lista lista;\n"
                "lista_inicializar(&lista);";
+    case ESTRUCTURA_LISTA_CIRCULAR:
+        if (operacion == OPERACION_INICIALIZAR) {
+            return "ListaCircular lc;\n"
+                   "lcir_inicializar(&lc);";
+        }
+        if (operacion == OPERACION_INSERTAR_INICIO) {
+            return "ListaCircular lc;\n"
+                   "lcir_inicializar(&lc);\n"
+                   "bool ok = lcir_insertar_inicio(&lc, valor);";
+        }
+        if (operacion == OPERACION_INSERTAR_FINAL || operacion == OPERACION_INSERTAR) {
+            return "ListaCircular lc;\n"
+                   "lcir_inicializar(&lc);\n"
+                   "bool ok = lcir_insertar_final(&lc, valor);";
+        }
+        if (operacion == OPERACION_ELIMINAR) {
+            return "bool ok = lcir_eliminar_primero(&lc, valor);";
+        }
+        if (operacion == OPERACION_BUSCAR) {
+            return "int n = lcir_buscar_posiciones(&lc, valor, NULL, 0);\n"
+                   "/* n = numero de coincidencias */";
+        }
+        if (operacion == OPERACION_INVERTIR) {
+            return "lcir_invertir(&lc);\n"
+                   "/* la cabeza pasa al antiguo ultimo nodo */";
+        }
+        if (operacion == OPERACION_VACIAR) {
+            return "lcir_destruir(&lc);\n"
+                   "lcir_inicializar(&lc);";
+        }
+        return "ListaCircular lc;\n"
+               "lcir_inicializar(&lc);";
     default:
         return "// Operacion no disponible";
     }

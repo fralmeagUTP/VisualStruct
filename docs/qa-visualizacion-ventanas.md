@@ -11,7 +11,7 @@ Verificar que no existan solapes, recortes ni zonas inutiles en los paneles de l
 1. Compilar el proyecto:
 
 ```powershell
-gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state.c src/code_viewer.c src/algorithm_trace.c src/pila_view.c src/cola_view.c src/cola_prioridad_view.c src/lista_view.c src/pila.c src/cola.c src/cola_prioridad.c src/lista.c -o visualstruct_qa_layout -lraylib -lopengl32 -lgdi32 -lwinmm
+gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state.c src/code_viewer.c src/algorithm_trace.c src/pila_view.c src/cola_view.c src/cola_prioridad_view.c src/lista_view.c src/lista_circular_view.c src/pila.c src/cola.c src/cola_prioridad.c src/lista.c src/lista_circular.c -o visualstruct_qa_layout -lraylib -lopengl32 -lgdi32 -lwinmm
 ```
 
 2. Ejecutar:
@@ -46,7 +46,12 @@ gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state
 - Insertar inicio/final, buscar, eliminar, invertir
 - Verificar HEAD/NULL visibles y flechas de enlace claras
 
-5. Ayuda interna:
+5. Lista circular:
+- Insertar inicio/final, buscar, eliminar, invertir
+- Verificar etiqueta `HEAD` y retorno circular del ultimo al primero
+- Confirmar scroll horizontal y barra draggable
+
+6. Ayuda interna:
 - Abrir con `F1` desde menu principal
 - Verificar titulo, subtitulo, boton `Volver` y area de texto con scroll
 - Cerrar con `F1` y confirmar retorno a pantalla previa
@@ -85,7 +90,7 @@ gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state
 
 1. Cero solapes visibles entre textos, botones y cajas.
 2. Cero recortes de texto en secciones clave (Resumen, Traza, Sidebar).
-3. Scroll funcional donde aplique (cola, codigo, traza, pila).
+3. Scroll funcional donde aplique (cola, lista, lista circular, codigo, traza, pila).
 4. Navegacion estable al cambiar entre estructuras y volver al menu principal.
 
 ## Registro de hallazgos

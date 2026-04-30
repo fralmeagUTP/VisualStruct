@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nodo_0',['Nodo',['../cola_8h.html#a46556b0fd3be65be11d967516d9866f1',1,'cola.h']]]
+  ['lcirnodo_0',['LCirNodo',['../lista__circular_8h.html#ad2d05d5d84aa4913f577aa9ec51a7659',1,'lista_circular.h']]]
 ];

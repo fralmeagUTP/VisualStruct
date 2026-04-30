@@ -1,9 +1,13 @@
 var searchData=
 [
-  ['qa_20de_20visualizacion_20de_20ventanas_0',['QA de Visualizacion de Ventanas',['../md_docs_2qa-visualizacion-ventanas.html',1,'']]],
-  ['qa_2dmanual_2emd_1',['qa-manual.md',['../qa-manual_8md.html',1,'']]],
-  ['qa_2dvisualizacion_2dventanas_2emd_2',['qa-visualizacion-ventanas.md',['../qa-visualizacion-ventanas_8md.html',1,'']]],
-  ['queue_5fscroll_5fdrag_5fgrab_3',['QUEUE_SCROLL_DRAG_GRAB',['../cola__view_8c.html#ad219ec081a4d66560d3effb4dc14e1e4',1,'cola_view.c']]],
-  ['queue_5fscroll_5fdragging_4',['QUEUE_SCROLL_DRAGGING',['../cola__view_8c.html#a21457312adbae6e119e04a35efdd7bab',1,'cola_view.c']]],
-  ['queue_5fscroll_5foffset_5',['QUEUE_SCROLL_OFFSET',['../cola__view_8c.html#a8168d3a3f67f3b562ca2e7367feddac8',1,'cola_view.c']]]
+  ['flujo_20de_20ejecucion_0',['Flujo de ejecucion',['../md_docs_2architecture.html#autotoc_md29',1,'']]],
+  ['font_5fbody_1',['FONT_BODY',['../ui_8c.html#aff3df7989905d7ee0cafffdbf9eef000',1,'ui.c']]],
+  ['font_5fbody_5floaded_2',['FONT_BODY_LOADED',['../ui_8c.html#a61c506333a9fe5e498ed7a49e5f5bb6e',1,'ui.c']]],
+  ['font_5fheading_3',['FONT_HEADING',['../ui_8c.html#aeabaf2bd43e25f9833538ced9065c04e',1,'ui.c']]],
+  ['font_5fheading_5floaded_4',['FONT_HEADING_LOADED',['../ui_8c.html#a49d24b8c54c472315607da75cf113b8f',1,'ui.c']]],
+  ['footer_5fheight_5',['FOOTER_HEIGHT',['../ui_8c.html#ab39970249804c1fcbd7b2a12deeb8029',1,'ui.c']]],
+  ['funcional_6',['2. Alcance funcional',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md13',1,'']]],
+  ['funcionales_20detallados_7',['3. Requerimientos funcionales detallados',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md14',1,'']]],
+  ['funcionales_20por_20estructura_8',['Escenarios funcionales por estructura',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md67',1,'']]],
+  ['funcionalidad_9',['1. Objetivo de la funcionalidad',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md12',1,'']]]
 ];

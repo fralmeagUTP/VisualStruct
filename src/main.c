@@ -9,6 +9,7 @@
 #include "cola_prioridad_view.h"
 #include "cola_view.h"
 #include "lista_view.h"
+#include "lista_circular_view.h"
 #include "pila_view.h"
 #include "ui.h"
 
@@ -30,6 +31,8 @@ static const char *estructura_nombre(TipoEstructura tipo) {
         return "Cola de Prioridad";
     case ESTRUCTURA_LISTA:
         return "Lista Enlazada";
+    case ESTRUCTURA_LISTA_CIRCULAR:
+        return "Lista Circular";
     default:
         return "N/A";
     }
@@ -111,6 +114,9 @@ static int estructura_from_shortcut(void) {
     if (IsKeyPressed(KEY_FOUR)) {
         return ESTRUCTURA_COLA_PRIORIDAD;
     }
+    if (IsKeyPressed(KEY_FIVE)) {
+        return ESTRUCTURA_LISTA_CIRCULAR;
+    }
     return -1;
 }
 
@@ -137,6 +143,8 @@ static const char *estructura_descripcion(TipoEstructura tipo) {
         return "Coleccion de nodos\nenlazados en secuencia.\nTamano dinamico.";
     case ESTRUCTURA_COLA_PRIORIDAD:
         return "Cada nodo tiene\nprioridad y sale\nprimero el menor valor.";
+    case ESTRUCTURA_LISTA_CIRCULAR:
+        return "Nodos enlazados\nen ciclo cerrado:\nel ultimo apunta al primero.";
     default:
         return "";
     }
@@ -239,6 +247,25 @@ static void draw_home_icon(TipoEstructura tipo, Rectangle icon_circle) {
         DrawLineEx((Vector2){cx, cy - 12.0f}, (Vector2){cx, cy + 6.0f}, 1.6f, c);
         DrawLineEx((Vector2){cx, cy - 12.0f}, (Vector2){cx + 24.0f, cy + 6.0f}, 1.6f, c);
         break;
+    case ESTRUCTURA_LISTA_CIRCULAR:
+        DrawRectangleRounded((Rectangle){cx - 28.0f, cy - 6.0f, 10.0f, 12.0f}, 0.2f, 4,
+                             Fade(c, 0.18f));
+        DrawRectangleRounded((Rectangle){cx - 8.0f, cy - 6.0f, 10.0f, 12.0f}, 0.2f, 4,
+                             Fade(c, 0.18f));
+        DrawRectangleRounded((Rectangle){cx + 12.0f, cy - 6.0f, 10.0f, 12.0f}, 0.2f, 4,
+                             Fade(c, 0.18f));
+        DrawRectangleRoundedLinesEx((Rectangle){cx - 28.0f, cy - 6.0f, 10.0f, 12.0f}, 0.2f, 4,
+                                    1.6f, c);
+        DrawRectangleRoundedLinesEx((Rectangle){cx - 8.0f, cy - 6.0f, 10.0f, 12.0f}, 0.2f, 4,
+                                    1.6f, c);
+        DrawRectangleRoundedLinesEx((Rectangle){cx + 12.0f, cy - 6.0f, 10.0f, 12.0f}, 0.2f, 4,
+                                    1.6f, c);
+        DrawLineEx((Vector2){cx - 18.0f, cy}, (Vector2){cx - 8.0f, cy}, 1.8f, c);
+        DrawLineEx((Vector2){cx + 2.0f, cy}, (Vector2){cx + 12.0f, cy}, 1.8f, c);
+        DrawLineEx((Vector2){cx + 17.0f, cy - 10.0f}, (Vector2){cx - 23.0f, cy - 10.0f}, 1.6f, c);
+        DrawTriangle((Vector2){cx - 23.0f, cy - 10.0f}, (Vector2){cx - 18.0f, cy - 14.0f},
+                     (Vector2){cx - 18.0f, cy - 6.0f}, c);
+        break;
     default:
         break;
     }
@@ -289,12 +316,13 @@ static void draw_home_screen(const UILayout *layout, AppState *app, ScreenMode *
     Rectangle cards_area = {content.x + 20.0f, content.y + 98.0f, content.width - 40.0f, 360.0f};
     Rectangle info_box = {content.x + 20.0f, cards_area.y + cards_area.height + 20.0f,
                           content.width - 40.0f, 78.0f};
-    float gap = 16.0f;
-    float card_w = (cards_area.width - gap * 3.0f) / 4.0f;
+    float gap = 14.0f;
+    float card_w = (cards_area.width - gap * 4.0f) / 5.0f;
     Rectangle card_pila = {cards_area.x, cards_area.y, card_w, cards_area.height};
     Rectangle card_cola = {card_pila.x + card_w + gap, cards_area.y, card_w, cards_area.height};
     Rectangle card_lista = {card_cola.x + card_w + gap, cards_area.y, card_w, cards_area.height};
     Rectangle card_cp = {card_lista.x + card_w + gap, cards_area.y, card_w, cards_area.height};
+    Rectangle card_lc = {card_cp.x + card_w + gap, cards_area.y, card_w, cards_area.height};
     Rectangle nav_help = {content.x + 20.0f, content.y + 74.0f, content.width - 40.0f, 26.0f};
     int title_w = ui_measure_text("VISUALIZADOR DE ESTRUCTURAS DE DATOS SECUENCIALES", 24.0f,
                                   0.12f, true);
@@ -309,7 +337,7 @@ static void draw_home_screen(const UILayout *layout, AppState *app, ScreenMode *
                  content.x + (content.width - subtitle_w) * 0.5f, content.y + 48.0f, 16.0f,
                  0.14f, (Color){53, 66, 83, 255}, false);
     DrawRectangleRounded(nav_help, 0.25f, 8, Fade((Color){220, 232, 247, 255}, 0.55f));
-    ui_draw_text("Atajos: 1 Pilas  2 Colas  3 Listas  4 Prioridad  |  F1 Ayuda  |  Enter: Visualizar",
+    ui_draw_text("Atajos: 1 Pilas  2 Colas  3 Listas  4 Prioridad  5 Circular  |  F1 Ayuda  |  Enter: Visualizar",
                  nav_help.x + 10.0f, nav_help.y + 5.0f, 13.0f, 0.14f,
                  (Color){36, 56, 84, 255}, false);
 
@@ -336,6 +364,13 @@ static void draw_home_screen(const UILayout *layout, AppState *app, ScreenMode *
                        ESTRUCTURA_COLA_PRIORIDAD, *home_selected == 3) ||
         (activate_selected && *home_selected == 3)) {
         app_state_set_estructura(app, ESTRUCTURA_COLA_PRIORIDAD);
+        *mode = SCREEN_VISUALIZER;
+    }
+    if (draw_home_card(card_lc, "LISTA CIRCULAR",
+                       estructura_descripcion(ESTRUCTURA_LISTA_CIRCULAR),
+                       ESTRUCTURA_LISTA_CIRCULAR, *home_selected == 4) ||
+        (activate_selected && *home_selected == 4)) {
+        app_state_set_estructura(app, ESTRUCTURA_LISTA_CIRCULAR);
         *mode = SCREEN_VISUALIZER;
     }
 
@@ -373,10 +408,10 @@ static void handle_navigation_keyboard(ScreenMode *mode, AppState *app, int *hom
 
     if (*mode == SCREEN_HOME) {
         if (IsKeyPressed(KEY_RIGHT)) {
-            *home_selected = (*home_selected + 1) % 4;
+            *home_selected = (*home_selected + 1) % 5;
         }
         if (IsKeyPressed(KEY_LEFT)) {
-            *home_selected = (*home_selected + 3) % 4;
+            *home_selected = (*home_selected + 4) % 5;
         }
         if (IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_KP_ENTER) || IsKeyPressed(KEY_SPACE)) {
             *activate_selected = true;
@@ -392,7 +427,7 @@ static void handle_navigation_keyboard(ScreenMode *mode, AppState *app, int *hom
         }
 
         if (IsKeyPressed(KEY_TAB)) {
-            TipoEstructura next = (TipoEstructura)((app->estructura_activa + 1) % 4);
+            TipoEstructura next = (TipoEstructura)((app->estructura_activa + 1) % 5);
             app_state_set_estructura(app, next);
         }
     }
@@ -441,6 +476,8 @@ static int estructura_cantidad(const AppState *state) {
         return cp_contar(&state->cola_prioridad);
     case ESTRUCTURA_LISTA:
         return lista_contar(&state->lista);
+    case ESTRUCTURA_LISTA_CIRCULAR:
+        return lcir_contar(&state->lista_circular);
     default:
         return 0;
     }
@@ -536,9 +573,10 @@ static const char *APP_HELP_TEXT_PART1 =
     "- Cola\n"
     "- Lista Enlazada\n"
     "- Cola de Prioridad\n"
+    "- Lista Circular\n"
     "\n"
     "Puedes elegir con mouse o teclado:\n"
-    "- Teclas 1..4 para seleccion rapida.\n"
+    "- Teclas 1..5 para seleccion rapida.\n"
     "- Flechas izquierda/derecha para mover el foco.\n"
     "- Enter o Espacio para entrar al visualizador.\n"
     "\n"
@@ -584,7 +622,7 @@ static const char *APP_HELP_TEXT_PART1 =
     "- Eliminar/Desencolar\n"
     "- Vaciar\n"
     "\n"
-    "Para Lista Enlazada:\n"
+    "Para Lista Enlazada y Lista Circular:\n"
     "- Inicializar\n"
     "- Insertar al Inicio\n"
     "- Insertar al Final\n"
@@ -630,7 +668,7 @@ static const char *APP_HELP_TEXT_PART1B =
     "\n"
     "Navegacion dentro de la vista:\n"
     "- Pila: scroll vertical con rueda del mouse.\n"
-    "- Cola, Lista y Cola de Prioridad: scroll horizontal.\n"
+    "- Cola, Lista, Lista Circular y Cola de Prioridad: scroll horizontal.\n"
     "- En listas largas, usa el scroll para inspeccionar extremos.\n"
     "\n"
     "============================================================\n";
@@ -675,11 +713,11 @@ static const char *APP_HELP_TEXT_PART2 =
     "============================================================\n"
     "Operaciones:\n"
     "- I: inicializar estructura activa.\n"
-    "- A: insertar (o final en lista).\n"
-    "- Z: insertar al inicio (lista).\n"
+    "- A: insertar (o final en listas).\n"
+    "- Z: insertar al inicio (listas).\n"
     "- D: eliminar.\n"
-    "- B: buscar (lista).\n"
-    "- R: invertir (lista).\n"
+    "- B: buscar (listas).\n"
+    "- R: invertir (listas).\n"
     "- V: vaciar estructura activa.\n"
     "\n"
     "Entrada numerica:\n"
@@ -719,7 +757,7 @@ static const char *APP_HELP_TEXT_PART4 =
     "- src/*_view.c: dibujo especifico por estructura.\n"
     "- src/code_viewer.c: snippets C por operacion.\n"
     "- src/algorithm_trace.c: texto de traza y complejidades.\n"
-    "- src/pila.c, cola.c, cola_prioridad.c, lista.c: TAD puros en C.\n"
+    "- src/pila.c, cola.c, cola_prioridad.c, lista.c, lista_circular.c: TAD puros en C.\n"
     "\n"
     "Principio clave de diseno:\n"
     "- La UI no altera nodos directamente.\n"
@@ -834,6 +872,9 @@ static void draw_active_view(const AppState *state, Rectangle panel, float conte
     case ESTRUCTURA_LISTA:
         lista_view_draw(state, area);
         break;
+    case ESTRUCTURA_LISTA_CIRCULAR:
+        lista_circular_view_draw(state, area);
+        break;
     default:
         break;
     }
@@ -879,9 +920,10 @@ static float draw_context_controls(AppState *app, Rectangle panel, bool *is_comp
         *is_compact_mode = compact;
     }
 
-    if (app->estructura_activa == ESTRUCTURA_LISTA) {
+    if (app->estructura_activa == ESTRUCTURA_LISTA ||
+        app->estructura_activa == ESTRUCTURA_LISTA_CIRCULAR) {
         count = 7;
-        hint = "Atajos: UP/DOWN valor, Z inicio, A final, B buscar, D eliminar";
+        hint = "Atajos: UP/DOWN valor, Z inicio, A final, B buscar, D eliminar, R invertir";
     } else if (app->estructura_activa == ESTRUCTURA_COLA_PRIORIDAD) {
         count = 4;
         hint = "Atajos: UP/DOWN valor, LEFT/RIGHT prioridad";
@@ -931,6 +973,7 @@ static float draw_context_controls(AppState *app, Rectangle panel, bool *is_comp
             }
             break;
         case ESTRUCTURA_LISTA:
+        case ESTRUCTURA_LISTA_CIRCULAR:
             if (i == 0 && ui_button(btn, "Inicializar (I)", false)) {
                 app_state_operacion_inicializar(app);
             } else if (i == 1 && ui_button(btn, "Inicio (Z)", false)) {
@@ -975,7 +1018,8 @@ static void handle_keyboard(AppState *app) {
         app_state_operacion_inicializar(app);
     }
     if (IsKeyPressed(KEY_A)) {
-        if (app->estructura_activa == ESTRUCTURA_LISTA) {
+        if (app->estructura_activa == ESTRUCTURA_LISTA ||
+            app->estructura_activa == ESTRUCTURA_LISTA_CIRCULAR) {
             app_state_operacion_lista_insertar_final(app);
         } else {
             app_state_operacion_insertar(app);
@@ -1280,6 +1324,11 @@ int main(void) {
         if (ui_sidebar_button(btn, "Lista", app.estructura_activa == ESTRUCTURA_LISTA)) {
             app_state_set_estructura(&app, ESTRUCTURA_LISTA);
         }
+        btn.y += 50.0f;
+        if (ui_sidebar_button(btn, "Lista Circular",
+                              app.estructura_activa == ESTRUCTURA_LISTA_CIRCULAR)) {
+            app_state_set_estructura(&app, ESTRUCTURA_LISTA_CIRCULAR);
+        }
 
         DrawLine((int)(layout.sidebar.x + 16.0f), (int)(btn.y + 56.0f),
                  (int)(layout.sidebar.x + layout.sidebar.width - 16.0f), (int)(btn.y + 56.0f),
@@ -1314,10 +1363,10 @@ int main(void) {
             if (available_info_h > 96.0f) {
                 ui_draw_text("Puedes editar los campos o usar atajos.", layout.sidebar.x + 12.0f,
                              help_y, help_size, 0.10f, (Color){66, 76, 86, 255}, false);
-                ui_draw_text("Navegacion: H menu | TAB sig. | 1..4 estructura", layout.sidebar.x + 12.0f,
+                ui_draw_text("Navegacion: H menu | TAB sig. | 1..5 estructura", layout.sidebar.x + 12.0f,
                              nav_y, nav_size, 0.10f, (Color){76, 91, 110, 255}, false);
             } else if (available_info_h > 80.0f) {
-                ui_draw_text("H menu | TAB | 1..4", layout.sidebar.x + 12.0f, nav_y,
+                ui_draw_text("H menu | TAB | 1..5", layout.sidebar.x + 12.0f, nav_y,
                              compact_sidebar ? 10.0f : 11.0f, 0.10f, (Color){76, 91, 110, 255}, false);
             }
 

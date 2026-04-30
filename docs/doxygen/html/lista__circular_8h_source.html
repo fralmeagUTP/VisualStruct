@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: Archivo de código fuente lista_circular.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('lista__circular_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">lista_circular.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="lista__circular_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef LISTA_CIRCULAR_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define LISTA_CIRCULAR_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="lista__circular_8h.html#ad2d05d5d84aa4913f577aa9ec51a7659">   12</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>lcir_nodo <a class="code hl_typedef" href="lista__circular_8h.html#ad2d05d5d84aa4913f577aa9ec51a7659">LCirNodo</a>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="struct_lista_circular.html">   14</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="struct_lista_circular.html#a71d68590dda1cd92373e3b454c3d83b9">   15</a></span>    <a class="code hl_typedef" href="lista__circular_8h.html#ad2d05d5d84aa4913f577aa9ec51a7659">LCirNodo</a> *<a class="code hl_variable" href="struct_lista_circular.html#a71d68590dda1cd92373e3b454c3d83b9">cabeza</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="struct_lista_circular.html#af6ddf418da94e3bb2aef422aa445df08">   16</a></span>    <a class="code hl_typedef" href="lista__circular_8h.html#ad2d05d5d84aa4913f577aa9ec51a7659">LCirNodo</a> *<a class="code hl_variable" href="struct_lista_circular.html#af6ddf418da94e3bb2aef422aa445df08">cola</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>} <a class="code hl_struct" href="struct_lista_circular.html">ListaCircular</a>;</div>
+</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">void</span> <a class="code hl_function" href="lista__circular_8h.html#a0bc52d44e2943bc561444316525c8a53">lcir_inicializar</a>(<a class="code hl_struct" href="struct_lista_circular.html">ListaCircular</a> *lista);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keywordtype">bool</span> <a class="code hl_function" href="lista__circular_8h.html#a87d689886293af87c4b71fb58a322263">lcir_insertar_inicio</a>(<a class="code hl_struct" href="struct_lista_circular.html">ListaCircular</a> *lista, <span class="keywordtype">int</span> valor);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keywordtype">bool</span> <a class="code hl_function" href="lista__circular_8h.html#ad6b73241b1ef1d4b24c3127eba128e1e">lcir_insertar_final</a>(<a class="code hl_struct" href="struct_lista_circular.html">ListaCircular</a> *lista, <span class="keywordtype">int</span> valor);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordtype">int</span> <a class="code hl_function" href="lista__circular_8h.html#a8dec07b31dd5d4fc8d3cfb74ea5c25af">lcir_buscar_posiciones</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_lista_circular.html">ListaCircular</a> *lista, <span class="keywordtype">int</span> valor, <span class="keywordtype">int</span> *destino, <span class="keywordtype">int</span> capacidad);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keywordtype">bool</span> <a class="code hl_function" href="lista__circular_8h.html#a077916da33214d39c750c54039a8b0cf">lcir_eliminar_primero</a>(<a class="code hl_struct" href="struct_lista_circular.html">ListaCircular</a> *lista, <span class="keywordtype">int</span> valor);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keywordtype">void</span> <a class="code hl_function" href="lista__circular_8h.html#a3b71ab5b6ca7e2148743f57b82db081e">lcir_invertir</a>(<a class="code hl_struct" href="struct_lista_circular.html">ListaCircular</a> *lista);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keywordtype">bool</span> <a class="code hl_function" href="lista__circular_8h.html#a2de443224065cf3c23fb1e9f1f3788e0">lcir_vacia</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_lista_circular.html">ListaCircular</a> *lista);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keywordtype">int</span> <a class="code hl_function" href="lista__circular_8h.html#aee194af3ca05457659df6aaaadcc446b">lcir_contar</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_lista_circular.html">ListaCircular</a> *lista);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keywordtype">int</span> <a class="code hl_function" href="lista__circular_8h.html#ab60a987a64f38db06d14dd885fa2564a">lcir_copiar_valores</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_lista_circular.html">ListaCircular</a> *lista, <span class="keywordtype">int</span> *destino, <span class="keywordtype">int</span> capacidad);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keywordtype">void</span> <a class="code hl_function" href="lista__circular_8h.html#a3e61459ae5b0b1514bd828611d42be83">lcir_formatear</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_lista_circular.html">ListaCircular</a> *lista, <span class="keywordtype">char</span> *destino, <span class="keywordtype">size_t</span> capacidad);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">void</span> <a class="code hl_function" href="lista__circular_8h.html#ad6fcb012be584123f96f4fac6c068b8e">lcir_destruir</a>(<a class="code hl_struct" href="struct_lista_circular.html">ListaCircular</a> *lista);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="alista__circular_8h_html_a077916da33214d39c750c54039a8b0cf"><div class="ttname"><a href="lista__circular_8h.html#a077916da33214d39c750c54039a8b0cf">lcir_eliminar_primero</a></div><div class="ttdeci">bool lcir_eliminar_primero(ListaCircular *lista, int valor)</div><div class="ttdoc">Elimina la primera ocurrencia del valor.</div><div class="ttdef"><b>Definition</b> <a href="lista__circular_8c_source.html#l00103">lista_circular.c:103</a></div></div>
+<div class="ttc" id="alista__circular_8h_html_a0bc52d44e2943bc561444316525c8a53"><div class="ttname"><a href="lista__circular_8h.html#a0bc52d44e2943bc561444316525c8a53">lcir_inicializar</a></div><div class="ttdeci">void lcir_inicializar(ListaCircular *lista)</div><div class="ttdoc">Inicializa la lista circular vacia.</div><div class="ttdef"><b>Definition</b> <a href="lista__circular_8c_source.html#l00021">lista_circular.c:21</a></div></div>
+<div class="ttc" id="alista__circular_8h_html_a2de443224065cf3c23fb1e9f1f3788e0"><div class="ttname"><a href="lista__circular_8h.html#a2de443224065cf3c23fb1e9f1f3788e0">lcir_vacia</a></div><div class="ttdeci">bool lcir_vacia(const ListaCircular *lista)</div><div class="ttdoc">Indica si la lista circular esta vacia.</div><div class="ttdef"><b>Definition</b> <a href="lista__circular_8c_source.html#l00163">lista_circular.c:163</a></div></div>
+<div class="ttc" id="alista__circular_8h_html_a3b71ab5b6ca7e2148743f57b82db081e"><div class="ttname"><a href="lista__circular_8h.html#a3b71ab5b6ca7e2148743f57b82db081e">lcir_invertir</a></div><div class="ttdeci">void lcir_invertir(ListaCircular *lista)</div><div class="ttdoc">Invierte la direccion de la lista circular.</div><div class="ttdef"><b>Definition</b> <a href="lista__circular_8c_source.html#l00139">lista_circular.c:139</a></div></div>
+<div class="ttc" id="alista__circular_8h_html_a3e61459ae5b0b1514bd828611d42be83"><div class="ttname"><a href="lista__circular_8h.html#a3e61459ae5b0b1514bd828611d42be83">lcir_formatear</a></div><div class="ttdeci">void lcir_formatear(const ListaCircular *lista, char *destino, size_t capacidad)</div><div class="ttdoc">Genera una representacion textual de la lista circular.</div><div class="ttdef"><b>Definition</b> <a href="lista__circular_8c_source.html#l00205">lista_circular.c:205</a></div></div>
+<div class="ttc" id="alista__circular_8h_html_a87d689886293af87c4b71fb58a322263"><div class="ttname"><a href="lista__circular_8h.html#a87d689886293af87c4b71fb58a322263">lcir_insertar_inicio</a></div><div class="ttdeci">bool lcir_insertar_inicio(ListaCircular *lista, int valor)</div><div class="ttdoc">Inserta un valor al inicio.</div><div class="ttdef"><b>Definition</b> <a href="lista__circular_8c_source.html#l00029">lista_circular.c:29</a></div></div>
+<div class="ttc" id="alista__circular_8h_html_a8dec07b31dd5d4fc8d3cfb74ea5c25af"><div class="ttname"><a href="lista__circular_8h.html#a8dec07b31dd5d4fc8d3cfb74ea5c25af">lcir_buscar_posiciones</a></div><div class="ttdeci">int lcir_buscar_posiciones(const ListaCircular *lista, int valor, int *destino, int capacidad)</div><div class="ttdoc">Busca un valor y copia posiciones de coincidencia (1-based).</div><div class="ttdef"><b>Definition</b> <a href="lista__circular_8c_source.html#l00079">lista_circular.c:79</a></div></div>
+<div class="ttc" id="alista__circular_8h_html_ab60a987a64f38db06d14dd885fa2564a"><div class="ttname"><a href="lista__circular_8h.html#ab60a987a64f38db06d14dd885fa2564a">lcir_copiar_valores</a></div><div class="ttdeci">int lcir_copiar_valores(const ListaCircular *lista, int *destino, int capacidad)</div><div class="ttdoc">Copia los valores de la lista en un arreglo destino.</div><div class="ttdef"><b>Definition</b> <a href="lista__circular_8c_source.html#l00184">lista_circular.c:184</a></div></div>
+<div class="ttc" id="alista__circular_8h_html_ad2d05d5d84aa4913f577aa9ec51a7659"><div class="ttname"><a href="lista__circular_8h.html#ad2d05d5d84aa4913f577aa9ec51a7659">LCirNodo</a></div><div class="ttdeci">struct lcir_nodo LCirNodo</div><div class="ttdef"><b>Definition</b> <a href="#l00012">lista_circular.h:12</a></div></div>
+<div class="ttc" id="alista__circular_8h_html_ad6b73241b1ef1d4b24c3127eba128e1e"><div class="ttname"><a href="lista__circular_8h.html#ad6b73241b1ef1d4b24c3127eba128e1e">lcir_insertar_final</a></div><div class="ttdeci">bool lcir_insertar_final(ListaCircular *lista, int valor)</div><div class="ttdoc">Inserta un valor al final.</div><div class="ttdef"><b>Definition</b> <a href="lista__circular_8c_source.html#l00054">lista_circular.c:54</a></div></div>
+<div class="ttc" id="alista__circular_8h_html_ad6fcb012be584123f96f4fac6c068b8e"><div class="ttname"><a href="lista__circular_8h.html#ad6fcb012be584123f96f4fac6c068b8e">lcir_destruir</a></div><div class="ttdeci">void lcir_destruir(ListaCircular *lista)</div><div class="ttdoc">Libera toda la memoria de la lista circular.</div><div class="ttdef"><b>Definition</b> <a href="lista__circular_8c_source.html#l00251">lista_circular.c:251</a></div></div>
+<div class="ttc" id="alista__circular_8h_html_aee194af3ca05457659df6aaaadcc446b"><div class="ttname"><a href="lista__circular_8h.html#aee194af3ca05457659df6aaaadcc446b">lcir_contar</a></div><div class="ttdeci">int lcir_contar(const ListaCircular *lista)</div><div class="ttdoc">Retorna la cantidad de nodos.</div><div class="ttdef"><b>Definition</b> <a href="lista__circular_8c_source.html#l00167">lista_circular.c:167</a></div></div>
+<div class="ttc" id="astruct_lista_circular_html"><div class="ttname"><a href="struct_lista_circular.html">ListaCircular</a></div><div class="ttdef"><b>Definition</b> <a href="#l00014">lista_circular.h:14</a></div></div>
+<div class="ttc" id="astruct_lista_circular_html_a71d68590dda1cd92373e3b454c3d83b9"><div class="ttname"><a href="struct_lista_circular.html#a71d68590dda1cd92373e3b454c3d83b9">ListaCircular::cabeza</a></div><div class="ttdeci">LCirNodo * cabeza</div><div class="ttdef"><b>Definition</b> <a href="#l00015">lista_circular.h:15</a></div></div>
+<div class="ttc" id="astruct_lista_circular_html_af6ddf418da94e3bb2aef422aa445df08"><div class="ttname"><a href="struct_lista_circular.html#af6ddf418da94e3bb2aef422aa445df08">ListaCircular::cola</a></div><div class="ttdeci">LCirNodo * cola</div><div class="ttdef"><b>Definition</b> <a href="#l00016">lista_circular.h:16</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="lista__circular_8h.html">lista_circular.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: Analisis y Diseno: Modulo Lista Circular</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('md_docs_2analisis-diseno-lista-circular.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Analisis y Diseno: Modulo Lista Circular </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md11"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
+1. Objetivo de la funcionalidad</h1>
+<p>Agregar una nueva estructura visualizable llamada <span class="tt"><a class="el" href="struct_lista.html">Lista</a> Circular</span> al ecosistema de VisualStruct, manteniendo:</p>
+<ul>
+<li>coherencia funcional con las estructuras existentes,</li>
+<li>separacion de capas (TAD, estado, presentacion),</li>
+<li>soporte pedagogico completo (vista grafica, snippet C, traza/complejidad, ayuda y QA).</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
+2. Alcance funcional</h1>
+<p>La estructura <span class="tt"><a class="el" href="struct_lista.html">Lista</a> Circular</span> debe permitir, desde UI y atajos:</p>
+<ol type="1">
+<li>Inicializar</li>
+<li>Insertar al inicio</li>
+<li>Insertar al final</li>
+<li>Buscar valor</li>
+<li>Eliminar primera ocurrencia</li>
+<li>Invertir</li>
+<li>Vaciar</li>
+</ol>
+<p>Adicionalmente:</p>
+<ul>
+<li>visualizacion horizontal con scroll y barra draggable,</li>
+<li>indicador visual de circularidad (ultimo nodo enlaza al primero),</li>
+<li>integracion a menu principal, menu lateral y rotacion por <span class="tt">TAB</span>,</li>
+<li>historial de codigo C en panel derecho,</li>
+<li>traza y complejidad en panel inferior.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
+3. Requerimientos funcionales detallados</h1>
+<h2>RF-01: Registro de estructura en estado global</h2>
+<ul>
+<li><span class="tt"><a class="el" href="app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6">TipoEstructura</a></span> incorpora <span class="tt"><a class="el" href="app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a5792059a3b19d9ea2122f8b4ed48a6ae">ESTRUCTURA_LISTA_CIRCULAR</a></span>.</li>
+<li><span class="tt"><a class="el" href="struct_app_state.html">AppState</a></span> incorpora instancia <span class="tt"><a class="el" href="struct_lista_circular.html">ListaCircular</a> lista_circular</span>.</li>
+</ul>
+<h2>RF-02: Operaciones de dominio</h2>
+<ul>
+<li>API publica en <span class="tt"><a class="el" href="lista__circular_8h.html" title="API de lista circular simplemente enlazada (con cabeza y cola).">include/lista_circular.h</a></span>:<ul>
+<li><span class="tt"><a class="el" href="lista__circular_8h.html#a0bc52d44e2943bc561444316525c8a53" title="Inicializa la lista circular vacia.">lcir_inicializar</a></span></li>
+<li><span class="tt"><a class="el" href="lista__circular_8h.html#a87d689886293af87c4b71fb58a322263" title="Inserta un valor al inicio.">lcir_insertar_inicio</a></span></li>
+<li><span class="tt"><a class="el" href="lista__circular_8h.html#ad6b73241b1ef1d4b24c3127eba128e1e" title="Inserta un valor al final.">lcir_insertar_final</a></span></li>
+<li><span class="tt"><a class="el" href="lista__circular_8h.html#a8dec07b31dd5d4fc8d3cfb74ea5c25af" title="Busca un valor y copia posiciones de coincidencia (1-based).">lcir_buscar_posiciones</a></span></li>
+<li><span class="tt"><a class="el" href="lista__circular_8h.html#a077916da33214d39c750c54039a8b0cf" title="Elimina la primera ocurrencia del valor.">lcir_eliminar_primero</a></span></li>
+<li><span class="tt"><a class="el" href="lista__circular_8h.html#a3b71ab5b6ca7e2148743f57b82db081e" title="Invierte la direccion de la lista circular.">lcir_invertir</a></span></li>
+<li><span class="tt"><a class="el" href="lista__circular_8h.html#a2de443224065cf3c23fb1e9f1f3788e0" title="Indica si la lista circular esta vacia.">lcir_vacia</a></span></li>
+<li><span class="tt"><a class="el" href="lista__circular_8h.html#aee194af3ca05457659df6aaaadcc446b" title="Retorna la cantidad de nodos.">lcir_contar</a></span></li>
+<li><span class="tt"><a class="el" href="lista__circular_8h.html#ab60a987a64f38db06d14dd885fa2564a" title="Copia los valores de la lista en un arreglo destino.">lcir_copiar_valores</a></span></li>
+<li><span class="tt"><a class="el" href="lista__circular_8h.html#a3e61459ae5b0b1514bd828611d42be83" title="Genera una representacion textual de la lista circular.">lcir_formatear</a></span></li>
+<li><span class="tt"><a class="el" href="lista__circular_8h.html#ad6fcb012be584123f96f4fac6c068b8e" title="Libera toda la memoria de la lista circular.">lcir_destruir</a></span></li>
+</ul>
+</li>
+</ul>
+<h2>RF-03: Integracion en <a class="el" href="struct_app_state.html">AppState</a></h2>
+<ul>
+<li>Cada operacion de alto nivel despacha al TAD circular cuando <span class="tt">estructura_activa</span> es circular.</li>
+<li>Mensajes, feedback y serial de operacion se mantienen consistentes con el resto de estructuras.</li>
+</ul>
+<h2>RF-04: Visualizacion dedicada</h2>
+<ul>
+<li>Nuevo modulo <span class="tt">lista_circular_view</span> renderiza nodos, enlaces y retorno circular.</li>
+<li>Debe resaltar insercion, busqueda y eliminacion con el mismo patron visual de la app.</li>
+</ul>
+<h2>RF-05: Integracion pedagogica</h2>
+<ul>
+<li><span class="tt">code_viewer</span> incluye snippets representativos para operaciones de lista circular.</li>
+<li><span class="tt">algorithm_trace</span> incluye pasos y complejidades por operacion.</li>
+<li>Ayuda interna y documentacion externa incorporan la nueva estructura.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+4. Modelo de datos y decisiones de diseno</h1>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+4.1 Estructura de datos seleccionada</h1>
+<p>Se usa lista simplemente enlazada circular con dos punteros:</p>
+<ul>
+<li><span class="tt">cabeza</span>: primer nodo logico</li>
+<li><span class="tt">cola</span>: ultimo nodo logico</li>
+</ul>
+<p>Invariante principal:</p>
+<ul>
+<li>Si la lista no esta vacia, <span class="tt">cola-&gt;sgte == cabeza</span>.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+4.2 Justificacion tecnica</h1>
+<ul>
+<li>Permite <span class="tt">insertar_inicio</span> e <span class="tt">insertar_final</span> en <span class="tt">O(1)</span>.</li>
+<li>Facilita el dibujo de circularidad en UI (conexion explicita cola-&gt;cabeza).</li>
+<li>Conserva simplicidad del TAD para objetivos docentes.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
+4.3 Complejidades esperadas</h1>
+<ul>
+<li>Inicializar: <span class="tt">O(1)</span></li>
+<li>Insertar inicio: <span class="tt">O(1)</span></li>
+<li>Insertar final: <span class="tt">O(1)</span></li>
+<li>Buscar: <span class="tt">O(n)</span></li>
+<li>Eliminar primera ocurrencia: <span class="tt">O(n)</span></li>
+<li>Invertir: <span class="tt">O(n)</span></li>
+<li>Vaciar: <span class="tt">O(n)</span></li>
+<li>Espacio auxiliar en operaciones: <span class="tt">O(1)</span></li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
+5. Diseno de interfaz y experiencia</h1>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
+5.1 Integracion de navegacion</h1>
+<ul>
+<li>Home: quinta tarjeta para <span class="tt"><a class="el" href="struct_lista.html">Lista</a> Circular</span>.</li>
+<li>Sidebar: nuevo boton <span class="tt"><a class="el" href="struct_lista.html">Lista</a> Circular</span>.</li>
+<li>Atajos directos: <span class="tt">5</span> para seleccionar circular.</li>
+<li>Ciclo de <span class="tt">TAB</span>: ahora rota entre cinco estructuras.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
+5.2 Controles contextuales</h1>
+<p>Comparte el set de siete operaciones de <span class="tt"><a class="el" href="struct_lista.html">Lista</a></span>:</p>
+<ul>
+<li><span class="tt">Inicializar (I)</span></li>
+<li><span class="tt">Inicio (Z)</span></li>
+<li><span class="tt">Final (A)</span></li>
+<li><span class="tt">Buscar (B)</span></li>
+<li><span class="tt">Eliminar (D)</span></li>
+<li><span class="tt">Invertir (R)</span></li>
+<li><span class="tt">Vaciar (V)</span></li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
+5.3 Visualizacion en panel central</h1>
+<ul>
+<li>Disposicion horizontal de nodos.</li>
+<li>Flechas entre nodos consecutivos.</li>
+<li>Conexion superior de retorno desde ultimo nodo hacia <span class="tt">HEAD</span>.</li>
+<li>Scroll horizontal con rueda y barra de arrastre.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
+6. Integracion por capas</h1>
+<ol type="1">
+<li>Dominio:<ul>
+<li><span class="tt"><a class="el" href="lista__circular_8h.html" title="API de lista circular simplemente enlazada (con cabeza y cola).">include/lista_circular.h</a></span></li>
+<li><span class="tt"><a class="el" href="lista__circular_8c.html">src/lista_circular.c</a></span></li>
+</ul>
+</li>
+<li>Aplicacion:<ul>
+<li><span class="tt"><a class="el" href="app__state_8h.html" title="Estado global y acciones de alto nivel de la aplicacion.">include/app_state.h</a></span></li>
+<li><span class="tt"><a class="el" href="app__state_8c.html" title="Implementacion del estado global y despacho de operaciones de alto nivel.">src/app_state.c</a></span></li>
+</ul>
+</li>
+<li>Presentacion:<ul>
+<li><span class="tt"><a class="el" href="lista__circular__view_8h.html">include/lista_circular_view.h</a></span></li>
+<li><span class="tt"><a class="el" href="lista__circular__view_8c.html" title="Renderizado de la lista circular en el panel central.">src/lista_circular_view.c</a></span></li>
+<li><span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span></li>
+</ul>
+</li>
+<li>Pedagogia:<ul>
+<li><span class="tt"><a class="el" href="code__viewer_8c.html" title="Catalogo de snippets C asociados a las operaciones visibles en la UI.">src/code_viewer.c</a></span></li>
+<li><span class="tt"><a class="el" href="algorithm__trace_8c.html" title="Tabla de mensajes pedagógicos y complejidades por operacion.">src/algorithm_trace.c</a></span></li>
+</ul>
+</li>
+<li>Build y docs:<ul>
+<li><span class="tt">Makefile</span></li>
+<li><span class="tt"><a class="el" href="_r_e_a_d_m_e_8md.html">README.md</a></span> y <span class="tt">docs/*.md</span></li>
+</ul>
+</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
+7. Criterios de aceptacion</h1>
+<p>Se considera implementada correctamente cuando:</p>
+<ol type="1">
+<li>Compila sin errores con flags estrictos (<span class="tt">-Wall -Wextra -pedantic</span>).</li>
+<li>La estructura aparece y navega correctamente en Home, Sidebar, <span class="tt">TAB</span> y tecla <span class="tt">5</span>.</li>
+<li>Las 7 operaciones funcionan y actualizan estado, mensaje e historial.</li>
+<li>La vista muestra retorno circular y permite inspeccion con scroll.</li>
+<li>Snippets y trazas reflejan la operacion circular ejecutada.</li>
+<li>Documentacion y QA quedan sincronizados.</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
+8. Riesgos y mitigaciones</h1>
+<ul>
+<li>Riesgo: romper contratos de listas existentes.<ul>
+<li>Mitigacion: no alterar API de <span class="tt"><a class="el" href="lista_8h.html" title="API de lista enlazada simple con cabeza.">lista.h</a></span>; nuevo TAD aislado.</li>
+</ul>
+</li>
+<li>Riesgo: inconsistencias de navegacion por pasar de 4 a 5 estructuras.<ul>
+<li>Mitigacion: revisar todos los <span class="tt">% 4</span> y atajos hardcodeados.</li>
+</ul>
+</li>
+<li>Riesgo: degradacion visual en resoluciones bajas por tarjeta extra.<ul>
+<li>Mitigacion: ajustar ancho de cards y validar con QA de ventanas.</li>
+</ul>
+</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
+9. Plan de pruebas minimo</h1>
+<ol type="1">
+<li>Pruebas funcionales de las 7 operaciones en lista circular.</li>
+<li>Pruebas de navegacion (<span class="tt">1..5</span>, <span class="tt">TAB</span>, <span class="tt">H</span>, <span class="tt">F1</span>).</li>
+<li>Pruebas de paneles pedagogicos (historial, traza, complejidad).</li>
+<li>Pruebas de layout y scroll en resoluciones de la matriz QA. </li>
+</ol>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

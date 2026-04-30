@@ -5,7 +5,8 @@ var app__state_8h =
       [ "ESTRUCTURA_PILA", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6af11df1085912c3f2ab53d4bb453867b4", null ],
       [ "ESTRUCTURA_COLA", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a973a65123dc5ff5ef05b6a36d9f15bfa", null ],
       [ "ESTRUCTURA_COLA_PRIORIDAD", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a2dabb13bba1952a9e6f7609ab71bdc05", null ],
-      [ "ESTRUCTURA_LISTA", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a41a17370323282b2af4ef2ca3071c1c7", null ]
+      [ "ESTRUCTURA_LISTA", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a41a17370323282b2af4ef2ca3071c1c7", null ],
+      [ "ESTRUCTURA_LISTA_CIRCULAR", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a5792059a3b19d9ea2122f8b4ed48a6ae", null ]
     ] ],
     [ "TipoOperacion", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776", [
       [ "OPERACION_NINGUNA", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776a2564063c60c93f874cddf9eb18e0b4e4", null ],

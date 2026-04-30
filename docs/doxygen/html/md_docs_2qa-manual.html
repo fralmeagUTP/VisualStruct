@@ -92,21 +92,21 @@ $(function(){initNavTree('md_docs_2qa-manual.html','',''); });
   <div class="headertitle"><div class="title">Guia de Pruebas Manuales </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md35"></a></p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md36"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md51"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md52"></a>
 Objetivo</h1>
 <p>Esta guia define una verificacion manual minima para confirmar que la app unificada mantiene comportamiento correcto y feedback pedagogico consistente.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md37"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md53"></a>
 Preparacion</h1>
 <ol type="1">
 <li>Compilar la aplicacion.</li>
 <li>Ejecutar el binario generado.</li>
 <li>Verificar que carguen la ventana principal, el menu lateral y los paneles de codigo y traza.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md38"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md54"></a>
 Chequeos globales</h1>
 <ul>
-<li>Cambiar entre <a class="el" href="struct_pila.html">Pila</a>, <a class="el" href="struct_cola.html">Cola</a>, <a class="el" href="struct_cola.html">Cola</a> de Prioridad y <a class="el" href="struct_lista.html">Lista</a> desde la barra lateral.</li>
+<li>Cambiar entre <a class="el" href="struct_pila.html">Pila</a>, <a class="el" href="struct_cola.html">Cola</a>, <a class="el" href="struct_cola.html">Cola</a> de Prioridad, <a class="el" href="struct_lista.html">Lista</a> y <a class="el" href="struct_lista.html">Lista</a> Circular desde la barra lateral.</li>
 <li>Verificar que el titulo, los botones contextuales y el conteo de elementos cambian con la estructura activa.</li>
 <li>Confirmar que los campos <span class="tt">Valor</span> y <span class="tt">Prioridad</span> aceptan edicion.</li>
 <li>Escribir una entrada invalida y comprobar que la caja se marca en rojo.</li>
@@ -114,7 +114,7 @@ Chequeos globales</h1>
 <li>Abrir/cerrar ayuda con <span class="tt">F1</span> desde menu principal y visualizador sin bloqueos.</li>
 <li>Abrir ayuda desde boton lateral <span class="tt">Ayuda (F1)</span> y verificar retorno correcto con <span class="tt">Volver</span> o <span class="tt">ESC</span>.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md39"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md55"></a>
 Pila</h1>
 <ol type="1">
 <li>Inicializar la pila.</li>
@@ -124,7 +124,7 @@ Pila</h1>
 <li>Verificar que el tope cambia y que aparece el nodo fantasma con <span class="tt">POP</span>.</li>
 <li>Vaciar y confirmar el mensaje <span class="tt"><a class="el" href="struct_pila.html">Pila</a> vacia</span>.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md40"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md56"></a>
 Cola</h1>
 <ol type="1">
 <li>Inicializar la cola.</li>
@@ -135,7 +135,7 @@ Cola</h1>
 <li>Verificar avance del frente y presencia del nodo fantasma <span class="tt">OUT</span>.</li>
 <li>Vaciar y confirmar el mensaje <span class="tt"><a class="el" href="struct_cola.html">Cola</a> vacia</span>.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md41"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md57"></a>
 Cola de prioridad</h1>
 <ol type="1">
 <li>Inicializar la estructura.</li>
@@ -146,7 +146,7 @@ Cola de prioridad</h1>
 <li>Confirmar que el nodo fantasma muestra <span class="tt">V:</span> y <span class="tt">P:</span> correctos.</li>
 <li>Editar una prioridad invalida y comprobar feedback en rojo.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md42"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md58"></a>
 Lista</h1>
 <ol type="1">
 <li>Inicializar la lista.</li>
@@ -157,7 +157,18 @@ Lista</h1>
 <li>Invertir la lista y observar cambio de orden.</li>
 <li>Eliminar y verificar nodo fantasma <span class="tt">DEL</span>.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md43"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md59"></a>
+Lista circular</h1>
+<ol type="1">
+<li>Inicializar la lista circular.</li>
+<li>Insertar al inicio y al final al menos 6 valores para forzar overflow horizontal.</li>
+<li>Verificar que se muestre <span class="tt">HEAD</span> y la conexion de retorno (ultimo nodo vuelve al primero).</li>
+<li>Usar rueda del mouse sobre el panel central y verificar desplazamiento horizontal.</li>
+<li>Buscar un valor existente y comprobar resaltado de coincidencias.</li>
+<li>Invertir la lista y validar que se conserva la circularidad.</li>
+<li>Eliminar un valor y verificar nodo fantasma <span class="tt">DEL</span>.</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md60"></a>
 Paneles pedagogicos</h1>
 <ul>
 <li>Tras cada operacion, revisar que el panel <span class="tt">Codigo C Asociado (Historial)</span> agregue una nueva entrada con estructura, operacion y snippet.</li>
@@ -165,14 +176,14 @@ Paneles pedagogicos</h1>
 <li>Confirmar que la traza textual y la complejidad cambian con la operacion actual.</li>
 <li>Probar scroll en panel de codigo y panel de traza cuando el texto excede el espacio visible.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md44"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md61"></a>
 Pantalla de ayuda</h1>
 <ul>
 <li>Verificar que el contenido sea extenso y legible en resolucion minima y base.</li>
 <li>Confirmar scroll vertical funcional dentro del cuerpo de ayuda.</li>
 <li>Validar que <span class="tt">F1</span> alterna apertura/cierre de ayuda conservando el contexto previo.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md45"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md62"></a>
 Criterios de salida</h1>
 <p>Se considera aceptable una iteracion si:</p>
 <ul>

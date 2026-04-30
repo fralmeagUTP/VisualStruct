@@ -8,6 +8,8 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "cola_prioridad_view.h", "cola__prioridad__view_8h.html", "cola__prioridad__view_8h" ],
     [ "cola_view.h", "cola__view_8h.html", "cola__view_8h" ],
     [ "lista.h", "lista_8h.html", "lista_8h" ],
+    [ "lista_circular.h", "lista__circular_8h.html", "lista__circular_8h" ],
+    [ "lista_circular_view.h", "lista__circular__view_8h.html", "lista__circular__view_8h" ],
     [ "lista_view.h", "lista__view_8h.html", "lista__view_8h" ],
     [ "pila.h", "pila_8h.html", "pila_8h" ],
     [ "pila_view.h", "pila__view_8h.html", "pila__view_8h" ],

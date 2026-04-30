@@ -1,29 +1,4 @@
 var searchData=
 [
-  ['ui_0',['Cuando toques la UI',['../md_docs_2contribucion.html#autotoc_md26',1,'']]],
-  ['ui_2ec_1',['ui.c',['../ui_8c.html',1,'']]],
-  ['ui_2eh_2',['ui.h',['../ui_8h.html',1,'']]],
-  ['ui_5fbutton_3',['ui_button',['../ui_8h.html#a870fa41831ea81dc71f38f239ba9e3b9',1,'ui_button(Rectangle bounds, const char *label, bool active):&#160;ui.c'],['../ui_8c.html#a870fa41831ea81dc71f38f239ba9e3b9',1,'ui_button(Rectangle bounds, const char *label, bool active):&#160;ui.c']]],
-  ['ui_5fdraw_5ffooter_4',['ui_draw_footer',['../ui_8h.html#ab67719a24f8e065f2f55be08a49702c8',1,'ui_draw_footer(const UIContext *ui):&#160;ui.c'],['../ui_8c.html#ab67719a24f8e065f2f55be08a49702c8',1,'ui_draw_footer(const UIContext *ui):&#160;ui.c']]],
-  ['ui_5fdraw_5fheader_5',['ui_draw_header',['../ui_8h.html#aa278fec77bf26060bc94b293d71e52c6',1,'ui_draw_header(const UIContext *ui):&#160;ui.c'],['../ui_8c.html#aa278fec77bf26060bc94b293d71e52c6',1,'ui_draw_header(const UIContext *ui):&#160;ui.c']]],
-  ['ui_5fdraw_5fpanel_6',['ui_draw_panel',['../ui_8h.html#a202e83e3828e9c6a763bbea4c104fea9',1,'ui_draw_panel(Rectangle panel, const char *title):&#160;ui.c'],['../ui_8c.html#a202e83e3828e9c6a763bbea4c104fea9',1,'ui_draw_panel(Rectangle panel, const char *title):&#160;ui.c']]],
-  ['ui_5fdraw_5ftext_7',['ui_draw_text',['../ui_8h.html#af696073d796e6999409d018b075accf2',1,'ui_draw_text(const char *text, float x, float y, float size, float spacing, Color color, bool heading):&#160;ui.c'],['../ui_8c.html#af696073d796e6999409d018b075accf2',1,'ui_draw_text(const char *text, float x, float y, float size, float spacing, Color color, bool heading):&#160;ui.c']]],
-  ['ui_5fget_5flayout_8',['ui_get_layout',['../ui_8h.html#a7e0cdc195098755b56c05061ec9aab6f',1,'ui_get_layout(const UIContext *ui):&#160;ui.c'],['../ui_8c.html#a7e0cdc195098755b56c05061ec9aab6f',1,'ui_get_layout(const UIContext *ui):&#160;ui.c']]],
-  ['ui_5finit_9',['ui_init',['../ui_8h.html#a03b141aa93589d2775434384e38c34cc',1,'ui_init(UIContext *ui, int width, int height):&#160;ui.c'],['../ui_8c.html#a03b141aa93589d2775434384e38c34cc',1,'ui_init(UIContext *ui, int width, int height):&#160;ui.c']]],
-  ['ui_5finput_5fbox_10',['ui_input_box',['../ui_8h.html#a2b831d38e35cb226c3e868403c9d49eb',1,'ui_input_box(Rectangle bounds, const char *label, const char *value, bool active, bool invalid):&#160;ui.c'],['../ui_8c.html#a2b831d38e35cb226c3e868403c9d49eb',1,'ui_input_box(Rectangle bounds, const char *label, const char *value, bool active, bool invalid):&#160;ui.c']]],
-  ['ui_5fmeasure_5ftext_11',['ui_measure_text',['../ui_8h.html#a6afd61ba19d908f64183b0a894b6be0a',1,'ui_measure_text(const char *text, float size, float spacing, bool heading):&#160;ui.c'],['../ui_8c.html#a6afd61ba19d908f64183b0a894b6be0a',1,'ui_measure_text(const char *text, float size, float spacing, bool heading):&#160;ui.c']]],
-  ['ui_5fset_5fsize_12',['ui_set_size',['../ui_8h.html#a06a9cf488d3f1094f31760baefe4b6e9',1,'ui_set_size(UIContext *ui, int width, int height):&#160;ui.c'],['../ui_8c.html#a06a9cf488d3f1094f31760baefe4b6e9',1,'ui_set_size(UIContext *ui, int width, int height):&#160;ui.c']]],
-  ['ui_5fsidebar_5fbutton_13',['ui_sidebar_button',['../ui_8h.html#ab76852480ac24b3d97e1341dea118c1b',1,'ui_sidebar_button(Rectangle bounds, const char *label, bool active):&#160;ui.c'],['../ui_8c.html#ab76852480ac24b3d97e1341dea118c1b',1,'ui_sidebar_button(Rectangle bounds, const char *label, bool active):&#160;ui.c']]],
-  ['ui_5funload_14',['ui_unload',['../ui_8h.html#a05d35d3171f234d4d770e37a18a96d35',1,'ui_unload(UIContext *ui):&#160;ui.c'],['../ui_8c.html#a05d35d3171f234d4d770e37a18a96d35',1,'ui_unload(UIContext *ui):&#160;ui.c']]],
-  ['uicontext_15',['UIContext',['../struct_u_i_context.html',1,'']]],
-  ['uilayout_16',['UILayout',['../struct_u_i_layout.html',1,'']]],
-  ['ultima_5foperacion_5fok_17',['ultima_operacion_ok',['../struct_app_state.html#a745b69eea69c629e6ef5cd3b1060c160',1,'AppState']]],
-  ['ultima_5fprioridad_18',['ultima_prioridad',['../struct_app_state.html#a3e809871b7494d0af796d24576acc3b0',1,'AppState']]],
-  ['ultimo_5fvalor_19',['ultimo_valor',['../struct_app_state.html#a2ee626204f627ce71021dc86b4afe888',1,'AppState']]],
-  ['un_20cambio_20',['Validacion recomendada antes de cerrar un cambio',['../md_docs_2contribucion.html#autotoc_md28',1,'']]],
-  ['un_20tad_21',['Cuando cambies un TAD',['../md_docs_2contribucion.html#autotoc_md23',1,'']]],
-  ['una_20estructura_20nueva_22',['Cuando agregues una estructura nueva',['../md_docs_2contribucion.html#autotoc_md25',1,'']]],
-  ['una_20operacion_20nueva_23',['Cuando agregues una operacion nueva',['../md_docs_2contribucion.html#autotoc_md24',1,'']]],
-  ['uso_24',['Recomendaciones de uso',['../md_docs_2guia-docente.html#autotoc_md33',1,'']]],
-  ['uso_20basico_25',['Uso Basico',['../index.html#autotoc_md6',1,'']]]
+  ['justificacion_20tecnica_0',['4.2 Justificacion tecnica',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md17',1,'']]]
 ];

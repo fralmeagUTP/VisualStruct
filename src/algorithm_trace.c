@@ -66,6 +66,24 @@ AlgorithmInfo algorithm_trace_get_info(TipoEstructura estructura, TipoOperacion 
             info.tiempo = "O(n)";
         }
         break;
+    case ESTRUCTURA_LISTA_CIRCULAR:
+        if (operacion == OPERACION_INSERTAR_INICIO) {
+            info.pasos = "1) Reservar nodo. 2) Enlazar antes de cabeza. 3) Cola sigue apuntando a cabeza.";
+            info.tiempo = "O(1)";
+        } else if (operacion == OPERACION_INSERTAR_FINAL || operacion == OPERACION_INSERTAR) {
+            info.pasos = "1) Reservar nodo. 2) Enlazar tras cola. 3) Actualizar cola y cierre circular.";
+            info.tiempo = "O(1)";
+        } else if (operacion == OPERACION_ELIMINAR) {
+            info.pasos = "1) Recorrer buscando valor. 2) Reenlazar anterior/siguiente. 3) Ajustar cabeza/cola si aplica.";
+            info.tiempo = "O(n)";
+        } else if (operacion == OPERACION_BUSCAR) {
+            info.pasos = "1) Recorrer ciclo una vez. 2) Comparar cada nodo. 3) Contar posiciones coincidentes.";
+            info.tiempo = "O(n)";
+        } else if (operacion == OPERACION_INVERTIR) {
+            info.pasos = "1) Recorrer nodos invirtiendo enlaces. 2) Intercambiar cabeza/cola. 3) Restablecer ciclo.";
+            info.tiempo = "O(n)";
+        }
+        break;
     default:
         break;
     }

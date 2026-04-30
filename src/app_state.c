@@ -63,6 +63,7 @@ void app_state_init(AppState *state) {
     cola_inicializar(&state->cola);
     cp_inicializar(&state->cola_prioridad);
     lista_inicializar(&state->lista);
+    lcir_inicializar(&state->lista_circular);
 }
 
 /** @brief Libera la memoria de todas las estructuras al cerrar la app. */
@@ -75,6 +76,7 @@ void app_state_shutdown(AppState *state) {
     cola_vaciar(&state->cola);
     cp_vaciar(&state->cola_prioridad);
     lista_destruir(&state->lista);
+    lcir_destruir(&state->lista_circular);
 }
 
 /** @brief Cambia la estructura activa y reinicia el contexto operativo. */
@@ -189,6 +191,11 @@ void app_state_operacion_inicializar(AppState *state) {
         lista_inicializar(&state->lista);
         set_message(state, "Lista inicializada");
         break;
+    case ESTRUCTURA_LISTA_CIRCULAR:
+        lcir_destruir(&state->lista_circular);
+        lcir_inicializar(&state->lista_circular);
+        set_message(state, "Lista circular inicializada");
+        break;
     default:
         break;
     }
@@ -254,56 +261,90 @@ void app_state_operacion_insertar(AppState *state) {
             set_message(state, "lista_insertar_final fallido");
         }
         break;
+    case ESTRUCTURA_LISTA_CIRCULAR:
+        state->operacion_actual = OPERACION_INSERTAR_FINAL;
+        state->ultima_operacion_ok = lcir_insertar_final(&state->lista_circular, state->input_valor);
+        if (state->ultima_operacion_ok) {
+            state->ultimo_valor = state->input_valor;
+            trigger_feedback(state, OPERACION_INSERTAR_FINAL);
+            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                     "lcir_insertar_final(%d)", state->input_valor);
+        } else {
+            set_message(state, "lcir_insertar_final fallido");
+        }
+        break;
     default:
         break;
     }
 }
 
-/** @brief Inserta un nodo al inicio cuando la estructura activa es lista. */
+/** @brief Inserta un nodo al inicio cuando la estructura activa es lista o lista circular. */
 void app_state_operacion_lista_insertar_inicio(AppState *state) {
     if (state == NULL) {
         return;
     }
     state->operacion_serial++;
-    if (state->estructura_activa != ESTRUCTURA_LISTA) {
+    if (state->estructura_activa != ESTRUCTURA_LISTA &&
+        state->estructura_activa != ESTRUCTURA_LISTA_CIRCULAR) {
         state->ultima_operacion_ok = false;
-        set_message(state, "Operacion solo valida para Lista");
+        set_message(state, "Operacion valida solo para Lista/Lista Circular");
         return;
     }
 
     state->operacion_actual = OPERACION_INSERTAR_INICIO;
-    state->ultima_operacion_ok = lista_insertar_inicio(&state->lista, state->input_valor);
+    if (state->estructura_activa == ESTRUCTURA_LISTA_CIRCULAR) {
+        state->ultima_operacion_ok =
+            lcir_insertar_inicio(&state->lista_circular, state->input_valor);
+    } else {
+        state->ultima_operacion_ok = lista_insertar_inicio(&state->lista, state->input_valor);
+    }
     if (state->ultima_operacion_ok) {
         state->ultimo_valor = state->input_valor;
         trigger_feedback(state, OPERACION_INSERTAR_INICIO);
-        snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
-                 "lista_insertar_inicio(%d)", state->input_valor);
+        if (state->estructura_activa == ESTRUCTURA_LISTA_CIRCULAR) {
+            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                     "lcir_insertar_inicio(%d)", state->input_valor);
+        } else {
+            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                     "lista_insertar_inicio(%d)", state->input_valor);
+        }
     } else {
-        set_message(state, "lista_insertar_inicio fallido");
+        set_message(state, "insertar_inicio fallido");
     }
 }
 
-/** @brief Inserta un nodo al final cuando la estructura activa es lista. */
+/** @brief Inserta un nodo al final cuando la estructura activa es lista o lista circular. */
 void app_state_operacion_lista_insertar_final(AppState *state) {
     if (state == NULL) {
         return;
     }
     state->operacion_serial++;
-    if (state->estructura_activa != ESTRUCTURA_LISTA) {
+    if (state->estructura_activa != ESTRUCTURA_LISTA &&
+        state->estructura_activa != ESTRUCTURA_LISTA_CIRCULAR) {
         state->ultima_operacion_ok = false;
-        set_message(state, "Operacion solo valida para Lista");
+        set_message(state, "Operacion valida solo para Lista/Lista Circular");
         return;
     }
 
     state->operacion_actual = OPERACION_INSERTAR_FINAL;
-    state->ultima_operacion_ok = lista_insertar_final(&state->lista, state->input_valor);
+    if (state->estructura_activa == ESTRUCTURA_LISTA_CIRCULAR) {
+        state->ultima_operacion_ok =
+            lcir_insertar_final(&state->lista_circular, state->input_valor);
+    } else {
+        state->ultima_operacion_ok = lista_insertar_final(&state->lista, state->input_valor);
+    }
     if (state->ultima_operacion_ok) {
         state->ultimo_valor = state->input_valor;
         trigger_feedback(state, OPERACION_INSERTAR_FINAL);
-        snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
-                 "lista_insertar_final(%d)", state->input_valor);
+        if (state->estructura_activa == ESTRUCTURA_LISTA_CIRCULAR) {
+            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                     "lcir_insertar_final(%d)", state->input_valor);
+        } else {
+            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                     "lista_insertar_final(%d)", state->input_valor);
+        }
     } else {
-        set_message(state, "lista_insertar_final fallido");
+        set_message(state, "insertar_final fallido");
     }
 }
 
@@ -365,12 +406,24 @@ void app_state_operacion_eliminar(AppState *state) {
             set_message(state, "valor no encontrado en lista");
         }
         break;
+    case ESTRUCTURA_LISTA_CIRCULAR:
+        state->ultima_operacion_ok =
+            lcir_eliminar_primero(&state->lista_circular, state->input_valor);
+        if (state->ultima_operacion_ok) {
+            state->ultimo_valor = state->input_valor;
+            trigger_feedback(state, OPERACION_ELIMINAR);
+            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                     "lcir_eliminar_primero(%d)", state->input_valor);
+        } else {
+            set_message(state, "valor no encontrado en lista circular");
+        }
+        break;
     default:
         break;
     }
 }
 
-/** @brief Busca coincidencias en la lista activa del MVP. */
+/** @brief Busca coincidencias en lista o lista circular. */
 void app_state_operacion_buscar(AppState *state) {
     if (state == NULL) {
         return;
@@ -381,13 +434,19 @@ void app_state_operacion_buscar(AppState *state) {
     state->coincidencias_busqueda = 0;
     state->ultima_operacion_ok = false;
 
-    if (state->estructura_activa != ESTRUCTURA_LISTA) {
-        set_message(state, "Buscar disponible solo en Lista");
+    if (state->estructura_activa != ESTRUCTURA_LISTA &&
+        state->estructura_activa != ESTRUCTURA_LISTA_CIRCULAR) {
+        set_message(state, "Buscar disponible solo en Lista/Lista Circular");
         return;
     }
 
-    state->coincidencias_busqueda =
-        lista_buscar_posiciones(&state->lista, state->input_valor, NULL, 0);
+    if (state->estructura_activa == ESTRUCTURA_LISTA_CIRCULAR) {
+        state->coincidencias_busqueda =
+            lcir_buscar_posiciones(&state->lista_circular, state->input_valor, NULL, 0);
+    } else {
+        state->coincidencias_busqueda =
+            lista_buscar_posiciones(&state->lista, state->input_valor, NULL, 0);
+    }
     state->ultima_operacion_ok = true;
     trigger_feedback(state, OPERACION_BUSCAR);
     snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
@@ -395,7 +454,7 @@ void app_state_operacion_buscar(AppState *state) {
              state->coincidencias_busqueda);
 }
 
-/** @brief Invierte la lista activa cuando corresponde. */
+/** @brief Invierte lista o lista circular cuando corresponde. */
 void app_state_operacion_invertir(AppState *state) {
     if (state == NULL) {
         return;
@@ -404,16 +463,25 @@ void app_state_operacion_invertir(AppState *state) {
     state->operacion_actual = OPERACION_INVERTIR;
     state->operacion_serial++;
 
-    if (state->estructura_activa != ESTRUCTURA_LISTA) {
+    if (state->estructura_activa != ESTRUCTURA_LISTA &&
+        state->estructura_activa != ESTRUCTURA_LISTA_CIRCULAR) {
         state->ultima_operacion_ok = false;
-        set_message(state, "Invertir disponible solo en Lista");
+        set_message(state, "Invertir disponible solo en Lista/Lista Circular");
         return;
     }
 
-    lista_invertir(&state->lista);
+    if (state->estructura_activa == ESTRUCTURA_LISTA_CIRCULAR) {
+        lcir_invertir(&state->lista_circular);
+    } else {
+        lista_invertir(&state->lista);
+    }
     state->ultima_operacion_ok = true;
     trigger_feedback(state, OPERACION_INVERTIR);
-    set_message(state, "lista_invertir() ejecutado");
+    if (state->estructura_activa == ESTRUCTURA_LISTA_CIRCULAR) {
+        set_message(state, "lcir_invertir() ejecutado");
+    } else {
+        set_message(state, "lista_invertir() ejecutado");
+    }
 }
 
 /** @brief Vacia la estructura activa liberando su memoria dinamica. */
@@ -442,6 +510,10 @@ void app_state_operacion_vaciar(AppState *state) {
     case ESTRUCTURA_LISTA:
         lista_destruir(&state->lista);
         set_message(state, "lista vaciada");
+        break;
+    case ESTRUCTURA_LISTA_CIRCULAR:
+        lcir_destruir(&state->lista_circular);
+        set_message(state, "lista circular vaciada");
         break;
     default:
         break;

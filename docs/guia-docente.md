@@ -35,6 +35,12 @@ Esta aplicacion esta pensada para explicar operaciones de estructuras secuencial
 - Ejecutar busqueda para remarcar coincidencias.
 - Invertir la lista y observar el efecto estructural.
 
+### Lista circular
+- Explicar el cierre del ciclo: el ultimo nodo vuelve al primero.
+- Comparar insercion al inicio y al final resaltando que ambas mantienen circularidad.
+- Buscar un valor y discutir por que el recorrido debe detenerse al volver a `HEAD`.
+- Invertir y verificar que la estructura sigue cerrada (sin `NULL` final).
+
 ## Recomendaciones de uso
 - Mantener pocos elementos al inicio para que el patron sea evidente.
 - Pedir predicciones antes de pulsar el boton de operacion.
@@ -46,4 +52,5 @@ Esta aplicacion esta pensada para explicar operaciones de estructuras secuencial
 ## Limitaciones actuales
 - La visualizacion prioriza claridad pedagogica sobre animaciones complejas.
 - El proyecto cubre estructuras secuenciales basicas del MVP.
+- Ahora incluye cinco estructuras visualizables: pila, cola, cola de prioridad, lista y lista circular.
 - El material en `src/legacy` no representa la arquitectura vigente.
