@@ -1,0 +1,494 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: Referencia del archivo grafo_trace.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('grafo__trace_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia del archivo grafo_trace.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Implementación de la traza pedagógica.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="grafo__trace_8h_source.html">grafo_trace.h</a>&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+</div>
+<p><a href="grafo__trace_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:a1500e1fdb01e0d9ecfd000d0651d361d" id="r_a1500e1fdb01e0d9ecfd000d0651d361d"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a1500e1fdb01e0d9ecfd000d0651d361d">grafo_trace_agregar_paso</a> (<a class="el" href="struct_grafo_trace.html">GrafoTrace</a> *traza, const char *descripcion, const char *variables, int linea_codigo)</td></tr>
+<tr class="memdesc:a1500e1fdb01e0d9ecfd000d0651d361d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega un paso a la traza.  <br /></td></tr>
+<tr class="memitem:a03bea073aa3037b74a33ea23ad4769b9" id="r_a03bea073aa3037b74a33ea23ad4769b9"><td class="memItemLeft"><a class="el" href="struct_grafo_trace.html">GrafoTrace</a>&#160;</td><td class="memItemRight"><a class="el" href="#a03bea073aa3037b74a33ea23ad4769b9">grafo_trace_crear</a> (const char *nombre_algoritmo)</td></tr>
+<tr class="memdesc:a03bea073aa3037b74a33ea23ad4769b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea una traza vacía para un algoritmo.  <br /></td></tr>
+<tr class="memitem:a572262a70339116a1a2eb8a577dff80a" id="r_a572262a70339116a1a2eb8a577dff80a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a572262a70339116a1a2eb8a577dff80a">grafo_trace_dibujar</a> (const <a class="el" href="struct_grafo_trace.html">GrafoTrace</a> *traza, Rectangle area_destino)</td></tr>
+<tr class="memdesc:a572262a70339116a1a2eb8a577dff80a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja la información del paso actual.  <br /></td></tr>
+<tr class="memitem:a0e23bb375a3fa2aee3fd12f3c74cab65" id="r_a0e23bb375a3fa2aee3fd12f3c74cab65"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0e23bb375a3fa2aee3fd12f3c74cab65">grafo_trace_dibujar_barra_progreso</a> (const <a class="el" href="struct_grafo_trace.html">GrafoTrace</a> *traza, Rectangle area_barra)</td></tr>
+<tr class="memdesc:a0e23bb375a3fa2aee3fd12f3c74cab65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja barra de progreso de pasos.  <br /></td></tr>
+<tr class="memitem:aedf6e0c91df59962b144b59705413acd" id="r_aedf6e0c91df59962b144b59705413acd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aedf6e0c91df59962b144b59705413acd">grafo_trace_establecer_resultado</a> (<a class="el" href="struct_grafo_trace.html">GrafoTrace</a> *traza, const char *resultado)</td></tr>
+<tr class="memdesc:aedf6e0c91df59962b144b59705413acd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establece el resultado final de la ejecución.  <br /></td></tr>
+<tr class="memitem:a8b6f3ed55c6450dc7dd2c27c2dcd3c97" id="r_a8b6f3ed55c6450dc7dd2c27c2dcd3c97"><td class="memItemLeft">const <a class="el" href="struct_grafo_trace_paso.html">GrafoTracePaso</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a8b6f3ed55c6450dc7dd2c27c2dcd3c97">grafo_trace_obtener_paso_actual</a> (const <a class="el" href="struct_grafo_trace.html">GrafoTrace</a> *traza)</td></tr>
+<tr class="memdesc:a8b6f3ed55c6450dc7dd2c27c2dcd3c97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el paso actual.  <br /></td></tr>
+<tr class="memitem:a2c5f5fde10cd5aa4bef8246559ee8ddc" id="r_a2c5f5fde10cd5aa4bef8246559ee8ddc"><td class="memItemLeft">const char *&#160;</td><td class="memItemRight"><a class="el" href="#a2c5f5fde10cd5aa4bef8246559ee8ddc">grafo_trace_obtener_progreso</a> (const <a class="el" href="struct_grafo_trace.html">GrafoTrace</a> *traza)</td></tr>
+<tr class="memdesc:a2c5f5fde10cd5aa4bef8246559ee8ddc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene información de progreso.  <br /></td></tr>
+<tr class="memitem:a6e5b4dde6e48514aaf1989b30e205752" id="r_a6e5b4dde6e48514aaf1989b30e205752"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a6e5b4dde6e48514aaf1989b30e205752">grafo_trace_paso_anterior</a> (<a class="el" href="struct_grafo_trace.html">GrafoTrace</a> *traza)</td></tr>
+<tr class="memdesc:a6e5b4dde6e48514aaf1989b30e205752"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrocede al paso anterior.  <br /></td></tr>
+<tr class="memitem:a43c9fc70194f8d4217e9a612438a0cbc" id="r_a43c9fc70194f8d4217e9a612438a0cbc"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a43c9fc70194f8d4217e9a612438a0cbc">grafo_trace_paso_siguiente</a> (<a class="el" href="struct_grafo_trace.html">GrafoTrace</a> *traza)</td></tr>
+<tr class="memdesc:a43c9fc70194f8d4217e9a612438a0cbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Avanza al siguiente paso.  <br /></td></tr>
+<tr class="memitem:a8ee58096bc3478b64702ffbc5cc4fc1b" id="r_a8ee58096bc3478b64702ffbc5cc4fc1b"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a8ee58096bc3478b64702ffbc5cc4fc1b">grafo_trace_saltar_paso</a> (<a class="el" href="struct_grafo_trace.html">GrafoTrace</a> *traza, int numero_paso)</td></tr>
+<tr class="memdesc:a8ee58096bc3478b64702ffbc5cc4fc1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Salta a un paso específico.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Implementación de la traza pedagógica. </p>
+
+<p class="definition">Definición en el archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
+<a id="a1500e1fdb01e0d9ecfd000d0651d361d" name="a1500e1fdb01e0d9ecfd000d0651d361d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1500e1fdb01e0d9ecfd000d0651d361d">&#9670;&#160;</a></span>grafo_trace_agregar_paso()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool grafo_trace_agregar_paso </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_trace.html">GrafoTrace</a> *</td>          <td class="paramname"><span class="paramname"><em>traza</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>descripcion</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>variables</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>linea_codigo</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega un paso a la traza. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">traza</td><td>Puntero a la estructura de traza </td></tr>
+    <tr><td class="paramname">descripcion</td><td>Descripción del paso </td></tr>
+    <tr><td class="paramname">variables</td><td>Estado de variables </td></tr>
+    <tr><td class="paramname">linea_codigo</td><td>Línea del pseudocódigo </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si se agregó exitosamente </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00029">29</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00029">GrafoTracePaso::aristas_examinadas</a>, <a class="el" href="grafo__trace_8h_source.html#l00039">GrafoTrace::cantidad_pasos</a>, <a class="el" href="grafo__trace_8h_source.html#l00026">GrafoTracePaso::descripcion</a>, <a class="el" href="grafo__trace_8h_source.html#l00030">GrafoTracePaso::linea_codigo_actual</a>, <a class="el" href="grafo__trace_8h_source.html#l00025">GrafoTracePaso::numero_paso</a>, <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a>, <a class="el" href="grafo__trace_8h_source.html#l00038">GrafoTrace::pasos</a>, <a class="el" href="grafo__trace_8h_source.html#l00027">GrafoTracePaso::variables</a> y <a class="el" href="grafo__trace_8h_source.html#l00028">GrafoTracePaso::vertices_procesados</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="grafo__pedagogy_8c_source.html#l00624">grafo_trace_desde_estado()</a>.</p>
+
+</div>
+</div>
+<a id="a03bea073aa3037b74a33ea23ad4769b9" name="a03bea073aa3037b74a33ea23ad4769b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03bea073aa3037b74a33ea23ad4769b9">&#9670;&#160;</a></span>grafo_trace_crear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_grafo_trace.html">GrafoTrace</a> grafo_trace_crear </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>nombre_algoritmo</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crea una traza vacía para un algoritmo. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nombre_algoritmo</td><td>Nombre del algoritmo </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Estructura de traza inicializada </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00014">14</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00039">GrafoTrace::cantidad_pasos</a>, <a class="el" href="grafo__trace_8h_source.html#l00041">GrafoTrace::nombre_algoritmo</a>, <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a> y <a class="el" href="grafo__trace_8h_source.html#l00042">GrafoTrace::resultado_final</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="grafo__pedagogy_8c_source.html#l00624">grafo_trace_desde_estado()</a>.</p>
+
+</div>
+</div>
+<a id="a572262a70339116a1a2eb8a577dff80a" name="a572262a70339116a1a2eb8a577dff80a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a572262a70339116a1a2eb8a577dff80a">&#9670;&#160;</a></span>grafo_trace_dibujar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_trace_dibujar </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_grafo_trace.html">GrafoTrace</a> *</td>          <td class="paramname"><span class="paramname"><em>traza</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Rectangle</td>          <td class="paramname"><span class="paramname"><em>area_destino</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dibuja la información del paso actual. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">traza</td><td>Estructura de traza </td></tr>
+    <tr><td class="paramname">area_destino</td><td>Rectángulo donde dibuja </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00101">101</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00039">GrafoTrace::cantidad_pasos</a>, <a class="el" href="grafo__trace_8h_source.html#l00026">GrafoTracePaso::descripcion</a>, <a class="el" href="grafo__trace_8h_source.html#l00041">GrafoTrace::nombre_algoritmo</a>, <a class="el" href="grafo__trace_8h_source.html#l00025">GrafoTracePaso::numero_paso</a>, <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a>, <a class="el" href="grafo__trace_8h_source.html#l00038">GrafoTrace::pasos</a>, <a class="el" href="grafo__trace_8h_source.html#l00042">GrafoTrace::resultado_final</a> y <a class="el" href="grafo__trace_8h_source.html#l00027">GrafoTracePaso::variables</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
+
+</div>
+</div>
+<a id="a0e23bb375a3fa2aee3fd12f3c74cab65" name="a0e23bb375a3fa2aee3fd12f3c74cab65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e23bb375a3fa2aee3fd12f3c74cab65">&#9670;&#160;</a></span>grafo_trace_dibujar_barra_progreso()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_trace_dibujar_barra_progreso </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_grafo_trace.html">GrafoTrace</a> *</td>          <td class="paramname"><span class="paramname"><em>traza</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Rectangle</td>          <td class="paramname"><span class="paramname"><em>area_barra</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dibuja barra de progreso de pasos. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">traza</td><td>Estructura de traza </td></tr>
+    <tr><td class="paramname">area_barra</td><td>Rectángulo para la barra </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00149">149</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00039">GrafoTrace::cantidad_pasos</a> y <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
+
+</div>
+</div>
+<a id="aedf6e0c91df59962b144b59705413acd" name="aedf6e0c91df59962b144b59705413acd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedf6e0c91df59962b144b59705413acd">&#9670;&#160;</a></span>grafo_trace_establecer_resultado()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_trace_establecer_resultado </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_trace.html">GrafoTrace</a> *</td>          <td class="paramname"><span class="paramname"><em>traza</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>resultado</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Establece el resultado final de la ejecución. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">traza</td><td>Puntero a la estructura de traza </td></tr>
+    <tr><td class="paramname">resultado</td><td>Descripción del resultado </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00061">61</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00042">GrafoTrace::resultado_final</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="grafo__pedagogy_8c_source.html#l00624">grafo_trace_desde_estado()</a>.</p>
+
+</div>
+</div>
+<a id="a8b6f3ed55c6450dc7dd2c27c2dcd3c97" name="a8b6f3ed55c6450dc7dd2c27c2dcd3c97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b6f3ed55c6450dc7dd2c27c2dcd3c97">&#9670;&#160;</a></span>grafo_trace_obtener_paso_actual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="struct_grafo_trace_paso.html">GrafoTracePaso</a> * grafo_trace_obtener_paso_actual </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_grafo_trace.html">GrafoTrace</a> *</td>          <td class="paramname"><span class="paramname"><em>traza</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene el paso actual. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">traza</td><td>Estructura de traza </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Puntero al paso actual </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00177">177</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00039">GrafoTrace::cantidad_pasos</a>, <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a> y <a class="el" href="grafo__trace_8h_source.html#l00038">GrafoTrace::pasos</a>.</p>
+
+</div>
+</div>
+<a id="a2c5f5fde10cd5aa4bef8246559ee8ddc" name="a2c5f5fde10cd5aa4bef8246559ee8ddc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c5f5fde10cd5aa4bef8246559ee8ddc">&#9670;&#160;</a></span>grafo_trace_obtener_progreso()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * grafo_trace_obtener_progreso </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_grafo_trace.html">GrafoTrace</a> *</td>          <td class="paramname"><span class="paramname"><em>traza</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene información de progreso. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">traza</td><td>Estructura de traza </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Cadena con "paso X de Y" </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00184">184</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00039">GrafoTrace::cantidad_pasos</a> y <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a>.</p>
+
+</div>
+</div>
+<a id="a6e5b4dde6e48514aaf1989b30e205752" name="a6e5b4dde6e48514aaf1989b30e205752"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e5b4dde6e48514aaf1989b30e205752">&#9670;&#160;</a></span>grafo_trace_paso_anterior()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool grafo_trace_paso_anterior </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_trace.html">GrafoTrace</a> *</td>          <td class="paramname"><span class="paramname"><em>traza</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrocede al paso anterior. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">traza</td><td>Puntero a la estructura de traza </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si hay paso anterior </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00081">81</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a>.</p>
+
+</div>
+</div>
+<a id="a43c9fc70194f8d4217e9a612438a0cbc" name="a43c9fc70194f8d4217e9a612438a0cbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43c9fc70194f8d4217e9a612438a0cbc">&#9670;&#160;</a></span>grafo_trace_paso_siguiente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool grafo_trace_paso_siguiente </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_trace.html">GrafoTrace</a> *</td>          <td class="paramname"><span class="paramname"><em>traza</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Avanza al siguiente paso. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">traza</td><td>Puntero a la estructura de traza </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si hay siguiente paso </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00071">71</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00039">GrafoTrace::cantidad_pasos</a> y <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a>.</p>
+
+</div>
+</div>
+<a id="a8ee58096bc3478b64702ffbc5cc4fc1b" name="a8ee58096bc3478b64702ffbc5cc4fc1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ee58096bc3478b64702ffbc5cc4fc1b">&#9670;&#160;</a></span>grafo_trace_saltar_paso()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool grafo_trace_saltar_paso </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_trace.html">GrafoTrace</a> *</td>          <td class="paramname"><span class="paramname"><em>traza</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>numero_paso</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Salta a un paso específico. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">traza</td><td>Puntero a la estructura de traza </td></tr>
+    <tr><td class="paramname">numero_paso</td><td>Número de paso (1-based) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si el paso existe </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00088">88</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00039">GrafoTrace::cantidad_pasos</a> y <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="grafo__trace_8c.html">grafo_trace.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

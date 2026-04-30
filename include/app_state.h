@@ -9,6 +9,8 @@
 #include "lista_circular.h"
 #include "pila.h"
 #include "sublista.h"
+#include "grafo.h"
+#include "grafo_controller.h"
 
 /**
  * @file app_state.h
@@ -21,7 +23,8 @@ typedef enum {
     ESTRUCTURA_COLA_PRIORIDAD,
     ESTRUCTURA_LISTA,
     ESTRUCTURA_LISTA_CIRCULAR,
-    ESTRUCTURA_SUBLISTA
+    ESTRUCTURA_SUBLISTA,
+    ESTRUCTURA_GRAFO
 } TipoEstructura;
 
 typedef enum {
@@ -62,6 +65,15 @@ typedef struct {
     Lista lista;
     ListaCircular lista_circular;
     Nodo *sublista;
+    
+    /* Grafo y control */
+    Grafo *grafo;
+    GrafoController grafo_controller_state;
+    int grafo_vertice_inicio;
+    int grafo_vertice_destino;
+    int grafo_algoritmo_seleccionado;
+    bool grafo_dirigido;
+    int grafo_demo_idx;
 } AppState;
 
 /** @brief Inicializa estado global y TADs base. */
@@ -101,5 +113,16 @@ void app_state_operacion_sublista_insertar_hijo(AppState *state);
 void app_state_operacion_sublista_eliminar_hijo(AppState *state);
 /** @brief Ejecuta vaciado/destruccion logica segun estructura activa. */
 void app_state_operacion_vaciar(AppState *state);
+
+/** @brief Inserta una arista en el grafo activo. */
+void app_state_operacion_grafo_insertar_arista(AppState *state, int origen, int destino,
+                                               int peso);
+/** @brief Elimina una arista del grafo activo. */
+void app_state_operacion_grafo_eliminar_arista(AppState *state, int origen, int destino);
+/** @brief Ejecuta un algoritmo de grafo con parametros de inicio/destino. */
+void app_state_operacion_grafo_ejecutar_algoritmo(AppState *state, int algoritmo,
+                                                  int inicio, int destino);
+void app_state_grafo_toggle_dirigido(AppState *state);
+void app_state_grafo_cargar_demo(AppState *state);
 
 #endif

@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: Archivo de código fuente grafo.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('grafo_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">grafo.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="grafo_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#ifndef GRAFO_H</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#define GRAFO_H</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">/* ============================================================================</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> * Tipo opaco del grafo</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * ============================================================================ */</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43">   32</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>Grafo Grafo;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">/* ============================================================================</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment"> * Estados de error</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"> * ============================================================================ */</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span></div>
+<div class="foldopen" id="foldopen00041" data-start="{" data-end="};">
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">   41</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5ead7be59a765d50a5b98020fd7227a71f1">   42</a></span>    <a class="code hl_enumvalue" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5ead7be59a765d50a5b98020fd7227a71f1">GRAFO_OK</a> = 0,                  </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5ea9aa4325a72242dbabaa3e2954f82a3a4">   43</a></span>    <a class="code hl_enumvalue" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5ea9aa4325a72242dbabaa3e2954f82a3a4">GRAFO_ERROR_NULO</a>,              </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5ea4f1e2abed28e853dc38d23290fb09ebc">   44</a></span>    <a class="code hl_enumvalue" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5ea4f1e2abed28e853dc38d23290fb09ebc">GRAFO_ERROR_MEMORIA</a>,           </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5ea792944d13e9b04f32f39e7454b681c09">   45</a></span>    <a class="code hl_enumvalue" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5ea792944d13e9b04f32f39e7454b681c09">GRAFO_ERROR_NO_EXISTE</a>,         </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5ea9ceabe84ca64f1051588b7a974a08f8f">   46</a></span>    <a class="code hl_enumvalue" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5ea9ceabe84ca64f1051588b7a974a08f8f">GRAFO_ERROR_YA_EXISTE</a>,         </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5eac460fdc7f25ea71274c8118c8d45694d">   47</a></span>    <a class="code hl_enumvalue" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5eac460fdc7f25ea71274c8118c8d45694d">GRAFO_ERROR_PESO_NEGATIVO</a>,     </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5ea215fd25565857510a993437d09871e1c">   48</a></span>    <a class="code hl_enumvalue" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5ea215fd25565857510a993437d09871e1c">GRAFO_ERROR_CICLO_NEGATIVO</a>     </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>} <a class="code hl_enumeration" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">GrafoEstado</a>;</div>
+</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">/* ============================================================================</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"> * Estructuras de datos públicas</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"> * ============================================================================ */</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span></div>
+<div class="foldopen" id="foldopen00060" data-start="{" data-end="};">
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="struct_grafo_arista.html">   60</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="struct_grafo_arista.html#a0604d3a1d013ea5f5f3b05f8cac9955d">   61</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_grafo_arista.html#a0604d3a1d013ea5f5f3b05f8cac9955d">origen</a>;     </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="struct_grafo_arista.html#a7597b7178cc7946c80f4dbc441f77ee2">   62</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_grafo_arista.html#a7597b7178cc7946c80f4dbc441f77ee2">destino</a>;    </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="struct_grafo_arista.html#a10f697351430db1f9e0a07f67431f5a3">   63</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_grafo_arista.html#a10f697351430db1f9e0a07f67431f5a3">peso</a>;       </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>} <a class="code hl_struct" href="struct_grafo_arista.html">GrafoArista</a>;</div>
+</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span></div>
+<div class="foldopen" id="foldopen00071" data-start="{" data-end="};">
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="struct_grafo_recorrido.html">   71</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="struct_grafo_recorrido.html#a5de06473182a6aaca44d415218d8e64d">   72</a></span>    <span class="keywordtype">int</span> *<a class="code hl_variable" href="struct_grafo_recorrido.html#a5de06473182a6aaca44d415218d8e64d">vertices</a>;          </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="struct_grafo_recorrido.html#a2a437b928e8dc7502b2fc5115bad702c">   73</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="struct_grafo_recorrido.html#a2a437b928e8dc7502b2fc5115bad702c">cantidad</a>;        </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="struct_grafo_recorrido.html#acbdbde7579a7f37614991ea6350523dd">   74</a></span>    <a class="code hl_enumeration" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">GrafoEstado</a> <a class="code hl_variable" href="struct_grafo_recorrido.html#acbdbde7579a7f37614991ea6350523dd">estado</a>;     </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>} <a class="code hl_struct" href="struct_grafo_recorrido.html">GrafoRecorrido</a>;</div>
+</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span></div>
+<div class="foldopen" id="foldopen00083" data-start="{" data-end="};">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="struct_grafo_camino.html">   83</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="struct_grafo_camino.html#ae57c811685b214d3c499db9fbdcedb3b">   84</a></span>    <a class="code hl_struct" href="struct_grafo_arista.html">GrafoArista</a> *<a class="code hl_variable" href="struct_grafo_camino.html#ae57c811685b214d3c499db9fbdcedb3b">aristas</a>;   </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="struct_grafo_camino.html#acd6dcfe4eb30c79c4dd180c7a42057e9">   85</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="struct_grafo_camino.html#acd6dcfe4eb30c79c4dd180c7a42057e9">cantidad</a>;        </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="struct_grafo_camino.html#a61f3e3e747f4be5a280aa6b90c7a3105">   86</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_grafo_camino.html#a61f3e3e747f4be5a280aa6b90c7a3105">costo_total</a>;        </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="struct_grafo_camino.html#a8fdec6b84e3aab6f30b6d77493accffc">   87</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="struct_grafo_camino.html#a8fdec6b84e3aab6f30b6d77493accffc">existe</a>;            </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="struct_grafo_camino.html#ab73bb75d397fc5b8f9f16403867eb647">   88</a></span>    <a class="code hl_enumeration" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">GrafoEstado</a> <a class="code hl_variable" href="struct_grafo_camino.html#ab73bb75d397fc5b8f9f16403867eb647">estado</a>;     </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>} <a class="code hl_struct" href="struct_grafo_camino.html">GrafoCamino</a>;</div>
+</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">/* ============================================================================</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment"> * Creación y destrucción</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment"> * ============================================================================ */</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>Grafo *<a class="code hl_function" href="grafo_8h.html#a16e6f1399d26e21ece03acf5ba31bf46">grafo_crear</a>(<span class="keywordtype">bool</span> dirigido);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="keywordtype">void</span> <a class="code hl_function" href="grafo_8h.html#a5ab290b6904b40b9663649124cdd876e">grafo_destruir</a>(Grafo **grafo);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="keywordtype">bool</span> <a class="code hl_function" href="grafo_8h.html#a6a4e766890b31598cfeb709a9827b0e3">grafo_es_dirigido</a>(<span class="keyword">const</span> Grafo *grafo);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="comment">/* ============================================================================</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment"> * Operaciones estructurales</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment"> * ============================================================================ */</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><a class="code hl_enumeration" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">GrafoEstado</a> <a class="code hl_function" href="grafo_8h.html#af50feaad0153f9da59e434bbfd09d659">grafo_insertar_vertice</a>(Grafo *grafo, <span class="keywordtype">int</span> vertice);</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><a class="code hl_enumeration" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">GrafoEstado</a> <a class="code hl_function" href="grafo_8h.html#aa2d8150846e7b63b2bfd25232bdadff8">grafo_insertar_arista</a>(Grafo *grafo, <span class="keywordtype">int</span> origen, <span class="keywordtype">int</span> destino, <span class="keywordtype">int</span> peso);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><a class="code hl_enumeration" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">GrafoEstado</a> <a class="code hl_function" href="grafo_8h.html#a29ff2ca6bd4d4c720cf88e9909873e6e">grafo_eliminar_vertice</a>(Grafo *grafo, <span class="keywordtype">int</span> vertice);</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><a class="code hl_enumeration" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">GrafoEstado</a> <a class="code hl_function" href="grafo_8h.html#a8aa8b933f60ce24ebd94e6a5af0037fc">grafo_eliminar_arista</a>(Grafo *grafo, <span class="keywordtype">int</span> origen, <span class="keywordtype">int</span> destino);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="comment">/* ============================================================================</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="comment"> * Consultas</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="comment"> * ============================================================================ */</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="keywordtype">bool</span> <a class="code hl_function" href="grafo_8h.html#a3367edbfa3fdb571215ff3b92280b28f">grafo_existe_vertice</a>(<span class="keyword">const</span> Grafo *grafo, <span class="keywordtype">int</span> vertice);</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="keywordtype">bool</span> <a class="code hl_function" href="grafo_8h.html#a12736e6ec4768a7f1e5989447f864a76">grafo_existe_arista</a>(<span class="keyword">const</span> Grafo *grafo, <span class="keywordtype">int</span> origen, <span class="keywordtype">int</span> destino);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><a class="code hl_enumeration" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">GrafoEstado</a> <a class="code hl_function" href="grafo_8h.html#aff02db65efd1fe5133e0eb7dbc14ad72">grafo_obtener_peso</a>(<span class="keyword">const</span> Grafo *grafo, <span class="keywordtype">int</span> origen, <span class="keywordtype">int</span> destino, <span class="keywordtype">int</span> *peso);</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="grafo_8h.html#a7d495a9b42ae103299cbfd3bd24c5c0d">grafo_orden</a>(<span class="keyword">const</span> Grafo *grafo);</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span></div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="grafo_8h.html#adafca82e2e59cb9a0826ab5a107e362c">grafo_tamano</a>(<span class="keyword">const</span> Grafo *grafo);</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span></div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span><a class="code hl_enumeration" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">GrafoEstado</a> <a class="code hl_function" href="grafo_8h.html#a6225a7665384cd3feb1d68faac823b5b">grafo_grado_salida</a>(<span class="keyword">const</span> Grafo *grafo, <span class="keywordtype">int</span> vertice, <span class="keywordtype">size_t</span> *grado);</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span></div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span><a class="code hl_enumeration" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">GrafoEstado</a> <a class="code hl_function" href="grafo_8h.html#a2658785567afd3fdfcb30dc9af730893">grafo_grado_entrada</a>(<span class="keyword">const</span> Grafo *grafo, <span class="keywordtype">int</span> vertice, <span class="keywordtype">size_t</span> *grado);</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span><span class="comment">/* ============================================================================</span></div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="comment"> * Copias públicas de datos</span></div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span><span class="comment"> * ============================================================================ */</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span></div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span><a class="code hl_enumeration" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">GrafoEstado</a> <a class="code hl_function" href="grafo_8h.html#accfbf6a53aa7bbedbc1cc0bdeef9458c">grafo_obtener_vertices</a>(<span class="keyword">const</span> Grafo *grafo, <span class="keywordtype">int</span> **vertices, <span class="keywordtype">size_t</span> *cantidad);</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span></div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span><a class="code hl_enumeration" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">GrafoEstado</a> <a class="code hl_function" href="grafo_8h.html#a599ccab7dace77d1676cd190aef5a440">grafo_obtener_aristas</a>(<span class="keyword">const</span> Grafo *grafo, <a class="code hl_struct" href="struct_grafo_arista.html">GrafoArista</a> **aristas, <span class="keywordtype">size_t</span> *cantidad);</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span></div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span><a class="code hl_enumeration" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">GrafoEstado</a> <a class="code hl_function" href="grafo_8h.html#a647407a15125233a5fe8d6f6f122ab70">grafo_sucesores</a>(<span class="keyword">const</span> Grafo *grafo, <span class="keywordtype">int</span> vertice, <span class="keywordtype">int</span> **sucesores, <span class="keywordtype">size_t</span> *cantidad);</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span></div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span><a class="code hl_enumeration" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">GrafoEstado</a> <a class="code hl_function" href="grafo_8h.html#adad80d430fcddbe643c2922d1824e68d">grafo_predecesores</a>(<span class="keyword">const</span> Grafo *grafo, <span class="keywordtype">int</span> vertice, <span class="keywordtype">int</span> **predecesores, <span class="keywordtype">size_t</span> *cantidad);</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span> </div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span><span class="comment">/* ============================================================================</span></div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span><span class="comment"> * Algoritmos</span></div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span><span class="comment"> * ============================================================================ */</span></div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span></div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span><a class="code hl_struct" href="struct_grafo_recorrido.html">GrafoRecorrido</a> <a class="code hl_function" href="grafo_8h.html#a4ff33fa6151f77304077574e7b4ceb3b">grafo_bfs</a>(<span class="keyword">const</span> Grafo *grafo, <span class="keywordtype">int</span> inicio);</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span></div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span><a class="code hl_struct" href="struct_grafo_recorrido.html">GrafoRecorrido</a> <a class="code hl_function" href="grafo_8h.html#a324950ccca646d9692233eb079836283">grafo_dfs</a>(<span class="keyword">const</span> Grafo *grafo, <span class="keywordtype">int</span> inicio);</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span></div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span><a class="code hl_struct" href="struct_grafo_camino.html">GrafoCamino</a> <a class="code hl_function" href="grafo_8h.html#a1019ceaf55ed290a82001460b3a2896f">grafo_dijkstra</a>(<span class="keyword">const</span> Grafo *grafo, <span class="keywordtype">int</span> origen, <span class="keywordtype">int</span> destino);</div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span></div>
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span><a class="code hl_struct" href="struct_grafo_camino.html">GrafoCamino</a> <a class="code hl_function" href="grafo_8h.html#a8c51468ddb772789844efed2b8021bda">grafo_bellman_ford</a>(<span class="keyword">const</span> Grafo *grafo, <span class="keywordtype">int</span> origen, <span class="keywordtype">int</span> destino);</div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span></div>
+<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span><a class="code hl_struct" href="struct_grafo_camino.html">GrafoCamino</a> <a class="code hl_function" href="grafo_8h.html#a55a974342af5e3c938ccde8aa9f8bdfc">grafo_prim</a>(<span class="keyword">const</span> Grafo *grafo, <span class="keywordtype">int</span> inicio);</div>
+<div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span></div>
+<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span><a class="code hl_struct" href="struct_grafo_camino.html">GrafoCamino</a> <a class="code hl_function" href="grafo_8h.html#a040a3ebfc0bcecad320305013348fc17">grafo_kruskal</a>(<span class="keyword">const</span> Grafo *grafo);</div>
+<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span> </div>
+<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span><span class="comment">/* ============================================================================</span></div>
+<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span><span class="comment"> * Liberación de resultados dinámicos</span></div>
+<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span><span class="comment"> * ============================================================================ */</span></div>
+<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span></div>
+<div class="line"><a id="l00473" name="l00473"></a><span class="lineno">  473</span><span class="keywordtype">void</span> <a class="code hl_function" href="grafo_8h.html#a7b6f2e3aa6fbff8523911e2dd4c0296f">grafo_liberar_recorrido</a>(<a class="code hl_struct" href="struct_grafo_recorrido.html">GrafoRecorrido</a> *recorrido);</div>
+<div class="line"><a id="l00474" name="l00474"></a><span class="lineno">  474</span></div>
+<div class="line"><a id="l00483" name="l00483"></a><span class="lineno">  483</span><span class="keywordtype">void</span> <a class="code hl_function" href="grafo_8h.html#a0b51bac05f8bd3ca26a58f4642eb34c4">grafo_liberar_camino</a>(<a class="code hl_struct" href="struct_grafo_camino.html">GrafoCamino</a> *camino);</div>
+<div class="line"><a id="l00484" name="l00484"></a><span class="lineno">  484</span></div>
+<div class="line"><a id="l00495" name="l00495"></a><span class="lineno">  495</span><span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="grafo_8h.html#aa1d0d8d91c1b517b61671d3ddb021259">grafo_estado_cadena</a>(<a class="code hl_enumeration" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">GrafoEstado</a> estado);</div>
+<div class="line"><a id="l00496" name="l00496"></a><span class="lineno">  496</span> </div>
+<div class="line"><a id="l00497" name="l00497"></a><span class="lineno">  497</span><span class="preprocessor">#endif </span><span class="comment">/* GRAFO_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="agrafo_8h_html_a040a3ebfc0bcecad320305013348fc17"><div class="ttname"><a href="grafo_8h.html#a040a3ebfc0bcecad320305013348fc17">grafo_kruskal</a></div><div class="ttdeci">GrafoCamino grafo_kruskal(const Grafo *grafo)</div><div class="ttdoc">Calcula el árbol de expansión mínima con Kruskal.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l01012">grafo.c:1012</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a0b51bac05f8bd3ca26a58f4642eb34c4"><div class="ttname"><a href="grafo_8h.html#a0b51bac05f8bd3ca26a58f4642eb34c4">grafo_liberar_camino</a></div><div class="ttdeci">void grafo_liberar_camino(GrafoCamino *camino)</div><div class="ttdoc">Libera un camino mínimo/MST y su array de aristas.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l01099">grafo.c:1099</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a1019ceaf55ed290a82001460b3a2896f"><div class="ttname"><a href="grafo_8h.html#a1019ceaf55ed290a82001460b3a2896f">grafo_dijkstra</a></div><div class="ttdeci">GrafoCamino grafo_dijkstra(const Grafo *grafo, int origen, int destino)</div><div class="ttdoc">Calcula el camino mínimo entre dos vértices con Dijkstra.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00673">grafo.c:673</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a12736e6ec4768a7f1e5989447f864a76"><div class="ttname"><a href="grafo_8h.html#a12736e6ec4768a7f1e5989447f864a76">grafo_existe_arista</a></div><div class="ttdeci">bool grafo_existe_arista(const Grafo *grafo, int origen, int destino)</div><div class="ttdoc">Verifica si una arista existe en el grafo.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00326">grafo.c:326</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a16e6f1399d26e21ece03acf5ba31bf46"><div class="ttname"><a href="grafo_8h.html#a16e6f1399d26e21ece03acf5ba31bf46">grafo_crear</a></div><div class="ttdeci">Grafo * grafo_crear(bool dirigido)</div><div class="ttdoc">Crea un nuevo grafo.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00172">grafo.c:172</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a2658785567afd3fdfcb30dc9af730893"><div class="ttname"><a href="grafo_8h.html#a2658785567afd3fdfcb30dc9af730893">grafo_grado_entrada</a></div><div class="ttdeci">GrafoEstado grafo_grado_entrada(const Grafo *grafo, int vertice, size_t *grado)</div><div class="ttdoc">Obtiene el grado de entrada de un vértice (solo en dirigidos).</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00403">grafo.c:403</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a29ff2ca6bd4d4c720cf88e9909873e6e"><div class="ttname"><a href="grafo_8h.html#a29ff2ca6bd4d4c720cf88e9909873e6e">grafo_eliminar_vertice</a></div><div class="ttdeci">GrafoEstado grafo_eliminar_vertice(Grafo *grafo, int vertice)</div><div class="ttdoc">Elimina un vértice y todas sus aristas incidentes.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00256">grafo.c:256</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a324950ccca646d9692233eb079836283"><div class="ttname"><a href="grafo_8h.html#a324950ccca646d9692233eb079836283">grafo_dfs</a></div><div class="ttdeci">GrafoRecorrido grafo_dfs(const Grafo *grafo, int inicio)</div><div class="ttdoc">Ejecuta DFS (búsqueda en profundidad) desde un vértice inicial.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00614">grafo.c:614</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a3367edbfa3fdb571215ff3b92280b28f"><div class="ttname"><a href="grafo_8h.html#a3367edbfa3fdb571215ff3b92280b28f">grafo_existe_vertice</a></div><div class="ttdeci">bool grafo_existe_vertice(const Grafo *grafo, int vertice)</div><div class="ttdoc">Verifica si un vértice existe en el grafo.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00321">grafo.c:321</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a4ff33fa6151f77304077574e7b4ceb3b"><div class="ttname"><a href="grafo_8h.html#a4ff33fa6151f77304077574e7b4ceb3b">grafo_bfs</a></div><div class="ttdeci">GrafoRecorrido grafo_bfs(const Grafo *grafo, int inicio)</div><div class="ttdoc">Ejecuta BFS (búsqueda en amplitud) desde un vértice inicial.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00555">grafo.c:555</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a55a974342af5e3c938ccde8aa9f8bdfc"><div class="ttname"><a href="grafo_8h.html#a55a974342af5e3c938ccde8aa9f8bdfc">grafo_prim</a></div><div class="ttdeci">GrafoCamino grafo_prim(const Grafo *grafo, int inicio)</div><div class="ttdoc">Calcula el árbol de expansión mínima con Prim.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00912">grafo.c:912</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a599ccab7dace77d1676cd190aef5a440"><div class="ttname"><a href="grafo_8h.html#a599ccab7dace77d1676cd190aef5a440">grafo_obtener_aristas</a></div><div class="ttdeci">GrafoEstado grafo_obtener_aristas(const Grafo *grafo, GrafoArista **aristas, size_t *cantidad)</div><div class="ttdoc">Obtiene una copia del array de aristas del grafo.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00450">grafo.c:450</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a5ab290b6904b40b9663649124cdd876e"><div class="ttname"><a href="grafo_8h.html#a5ab290b6904b40b9663649124cdd876e">grafo_destruir</a></div><div class="ttdeci">void grafo_destruir(Grafo **grafo)</div><div class="ttdoc">Destruye un grafo y libera toda su memoria.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00183">grafo.c:183</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a6225a7665384cd3feb1d68faac823b5b"><div class="ttname"><a href="grafo_8h.html#a6225a7665384cd3feb1d68faac823b5b">grafo_grado_salida</a></div><div class="ttdeci">GrafoEstado grafo_grado_salida(const Grafo *grafo, int vertice, size_t *grado)</div><div class="ttdoc">Obtiene el grado de salida de un vértice.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00386">grafo.c:386</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a647407a15125233a5fe8d6f6f122ab70"><div class="ttname"><a href="grafo_8h.html#a647407a15125233a5fe8d6f6f122ab70">grafo_sucesores</a></div><div class="ttdeci">GrafoEstado grafo_sucesores(const Grafo *grafo, int vertice, int **sucesores, size_t *cantidad)</div><div class="ttdoc">Obtiene los sucesores de un vértice.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00482">grafo.c:482</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a6a4e766890b31598cfeb709a9827b0e3"><div class="ttname"><a href="grafo_8h.html#a6a4e766890b31598cfeb709a9827b0e3">grafo_es_dirigido</a></div><div class="ttdeci">bool grafo_es_dirigido(const Grafo *grafo)</div><div class="ttdoc">Indica si el grafo es dirigido.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00199">grafo.c:199</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a76958afe18cba4eda58c99ce897e3b5e"><div class="ttname"><a href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">GrafoEstado</a></div><div class="ttdeci">GrafoEstado</div><div class="ttdoc">Enumeración de estados de error del TAD Grafo.</div><div class="ttdef"><b>Definition</b> <a href="#l00041">grafo.h:41</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a76958afe18cba4eda58c99ce897e3b5ea215fd25565857510a993437d09871e1c"><div class="ttname"><a href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5ea215fd25565857510a993437d09871e1c">GRAFO_ERROR_CICLO_NEGATIVO</a></div><div class="ttdeci">@ GRAFO_ERROR_CICLO_NEGATIVO</div><div class="ttdoc">Bellman-Ford detectó ciclo negativo.</div><div class="ttdef"><b>Definition</b> <a href="#l00048">grafo.h:48</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a76958afe18cba4eda58c99ce897e3b5ea4f1e2abed28e853dc38d23290fb09ebc"><div class="ttname"><a href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5ea4f1e2abed28e853dc38d23290fb09ebc">GRAFO_ERROR_MEMORIA</a></div><div class="ttdeci">@ GRAFO_ERROR_MEMORIA</div><div class="ttdoc">No fue posible reservar memoria dinámica.</div><div class="ttdef"><b>Definition</b> <a href="#l00044">grafo.h:44</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a76958afe18cba4eda58c99ce897e3b5ea792944d13e9b04f32f39e7454b681c09"><div class="ttname"><a href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5ea792944d13e9b04f32f39e7454b681c09">GRAFO_ERROR_NO_EXISTE</a></div><div class="ttdeci">@ GRAFO_ERROR_NO_EXISTE</div><div class="ttdoc">Vértice o arista inexistente.</div><div class="ttdef"><b>Definition</b> <a href="#l00045">grafo.h:45</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a76958afe18cba4eda58c99ce897e3b5ea9aa4325a72242dbabaa3e2954f82a3a4"><div class="ttname"><a href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5ea9aa4325a72242dbabaa3e2954f82a3a4">GRAFO_ERROR_NULO</a></div><div class="ttdeci">@ GRAFO_ERROR_NULO</div><div class="ttdoc">Se recibió un puntero nulo.</div><div class="ttdef"><b>Definition</b> <a href="#l00043">grafo.h:43</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a76958afe18cba4eda58c99ce897e3b5ea9ceabe84ca64f1051588b7a974a08f8f"><div class="ttname"><a href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5ea9ceabe84ca64f1051588b7a974a08f8f">GRAFO_ERROR_YA_EXISTE</a></div><div class="ttdeci">@ GRAFO_ERROR_YA_EXISTE</div><div class="ttdoc">Vértice o arista duplicada.</div><div class="ttdef"><b>Definition</b> <a href="#l00046">grafo.h:46</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a76958afe18cba4eda58c99ce897e3b5eac460fdc7f25ea71274c8118c8d45694d"><div class="ttname"><a href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5eac460fdc7f25ea71274c8118c8d45694d">GRAFO_ERROR_PESO_NEGATIVO</a></div><div class="ttdeci">@ GRAFO_ERROR_PESO_NEGATIVO</div><div class="ttdoc">El algoritmo no acepta pesos negativos.</div><div class="ttdef"><b>Definition</b> <a href="#l00047">grafo.h:47</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a76958afe18cba4eda58c99ce897e3b5ead7be59a765d50a5b98020fd7227a71f1"><div class="ttname"><a href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5ead7be59a765d50a5b98020fd7227a71f1">GRAFO_OK</a></div><div class="ttdeci">@ GRAFO_OK</div><div class="ttdoc">Operación finalizada correctamente.</div><div class="ttdef"><b>Definition</b> <a href="#l00042">grafo.h:42</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a7b6f2e3aa6fbff8523911e2dd4c0296f"><div class="ttname"><a href="grafo_8h.html#a7b6f2e3aa6fbff8523911e2dd4c0296f">grafo_liberar_recorrido</a></div><div class="ttdeci">void grafo_liberar_recorrido(GrafoRecorrido *recorrido)</div><div class="ttdoc">Libera un recorrido (BFS/DFS) y su array de vértices.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l01087">grafo.c:1087</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a7d495a9b42ae103299cbfd3bd24c5c0d"><div class="ttname"><a href="grafo_8h.html#a7d495a9b42ae103299cbfd3bd24c5c0d">grafo_orden</a></div><div class="ttdeci">size_t grafo_orden(const Grafo *grafo)</div><div class="ttdoc">Retorna el orden del grafo (cantidad de vértices).</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00350">grafo.c:350</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a8aa8b933f60ce24ebd94e6a5af0037fc"><div class="ttname"><a href="grafo_8h.html#a8aa8b933f60ce24ebd94e6a5af0037fc">grafo_eliminar_arista</a></div><div class="ttdeci">GrafoEstado grafo_eliminar_arista(Grafo *grafo, int origen, int destino)</div><div class="ttdoc">Elimina una arista entre dos vértices.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00294">grafo.c:294</a></div></div>
+<div class="ttc" id="agrafo_8h_html_a8c51468ddb772789844efed2b8021bda"><div class="ttname"><a href="grafo_8h.html#a8c51468ddb772789844efed2b8021bda">grafo_bellman_ford</a></div><div class="ttdeci">GrafoCamino grafo_bellman_ford(const Grafo *grafo, int origen, int destino)</div><div class="ttdoc">Calcula el camino mínimo con Bellman-Ford (acepta pesos negativos).</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00796">grafo.c:796</a></div></div>
+<div class="ttc" id="agrafo_8h_html_aa1d0d8d91c1b517b61671d3ddb021259"><div class="ttname"><a href="grafo_8h.html#aa1d0d8d91c1b517b61671d3ddb021259">grafo_estado_cadena</a></div><div class="ttdeci">const char * grafo_estado_cadena(GrafoEstado estado)</div><div class="ttdoc">Convierte un estado a cadena de texto legible.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l01113">grafo.c:1113</a></div></div>
+<div class="ttc" id="agrafo_8h_html_aa2d8150846e7b63b2bfd25232bdadff8"><div class="ttname"><a href="grafo_8h.html#aa2d8150846e7b63b2bfd25232bdadff8">grafo_insertar_arista</a></div><div class="ttdeci">GrafoEstado grafo_insertar_arista(Grafo *grafo, int origen, int destino, int peso)</div><div class="ttdoc">Inserta una arista entre dos vértices.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00228">grafo.c:228</a></div></div>
+<div class="ttc" id="agrafo_8h_html_accfbf6a53aa7bbedbc1cc0bdeef9458c"><div class="ttname"><a href="grafo_8h.html#accfbf6a53aa7bbedbc1cc0bdeef9458c">grafo_obtener_vertices</a></div><div class="ttdeci">GrafoEstado grafo_obtener_vertices(const Grafo *grafo, int **vertices, size_t *cantidad)</div><div class="ttdoc">Obtiene una copia del array de vértices del grafo.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00427">grafo.c:427</a></div></div>
+<div class="ttc" id="agrafo_8h_html_adad80d430fcddbe643c2922d1824e68d"><div class="ttname"><a href="grafo_8h.html#adad80d430fcddbe643c2922d1824e68d">grafo_predecesores</a></div><div class="ttdeci">GrafoEstado grafo_predecesores(const Grafo *grafo, int vertice, int **predecesores, size_t *cantidad)</div><div class="ttdoc">Obtiene los predecesores de un vértice.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00514">grafo.c:514</a></div></div>
+<div class="ttc" id="agrafo_8h_html_adafca82e2e59cb9a0826ab5a107e362c"><div class="ttname"><a href="grafo_8h.html#adafca82e2e59cb9a0826ab5a107e362c">grafo_tamano</a></div><div class="ttdeci">size_t grafo_tamano(const Grafo *grafo)</div><div class="ttdoc">Retorna el tamaño del grafo (cantidad de aristas).</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00363">grafo.c:363</a></div></div>
+<div class="ttc" id="agrafo_8h_html_af50feaad0153f9da59e434bbfd09d659"><div class="ttname"><a href="grafo_8h.html#af50feaad0153f9da59e434bbfd09d659">grafo_insertar_vertice</a></div><div class="ttdeci">GrafoEstado grafo_insertar_vertice(Grafo *grafo, int vertice)</div><div class="ttdoc">Inserta un vértice en el grafo.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00209">grafo.c:209</a></div></div>
+<div class="ttc" id="agrafo_8h_html_aff02db65efd1fe5133e0eb7dbc14ad72"><div class="ttname"><a href="grafo_8h.html#aff02db65efd1fe5133e0eb7dbc14ad72">grafo_obtener_peso</a></div><div class="ttdeci">GrafoEstado grafo_obtener_peso(const Grafo *grafo, int origen, int destino, int *peso)</div><div class="ttdoc">Obtiene el peso de una arista.</div><div class="ttdef"><b>Definition</b> <a href="grafo_8c_source.html#l00336">grafo.c:336</a></div></div>
+<div class="ttc" id="astruct_grafo_arista_html"><div class="ttname"><a href="struct_grafo_arista.html">GrafoArista</a></div><div class="ttdoc">Representa una arista pública.</div><div class="ttdef"><b>Definition</b> <a href="#l00060">grafo.h:60</a></div></div>
+<div class="ttc" id="astruct_grafo_arista_html_a0604d3a1d013ea5f5f3b05f8cac9955d"><div class="ttname"><a href="struct_grafo_arista.html#a0604d3a1d013ea5f5f3b05f8cac9955d">GrafoArista::origen</a></div><div class="ttdeci">int origen</div><div class="ttdoc">Vértice de origen.</div><div class="ttdef"><b>Definition</b> <a href="#l00061">grafo.h:61</a></div></div>
+<div class="ttc" id="astruct_grafo_arista_html_a10f697351430db1f9e0a07f67431f5a3"><div class="ttname"><a href="struct_grafo_arista.html#a10f697351430db1f9e0a07f67431f5a3">GrafoArista::peso</a></div><div class="ttdeci">int peso</div><div class="ttdoc">Peso de la arista.</div><div class="ttdef"><b>Definition</b> <a href="#l00063">grafo.h:63</a></div></div>
+<div class="ttc" id="astruct_grafo_arista_html_a7597b7178cc7946c80f4dbc441f77ee2"><div class="ttname"><a href="struct_grafo_arista.html#a7597b7178cc7946c80f4dbc441f77ee2">GrafoArista::destino</a></div><div class="ttdeci">int destino</div><div class="ttdoc">Vértice de destino.</div><div class="ttdef"><b>Definition</b> <a href="#l00062">grafo.h:62</a></div></div>
+<div class="ttc" id="astruct_grafo_camino_html"><div class="ttname"><a href="struct_grafo_camino.html">GrafoCamino</a></div><div class="ttdoc">Resultado de un camino mínimo o árbol de expansión mínima.</div><div class="ttdef"><b>Definition</b> <a href="#l00083">grafo.h:83</a></div></div>
+<div class="ttc" id="astruct_grafo_camino_html_a61f3e3e747f4be5a280aa6b90c7a3105"><div class="ttname"><a href="struct_grafo_camino.html#a61f3e3e747f4be5a280aa6b90c7a3105">GrafoCamino::costo_total</a></div><div class="ttdeci">int costo_total</div><div class="ttdoc">Costo total (suma de pesos).</div><div class="ttdef"><b>Definition</b> <a href="#l00086">grafo.h:86</a></div></div>
+<div class="ttc" id="astruct_grafo_camino_html_a8fdec6b84e3aab6f30b6d77493accffc"><div class="ttname"><a href="struct_grafo_camino.html#a8fdec6b84e3aab6f30b6d77493accffc">GrafoCamino::existe</a></div><div class="ttdeci">bool existe</div><div class="ttdoc">true si existe solución; false si no hay camino/MST</div><div class="ttdef"><b>Definition</b> <a href="#l00087">grafo.h:87</a></div></div>
+<div class="ttc" id="astruct_grafo_camino_html_ab73bb75d397fc5b8f9f16403867eb647"><div class="ttname"><a href="struct_grafo_camino.html#ab73bb75d397fc5b8f9f16403867eb647">GrafoCamino::estado</a></div><div class="ttdeci">GrafoEstado estado</div><div class="ttdoc">Estado de la operación.</div><div class="ttdef"><b>Definition</b> <a href="#l00088">grafo.h:88</a></div></div>
+<div class="ttc" id="astruct_grafo_camino_html_acd6dcfe4eb30c79c4dd180c7a42057e9"><div class="ttname"><a href="struct_grafo_camino.html#acd6dcfe4eb30c79c4dd180c7a42057e9">GrafoCamino::cantidad</a></div><div class="ttdeci">size_t cantidad</div><div class="ttdoc">Cantidad de aristas.</div><div class="ttdef"><b>Definition</b> <a href="#l00085">grafo.h:85</a></div></div>
+<div class="ttc" id="astruct_grafo_camino_html_ae57c811685b214d3c499db9fbdcedb3b"><div class="ttname"><a href="struct_grafo_camino.html#ae57c811685b214d3c499db9fbdcedb3b">GrafoCamino::aristas</a></div><div class="ttdeci">GrafoArista * aristas</div><div class="ttdoc">Array dinámico de aristas del camino/MST.</div><div class="ttdef"><b>Definition</b> <a href="#l00084">grafo.h:84</a></div></div>
+<div class="ttc" id="astruct_grafo_recorrido_html"><div class="ttname"><a href="struct_grafo_recorrido.html">GrafoRecorrido</a></div><div class="ttdoc">Resultado de un recorrido (BFS, DFS).</div><div class="ttdef"><b>Definition</b> <a href="#l00071">grafo.h:71</a></div></div>
+<div class="ttc" id="astruct_grafo_recorrido_html_a2a437b928e8dc7502b2fc5115bad702c"><div class="ttname"><a href="struct_grafo_recorrido.html#a2a437b928e8dc7502b2fc5115bad702c">GrafoRecorrido::cantidad</a></div><div class="ttdeci">size_t cantidad</div><div class="ttdoc">Cantidad de vértices en el recorrido.</div><div class="ttdef"><b>Definition</b> <a href="#l00073">grafo.h:73</a></div></div>
+<div class="ttc" id="astruct_grafo_recorrido_html_a5de06473182a6aaca44d415218d8e64d"><div class="ttname"><a href="struct_grafo_recorrido.html#a5de06473182a6aaca44d415218d8e64d">GrafoRecorrido::vertices</a></div><div class="ttdeci">int * vertices</div><div class="ttdoc">Array dinámico de vértices visitados (en orden).</div><div class="ttdef"><b>Definition</b> <a href="#l00072">grafo.h:72</a></div></div>
+<div class="ttc" id="astruct_grafo_recorrido_html_acbdbde7579a7f37614991ea6350523dd"><div class="ttname"><a href="struct_grafo_recorrido.html#acbdbde7579a7f37614991ea6350523dd">GrafoRecorrido::estado</a></div><div class="ttdeci">GrafoEstado estado</div><div class="ttdoc">Estado de la operación.</div><div class="ttdef"><b>Definition</b> <a href="#l00074">grafo.h:74</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="grafo_8h.html">grafo.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

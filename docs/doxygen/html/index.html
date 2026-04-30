@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>VisualStruct: Visualizador de Estructuras de Datos Secuenciales en C con Raylib</title>
+<title>VisualStruct: VisualStruct UTP: Estructuras Secuenciales y Grafos en C con Raylib</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,13 +89,13 @@ $(function(){initNavTree('index.html','',''); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Visualizador de Estructuras de Datos Secuenciales en C con Raylib </div></div>
+  <div class="headertitle"><div class="title">VisualStruct UTP: Estructuras Secuenciales y Grafos en C con Raylib </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a></p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
 Objetivo</h1>
-<p>Aplicacion de escritorio para apoyo docente en la Universidad Tecnologica de Pereira. El sistema visualiza estructuras secuenciales en C estandar mostrando simultaneamente representacion grafica, operacion, codigo asociado, traza y complejidad.</p>
+<p>Aplicacion de escritorio para apoyo docente en la Universidad Tecnologica de Pereira. El sistema visualiza estructuras secuenciales y grafos en C estandar mostrando simultaneamente representacion grafica, operacion, codigo asociado, traza y complejidad.</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
 Requisitos</h1>
 <ul>
@@ -116,8 +116,9 @@ Compilacion</h1>
 </div><!-- fragment --><h2>Opcion 2: Comando directo (Windows/MinGW)</h2>
 <div class="fragment"><div class="line">gcc -std=c11 -Wall -Wextra -pedantic -Iinclude \</div>
 <div class="line">  src/main.c src/ui.c src/app_state.c src/code_viewer.c src/algorithm_trace.c \</div>
-<div class="line">  src/pila_view.c src/cola_view.c src/cola_prioridad_view.c src/lista_view.c src/lista_circular_view.c src/sublista_view.c \</div>
+<div class="line">  src/pila_view.c src/cola_view.c src/cola_prioridad_view.c src/lista_view.c src/lista_circular_view.c src/sublista_view.c src/grafo_view.c \</div>
 <div class="line">  src/pila.c src/cola.c src/cola_prioridad.c src/lista.c src/lista_circular.c src/sublista.c \</div>
+<div class="line">  src/grafo.c src/grafo_state.c src/grafo_layout.c src/grafo_controller.c src/grafo_pedagogy.c src/grafo_code_viewer.c src/grafo_trace.c \</div>
 <div class="line">  -o visualstruct -lraylib -lopengl32 -lgdi32 -lwinmm</div>
 </div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
 Documentacion Tecnica</h1>
@@ -137,16 +138,18 @@ Documentacion Tecnica</h1>
 <li><span class="tt"><a class="el" href="qa-visualizacion-ventanas_8md.html">docs/qa-visualizacion-ventanas.md</a></span>: verificacion de layout, legibilidad y uso de espacio.</li>
 <li><span class="tt"><a class="el" href="analisis-diseno-lista-circular_8md.html">docs/analisis-diseno-lista-circular.md</a></span>: analisis tecnico y de interfaz para la funcionalidad de lista circular.</li>
 <li><span class="tt"><a class="el" href="analisis-diseno-sublistas_8md.html">docs/analisis-diseno-sublistas.md</a></span>: analisis funcional y tecnico del TAD jerarquico de sublistas.</li>
+<li><span class="tt"><a class="el" href="analisis-diseno-grafos_8md.html">docs/analisis-diseno-grafos.md</a></span>: analisis funcional y tecnico del modulo de grafos y su integracion pedagogica.</li>
+<li><span class="tt"><a class="el" href="plan-modulo-grafos_8md.html">docs/plan-modulo-grafos.md</a></span>: plan incremental de implementacion del modulo de grafos.</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
 Uso Basico</h1>
 <ol type="1">
 <li>Ejecutar la aplicacion.</li>
-<li>Seleccionar estructura en el menu lateral: <a class="el" href="struct_pila.html">Pila</a>, <a class="el" href="struct_cola.html">Cola</a>, <a class="el" href="struct_cola.html">Cola</a> de Prioridad, <a class="el" href="struct_lista.html">Lista</a>, <a class="el" href="struct_lista.html">Lista</a> Circular o Sublistas.</li>
+<li>En la portada, elegir <span class="tt">1 Secuenciales</span> o <span class="tt">2 Grafos</span>.</li>
+<li>En <span class="tt">Secuenciales</span>, seleccionar: <a class="el" href="struct_pila.html">Pila</a>, <a class="el" href="struct_cola.html">Cola</a>, <a class="el" href="struct_cola.html">Cola</a> de Prioridad, <a class="el" href="struct_lista.html">Lista</a>, <a class="el" href="struct_lista.html">Lista</a> Circular o Sublistas.</li>
+<li>En <span class="tt">Grafos</span>, elegir construccion o algoritmo (BFS, DFS, Dijkstra, Bellman-Ford, Prim, Kruskal).</li>
 <li>Usar los botones contextuales del panel central para ejecutar operaciones segun la estructura activa.</li>
-<li>Editar <span class="tt">valor</span> y <span class="tt">prioridad</span> directamente en el panel lateral o usar teclado.</li>
-<li>Ajustar <span class="tt">valor</span> con <span class="tt">UP/DOWN</span>.</li>
-<li>Ajustar <span class="tt">prioridad</span> con <span class="tt">LEFT/RIGHT</span> cuando la estructura activa sea <a class="el" href="struct_cola.html">Cola</a> de Prioridad.</li>
+<li>En modo <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>, editar <span class="tt">valor</span>, <span class="tt">origen</span>, <span class="tt">destino</span> y <span class="tt">peso</span> en el panel lateral o por teclado.</li>
 <li>Observar simultaneamente panel central (grafico), panel derecho (codigo C con historial acumulado) y panel inferior (traza y complejidad).</li>
 <li>Usar el boton <span class="tt">Limpiar</span> del panel de codigo para reiniciar el historial cuando se quiera comenzar una nueva secuencia.</li>
 <li>Abrir <span class="tt">Ayuda (F1)</span> para consultar explicaciones detalladas de cada modulo funcional y tecnico.</li>
@@ -166,12 +169,44 @@ Controles Actuales</h1>
 <li><span class="tt">ENTER</span>: confirmar valor/prioridad editados en los campos laterales</li>
 <li><span class="tt">F1</span>: abrir/cerrar pantalla de ayuda detallada</li>
 <li><span class="tt">H</span> o <span class="tt">ESC</span> (en visualizador): volver al menu principal</li>
+<li><span class="tt">TAB</span> (en visualizador): recorrer estructuras activas (1..7)</li>
+<li><span class="tt">,</span> / <span class="tt">.</span> / <span class="tt">/</span> (en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>): paso anterior, paso siguiente y reinicio del algoritmo</li>
+<li><span class="tt">Home</span> / <span class="tt">End</span> (en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>): ir al inicio o al final del algoritmo</li>
+<li><span class="tt">P</span> (en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>): activar/desactivar autoplay</li>
+<li><span class="tt">O</span> (en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>): cambiar velocidad del autoplay</li>
+<li><span class="tt">T</span> (en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>): alternar entre grafo dirigido y no dirigido</li>
+<li><span class="tt">M</span> (en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>): cargar el siguiente escenario demo</li>
+<li><span class="tt">C</span> (en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>): copiar al portapapeles un resumen textual del algoritmo actual</li>
 <li><span class="tt">Mouse wheel</span> sobre panel central en Cola/Lista/Lista Circular/Cola de Prioridad: desplazamiento horizontal para navegar nodos fuera de ancho</li>
 <li><span class="tt">Mouse wheel</span> sobre panel central en <a class="el" href="struct_pila.html">Pila</a>: desplazamiento vertical</li>
 <li>Boton <span class="tt">Limpiar</span> en panel de codigo: reinicia el historial de snippets</li>
 <li>Boton lateral <span class="tt">Ayuda (F1)</span>: acceso guiado al manual interno</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+Modulo de Grafos</h1>
+<ul>
+<li>Soporta BFS, DFS, Dijkstra, Bellman-Ford, Prim y Kruskal.</li>
+<li>Permite construir grafos dirigidos o no dirigidos con insercion/eliminacion de vertices y aristas.</li>
+<li>El panel inferior muestra tipo de paso, progreso, arista actual, metricas por paso, tabla de distancias, camino parcial y conjunto de vertices cerrados.</li>
+<li>El lienzo central incluye leyenda visual para vertice activo, arista procesada y mejora real.</li>
+<li><span class="tt">Cargar demo</span> cicla entre escenarios de recorrido, caminos, Bellman-Ford y MST.</li>
+<li><span class="tt">Exportar</span> copia al portapapeles un resumen textual con algoritmo, paso, metricas, camino y tabla de distancias.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+Navegacion rapida</h1>
+<ul>
+<li>Portada principal: <span class="tt">1</span> Secuenciales, <span class="tt">2</span> Grafos.</li>
+<li>Submenu Secuenciales: <span class="tt">1..6</span> seleccion directa de estructura.</li>
+<li>Visualizador: <span class="tt">1..7</span> seleccion directa (incluye <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>), <span class="tt">TAB</span> para avanzar.</li>
+<li>Ayuda global: <span class="tt">F1</span> desde cualquier pantalla.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+Solucion de problemas</h1>
+<ul>
+<li>Si no ves <span class="tt"><a class="el" href="struct_lista.html">Lista</a> Circular</span>, <span class="tt">Sublistas</span> o <span class="tt"><a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a></span>, asegurate de ejecutar el binario mas reciente (<span class="tt">visualstruct.exe</span> o <span class="tt">visualstruct_eval_v11.exe</span> actualizado).</li>
+<li>Si compilas manualmente, incluye todos los <span class="tt">src/grafo_*.c</span> del comando de compilacion.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
 Estructura de Carpetas</h1>
 <ul>
 <li>include/: encabezados publicos</li>
@@ -181,10 +216,10 @@ Estructura de Carpetas</h1>
 <li>assets/fons/: fuentes tipograficas externas usadas por encabezado, pie y controles</li>
 <li>docs/: documentacion del proyecto</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
 Estado Actual</h1>
-<p>Arquitectura unificada operativa: app unica, estado global desacoplado, vistas por estructura (incluyendo <a class="el" href="struct_lista.html">Lista</a> Circular y Sublistas), controles contextuales, ayuda interna detallada, historial de snippets C por operacion, complejidades base del MVP y feedback animado breve en inserciones/eliminaciones.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+<p>Arquitectura unificada operativa: app unica, estado global desacoplado, vistas por estructura (secuenciales + grafo), controles contextuales, ayuda interna detallada, historial de snippets C por operacion y soporte pedagogico ampliado para algoritmos de grafos.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
 Notas de Arquitectura</h1>
 <ul>
 <li>La app actual usa un unico punto de entrada en <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span>.</li>

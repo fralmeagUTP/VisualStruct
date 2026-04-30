@@ -15,5 +15,5 @@ var searchData=
   ['sublista_5finsertar_5fhijo_5ffinal_12',['sublista_insertar_hijo_final',['../sublista_8h.html#a8a184f460d08a7f2ac95e7a28e4f604c',1,'sublista_insertar_hijo_final(Nodo *padre, int valor_hijo):&#160;sublista.c'],['../sublista_8c.html#a8a184f460d08a7f2ac95e7a28e4f604c',1,'sublista_insertar_hijo_final(Nodo *padre, int valor_hijo):&#160;sublista.c']]],
   ['sublista_5finsertar_5fpadre_5ffinal_13',['sublista_insertar_padre_final',['../sublista_8h.html#a28bb800d71509aa0fd0b6fcedae8e790',1,'sublista_insertar_padre_final(Nodo **lista, int valor_padre):&#160;sublista.c'],['../sublista_8c.html#a28bb800d71509aa0fd0b6fcedae8e790',1,'sublista_insertar_padre_final(Nodo **lista, int valor_padre):&#160;sublista.c']]],
   ['sublista_5fview_5fdraw_14',['sublista_view_draw',['../sublista__view_8h.html#a7546933559ef5aac1285686ecfa042a6',1,'sublista_view_draw(const AppState *state, Rectangle panel):&#160;sublista_view.c'],['../sublista__view_8c.html#a7546933559ef5aac1285686ecfa042a6',1,'sublista_view_draw(const AppState *state, Rectangle panel):&#160;sublista_view.c']]],
-  ['sync_5finput_5fbuffers_15',['sync_input_buffers',['../main_8c.html#a9df5d2e9d6f7b867c5f4994c0b76e925',1,'main.c']]]
+  ['sync_5finput_5fbuffers_15',['sync_input_buffers',['../main_8c.html#a04681258f953c6a1fdfcf910e7092abe',1,'main.c']]]
 ];

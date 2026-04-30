@@ -1,16 +1,19 @@
 var searchData=
 [
   ['destruir_5fhijos_0',['destruir_hijos',['../sublista_8c.html#a86747bd84571c8d00e5c63267da87a17',1,'sublista.c']]],
-  ['draw_5factive_5fview_1',['draw_active_view',['../main_8c.html#a136653aa94ab717b27a314ad325ef6dd',1,'main.c']]],
+  ['draw_5factive_5fview_1',['draw_active_view',['../main_8c.html#a3f3d707daebcc1042a9c5966ee1b78b0',1,'main.c']]],
   ['draw_5fcontext_5fcontrols_2',['draw_context_controls',['../main_8c.html#a1ee96216319e58d6819a078c6028cb43',1,'main.c']]],
-  ['draw_5fhelp_5fscreen_3',['draw_help_screen',['../main_8c.html#a485bc574d9f8c1c422c3b4817ba571ea',1,'main.c']]],
-  ['draw_5fhome_5fcard_4',['draw_home_card',['../main_8c.html#a77079dcec78d7922ef19f630a76ba8bd',1,'main.c']]],
-  ['draw_5fhome_5ficon_5',['draw_home_icon',['../main_8c.html#af7d5fd8caf96e66d590ebef8d38a8595',1,'main.c']]],
-  ['draw_5fhome_5fscreen_6',['draw_home_screen',['../main_8c.html#ac829ba6a0af32f92d2d3839747b9110c',1,'main.c']]],
-  ['draw_5flogo_5ffallback_7',['draw_logo_fallback',['../ui_8c.html#aaf3730168237691e21890fa962b959b6',1,'ui.c']]],
-  ['draw_5fscrollable_5fmultiline_5ftext_8',['draw_scrollable_multiline_text',['../main_8c.html#abf6cecb88ec964635339066065ebfa63',1,'main.c']]],
-  ['draw_5fscrollbar_9',['draw_scrollbar',['../main_8c.html#a6174d639c73f9e3c5303f0006959cdf7',1,'main.c']]],
-  ['draw_5ftexture_5ffit_10',['draw_texture_fit',['../ui_8c.html#ace7995fc9076a2fca130f38f61cf63f1',1,'ui.c']]],
-  ['draw_5fui_5fmultiline_11',['draw_ui_multiline',['../main_8c.html#aaed93e600f2db89c988047b141a40035',1,'main.c']]],
-  ['draw_5fui_5ftext_12',['draw_ui_text',['../ui_8c.html#a171c5bc30734a87548a113935b5de19e',1,'ui.c']]]
+  ['draw_5fgraph_5fsidebar_5fbutton_3',['draw_graph_sidebar_button',['../main_8c.html#af24db390afc7de99d369a5354500bc84',1,'main.c']]],
+  ['draw_5fhelp_5fscreen_4',['draw_help_screen',['../main_8c.html#a485bc574d9f8c1c422c3b4817ba571ea',1,'main.c']]],
+  ['draw_5fhome_5fcard_5',['draw_home_card',['../main_8c.html#a77079dcec78d7922ef19f630a76ba8bd',1,'main.c']]],
+  ['draw_5fhome_5fgraph_5fscreen_6',['draw_home_graph_screen',['../main_8c.html#a119013f29a8712a2b3f6beb19b3aa3e5',1,'main.c']]],
+  ['draw_5fhome_5ficon_7',['draw_home_icon',['../main_8c.html#af7d5fd8caf96e66d590ebef8d38a8595',1,'main.c']]],
+  ['draw_5fhome_5froot_5fscreen_8',['draw_home_root_screen',['../main_8c.html#a428abc41b87843f2d1fc6c16c3adaed1',1,'main.c']]],
+  ['draw_5fhome_5fscreen_9',['draw_home_screen',['../main_8c.html#ac829ba6a0af32f92d2d3839747b9110c',1,'main.c']]],
+  ['draw_5flogo_5ffallback_10',['draw_logo_fallback',['../ui_8c.html#aaf3730168237691e21890fa962b959b6',1,'ui.c']]],
+  ['draw_5fscrollable_5fmultiline_5ftext_11',['draw_scrollable_multiline_text',['../main_8c.html#abf6cecb88ec964635339066065ebfa63',1,'main.c']]],
+  ['draw_5fscrollbar_12',['draw_scrollbar',['../main_8c.html#a6174d639c73f9e3c5303f0006959cdf7',1,'main.c']]],
+  ['draw_5ftexture_5ffit_13',['draw_texture_fit',['../ui_8c.html#ace7995fc9076a2fca130f38f61cf63f1',1,'ui.c']]],
+  ['draw_5fui_5fmultiline_14',['draw_ui_multiline',['../main_8c.html#aaed93e600f2db89c988047b141a40035',1,'main.c']]],
+  ['draw_5fui_5ftext_15',['draw_ui_text',['../ui_8c.html#a171c5bc30734a87548a113935b5de19e',1,'ui.c']]]
 ];

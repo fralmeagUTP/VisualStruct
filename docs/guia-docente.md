@@ -1,7 +1,7 @@
 # Guia Docente
 
 ## Proposito
-Esta aplicacion esta pensada para explicar operaciones de estructuras secuenciales mostrando tres planos al mismo tiempo:
+Esta aplicacion esta pensada para explicar estructuras secuenciales y grafos mostrando tres planos al mismo tiempo:
 
 - estado grafico de la estructura
 - historial de codigo C relacionado con cada operacion ejecutada
@@ -47,6 +47,13 @@ Esta aplicacion esta pensada para explicar operaciones de estructuras secuencial
 - Seleccionar distintos padres con `Buscar` para contrastar contexto activo.
 - Eliminar hijos y padres para discutir impacto local frente a impacto estructural.
 
+### Grafo
+- Comenzar con un demo pequeno y alternar entre modo dirigido/no dirigido para fijar conceptos base.
+- Ejecutar BFS/DFS para diferenciar recorrido por anchura frente a profundidad usando el mismo grafo.
+- Usar Dijkstra y Bellman-Ford con el mismo origen/destino para discutir pesos, mejoras y relajaciones.
+- Presentar Prim y Kruskal sobre grafo no dirigido para comparar dos estrategias de MST.
+- Aprovechar `autoplay`, `paso siguiente` y `tabla de distancias` para analizar cada iteracion.
+
 ## Recomendaciones de uso
 - Mantener pocos elementos al inicio para que el patron sea evidente.
 - Pedir predicciones antes de pulsar el boton de operacion.
@@ -57,6 +64,7 @@ Esta aplicacion esta pensada para explicar operaciones de estructuras secuencial
 
 ## Limitaciones actuales
 - La visualizacion prioriza claridad pedagogica sobre animaciones complejas.
-- El proyecto cubre estructuras secuenciales basicas del MVP.
-- Ahora incluye seis estructuras visualizables: pila, cola, cola de prioridad, lista, lista circular y sublistas.
+- El proyecto integra estructuras secuenciales y un modulo de grafos en una sola aplicacion.
+- El visualizador secuencial incluye seis estructuras: pila, cola, cola de prioridad, lista, lista circular y sublistas.
+- El modulo de grafos incluye construccion del grafo y ejecucion pedagogica de BFS, DFS, Dijkstra, Bellman-Ford, Prim y Kruskal.
 - El material en `src/legacy` no representa la arquitectura vigente.

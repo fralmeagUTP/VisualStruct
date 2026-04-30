@@ -11,7 +11,7 @@ Verificar que no existan solapes, recortes ni zonas inutiles en los paneles de l
 1. Compilar el proyecto:
 
 ```powershell
-gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state.c src/code_viewer.c src/algorithm_trace.c src/pila_view.c src/cola_view.c src/cola_prioridad_view.c src/lista_view.c src/lista_circular_view.c src/sublista_view.c src/pila.c src/cola.c src/cola_prioridad.c src/lista.c src/lista_circular.c src/sublista.c -o visualstruct_qa_layout -lraylib -lopengl32 -lgdi32 -lwinmm
+gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state.c src/code_viewer.c src/algorithm_trace.c src/pila_view.c src/cola_view.c src/cola_prioridad_view.c src/lista_view.c src/lista_circular_view.c src/sublista_view.c src/grafo_view.c src/pila.c src/cola.c src/cola_prioridad.c src/lista.c src/lista_circular.c src/sublista.c src/grafo.c src/grafo_state.c src/grafo_layout.c src/grafo_controller.c src/grafo_pedagogy.c src/grafo_code_viewer.c src/grafo_trace.c -o visualstruct_qa_layout -lraylib -lopengl32 -lgdi32 -lwinmm
 ```
 
 2. Ejecutar:
@@ -56,7 +56,13 @@ gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state
 - Verificar resaltado de padre activo y agrupacion visual padre-hijos
 - Confirmar scroll vertical cuando existan suficientes filas
 
-7. Ayuda interna:
+7. Grafo:
+- Insertar vertices/aristas y alternar dirigido/no dirigido
+- Ejecutar BFS, Dijkstra y Kruskal verificando que cambien overlays del lienzo y panel inferior
+- Validar controles de paso (`,`, `.`, `/`), `Home`, `End`, `P` y `O`
+- Confirmar que `Cargar demo` y `Exportar` no rompen layout de paneles
+
+8. Ayuda interna:
 - Abrir con `F1` desde menu principal
 - Verificar titulo, subtitulo, boton `Volver` y area de texto con scroll
 - Cerrar con `F1` y confirmar retorno a pantalla previa
@@ -74,6 +80,7 @@ gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state
 - Controles de operacion no invaden el lienzo grafico
 - Lienzo muestra nodos completos sin cortar etiquetas
 - Si aparece "Modo compacto", no se superpone al titulo
+- En Grafo, verificar que leyenda, pesos de arista y etiquetas de vertice sigan legibles en todas las resoluciones de la matriz.
 
 3. Panel derecho (Codigo C Asociado):
 - Caja de resumen superior legible
@@ -95,7 +102,7 @@ gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state
 
 1. Cero solapes visibles entre textos, botones y cajas.
 2. Cero recortes de texto en secciones clave (Resumen, Traza, Sidebar).
-3. Scroll funcional donde aplique (pila, cola, lista, lista circular, sublistas, codigo y traza).
+3. Scroll funcional donde aplique (pila, cola, lista, lista circular, sublistas, grafo, codigo y traza).
 4. Navegacion estable al cambiar entre estructuras y volver al menu principal.
 
 ## Registro de hallazgos

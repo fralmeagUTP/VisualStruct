@@ -92,16 +92,16 @@ $(function(){initNavTree('md_docs_2guia-docente.html','',''); });
   <div class="headertitle"><div class="title">Guia Docente </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md55"></a></p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md56"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md67"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md68"></a>
 Proposito</h1>
-<p>Esta aplicacion esta pensada para explicar operaciones de estructuras secuenciales mostrando tres planos al mismo tiempo:</p>
+<p>Esta aplicacion esta pensada para explicar estructuras secuenciales y grafos mostrando tres planos al mismo tiempo:</p>
 <ul>
 <li>estado grafico de la estructura</li>
 <li>historial de codigo C relacionado con cada operacion ejecutada</li>
 <li>explicacion breve con complejidad</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md57"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md69"></a>
 Secuencia sugerida para clase</h1>
 <ol type="1">
 <li>Seleccionar la estructura a estudiar.</li>
@@ -113,7 +113,7 @@ Secuencia sugerida para clase</h1>
 <li>Al finalizar una secuencia, usar <span class="tt">Limpiar</span> en el panel de codigo para comenzar un nuevo bloque didactico.</li>
 <li>Usar <span class="tt">F1</span> para abrir la ayuda interna cuando se necesite reforzar conceptos de uso o arquitectura.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md58"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md70"></a>
 Ideas por estructura</h1>
 <h2><a class="el" href="struct_pila.html">Pila</a></h2>
 <ul>
@@ -150,7 +150,15 @@ Ideas por estructura</h1>
 <li>Seleccionar distintos padres con <span class="tt">Buscar</span> para contrastar contexto activo.</li>
 <li>Eliminar hijos y padres para discutir impacto local frente a impacto estructural.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md59"></a>
+<h2><a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a></h2>
+<ul>
+<li>Comenzar con un demo pequeno y alternar entre modo dirigido/no dirigido para fijar conceptos base.</li>
+<li>Ejecutar BFS/DFS para diferenciar recorrido por anchura frente a profundidad usando el mismo grafo.</li>
+<li>Usar Dijkstra y Bellman-Ford con el mismo origen/destino para discutir pesos, mejoras y relajaciones.</li>
+<li>Presentar Prim y Kruskal sobre grafo no dirigido para comparar dos estrategias de MST.</li>
+<li>Aprovechar <span class="tt">autoplay</span>, <span class="tt">paso siguiente</span> y <span class="tt">tabla de distancias</span> para analizar cada iteracion.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md71"></a>
 Recomendaciones de uso</h1>
 <ul>
 <li>Mantener pocos elementos al inicio para que el patron sea evidente.</li>
@@ -160,12 +168,13 @@ Recomendaciones de uso</h1>
 <li>Aprovechar el historial de codigo para reconstruir toda la secuencia ejecutada sin depender de memoria de pasos previos.</li>
 <li>Integrar la pantalla de ayuda como apoyo transversal para aclarar modulos, atajos y errores comunes.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md60"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md72"></a>
 Limitaciones actuales</h1>
 <ul>
 <li>La visualizacion prioriza claridad pedagogica sobre animaciones complejas.</li>
-<li>El proyecto cubre estructuras secuenciales basicas del MVP.</li>
-<li>Ahora incluye seis estructuras visualizables: pila, cola, cola de prioridad, lista, lista circular y sublistas.</li>
+<li>El proyecto integra estructuras secuenciales y un modulo de grafos en una sola aplicacion.</li>
+<li>El visualizador secuencial incluye seis estructuras: pila, cola, cola de prioridad, lista, lista circular y sublistas.</li>
+<li>El modulo de grafos incluye construccion del grafo y ejecucion pedagogica de BFS, DFS, Dijkstra, Bellman-Ford, Prim y Kruskal.</li>
 <li>El material en <span class="tt">src/legacy</span> no representa la arquitectura vigente. </li>
 </ul>
 </div></div><!-- contents -->

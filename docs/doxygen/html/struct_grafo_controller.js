@@ -1,0 +1,27 @@
+var struct_grafo_controller =
+[
+    [ "algoritmo_seleccionado", "struct_grafo_controller.html#adf6b62b6298a0230a5640d68d981d361", null ],
+    [ "arista_actual_destino", "struct_grafo_controller.html#a6c245fc9ea7bfb139bab89ff5244f209", null ],
+    [ "arista_actual_origen", "struct_grafo_controller.html#a9f86d269ba2925111914c16a415f5734", null ],
+    [ "arista_actual_valida", "struct_grafo_controller.html#a706cabe4b4626427e5f802138392f8ad", null ],
+    [ "autoplay_activo", "struct_grafo_controller.html#a2fc07565683540b6a9aa8b299efb1ce1", null ],
+    [ "autoplay_acumulado", "struct_grafo_controller.html#ae0e551e8828ae21202bb36fb8a30b2a6", null ],
+    [ "autoplay_intervalo", "struct_grafo_controller.html#a8bc0b1310f2aa10010472cd5a02fcacd", null ],
+    [ "autoplay_velocidad_idx", "struct_grafo_controller.html#a183f5f955fade5401b1f2db1319621c5", null ],
+    [ "esta_ejecutando", "struct_grafo_controller.html#a41fe11fa45baa04153942a140753ba02", null ],
+    [ "estado_visual", "struct_grafo_controller.html#a4beedb848cbd6a34a422a0b626e16442", null ],
+    [ "grafo_tad", "struct_grafo_controller.html#a2f3931238bf6e9342fa37d83f2712f62", null ],
+    [ "mensaje_error", "struct_grafo_controller.html#a3e6370132e313468f1e101924bce9a11", null ],
+    [ "modo", "struct_grafo_controller.html#a34790f46778b8ef146b0b359aaa356f9", null ],
+    [ "paso_actual", "struct_grafo_controller.html#af190672fea17254fe27bba3153f75652", null ],
+    [ "paso_mejora", "struct_grafo_controller.html#a901dd5a7fbab402f9561b0b7c7c5c9d3", null ],
+    [ "paso_tipo_actual", "struct_grafo_controller.html#ac83741512d0e13bde68c1e87f2682253", null ],
+    [ "script_aristas", "struct_grafo_controller.html#ae3e50b94d07357b49cc09d750919bf26", null ],
+    [ "script_aristas_count", "struct_grafo_controller.html#a4247afe3ceae56fe06d3119765376e3b", null ],
+    [ "script_vertices", "struct_grafo_controller.html#ae2773a6c55252c60270e0ac408eac273", null ],
+    [ "script_vertices_count", "struct_grafo_controller.html#a4972665600ad92d00374e2bf19838c4c", null ],
+    [ "total_pasos", "struct_grafo_controller.html#ab9aecee0e09aa87b8cefd9c6caa1578f", null ],
+    [ "vertice_destino", "struct_grafo_controller.html#ae724248d664279f0cd95d2051ca232b0", null ],
+    [ "vertice_inicio", "struct_grafo_controller.html#aff95094153e7564513372136765df873", null ],
+    [ "vista", "struct_grafo_controller.html#a69c05899c6b5b49f6e29f2cccb402833", null ]
+];

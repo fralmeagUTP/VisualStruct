@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: Analisis y Diseno: Modulo Grafo</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('md_docs_2analisis-diseno-grafos.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Analisis y Diseno: Modulo Grafo </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md14"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+1. Objetivo</h1>
+<p>Integrar un modulo de grafos en VisualStruct con enfoque docente, manteniendo separacion por capas y consistencia con los paneles pedagogicos de la aplicacion.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+2. Alcance funcional</h1>
+<p>El modulo permite:</p>
+<ol type="1">
+<li>Crear y reinicializar grafo.</li>
+<li>Insertar y eliminar vertices.</li>
+<li>Insertar y eliminar aristas con peso.</li>
+<li>Alternar entre modo dirigido y no dirigido.</li>
+<li>Cargar escenarios demo.</li>
+<li>Ejecutar BFS, DFS, Dijkstra, Bellman-Ford, Prim y Kruskal.</li>
+<li>Navegar la ejecucion por pasos, autoplay y exportacion de resumen.</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+3. Estructura tecnica por capas</h1>
+<h2>Dominio</h2>
+<ul>
+<li><span class="tt"><a class="el" href="grafo_8h.html" title="TAD Grafo para visualización y análisis de algoritmos de grafos.">include/grafo.h</a></span> y <span class="tt"><a class="el" href="grafo_8c.html" title="Implementación del TAD Grafo con algoritmos clásicos.">src/grafo.c</a></span>.</li>
+<li>TAD desacoplado de Raylib y expuesto por API publica.</li>
+</ul>
+<h2>Aplicacion y control</h2>
+<ul>
+<li><span class="tt"><a class="el" href="app__state_8c.html" title="Implementacion del estado global y despacho de operaciones de alto nivel.">src/app_state.c</a></span> coordina operaciones de alto nivel para <span class="tt"><a class="el" href="app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a6e0d66a5cb536cd3e71fdd083062dd31">ESTRUCTURA_GRAFO</a></span>.</li>
+<li><span class="tt"><a class="el" href="grafo__controller_8c.html" title="Implementación del controlador del grafo.">src/grafo_controller.c</a></span> gestiona validaciones, ejecucion de algoritmos y estado de pasos.</li>
+</ul>
+<h2>Presentacion</h2>
+<ul>
+<li><span class="tt"><a class="el" href="grafo__view_8c.html" title="Implementación del renderizado visual con Raylib.">src/grafo_view.c</a></span> dibuja vertices, aristas y estados visuales.</li>
+<li><span class="tt"><a class="el" href="grafo__state_8c.html" title="Implementación del estado visual del grafo.">src/grafo_state.c</a></span> y <span class="tt"><a class="el" href="grafo__layout_8c.html" title="Implementación del layout circular para grafos.">src/grafo_layout.c</a></span> mantienen snapshot y layout del lienzo.</li>
+<li><span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span> integra menu, controles y rutas de navegacion.</li>
+</ul>
+<h2>Pedagogia</h2>
+<ul>
+<li><span class="tt"><a class="el" href="grafo__code__viewer_8c.html" title="Implementación del visualizador de código.">src/grafo_code_viewer.c</a></span>: snippet del algoritmo activo.</li>
+<li><span class="tt"><a class="el" href="grafo__trace_8c.html" title="Implementación de la traza pedagógica.">src/grafo_trace.c</a></span>: traza textual por algoritmo.</li>
+<li><span class="tt"><a class="el" href="grafo__pedagogy_8c.html">src/grafo_pedagogy.c</a></span>: metricas por paso, camino parcial, tabla de distancias y exportacion.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
+4. Requerimientos de interfaz</h1>
+<ul>
+<li>Portada principal con dos entradas: <span class="tt">Secuenciales</span> y <span class="tt">Grafos</span>.</li>
+<li>Submenu de grafos con acceso a construccion y algoritmos.</li>
+<li>Campos laterales para <span class="tt">origen</span>, <span class="tt">destino</span> y <span class="tt">peso</span>.</li>
+<li>Panel inferior enriquecido con tipo de paso, progreso y metricas.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
+5. Complejidades esperadas (referencia docente)</h1>
+<ul>
+<li>BFS: <span class="tt">O(V + E)</span>.</li>
+<li>DFS: <span class="tt">O(V + E)</span>.</li>
+<li>Dijkstra (implementacion base sin heap): <span class="tt">O(V^2 + E)</span>.</li>
+<li>Bellman-Ford: <span class="tt">O(V * E)</span>.</li>
+<li>Prim (seleccion lineal): <span class="tt">O(V^2 + E)</span>.</li>
+<li>Kruskal: <span class="tt">O(E log E)</span> por ordenamiento de aristas.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
+6. Criterios de aceptacion</h1>
+<ol type="1">
+<li>La app compila con <span class="tt">-Wall -Wextra -pedantic</span>.</li>
+<li>El menu permite entrar a grafos y volver sin perder estabilidad.</li>
+<li>Las operaciones de vertices/aristas reflejan estado valido e invalido.</li>
+<li>Cada algoritmo actualiza vista, codigo y traza de forma sincronizada.</li>
+<li>La navegacion por pasos y autoplay mantiene coherencia visual.</li>
+<li>La exportacion textual entrega resumen util para clase.</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
+7. Riesgos y mitigaciones</h1>
+<ul>
+<li>Riesgo: acoplar logica de algoritmo con UI.<ul>
+<li>Mitigacion: mantener TAD y controlador sin dependencias de render.</li>
+</ul>
+</li>
+<li>Riesgo: inconsistencias entre paneles pedagogicos.<ul>
+<li>Mitigacion: centralizar metricas y trazas en <span class="tt"><a class="el" href="grafo__pedagogy_8c.html">grafo_pedagogy.c</a></span> y <span class="tt"><a class="el" href="grafo__trace_8c.html" title="Implementación de la traza pedagógica.">grafo_trace.c</a></span>.</li>
+</ul>
+</li>
+<li>Riesgo: sobrecarga visual en resoluciones bajas.<ul>
+<li>Mitigacion: validar con <span class="tt"><a class="el" href="qa-visualizacion-ventanas_8md.html">docs/qa-visualizacion-ventanas.md</a></span> y modo compacto. </li>
+</ul>
+</li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

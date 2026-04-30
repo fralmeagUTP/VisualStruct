@@ -96,11 +96,15 @@ $(function(){initNavTree('main_8c.html','',''); });
 <p>Punto de entrada y orquestacion principal de la app VisualStruct.  
 <a href="#details">Más...</a></p>
 <div class="textblock"><code>#include &quot;raylib.h&quot;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="algorithm__trace_8h_source.html">algorithm_trace.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="app__state_8h_source.html">app_state.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="code__viewer_8h_source.html">code_viewer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grafo__code__viewer_8h_source.html">grafo_code_viewer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grafo__pedagogy_8h_source.html">grafo_pedagogy.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grafo__trace_8h_source.html">grafo_trace.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="cola__prioridad__view_8h_source.html">cola_prioridad_view.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="cola__view_8h_source.html">cola_view.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="lista__view_8h_source.html">lista_view.h</a>&quot;</code><br />
@@ -117,13 +121,24 @@ defines</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumeraciones</h2></td></tr>
-<tr class="memitem:a65b30dbecdd0853f3d01374fb40d7c08" id="r_a65b30dbecdd0853f3d01374fb40d7c08"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08">InputFocus</a> { <a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08ad635d6b1496fa2fba6f87068d4193246">INPUT_NONE</a> = 0
+<tr class="memitem:a65b30dbecdd0853f3d01374fb40d7c08" id="r_a65b30dbecdd0853f3d01374fb40d7c08"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08">InputFocus</a> { <br />
+&#160;&#160;<a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08ad635d6b1496fa2fba6f87068d4193246">INPUT_NONE</a> = 0
 , <a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08ae83b9aed549f33affddb7d1a3e8f9804">INPUT_VALOR</a>
 , <a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08a34e54a75ca6c65340db8bb914ebe4d8d">INPUT_PRIORIDAD</a>
+, <a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08a1c4febab9d8c25f1a50cbb691209f3f4">INPUT_GRAFO_ORIGEN</a>
+, <br />
+&#160;&#160;<a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08a20130d9dcea959deb179b4c50d535aba">INPUT_GRAFO_DESTINO</a>
+, <a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08a181efbe2cfac264ef6c94f51116aa846">INPUT_GRAFO_PESO</a>
+<br />
  }</td></tr>
-<tr class="memitem:aefe4cd50ac123b6c800eede74968a353" id="r_aefe4cd50ac123b6c800eede74968a353"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#aefe4cd50ac123b6c800eede74968a353">ScreenMode</a> { <a class="el" href="#aefe4cd50ac123b6c800eede74968a353a57bd76f002798f63a253af342c73392e">SCREEN_HOME</a> = 0
+<tr class="memitem:aefe4cd50ac123b6c800eede74968a353" id="r_aefe4cd50ac123b6c800eede74968a353"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#aefe4cd50ac123b6c800eede74968a353">ScreenMode</a> { <br />
+&#160;&#160;<a class="el" href="#aefe4cd50ac123b6c800eede74968a353a2d022762e72116b2e76a2ff32c836fcd">SCREEN_HOME_ROOT</a> = 0
+, <a class="el" href="#aefe4cd50ac123b6c800eede74968a353a3bd0e1116e8d7276ef03e54ec484e623">SCREEN_HOME_SECUENCIALES</a>
+, <a class="el" href="#aefe4cd50ac123b6c800eede74968a353adf0e6a6bfe616e1b4258e898b87f8840">SCREEN_HOME_GRAFOS</a>
 , <a class="el" href="#aefe4cd50ac123b6c800eede74968a353aa9620c75110ed93e7e217291c5f8e3a5">SCREEN_VISUALIZER</a>
-, <a class="el" href="#aefe4cd50ac123b6c800eede74968a353a03d47535d3ba04edd770ace117420d4c">SCREEN_HELP</a>
+, <br />
+&#160;&#160;<a class="el" href="#aefe4cd50ac123b6c800eede74968a353a03d47535d3ba04edd770ace117420d4c">SCREEN_HELP</a>
+<br />
  }</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
@@ -136,18 +151,24 @@ Funciones</h2></td></tr>
 <tr class="memdesc:a4372a297a9cbc9d2bc6b4fc4f3a725d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limita un valor flotante a un rango cerrado.  <br /></td></tr>
 <tr class="memitem:a1c979dd4b6445843e4881bf7a8f03608" id="r_a1c979dd4b6445843e4881bf7a8f03608"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a1c979dd4b6445843e4881bf7a8f03608">count_text_lines</a> (const char *text)</td></tr>
 <tr class="memdesc:a1c979dd4b6445843e4881bf7a8f03608"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cuenta lineas de un bloque de texto multilínea.  <br /></td></tr>
-<tr class="memitem:a136653aa94ab717b27a314ad325ef6dd" id="r_a136653aa94ab717b27a314ad325ef6dd"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a136653aa94ab717b27a314ad325ef6dd">draw_active_view</a> (const <a class="el" href="struct_app_state.html">AppState</a> *state, Rectangle panel, float content_top_y)</td></tr>
-<tr class="memdesc:a136653aa94ab717b27a314ad325ef6dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Despacha el render de la vista grafica segun la estructura seleccionada.  <br /></td></tr>
+<tr class="memitem:a3f3d707daebcc1042a9c5966ee1b78b0" id="r_a3f3d707daebcc1042a9c5966ee1b78b0"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a3f3d707daebcc1042a9c5966ee1b78b0">draw_active_view</a> (<a class="el" href="struct_app_state.html">AppState</a> *state, Rectangle panel, float content_top_y)</td></tr>
+<tr class="memdesc:a3f3d707daebcc1042a9c5966ee1b78b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Despacha el render de la vista grafica segun la estructura seleccionada.  <br /></td></tr>
 <tr class="memitem:a1ee96216319e58d6819a078c6028cb43" id="r_a1ee96216319e58d6819a078c6028cb43"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#a1ee96216319e58d6819a078c6028cb43">draw_context_controls</a> (<a class="el" href="struct_app_state.html">AppState</a> *app, Rectangle panel, bool *is_compact_mode)</td></tr>
 <tr class="memdesc:a1ee96216319e58d6819a078c6028cb43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja los controles contextuales de operacion sobre el panel central.  <br /></td></tr>
+<tr class="memitem:af24db390afc7de99d369a5354500bc84" id="r_af24db390afc7de99d369a5354500bc84"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#af24db390afc7de99d369a5354500bc84">draw_graph_sidebar_button</a> (Rectangle bounds, const char *label, bool active)</td></tr>
+<tr class="memdesc:af24db390afc7de99d369a5354500bc84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja un boton compacto para el panel lateral de grafos.  <br /></td></tr>
 <tr class="memitem:a485bc574d9f8c1c422c3b4817ba571ea" id="r_a485bc574d9f8c1c422c3b4817ba571ea"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a485bc574d9f8c1c422c3b4817ba571ea">draw_help_screen</a> (const <a class="el" href="struct_u_i_layout.html">UILayout</a> *layout, float *help_scroll)</td></tr>
 <tr class="memdesc:a485bc574d9f8c1c422c3b4817ba571ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja la pantalla de ayuda detallada y retorna true si se solicita salir.  <br /></td></tr>
 <tr class="memitem:a77079dcec78d7922ef19f630a76ba8bd" id="r_a77079dcec78d7922ef19f630a76ba8bd"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a77079dcec78d7922ef19f630a76ba8bd">draw_home_card</a> (Rectangle card, const char *title, const char *description, <a class="el" href="app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6">TipoEstructura</a> tipo, bool is_selected)</td></tr>
 <tr class="memdesc:a77079dcec78d7922ef19f630a76ba8bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja una tarjeta de estructura y retorna true si se presiona Visualizar.  <br /></td></tr>
+<tr class="memitem:a119013f29a8712a2b3f6beb19b3aa3e5" id="r_a119013f29a8712a2b3f6beb19b3aa3e5"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a119013f29a8712a2b3f6beb19b3aa3e5">draw_home_graph_screen</a> (const <a class="el" href="struct_u_i_layout.html">UILayout</a> *layout, <a class="el" href="struct_app_state.html">AppState</a> *app, <a class="el" href="#aefe4cd50ac123b6c800eede74968a353">ScreenMode</a> *mode, int *home_selected, bool activate_selected)</td></tr>
+<tr class="memdesc:a119013f29a8712a2b3f6beb19b3aa3e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja submenu de grafos y permite entrar al visualizador de grafo.  <br /></td></tr>
 <tr class="memitem:af7d5fd8caf96e66d590ebef8d38a8595" id="r_af7d5fd8caf96e66d590ebef8d38a8595"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#af7d5fd8caf96e66d590ebef8d38a8595">draw_home_icon</a> (<a class="el" href="app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6">TipoEstructura</a> tipo, Rectangle icon_circle)</td></tr>
 <tr class="memdesc:af7d5fd8caf96e66d590ebef8d38a8595"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja una tarjeta de estructura y retorna true si se presiona Visualizar.  <br /></td></tr>
+<tr class="memitem:a428abc41b87843f2d1fc6c16c3adaed1" id="r_a428abc41b87843f2d1fc6c16c3adaed1"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a428abc41b87843f2d1fc6c16c3adaed1">draw_home_root_screen</a> (const <a class="el" href="struct_u_i_layout.html">UILayout</a> *layout, <a class="el" href="#aefe4cd50ac123b6c800eede74968a353">ScreenMode</a> *mode, int *home_selected, bool activate_selected)</td></tr>
+<tr class="memdesc:a428abc41b87843f2d1fc6c16c3adaed1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja la portada raiz para elegir categoria de estructuras.  <br /></td></tr>
 <tr class="memitem:ac829ba6a0af32f92d2d3839747b9110c" id="r_ac829ba6a0af32f92d2d3839747b9110c"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ac829ba6a0af32f92d2d3839747b9110c">draw_home_screen</a> (const <a class="el" href="struct_u_i_layout.html">UILayout</a> *layout, <a class="el" href="struct_app_state.html">AppState</a> *app, <a class="el" href="#aefe4cd50ac123b6c800eede74968a353">ScreenMode</a> *mode, int *home_selected, bool activate_selected)</td></tr>
-<tr class="memdesc:ac829ba6a0af32f92d2d3839747b9110c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja la portada de estructuras y permite seleccionar una para visualizar.  <br /></td></tr>
+<tr class="memdesc:ac829ba6a0af32f92d2d3839747b9110c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja submenu para estructuras secuenciales.  <br /></td></tr>
 <tr class="memitem:abf6cecb88ec964635339066065ebfa63" id="r_abf6cecb88ec964635339066065ebfa63"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#abf6cecb88ec964635339066065ebfa63">draw_scrollable_multiline_text</a> (const char *text, Rectangle viewport, int font_size, Color color, float offset_y)</td></tr>
 <tr class="memdesc:abf6cecb88ec964635339066065ebfa63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja texto multilínea dentro de un viewport con clipping y desplazamiento vertical.  <br /></td></tr>
 <tr class="memitem:a6174d639c73f9e3c5303f0006959cdf7" id="r_a6174d639c73f9e3c5303f0006959cdf7"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a6174d639c73f9e3c5303f0006959cdf7">draw_scrollbar</a> (Rectangle track, float content_height, float viewport_height, float offset)</td></tr>
@@ -166,17 +187,29 @@ Funciones</h2></td></tr>
 <tr class="memdesc:adca7682ec95e4139b194a1eecd8ea6d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convierte el enum de estructura activa a texto legible para la UI.  <br /></td></tr>
 <tr class="memitem:ab29b34545eecaf06d2f080a8a93930ea" id="r_ab29b34545eecaf06d2f080a8a93930ea"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#ab29b34545eecaf06d2f080a8a93930ea">get_app_help_text</a> (void)</td></tr>
 <tr class="memdesc:ab29b34545eecaf06d2f080a8a93930ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatena los bloques de ayuda para evitar literales demasiado largos en compilacion.  <br /></td></tr>
+<tr class="memitem:a72822855c9419bdfd671e5d8fbe5443d" id="r_a72822855c9419bdfd671e5d8fbe5443d"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#a72822855c9419bdfd671e5d8fbe5443d">grafo_algoritmo_espacio</a> (int algoritmo)</td></tr>
+<tr class="memdesc:a72822855c9419bdfd671e5d8fbe5443d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna la complejidad espacial del algoritmo de grafo activo.  <br /></td></tr>
+<tr class="memitem:a969013c0c8888fff10345035840db541" id="r_a969013c0c8888fff10345035840db541"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#a969013c0c8888fff10345035840db541">grafo_algoritmo_home_nombre</a> (int algoritmo)</td></tr>
+<tr class="memdesc:a969013c0c8888fff10345035840db541"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traduce el enum de algoritmo de grafos a un nombre corto para la portada.  <br /></td></tr>
+<tr class="memitem:a21aa737f797b0d26afa0dfdf18a500c2" id="r_a21aa737f797b0d26afa0dfdf18a500c2"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#a21aa737f797b0d26afa0dfdf18a500c2">grafo_algoritmo_tiempo</a> (int algoritmo)</td></tr>
+<tr class="memdesc:a21aa737f797b0d26afa0dfdf18a500c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna la complejidad temporal del algoritmo de grafo activo.  <br /></td></tr>
+<tr class="memitem:abc14ebc7de0be4641a5ce1533db2a54e" id="r_abc14ebc7de0be4641a5ce1533db2a54e"><td class="memItemLeft">static <a class="el" href="struct_grafo_codigo_algoritmo.html">GrafoCodigoAlgoritmo</a>&#160;</td><td class="memItemRight"><a class="el" href="#abc14ebc7de0be4641a5ce1533db2a54e">grafo_codigo_actual</a> (int algoritmo)</td></tr>
+<tr class="memdesc:abc14ebc7de0be4641a5ce1533db2a54e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el bloque de pseudocodigo para el algoritmo de grafo activo.  <br /></td></tr>
 <tr class="memitem:a48dd9e88677d1786078941aae8012577" id="r_a48dd9e88677d1786078941aae8012577"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a48dd9e88677d1786078941aae8012577">handle_keyboard</a> (<a class="el" href="struct_app_state.html">AppState</a> *app)</td></tr>
 <tr class="memdesc:a48dd9e88677d1786078941aae8012577"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atiende atajos globales de teclado para entradas y operaciones.  <br /></td></tr>
 <tr class="memitem:ac25dcf47afd61bde8c48e0e2884e56f2" id="r_ac25dcf47afd61bde8c48e0e2884e56f2"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ac25dcf47afd61bde8c48e0e2884e56f2">handle_navigation_keyboard</a> (<a class="el" href="#aefe4cd50ac123b6c800eede74968a353">ScreenMode</a> *mode, <a class="el" href="struct_app_state.html">AppState</a> *app, int *home_selected, bool *activate_selected)</td></tr>
 <tr class="memdesc:ac25dcf47afd61bde8c48e0e2884e56f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestiona navegación de alto nivel entre menu principal y visualizador.  <br /></td></tr>
+<tr class="memitem:a0b7851d87fa60509db33d7db24925d70" id="r_a0b7851d87fa60509db33d7db24925d70"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a0b7851d87fa60509db33d7db24925d70">launch_graph_algorithm_from_home</a> (<a class="el" href="struct_app_state.html">AppState</a> *app, <a class="el" href="#aefe4cd50ac123b6c800eede74968a353">ScreenMode</a> *mode, int algoritmo)</td></tr>
+<tr class="memdesc:a0b7851d87fa60509db33d7db24925d70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Preselecciona o ejecuta un algoritmo de grafos desde la portada.  <br /></td></tr>
 <tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe" id="r_a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
+<tr class="memitem:ac3c2a21331ec159dc3eb25c1d0fc8694" id="r_ac3c2a21331ec159dc3eb25c1d0fc8694"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ac3c2a21331ec159dc3eb25c1d0fc8694">open_graph_visualizer</a> (<a class="el" href="struct_app_state.html">AppState</a> *app, <a class="el" href="#aefe4cd50ac123b6c800eede74968a353">ScreenMode</a> *mode)</td></tr>
+<tr class="memdesc:ac3c2a21331ec159dc3eb25c1d0fc8694"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abre el visualizador dejando activa la estructura de grafos.  <br /></td></tr>
 <tr class="memitem:a83073f8573840486a92e6a745b4ea6cf" id="r_a83073f8573840486a92e6a745b4ea6cf"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#a83073f8573840486a92e6a745b4ea6cf">operacion_nombre</a> (<a class="el" href="app__state_8h.html#af12172166a85efb2c6a53de3facb2776">TipoOperacion</a> operacion)</td></tr>
 <tr class="memdesc:a83073f8573840486a92e6a745b4ea6cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convierte el enum de operacion a texto legible para el historial.  <br /></td></tr>
 <tr class="memitem:a01b825fc3266f6b3ca5c331a5667fe9a" id="r_a01b825fc3266f6b3ca5c331a5667fe9a"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a01b825fc3266f6b3ca5c331a5667fe9a">parse_int_text</a> (const char *text, int *value)</td></tr>
 <tr class="memdesc:a01b825fc3266f6b3ca5c331a5667fe9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valida si un texto representa un entero sintacticamente valido.  <br /></td></tr>
-<tr class="memitem:a9df5d2e9d6f7b867c5f4994c0b76e925" id="r_a9df5d2e9d6f7b867c5f4994c0b76e925"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a9df5d2e9d6f7b867c5f4994c0b76e925">sync_input_buffers</a> (const <a class="el" href="struct_app_state.html">AppState</a> *app, char *value_text, size_t value_size, char *priority_text, size_t priority_size, <a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08">InputFocus</a> focus)</td></tr>
-<tr class="memdesc:a9df5d2e9d6f7b867c5f4994c0b76e925"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sincroniza los buffers de texto editables con el estado real de entrada.  <br /></td></tr>
+<tr class="memitem:a04681258f953c6a1fdfcf910e7092abe" id="r_a04681258f953c6a1fdfcf910e7092abe"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a04681258f953c6a1fdfcf910e7092abe">sync_input_buffers</a> (const <a class="el" href="struct_app_state.html">AppState</a> *app, char *value_text, size_t value_size, char *priority_text, size_t priority_size, char *graph_origin_text, size_t graph_origin_size, char *graph_dest_text, size_t graph_dest_size, char *graph_weight_text, size_t graph_weight_size, <a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08">InputFocus</a> focus)</td></tr>
+<tr class="memdesc:a04681258f953c6a1fdfcf910e7092abe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sincroniza los buffers de texto editables con el estado real de entrada.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -203,9 +236,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00022">22</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00026">26</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
@@ -225,9 +258,12 @@ Variables</h2></td></tr>
 <tr><th colspan="2">Valores de enumeraciones</th></tr><tr><td class="fieldname"><a id="a65b30dbecdd0853f3d01374fb40d7c08ad635d6b1496fa2fba6f87068d4193246" name="a65b30dbecdd0853f3d01374fb40d7c08ad635d6b1496fa2fba6f87068d4193246"></a>INPUT_NONE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a65b30dbecdd0853f3d01374fb40d7c08ae83b9aed549f33affddb7d1a3e8f9804" name="a65b30dbecdd0853f3d01374fb40d7c08ae83b9aed549f33affddb7d1a3e8f9804"></a>INPUT_VALOR&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a65b30dbecdd0853f3d01374fb40d7c08a34e54a75ca6c65340db8bb914ebe4d8d" name="a65b30dbecdd0853f3d01374fb40d7c08a34e54a75ca6c65340db8bb914ebe4d8d"></a>INPUT_PRIORIDAD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a65b30dbecdd0853f3d01374fb40d7c08a1c4febab9d8c25f1a50cbb691209f3f4" name="a65b30dbecdd0853f3d01374fb40d7c08a1c4febab9d8c25f1a50cbb691209f3f4"></a>INPUT_GRAFO_ORIGEN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a65b30dbecdd0853f3d01374fb40d7c08a20130d9dcea959deb179b4c50d535aba" name="a65b30dbecdd0853f3d01374fb40d7c08a20130d9dcea959deb179b4c50d535aba"></a>INPUT_GRAFO_DESTINO&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a65b30dbecdd0853f3d01374fb40d7c08a181efbe2cfac264ef6c94f51116aa846" name="a65b30dbecdd0853f3d01374fb40d7c08a181efbe2cfac264ef6c94f51116aa846"></a>INPUT_GRAFO_PESO&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00133">133</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00142">142</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -243,12 +279,14 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Valores de enumeraciones</th></tr><tr><td class="fieldname"><a id="aefe4cd50ac123b6c800eede74968a353a57bd76f002798f63a253af342c73392e" name="aefe4cd50ac123b6c800eede74968a353a57bd76f002798f63a253af342c73392e"></a>SCREEN_HOME&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Valores de enumeraciones</th></tr><tr><td class="fieldname"><a id="aefe4cd50ac123b6c800eede74968a353a2d022762e72116b2e76a2ff32c836fcd" name="aefe4cd50ac123b6c800eede74968a353a2d022762e72116b2e76a2ff32c836fcd"></a>SCREEN_HOME_ROOT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aefe4cd50ac123b6c800eede74968a353a3bd0e1116e8d7276ef03e54ec484e623" name="aefe4cd50ac123b6c800eede74968a353a3bd0e1116e8d7276ef03e54ec484e623"></a>SCREEN_HOME_SECUENCIALES&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aefe4cd50ac123b6c800eede74968a353adf0e6a6bfe616e1b4258e898b87f8840" name="aefe4cd50ac123b6c800eede74968a353adf0e6a6bfe616e1b4258e898b87f8840"></a>SCREEN_HOME_GRAFOS&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aefe4cd50ac123b6c800eede74968a353aa9620c75110ed93e7e217291c5f8e3a5" name="aefe4cd50ac123b6c800eede74968a353aa9620c75110ed93e7e217291c5f8e3a5"></a>SCREEN_VISUALIZER&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aefe4cd50ac123b6c800eede74968a353a03d47535d3ba04edd770ace117420d4c" name="aefe4cd50ac123b6c800eede74968a353a03d47535d3ba04edd770ace117420d4c"></a>SCREEN_HELP&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00139">139</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00151">151</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -297,11 +335,11 @@ Variables</h2></td></tr>
 
 <p>Agrega una nueva entrada de snippet al historial acumulado de codigo. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00073">73</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00079">79</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="main_8c_source.html#l00025">estructura_nombre()</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00043">AppState::operacion_actual</a>, <a class="el" href="main_8c_source.html#l00045">operacion_nombre()</a> y <a class="el" href="app__state_8h_source.html#l00054">AppState::ultima_operacion_ok</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00045">AppState::estructura_activa</a>, <a class="el" href="main_8c_source.html#l00029">estructura_nombre()</a>, <a class="el" href="app__state_8h_source.html#l00060">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00046">AppState::operacion_actual</a>, <a class="el" href="main_8c_source.html#l00051">operacion_nombre()</a> y <a class="el" href="app__state_8h_source.html#l00057">AppState::ultima_operacion_ok</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
@@ -339,11 +377,11 @@ Variables</h2></td></tr>
 
 <p>Aplica el contenido textual de una caja de entrada al estado global. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01150">1150</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01646">1646</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00130">app_state_set_prioridad()</a>, <a class="el" href="app__state_8c_source.html#l00112">app_state_set_valor()</a>, <a class="el" href="main_8c_source.html#l00136">INPUT_PRIORIDAD</a> y <a class="el" href="main_8c_source.html#l00135">INPUT_VALOR</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00303">app_state_set_prioridad()</a>, <a class="el" href="app__state_8c_source.html#l00285">app_state_set_valor()</a>, <a class="el" href="app__state_8h_source.html#l00073">AppState::grafo_vertice_destino</a>, <a class="el" href="app__state_8h_source.html#l00072">AppState::grafo_vertice_inicio</a>, <a class="el" href="main_8c_source.html#l00147">INPUT_GRAFO_DESTINO</a>, <a class="el" href="main_8c_source.html#l00146">INPUT_GRAFO_ORIGEN</a>, <a class="el" href="main_8c_source.html#l00148">INPUT_GRAFO_PESO</a>, <a class="el" href="main_8c_source.html#l00145">INPUT_PRIORIDAD</a> y <a class="el" href="main_8c_source.html#l00144">INPUT_VALOR</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
@@ -381,9 +419,9 @@ Variables</h2></td></tr>
 
 <p>Limita un valor flotante a un rango cerrado. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00494">494</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00826">826</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00857">draw_help_screen()</a> y <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01199">draw_help_screen()</a> y <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
@@ -412,14 +450,14 @@ Variables</h2></td></tr>
 
 <p>Cuenta lineas de un bloque de texto multilínea. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00477">477</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00760">760</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00857">draw_help_screen()</a> y <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01199">draw_help_screen()</a> y <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
-<a id="a136653aa94ab717b27a314ad325ef6dd" name="a136653aa94ab717b27a314ad325ef6dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a136653aa94ab717b27a314ad325ef6dd">&#9670;&#160;</a></span>draw_active_view()</h2>
+<a id="a3f3d707daebcc1042a9c5966ee1b78b0" name="a3f3d707daebcc1042a9c5966ee1b78b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f3d707daebcc1042a9c5966ee1b78b0">&#9670;&#160;</a></span>draw_active_view()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -430,7 +468,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void draw_active_view </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_app_state.html">AppState</a> *</td>          <td class="paramname"><span class="paramname"><em>state</em></span>, </td>
+          <td class="paramtype"><a class="el" href="struct_app_state.html">AppState</a> *</td>          <td class="paramname"><span class="paramname"><em>state</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -452,11 +490,11 @@ Variables</h2></td></tr>
 
 <p>Despacha el render de la vista grafica segun la estructura seleccionada. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00908">908</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01250">1250</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00052">AppState::animacion_cambio_estructura</a>, <a class="el" href="app__state_8h_source.html#l00053">AppState::animacion_pulso_panel</a>, <a class="el" href="cola__prioridad__view_8c_source.html#l00056">cola_prioridad_view_draw()</a>, <a class="el" href="cola__view_8c_source.html#l00030">cola_view_draw()</a>, <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="lista__circular__view_8c_source.html#l00026">lista_circular_view_draw()</a>, <a class="el" href="lista__view_8c_source.html#l00030">lista_view_draw()</a>, <a class="el" href="pila__view_8c_source.html#l00030">pila_view_draw()</a> y <a class="el" href="sublista__view_8c_source.html#l00022">sublista_view_draw()</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00055">AppState::animacion_cambio_estructura</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::animacion_pulso_panel</a>, <a class="el" href="cola__prioridad__view_8c_source.html#l00056">cola_prioridad_view_draw()</a>, <a class="el" href="cola__view_8c_source.html#l00030">cola_view_draw()</a>, <a class="el" href="app__state_8h_source.html#l00045">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00027">ESTRUCTURA_GRAFO</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00025">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00026">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="grafo__controller_8c_source.html#l00561">grafo_controller_actualizar_area()</a>, <a class="el" href="grafo__controller_8c_source.html#l00556">grafo_controller_dibujar()</a>, <a class="el" href="app__state_8h_source.html#l00071">AppState::grafo_controller_state</a>, <a class="el" href="lista__circular__view_8c_source.html#l00026">lista_circular_view_draw()</a>, <a class="el" href="lista__view_8c_source.html#l00030">lista_view_draw()</a>, <a class="el" href="pila__view_8c_source.html#l00030">pila_view_draw()</a> y <a class="el" href="sublista__view_8c_source.html#l00022">sublista_view_draw()</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
@@ -494,11 +532,53 @@ Variables</h2></td></tr>
 
 <p>Dibuja los controles contextuales de operacion sobre el panel central. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00957">957</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01303">1303</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00469">app_state_operacion_buscar()</a>, <a class="el" href="app__state_8c_source.html#l00378">app_state_operacion_eliminar()</a>, <a class="el" href="app__state_8c_source.html#l00168">app_state_operacion_inicializar()</a>, <a class="el" href="app__state_8c_source.html#l00218">app_state_operacion_insertar()</a>, <a class="el" href="app__state_8c_source.html#l00517">app_state_operacion_invertir()</a>, <a class="el" href="app__state_8c_source.html#l00343">app_state_operacion_lista_insertar_final()</a>, <a class="el" href="app__state_8c_source.html#l00308">app_state_operacion_lista_insertar_inicio()</a>, <a class="el" href="app__state_8c_source.html#l00589">app_state_operacion_sublista_eliminar_hijo()</a>, <a class="el" href="app__state_8c_source.html#l00547">app_state_operacion_sublista_insertar_hijo()</a>, <a class="el" href="app__state_8c_source.html#l00631">app_state_operacion_vaciar()</a>, <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="ui_8c_source.html#l00325">ui_button()</a> y <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00876">app_state_grafo_cargar_demo()</a>, <a class="el" href="app__state_8c_source.html#l00859">app_state_grafo_toggle_dirigido()</a>, <a class="el" href="app__state_8c_source.html#l00928">app_state_operacion_buscar()</a>, <a class="el" href="app__state_8c_source.html#l00581">app_state_operacion_eliminar()</a>, <a class="el" href="app__state_8c_source.html#l00749">app_state_operacion_grafo_ejecutar_algoritmo()</a>, <a class="el" href="app__state_8c_source.html#l00723">app_state_operacion_grafo_eliminar_arista()</a>, <a class="el" href="app__state_8c_source.html#l00686">app_state_operacion_grafo_insertar_arista()</a>, <a class="el" href="app__state_8c_source.html#l00343">app_state_operacion_inicializar()</a>, <a class="el" href="app__state_8c_source.html#l00405">app_state_operacion_insertar()</a>, <a class="el" href="app__state_8c_source.html#l00987">app_state_operacion_invertir()</a>, <a class="el" href="app__state_8c_source.html#l00546">app_state_operacion_lista_insertar_final()</a>, <a class="el" href="app__state_8c_source.html#l00511">app_state_operacion_lista_insertar_inicio()</a>, <a class="el" href="app__state_8c_source.html#l01059">app_state_operacion_sublista_eliminar_hijo()</a>, <a class="el" href="app__state_8c_source.html#l01017">app_state_operacion_sublista_insertar_hijo()</a>, <a class="el" href="app__state_8c_source.html#l01101">app_state_operacion_vaciar()</a>, <a class="el" href="grafo__controller_8h_source.html#l00056">GrafoController::autoplay_activo</a>, <a class="el" href="grafo__controller_8h_source.html#l00059">GrafoController::autoplay_velocidad_idx</a>, <a class="el" href="app__state_8h_source.html#l00045">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00027">ESTRUCTURA_GRAFO</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00025">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00026">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="grafo__state_8h_source.html#l00114">GRAFO_ALGO_BELLMAN_FORD</a>, <a class="el" href="grafo__state_8h_source.html#l00111">GRAFO_ALGO_BFS</a>, <a class="el" href="grafo__state_8h_source.html#l00112">GRAFO_ALGO_DFS</a>, <a class="el" href="grafo__state_8h_source.html#l00113">GRAFO_ALGO_DIJKSTRA</a>, <a class="el" href="grafo__state_8h_source.html#l00116">GRAFO_ALGO_KRUSKAL</a>, <a class="el" href="grafo__state_8h_source.html#l00115">GRAFO_ALGO_PRIM</a>, <a class="el" href="grafo__controller_8c_source.html#l00504">grafo_controller_cambiar_velocidad()</a>, <a class="el" href="grafo__controller_8c_source.html#l00486">grafo_controller_ir_final()</a>, <a class="el" href="grafo__controller_8c_source.html#l00482">grafo_controller_ir_inicio()</a>, <a class="el" href="grafo__controller_8c_source.html#l00450">grafo_controller_paso_anterior()</a>, <a class="el" href="grafo__controller_8c_source.html#l00431">grafo_controller_paso_siguiente()</a>, <a class="el" href="grafo__controller_8c_source.html#l00473">grafo_controller_reiniciar()</a>, <a class="el" href="app__state_8h_source.html#l00071">AppState::grafo_controller_state</a>, <a class="el" href="grafo__controller_8c_source.html#l00498">grafo_controller_toggle_autoplay()</a>, <a class="el" href="app__state_8h_source.html#l00075">AppState::grafo_dirigido</a>, <a class="el" href="grafo__pedagogy_8c_source.html#l00601">grafo_exportar_resumen_clipboard()</a>, <a class="el" href="app__state_8h_source.html#l00073">AppState::grafo_vertice_destino</a>, <a class="el" href="app__state_8h_source.html#l00072">AppState::grafo_vertice_inicio</a>, <a class="el" href="app__state_8h_source.html#l00049">AppState::input_prioridad</a>, <a class="el" href="ui_8c_source.html#l00325">ui_button()</a> y <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
+
+</div>
+</div>
+<a id="af24db390afc7de99d369a5354500bc84" name="af24db390afc7de99d369a5354500bc84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af24db390afc7de99d369a5354500bc84">&#9670;&#160;</a></span>draw_graph_sidebar_button()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool draw_graph_sidebar_button </td>
+          <td>(</td>
+          <td class="paramtype">Rectangle</td>          <td class="paramname"><span class="paramname"><em>bounds</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>label</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>active</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dibuja un boton compacto para el panel lateral de grafos. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00368">368</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a> y <a class="el" href="ui_8c_source.html#l00070">ui_measure_text()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
@@ -531,11 +611,11 @@ Variables</h2></td></tr>
 
 <p>Dibuja la pantalla de ayuda detallada y retorna true si se solicita salir. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00857">857</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01199">1199</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="ui_8h_source.html#l00022">UILayout::bottom</a>, <a class="el" href="main_8c_source.html#l00494">clamp_float()</a>, <a class="el" href="main_8c_source.html#l00477">count_text_lines()</a>, <a class="el" href="main_8c_source.html#l00563">draw_scrollable_multiline_text()</a>, <a class="el" href="main_8c_source.html#l00538">draw_scrollbar()</a>, <a class="el" href="main_8c_source.html#l00843">get_app_help_text()</a>, <a class="el" href="ui_8h_source.html#l00019">UILayout::sidebar</a>, <a class="el" href="ui_8c_source.html#l00325">ui_button()</a> y <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="ui_8h_source.html#l00022">UILayout::bottom</a>, <a class="el" href="main_8c_source.html#l00826">clamp_float()</a>, <a class="el" href="main_8c_source.html#l00760">count_text_lines()</a>, <a class="el" href="main_8c_source.html#l00897">draw_scrollable_multiline_text()</a>, <a class="el" href="main_8c_source.html#l00872">draw_scrollbar()</a>, <a class="el" href="main_8c_source.html#l01185">get_app_help_text()</a>, <a class="el" href="ui_8h_source.html#l00019">UILayout::sidebar</a>, <a class="el" href="ui_8c_source.html#l00325">ui_button()</a> y <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
@@ -583,11 +663,63 @@ Variables</h2></td></tr>
 
 <p>Dibuja una tarjeta de estructura y retorna true si se presiona Visualizar. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00308">308</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00332">332</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="main_8c_source.html#l00195">draw_home_icon()</a>, <a class="el" href="main_8c_source.html#l00166">draw_ui_multiline()</a>, <a class="el" href="ui_8c_source.html#l00325">ui_button()</a>, <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a> y <a class="el" href="ui_8c_source.html#l00070">ui_measure_text()</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="main_8c_source.html#l00211">draw_home_icon()</a>, <a class="el" href="main_8c_source.html#l00182">draw_ui_multiline()</a>, <a class="el" href="ui_8c_source.html#l00325">ui_button()</a>, <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a> y <a class="el" href="ui_8c_source.html#l00070">ui_measure_text()</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00344">draw_home_screen()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00559">draw_home_graph_screen()</a>, <a class="el" href="main_8c_source.html#l00433">draw_home_root_screen()</a> y <a class="el" href="main_8c_source.html#l00472">draw_home_screen()</a>.</p>
+
+</div>
+</div>
+<a id="a119013f29a8712a2b3f6beb19b3aa3e5" name="a119013f29a8712a2b3f6beb19b3aa3e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a119013f29a8712a2b3f6beb19b3aa3e5">&#9670;&#160;</a></span>draw_home_graph_screen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void draw_home_graph_screen </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_u_i_layout.html">UILayout</a> *</td>          <td class="paramname"><span class="paramname"><em>layout</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_app_state.html">AppState</a> *</td>          <td class="paramname"><span class="paramname"><em>app</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#aefe4cd50ac123b6c800eede74968a353">ScreenMode</a> *</td>          <td class="paramname"><span class="paramname"><em>mode</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>home_selected</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>activate_selected</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dibuja submenu de grafos y permite entrar al visualizador de grafo. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00559">559</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00876">app_state_grafo_cargar_demo()</a>, <a class="el" href="ui_8h_source.html#l00022">UILayout::bottom</a>, <a class="el" href="main_8c_source.html#l00332">draw_home_card()</a>, <a class="el" href="app__state_8h_source.html#l00027">ESTRUCTURA_GRAFO</a>, <a class="el" href="app__state_8h_source.html#l00070">AppState::grafo</a>, <a class="el" href="grafo__state_8h_source.html#l00114">GRAFO_ALGO_BELLMAN_FORD</a>, <a class="el" href="grafo__state_8h_source.html#l00111">GRAFO_ALGO_BFS</a>, <a class="el" href="grafo__state_8h_source.html#l00112">GRAFO_ALGO_DFS</a>, <a class="el" href="grafo__state_8h_source.html#l00113">GRAFO_ALGO_DIJKSTRA</a>, <a class="el" href="grafo__state_8h_source.html#l00116">GRAFO_ALGO_KRUSKAL</a>, <a class="el" href="grafo__state_8h_source.html#l00115">GRAFO_ALGO_PRIM</a>, <a class="el" href="main_8c_source.html#l00397">grafo_algoritmo_home_nombre()</a>, <a class="el" href="app__state_8h_source.html#l00074">AppState::grafo_algoritmo_seleccionado</a>, <a class="el" href="grafo_8c_source.html#l00350">grafo_orden()</a>, <a class="el" href="main_8c_source.html#l00417">launch_graph_algorithm_from_home()</a>, <a class="el" href="main_8c_source.html#l00391">open_graph_visualizer()</a>, <a class="el" href="ui_8h_source.html#l00019">UILayout::sidebar</a>, <a class="el" href="ui_8c_source.html#l00325">ui_button()</a> y <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
@@ -620,11 +752,58 @@ Variables</h2></td></tr>
 
 <p>Dibuja una tarjeta de estructura y retorna true si se presiona Visualizar. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00195">195</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00211">211</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_PILA</a> y <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_SUBLISTA</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00027">ESTRUCTURA_GRAFO</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00025">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_PILA</a> y <a class="el" href="app__state_8h_source.html#l00026">ESTRUCTURA_SUBLISTA</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00308">draw_home_card()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00332">draw_home_card()</a>.</p>
+
+</div>
+</div>
+<a id="a428abc41b87843f2d1fc6c16c3adaed1" name="a428abc41b87843f2d1fc6c16c3adaed1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a428abc41b87843f2d1fc6c16c3adaed1">&#9670;&#160;</a></span>draw_home_root_screen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void draw_home_root_screen </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_u_i_layout.html">UILayout</a> *</td>          <td class="paramname"><span class="paramname"><em>layout</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#aefe4cd50ac123b6c800eede74968a353">ScreenMode</a> *</td>          <td class="paramname"><span class="paramname"><em>mode</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>home_selected</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>activate_selected</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dibuja la portada raiz para elegir categoria de estructuras. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00433">433</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="ui_8h_source.html#l00022">UILayout::bottom</a>, <a class="el" href="main_8c_source.html#l00332">draw_home_card()</a>, <a class="el" href="app__state_8h_source.html#l00027">ESTRUCTURA_GRAFO</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_LISTA</a>, <a class="el" href="main_8c_source.html#l00154">SCREEN_HOME_GRAFOS</a>, <a class="el" href="main_8c_source.html#l00153">SCREEN_HOME_SECUENCIALES</a>, <a class="el" href="ui_8h_source.html#l00019">UILayout::sidebar</a> y <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
@@ -670,13 +849,13 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Dibuja la portada de estructuras y permite seleccionar una para visualizar. </p>
+<p>Dibuja submenu para estructuras secuenciales. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00344">344</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00472">472</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00087">app_state_set_estructura()</a>, <a class="el" href="ui_8h_source.html#l00022">UILayout::bottom</a>, <a class="el" href="main_8c_source.html#l00308">draw_home_card()</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="main_8c_source.html#l00146">estructura_descripcion()</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="main_8c_source.html#l00141">SCREEN_VISUALIZER</a>, <a class="el" href="ui_8h_source.html#l00019">UILayout::sidebar</a>, <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a> y <a class="el" href="ui_8c_source.html#l00070">ui_measure_text()</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00260">app_state_set_estructura()</a>, <a class="el" href="ui_8h_source.html#l00022">UILayout::bottom</a>, <a class="el" href="main_8c_source.html#l00332">draw_home_card()</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="main_8c_source.html#l00160">estructura_descripcion()</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00025">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00026">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="main_8c_source.html#l00155">SCREEN_VISUALIZER</a>, <a class="el" href="ui_8h_source.html#l00019">UILayout::sidebar</a>, <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a> y <a class="el" href="ui_8c_source.html#l00070">ui_measure_text()</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
@@ -724,11 +903,11 @@ Variables</h2></td></tr>
 
 <p>Dibuja texto multilínea dentro de un viewport con clipping y desplazamiento vertical. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00563">563</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00897">897</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00857">draw_help_screen()</a> y <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01199">draw_help_screen()</a> y <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
@@ -771,9 +950,9 @@ Variables</h2></td></tr>
 
 <p>Dibuja la barra de scroll proporcional para paneles textuales. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00538">538</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00872">872</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00857">draw_help_screen()</a> y <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01199">draw_help_screen()</a> y <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
@@ -826,11 +1005,11 @@ Variables</h2></td></tr>
 
 <p>Dibuja texto multilínea simple separando por salto de línea. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00166">166</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00182">182</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00308">draw_home_card()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00332">draw_home_card()</a>.</p>
 
 </div>
 </div>
@@ -863,9 +1042,9 @@ Variables</h2></td></tr>
 
 <p>Actualiza el buffer de la caja de entrada activa usando teclado. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01184">1184</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01686">1686</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
@@ -894,11 +1073,11 @@ Variables</h2></td></tr>
 
 <p>Retorna la cantidad de elementos de la estructura actualmente seleccionada. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00505">505</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00837">837</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00060">AppState::cola</a>, <a class="el" href="cola_8c_source.html#l00135">cola_contar()</a>, <a class="el" href="app__state_8h_source.html#l00061">AppState::cola_prioridad</a>, <a class="el" href="cola__prioridad_8c_source.html#l00168">cp_contar()</a>, <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="lista__circular_8c_source.html#l00167">lcir_contar()</a>, <a class="el" href="app__state_8h_source.html#l00062">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00063">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00519">lista_contar()</a>, <a class="el" href="app__state_8h_source.html#l00059">AppState::pila</a>, <a class="el" href="pila_8c_source.html#l00137">pila_contar()</a>, <a class="el" href="sublista_8h_source.html#l00021">nodo::sgte</a>, <a class="el" href="app__state_8h_source.html#l00064">AppState::sublista</a> y <a class="el" href="sublista_8c_source.html#l00188">sublista_contar_hijos()</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00063">AppState::cola</a>, <a class="el" href="cola_8c_source.html#l00135">cola_contar()</a>, <a class="el" href="app__state_8h_source.html#l00064">AppState::cola_prioridad</a>, <a class="el" href="cola__prioridad_8c_source.html#l00168">cp_contar()</a>, <a class="el" href="app__state_8h_source.html#l00045">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00027">ESTRUCTURA_GRAFO</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00025">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00026">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="app__state_8h_source.html#l00070">AppState::grafo</a>, <a class="el" href="grafo_8c_source.html#l00350">grafo_orden()</a>, <a class="el" href="lista__circular_8c_source.html#l00167">lcir_contar()</a>, <a class="el" href="app__state_8h_source.html#l00065">AppState::lista</a>, <a class="el" href="app__state_8h_source.html#l00066">AppState::lista_circular</a>, <a class="el" href="lista_8c_source.html#l00519">lista_contar()</a>, <a class="el" href="app__state_8h_source.html#l00062">AppState::pila</a>, <a class="el" href="pila_8c_source.html#l00137">pila_contar()</a>, <a class="el" href="sublista_8h_source.html#l00021">nodo::sgte</a>, <a class="el" href="app__state_8h_source.html#l00067">AppState::sublista</a> y <a class="el" href="sublista_8c_source.html#l00188">sublista_contar_hijos()</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
@@ -927,11 +1106,11 @@ Variables</h2></td></tr>
 
 <p>Retorna una descripcion corta para la estructura seleccionada. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00146">146</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00160">160</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_PILA</a> y <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_SUBLISTA</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00027">ESTRUCTURA_GRAFO</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00025">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_PILA</a> y <a class="el" href="app__state_8h_source.html#l00026">ESTRUCTURA_SUBLISTA</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00344">draw_home_screen()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00472">draw_home_screen()</a>.</p>
 
 </div>
 </div>
@@ -960,11 +1139,11 @@ Variables</h2></td></tr>
 
 <p>Retorna la estructura asociada a un atajo numerico, o -1 si no aplica. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00111">111</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00117">117</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_PILA</a> y <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_SUBLISTA</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00027">ESTRUCTURA_GRAFO</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00025">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_PILA</a> y <a class="el" href="app__state_8h_source.html#l00026">ESTRUCTURA_SUBLISTA</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00431">handle_navigation_keyboard()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00634">handle_navigation_keyboard()</a>.</p>
 
 </div>
 </div>
@@ -993,11 +1172,11 @@ Variables</h2></td></tr>
 
 <p>Convierte el enum de estructura activa a texto legible para la UI. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00025">25</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00029">29</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_PILA</a> y <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_SUBLISTA</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00027">ESTRUCTURA_GRAFO</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00025">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_PILA</a> y <a class="el" href="app__state_8h_source.html#l00026">ESTRUCTURA_SUBLISTA</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00073">append_code_history()</a> y <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00079">append_code_history()</a> y <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
@@ -1026,11 +1205,143 @@ Variables</h2></td></tr>
 
 <p>Concatena los bloques de ayuda para evitar literales demasiado largos en compilacion. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00843">843</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01185">1185</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="main_8c_source.html#l00602">APP_HELP_TEXT_PART1</a>, <a class="el" href="main_8c_source.html#l00718">APP_HELP_TEXT_PART1B</a>, <a class="el" href="main_8c_source.html#l00738">APP_HELP_TEXT_PART2</a>, <a class="el" href="main_8c_source.html#l00792">APP_HELP_TEXT_PART3</a> y <a class="el" href="main_8c_source.html#l00812">APP_HELP_TEXT_PART4</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="main_8c_source.html#l00936">APP_HELP_TEXT_PART1</a>, <a class="el" href="main_8c_source.html#l01052">APP_HELP_TEXT_PART1B</a>, <a class="el" href="main_8c_source.html#l01073">APP_HELP_TEXT_PART2</a>, <a class="el" href="main_8c_source.html#l01134">APP_HELP_TEXT_PART3</a> y <a class="el" href="main_8c_source.html#l01154">APP_HELP_TEXT_PART4</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00857">draw_help_screen()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01199">draw_help_screen()</a>.</p>
+
+</div>
+</div>
+<a id="a72822855c9419bdfd671e5d8fbe5443d" name="a72822855c9419bdfd671e5d8fbe5443d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72822855c9419bdfd671e5d8fbe5443d">&#9670;&#160;</a></span>grafo_algoritmo_espacio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * grafo_algoritmo_espacio </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>algoritmo</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retorna la complejidad espacial del algoritmo de grafo activo. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00796">796</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__state_8h_source.html#l00110">GRAFO_ALGO_NINGUNO</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
+
+</div>
+</div>
+<a id="a969013c0c8888fff10345035840db541" name="a969013c0c8888fff10345035840db541"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a969013c0c8888fff10345035840db541">&#9670;&#160;</a></span>grafo_algoritmo_home_nombre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * grafo_algoritmo_home_nombre </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>algoritmo</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Traduce el enum de algoritmo de grafos a un nombre corto para la portada. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00397">397</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__state_8h_source.html#l00114">GRAFO_ALGO_BELLMAN_FORD</a>, <a class="el" href="grafo__state_8h_source.html#l00111">GRAFO_ALGO_BFS</a>, <a class="el" href="grafo__state_8h_source.html#l00112">GRAFO_ALGO_DFS</a>, <a class="el" href="grafo__state_8h_source.html#l00113">GRAFO_ALGO_DIJKSTRA</a>, <a class="el" href="grafo__state_8h_source.html#l00116">GRAFO_ALGO_KRUSKAL</a> y <a class="el" href="grafo__state_8h_source.html#l00115">GRAFO_ALGO_PRIM</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00559">draw_home_graph_screen()</a>, <a class="el" href="main_8c_source.html#l00417">launch_graph_algorithm_from_home()</a> y <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
+
+</div>
+</div>
+<a id="a21aa737f797b0d26afa0dfdf18a500c2" name="a21aa737f797b0d26afa0dfdf18a500c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21aa737f797b0d26afa0dfdf18a500c2">&#9670;&#160;</a></span>grafo_algoritmo_tiempo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * grafo_algoritmo_tiempo </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>algoritmo</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retorna la complejidad temporal del algoritmo de grafo activo. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00777">777</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__state_8h_source.html#l00114">GRAFO_ALGO_BELLMAN_FORD</a>, <a class="el" href="grafo__state_8h_source.html#l00111">GRAFO_ALGO_BFS</a>, <a class="el" href="grafo__state_8h_source.html#l00112">GRAFO_ALGO_DFS</a>, <a class="el" href="grafo__state_8h_source.html#l00113">GRAFO_ALGO_DIJKSTRA</a>, <a class="el" href="grafo__state_8h_source.html#l00116">GRAFO_ALGO_KRUSKAL</a> y <a class="el" href="grafo__state_8h_source.html#l00115">GRAFO_ALGO_PRIM</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
+
+</div>
+</div>
+<a id="abc14ebc7de0be4641a5ce1533db2a54e" name="abc14ebc7de0be4641a5ce1533db2a54e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc14ebc7de0be4641a5ce1533db2a54e">&#9670;&#160;</a></span>grafo_codigo_actual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_grafo_codigo_algoritmo.html">GrafoCodigoAlgoritmo</a> grafo_codigo_actual </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>algoritmo</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene el bloque de pseudocodigo para el algoritmo de grafo activo. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00806">806</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__state_8h_source.html#l00114">GRAFO_ALGO_BELLMAN_FORD</a>, <a class="el" href="grafo__state_8h_source.html#l00111">GRAFO_ALGO_BFS</a>, <a class="el" href="grafo__state_8h_source.html#l00112">GRAFO_ALGO_DFS</a>, <a class="el" href="grafo__state_8h_source.html#l00113">GRAFO_ALGO_DIJKSTRA</a>, <a class="el" href="grafo__state_8h_source.html#l00116">GRAFO_ALGO_KRUSKAL</a>, <a class="el" href="grafo__state_8h_source.html#l00115">GRAFO_ALGO_PRIM</a>, <a class="el" href="grafo__code__viewer_8c_source.html#l00104">grafo_codigo_bellman_ford()</a>, <a class="el" href="grafo__code__viewer_8c_source.html#l00014">grafo_codigo_bfs()</a>, <a class="el" href="grafo__code__viewer_8c_source.html#l00044">grafo_codigo_dfs()</a>, <a class="el" href="grafo__code__viewer_8c_source.html#l00074">grafo_codigo_dijkstra()</a>, <a class="el" href="grafo__code__viewer_8c_source.html#l00161">grafo_codigo_kruskal()</a> y <a class="el" href="grafo__code__viewer_8c_source.html#l00134">grafo_codigo_prim()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
@@ -1059,11 +1370,11 @@ Variables</h2></td></tr>
 
 <p>Atiende atajos globales de teclado para entradas y operaciones. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01089">1089</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01510">1510</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00121">app_state_ajustar_prioridad()</a>, <a class="el" href="app__state_8c_source.html#l00103">app_state_ajustar_valor()</a>, <a class="el" href="app__state_8c_source.html#l00469">app_state_operacion_buscar()</a>, <a class="el" href="app__state_8c_source.html#l00378">app_state_operacion_eliminar()</a>, <a class="el" href="app__state_8c_source.html#l00168">app_state_operacion_inicializar()</a>, <a class="el" href="app__state_8c_source.html#l00218">app_state_operacion_insertar()</a>, <a class="el" href="app__state_8c_source.html#l00517">app_state_operacion_invertir()</a>, <a class="el" href="app__state_8c_source.html#l00343">app_state_operacion_lista_insertar_final()</a>, <a class="el" href="app__state_8c_source.html#l00308">app_state_operacion_lista_insertar_inicio()</a>, <a class="el" href="app__state_8c_source.html#l00589">app_state_operacion_sublista_eliminar_hijo()</a>, <a class="el" href="app__state_8c_source.html#l00547">app_state_operacion_sublista_insertar_hijo()</a>, <a class="el" href="app__state_8c_source.html#l00631">app_state_operacion_vaciar()</a>, <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_LISTA_CIRCULAR</a> y <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_SUBLISTA</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00294">app_state_ajustar_prioridad()</a>, <a class="el" href="app__state_8c_source.html#l00276">app_state_ajustar_valor()</a>, <a class="el" href="app__state_8c_source.html#l00876">app_state_grafo_cargar_demo()</a>, <a class="el" href="app__state_8c_source.html#l00859">app_state_grafo_toggle_dirigido()</a>, <a class="el" href="app__state_8c_source.html#l00928">app_state_operacion_buscar()</a>, <a class="el" href="app__state_8c_source.html#l00581">app_state_operacion_eliminar()</a>, <a class="el" href="app__state_8c_source.html#l00749">app_state_operacion_grafo_ejecutar_algoritmo()</a>, <a class="el" href="app__state_8c_source.html#l00723">app_state_operacion_grafo_eliminar_arista()</a>, <a class="el" href="app__state_8c_source.html#l00686">app_state_operacion_grafo_insertar_arista()</a>, <a class="el" href="app__state_8c_source.html#l00343">app_state_operacion_inicializar()</a>, <a class="el" href="app__state_8c_source.html#l00405">app_state_operacion_insertar()</a>, <a class="el" href="app__state_8c_source.html#l00987">app_state_operacion_invertir()</a>, <a class="el" href="app__state_8c_source.html#l00546">app_state_operacion_lista_insertar_final()</a>, <a class="el" href="app__state_8c_source.html#l00511">app_state_operacion_lista_insertar_inicio()</a>, <a class="el" href="app__state_8c_source.html#l01059">app_state_operacion_sublista_eliminar_hijo()</a>, <a class="el" href="app__state_8c_source.html#l01017">app_state_operacion_sublista_insertar_hijo()</a>, <a class="el" href="app__state_8c_source.html#l01101">app_state_operacion_vaciar()</a>, <a class="el" href="app__state_8h_source.html#l00045">AppState::estructura_activa</a>, <a class="el" href="app__state_8h_source.html#l00027">ESTRUCTURA_GRAFO</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00025">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="app__state_8h_source.html#l00026">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="grafo__state_8h_source.html#l00111">GRAFO_ALGO_BFS</a>, <a class="el" href="grafo__state_8h_source.html#l00112">GRAFO_ALGO_DFS</a>, <a class="el" href="grafo__state_8h_source.html#l00113">GRAFO_ALGO_DIJKSTRA</a>, <a class="el" href="grafo__state_8h_source.html#l00116">GRAFO_ALGO_KRUSKAL</a>, <a class="el" href="grafo__controller_8c_source.html#l00504">grafo_controller_cambiar_velocidad()</a>, <a class="el" href="grafo__controller_8c_source.html#l00486">grafo_controller_ir_final()</a>, <a class="el" href="grafo__controller_8c_source.html#l00482">grafo_controller_ir_inicio()</a>, <a class="el" href="grafo__controller_8c_source.html#l00450">grafo_controller_paso_anterior()</a>, <a class="el" href="grafo__controller_8c_source.html#l00431">grafo_controller_paso_siguiente()</a>, <a class="el" href="grafo__controller_8c_source.html#l00473">grafo_controller_reiniciar()</a>, <a class="el" href="app__state_8h_source.html#l00071">AppState::grafo_controller_state</a>, <a class="el" href="grafo__controller_8c_source.html#l00498">grafo_controller_toggle_autoplay()</a>, <a class="el" href="grafo__pedagogy_8c_source.html#l00601">grafo_exportar_resumen_clipboard()</a>, <a class="el" href="app__state_8h_source.html#l00073">AppState::grafo_vertice_destino</a>, <a class="el" href="app__state_8h_source.html#l00072">AppState::grafo_vertice_inicio</a> y <a class="el" href="app__state_8h_source.html#l00049">AppState::input_prioridad</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
@@ -1106,11 +1417,53 @@ Variables</h2></td></tr>
 
 <p>Gestiona navegación de alto nivel entre menu principal y visualizador. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00431">431</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00634">634</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00087">app_state_set_estructura()</a>, <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="main_8c_source.html#l00111">estructura_from_shortcut()</a>, <a class="el" href="main_8c_source.html#l00142">SCREEN_HELP</a>, <a class="el" href="main_8c_source.html#l00140">SCREEN_HOME</a> y <a class="el" href="main_8c_source.html#l00141">SCREEN_VISUALIZER</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00876">app_state_grafo_cargar_demo()</a>, <a class="el" href="app__state_8c_source.html#l00260">app_state_set_estructura()</a>, <a class="el" href="app__state_8h_source.html#l00045">AppState::estructura_activa</a>, <a class="el" href="main_8c_source.html#l00117">estructura_from_shortcut()</a>, <a class="el" href="app__state_8h_source.html#l00027">ESTRUCTURA_GRAFO</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00026">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="grafo__state_8h_source.html#l00114">GRAFO_ALGO_BELLMAN_FORD</a>, <a class="el" href="grafo__state_8h_source.html#l00111">GRAFO_ALGO_BFS</a>, <a class="el" href="grafo__state_8h_source.html#l00112">GRAFO_ALGO_DFS</a>, <a class="el" href="grafo__state_8h_source.html#l00113">GRAFO_ALGO_DIJKSTRA</a>, <a class="el" href="grafo__state_8h_source.html#l00116">GRAFO_ALGO_KRUSKAL</a>, <a class="el" href="grafo__state_8h_source.html#l00115">GRAFO_ALGO_PRIM</a>, <a class="el" href="main_8c_source.html#l00417">launch_graph_algorithm_from_home()</a>, <a class="el" href="main_8c_source.html#l00391">open_graph_visualizer()</a>, <a class="el" href="main_8c_source.html#l00156">SCREEN_HELP</a>, <a class="el" href="main_8c_source.html#l00154">SCREEN_HOME_GRAFOS</a>, <a class="el" href="main_8c_source.html#l00152">SCREEN_HOME_ROOT</a>, <a class="el" href="main_8c_source.html#l00153">SCREEN_HOME_SECUENCIALES</a> y <a class="el" href="main_8c_source.html#l00155">SCREEN_VISUALIZER</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
+
+</div>
+</div>
+<a id="a0b7851d87fa60509db33d7db24925d70" name="a0b7851d87fa60509db33d7db24925d70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b7851d87fa60509db33d7db24925d70">&#9670;&#160;</a></span>launch_graph_algorithm_from_home()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void launch_graph_algorithm_from_home </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_app_state.html">AppState</a> *</td>          <td class="paramname"><span class="paramname"><em>app</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#aefe4cd50ac123b6c800eede74968a353">ScreenMode</a> *</td>          <td class="paramname"><span class="paramname"><em>mode</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>algoritmo</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Preselecciona o ejecuta un algoritmo de grafos desde la portada. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00417">417</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00749">app_state_operacion_grafo_ejecutar_algoritmo()</a>, <a class="el" href="app__state_8h_source.html#l00070">AppState::grafo</a>, <a class="el" href="main_8c_source.html#l00397">grafo_algoritmo_home_nombre()</a>, <a class="el" href="app__state_8h_source.html#l00074">AppState::grafo_algoritmo_seleccionado</a>, <a class="el" href="grafo_8c_source.html#l00350">grafo_orden()</a>, <a class="el" href="app__state_8h_source.html#l00073">AppState::grafo_vertice_destino</a>, <a class="el" href="app__state_8h_source.html#l00072">AppState::grafo_vertice_inicio</a>, <a class="el" href="app__state_8h_source.html#l00060">AppState::mensaje_operacion</a> y <a class="el" href="main_8c_source.html#l00391">open_graph_visualizer()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00559">draw_home_graph_screen()</a> y <a class="el" href="main_8c_source.html#l00634">handle_navigation_keyboard()</a>.</p>
 
 </div>
 </div>
@@ -1129,9 +1482,46 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01204">1204</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01706">1706</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="algorithm__trace_8c_source.html#l00009">algorithm_trace_get_info()</a>, <a class="el" href="app__state_8c_source.html#l00042">app_state_init()</a>, <a class="el" href="app__state_8c_source.html#l00087">app_state_set_estructura()</a>, <a class="el" href="app__state_8c_source.html#l00073">app_state_shutdown()</a>, <a class="el" href="app__state_8c_source.html#l00139">app_state_update_visuals()</a>, <a class="el" href="main_8c_source.html#l00073">append_code_history()</a>, <a class="el" href="main_8c_source.html#l01150">apply_input_focus()</a>, <a class="el" href="ui_8h_source.html#l00022">UILayout::bottom</a>, <a class="el" href="ui_8h_source.html#l00020">UILayout::center</a>, <a class="el" href="main_8c_source.html#l00494">clamp_float()</a>, <a class="el" href="main_8c_source.html#l00022">CODE_HISTORY_CAPACITY</a>, <a class="el" href="code__viewer_8c_source.html#l00009">code_viewer_get_snippet()</a>, <a class="el" href="main_8c_source.html#l00477">count_text_lines()</a>, <a class="el" href="main_8c_source.html#l00908">draw_active_view()</a>, <a class="el" href="main_8c_source.html#l00957">draw_context_controls()</a>, <a class="el" href="main_8c_source.html#l00857">draw_help_screen()</a>, <a class="el" href="main_8c_source.html#l00344">draw_home_screen()</a>, <a class="el" href="main_8c_source.html#l00563">draw_scrollable_multiline_text()</a>, <a class="el" href="main_8c_source.html#l00538">draw_scrollbar()</a>, <a class="el" href="main_8c_source.html#l01184">edit_active_input()</a>, <a class="el" href="algorithm__trace_8h_source.html#l00014">AlgorithmInfo::espacio</a>, <a class="el" href="app__state_8h_source.html#l00042">AppState::estructura_activa</a>, <a class="el" href="main_8c_source.html#l00505">estructura_cantidad()</a>, <a class="el" href="app__state_8h_source.html#l00020">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="main_8c_source.html#l00025">estructura_nombre()</a>, <a class="el" href="app__state_8h_source.html#l00019">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="main_8c_source.html#l01089">handle_keyboard()</a>, <a class="el" href="main_8c_source.html#l00431">handle_navigation_keyboard()</a>, <a class="el" href="main_8c_source.html#l00134">INPUT_NONE</a>, <a class="el" href="main_8c_source.html#l00136">INPUT_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00046">AppState::input_prioridad</a>, <a class="el" href="main_8c_source.html#l00135">INPUT_VALOR</a>, <a class="el" href="app__state_8h_source.html#l00045">AppState::input_valor</a>, <a class="el" href="app__state_8h_source.html#l00057">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00043">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00028">OPERACION_NINGUNA</a>, <a class="el" href="app__state_8h_source.html#l00056">AppState::operacion_serial</a>, <a class="el" href="main_8c_source.html#l01165">parse_int_text()</a>, <a class="el" href="algorithm__trace_8h_source.html#l00012">AlgorithmInfo::pasos</a>, <a class="el" href="ui_8h_source.html#l00021">UILayout::right</a>, <a class="el" href="main_8c_source.html#l00142">SCREEN_HELP</a>, <a class="el" href="main_8c_source.html#l00140">SCREEN_HOME</a>, <a class="el" href="main_8c_source.html#l00141">SCREEN_VISUALIZER</a>, <a class="el" href="ui_8h_source.html#l00019">UILayout::sidebar</a>, <a class="el" href="main_8c_source.html#l01139">sync_input_buffers()</a>, <a class="el" href="algorithm__trace_8h_source.html#l00013">AlgorithmInfo::tiempo</a>, <a class="el" href="ui_8c_source.html#l00325">ui_button()</a>, <a class="el" href="ui_8c_source.html#l00287">ui_draw_footer()</a>, <a class="el" href="ui_8c_source.html#l00226">ui_draw_header()</a>, <a class="el" href="ui_8c_source.html#l00315">ui_draw_panel()</a>, <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a>, <a class="el" href="ui_8c_source.html#l00176">ui_get_layout()</a>, <a class="el" href="ui_8c_source.html#l00110">ui_init()</a>, <a class="el" href="ui_8c_source.html#l00349">ui_input_box()</a>, <a class="el" href="ui_8c_source.html#l00166">ui_set_size()</a>, <a class="el" href="ui_8c_source.html#l00376">ui_sidebar_button()</a>, <a class="el" href="ui_8c_source.html#l00398">ui_unload()</a> y <a class="el" href="app__state_8h_source.html#l00054">AppState::ultima_operacion_ok</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="algorithm__trace_8c_source.html#l00009">algorithm_trace_get_info()</a>, <a class="el" href="app__state_8c_source.html#l00876">app_state_grafo_cargar_demo()</a>, <a class="el" href="app__state_8c_source.html#l00859">app_state_grafo_toggle_dirigido()</a>, <a class="el" href="app__state_8c_source.html#l00205">app_state_init()</a>, <a class="el" href="app__state_8c_source.html#l00581">app_state_operacion_eliminar()</a>, <a class="el" href="app__state_8c_source.html#l00749">app_state_operacion_grafo_ejecutar_algoritmo()</a>, <a class="el" href="app__state_8c_source.html#l00723">app_state_operacion_grafo_eliminar_arista()</a>, <a class="el" href="app__state_8c_source.html#l00686">app_state_operacion_grafo_insertar_arista()</a>, <a class="el" href="app__state_8c_source.html#l00343">app_state_operacion_inicializar()</a>, <a class="el" href="app__state_8c_source.html#l00405">app_state_operacion_insertar()</a>, <a class="el" href="app__state_8c_source.html#l00260">app_state_set_estructura()</a>, <a class="el" href="app__state_8c_source.html#l00244">app_state_shutdown()</a>, <a class="el" href="app__state_8c_source.html#l00312">app_state_update_visuals()</a>, <a class="el" href="main_8c_source.html#l00079">append_code_history()</a>, <a class="el" href="main_8c_source.html#l01646">apply_input_focus()</a>, <a class="el" href="grafo__controller_8h_source.html#l00056">GrafoController::autoplay_activo</a>, <a class="el" href="ui_8h_source.html#l00022">UILayout::bottom</a>, <a class="el" href="ui_8h_source.html#l00020">UILayout::center</a>, <a class="el" href="main_8c_source.html#l00826">clamp_float()</a>, <a class="el" href="main_8c_source.html#l00026">CODE_HISTORY_CAPACITY</a>, <a class="el" href="code__viewer_8c_source.html#l00009">code_viewer_get_snippet()</a>, <a class="el" href="main_8c_source.html#l00760">count_text_lines()</a>, <a class="el" href="grafo_8h_source.html#l00062">GrafoArista::destino</a>, <a class="el" href="main_8c_source.html#l01250">draw_active_view()</a>, <a class="el" href="main_8c_source.html#l01303">draw_context_controls()</a>, <a class="el" href="main_8c_source.html#l00368">draw_graph_sidebar_button()</a>, <a class="el" href="main_8c_source.html#l01199">draw_help_screen()</a>, <a class="el" href="main_8c_source.html#l00559">draw_home_graph_screen()</a>, <a class="el" href="main_8c_source.html#l00433">draw_home_root_screen()</a>, <a class="el" href="main_8c_source.html#l00472">draw_home_screen()</a>, <a class="el" href="main_8c_source.html#l00897">draw_scrollable_multiline_text()</a>, <a class="el" href="main_8c_source.html#l00872">draw_scrollbar()</a>, <a class="el" href="main_8c_source.html#l01686">edit_active_input()</a>, <a class="el" href="algorithm__trace_8h_source.html#l00014">AlgorithmInfo::espacio</a>, <a class="el" href="app__state_8h_source.html#l00045">AppState::estructura_activa</a>, <a class="el" href="main_8c_source.html#l00837">estructura_cantidad()</a>, <a class="el" href="app__state_8h_source.html#l00022">ESTRUCTURA_COLA</a>, <a class="el" href="app__state_8h_source.html#l00023">ESTRUCTURA_COLA_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00027">ESTRUCTURA_GRAFO</a>, <a class="el" href="app__state_8h_source.html#l00024">ESTRUCTURA_LISTA</a>, <a class="el" href="app__state_8h_source.html#l00025">ESTRUCTURA_LISTA_CIRCULAR</a>, <a class="el" href="main_8c_source.html#l00029">estructura_nombre()</a>, <a class="el" href="app__state_8h_source.html#l00021">ESTRUCTURA_PILA</a>, <a class="el" href="app__state_8h_source.html#l00026">ESTRUCTURA_SUBLISTA</a>, <a class="el" href="grafo__state_8h_source.html#l00114">GRAFO_ALGO_BELLMAN_FORD</a>, <a class="el" href="grafo__state_8h_source.html#l00111">GRAFO_ALGO_BFS</a>, <a class="el" href="grafo__state_8h_source.html#l00112">GRAFO_ALGO_DFS</a>, <a class="el" href="grafo__state_8h_source.html#l00113">GRAFO_ALGO_DIJKSTRA</a>, <a class="el" href="grafo__state_8h_source.html#l00116">GRAFO_ALGO_KRUSKAL</a>, <a class="el" href="grafo__state_8h_source.html#l00115">GRAFO_ALGO_PRIM</a>, <a class="el" href="main_8c_source.html#l00796">grafo_algoritmo_espacio()</a>, <a class="el" href="main_8c_source.html#l00397">grafo_algoritmo_home_nombre()</a>, <a class="el" href="app__state_8h_source.html#l00074">AppState::grafo_algoritmo_seleccionado</a>, <a class="el" href="main_8c_source.html#l00777">grafo_algoritmo_tiempo()</a>, <a class="el" href="grafo__pedagogy_8c_source.html#l00388">grafo_camino_parcial_paso()</a>, <a class="el" href="grafo__pedagogy_8c_source.html#l00432">grafo_cerrados_paso()</a>, <a class="el" href="main_8c_source.html#l00806">grafo_codigo_actual()</a>, <a class="el" href="grafo__code__viewer_8c_source.html#l00193">grafo_codigo_dibujar()</a>, <a class="el" href="grafo__code__viewer_8c_source.html#l00231">grafo_codigo_establecer_linea_actual()</a>, <a class="el" href="grafo__pedagogy_8c_source.html#l00384">grafo_contar_empeora_paso()</a>, <a class="el" href="grafo__pedagogy_8c_source.html#l00376">grafo_contar_mejoras_paso()</a>, <a class="el" href="grafo__pedagogy_8c_source.html#l00380">grafo_contar_sin_cambio_paso()</a>, <a class="el" href="grafo__controller_8c_source.html#l00511">grafo_controller_actualizar()</a>, <a class="el" href="app__state_8h_source.html#l00071">AppState::grafo_controller_state</a>, <a class="el" href="grafo__pedagogy_8c_source.html#l00530">grafo_dibujar_tabla_distancias()</a>, <a class="el" href="app__state_8h_source.html#l00075">AppState::grafo_dirigido</a>, <a class="el" href="grafo__pedagogy_8c_source.html#l00601">grafo_exportar_resumen_clipboard()</a>, <a class="el" href="grafo__pedagogy_8c_source.html#l00339">grafo_hay_mejora_paso()</a>, <a class="el" href="grafo__pedagogy_8c_source.html#l00278">grafo_linea_desde_paso()</a>, <a class="el" href="grafo__pedagogy_8c_source.html#l00494">grafo_tabla_distancias_multiline()</a>, <a class="el" href="grafo__pedagogy_8c_source.html#l00335">grafo_tipo_paso_label()</a>, <a class="el" href="grafo__pedagogy_8c_source.html#l00624">grafo_trace_desde_estado()</a>, <a class="el" href="grafo__trace_8c_source.html#l00101">grafo_trace_dibujar()</a>, <a class="el" href="grafo__trace_8c_source.html#l00149">grafo_trace_dibujar_barra_progreso()</a>, <a class="el" href="grafo__pedagogy_8c_source.html#l00323">grafo_vertice_activo_paso()</a>, <a class="el" href="app__state_8h_source.html#l00073">AppState::grafo_vertice_destino</a>, <a class="el" href="app__state_8h_source.html#l00072">AppState::grafo_vertice_inicio</a>, <a class="el" href="main_8c_source.html#l01510">handle_keyboard()</a>, <a class="el" href="main_8c_source.html#l00634">handle_navigation_keyboard()</a>, <a class="el" href="main_8c_source.html#l00147">INPUT_GRAFO_DESTINO</a>, <a class="el" href="main_8c_source.html#l00146">INPUT_GRAFO_ORIGEN</a>, <a class="el" href="main_8c_source.html#l00148">INPUT_GRAFO_PESO</a>, <a class="el" href="main_8c_source.html#l00143">INPUT_NONE</a>, <a class="el" href="main_8c_source.html#l00145">INPUT_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00049">AppState::input_prioridad</a>, <a class="el" href="main_8c_source.html#l00144">INPUT_VALOR</a>, <a class="el" href="app__state_8h_source.html#l00048">AppState::input_valor</a>, <a class="el" href="app__state_8h_source.html#l00060">AppState::mensaje_operacion</a>, <a class="el" href="app__state_8h_source.html#l00046">AppState::operacion_actual</a>, <a class="el" href="app__state_8h_source.html#l00031">OPERACION_NINGUNA</a>, <a class="el" href="app__state_8h_source.html#l00059">AppState::operacion_serial</a>, <a class="el" href="grafo_8h_source.html#l00061">GrafoArista::origen</a>, <a class="el" href="main_8c_source.html#l01667">parse_int_text()</a>, <a class="el" href="grafo__controller_8h_source.html#l00054">GrafoController::paso_actual</a>, <a class="el" href="algorithm__trace_8h_source.html#l00012">AlgorithmInfo::pasos</a>, <a class="el" href="grafo_8h_source.html#l00063">GrafoArista::peso</a>, <a class="el" href="ui_8h_source.html#l00021">UILayout::right</a>, <a class="el" href="main_8c_source.html#l00156">SCREEN_HELP</a>, <a class="el" href="main_8c_source.html#l00154">SCREEN_HOME_GRAFOS</a>, <a class="el" href="main_8c_source.html#l00152">SCREEN_HOME_ROOT</a>, <a class="el" href="main_8c_source.html#l00153">SCREEN_HOME_SECUENCIALES</a>, <a class="el" href="main_8c_source.html#l00155">SCREEN_VISUALIZER</a>, <a class="el" href="grafo__controller_8h_source.html#l00068">GrafoController::script_aristas</a>, <a class="el" href="grafo__controller_8h_source.html#l00069">GrafoController::script_aristas_count</a>, <a class="el" href="ui_8h_source.html#l00019">UILayout::sidebar</a>, <a class="el" href="main_8c_source.html#l01622">sync_input_buffers()</a>, <a class="el" href="algorithm__trace_8h_source.html#l00013">AlgorithmInfo::tiempo</a>, <a class="el" href="grafo__controller_8h_source.html#l00055">GrafoController::total_pasos</a>, <a class="el" href="ui_8c_source.html#l00325">ui_button()</a>, <a class="el" href="ui_8c_source.html#l00287">ui_draw_footer()</a>, <a class="el" href="ui_8c_source.html#l00226">ui_draw_header()</a>, <a class="el" href="ui_8c_source.html#l00315">ui_draw_panel()</a>, <a class="el" href="ui_8c_source.html#l00064">ui_draw_text()</a>, <a class="el" href="ui_8c_source.html#l00176">ui_get_layout()</a>, <a class="el" href="ui_8c_source.html#l00110">ui_init()</a>, <a class="el" href="ui_8c_source.html#l00349">ui_input_box()</a>, <a class="el" href="ui_8c_source.html#l00166">ui_set_size()</a>, <a class="el" href="ui_8c_source.html#l00376">ui_sidebar_button()</a>, <a class="el" href="ui_8c_source.html#l00398">ui_unload()</a> y <a class="el" href="app__state_8h_source.html#l00057">AppState::ultima_operacion_ok</a>.</p>
+
+</div>
+</div>
+<a id="ac3c2a21331ec159dc3eb25c1d0fc8694" name="ac3c2a21331ec159dc3eb25c1d0fc8694"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3c2a21331ec159dc3eb25c1d0fc8694">&#9670;&#160;</a></span>open_graph_visualizer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void open_graph_visualizer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_app_state.html">AppState</a> *</td>          <td class="paramname"><span class="paramname"><em>app</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#aefe4cd50ac123b6c800eede74968a353">ScreenMode</a> *</td>          <td class="paramname"><span class="paramname"><em>mode</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Abre el visualizador dejando activa la estructura de grafos. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00391">391</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="app__state_8c_source.html#l00260">app_state_set_estructura()</a>, <a class="el" href="app__state_8h_source.html#l00027">ESTRUCTURA_GRAFO</a> y <a class="el" href="main_8c_source.html#l00155">SCREEN_VISUALIZER</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00559">draw_home_graph_screen()</a>, <a class="el" href="main_8c_source.html#l00634">handle_navigation_keyboard()</a> y <a class="el" href="main_8c_source.html#l00417">launch_graph_algorithm_from_home()</a>.</p>
 
 </div>
 </div>
@@ -1160,11 +1550,11 @@ Variables</h2></td></tr>
 
 <p>Convierte el enum de operacion a texto legible para el historial. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00045">45</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00051">51</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00034">OPERACION_BUSCAR</a>, <a class="el" href="app__state_8h_source.html#l00033">OPERACION_ELIMINAR</a>, <a class="el" href="app__state_8h_source.html#l00029">OPERACION_INICIALIZAR</a>, <a class="el" href="app__state_8h_source.html#l00030">OPERACION_INSERTAR</a>, <a class="el" href="app__state_8h_source.html#l00032">OPERACION_INSERTAR_FINAL</a>, <a class="el" href="app__state_8h_source.html#l00031">OPERACION_INSERTAR_INICIO</a>, <a class="el" href="app__state_8h_source.html#l00035">OPERACION_INVERTIR</a>, <a class="el" href="app__state_8h_source.html#l00037">OPERACION_SUBLISTA_ELIMINAR_HIJO</a>, <a class="el" href="app__state_8h_source.html#l00036">OPERACION_SUBLISTA_INSERTAR_HIJO</a> y <a class="el" href="app__state_8h_source.html#l00038">OPERACION_VACIAR</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00037">OPERACION_BUSCAR</a>, <a class="el" href="app__state_8h_source.html#l00036">OPERACION_ELIMINAR</a>, <a class="el" href="app__state_8h_source.html#l00032">OPERACION_INICIALIZAR</a>, <a class="el" href="app__state_8h_source.html#l00033">OPERACION_INSERTAR</a>, <a class="el" href="app__state_8h_source.html#l00035">OPERACION_INSERTAR_FINAL</a>, <a class="el" href="app__state_8h_source.html#l00034">OPERACION_INSERTAR_INICIO</a>, <a class="el" href="app__state_8h_source.html#l00038">OPERACION_INVERTIR</a>, <a class="el" href="app__state_8h_source.html#l00040">OPERACION_SUBLISTA_ELIMINAR_HIJO</a>, <a class="el" href="app__state_8h_source.html#l00039">OPERACION_SUBLISTA_INSERTAR_HIJO</a> y <a class="el" href="app__state_8h_source.html#l00041">OPERACION_VACIAR</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00073">append_code_history()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00079">append_code_history()</a>.</p>
 
 </div>
 </div>
@@ -1197,14 +1587,14 @@ Variables</h2></td></tr>
 
 <p>Valida si un texto representa un entero sintacticamente valido. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01165">1165</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01667">1667</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
-<a id="a9df5d2e9d6f7b867c5f4994c0b76e925" name="a9df5d2e9d6f7b867c5f4994c0b76e925"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9df5d2e9d6f7b867c5f4994c0b76e925">&#9670;&#160;</a></span>sync_input_buffers()</h2>
+<a id="a04681258f953c6a1fdfcf910e7092abe" name="a04681258f953c6a1fdfcf910e7092abe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04681258f953c6a1fdfcf910e7092abe">&#9670;&#160;</a></span>sync_input_buffers()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1240,6 +1630,36 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>graph_origin_text</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>graph_origin_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>graph_dest_text</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>graph_dest_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>graph_weight_text</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>graph_weight_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype"><a class="el" href="#a65b30dbecdd0853f3d01374fb40d7c08">InputFocus</a></td>          <td class="paramname"><span class="paramname"><em>focus</em></span>&#160;)</td>
         </tr>
       </table>
@@ -1252,11 +1672,11 @@ Variables</h2></td></tr>
 
 <p>Sincroniza los buffers de texto editables con el estado real de entrada. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01139">1139</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01622">1622</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="main_8c_source.html#l00136">INPUT_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00046">AppState::input_prioridad</a>, <a class="el" href="main_8c_source.html#l00135">INPUT_VALOR</a> y <a class="el" href="app__state_8h_source.html#l00045">AppState::input_valor</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="app__state_8h_source.html#l00073">AppState::grafo_vertice_destino</a>, <a class="el" href="app__state_8h_source.html#l00072">AppState::grafo_vertice_inicio</a>, <a class="el" href="main_8c_source.html#l00147">INPUT_GRAFO_DESTINO</a>, <a class="el" href="main_8c_source.html#l00146">INPUT_GRAFO_ORIGEN</a>, <a class="el" href="main_8c_source.html#l00148">INPUT_GRAFO_PESO</a>, <a class="el" href="main_8c_source.html#l00145">INPUT_PRIORIDAD</a>, <a class="el" href="app__state_8h_source.html#l00049">AppState::input_prioridad</a>, <a class="el" href="main_8c_source.html#l00144">INPUT_VALOR</a> y <a class="el" href="app__state_8h_source.html#l00048">AppState::input_valor</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01204">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
 
 </div>
 </div>
@@ -1281,9 +1701,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00602">602</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00936">936</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00843">get_app_help_text()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01185">get_app_help_text()</a>.</p>
 
 </div>
 </div>
@@ -1322,13 +1742,14 @@ Variables</h2></td></tr>
 <div class="line"><span class="stringliteral">&quot;- Pila: scroll vertical con rueda del mouse.\n&quot;</span></div>
 <div class="line"><span class="stringliteral">&quot;- Cola, Lista, Lista Circular y Cola de Prioridad: scroll horizontal.\n&quot;</span></div>
 <div class="line"><span class="stringliteral">&quot;- Sublistas: scroll vertical para recorrer padres e hijos.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;- Grafo: usa el panel inferior para seguir tipo de paso, tabla de distancias y camino parcial.\n&quot;</span></div>
 <div class="line"><span class="stringliteral">&quot;- En listas largas, usa el scroll para inspeccionar extremos.\n&quot;</span></div>
 <div class="line"><span class="stringliteral">&quot;\n&quot;</span></div>
 <div class="line"><span class="stringliteral">&quot;============================================================\n&quot;</span></div>
 </div><!-- fragment -->
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00718">718</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01052">1052</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00843">get_app_help_text()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01185">get_app_help_text()</a>.</p>
 
 </div>
 </div>
@@ -1352,9 +1773,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00738">738</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01073">1073</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00843">get_app_help_text()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01185">get_app_help_text()</a>.</p>
 
 </div>
 </div>
@@ -1397,9 +1818,9 @@ Variables</h2></td></tr>
 <div class="line"><span class="stringliteral">&quot;\n&quot;</span></div>
 <div class="line"><span class="stringliteral">&quot;============================================================\n&quot;</span></div>
 </div><!-- fragment -->
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00792">792</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01134">1134</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00843">get_app_help_text()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01185">get_app_help_text()</a>.</p>
 
 </div>
 </div>
@@ -1452,9 +1873,9 @@ Variables</h2></td></tr>
 <div class="line"><span class="stringliteral">&quot;Si usas esta ayuda como referencia durante la practica,\n&quot;</span></div>
 <div class="line"><span class="stringliteral">&quot;podras entender no solo que hace la app, sino por que lo hace asi.\n&quot;</span></div>
 </div><!-- fragment -->
-<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00812">812</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l01154">1154</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00843">get_app_help_text()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01185">get_app_help_text()</a>.</p>
 
 </div>
 </div>

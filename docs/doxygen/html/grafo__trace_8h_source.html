@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: Archivo de código fuente grafo_trace.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('grafo__trace_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">grafo_trace.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="grafo__trace_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifndef GRAFO_TRACE_H</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define GRAFO_TRACE_H</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;raylib.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">/* ============================================================================</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> * Estructura de Paso de Traza</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * ============================================================================ */</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span></div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="struct_grafo_trace_paso.html">   24</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="struct_grafo_trace_paso.html#a557c4d646e1126c17cbca1dcccf79471">   25</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_grafo_trace_paso.html#a557c4d646e1126c17cbca1dcccf79471">numero_paso</a>;              </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="struct_grafo_trace_paso.html#ad9f202e7505bc9085ef7122781b9a52e">   26</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="struct_grafo_trace_paso.html#ad9f202e7505bc9085ef7122781b9a52e">descripcion</a>[256];        </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="struct_grafo_trace_paso.html#aae3d2f6ce896b0c8dbcff07a313b28f9">   27</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="struct_grafo_trace_paso.html#aae3d2f6ce896b0c8dbcff07a313b28f9">variables</a>[512];          </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="struct_grafo_trace_paso.html#ab3685698377c9b25626d72e072c39c53">   28</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="struct_grafo_trace_paso.html#ab3685698377c9b25626d72e072c39c53">vertices_procesados</a>[64]; </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="struct_grafo_trace_paso.html#a26612f7c37861074783a8b222ff6b1f8">   29</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="struct_grafo_trace_paso.html#a26612f7c37861074783a8b222ff6b1f8">aristas_examinadas</a>[128]; </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="struct_grafo_trace_paso.html#a60841aa6e96c280ba04b0b2a2294bc6e">   30</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_grafo_trace_paso.html#a60841aa6e96c280ba04b0b2a2294bc6e">linea_codigo_actual</a>;      </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>} <a class="code hl_struct" href="struct_grafo_trace_paso.html">GrafoTracePaso</a>;</div>
+</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span></div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="};">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="struct_grafo_trace.html">   37</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="struct_grafo_trace.html#a99b575905057cfa30f1930be94794c8a">   38</a></span>    <a class="code hl_struct" href="struct_grafo_trace_paso.html">GrafoTracePaso</a> <a class="code hl_variable" href="struct_grafo_trace.html#a99b575905057cfa30f1930be94794c8a">pasos</a>[200];    </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="struct_grafo_trace.html#a0b928cf84616cb8747b7e6cff37bbae8">   39</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_grafo_trace.html#a0b928cf84616cb8747b7e6cff37bbae8">cantidad_pasos</a>;           </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="struct_grafo_trace.html#ac40692b22b02ec88538144c85fb85130">   40</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_grafo_trace.html#ac40692b22b02ec88538144c85fb85130">paso_actual</a>;              </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="struct_grafo_trace.html#ae5f2f4d7b2d17b1e79e291b6d147bb70">   41</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="struct_grafo_trace.html#ae5f2f4d7b2d17b1e79e291b6d147bb70">nombre_algoritmo</a>[64];    </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="struct_grafo_trace.html#ac2e12c08a83c52313adc8746ffef595e">   42</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="struct_grafo_trace.html#ac2e12c08a83c52313adc8746ffef595e">resultado_final</a>[256];    </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>} <a class="code hl_struct" href="struct_grafo_trace.html">GrafoTrace</a>;</div>
+</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">/* ============================================================================</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"> * Funciones de Inicialización</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"> * ============================================================================ */</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><a class="code hl_struct" href="struct_grafo_trace.html">GrafoTrace</a> <a class="code hl_function" href="grafo__trace_8h.html#a03bea073aa3037b74a33ea23ad4769b9">grafo_trace_crear</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *nombre_algoritmo);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keywordtype">bool</span> <a class="code hl_function" href="grafo__trace_8h.html#a1500e1fdb01e0d9ecfd000d0651d361d">grafo_trace_agregar_paso</a>(<a class="code hl_struct" href="struct_grafo_trace.html">GrafoTrace</a> *traza, <span class="keyword">const</span> <span class="keywordtype">char</span> *descripcion, </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                             <span class="keyword">const</span> <span class="keywordtype">char</span> *variables, <span class="keywordtype">int</span> linea_codigo);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="keywordtype">void</span> <a class="code hl_function" href="grafo__trace_8h.html#aedf6e0c91df59962b144b59705413acd">grafo_trace_establecer_resultado</a>(<a class="code hl_struct" href="struct_grafo_trace.html">GrafoTrace</a> *traza, <span class="keyword">const</span> <span class="keywordtype">char</span> *resultado);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">/* ============================================================================</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment"> * Navegación</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment"> * ============================================================================ */</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="keywordtype">bool</span> <a class="code hl_function" href="grafo__trace_8h.html#a43c9fc70194f8d4217e9a612438a0cbc">grafo_trace_paso_siguiente</a>(<a class="code hl_struct" href="struct_grafo_trace.html">GrafoTrace</a> *traza);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keywordtype">bool</span> <a class="code hl_function" href="grafo__trace_8h.html#a6e5b4dde6e48514aaf1989b30e205752">grafo_trace_paso_anterior</a>(<a class="code hl_struct" href="struct_grafo_trace.html">GrafoTrace</a> *traza);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="keywordtype">bool</span> <a class="code hl_function" href="grafo__trace_8h.html#a8ee58096bc3478b64702ffbc5cc4fc1b">grafo_trace_saltar_paso</a>(<a class="code hl_struct" href="struct_grafo_trace.html">GrafoTrace</a> *traza, <span class="keywordtype">int</span> numero_paso);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment">/* ============================================================================</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment"> * Renderizado</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment"> * ============================================================================ */</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keywordtype">void</span> <a class="code hl_function" href="grafo__trace_8h.html#a572262a70339116a1a2eb8a577dff80a">grafo_trace_dibujar</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_grafo_trace.html">GrafoTrace</a> *traza, Rectangle area_destino);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="keywordtype">void</span> <a class="code hl_function" href="grafo__trace_8h.html#a0e23bb375a3fa2aee3fd12f3c74cab65">grafo_trace_dibujar_barra_progreso</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_grafo_trace.html">GrafoTrace</a> *traza, Rectangle area_barra);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment">/* ============================================================================</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment"> * Consultas</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment"> * ============================================================================ */</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="keyword">const</span> <a class="code hl_struct" href="struct_grafo_trace_paso.html">GrafoTracePaso</a>* <a class="code hl_function" href="grafo__trace_8h.html#a8b6f3ed55c6450dc7dd2c27c2dcd3c97">grafo_trace_obtener_paso_actual</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_grafo_trace.html">GrafoTrace</a> *traza);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="grafo__trace_8h.html#a2c5f5fde10cd5aa4bef8246559ee8ddc">grafo_trace_obtener_progreso</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_grafo_trace.html">GrafoTrace</a> *traza);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="preprocessor">#endif </span><span class="comment">/* GRAFO_TRACE_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="agrafo__trace_8h_html_a03bea073aa3037b74a33ea23ad4769b9"><div class="ttname"><a href="grafo__trace_8h.html#a03bea073aa3037b74a33ea23ad4769b9">grafo_trace_crear</a></div><div class="ttdeci">GrafoTrace grafo_trace_crear(const char *nombre_algoritmo)</div><div class="ttdoc">Crea una traza vacía para un algoritmo.</div><div class="ttdef"><b>Definition</b> <a href="grafo__trace_8c_source.html#l00014">grafo_trace.c:14</a></div></div>
+<div class="ttc" id="agrafo__trace_8h_html_a0e23bb375a3fa2aee3fd12f3c74cab65"><div class="ttname"><a href="grafo__trace_8h.html#a0e23bb375a3fa2aee3fd12f3c74cab65">grafo_trace_dibujar_barra_progreso</a></div><div class="ttdeci">void grafo_trace_dibujar_barra_progreso(const GrafoTrace *traza, Rectangle area_barra)</div><div class="ttdoc">Dibuja barra de progreso de pasos.</div><div class="ttdef"><b>Definition</b> <a href="grafo__trace_8c_source.html#l00149">grafo_trace.c:149</a></div></div>
+<div class="ttc" id="agrafo__trace_8h_html_a1500e1fdb01e0d9ecfd000d0651d361d"><div class="ttname"><a href="grafo__trace_8h.html#a1500e1fdb01e0d9ecfd000d0651d361d">grafo_trace_agregar_paso</a></div><div class="ttdeci">bool grafo_trace_agregar_paso(GrafoTrace *traza, const char *descripcion, const char *variables, int linea_codigo)</div><div class="ttdoc">Agrega un paso a la traza.</div><div class="ttdef"><b>Definition</b> <a href="grafo__trace_8c_source.html#l00029">grafo_trace.c:29</a></div></div>
+<div class="ttc" id="agrafo__trace_8h_html_a2c5f5fde10cd5aa4bef8246559ee8ddc"><div class="ttname"><a href="grafo__trace_8h.html#a2c5f5fde10cd5aa4bef8246559ee8ddc">grafo_trace_obtener_progreso</a></div><div class="ttdeci">const char * grafo_trace_obtener_progreso(const GrafoTrace *traza)</div><div class="ttdoc">Obtiene información de progreso.</div><div class="ttdef"><b>Definition</b> <a href="grafo__trace_8c_source.html#l00184">grafo_trace.c:184</a></div></div>
+<div class="ttc" id="agrafo__trace_8h_html_a43c9fc70194f8d4217e9a612438a0cbc"><div class="ttname"><a href="grafo__trace_8h.html#a43c9fc70194f8d4217e9a612438a0cbc">grafo_trace_paso_siguiente</a></div><div class="ttdeci">bool grafo_trace_paso_siguiente(GrafoTrace *traza)</div><div class="ttdoc">Avanza al siguiente paso.</div><div class="ttdef"><b>Definition</b> <a href="grafo__trace_8c_source.html#l00071">grafo_trace.c:71</a></div></div>
+<div class="ttc" id="agrafo__trace_8h_html_a572262a70339116a1a2eb8a577dff80a"><div class="ttname"><a href="grafo__trace_8h.html#a572262a70339116a1a2eb8a577dff80a">grafo_trace_dibujar</a></div><div class="ttdeci">void grafo_trace_dibujar(const GrafoTrace *traza, Rectangle area_destino)</div><div class="ttdoc">Dibuja la información del paso actual.</div><div class="ttdef"><b>Definition</b> <a href="grafo__trace_8c_source.html#l00101">grafo_trace.c:101</a></div></div>
+<div class="ttc" id="agrafo__trace_8h_html_a6e5b4dde6e48514aaf1989b30e205752"><div class="ttname"><a href="grafo__trace_8h.html#a6e5b4dde6e48514aaf1989b30e205752">grafo_trace_paso_anterior</a></div><div class="ttdeci">bool grafo_trace_paso_anterior(GrafoTrace *traza)</div><div class="ttdoc">Retrocede al paso anterior.</div><div class="ttdef"><b>Definition</b> <a href="grafo__trace_8c_source.html#l00081">grafo_trace.c:81</a></div></div>
+<div class="ttc" id="agrafo__trace_8h_html_a8b6f3ed55c6450dc7dd2c27c2dcd3c97"><div class="ttname"><a href="grafo__trace_8h.html#a8b6f3ed55c6450dc7dd2c27c2dcd3c97">grafo_trace_obtener_paso_actual</a></div><div class="ttdeci">const GrafoTracePaso * grafo_trace_obtener_paso_actual(const GrafoTrace *traza)</div><div class="ttdoc">Obtiene el paso actual.</div><div class="ttdef"><b>Definition</b> <a href="grafo__trace_8c_source.html#l00177">grafo_trace.c:177</a></div></div>
+<div class="ttc" id="agrafo__trace_8h_html_a8ee58096bc3478b64702ffbc5cc4fc1b"><div class="ttname"><a href="grafo__trace_8h.html#a8ee58096bc3478b64702ffbc5cc4fc1b">grafo_trace_saltar_paso</a></div><div class="ttdeci">bool grafo_trace_saltar_paso(GrafoTrace *traza, int numero_paso)</div><div class="ttdoc">Salta a un paso específico.</div><div class="ttdef"><b>Definition</b> <a href="grafo__trace_8c_source.html#l00088">grafo_trace.c:88</a></div></div>
+<div class="ttc" id="agrafo__trace_8h_html_aedf6e0c91df59962b144b59705413acd"><div class="ttname"><a href="grafo__trace_8h.html#aedf6e0c91df59962b144b59705413acd">grafo_trace_establecer_resultado</a></div><div class="ttdeci">void grafo_trace_establecer_resultado(GrafoTrace *traza, const char *resultado)</div><div class="ttdoc">Establece el resultado final de la ejecución.</div><div class="ttdef"><b>Definition</b> <a href="grafo__trace_8c_source.html#l00061">grafo_trace.c:61</a></div></div>
+<div class="ttc" id="astruct_grafo_trace_html"><div class="ttname"><a href="struct_grafo_trace.html">GrafoTrace</a></div><div class="ttdoc">Traza completa de ejecución de un algoritmo.</div><div class="ttdef"><b>Definition</b> <a href="#l00037">grafo_trace.h:37</a></div></div>
+<div class="ttc" id="astruct_grafo_trace_html_a0b928cf84616cb8747b7e6cff37bbae8"><div class="ttname"><a href="struct_grafo_trace.html#a0b928cf84616cb8747b7e6cff37bbae8">GrafoTrace::cantidad_pasos</a></div><div class="ttdeci">int cantidad_pasos</div><div class="ttdoc">Cantidad de pasos registrados.</div><div class="ttdef"><b>Definition</b> <a href="#l00039">grafo_trace.h:39</a></div></div>
+<div class="ttc" id="astruct_grafo_trace_html_a99b575905057cfa30f1930be94794c8a"><div class="ttname"><a href="struct_grafo_trace.html#a99b575905057cfa30f1930be94794c8a">GrafoTrace::pasos</a></div><div class="ttdeci">GrafoTracePaso pasos[200]</div><div class="ttdoc">Array de pasos.</div><div class="ttdef"><b>Definition</b> <a href="#l00038">grafo_trace.h:38</a></div></div>
+<div class="ttc" id="astruct_grafo_trace_html_ac2e12c08a83c52313adc8746ffef595e"><div class="ttname"><a href="struct_grafo_trace.html#ac2e12c08a83c52313adc8746ffef595e">GrafoTrace::resultado_final</a></div><div class="ttdeci">char resultado_final[256]</div><div class="ttdoc">Descripción del resultado.</div><div class="ttdef"><b>Definition</b> <a href="#l00042">grafo_trace.h:42</a></div></div>
+<div class="ttc" id="astruct_grafo_trace_html_ac40692b22b02ec88538144c85fb85130"><div class="ttname"><a href="struct_grafo_trace.html#ac40692b22b02ec88538144c85fb85130">GrafoTrace::paso_actual</a></div><div class="ttdeci">int paso_actual</div><div class="ttdoc">Índice del paso actual.</div><div class="ttdef"><b>Definition</b> <a href="#l00040">grafo_trace.h:40</a></div></div>
+<div class="ttc" id="astruct_grafo_trace_html_ae5f2f4d7b2d17b1e79e291b6d147bb70"><div class="ttname"><a href="struct_grafo_trace.html#ae5f2f4d7b2d17b1e79e291b6d147bb70">GrafoTrace::nombre_algoritmo</a></div><div class="ttdeci">char nombre_algoritmo[64]</div><div class="ttdoc">Nombre del algoritmo.</div><div class="ttdef"><b>Definition</b> <a href="#l00041">grafo_trace.h:41</a></div></div>
+<div class="ttc" id="astruct_grafo_trace_paso_html"><div class="ttname"><a href="struct_grafo_trace_paso.html">GrafoTracePaso</a></div><div class="ttdoc">Un paso individual en la ejecución de un algoritmo.</div><div class="ttdef"><b>Definition</b> <a href="#l00024">grafo_trace.h:24</a></div></div>
+<div class="ttc" id="astruct_grafo_trace_paso_html_a26612f7c37861074783a8b222ff6b1f8"><div class="ttname"><a href="struct_grafo_trace_paso.html#a26612f7c37861074783a8b222ff6b1f8">GrafoTracePaso::aristas_examinadas</a></div><div class="ttdeci">char aristas_examinadas[128]</div><div class="ttdoc">Aristas examinadas en este paso.</div><div class="ttdef"><b>Definition</b> <a href="#l00029">grafo_trace.h:29</a></div></div>
+<div class="ttc" id="astruct_grafo_trace_paso_html_a557c4d646e1126c17cbca1dcccf79471"><div class="ttname"><a href="struct_grafo_trace_paso.html#a557c4d646e1126c17cbca1dcccf79471">GrafoTracePaso::numero_paso</a></div><div class="ttdeci">int numero_paso</div><div class="ttdoc">Número del paso (1-based).</div><div class="ttdef"><b>Definition</b> <a href="#l00025">grafo_trace.h:25</a></div></div>
+<div class="ttc" id="astruct_grafo_trace_paso_html_a60841aa6e96c280ba04b0b2a2294bc6e"><div class="ttname"><a href="struct_grafo_trace_paso.html#a60841aa6e96c280ba04b0b2a2294bc6e">GrafoTracePaso::linea_codigo_actual</a></div><div class="ttdeci">int linea_codigo_actual</div><div class="ttdoc">Línea del pseudocódigo siendo ejecutada.</div><div class="ttdef"><b>Definition</b> <a href="#l00030">grafo_trace.h:30</a></div></div>
+<div class="ttc" id="astruct_grafo_trace_paso_html_aae3d2f6ce896b0c8dbcff07a313b28f9"><div class="ttname"><a href="struct_grafo_trace_paso.html#aae3d2f6ce896b0c8dbcff07a313b28f9">GrafoTracePaso::variables</a></div><div class="ttdeci">char variables[512]</div><div class="ttdoc">Estado de variables clave.</div><div class="ttdef"><b>Definition</b> <a href="#l00027">grafo_trace.h:27</a></div></div>
+<div class="ttc" id="astruct_grafo_trace_paso_html_ab3685698377c9b25626d72e072c39c53"><div class="ttname"><a href="struct_grafo_trace_paso.html#ab3685698377c9b25626d72e072c39c53">GrafoTracePaso::vertices_procesados</a></div><div class="ttdeci">char vertices_procesados[64]</div><div class="ttdoc">IDs de vértices procesados.</div><div class="ttdef"><b>Definition</b> <a href="#l00028">grafo_trace.h:28</a></div></div>
+<div class="ttc" id="astruct_grafo_trace_paso_html_ad9f202e7505bc9085ef7122781b9a52e"><div class="ttname"><a href="struct_grafo_trace_paso.html#ad9f202e7505bc9085ef7122781b9a52e">GrafoTracePaso::descripcion</a></div><div class="ttdeci">char descripcion[256]</div><div class="ttdoc">Descripción en español de qué pasa.</div><div class="ttdef"><b>Definition</b> <a href="#l00026">grafo_trace.h:26</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="grafo__trace_8h.html">grafo_trace.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

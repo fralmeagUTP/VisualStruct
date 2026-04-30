@@ -1,0 +1,405 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: Referencia del archivo grafo_layout.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('grafo__layout_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia del archivo grafo_layout.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Implementación del layout circular para grafos.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="grafo__layout_8h_source.html">grafo_layout.h</a>&quot;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+</div>
+<p><a href="grafo__layout_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+defines</h2></td></tr>
+<tr class="memitem:ae71449b1cc6e6250b91f539153a7a0d3" id="r_ae71449b1cc6e6250b91f539153a7a0d3"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ae71449b1cc6e6250b91f539153a7a0d3">M_PI</a>&#160;&#160;&#160;3.14159265358979323846</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:a842a0c7ddebe11a829b4835636615758" id="r_a842a0c7ddebe11a829b4835636615758"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a842a0c7ddebe11a829b4835636615758">grafo_layout_calcular_circular</a> (<a class="el" href="struct_grafo_state.html">GrafoState</a> *estado, const <a class="el" href="struct_grafo_layout_configuracion.html">GrafoLayoutConfiguracion</a> *config)</td></tr>
+<tr class="memdesc:a842a0c7ddebe11a829b4835636615758"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula posiciones circulares de vértices.  <br /></td></tr>
+<tr class="memitem:adb5146a4accc5adb3b55f168162d3f8e" id="r_adb5146a4accc5adb3b55f168162d3f8e"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#adb5146a4accc5adb3b55f168162d3f8e">grafo_layout_calcular_radio_maximo</a> (const <a class="el" href="struct_grafo_layout_configuracion.html">GrafoLayoutConfiguracion</a> *config, int cantidad_vertices)</td></tr>
+<tr class="memdesc:adb5146a4accc5adb3b55f168162d3f8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula radio máximo disponible para disposición circular.  <br /></td></tr>
+<tr class="memitem:a22b0bac89c02c661cac07d7cf2f0f566" id="r_a22b0bac89c02c661cac07d7cf2f0f566"><td class="memItemLeft"><a class="el" href="struct_grafo_layout_configuracion.html">GrafoLayoutConfiguracion</a>&#160;</td><td class="memItemRight"><a class="el" href="#a22b0bac89c02c661cac07d7cf2f0f566">grafo_layout_config_defecto</a> (int ancho_panel, int alto_panel)</td></tr>
+<tr class="memdesc:a22b0bac89c02c661cac07d7cf2f0f566"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea configuración de layout por defecto.  <br /></td></tr>
+<tr class="memitem:a834f00948d7db4df0056611c2415228d" id="r_a834f00948d7db4df0056611c2415228d"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a834f00948d7db4df0056611c2415228d">grafo_layout_distancia</a> (float x1, float y1, float x2, float y2)</td></tr>
+<tr class="memdesc:a834f00948d7db4df0056611c2415228d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula distancia euclideana entre dos posiciones.  <br /></td></tr>
+<tr class="memitem:a6bc06fe07bd36f9163bfecb7f94b3a53" id="r_a6bc06fe07bd36f9163bfecb7f94b3a53"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a6bc06fe07bd36f9163bfecb7f94b3a53">grafo_layout_evitar_colisiones</a> (<a class="el" href="struct_grafo_state.html">GrafoState</a> *estado, int idx_vertice, float distancia_minima)</td></tr>
+<tr class="memdesc:a6bc06fe07bd36f9163bfecb7f94b3a53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajusta posición para no colisionar con otro vértice.  <br /></td></tr>
+<tr class="memitem:afd58811e8ec2b0c46b6fffef2332be18" id="r_afd58811e8ec2b0c46b6fffef2332be18"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#afd58811e8ec2b0c46b6fffef2332be18">grafo_layout_obtener_centro</a> (const <a class="el" href="struct_grafo_layout_configuracion.html">GrafoLayoutConfiguracion</a> *config, float *centro_x, float *centro_y)</td></tr>
+<tr class="memdesc:afd58811e8ec2b0c46b6fffef2332be18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene centro del panel.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Implementación del layout circular para grafos. </p>
+
+<p class="definition">Definición en el archivo <a class="el" href="grafo__layout_8c_source.html">grafo_layout.c</a>.</p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentación de «define»</h2>
+<a id="ae71449b1cc6e6250b91f539153a7a0d3" name="ae71449b1cc6e6250b91f539153a7a0d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae71449b1cc6e6250b91f539153a7a0d3">&#9670;&#160;</a></span>M_PI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define M_PI&#160;&#160;&#160;3.14159265358979323846</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__layout_8c_source.html#l00011">11</a> del archivo <a class="el" href="grafo__layout_8c_source.html">grafo_layout.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="grafo__layout_8c_source.html#l00068">grafo_layout_calcular_circular()</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
+<a id="a842a0c7ddebe11a829b4835636615758" name="a842a0c7ddebe11a829b4835636615758"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a842a0c7ddebe11a829b4835636615758">&#9670;&#160;</a></span>grafo_layout_calcular_circular()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool grafo_layout_calcular_circular </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_state.html">GrafoState</a> *</td>          <td class="paramname"><span class="paramname"><em>estado</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_grafo_layout_configuracion.html">GrafoLayoutConfiguracion</a> *</td>          <td class="paramname"><span class="paramname"><em>config</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calcula posiciones circulares de vértices. </p>
+<p>Distribuye vértices uniformemente en un círculo dentro del panel. Radio del círculo se adapta al tamaño del panel y cantidad de vértices.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">estado</td><td>Puntero al estado visual (se modifican x, y) </td></tr>
+    <tr><td class="paramname">config</td><td>Configuración de layout </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si se calculó exitosamente </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__layout_8c_source.html#l00068">68</a> del archivo <a class="el" href="grafo__layout_8c_source.html">grafo_layout.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__state_8h_source.html#l00094">GrafoState::aristas</a>, <a class="el" href="grafo__state_8h_source.html#l00095">GrafoState::cantidad_aristas</a>, <a class="el" href="grafo__state_8h_source.html#l00092">GrafoState::cantidad_vertices</a>, <a class="el" href="grafo__layout_8c_source.html#l00046">grafo_layout_calcular_radio_maximo()</a>, <a class="el" href="grafo__layout_8c_source.html#l00032">grafo_layout_obtener_centro()</a>, <a class="el" href="grafo__layout_8c_source.html#l00011">M_PI</a>, <a class="el" href="grafo__state_8h_source.html#l00059">GrafoVerticeVisual::radio</a>, <a class="el" href="grafo__layout_8h_source.html#l00027">GrafoLayoutConfiguracion::radio_vertice</a>, <a class="el" href="grafo__state_8h_source.html#l00091">GrafoState::vertices</a>, <a class="el" href="grafo__state_8h_source.html#l00078">GrafoAristaVisual::visible</a>, <a class="el" href="grafo__state_8h_source.html#l00061">GrafoVerticeVisual::visible</a>, <a class="el" href="grafo__state_8h_source.html#l00058">GrafoVerticeVisual::x</a> y <a class="el" href="grafo__state_8h_source.html#l00058">GrafoVerticeVisual::y</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00116">app_state_sync_grafo_visual()</a>.</p>
+
+</div>
+</div>
+<a id="adb5146a4accc5adb3b55f168162d3f8e" name="adb5146a4accc5adb3b55f168162d3f8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb5146a4accc5adb3b55f168162d3f8e">&#9670;&#160;</a></span>grafo_layout_calcular_radio_maximo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float grafo_layout_calcular_radio_maximo </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_grafo_layout_configuracion.html">GrafoLayoutConfiguracion</a> *</td>          <td class="paramname"><span class="paramname"><em>config</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>cantidad_vertices</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calcula radio máximo disponible para disposición circular. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">config</td><td>Configuración de layout </td></tr>
+    <tr><td class="paramname">cantidad_vertices</td><td>Cantidad de vértices a distribuir </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Radio en píxeles </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__layout_8c_source.html#l00046">46</a> del archivo <a class="el" href="grafo__layout_8c_source.html">grafo_layout.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__layout_8h_source.html#l00025">GrafoLayoutConfiguracion::alto_panel</a>, <a class="el" href="grafo__layout_8h_source.html#l00024">GrafoLayoutConfiguracion::ancho_panel</a> y <a class="el" href="grafo__layout_8h_source.html#l00026">GrafoLayoutConfiguracion::margen_borde</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="grafo__layout_8c_source.html#l00068">grafo_layout_calcular_circular()</a>.</p>
+
+</div>
+</div>
+<a id="a22b0bac89c02c661cac07d7cf2f0f566" name="a22b0bac89c02c661cac07d7cf2f0f566"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22b0bac89c02c661cac07d7cf2f0f566">&#9670;&#160;</a></span>grafo_layout_config_defecto()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_grafo_layout_configuracion.html">GrafoLayoutConfiguracion</a> grafo_layout_config_defecto </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>ancho_panel</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>alto_panel</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crea configuración de layout por defecto. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ancho_panel</td><td>Ancho en píxeles </td></tr>
+    <tr><td class="paramname">alto_panel</td><td>Alto en píxeles </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Estructura de configuración inicializada </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__layout_8c_source.html#l00018">18</a> del archivo <a class="el" href="grafo__layout_8c_source.html">grafo_layout.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__layout_8h_source.html#l00025">GrafoLayoutConfiguracion::alto_panel</a>, <a class="el" href="grafo__layout_8h_source.html#l00024">GrafoLayoutConfiguracion::ancho_panel</a>, <a class="el" href="grafo__layout_8h_source.html#l00026">GrafoLayoutConfiguracion::margen_borde</a>, <a class="el" href="grafo__layout_8h_source.html#l00027">GrafoLayoutConfiguracion::radio_vertice</a> y <a class="el" href="grafo__layout_8h_source.html#l00028">GrafoLayoutConfiguracion::usa_fuerza_dirigida</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="grafo__view_8c_source.html#l00056">grafo_vista_init()</a>.</p>
+
+</div>
+</div>
+<a id="a834f00948d7db4df0056611c2415228d" name="a834f00948d7db4df0056611c2415228d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a834f00948d7db4df0056611c2415228d">&#9670;&#160;</a></span>grafo_layout_distancia()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float grafo_layout_distancia </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>x1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>y1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>x2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>y2</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calcula distancia euclideana entre dos posiciones. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x1,y1</td><td>Coordenadas del primer punto </td></tr>
+    <tr><td class="paramname">x2,y2</td><td>Coordenadas del segundo punto </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Distancia euclideana </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__layout_8c_source.html#l00040">40</a> del archivo <a class="el" href="grafo__layout_8c_source.html">grafo_layout.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="grafo__layout_8c_source.html#l00095">grafo_layout_evitar_colisiones()</a>.</p>
+
+</div>
+</div>
+<a id="a6bc06fe07bd36f9163bfecb7f94b3a53" name="a6bc06fe07bd36f9163bfecb7f94b3a53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bc06fe07bd36f9163bfecb7f94b3a53">&#9670;&#160;</a></span>grafo_layout_evitar_colisiones()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool grafo_layout_evitar_colisiones </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_state.html">GrafoState</a> *</td>          <td class="paramname"><span class="paramname"><em>estado</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>idx_vertice</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>distancia_minima</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajusta posición para no colisionar con otro vértice. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">estado</td><td>Puntero al estado visual </td></tr>
+    <tr><td class="paramname">idx_vertice</td><td>Índice del vértice a ajustar </td></tr>
+    <tr><td class="paramname">distancia_minima</td><td>Distancia mínima entre centros </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si ajustó exitosamente </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__layout_8c_source.html#l00095">95</a> del archivo <a class="el" href="grafo__layout_8c_source.html">grafo_layout.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__state_8h_source.html#l00092">GrafoState::cantidad_vertices</a>, <a class="el" href="grafo__layout_8c_source.html#l00040">grafo_layout_distancia()</a>, <a class="el" href="grafo__state_8h_source.html#l00091">GrafoState::vertices</a>, <a class="el" href="grafo__state_8h_source.html#l00058">GrafoVerticeVisual::x</a> y <a class="el" href="grafo__state_8h_source.html#l00058">GrafoVerticeVisual::y</a>.</p>
+
+</div>
+</div>
+<a id="afd58811e8ec2b0c46b6fffef2332be18" name="afd58811e8ec2b0c46b6fffef2332be18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd58811e8ec2b0c46b6fffef2332be18">&#9670;&#160;</a></span>grafo_layout_obtener_centro()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_layout_obtener_centro </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_grafo_layout_configuracion.html">GrafoLayoutConfiguracion</a> *</td>          <td class="paramname"><span class="paramname"><em>config</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>centro_x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>centro_y</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene centro del panel. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">config</td><td>Configuración de layout </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">centro_x</td><td>Coordenada X del centro </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">centro_y</td><td>Coordenada Y del centro </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__layout_8c_source.html#l00032">32</a> del archivo <a class="el" href="grafo__layout_8c_source.html">grafo_layout.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__layout_8h_source.html#l00025">GrafoLayoutConfiguracion::alto_panel</a> y <a class="el" href="grafo__layout_8h_source.html#l00024">GrafoLayoutConfiguracion::ancho_panel</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="grafo__layout_8c_source.html#l00068">grafo_layout_calcular_circular()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="grafo__layout_8c.html">grafo_layout.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

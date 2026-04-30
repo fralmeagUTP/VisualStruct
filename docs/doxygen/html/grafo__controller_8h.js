@@ -1,0 +1,40 @@
+var grafo__controller_8h =
+[
+    [ "GrafoController", "struct_grafo_controller.html", "struct_grafo_controller" ],
+    [ "GrafoControllerModo", "grafo__controller_8h.html#aafec9f4462aeb21a234c635bf0fcf7b9", [
+      [ "GRAFO_MODO_EDICION", "grafo__controller_8h.html#aafec9f4462aeb21a234c635bf0fcf7b9a8bd84003179492107089d973aec6e00d", null ],
+      [ "GRAFO_MODO_ALGORITMO", "grafo__controller_8h.html#aafec9f4462aeb21a234c635bf0fcf7b9ae2381b589569e048ccdc740589582a2c", null ],
+      [ "GRAFO_MODO_VISUALIZACION", "grafo__controller_8h.html#aafec9f4462aeb21a234c635bf0fcf7b9aad031684974cec25244a9c3d83c1d0a9", null ],
+      [ "GRAFO_MODO_PAUSA", "grafo__controller_8h.html#aafec9f4462aeb21a234c635bf0fcf7b9a4fe475d7f40425faa316c561bf8c43a7", null ]
+    ] ],
+    [ "GrafoPasoTipo", "grafo__controller_8h.html#a5bd3ab36b2f66b28b492874604932076", [
+      [ "GRAFO_PASO_CONSOLIDACION", "grafo__controller_8h.html#a5bd3ab36b2f66b28b492874604932076a0d0bb88d85770c639278f04119e460d8", null ],
+      [ "GRAFO_PASO_VERTICE", "grafo__controller_8h.html#a5bd3ab36b2f66b28b492874604932076a6352e7a2495eca1eae6065644a5487a0", null ],
+      [ "GRAFO_PASO_ARISTA", "grafo__controller_8h.html#a5bd3ab36b2f66b28b492874604932076ad166ddb65daf1b524c27a0c29fac3e20", null ]
+    ] ],
+    [ "grafo_controller_actualizar", "grafo__controller_8h.html#af6926320df4e68de0d9fa618f7de3936", null ],
+    [ "grafo_controller_actualizar_area", "grafo__controller_8h.html#a343dc10649bcfe9347f524a44be1989a", null ],
+    [ "grafo_controller_agregar_arista", "grafo__controller_8h.html#a895fca2ce006688c90b6bf159c785ca6", null ],
+    [ "grafo_controller_agregar_vertice", "grafo__controller_8h.html#a3309892ad9a0b3647a257f046a92c6be", null ],
+    [ "grafo_controller_cambiar_velocidad", "grafo__controller_8h.html#a8e1d26a852d50dbbb2d419f8303eff19", null ],
+    [ "grafo_controller_crear", "grafo__controller_8h.html#ace5cff3ac5c8a3250f16943306a43711", null ],
+    [ "grafo_controller_destruir", "grafo__controller_8h.html#a95582e02ac129c10f63c8912eb630eba", null ],
+    [ "grafo_controller_dibujar", "grafo__controller_8h.html#a0e5e5feee0a32ab35aa4f41466a6241f", null ],
+    [ "grafo_controller_eliminar_arista", "grafo__controller_8h.html#a597f682326d6fae84812398a865bd5d0", null ],
+    [ "grafo_controller_eliminar_vertice", "grafo__controller_8h.html#a647f0095340ab3574f5dfaf75e8a9732", null ],
+    [ "grafo_controller_establecer_modo", "grafo__controller_8h.html#a690b5c902c4511345b9011089144a8ed", null ],
+    [ "grafo_controller_iniciar_algoritmo", "grafo__controller_8h.html#af3661f9dde8a827b61ad7551c9c2f537", null ],
+    [ "grafo_controller_ir_final", "grafo__controller_8h.html#a697bf3dbaee1fd07afe8a7292be9e00d", null ],
+    [ "grafo_controller_ir_inicio", "grafo__controller_8h.html#a93f2e18eec9968b4be0de81ac38b92c4", null ],
+    [ "grafo_controller_limpiar", "grafo__controller_8h.html#a202608644840ff878912aeb1c9a04d4a", null ],
+    [ "grafo_controller_obtener_error", "grafo__controller_8h.html#abd97c68d2c40ecb1f56d55f6e849718c", null ],
+    [ "grafo_controller_paso_anterior", "grafo__controller_8h.html#ab071532eded8feee8c69b39e30e215d1", null ],
+    [ "grafo_controller_paso_siguiente", "grafo__controller_8h.html#af82b36e5295ab2ad0a72c53b6c914d33", null ],
+    [ "grafo_controller_pausar", "grafo__controller_8h.html#a7b5faa64a0fff515b3e73ab5efa3a8d2", null ],
+    [ "grafo_controller_procesar_mouse", "grafo__controller_8h.html#a8b762fd3a3ef966b5d580afc9871ff56", null ],
+    [ "grafo_controller_reanudar", "grafo__controller_8h.html#a4cbb41cfbdfdce017823ee3d38874a2f", null ],
+    [ "grafo_controller_reiniciar", "grafo__controller_8h.html#a784f0a7b7b964e19f3415e3fdf1a5a11", null ],
+    [ "grafo_controller_seleccionar_algoritmo", "grafo__controller_8h.html#aa14b561241e2e5c04877dbf9e441226d", null ],
+    [ "grafo_controller_tipo_paso_cadena", "grafo__controller_8h.html#ac37498e8966457bc9ac49d4da0f28a35", null ],
+    [ "grafo_controller_toggle_autoplay", "grafo__controller_8h.html#a226686ac07ae1c408a511b184ee5e66e", null ]
+];

@@ -1,0 +1,1198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: Referencia del archivo grafo_controller.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('grafo__controller_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia del archivo grafo_controller.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Implementación del controlador del grafo.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="grafo__controller_8h_source.html">grafo_controller.h</a>&quot;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+</div>
+<p><a href="grafo__controller_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:af6926320df4e68de0d9fa618f7de3936" id="r_af6926320df4e68de0d9fa618f7de3936"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af6926320df4e68de0d9fa618f7de3936">grafo_controller_actualizar</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller, float delta_time)</td></tr>
+<tr class="memitem:a343dc10649bcfe9347f524a44be1989a" id="r_a343dc10649bcfe9347f524a44be1989a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a343dc10649bcfe9347f524a44be1989a">grafo_controller_actualizar_area</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller, Rectangle nueva_area)</td></tr>
+<tr class="memdesc:a343dc10649bcfe9347f524a44be1989a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualiza área de renderizado (para redimensionamiento).  <br /></td></tr>
+<tr class="memitem:a895fca2ce006688c90b6bf159c785ca6" id="r_a895fca2ce006688c90b6bf159c785ca6"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a895fca2ce006688c90b6bf159c785ca6">grafo_controller_agregar_arista</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller, int id_origen, int id_destino, int peso)</td></tr>
+<tr class="memdesc:a895fca2ce006688c90b6bf159c785ca6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega una arista entre dos vértices.  <br /></td></tr>
+<tr class="memitem:a3309892ad9a0b3647a257f046a92c6be" id="r_a3309892ad9a0b3647a257f046a92c6be"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a3309892ad9a0b3647a257f046a92c6be">grafo_controller_agregar_vertice</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller, int id_vertice)</td></tr>
+<tr class="memdesc:a3309892ad9a0b3647a257f046a92c6be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega un vértice al grafo.  <br /></td></tr>
+<tr class="memitem:aa53a9b0f07e1efbb9267bed36a64a9ef" id="r_aa53a9b0f07e1efbb9267bed36a64a9ef"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#aa53a9b0f07e1efbb9267bed36a64a9ef">grafo_controller_aplicar_visual_paso</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller)</td></tr>
+<tr class="memdesc:aa53a9b0f07e1efbb9267bed36a64a9ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aplica resaltado visual según el paso actual del algoritmo.  <br /></td></tr>
+<tr class="memitem:a8e1d26a852d50dbbb2d419f8303eff19" id="r_a8e1d26a852d50dbbb2d419f8303eff19"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a8e1d26a852d50dbbb2d419f8303eff19">grafo_controller_cambiar_velocidad</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller)</td></tr>
+<tr class="memitem:a7a916127889ef0673c777c75aff2b177" id="r_a7a916127889ef0673c777c75aff2b177"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a7a916127889ef0673c777c75aff2b177">grafo_controller_construir_script</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller)</td></tr>
+<tr class="memdesc:a7a916127889ef0673c777c75aff2b177"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carga la secuencia real de pasos según algoritmo seleccionado.  <br /></td></tr>
+<tr class="memitem:ace5cff3ac5c8a3250f16943306a43711" id="r_ace5cff3ac5c8a3250f16943306a43711"><td class="memItemLeft"><a class="el" href="struct_grafo_controller.html">GrafoController</a>&#160;</td><td class="memItemRight"><a class="el" href="#ace5cff3ac5c8a3250f16943306a43711">grafo_controller_crear</a> (Grafo *grafo, Rectangle area_renderizado)</td></tr>
+<tr class="memdesc:ace5cff3ac5c8a3250f16943306a43711"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un nuevo controlador.  <br /></td></tr>
+<tr class="memitem:a95582e02ac129c10f63c8912eb630eba" id="r_a95582e02ac129c10f63c8912eb630eba"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a95582e02ac129c10f63c8912eb630eba">grafo_controller_destruir</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller)</td></tr>
+<tr class="memdesc:a95582e02ac129c10f63c8912eb630eba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destruye un controlador.  <br /></td></tr>
+<tr class="memitem:a0e5e5feee0a32ab35aa4f41466a6241f" id="r_a0e5e5feee0a32ab35aa4f41466a6241f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0e5e5feee0a32ab35aa4f41466a6241f">grafo_controller_dibujar</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller)</td></tr>
+<tr class="memdesc:a0e5e5feee0a32ab35aa4f41466a6241f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja el grafo en pantalla.  <br /></td></tr>
+<tr class="memitem:a597f682326d6fae84812398a865bd5d0" id="r_a597f682326d6fae84812398a865bd5d0"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a597f682326d6fae84812398a865bd5d0">grafo_controller_eliminar_arista</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller, int id_origen, int id_destino)</td></tr>
+<tr class="memdesc:a597f682326d6fae84812398a865bd5d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elimina una arista entre dos vértices.  <br /></td></tr>
+<tr class="memitem:a647f0095340ab3574f5dfaf75e8a9732" id="r_a647f0095340ab3574f5dfaf75e8a9732"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a647f0095340ab3574f5dfaf75e8a9732">grafo_controller_eliminar_vertice</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller, int id_vertice)</td></tr>
+<tr class="memdesc:a647f0095340ab3574f5dfaf75e8a9732"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elimina un vértice del grafo.  <br /></td></tr>
+<tr class="memitem:a690b5c902c4511345b9011089144a8ed" id="r_a690b5c902c4511345b9011089144a8ed"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a690b5c902c4511345b9011089144a8ed">grafo_controller_establecer_modo</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller, <a class="el" href="grafo__controller_8h.html#aafec9f4462aeb21a234c635bf0fcf7b9">GrafoControllerModo</a> nuevo_modo)</td></tr>
+<tr class="memdesc:a690b5c902c4511345b9011089144a8ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establece modo de operación.  <br /></td></tr>
+<tr class="memitem:a5e5b56a2cf11c375112ea29cf7a5b148" id="r_a5e5b56a2cf11c375112ea29cf7a5b148"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a5e5b56a2cf11c375112ea29cf7a5b148">grafo_controller_idx_vertice</a> (const <a class="el" href="struct_grafo_state.html">GrafoState</a> *estado, int id)</td></tr>
+<tr class="memdesc:a5e5b56a2cf11c375112ea29cf7a5b148"><td class="mdescLeft">&#160;</td><td class="mdescRight">Busca el índice de un vértice visual por id.  <br /></td></tr>
+<tr class="memitem:af3661f9dde8a827b61ad7551c9c2f537" id="r_af3661f9dde8a827b61ad7551c9c2f537"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#af3661f9dde8a827b61ad7551c9c2f537">grafo_controller_iniciar_algoritmo</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller)</td></tr>
+<tr class="memdesc:af3661f9dde8a827b61ad7551c9c2f537"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicia la ejecución de un algoritmo.  <br /></td></tr>
+<tr class="memitem:a697bf3dbaee1fd07afe8a7292be9e00d" id="r_a697bf3dbaee1fd07afe8a7292be9e00d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a697bf3dbaee1fd07afe8a7292be9e00d">grafo_controller_ir_final</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller)</td></tr>
+<tr class="memitem:a93f2e18eec9968b4be0de81ac38b92c4" id="r_a93f2e18eec9968b4be0de81ac38b92c4"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a93f2e18eec9968b4be0de81ac38b92c4">grafo_controller_ir_inicio</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller)</td></tr>
+<tr class="memitem:a202608644840ff878912aeb1c9a04d4a" id="r_a202608644840ff878912aeb1c9a04d4a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a202608644840ff878912aeb1c9a04d4a">grafo_controller_limpiar</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller)</td></tr>
+<tr class="memdesc:a202608644840ff878912aeb1c9a04d4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limpia el grafo (elimina todos los vértices y aristas).  <br /></td></tr>
+<tr class="memitem:a8a560298e981d39056629ef12180554c" id="r_a8a560298e981d39056629ef12180554c"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a8a560298e981d39056629ef12180554c">grafo_controller_limpiar_script</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller)</td></tr>
+<tr class="memdesc:a8a560298e981d39056629ef12180554c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limpia buffers internos de secuencia de pasos.  <br /></td></tr>
+<tr class="memitem:abd97c68d2c40ecb1f56d55f6e849718c" id="r_abd97c68d2c40ecb1f56d55f6e849718c"><td class="memItemLeft">const char *&#160;</td><td class="memItemRight"><a class="el" href="#abd97c68d2c40ecb1f56d55f6e849718c">grafo_controller_obtener_error</a> (const <a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller)</td></tr>
+<tr class="memdesc:abd97c68d2c40ecb1f56d55f6e849718c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene mensaje de error del último error.  <br /></td></tr>
+<tr class="memitem:ab071532eded8feee8c69b39e30e215d1" id="r_ab071532eded8feee8c69b39e30e215d1"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ab071532eded8feee8c69b39e30e215d1">grafo_controller_paso_anterior</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller)</td></tr>
+<tr class="memdesc:ab071532eded8feee8c69b39e30e215d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrocede un paso en la ejecución del algoritmo.  <br /></td></tr>
+<tr class="memitem:af82b36e5295ab2ad0a72c53b6c914d33" id="r_af82b36e5295ab2ad0a72c53b6c914d33"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#af82b36e5295ab2ad0a72c53b6c914d33">grafo_controller_paso_siguiente</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller)</td></tr>
+<tr class="memdesc:af82b36e5295ab2ad0a72c53b6c914d33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Avanza un paso en la ejecución del algoritmo.  <br /></td></tr>
+<tr class="memitem:a7b5faa64a0fff515b3e73ab5efa3a8d2" id="r_a7b5faa64a0fff515b3e73ab5efa3a8d2"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a7b5faa64a0fff515b3e73ab5efa3a8d2">grafo_controller_pausar</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller)</td></tr>
+<tr class="memdesc:a7b5faa64a0fff515b3e73ab5efa3a8d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pausa la ejecución del algoritmo.  <br /></td></tr>
+<tr class="memitem:a8b762fd3a3ef966b5d580afc9871ff56" id="r_a8b762fd3a3ef966b5d580afc9871ff56"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a8b762fd3a3ef966b5d580afc9871ff56">grafo_controller_procesar_mouse</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller, Vector2 mouse_pos, bool boton_pulsado)</td></tr>
+<tr class="memdesc:a8b762fd3a3ef966b5d580afc9871ff56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procesa entrada del mouse (clic sobre vértices).  <br /></td></tr>
+<tr class="memitem:a4cbb41cfbdfdce017823ee3d38874a2f" id="r_a4cbb41cfbdfdce017823ee3d38874a2f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a4cbb41cfbdfdce017823ee3d38874a2f">grafo_controller_reanudar</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller)</td></tr>
+<tr class="memdesc:a4cbb41cfbdfdce017823ee3d38874a2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reanuda la ejecución del algoritmo.  <br /></td></tr>
+<tr class="memitem:a784f0a7b7b964e19f3415e3fdf1a5a11" id="r_a784f0a7b7b964e19f3415e3fdf1a5a11"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a784f0a7b7b964e19f3415e3fdf1a5a11">grafo_controller_reiniciar</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller)</td></tr>
+<tr class="memdesc:a784f0a7b7b964e19f3415e3fdf1a5a11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detiene y reinicia el algoritmo.  <br /></td></tr>
+<tr class="memitem:aa14b561241e2e5c04877dbf9e441226d" id="r_aa14b561241e2e5c04877dbf9e441226d"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aa14b561241e2e5c04877dbf9e441226d">grafo_controller_seleccionar_algoritmo</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller, int codigo_algoritmo, int id_inicio, int id_destino)</td></tr>
+<tr class="memdesc:aa14b561241e2e5c04877dbf9e441226d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Selecciona un algoritmo para ejecutar.  <br /></td></tr>
+<tr class="memitem:a2516e3d3896a5d271ce4e7928f5f15ef" id="r_a2516e3d3896a5d271ce4e7928f5f15ef"><td class="memItemLeft">static <a class="el" href="grafo__controller_8h.html#a5bd3ab36b2f66b28b492874604932076">GrafoPasoTipo</a>&#160;</td><td class="memItemRight"><a class="el" href="#a2516e3d3896a5d271ce4e7928f5f15ef">grafo_controller_tipo_paso</a> (const <a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller, int paso)</td></tr>
+<tr class="memitem:ac37498e8966457bc9ac49d4da0f28a35" id="r_ac37498e8966457bc9ac49d4da0f28a35"><td class="memItemLeft">const char *&#160;</td><td class="memItemRight"><a class="el" href="#ac37498e8966457bc9ac49d4da0f28a35">grafo_controller_tipo_paso_cadena</a> (const <a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller)</td></tr>
+<tr class="memitem:a226686ac07ae1c408a511b184ee5e66e" id="r_a226686ac07ae1c408a511b184ee5e66e"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a226686ac07ae1c408a511b184ee5e66e">grafo_controller_toggle_autoplay</a> (<a class="el" href="struct_grafo_controller.html">GrafoController</a> *controller)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:af082d8f629853fda0de453af21f58298" id="r_af082d8f629853fda0de453af21f58298"><td class="memItemLeft">static const float&#160;</td><td class="memItemRight"><a class="el" href="#af082d8f629853fda0de453af21f58298">GRAFO_AUTOPLAY_INTERVALOS</a> [] = {1.2f, 0.7f, 0.35f}</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Implementación del controlador del grafo. </p>
+
+<p class="definition">Definición en el archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
+<a id="af6926320df4e68de0d9fa618f7de3936" name="af6926320df4e68de0d9fa618f7de3936"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6926320df4e68de0d9fa618f7de3936">&#9670;&#160;</a></span>grafo_controller_actualizar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_controller_actualizar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>delta_time</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00511">511</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00056">GrafoController::autoplay_activo</a>, <a class="el" href="grafo__controller_8h_source.html#l00058">GrafoController::autoplay_acumulado</a>, <a class="el" href="grafo__controller_8h_source.html#l00057">GrafoController::autoplay_intervalo</a>, <a class="el" href="grafo__controller_8c_source.html#l00431">grafo_controller_paso_siguiente()</a> y <a class="el" href="grafo__controller_8h_source.html#l00055">GrafoController::total_pasos</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
+
+</div>
+</div>
+<a id="a343dc10649bcfe9347f524a44be1989a" name="a343dc10649bcfe9347f524a44be1989a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a343dc10649bcfe9347f524a44be1989a">&#9670;&#160;</a></span>grafo_controller_actualizar_area()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_controller_actualizar_area </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Rectangle</td>          <td class="paramname"><span class="paramname"><em>nueva_area</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Actualiza área de renderizado (para redimensionamiento). </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Puntero al controlador </td></tr>
+    <tr><td class="paramname">nueva_area</td><td>Nuevo área </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00561">561</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__view_8c_source.html#l00362">grafo_vista_actualizar_area()</a> y <a class="el" href="grafo__controller_8h_source.html#l00046">GrafoController::vista</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01250">draw_active_view()</a>.</p>
+
+</div>
+</div>
+<a id="a895fca2ce006688c90b6bf159c785ca6" name="a895fca2ce006688c90b6bf159c785ca6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a895fca2ce006688c90b6bf159c785ca6">&#9670;&#160;</a></span>grafo_controller_agregar_arista()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool grafo_controller_agregar_arista </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id_origen</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id_destino</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>peso</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega una arista entre dos vértices. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Puntero al controlador </td></tr>
+    <tr><td class="paramname">id_origen</td><td>ID del vértice origen </td></tr>
+    <tr><td class="paramname">id_destino</td><td>ID del vértice destino </td></tr>
+    <tr><td class="paramname">peso</td><td>Peso de la arista </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si se agregó exitosamente </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00351">351</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo_8c_source.html#l01113">grafo_estado_cadena()</a>, <a class="el" href="grafo_8c_source.html#l00228">grafo_insertar_arista()</a>, <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>, <a class="el" href="grafo__controller_8h_source.html#l00044">GrafoController::grafo_tad</a> y <a class="el" href="grafo__controller_8h_source.html#l00071">GrafoController::mensaje_error</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00084">app_state_grafo_insertar_demo()</a> y <a class="el" href="app__state_8c_source.html#l00686">app_state_operacion_grafo_insertar_arista()</a>.</p>
+
+</div>
+</div>
+<a id="a3309892ad9a0b3647a257f046a92c6be" name="a3309892ad9a0b3647a257f046a92c6be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3309892ad9a0b3647a257f046a92c6be">&#9670;&#160;</a></span>grafo_controller_agregar_vertice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool grafo_controller_agregar_vertice </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id_vertice</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega un vértice al grafo. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Puntero al controlador </td></tr>
+    <tr><td class="paramname">id_vertice</td><td>ID del nuevo vértice </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si se agregó exitosamente </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00325">325</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo_8c_source.html#l01113">grafo_estado_cadena()</a>, <a class="el" href="grafo_8c_source.html#l00209">grafo_insertar_vertice()</a>, <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>, <a class="el" href="grafo__controller_8h_source.html#l00044">GrafoController::grafo_tad</a> y <a class="el" href="grafo__controller_8h_source.html#l00071">GrafoController::mensaje_error</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00084">app_state_grafo_insertar_demo()</a> y <a class="el" href="app__state_8c_source.html#l00405">app_state_operacion_insertar()</a>.</p>
+
+</div>
+</div>
+<a id="aa53a9b0f07e1efbb9267bed36a64a9ef" name="aa53a9b0f07e1efbb9267bed36a64a9ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa53a9b0f07e1efbb9267bed36a64a9ef">&#9670;&#160;</a></span>grafo_controller_aplicar_visual_paso()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_controller_aplicar_visual_paso </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aplica resaltado visual según el paso actual del algoritmo. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00138">138</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__state_8h_source.html#l00098">GrafoState::algoritmo_activo</a>, <a class="el" href="grafo__controller_8h_source.html#l00049">GrafoController::algoritmo_seleccionado</a>, <a class="el" href="grafo__controller_8h_source.html#l00064">GrafoController::arista_actual_destino</a>, <a class="el" href="grafo__controller_8h_source.html#l00063">GrafoController::arista_actual_origen</a>, <a class="el" href="grafo__controller_8h_source.html#l00062">GrafoController::arista_actual_valida</a>, <a class="el" href="grafo__state_8h_source.html#l00092">GrafoState::cantidad_vertices</a>, <a class="el" href="grafo_8h_source.html#l00062">GrafoArista::destino</a>, <a class="el" href="grafo__state_8h_source.html#l00062">GrafoVerticeVisual::distancia</a>, <a class="el" href="grafo__state_8h_source.html#l00060">GrafoVerticeVisual::estado</a>, <a class="el" href="grafo__controller_8h_source.html#l00045">GrafoController::estado_visual</a>, <a class="el" href="grafo__state_8h_source.html#l00114">GRAFO_ALGO_BELLMAN_FORD</a>, <a class="el" href="grafo__state_8h_source.html#l00111">GRAFO_ALGO_BFS</a>, <a class="el" href="grafo__state_8h_source.html#l00112">GRAFO_ALGO_DFS</a>, <a class="el" href="grafo__state_8h_source.html#l00113">GRAFO_ALGO_DIJKSTRA</a>, <a class="el" href="grafo__state_8h_source.html#l00116">GRAFO_ALGO_KRUSKAL</a>, <a class="el" href="grafo__state_8h_source.html#l00110">GRAFO_ALGO_NINGUNO</a>, <a class="el" href="grafo__state_8h_source.html#l00115">GRAFO_ALGO_PRIM</a>, <a class="el" href="grafo__state_8h_source.html#l00040">GRAFO_ARISTA_CAMINO_MINIMO</a>, <a class="el" href="grafo__state_8h_source.html#l00041">GRAFO_ARISTA_MST</a>, <a class="el" href="grafo__state_8h_source.html#l00039">GRAFO_ARISTA_RELAJADA</a>, <a class="el" href="grafo__controller_8c_source.html#l00123">grafo_controller_idx_vertice()</a>, <a class="el" href="grafo__controller_8c_source.html#l00013">grafo_controller_tipo_paso()</a>, <a class="el" href="grafo__controller_8c_source.html#l00566">grafo_controller_tipo_paso_cadena()</a>, <a class="el" href="grafo__state_8c_source.html#l00079">grafo_state_actualizar_distancia_vertice()</a>, <a class="el" href="grafo__state_8c_source.html#l00093">grafo_state_establecer_arista_estado()</a>, <a class="el" href="grafo__state_8c_source.html#l00066">grafo_state_establecer_vertice_estado()</a>, <a class="el" href="grafo__state_8c_source.html#l00053">grafo_state_marcar_vertice_visitado()</a>, <a class="el" href="grafo__state_8c_source.html#l00106">grafo_state_reiniciar_visuales()</a>, <a class="el" href="grafo__state_8h_source.html#l00030">GRAFO_VÉRTICE_ACTUAL</a>, <a class="el" href="grafo__state_8h_source.html#l00029">GRAFO_VÉRTICE_DESTINO</a>, <a class="el" href="grafo__state_8h_source.html#l00028">GRAFO_VÉRTICE_INICIAL</a>, <a class="el" href="grafo__state_8h_source.html#l00102">GrafoState::mensaje_estado</a>, <a class="el" href="grafo_8h_source.html#l00061">GrafoArista::origen</a>, <a class="el" href="grafo__controller_8h_source.html#l00054">GrafoController::paso_actual</a>, <a class="el" href="grafo__state_8h_source.html#l00099">GrafoState::paso_algoritmo</a>, <a class="el" href="grafo__controller_8h_source.html#l00061">GrafoController::paso_mejora</a>, <a class="el" href="grafo__controller_8h_source.html#l00060">GrafoController::paso_tipo_actual</a>, <a class="el" href="grafo_8h_source.html#l00063">GrafoArista::peso</a>, <a class="el" href="grafo__controller_8h_source.html#l00068">GrafoController::script_aristas</a>, <a class="el" href="grafo__controller_8h_source.html#l00069">GrafoController::script_aristas_count</a>, <a class="el" href="grafo__controller_8h_source.html#l00066">GrafoController::script_vertices</a>, <a class="el" href="grafo__controller_8h_source.html#l00067">GrafoController::script_vertices_count</a>, <a class="el" href="grafo__controller_8h_source.html#l00055">GrafoController::total_pasos</a>, <a class="el" href="grafo__state_8h_source.html#l00100">GrafoState::total_pasos</a>, <a class="el" href="grafo__controller_8h_source.html#l00051">GrafoController::vertice_destino</a>, <a class="el" href="grafo__controller_8h_source.html#l00050">GrafoController::vertice_inicio</a> y <a class="el" href="grafo__state_8h_source.html#l00091">GrafoState::vertices</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="grafo__controller_8c_source.html#l00414">grafo_controller_iniciar_algoritmo()</a>, <a class="el" href="grafo__controller_8c_source.html#l00486">grafo_controller_ir_final()</a>, <a class="el" href="grafo__controller_8c_source.html#l00450">grafo_controller_paso_anterior()</a>, <a class="el" href="grafo__controller_8c_source.html#l00431">grafo_controller_paso_siguiente()</a> y <a class="el" href="grafo__controller_8c_source.html#l00473">grafo_controller_reiniciar()</a>.</p>
+
+</div>
+</div>
+<a id="a8e1d26a852d50dbbb2d419f8303eff19" name="a8e1d26a852d50dbbb2d419f8303eff19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e1d26a852d50dbbb2d419f8303eff19">&#9670;&#160;</a></span>grafo_controller_cambiar_velocidad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_controller_cambiar_velocidad </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00504">504</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00057">GrafoController::autoplay_intervalo</a>, <a class="el" href="grafo__controller_8h_source.html#l00059">GrafoController::autoplay_velocidad_idx</a> y <a class="el" href="grafo__controller_8c_source.html#l00011">GRAFO_AUTOPLAY_INTERVALOS</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01303">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01510">handle_keyboard()</a>.</p>
+
+</div>
+</div>
+<a id="a7a916127889ef0673c777c75aff2b177" name="a7a916127889ef0673c777c75aff2b177"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a916127889ef0673c777c75aff2b177">&#9670;&#160;</a></span>grafo_controller_construir_script()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_controller_construir_script </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Carga la secuencia real de pasos según algoritmo seleccionado. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00036">36</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00049">GrafoController::algoritmo_seleccionado</a>, <a class="el" href="grafo_8h_source.html#l00084">GrafoCamino::aristas</a>, <a class="el" href="grafo_8h_source.html#l00085">GrafoCamino::cantidad</a>, <a class="el" href="grafo_8h_source.html#l00073">GrafoRecorrido::cantidad</a>, <a class="el" href="grafo_8h_source.html#l00062">GrafoArista::destino</a>, <a class="el" href="grafo_8h_source.html#l00088">GrafoCamino::estado</a>, <a class="el" href="grafo_8h_source.html#l00074">GrafoRecorrido::estado</a>, <a class="el" href="grafo_8h_source.html#l00087">GrafoCamino::existe</a>, <a class="el" href="grafo__state_8h_source.html#l00114">GRAFO_ALGO_BELLMAN_FORD</a>, <a class="el" href="grafo__state_8h_source.html#l00111">GRAFO_ALGO_BFS</a>, <a class="el" href="grafo__state_8h_source.html#l00112">GRAFO_ALGO_DFS</a>, <a class="el" href="grafo__state_8h_source.html#l00113">GRAFO_ALGO_DIJKSTRA</a>, <a class="el" href="grafo__state_8h_source.html#l00116">GRAFO_ALGO_KRUSKAL</a>, <a class="el" href="grafo__state_8h_source.html#l00115">GRAFO_ALGO_PRIM</a>, <a class="el" href="grafo_8c_source.html#l00796">grafo_bellman_ford()</a>, <a class="el" href="grafo_8c_source.html#l00555">grafo_bfs()</a>, <a class="el" href="grafo__controller_8c_source.html#l00027">grafo_controller_limpiar_script()</a>, <a class="el" href="grafo_8c_source.html#l00614">grafo_dfs()</a>, <a class="el" href="grafo_8c_source.html#l00673">grafo_dijkstra()</a>, <a class="el" href="grafo_8c_source.html#l01012">grafo_kruskal()</a>, <a class="el" href="grafo_8c_source.html#l01099">grafo_liberar_camino()</a>, <a class="el" href="grafo_8c_source.html#l01087">grafo_liberar_recorrido()</a>, <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>, <a class="el" href="grafo_8c_source.html#l00912">grafo_prim()</a>, <a class="el" href="grafo__controller_8h_source.html#l00044">GrafoController::grafo_tad</a>, <a class="el" href="grafo_8h_source.html#l00061">GrafoArista::origen</a>, <a class="el" href="grafo__controller_8h_source.html#l00068">GrafoController::script_aristas</a>, <a class="el" href="grafo__controller_8h_source.html#l00069">GrafoController::script_aristas_count</a>, <a class="el" href="grafo__controller_8h_source.html#l00066">GrafoController::script_vertices</a>, <a class="el" href="grafo__controller_8h_source.html#l00067">GrafoController::script_vertices_count</a>, <a class="el" href="grafo__controller_8h_source.html#l00055">GrafoController::total_pasos</a>, <a class="el" href="grafo__controller_8h_source.html#l00051">GrafoController::vertice_destino</a>, <a class="el" href="grafo__controller_8h_source.html#l00050">GrafoController::vertice_inicio</a> y <a class="el" href="grafo_8h_source.html#l00072">GrafoRecorrido::vertices</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="grafo__controller_8c_source.html#l00414">grafo_controller_iniciar_algoritmo()</a>.</p>
+
+</div>
+</div>
+<a id="ace5cff3ac5c8a3250f16943306a43711" name="ace5cff3ac5c8a3250f16943306a43711"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace5cff3ac5c8a3250f16943306a43711">&#9670;&#160;</a></span>grafo_controller_crear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_grafo_controller.html">GrafoController</a> grafo_controller_crear </td>
+          <td>(</td>
+          <td class="paramtype">Grafo *</td>          <td class="paramname"><span class="paramname"><em>grafo</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Rectangle</td>          <td class="paramname"><span class="paramname"><em>area_renderizado</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crea un nuevo controlador. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">grafo</td><td>Puntero al TAD <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a> (debe existir previamente) </td></tr>
+    <tr><td class="paramname">area_renderizado</td><td>Área en pantalla para renderizar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Estructura <a class="el" href="struct_grafo_controller.html" title="Contexto completo del controlador.">GrafoController</a> inicializada </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00285">285</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00049">GrafoController::algoritmo_seleccionado</a>, <a class="el" href="grafo__controller_8h_source.html#l00064">GrafoController::arista_actual_destino</a>, <a class="el" href="grafo__controller_8h_source.html#l00063">GrafoController::arista_actual_origen</a>, <a class="el" href="grafo__controller_8h_source.html#l00062">GrafoController::arista_actual_valida</a>, <a class="el" href="grafo__controller_8h_source.html#l00056">GrafoController::autoplay_activo</a>, <a class="el" href="grafo__controller_8h_source.html#l00058">GrafoController::autoplay_acumulado</a>, <a class="el" href="grafo__controller_8h_source.html#l00057">GrafoController::autoplay_intervalo</a>, <a class="el" href="grafo__controller_8h_source.html#l00059">GrafoController::autoplay_velocidad_idx</a>, <a class="el" href="grafo__controller_8h_source.html#l00053">GrafoController::esta_ejecutando</a>, <a class="el" href="grafo__controller_8h_source.html#l00045">GrafoController::estado_visual</a>, <a class="el" href="grafo__state_8h_source.html#l00110">GRAFO_ALGO_NINGUNO</a>, <a class="el" href="grafo__controller_8c_source.html#l00011">GRAFO_AUTOPLAY_INTERVALOS</a>, <a class="el" href="grafo__controller_8h_source.html#l00027">GRAFO_MODO_EDICION</a>, <a class="el" href="grafo__controller_8h_source.html#l00034">GRAFO_PASO_CONSOLIDACION</a>, <a class="el" href="grafo__state_8c_source.html#l00014">grafo_state_init()</a>, <a class="el" href="grafo__controller_8h_source.html#l00044">GrafoController::grafo_tad</a>, <a class="el" href="grafo__view_8c_source.html#l00056">grafo_vista_init()</a>, <a class="el" href="grafo__controller_8h_source.html#l00071">GrafoController::mensaje_error</a>, <a class="el" href="grafo__controller_8h_source.html#l00048">GrafoController::modo</a>, <a class="el" href="grafo__controller_8h_source.html#l00054">GrafoController::paso_actual</a>, <a class="el" href="grafo__controller_8h_source.html#l00061">GrafoController::paso_mejora</a>, <a class="el" href="grafo__controller_8h_source.html#l00060">GrafoController::paso_tipo_actual</a>, <a class="el" href="grafo__controller_8h_source.html#l00069">GrafoController::script_aristas_count</a>, <a class="el" href="grafo__controller_8h_source.html#l00067">GrafoController::script_vertices_count</a>, <a class="el" href="grafo__controller_8h_source.html#l00055">GrafoController::total_pasos</a>, <a class="el" href="grafo__controller_8h_source.html#l00051">GrafoController::vertice_destino</a>, <a class="el" href="grafo__controller_8h_source.html#l00050">GrafoController::vertice_inicio</a> y <a class="el" href="grafo__controller_8h_source.html#l00046">GrafoController::vista</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00205">app_state_init()</a>, <a class="el" href="app__state_8c_source.html#l00343">app_state_operacion_inicializar()</a>, <a class="el" href="app__state_8c_source.html#l01101">app_state_operacion_vaciar()</a> y <a class="el" href="app__state_8c_source.html#l00037">app_state_recrear_grafo()</a>.</p>
+
+</div>
+</div>
+<a id="a95582e02ac129c10f63c8912eb630eba" name="a95582e02ac129c10f63c8912eb630eba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95582e02ac129c10f63c8912eb630eba">&#9670;&#160;</a></span>grafo_controller_destruir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_controller_destruir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destruye un controlador. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Puntero al controlador a destruir </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00315">315</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00045">GrafoController::estado_visual</a> y <a class="el" href="grafo__state_8c_source.html#l00044">grafo_state_destruir()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00343">app_state_operacion_inicializar()</a>, <a class="el" href="app__state_8c_source.html#l01101">app_state_operacion_vaciar()</a>, <a class="el" href="app__state_8c_source.html#l00037">app_state_recrear_grafo()</a> y <a class="el" href="app__state_8c_source.html#l00244">app_state_shutdown()</a>.</p>
+
+</div>
+</div>
+<a id="a0e5e5feee0a32ab35aa4f41466a6241f" name="a0e5e5feee0a32ab35aa4f41466a6241f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e5e5feee0a32ab35aa4f41466a6241f">&#9670;&#160;</a></span>grafo_controller_dibujar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_controller_dibujar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dibuja el grafo en pantalla. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Puntero al controlador </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00556">556</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__view_8c_source.html#l00346">grafo_vista_dibujar()</a> y <a class="el" href="grafo__controller_8h_source.html#l00046">GrafoController::vista</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01250">draw_active_view()</a>.</p>
+
+</div>
+</div>
+<a id="a597f682326d6fae84812398a865bd5d0" name="a597f682326d6fae84812398a865bd5d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a597f682326d6fae84812398a865bd5d0">&#9670;&#160;</a></span>grafo_controller_eliminar_arista()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool grafo_controller_eliminar_arista </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id_origen</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id_destino</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Elimina una arista entre dos vértices. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Puntero al controlador </td></tr>
+    <tr><td class="paramname">id_origen</td><td>ID del vértice origen </td></tr>
+    <tr><td class="paramname">id_destino</td><td>ID del vértice destino </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si se eliminó exitosamente </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00366">366</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo_8c_source.html#l00294">grafo_eliminar_arista()</a>, <a class="el" href="grafo_8c_source.html#l01113">grafo_estado_cadena()</a>, <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>, <a class="el" href="grafo__controller_8h_source.html#l00044">GrafoController::grafo_tad</a> y <a class="el" href="grafo__controller_8h_source.html#l00071">GrafoController::mensaje_error</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00723">app_state_operacion_grafo_eliminar_arista()</a>.</p>
+
+</div>
+</div>
+<a id="a647f0095340ab3574f5dfaf75e8a9732" name="a647f0095340ab3574f5dfaf75e8a9732"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a647f0095340ab3574f5dfaf75e8a9732">&#9670;&#160;</a></span>grafo_controller_eliminar_vertice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool grafo_controller_eliminar_vertice </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id_vertice</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Elimina un vértice del grafo. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Puntero al controlador </td></tr>
+    <tr><td class="paramname">id_vertice</td><td>ID del vértice a eliminar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si se eliminó exitosamente </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00338">338</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo_8c_source.html#l00256">grafo_eliminar_vertice()</a>, <a class="el" href="grafo_8c_source.html#l01113">grafo_estado_cadena()</a>, <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>, <a class="el" href="grafo__controller_8h_source.html#l00044">GrafoController::grafo_tad</a> y <a class="el" href="grafo__controller_8h_source.html#l00071">GrafoController::mensaje_error</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00581">app_state_operacion_eliminar()</a>.</p>
+
+</div>
+</div>
+<a id="a690b5c902c4511345b9011089144a8ed" name="a690b5c902c4511345b9011089144a8ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a690b5c902c4511345b9011089144a8ed">&#9670;&#160;</a></span>grafo_controller_establecer_modo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_controller_establecer_modo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="grafo__controller_8h.html#aafec9f4462aeb21a234c635bf0fcf7b9">GrafoControllerModo</a></td>          <td class="paramname"><span class="paramname"><em>nuevo_modo</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Establece modo de operación. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Puntero al controlador </td></tr>
+    <tr><td class="paramname">nuevo_modo</td><td>Nuevo modo </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00542">542</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00048">GrafoController::modo</a>.</p>
+
+</div>
+</div>
+<a id="a5e5b56a2cf11c375112ea29cf7a5b148" name="a5e5b56a2cf11c375112ea29cf7a5b148"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e5b56a2cf11c375112ea29cf7a5b148">&#9670;&#160;</a></span>grafo_controller_idx_vertice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int grafo_controller_idx_vertice </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_grafo_state.html">GrafoState</a> *</td>          <td class="paramname"><span class="paramname"><em>estado</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Busca el índice de un vértice visual por id. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00123">123</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__state_8h_source.html#l00092">GrafoState::cantidad_vertices</a>, <a class="el" href="grafo__state_8h_source.html#l00057">GrafoVerticeVisual::id</a> y <a class="el" href="grafo__state_8h_source.html#l00091">GrafoState::vertices</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="grafo__controller_8c_source.html#l00138">grafo_controller_aplicar_visual_paso()</a>.</p>
+
+</div>
+</div>
+<a id="af3661f9dde8a827b61ad7551c9c2f537" name="af3661f9dde8a827b61ad7551c9c2f537"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3661f9dde8a827b61ad7551c9c2f537">&#9670;&#160;</a></span>grafo_controller_iniciar_algoritmo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool grafo_controller_iniciar_algoritmo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inicia la ejecución de un algoritmo. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Puntero al controlador </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si se inició exitosamente </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00414">414</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00049">GrafoController::algoritmo_seleccionado</a>, <a class="el" href="grafo__controller_8h_source.html#l00058">GrafoController::autoplay_acumulado</a>, <a class="el" href="grafo__controller_8h_source.html#l00053">GrafoController::esta_ejecutando</a>, <a class="el" href="grafo__state_8h_source.html#l00110">GRAFO_ALGO_NINGUNO</a>, <a class="el" href="grafo__controller_8c_source.html#l00138">grafo_controller_aplicar_visual_paso()</a>, <a class="el" href="grafo__controller_8c_source.html#l00036">grafo_controller_construir_script()</a>, <a class="el" href="grafo__controller_8h_source.html#l00028">GRAFO_MODO_ALGORITMO</a>, <a class="el" href="grafo__controller_8h_source.html#l00044">GrafoController::grafo_tad</a>, <a class="el" href="grafo__controller_8h_source.html#l00071">GrafoController::mensaje_error</a>, <a class="el" href="grafo__controller_8h_source.html#l00048">GrafoController::modo</a> y <a class="el" href="grafo__controller_8h_source.html#l00054">GrafoController::paso_actual</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00749">app_state_operacion_grafo_ejecutar_algoritmo()</a>.</p>
+
+</div>
+</div>
+<a id="a697bf3dbaee1fd07afe8a7292be9e00d" name="a697bf3dbaee1fd07afe8a7292be9e00d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a697bf3dbaee1fd07afe8a7292be9e00d">&#9670;&#160;</a></span>grafo_controller_ir_final()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_controller_ir_final </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00486">486</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00056">GrafoController::autoplay_activo</a>, <a class="el" href="grafo__controller_8h_source.html#l00053">GrafoController::esta_ejecutando</a>, <a class="el" href="grafo__controller_8c_source.html#l00138">grafo_controller_aplicar_visual_paso()</a>, <a class="el" href="grafo__controller_8h_source.html#l00054">GrafoController::paso_actual</a> y <a class="el" href="grafo__controller_8h_source.html#l00055">GrafoController::total_pasos</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01303">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01510">handle_keyboard()</a>.</p>
+
+</div>
+</div>
+<a id="a93f2e18eec9968b4be0de81ac38b92c4" name="a93f2e18eec9968b4be0de81ac38b92c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93f2e18eec9968b4be0de81ac38b92c4">&#9670;&#160;</a></span>grafo_controller_ir_inicio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_controller_ir_inicio </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00482">482</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8c_source.html#l00473">grafo_controller_reiniciar()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01303">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01510">handle_keyboard()</a>.</p>
+
+</div>
+</div>
+<a id="a202608644840ff878912aeb1c9a04d4a" name="a202608644840ff878912aeb1c9a04d4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a202608644840ff878912aeb1c9a04d4a">&#9670;&#160;</a></span>grafo_controller_limpiar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_controller_limpiar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Limpia el grafo (elimina todos los vértices y aristas). </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Puntero al controlador </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00381">381</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00045">GrafoController::estado_visual</a>, <a class="el" href="grafo_8c_source.html#l00172">grafo_crear()</a>, <a class="el" href="grafo_8c_source.html#l00183">grafo_destruir()</a>, <a class="el" href="grafo__state_8c_source.html#l00106">grafo_state_reiniciar_visuales()</a>, <a class="el" href="grafo__controller_8h_source.html#l00044">GrafoController::grafo_tad</a> y <a class="el" href="grafo__controller_8h_source.html#l00071">GrafoController::mensaje_error</a>.</p>
+
+</div>
+</div>
+<a id="a8a560298e981d39056629ef12180554c" name="a8a560298e981d39056629ef12180554c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a560298e981d39056629ef12180554c">&#9670;&#160;</a></span>grafo_controller_limpiar_script()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_controller_limpiar_script </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Limpia buffers internos de secuencia de pasos. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00027">27</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00069">GrafoController::script_aristas_count</a> y <a class="el" href="grafo__controller_8h_source.html#l00067">GrafoController::script_vertices_count</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="grafo__controller_8c_source.html#l00036">grafo_controller_construir_script()</a> y <a class="el" href="grafo__controller_8c_source.html#l00396">grafo_controller_seleccionar_algoritmo()</a>.</p>
+
+</div>
+</div>
+<a id="abd97c68d2c40ecb1f56d55f6e849718c" name="abd97c68d2c40ecb1f56d55f6e849718c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd97c68d2c40ecb1f56d55f6e849718c">&#9670;&#160;</a></span>grafo_controller_obtener_error()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * grafo_controller_obtener_error </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene mensaje de error del último error. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Puntero al controlador </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Puntero a cadena de error (stateless, no liberar) </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00551">551</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00071">GrafoController::mensaje_error</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00581">app_state_operacion_eliminar()</a>, <a class="el" href="app__state_8c_source.html#l00723">app_state_operacion_grafo_eliminar_arista()</a>, <a class="el" href="app__state_8c_source.html#l00686">app_state_operacion_grafo_insertar_arista()</a> y <a class="el" href="app__state_8c_source.html#l00405">app_state_operacion_insertar()</a>.</p>
+
+</div>
+</div>
+<a id="ab071532eded8feee8c69b39e30e215d1" name="ab071532eded8feee8c69b39e30e215d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab071532eded8feee8c69b39e30e215d1">&#9670;&#160;</a></span>grafo_controller_paso_anterior()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool grafo_controller_paso_anterior </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrocede un paso en la ejecución del algoritmo. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Puntero al controlador </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si retrocedió, false si está en inicio </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00450">450</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00053">GrafoController::esta_ejecutando</a>, <a class="el" href="grafo__controller_8h_source.html#l00045">GrafoController::estado_visual</a>, <a class="el" href="grafo__controller_8c_source.html#l00138">grafo_controller_aplicar_visual_paso()</a>, <a class="el" href="grafo__controller_8h_source.html#l00054">GrafoController::paso_actual</a> y <a class="el" href="grafo__state_8h_source.html#l00099">GrafoState::paso_algoritmo</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01303">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01510">handle_keyboard()</a>.</p>
+
+</div>
+</div>
+<a id="af82b36e5295ab2ad0a72c53b6c914d33" name="af82b36e5295ab2ad0a72c53b6c914d33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af82b36e5295ab2ad0a72c53b6c914d33">&#9670;&#160;</a></span>grafo_controller_paso_siguiente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool grafo_controller_paso_siguiente </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Avanza un paso en la ejecución del algoritmo. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Puntero al controlador </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si avanzó, false si ya terminó </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00431">431</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00053">GrafoController::esta_ejecutando</a>, <a class="el" href="grafo__controller_8h_source.html#l00045">GrafoController::estado_visual</a>, <a class="el" href="grafo__controller_8c_source.html#l00138">grafo_controller_aplicar_visual_paso()</a>, <a class="el" href="grafo__controller_8h_source.html#l00054">GrafoController::paso_actual</a>, <a class="el" href="grafo__state_8h_source.html#l00099">GrafoState::paso_algoritmo</a> y <a class="el" href="grafo__controller_8h_source.html#l00055">GrafoController::total_pasos</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01303">draw_context_controls()</a>, <a class="el" href="grafo__controller_8c_source.html#l00511">grafo_controller_actualizar()</a> y <a class="el" href="main_8c_source.html#l01510">handle_keyboard()</a>.</p>
+
+</div>
+</div>
+<a id="a7b5faa64a0fff515b3e73ab5efa3a8d2" name="a7b5faa64a0fff515b3e73ab5efa3a8d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b5faa64a0fff515b3e73ab5efa3a8d2">&#9670;&#160;</a></span>grafo_controller_pausar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_controller_pausar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pausa la ejecución del algoritmo. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Puntero al controlador </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00463">463</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00030">GRAFO_MODO_PAUSA</a> y <a class="el" href="grafo__controller_8h_source.html#l00048">GrafoController::modo</a>.</p>
+
+</div>
+</div>
+<a id="a8b762fd3a3ef966b5d580afc9871ff56" name="a8b762fd3a3ef966b5d580afc9871ff56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b762fd3a3ef966b5d580afc9871ff56">&#9670;&#160;</a></span>grafo_controller_procesar_mouse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_controller_procesar_mouse </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>mouse_pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>boton_pulsado</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Procesa entrada del mouse (clic sobre vértices). </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Puntero al controlador </td></tr>
+    <tr><td class="paramname">mouse_pos</td><td>Posición del mouse en pantalla </td></tr>
+    <tr><td class="paramname">boton_pulsado</td><td>true si botón izquierdo pulsado </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00529">529</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00045">GrafoController::estado_visual</a>, <a class="el" href="grafo__controller_8h_source.html#l00027">GRAFO_MODO_EDICION</a>, <a class="el" href="grafo__state_8c_source.html#l00066">grafo_state_establecer_vertice_estado()</a>, <a class="el" href="grafo__state_8h_source.html#l00030">GRAFO_VÉRTICE_ACTUAL</a>, <a class="el" href="grafo__view_8c_source.html#l00144">grafo_vista_detectar_vertice()</a>, <a class="el" href="grafo__controller_8h_source.html#l00048">GrafoController::modo</a> y <a class="el" href="grafo__controller_8h_source.html#l00046">GrafoController::vista</a>.</p>
+
+</div>
+</div>
+<a id="a4cbb41cfbdfdce017823ee3d38874a2f" name="a4cbb41cfbdfdce017823ee3d38874a2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cbb41cfbdfdce017823ee3d38874a2f">&#9670;&#160;</a></span>grafo_controller_reanudar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_controller_reanudar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reanuda la ejecución del algoritmo. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Puntero al controlador </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00468">468</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00028">GRAFO_MODO_ALGORITMO</a> y <a class="el" href="grafo__controller_8h_source.html#l00048">GrafoController::modo</a>.</p>
+
+</div>
+</div>
+<a id="a784f0a7b7b964e19f3415e3fdf1a5a11" name="a784f0a7b7b964e19f3415e3fdf1a5a11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a784f0a7b7b964e19f3415e3fdf1a5a11">&#9670;&#160;</a></span>grafo_controller_reiniciar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_controller_reiniciar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Detiene y reinicia el algoritmo. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Puntero al controlador </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00473">473</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00058">GrafoController::autoplay_acumulado</a>, <a class="el" href="grafo__controller_8h_source.html#l00053">GrafoController::esta_ejecutando</a>, <a class="el" href="grafo__controller_8c_source.html#l00138">grafo_controller_aplicar_visual_paso()</a> y <a class="el" href="grafo__controller_8h_source.html#l00054">GrafoController::paso_actual</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01303">draw_context_controls()</a>, <a class="el" href="grafo__controller_8c_source.html#l00482">grafo_controller_ir_inicio()</a> y <a class="el" href="main_8c_source.html#l01510">handle_keyboard()</a>.</p>
+
+</div>
+</div>
+<a id="aa14b561241e2e5c04877dbf9e441226d" name="aa14b561241e2e5c04877dbf9e441226d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa14b561241e2e5c04877dbf9e441226d">&#9670;&#160;</a></span>grafo_controller_seleccionar_algoritmo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool grafo_controller_seleccionar_algoritmo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>codigo_algoritmo</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id_inicio</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id_destino</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Selecciona un algoritmo para ejecutar. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Puntero al controlador </td></tr>
+    <tr><td class="paramname">codigo_algoritmo</td><td>Código de algoritmo (GRAFO_ALGO_*) </td></tr>
+    <tr><td class="paramname">id_inicio</td><td>Vértice inicial </td></tr>
+    <tr><td class="paramname">id_destino</td><td>Vértice destino (para algoritmos que lo requieren) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si se seleccionó exitosamente </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00396">396</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__state_8h_source.html#l00098">GrafoState::algoritmo_activo</a>, <a class="el" href="grafo__controller_8h_source.html#l00049">GrafoController::algoritmo_seleccionado</a>, <a class="el" href="grafo__controller_8h_source.html#l00045">GrafoController::estado_visual</a>, <a class="el" href="grafo__controller_8c_source.html#l00027">grafo_controller_limpiar_script()</a>, <a class="el" href="grafo__controller_8h_source.html#l00054">GrafoController::paso_actual</a>, <a class="el" href="grafo__state_8h_source.html#l00099">GrafoState::paso_algoritmo</a>, <a class="el" href="grafo__controller_8h_source.html#l00055">GrafoController::total_pasos</a>, <a class="el" href="grafo__state_8h_source.html#l00100">GrafoState::total_pasos</a>, <a class="el" href="grafo__controller_8h_source.html#l00051">GrafoController::vertice_destino</a> y <a class="el" href="grafo__controller_8h_source.html#l00050">GrafoController::vertice_inicio</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00749">app_state_operacion_grafo_ejecutar_algoritmo()</a>.</p>
+
+</div>
+</div>
+<a id="a2516e3d3896a5d271ce4e7928f5f15ef" name="a2516e3d3896a5d271ce4e7928f5f15ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2516e3d3896a5d271ce4e7928f5f15ef">&#9670;&#160;</a></span>grafo_controller_tipo_paso()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="grafo__controller_8h.html#a5bd3ab36b2f66b28b492874604932076">GrafoPasoTipo</a> grafo_controller_tipo_paso </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>paso</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00013">13</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00036">GRAFO_PASO_ARISTA</a>, <a class="el" href="grafo__controller_8h_source.html#l00034">GRAFO_PASO_CONSOLIDACION</a> y <a class="el" href="grafo__controller_8h_source.html#l00035">GRAFO_PASO_VERTICE</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="grafo__controller_8c_source.html#l00138">grafo_controller_aplicar_visual_paso()</a>.</p>
+
+</div>
+</div>
+<a id="ac37498e8966457bc9ac49d4da0f28a35" name="ac37498e8966457bc9ac49d4da0f28a35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac37498e8966457bc9ac49d4da0f28a35">&#9670;&#160;</a></span>grafo_controller_tipo_paso_cadena()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * grafo_controller_tipo_paso_cadena </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00566">566</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00036">GRAFO_PASO_ARISTA</a>, <a class="el" href="grafo__controller_8h_source.html#l00035">GRAFO_PASO_VERTICE</a>, <a class="el" href="grafo__controller_8h_source.html#l00061">GrafoController::paso_mejora</a> y <a class="el" href="grafo__controller_8h_source.html#l00060">GrafoController::paso_tipo_actual</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="grafo__controller_8c_source.html#l00138">grafo_controller_aplicar_visual_paso()</a> y <a class="el" href="grafo__pedagogy_8c_source.html#l00335">grafo_tipo_paso_label()</a>.</p>
+
+</div>
+</div>
+<a id="a226686ac07ae1c408a511b184ee5e66e" name="a226686ac07ae1c408a511b184ee5e66e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a226686ac07ae1c408a511b184ee5e66e">&#9670;&#160;</a></span>grafo_controller_toggle_autoplay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_controller_toggle_autoplay </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_grafo_controller.html">GrafoController</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00498">498</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__controller_8h_source.html#l00056">GrafoController::autoplay_activo</a> y <a class="el" href="grafo__controller_8h_source.html#l00058">GrafoController::autoplay_acumulado</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01303">draw_context_controls()</a> y <a class="el" href="main_8c_source.html#l01510">handle_keyboard()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentación de variables</h2>
+<a id="af082d8f629853fda0de453af21f58298" name="af082d8f629853fda0de453af21f58298"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af082d8f629853fda0de453af21f58298">&#9670;&#160;</a></span>GRAFO_AUTOPLAY_INTERVALOS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const float GRAFO_AUTOPLAY_INTERVALOS[] = {1.2f, 0.7f, 0.35f}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__controller_8c_source.html#l00011">11</a> del archivo <a class="el" href="grafo__controller_8c_source.html">grafo_controller.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="grafo__controller_8c_source.html#l00504">grafo_controller_cambiar_velocidad()</a> y <a class="el" href="grafo__controller_8c_source.html#l00285">grafo_controller_crear()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="grafo__controller_8c.html">grafo_controller.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

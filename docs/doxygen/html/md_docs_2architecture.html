@@ -92,8 +92,8 @@ $(function(){initNavTree('md_docs_2architecture.html','',''); });
   <div class="headertitle"><div class="title">Arquitectura Actual </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md37"></a></p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md38"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md48"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md49"></a>
 Aplicacion activa</h1>
 <p>La aplicacion principal se compone de los siguientes grupos:</p>
 <ul>
@@ -102,44 +102,47 @@ Aplicacion activa</h1>
 <li><span class="tt"><a class="el" href="app__state_8c.html" title="Implementacion del estado global y despacho de operaciones de alto nivel.">src/app_state.c</a></span> y <span class="tt"><a class="el" href="app__state_8h.html" title="Estado global y acciones de alto nivel de la aplicacion.">include/app_state.h</a></span>: estado global y despacho de operaciones.</li>
 <li><span class="tt"><a class="el" href="code__viewer_8c.html" title="Catalogo de snippets C asociados a las operaciones visibles en la UI.">src/code_viewer.c</a></span>: snippets C asociados a cada operacion.</li>
 <li><span class="tt"><a class="el" href="algorithm__trace_8c.html" title="Tabla de mensajes pedagógicos y complejidades por operacion.">src/algorithm_trace.c</a></span>: explicaciones paso a paso y complejidades.</li>
+<li><span class="tt"><a class="el" href="grafo__controller_8c.html" title="Implementación del controlador del grafo.">src/grafo_controller.c</a></span>, <span class="tt"><a class="el" href="grafo__state_8c.html" title="Implementación del estado visual del grafo.">src/grafo_state.c</a></span>, <span class="tt"><a class="el" href="grafo__layout_8c.html" title="Implementación del layout circular para grafos.">src/grafo_layout.c</a></span>, <span class="tt"><a class="el" href="grafo__view_8c.html" title="Implementación del renderizado visual con Raylib.">src/grafo_view.c</a></span>: controlador, estado visual, layout y render del modulo <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>.</li>
+<li><span class="tt"><a class="el" href="grafo__code__viewer_8c.html" title="Implementación del visualizador de código.">src/grafo_code_viewer.c</a></span>, <span class="tt"><a class="el" href="grafo__trace_8c.html" title="Implementación de la traza pedagógica.">src/grafo_trace.c</a></span>, <span class="tt"><a class="el" href="grafo__pedagogy_8c.html">src/grafo_pedagogy.c</a></span>: capa pedagogica de grafos (snippet, traza, metricas, tabla de distancias y exportacion textual).</li>
 <li><span class="tt">src/*_view.c</span>: visualizacion grafica por estructura.</li>
-<li><span class="tt"><a class="el" href="pila_8c.html">src/pila.c</a></span>, <span class="tt"><a class="el" href="cola_8c.html">src/cola.c</a></span>, <span class="tt"><a class="el" href="cola__prioridad_8c.html">src/cola_prioridad.c</a></span>, <span class="tt"><a class="el" href="lista_8c.html">src/lista.c</a></span>, <span class="tt"><a class="el" href="lista__circular_8c.html">src/lista_circular.c</a></span>, <span class="tt"><a class="el" href="sublista_8c.html">src/sublista.c</a></span>: TAD desacoplados de Raylib.</li>
+<li><span class="tt"><a class="el" href="pila_8c.html">src/pila.c</a></span>, <span class="tt"><a class="el" href="cola_8c.html">src/cola.c</a></span>, <span class="tt"><a class="el" href="cola__prioridad_8c.html">src/cola_prioridad.c</a></span>, <span class="tt"><a class="el" href="lista_8c.html">src/lista.c</a></span>, <span class="tt"><a class="el" href="lista__circular_8c.html">src/lista_circular.c</a></span>, <span class="tt"><a class="el" href="sublista_8c.html">src/sublista.c</a></span>, <span class="tt"><a class="el" href="grafo_8c.html" title="Implementación del TAD Grafo con algoritmos clásicos.">src/grafo.c</a></span>: TAD desacoplados de Raylib.</li>
 <li><span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span> tambien contiene la pantalla de ayuda interna detallada (<span class="tt"><a class="el" href="main_8c.html#aefe4cd50ac123b6c800eede74968a353a03d47535d3ba04edd770ace117420d4c">SCREEN_HELP</a></span>) con scroll y acceso por <span class="tt">F1</span>.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md39"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md50"></a>
 Flujo de ejecucion</h1>
 <p>La app sigue un flujo unico por cuadro:</p>
 <ol type="1">
 <li><span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span> procesa entrada de teclado y mouse.</li>
 <li>Los eventos se traducen a operaciones de alto nivel sobre <span class="tt"><a class="el" href="struct_app_state.html">AppState</a></span>.</li>
-<li><span class="tt">app_state</span> invoca la API publica del TAD activo.</li>
+<li><span class="tt">app_state</span> invoca la API publica del TAD activo (en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>, a traves del controlador).</li>
 <li>La vista activa consulta un snapshot del TAD y lo dibuja sin modificarlo.</li>
 <li>El panel de codigo acumula historial de snippets por operacion ejecutada y los paneles auxiliares muestran traza y complejidad de la operacion actual.</li>
 <li>La ayuda interna puede abrirse en cualquier momento sin romper el estado de la sesion.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md40"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md51"></a>
 Capas y responsabilidades</h1>
 <h2>Capa de dominio</h2>
 <ul>
-<li>Corresponde a los TAD en <span class="tt"><a class="el" href="pila_8c.html">src/pila.c</a></span>, <span class="tt"><a class="el" href="cola_8c.html">src/cola.c</a></span>, <span class="tt"><a class="el" href="cola__prioridad_8c.html">src/cola_prioridad.c</a></span>, <span class="tt"><a class="el" href="lista_8c.html">src/lista.c</a></span>, <span class="tt"><a class="el" href="lista__circular_8c.html">src/lista_circular.c</a></span> y <span class="tt"><a class="el" href="sublista_8c.html">src/sublista.c</a></span>.</li>
+<li>Corresponde a los TAD en <span class="tt"><a class="el" href="pila_8c.html">src/pila.c</a></span>, <span class="tt"><a class="el" href="cola_8c.html">src/cola.c</a></span>, <span class="tt"><a class="el" href="cola__prioridad_8c.html">src/cola_prioridad.c</a></span>, <span class="tt"><a class="el" href="lista_8c.html">src/lista.c</a></span>, <span class="tt"><a class="el" href="lista__circular_8c.html">src/lista_circular.c</a></span>, <span class="tt"><a class="el" href="sublista_8c.html">src/sublista.c</a></span> y <span class="tt"><a class="el" href="grafo_8c.html" title="Implementación del TAD Grafo con algoritmos clásicos.">src/grafo.c</a></span>.</li>
 <li>Debe mantenerse independiente de Raylib y de cualquier decision visual.</li>
 </ul>
 <h2>Capa de aplicacion</h2>
 <ul>
-<li>Corresponde a <span class="tt"><a class="el" href="app__state_8c.html" title="Implementacion del estado global y despacho de operaciones de alto nivel.">src/app_state.c</a></span>.</li>
+<li>Corresponde a <span class="tt"><a class="el" href="app__state_8c.html" title="Implementacion del estado global y despacho de operaciones de alto nivel.">src/app_state.c</a></span> y al controlador de grafos <span class="tt"><a class="el" href="grafo__controller_8c.html" title="Implementación del controlador del grafo.">src/grafo_controller.c</a></span>.</li>
 <li>Centraliza la seleccion de estructura, la operacion actual, los mensajes y el ultimo contexto visible.</li>
 <li>Expone un serial de operacion para detectar cada evento ejecutado, incluso si se repite la misma accion.</li>
 <li>Es la capa autorizada para coordinar UI y TAD.</li>
 </ul>
 <h2>Capa de presentacion</h2>
 <ul>
-<li>Corresponde a <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span>, <span class="tt"><a class="el" href="ui_8c.html" title="Implementacion de layout, widgets simples y recursos visuales compartidos.">src/ui.c</a></span> y <span class="tt">src/*_view.c</span>.</li>
+<li>Corresponde a <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span>, <span class="tt"><a class="el" href="ui_8c.html" title="Implementacion de layout, widgets simples y recursos visuales compartidos.">src/ui.c</a></span>, <span class="tt">src/*_view.c</span>, <span class="tt"><a class="el" href="grafo__state_8c.html" title="Implementación del estado visual del grafo.">src/grafo_state.c</a></span>, <span class="tt"><a class="el" href="grafo__layout_8c.html" title="Implementación del layout circular para grafos.">src/grafo_layout.c</a></span>, <span class="tt"><a class="el" href="grafo__code__viewer_8c.html" title="Implementación del visualizador de código.">src/grafo_code_viewer.c</a></span>, <span class="tt"><a class="el" href="grafo__trace_8c.html" title="Implementación de la traza pedagógica.">src/grafo_trace.c</a></span> y <span class="tt"><a class="el" href="grafo__pedagogy_8c.html">src/grafo_pedagogy.c</a></span>.</li>
 <li>Traduce el estado a layout, controles, paneles y representaciones visuales.</li>
 <li>Mantiene historial textual del panel <span class="tt">Codigo C Asociado</span> y permite limpiar ese historial desde UI.</li>
 <li>Incluye un modulo de ayuda interna extensa para explicar el flujo funcional y tecnico de la app.</li>
+<li>En Grafos, concentra la capa pedagogica adicional fuera de <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">main.c</a></span> para no mezclar orquestacion de ventana con calculo de trazas y metricas.</li>
 <li>No debe crear reglas de negocio nuevas ni alterar nodos por acceso directo.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md41"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md52"></a>
 Invariantes de diseno</h1>
 <ul>
 <li>Existe un unico <span class="tt"><a class="el" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a></span> activo en <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span>.</li>
@@ -148,7 +151,7 @@ Invariantes de diseno</h1>
 <li>El codigo pedagogico auxiliar usa snippets por operacion y conserva historial acumulado de ejecuciones en el panel de codigo.</li>
 <li>La ayuda interna no muta estructuras; solo presenta informacion y navegacion.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md42"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md53"></a>
 Puntos de extension</h1>
 <p>Para agregar una nueva estructura o comportamiento docente, el camino esperado es:</p>
 <ol type="1">
@@ -157,9 +160,10 @@ Puntos de extension</h1>
 <li>Incorporar operaciones en <span class="tt"><a class="el" href="app__state_8c.html" title="Implementacion del estado global y despacho de operaciones de alto nivel.">src/app_state.c</a></span>.</li>
 <li>Crear una vista dedicada <span class="tt">src/*_view.c</span>.</li>
 <li>Anadir snippet y traza en <span class="tt"><a class="el" href="code__viewer_8c.html" title="Catalogo de snippets C asociados a las operaciones visibles en la UI.">src/code_viewer.c</a></span> y <span class="tt"><a class="el" href="algorithm__trace_8c.html" title="Tabla de mensajes pedagógicos y complejidades por operacion.">src/algorithm_trace.c</a></span>.</li>
+<li>Si la extension es del modulo <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>, evaluar si la logica didactica pertenece en <span class="tt"><a class="el" href="grafo__pedagogy_8c.html">src/grafo_pedagogy.c</a></span> antes de crecer <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span>.</li>
 <li>Registrar botones, atajos y rotulos en <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span>.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md43"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md54"></a>
 Material legacy</h1>
 <p>Los archivos en <span class="tt">src/legacy/</span> son demostraciones anteriores con <span class="tt"><a class="el" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a></span> propio:</p>
 <ul>
@@ -169,14 +173,14 @@ Material legacy</h1>
 <li><span class="tt">listas_raylib.c</span></li>
 </ul>
 <p>Se conservan como referencia historica y fuente de ideas visuales, pero no participan en la compilacion de la app unificada.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md44"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md55"></a>
 Regla de separacion</h1>
 <ul>
 <li>Los TAD no incluyen <span class="tt">raylib.h</span>.</li>
 <li>Las vistas y la UI si pueden usar <span class="tt">raylib.h</span>.</li>
 <li>La UI no modifica nodos directamente; toda operacion pasa por <span class="tt">app_state</span> y por la API publica del TAD.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md45"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md56"></a>
 Riesgos controlados por la refactorizacion</h1>
 <ul>
 <li>Duplicacion de logica de interfaz entre demos independientes.</li>

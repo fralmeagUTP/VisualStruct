@@ -78,7 +78,7 @@ Donde:
 - Home: sexta tarjeta `Sublistas`.
 - Sidebar: boton dedicado `Sublistas`.
 - Atajo directo: tecla `6`.
-- `TAB`: rotacion entre seis estructuras.
+- `TAB`: en submenu secuencial rota entre seis estructuras; en visualizador global rota entre siete (incluyendo Grafo).
 - Controles:
   - `I` Inicializar
   - `A` Padre +

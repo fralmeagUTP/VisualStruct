@@ -92,12 +92,12 @@ $(function(){initNavTree('md_docs_2analisis-diseno-sublistas.html','',''); });
   <div class="headertitle"><div class="title">Analisis y Diseno: Modulo Sublistas </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md27"></a></p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md38"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md39"></a>
 1. Objetivo de la funcionalidad</h1>
 <p>Incorporar una estructura jerarquica visualizable llamada <span class="tt">Sublistas</span> dentro del modulo de estructuras secuenciales, con modelo padre-hijo y comportamiento pedagogico coherente con el resto de la app.</p>
 <p>La funcionalidad se disena como una estructura independiente de <span class="tt"><a class="el" href="struct_lista.html">Lista</a> Circular</span>.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md40"></a>
 2. Alcance funcional</h1>
 <p>La estructura <span class="tt">Sublistas</span> debe permitir:</p>
 <ol type="1">
@@ -115,7 +115,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-sublistas.html','',''); });
 <li>resaltado del padre activo,</li>
 <li>integracion completa con botones, atajos, snippets, traza y ayuda interna.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md41"></a>
 3. Modelo de datos exigido</h1>
 <p>El diseno adopta exactamente el modelo solicitado:</p>
 <div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structsublista.html">sublista</a> {</div>
@@ -143,7 +143,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-sublistas.html','',''); });
 <li>Las sublistas no comparten nodos entre padres.</li>
 <li>La seleccion de contexto recae en el <span class="tt">padre activo</span> almacenado en <span class="tt"><a class="el" href="struct_app_state.html">AppState</a></span>.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md42"></a>
 4. Requerimientos funcionales</h1>
 <h2>RF-01: TAD desacoplado de Raylib</h2>
 <ul>
@@ -166,7 +166,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-sublistas.html','',''); });
 <li><span class="tt"><a class="el" href="code__viewer_8c.html" title="Catalogo de snippets C asociados a las operaciones visibles en la UI.">src/code_viewer.c</a></span> incluye snippets por operacion de padres e hijos.</li>
 <li><span class="tt"><a class="el" href="algorithm__trace_8c.html" title="Tabla de mensajes pedagógicos y complejidades por operacion.">src/algorithm_trace.c</a></span> incorpora trazas y complejidades asociadas.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md32"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md43"></a>
 5. Complejidad esperada</h1>
 <ul>
 <li>Inicializar: <span class="tt">O(1)</span></li>
@@ -181,13 +181,13 @@ $(function(){initNavTree('md_docs_2analisis-diseno-sublistas.html','',''); });
 <li><span class="tt">n</span> = cantidad de padres</li>
 <li><span class="tt">m</span> = cantidad de hijos de un padre concreto</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md33"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md44"></a>
 6. Integracion de interfaz</h1>
 <ul>
 <li>Home: sexta tarjeta <span class="tt">Sublistas</span>.</li>
 <li>Sidebar: boton dedicado <span class="tt">Sublistas</span>.</li>
 <li>Atajo directo: tecla <span class="tt">6</span>.</li>
-<li><span class="tt">TAB</span>: rotacion entre seis estructuras.</li>
+<li><span class="tt">TAB</span>: en submenu secuencial rota entre seis estructuras; en visualizador global rota entre siete (incluyendo <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>).</li>
 <li>Controles:<ul>
 <li><span class="tt">I</span> Inicializar</li>
 <li><span class="tt">A</span> Padre +</li>
@@ -199,7 +199,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-sublistas.html','',''); });
 </ul>
 </li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md45"></a>
 7. Criterios de aceptacion</h1>
 <ol type="1">
 <li>Compila con flags estrictos (<span class="tt">-Wall -Wextra -pedantic</span>).</li>
@@ -209,7 +209,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-sublistas.html','',''); });
 <li>Eliminar padre libera correctamente sus hijos.</li>
 <li>Ayuda interna y documentos QA quedan sincronizados.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md35"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md46"></a>
 8. Riesgos y mitigaciones</h1>
 <ul>
 <li>Riesgo: confundir <span class="tt">Sublistas</span> con <span class="tt"><a class="el" href="struct_lista.html">Lista</a> Circular</span>.<ul>
@@ -225,7 +225,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-sublistas.html','',''); });
 </ul>
 </li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md36"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md47"></a>
 9. Plan minimo de pruebas</h1>
 <ol type="1">
 <li>Insertar y eliminar padres sin hijos.</li>

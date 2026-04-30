@@ -9,6 +9,7 @@ Esta guia resume como extender o modificar el proyecto sin romper la separacion 
 - No incluir `raylib.h` en los TAD.
 - Toda operacion visible al usuario debe pasar por `app_state`.
 - Toda mejora docente que dependa de la operacion actual debe reflejarse tambien en `code_viewer` o `algorithm_trace` si aplica.
+- En el modulo Grafo, preferir `src/grafo_pedagogy.c` para tablas, metricas por paso, trazas enriquecidas y exportacion textual antes de agregar mas logica a `src/main.c`.
 
 ## Cuando cambies un TAD
 1. Actualizar su encabezado en `include/`.
@@ -26,6 +27,12 @@ Esta guia resume como extender o modificar el proyecto sin romper la separacion 
 6. Ajustar la vista correspondiente si necesita nuevo feedback visual.
 7. Revisar si la ayuda interna (`SCREEN_HELP` en `src/main.c`) requiere actualizacion del texto.
 
+## Cuando extiendas el modulo Grafo
+1. Mantener la separacion entre TAD (`src/grafo.c`), controlador (`src/grafo_controller.c`), vista (`src/grafo_view.c`) y capa pedagogica (`src/grafo_pedagogy.c`).
+2. Si la mejora cambia significado de colores, pasos o metricas, sincronizar panel inferior, lienzo central, ayuda interna y QA manual.
+3. Si anades nuevos controles del visualizador, actualizar tambien `README.md` y atajos de teclado.
+4. Si el cambio requiere reconstruir demos o exportaciones, centralizar esa logica fuera de `main.c` siempre que sea posible.
+
 ## Cuando agregues una estructura nueva
 1. Crear TAD y header publico.
 2. Registrar la nueva estructura en `AppState`.
@@ -33,7 +40,7 @@ Esta guia resume como extender o modificar el proyecto sin romper la separacion 
 4. Integrar seleccion, controles y render en `src/main.c`.
 5. Documentar arquitectura y guia docente si la estructura cambia el alcance del proyecto.
 
-Referencia vigente: `lista_circular` y `sublista` ya estan integradas como ejemplos completos de extension transversal
+Referencia vigente: `lista_circular`, `sublista` y `grafo` ya estan integradas como ejemplos completos de extension transversal
 (TAD + AppState + vista + snippets + trazas + ayuda + QA docs).
 
 ## Cuando toques la UI
@@ -48,6 +55,7 @@ Referencia vigente: `lista_circular` y `sublista` ya estan integradas como ejemp
 - Actualizacion de `README.md` si cambia el flujo de uso o compilacion.
 - Actualizacion de `docs/architecture.md` si cambia una responsabilidad arquitectonica.
 - Actualizacion de `docs/guia-docente.md` si cambia la estrategia de demostracion en clase.
+- Si el cambio impacta el modulo Grafo, actualizar tambien `docs/qa-manual.md` y `docs/qa-visualizacion-ventanas.md`.
 
 ## Validacion recomendada antes de cerrar un cambio
 1. Compilar la app unificada.

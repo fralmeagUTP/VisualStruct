@@ -7,7 +7,10 @@ var index =
     [ "Documentacion Tecnica", "index.html#autotoc_md5", null ],
     [ "Uso Basico", "index.html#autotoc_md6", null ],
     [ "Controles Actuales", "index.html#autotoc_md7", null ],
-    [ "Estructura de Carpetas", "index.html#autotoc_md8", null ],
-    [ "Estado Actual", "index.html#autotoc_md9", null ],
-    [ "Notas de Arquitectura", "index.html#autotoc_md10", null ]
+    [ "Modulo de Grafos", "index.html#autotoc_md8", null ],
+    [ "Navegacion rapida", "index.html#autotoc_md9", null ],
+    [ "Solucion de problemas", "index.html#autotoc_md10", null ],
+    [ "Estructura de Carpetas", "index.html#autotoc_md11", null ],
+    [ "Estado Actual", "index.html#autotoc_md12", null ],
+    [ "Notas de Arquitectura", "index.html#autotoc_md13", null ]
 ];

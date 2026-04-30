@@ -7,7 +7,8 @@ var app__state_8h =
       [ "ESTRUCTURA_COLA_PRIORIDAD", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a2dabb13bba1952a9e6f7609ab71bdc05", null ],
       [ "ESTRUCTURA_LISTA", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a41a17370323282b2af4ef2ca3071c1c7", null ],
       [ "ESTRUCTURA_LISTA_CIRCULAR", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a5792059a3b19d9ea2122f8b4ed48a6ae", null ],
-      [ "ESTRUCTURA_SUBLISTA", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a4410c8cd058777f5dff9b49794535771", null ]
+      [ "ESTRUCTURA_SUBLISTA", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a4410c8cd058777f5dff9b49794535771", null ],
+      [ "ESTRUCTURA_GRAFO", "app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a6e0d66a5cb536cd3e71fdd083062dd31", null ]
     ] ],
     [ "TipoOperacion", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776", [
       [ "OPERACION_NINGUNA", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776a2564063c60c93f874cddf9eb18e0b4e4", null ],
@@ -24,9 +25,14 @@ var app__state_8h =
     ] ],
     [ "app_state_ajustar_prioridad", "app__state_8h.html#a36b6bf7a760d9edd415998ad4ca69f3a", null ],
     [ "app_state_ajustar_valor", "app__state_8h.html#a977416497520634dde6afa0135ea956f", null ],
+    [ "app_state_grafo_cargar_demo", "app__state_8h.html#a0965d470fcd24813964da12accef3f35", null ],
+    [ "app_state_grafo_toggle_dirigido", "app__state_8h.html#a70c280d9a386e7004831eef3c753697f", null ],
     [ "app_state_init", "app__state_8h.html#ac98f3937b8c68c08d699bdf8708fe09a", null ],
     [ "app_state_operacion_buscar", "app__state_8h.html#afb7c2a89fd3e6c630bda1bb4e871ffc6", null ],
     [ "app_state_operacion_eliminar", "app__state_8h.html#a96a70f09cb2567a06266136c07951dd6", null ],
+    [ "app_state_operacion_grafo_ejecutar_algoritmo", "app__state_8h.html#addfa1e35212690353a68c7d61f0b07a1", null ],
+    [ "app_state_operacion_grafo_eliminar_arista", "app__state_8h.html#a67083ce243c7331200837461555fd69b", null ],
+    [ "app_state_operacion_grafo_insertar_arista", "app__state_8h.html#a4379d1a9266f26ebfaec4b4dc8607ead", null ],
     [ "app_state_operacion_inicializar", "app__state_8h.html#a24a6594f990a8730104d95389dabb7cd", null ],
     [ "app_state_operacion_insertar", "app__state_8h.html#a4ac75d475ced6f35a9e43aae6d749e8b", null ],
     [ "app_state_operacion_invertir", "app__state_8h.html#af3fc18d79fc2396a8cfabf09dfd99f02", null ],

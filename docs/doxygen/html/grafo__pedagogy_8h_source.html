@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: Archivo de código fuente grafo_pedagogy.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('grafo__pedagogy_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">grafo_pedagogy.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="grafo__pedagogy_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef GRAFO_PEDAGOGY_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define GRAFO_PEDAGOGY_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;raylib.h&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="app__state_8h.html">app_state.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="grafo__trace_8h.html">grafo_trace.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="struct_grafo_paso_metricas.html">   11</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="struct_grafo_paso_metricas.html#a081e42af7364e072ef6646020c60fa23">   12</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_grafo_paso_metricas.html#a081e42af7364e072ef6646020c60fa23">mejoras</a>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="struct_grafo_paso_metricas.html#a4d16f79fe1a5cadc342743e0c8553774">   13</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_grafo_paso_metricas.html#a4d16f79fe1a5cadc342743e0c8553774">sin_cambio</a>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="struct_grafo_paso_metricas.html#acf17bcdb8d194561cd007ef802e958d7">   14</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_grafo_paso_metricas.html#acf17bcdb8d194561cd007ef802e958d7">empeora</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>} <a class="code hl_struct" href="struct_grafo_paso_metricas.html">GrafoPasoMetricas</a>;</div>
+</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keywordtype">int</span> <a class="code hl_function" href="grafo__pedagogy_8h.html#a997789189c629a24b432a5c836b02e8a">grafo_linea_desde_paso</a>(<span class="keywordtype">int</span> algoritmo, <span class="keywordtype">int</span> paso_actual, <span class="keywordtype">int</span> total_pasos);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keywordtype">int</span> <a class="code hl_function" href="grafo__pedagogy_8h.html#abe19982cbb384677f22f62c7379d743d">grafo_vertice_activo_paso</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_app_state.html">AppState</a> *app, <span class="keywordtype">int</span> paso_idx);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="grafo__pedagogy_8h.html#acd94d4215c05383b30428f121aa9f883">grafo_tipo_paso_label</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_app_state.html">AppState</a> *app);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">bool</span> <a class="code hl_function" href="grafo__pedagogy_8h.html#a8b90bf2f656d79563f89a1517798a809">grafo_hay_mejora_paso</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_app_state.html">AppState</a> *app, <span class="keywordtype">int</span> paso_idx);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><a class="code hl_struct" href="struct_grafo_paso_metricas.html">GrafoPasoMetricas</a> <a class="code hl_function" href="grafo__pedagogy_8h.html#ac97eeafd54483e6417b170fdd915b980">grafo_obtener_metricas_paso</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_app_state.html">AppState</a> *app, <span class="keywordtype">int</span> paso_idx);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keywordtype">int</span> <a class="code hl_function" href="grafo__pedagogy_8h.html#aec7058ec4f4b7fc5dc7f8ed51242d446">grafo_contar_mejoras_paso</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_app_state.html">AppState</a> *app, <span class="keywordtype">int</span> paso_idx);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keywordtype">int</span> <a class="code hl_function" href="grafo__pedagogy_8h.html#a0d02ac716fea106f0ebf10e589a153f3">grafo_contar_sin_cambio_paso</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_app_state.html">AppState</a> *app, <span class="keywordtype">int</span> paso_idx);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keywordtype">int</span> <a class="code hl_function" href="grafo__pedagogy_8h.html#a89c48432738fd052473b18471a902b54">grafo_contar_empeora_paso</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_app_state.html">AppState</a> *app, <span class="keywordtype">int</span> paso_idx);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keywordtype">void</span> <a class="code hl_function" href="grafo__pedagogy_8h.html#a4e06e92052751ede9fc258241e7c294d">grafo_camino_parcial_paso</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_app_state.html">AppState</a> *app, <span class="keywordtype">int</span> paso_idx, <span class="keywordtype">char</span> *out, <span class="keywordtype">size_t</span> out_size);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordtype">void</span> <a class="code hl_function" href="grafo__pedagogy_8h.html#a767761a7f196bbfbad86ac58499c868a">grafo_cerrados_paso</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_app_state.html">AppState</a> *app, <span class="keywordtype">int</span> paso_idx, <span class="keywordtype">char</span> *out, <span class="keywordtype">size_t</span> out_size);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keywordtype">void</span> <a class="code hl_function" href="grafo__pedagogy_8h.html#ac34eb6aab26425dcfafd23158a883a78">grafo_tabla_distancias_paso</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_app_state.html">AppState</a> *app, <span class="keywordtype">int</span> paso_idx, <span class="keywordtype">char</span> *out, <span class="keywordtype">size_t</span> out_size);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keywordtype">void</span> <a class="code hl_function" href="grafo__pedagogy_8h.html#a5a21a2506a81830ee664b1822696ec34">grafo_tabla_distancias_multiline</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_app_state.html">AppState</a> *app, <span class="keywordtype">int</span> paso_idx, <span class="keywordtype">char</span> *out,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                                      <span class="keywordtype">size_t</span> out_size);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keywordtype">void</span> <a class="code hl_function" href="grafo__pedagogy_8h.html#a58c7946b9138886595abf76c84ee7aa4">grafo_dibujar_tabla_distancias</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_app_state.html">AppState</a> *app, Rectangle viewport, <span class="keywordtype">int</span> paso_idx);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keywordtype">void</span> <a class="code hl_function" href="grafo__pedagogy_8h.html#adb6f42ccf81a7d86aa6f24b09f36d1f6">grafo_exportar_resumen_clipboard</a>(<a class="code hl_struct" href="struct_app_state.html">AppState</a> *app);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><a class="code hl_struct" href="struct_grafo_trace.html">GrafoTrace</a> <a class="code hl_function" href="grafo__pedagogy_8h.html#a0e2ddc41d2bbd0dfa0199c06c8647a91">grafo_trace_desde_estado</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_app_state.html">AppState</a> *app);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aapp__state_8h_html"><div class="ttname"><a href="app__state_8h.html">app_state.h</a></div><div class="ttdoc">Estado global y acciones de alto nivel de la aplicacion.</div></div>
+<div class="ttc" id="agrafo__pedagogy_8h_html_a0d02ac716fea106f0ebf10e589a153f3"><div class="ttname"><a href="grafo__pedagogy_8h.html#a0d02ac716fea106f0ebf10e589a153f3">grafo_contar_sin_cambio_paso</a></div><div class="ttdeci">int grafo_contar_sin_cambio_paso(const AppState *app, int paso_idx)</div><div class="ttdef"><b>Definition</b> <a href="grafo__pedagogy_8c_source.html#l00380">grafo_pedagogy.c:380</a></div></div>
+<div class="ttc" id="agrafo__pedagogy_8h_html_a0e2ddc41d2bbd0dfa0199c06c8647a91"><div class="ttname"><a href="grafo__pedagogy_8h.html#a0e2ddc41d2bbd0dfa0199c06c8647a91">grafo_trace_desde_estado</a></div><div class="ttdeci">GrafoTrace grafo_trace_desde_estado(const AppState *app)</div><div class="ttdef"><b>Definition</b> <a href="grafo__pedagogy_8c_source.html#l00624">grafo_pedagogy.c:624</a></div></div>
+<div class="ttc" id="agrafo__pedagogy_8h_html_a4e06e92052751ede9fc258241e7c294d"><div class="ttname"><a href="grafo__pedagogy_8h.html#a4e06e92052751ede9fc258241e7c294d">grafo_camino_parcial_paso</a></div><div class="ttdeci">void grafo_camino_parcial_paso(const AppState *app, int paso_idx, char *out, size_t out_size)</div><div class="ttdef"><b>Definition</b> <a href="grafo__pedagogy_8c_source.html#l00388">grafo_pedagogy.c:388</a></div></div>
+<div class="ttc" id="agrafo__pedagogy_8h_html_a58c7946b9138886595abf76c84ee7aa4"><div class="ttname"><a href="grafo__pedagogy_8h.html#a58c7946b9138886595abf76c84ee7aa4">grafo_dibujar_tabla_distancias</a></div><div class="ttdeci">void grafo_dibujar_tabla_distancias(const AppState *app, Rectangle viewport, int paso_idx)</div><div class="ttdef"><b>Definition</b> <a href="grafo__pedagogy_8c_source.html#l00530">grafo_pedagogy.c:530</a></div></div>
+<div class="ttc" id="agrafo__pedagogy_8h_html_a5a21a2506a81830ee664b1822696ec34"><div class="ttname"><a href="grafo__pedagogy_8h.html#a5a21a2506a81830ee664b1822696ec34">grafo_tabla_distancias_multiline</a></div><div class="ttdeci">void grafo_tabla_distancias_multiline(const AppState *app, int paso_idx, char *out, size_t out_size)</div><div class="ttdef"><b>Definition</b> <a href="grafo__pedagogy_8c_source.html#l00494">grafo_pedagogy.c:494</a></div></div>
+<div class="ttc" id="agrafo__pedagogy_8h_html_a767761a7f196bbfbad86ac58499c868a"><div class="ttname"><a href="grafo__pedagogy_8h.html#a767761a7f196bbfbad86ac58499c868a">grafo_cerrados_paso</a></div><div class="ttdeci">void grafo_cerrados_paso(const AppState *app, int paso_idx, char *out, size_t out_size)</div><div class="ttdef"><b>Definition</b> <a href="grafo__pedagogy_8c_source.html#l00432">grafo_pedagogy.c:432</a></div></div>
+<div class="ttc" id="agrafo__pedagogy_8h_html_a89c48432738fd052473b18471a902b54"><div class="ttname"><a href="grafo__pedagogy_8h.html#a89c48432738fd052473b18471a902b54">grafo_contar_empeora_paso</a></div><div class="ttdeci">int grafo_contar_empeora_paso(const AppState *app, int paso_idx)</div><div class="ttdef"><b>Definition</b> <a href="grafo__pedagogy_8c_source.html#l00384">grafo_pedagogy.c:384</a></div></div>
+<div class="ttc" id="agrafo__pedagogy_8h_html_a8b90bf2f656d79563f89a1517798a809"><div class="ttname"><a href="grafo__pedagogy_8h.html#a8b90bf2f656d79563f89a1517798a809">grafo_hay_mejora_paso</a></div><div class="ttdeci">bool grafo_hay_mejora_paso(const AppState *app, int paso_idx)</div><div class="ttdef"><b>Definition</b> <a href="grafo__pedagogy_8c_source.html#l00339">grafo_pedagogy.c:339</a></div></div>
+<div class="ttc" id="agrafo__pedagogy_8h_html_a997789189c629a24b432a5c836b02e8a"><div class="ttname"><a href="grafo__pedagogy_8h.html#a997789189c629a24b432a5c836b02e8a">grafo_linea_desde_paso</a></div><div class="ttdeci">int grafo_linea_desde_paso(int algoritmo, int paso_actual, int total_pasos)</div><div class="ttdef"><b>Definition</b> <a href="grafo__pedagogy_8c_source.html#l00278">grafo_pedagogy.c:278</a></div></div>
+<div class="ttc" id="agrafo__pedagogy_8h_html_abe19982cbb384677f22f62c7379d743d"><div class="ttname"><a href="grafo__pedagogy_8h.html#abe19982cbb384677f22f62c7379d743d">grafo_vertice_activo_paso</a></div><div class="ttdeci">int grafo_vertice_activo_paso(const AppState *app, int paso_idx)</div><div class="ttdef"><b>Definition</b> <a href="grafo__pedagogy_8c_source.html#l00323">grafo_pedagogy.c:323</a></div></div>
+<div class="ttc" id="agrafo__pedagogy_8h_html_ac34eb6aab26425dcfafd23158a883a78"><div class="ttname"><a href="grafo__pedagogy_8h.html#ac34eb6aab26425dcfafd23158a883a78">grafo_tabla_distancias_paso</a></div><div class="ttdeci">void grafo_tabla_distancias_paso(const AppState *app, int paso_idx, char *out, size_t out_size)</div><div class="ttdef"><b>Definition</b> <a href="grafo__pedagogy_8c_source.html#l00457">grafo_pedagogy.c:457</a></div></div>
+<div class="ttc" id="agrafo__pedagogy_8h_html_ac97eeafd54483e6417b170fdd915b980"><div class="ttname"><a href="grafo__pedagogy_8h.html#ac97eeafd54483e6417b170fdd915b980">grafo_obtener_metricas_paso</a></div><div class="ttdeci">GrafoPasoMetricas grafo_obtener_metricas_paso(const AppState *app, int paso_idx)</div><div class="ttdef"><b>Definition</b> <a href="grafo__pedagogy_8c_source.html#l00343">grafo_pedagogy.c:343</a></div></div>
+<div class="ttc" id="agrafo__pedagogy_8h_html_acd94d4215c05383b30428f121aa9f883"><div class="ttname"><a href="grafo__pedagogy_8h.html#acd94d4215c05383b30428f121aa9f883">grafo_tipo_paso_label</a></div><div class="ttdeci">const char * grafo_tipo_paso_label(const AppState *app)</div><div class="ttdef"><b>Definition</b> <a href="grafo__pedagogy_8c_source.html#l00335">grafo_pedagogy.c:335</a></div></div>
+<div class="ttc" id="agrafo__pedagogy_8h_html_adb6f42ccf81a7d86aa6f24b09f36d1f6"><div class="ttname"><a href="grafo__pedagogy_8h.html#adb6f42ccf81a7d86aa6f24b09f36d1f6">grafo_exportar_resumen_clipboard</a></div><div class="ttdeci">void grafo_exportar_resumen_clipboard(AppState *app)</div><div class="ttdef"><b>Definition</b> <a href="grafo__pedagogy_8c_source.html#l00601">grafo_pedagogy.c:601</a></div></div>
+<div class="ttc" id="agrafo__pedagogy_8h_html_aec7058ec4f4b7fc5dc7f8ed51242d446"><div class="ttname"><a href="grafo__pedagogy_8h.html#aec7058ec4f4b7fc5dc7f8ed51242d446">grafo_contar_mejoras_paso</a></div><div class="ttdeci">int grafo_contar_mejoras_paso(const AppState *app, int paso_idx)</div><div class="ttdef"><b>Definition</b> <a href="grafo__pedagogy_8c_source.html#l00376">grafo_pedagogy.c:376</a></div></div>
+<div class="ttc" id="agrafo__trace_8h_html"><div class="ttname"><a href="grafo__trace_8h.html">grafo_trace.h</a></div><div class="ttdoc">Traza pedagógica de ejecución de algoritmos.</div></div>
+<div class="ttc" id="astruct_app_state_html"><div class="ttname"><a href="struct_app_state.html">AppState</a></div><div class="ttdef"><b>Definition</b> <a href="app__state_8h_source.html#l00044">app_state.h:44</a></div></div>
+<div class="ttc" id="astruct_grafo_paso_metricas_html"><div class="ttname"><a href="struct_grafo_paso_metricas.html">GrafoPasoMetricas</a></div><div class="ttdef"><b>Definition</b> <a href="#l00011">grafo_pedagogy.h:11</a></div></div>
+<div class="ttc" id="astruct_grafo_paso_metricas_html_a081e42af7364e072ef6646020c60fa23"><div class="ttname"><a href="struct_grafo_paso_metricas.html#a081e42af7364e072ef6646020c60fa23">GrafoPasoMetricas::mejoras</a></div><div class="ttdeci">int mejoras</div><div class="ttdef"><b>Definition</b> <a href="#l00012">grafo_pedagogy.h:12</a></div></div>
+<div class="ttc" id="astruct_grafo_paso_metricas_html_a4d16f79fe1a5cadc342743e0c8553774"><div class="ttname"><a href="struct_grafo_paso_metricas.html#a4d16f79fe1a5cadc342743e0c8553774">GrafoPasoMetricas::sin_cambio</a></div><div class="ttdeci">int sin_cambio</div><div class="ttdef"><b>Definition</b> <a href="#l00013">grafo_pedagogy.h:13</a></div></div>
+<div class="ttc" id="astruct_grafo_paso_metricas_html_acf17bcdb8d194561cd007ef802e958d7"><div class="ttname"><a href="struct_grafo_paso_metricas.html#acf17bcdb8d194561cd007ef802e958d7">GrafoPasoMetricas::empeora</a></div><div class="ttdeci">int empeora</div><div class="ttdef"><b>Definition</b> <a href="#l00014">grafo_pedagogy.h:14</a></div></div>
+<div class="ttc" id="astruct_grafo_trace_html"><div class="ttname"><a href="struct_grafo_trace.html">GrafoTrace</a></div><div class="ttdoc">Traza completa de ejecución de un algoritmo.</div><div class="ttdef"><b>Definition</b> <a href="grafo__trace_8h_source.html#l00037">grafo_trace.h:37</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="grafo__pedagogy_8h.html">grafo_pedagogy.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

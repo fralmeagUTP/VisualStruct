@@ -9,9 +9,10 @@ Esta guia define una verificacion manual minima para confirmar que la app unific
 3. Verificar que carguen la ventana principal, el menu lateral y los paneles de codigo y traza.
 
 ## Chequeos globales
-- Cambiar entre Pila, Cola, Cola de Prioridad, Lista, Lista Circular y Sublistas desde la barra lateral.
+- Cambiar entre Pila, Cola, Cola de Prioridad, Lista, Lista Circular, Sublistas y Grafo desde la barra lateral.
 - Verificar que el titulo, los botones contextuales y el conteo de elementos cambian con la estructura activa.
 - Confirmar que los campos `Valor` y `Prioridad` aceptan edicion.
+- En Grafo, confirmar edicion de `Origen`, `Destino` y `Peso`.
 - Escribir una entrada invalida y comprobar que la caja se marca en rojo.
 - Verificar que el estado de operacion muestre mensaje coherente tras acciones validas e invalidas.
 - Abrir/cerrar ayuda con `F1` desde menu principal y visualizador sin bloqueos.
@@ -70,11 +71,23 @@ Esta guia define una verificacion manual minima para confirmar que la app unific
 6. Eliminar un hijo en el padre activo y validar feedback visual.
 7. Eliminar un padre y confirmar que tambien desaparece su sublista asociada.
 
+## Grafos
+1. Inicializar el grafo y alternar entre modo dirigido y no dirigido.
+2. Insertar vertices y aristas manualmente verificando validaciones de origen, destino y peso.
+3. Cargar demos con el boton `Cargar demo` hasta recorrer los escenarios de BFS, caminos, Bellman-Ford y MST.
+4. Ejecutar BFS/DFS y comprobar que el panel inferior distingue seleccion de vertice frente a consolidacion.
+5. Ejecutar Dijkstra y confirmar en el panel inferior: arista actual, tipo de paso, camino parcial, cerrados y metricas `Mejoras`, `Sin cambio`, `Empeora`.
+6. Ejecutar Bellman-Ford y verificar el paso final explicito de chequeo/consolidacion.
+7. Activar autoplay, cambiar velocidad y usar `Home`/`End` sin bloqueos.
+8. Pulsar `C` o `Exportar` y comprobar que el resumen se copia al portapapeles.
+9. Confirmar que el lienzo central muestra leyenda para activo, procesada y mejora.
+
 ## Paneles pedagogicos
 - Tras cada operacion, revisar que el panel `Codigo C Asociado (Historial)` agregue una nueva entrada con estructura, operacion y snippet.
 - Presionar `Limpiar` en el panel de codigo y confirmar que el historial se reinicia.
 - Confirmar que la traza textual y la complejidad cambian con la operacion actual.
 - Probar scroll en panel de codigo y panel de traza cuando el texto excede el espacio visible.
+- En Grafos, verificar que panel inferior, lienzo y traza se mantengan sincronizados al avanzar, retroceder, reiniciar y autoplay.
 
 ## Pantalla de ayuda
 - Verificar que el contenido sea extenso y legible en resolucion minima y base.

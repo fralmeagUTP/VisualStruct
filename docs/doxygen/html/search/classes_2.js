@@ -1,5 +1,19 @@
 var searchData=
 [
-  ['lista_0',['Lista',['../struct_lista.html',1,'']]],
-  ['listacircular_1',['ListaCircular',['../struct_lista_circular.html',1,'']]]
+  ['grafoarista_0',['GrafoArista',['../struct_grafo_arista.html',1,'']]],
+  ['grafoaristavisual_1',['GrafoAristaVisual',['../struct_grafo_arista_visual.html',1,'']]],
+  ['grafocamino_2',['GrafoCamino',['../struct_grafo_camino.html',1,'']]],
+  ['grafocodigoalgoritmo_3',['GrafoCodigoAlgoritmo',['../struct_grafo_codigo_algoritmo.html',1,'']]],
+  ['grafocodigolinea_4',['GrafoCodigoLinea',['../struct_grafo_codigo_linea.html',1,'']]],
+  ['grafocontroller_5',['GrafoController',['../struct_grafo_controller.html',1,'']]],
+  ['grafolayoutconfiguracion_6',['GrafoLayoutConfiguracion',['../struct_grafo_layout_configuracion.html',1,'']]],
+  ['grafopasometricas_7',['GrafoPasoMetricas',['../struct_grafo_paso_metricas.html',1,'']]],
+  ['graforecorrido_8',['GrafoRecorrido',['../struct_grafo_recorrido.html',1,'']]],
+  ['grafostate_9',['GrafoState',['../struct_grafo_state.html',1,'']]],
+  ['grafotrace_10',['GrafoTrace',['../struct_grafo_trace.html',1,'']]],
+  ['grafotracepaso_11',['GrafoTracePaso',['../struct_grafo_trace_paso.html',1,'']]],
+  ['grafoverticevisual_12',['GrafoVerticeVisual',['../struct_grafo_vertice_visual.html',1,'']]],
+  ['grafovista_13',['GrafoVista',['../struct_grafo_vista.html',1,'']]],
+  ['grafovistacolores_14',['GrafoVistaColores',['../struct_grafo_vista_colores.html',1,'']]],
+  ['grafovistaopciones_15',['GrafoVistaOpciones',['../struct_grafo_vista_opciones.html',1,'']]]
 ];

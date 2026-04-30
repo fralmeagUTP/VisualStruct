@@ -92,11 +92,11 @@ $(function(){initNavTree('md_docs_2contribucion.html','',''); });
   <div class="headertitle"><div class="title">Guia de Contribucion </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md46"></a></p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md47"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md57"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md58"></a>
 Objetivo</h1>
 <p>Esta guia resume como extender o modificar el proyecto sin romper la separacion entre dominio, aplicacion y presentacion.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md48"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md59"></a>
 Reglas base</h1>
 <ul>
 <li>Mantener un unico punto de entrada en <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span>.</li>
@@ -104,8 +104,9 @@ Reglas base</h1>
 <li>No incluir <span class="tt">raylib.h</span> en los TAD.</li>
 <li>Toda operacion visible al usuario debe pasar por <span class="tt">app_state</span>.</li>
 <li>Toda mejora docente que dependa de la operacion actual debe reflejarse tambien en <span class="tt">code_viewer</span> o <span class="tt">algorithm_trace</span> si aplica.</li>
+<li>En el modulo <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>, preferir <span class="tt"><a class="el" href="grafo__pedagogy_8c.html">src/grafo_pedagogy.c</a></span> para tablas, metricas por paso, trazas enriquecidas y exportacion textual antes de agregar mas logica a <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span>.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md49"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md60"></a>
 Cuando cambies un TAD</h1>
 <ol type="1">
 <li>Actualizar su encabezado en <span class="tt">include/</span>.</li>
@@ -114,7 +115,7 @@ Cuando cambies un TAD</h1>
 <li>Si hace falta visualizacion nueva, exponer funciones de copia o snapshot antes que acceso estructural directo.</li>
 <li>Verificar que compile con <span class="tt">-std=c11 -Wall -Wextra -pedantic</span>.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md50"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md61"></a>
 Cuando agregues una operacion nueva</h1>
 <ol type="1">
 <li>Extender enums en <span class="tt"><a class="el" href="app__state_8h.html" title="Estado global y acciones de alto nivel de la aplicacion.">include/app_state.h</a></span>.</li>
@@ -125,7 +126,15 @@ Cuando agregues una operacion nueva</h1>
 <li>Ajustar la vista correspondiente si necesita nuevo feedback visual.</li>
 <li>Revisar si la ayuda interna (<span class="tt"><a class="el" href="main_8c.html#aefe4cd50ac123b6c800eede74968a353a03d47535d3ba04edd770ace117420d4c">SCREEN_HELP</a></span> en <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span>) requiere actualizacion del texto.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md51"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md62"></a>
+Cuando extiendas el modulo Grafo</h1>
+<ol type="1">
+<li>Mantener la separacion entre TAD (<span class="tt"><a class="el" href="grafo_8c.html" title="Implementación del TAD Grafo con algoritmos clásicos.">src/grafo.c</a></span>), controlador (<span class="tt"><a class="el" href="grafo__controller_8c.html" title="Implementación del controlador del grafo.">src/grafo_controller.c</a></span>), vista (<span class="tt"><a class="el" href="grafo__view_8c.html" title="Implementación del renderizado visual con Raylib.">src/grafo_view.c</a></span>) y capa pedagogica (<span class="tt"><a class="el" href="grafo__pedagogy_8c.html">src/grafo_pedagogy.c</a></span>).</li>
+<li>Si la mejora cambia significado de colores, pasos o metricas, sincronizar panel inferior, lienzo central, ayuda interna y QA manual.</li>
+<li>Si anades nuevos controles del visualizador, actualizar tambien <span class="tt"><a class="el" href="_r_e_a_d_m_e_8md.html">README.md</a></span> y atajos de teclado.</li>
+<li>Si el cambio requiere reconstruir demos o exportaciones, centralizar esa logica fuera de <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">main.c</a></span> siempre que sea posible.</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md63"></a>
 Cuando agregues una estructura nueva</h1>
 <ol type="1">
 <li>Crear TAD y header publico.</li>
@@ -134,8 +143,8 @@ Cuando agregues una estructura nueva</h1>
 <li>Integrar seleccion, controles y render en <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span>.</li>
 <li>Documentar arquitectura y guia docente si la estructura cambia el alcance del proyecto.</li>
 </ol>
-<p>Referencia vigente: <span class="tt">lista_circular</span> y <span class="tt"><a class="el" href="structsublista.html">sublista</a></span> ya estan integradas como ejemplos completos de extension transversal (TAD + <a class="el" href="struct_app_state.html">AppState</a> + vista + snippets + trazas + ayuda + QA docs).</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md52"></a>
+<p>Referencia vigente: <span class="tt">lista_circular</span>, <span class="tt"><a class="el" href="structsublista.html">sublista</a></span> y <span class="tt">grafo</span> ya estan integradas como ejemplos completos de extension transversal (TAD + <a class="el" href="struct_app_state.html">AppState</a> + vista + snippets + trazas + ayuda + QA docs).</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md64"></a>
 Cuando toques la UI</h1>
 <ul>
 <li>Reutilizar helpers en <span class="tt"><a class="el" href="ui_8c.html" title="Implementacion de layout, widgets simples y recursos visuales compartidos.">src/ui.c</a></span> antes de introducir widgets duplicados.</li>
@@ -144,15 +153,16 @@ Cuando toques la UI</h1>
 <li>Si agregas feedback visual, validar tambien los estados de error y vacio.</li>
 <li>Si cambias navegacion o atajos, sincronizar <span class="tt"><a class="el" href="_r_e_a_d_m_e_8md.html">README.md</a></span>, <span class="tt"><a class="el" href="qa-manual_8md.html">docs/qa-manual.md</a></span> y la ayuda interna.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md53"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md65"></a>
 Documentacion minima esperada</h1>
 <ul>
 <li><span class="tt">@file</span> y <span class="tt">@brief</span> en modulos nuevos.</li>
 <li>Actualizacion de <span class="tt"><a class="el" href="_r_e_a_d_m_e_8md.html">README.md</a></span> si cambia el flujo de uso o compilacion.</li>
 <li>Actualizacion de <span class="tt"><a class="el" href="architecture_8md.html">docs/architecture.md</a></span> si cambia una responsabilidad arquitectonica.</li>
 <li>Actualizacion de <span class="tt"><a class="el" href="guia-docente_8md.html">docs/guia-docente.md</a></span> si cambia la estrategia de demostracion en clase.</li>
+<li>Si el cambio impacta el modulo <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>, actualizar tambien <span class="tt"><a class="el" href="qa-manual_8md.html">docs/qa-manual.md</a></span> y <span class="tt"><a class="el" href="qa-visualizacion-ventanas_8md.html">docs/qa-visualizacion-ventanas.md</a></span>.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md54"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md66"></a>
 Validacion recomendada antes de cerrar un cambio</h1>
 <ol type="1">
 <li>Compilar la app unificada.</li>
