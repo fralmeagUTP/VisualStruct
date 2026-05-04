@@ -13,6 +13,8 @@ Esta guia define una verificacion manual minima para confirmar que la app unific
 - Verificar que el titulo, los botones contextuales y el conteo de elementos cambian con la estructura activa.
 - Confirmar que los campos `Valor` y `Prioridad` aceptan edicion.
 - En Grafo, confirmar edicion de `Origen`, `Destino` y `Peso`.
+- Confirmar que `Valor`, `Origen`, `Destino` y `Peso` solo aceptan entrada numerica.
+- Confirmar que aparece cursor visible en el cuadro activo.
 - Escribir una entrada invalida y comprobar que la caja se marca en rojo.
 - Verificar que el estado de operacion muestre mensaje coherente tras acciones validas e invalidas.
 - Abrir/cerrar ayuda con `F1` desde menu principal y visualizador sin bloqueos.
@@ -74,13 +76,17 @@ Esta guia define una verificacion manual minima para confirmar que la app unific
 ## Grafos
 1. Inicializar el grafo y alternar entre modo dirigido y no dirigido.
 2. Insertar vertices y aristas manualmente verificando validaciones de origen, destino y peso.
-3. Cargar demos con el boton `Cargar demo` hasta recorrer los escenarios de BFS, caminos, Bellman-Ford y MST.
-4. Ejecutar BFS/DFS y comprobar que el panel inferior distingue seleccion de vertice frente a consolidacion.
-5. Ejecutar Dijkstra y confirmar en el panel inferior: arista actual, tipo de paso, camino parcial, cerrados y metricas `Mejoras`, `Sin cambio`, `Empeora`.
-6. Ejecutar Bellman-Ford y verificar el paso final explicito de chequeo/consolidacion.
-7. Activar autoplay, cambiar velocidad y usar `Home`/`End` sin bloqueos.
-8. Pulsar `C` o `Exportar` y comprobar que el resumen se copia al portapapeles.
-9. Confirmar que el lienzo central muestra leyenda para activo, procesada y mejora.
+3. Intentar usar `Origen` o `Destino` con un ID no existente y confirmar que el campo queda invalido y la accion no se aplica.
+4. Enfocar un campo numerico y escribir un nuevo numero confirmando reemplazo del valor previo (sin concatenacion tipo texto).
+5. Ajustar `Peso` con `UP/DOWN` o `KP +/-` para validar comportamiento numerico.
+6. En modo dirigido, confirmar flechas visibles en aristas.
+7. Cargar demos con el boton `Cargar demo` hasta recorrer los escenarios de BFS, caminos, Bellman-Ford y MST.
+8. Ejecutar BFS/DFS y comprobar que el panel inferior distingue seleccion de vertice frente a consolidacion.
+9. Ejecutar Dijkstra y confirmar en el panel inferior: arista actual, tipo de paso, camino parcial, cerrados y metricas `Mejoras`, `Sin cambio`, `Empeora`.
+10. Ejecutar Bellman-Ford y verificar el paso final explicito de chequeo/consolidacion.
+11. Activar autoplay, cambiar velocidad y usar `Home`/`End` sin bloqueos.
+12. Pulsar `C` o `Exportar` y comprobar que el resumen se copia al portapapeles.
+13. Confirmar que el lienzo central muestra leyenda para activo, procesada y mejora.
 
 ## Paneles pedagogicos
 - Tras cada operacion, revisar que el panel `Codigo C Asociado (Historial)` agregue una nueva entrada con estructura, operacion y snippet.

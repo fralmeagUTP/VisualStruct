@@ -2,7 +2,7 @@ var searchData=
 [
   ['destruir_5fhijos_0',['destruir_hijos',['../sublista_8c.html#a86747bd84571c8d00e5c63267da87a17',1,'sublista.c']]],
   ['draw_5factive_5fview_1',['draw_active_view',['../main_8c.html#a3f3d707daebcc1042a9c5966ee1b78b0',1,'main.c']]],
-  ['draw_5fcontext_5fcontrols_2',['draw_context_controls',['../main_8c.html#a1ee96216319e58d6819a078c6028cb43',1,'main.c']]],
+  ['draw_5fcontext_5fcontrols_2',['draw_context_controls',['../main_8c.html#abb470acec563acc50e0ebcb19efa7b20',1,'main.c']]],
   ['draw_5fgraph_5fsidebar_5fbutton_3',['draw_graph_sidebar_button',['../main_8c.html#af24db390afc7de99d369a5354500bc84',1,'main.c']]],
   ['draw_5fhelp_5fscreen_4',['draw_help_screen',['../main_8c.html#a485bc574d9f8c1c422c3b4817ba571ea',1,'main.c']]],
   ['draw_5fhome_5fcard_5',['draw_home_card',['../main_8c.html#a77079dcec78d7922ef19f630a76ba8bd',1,'main.c']]],

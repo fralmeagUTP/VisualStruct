@@ -19,5 +19,7 @@ var grafo__view_8c =
     [ "grafo_vista_dibujar_vertices", "grafo__view_8c.html#ab58d0a029e3dcbf9cb63a56adbe78a3d", null ],
     [ "grafo_vista_init", "grafo__view_8c.html#a0f9e7a2f602af36305839edba3c26dc5", null ],
     [ "grafo_vista_opciones_defecto", "grafo__view_8c.html#a12d9cb225073c78522257baf895c2169", null ],
-    [ "grafo_vista_punto_en_linea", "grafo__view_8c.html#afda6bf6b371209ed7b1b0b9704b9a9ba", null ]
+    [ "grafo_vista_punto_en_linea", "grafo__view_8c.html#afda6bf6b371209ed7b1b0b9704b9a9ba", null ],
+    [ "grafo_vista_px", "grafo__view_8c.html#a1848a19844b8865ba8244d7efea6b47f", null ],
+    [ "grafo_vista_py", "grafo__view_8c.html#a35d0023625ed8850c018c78c30069e6e", null ]
 ];

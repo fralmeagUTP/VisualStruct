@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['2_20alcance_20funcional_0',['2 Alcance funcional',['../md_docs_2analisis-diseno-grafos.html#autotoc_md16',1,'2. Alcance funcional'],['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md24',1,'2. Alcance funcional'],['../md_docs_2analisis-diseno-sublistas.html#autotoc_md40',1,'2. Alcance funcional']]],
-  ['2_20controles_20contextuales_1',['5.2 Controles contextuales',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md32',1,'']]],
-  ['2_20justificacion_20tecnica_2',['4.2 Justificacion tecnica',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md28',1,'']]]
+  ['1_20estructura_20de_20datos_20seleccionada_0',['4.1 Estructura de datos seleccionada',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md30',1,'']]],
+  ['1_20informacion_20general_1',['1. Informacion general',['../md_docs_2sdd-secuenciales-vigente.html#autotoc_md115',1,'']]],
+  ['1_20integracion_20de_20navegacion_2',['5.1 Integracion de navegacion',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md34',1,'']]],
+  ['1_20objetivo_3',['1. Objetivo',['../md_docs_2analisis-diseno-grafos.html#autotoc_md18',1,'']]],
+  ['1_20objetivo_20de_20la_20funcionalidad_4',['1 Objetivo de la funcionalidad',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md26',1,'1. Objetivo de la funcionalidad'],['../md_docs_2analisis-diseno-sublistas.html#autotoc_md42',1,'1. Objetivo de la funcionalidad']]]
 ];

@@ -1,11 +1,12 @@
 var searchData=
 [
-  ['globales_0',['Chequeos globales',['../md_docs_2qa-manual.html#autotoc_md84',1,'']]],
-  ['grafo_1',['Grafo',['../md_docs_2analisis-diseno-grafos.html',1,'Analisis y Diseno: Modulo Grafo'],['../md_docs_2plan-modulo-grafos.html#autotoc_md77',1,'Componentes del modulo Grafo'],['../md_docs_2contribucion.html#autotoc_md62',1,'Cuando extiendas el modulo Grafo']]],
-  ['grafos_2',['Grafos',['../md_docs_2qa-manual.html#autotoc_md91',1,'Grafos'],['../index.html#autotoc_md8',1,'Modulo de Grafos']]],
-  ['grafos_20en_20c_20con_20raylib_3',['VisualStruct UTP: Estructuras Secuenciales y Grafos en C con Raylib',['../index.html',1,'']]],
-  ['grafos_20y_20navegacion_4',['Plan: Modulo de Grafos y Navegacion',['../md_docs_2plan-modulo-grafos.html',1,'']]],
-  ['guia_20de_20contribucion_5',['Guia de Contribucion',['../md_docs_2contribucion.html',1,'']]],
-  ['guia_20de_20pruebas_20manuales_6',['Guia de Pruebas Manuales',['../md_docs_2qa-manual.html',1,'']]],
-  ['guia_20docente_7',['Guia Docente',['../md_docs_2guia-docente.html',1,'']]]
+  ['flujo_20de_20ejecucion_0',['Flujo de ejecucion',['../md_docs_2architecture.html#autotoc_md53',1,'']]],
+  ['flujo_20recomendado_20de_20compilacion_20y_20validacion_1',['Flujo recomendado de compilacion y validacion',['../index.html#autotoc_md13',1,'']]],
+  ['funcional_2',['funcional',['../md_docs_2analisis-diseno-grafos.html#autotoc_md19',1,'2. Alcance funcional'],['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md27',1,'2. Alcance funcional'],['../md_docs_2analisis-diseno-sublistas.html#autotoc_md43',1,'2. Alcance funcional']]],
+  ['funcional_20vigente_3',['2. Alcance funcional vigente',['../md_docs_2sdd-secuenciales-vigente.html#autotoc_md116',1,'']]],
+  ['funcionales_4',['4. Requerimientos funcionales',['../md_docs_2analisis-diseno-sublistas.html#autotoc_md45',1,'']]],
+  ['funcionales_20detallados_5',['3. Requerimientos funcionales detallados',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md28',1,'']]],
+  ['funcionales_20en_20modulo_20de_20grafos_6',['Cambios funcionales en modulo de grafos',['../md_docs_2bitacora-cambios-2026-05-04.html#autotoc_md62',1,'']]],
+  ['funcionales_20por_20estructura_7',['Escenarios funcionales por estructura',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md109',1,'']]],
+  ['funcionalidad_8',['funcionalidad',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md26',1,'1. Objetivo de la funcionalidad'],['../md_docs_2analisis-diseno-sublistas.html#autotoc_md42',1,'1. Objetivo de la funcionalidad']]]
 ];

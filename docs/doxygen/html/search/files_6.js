@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['qa_2dmanual_2emd_0',['qa-manual.md',['../qa-manual_8md.html',1,'']]],
-  ['qa_2dvisualizacion_2dventanas_2emd_1',['qa-visualizacion-ventanas.md',['../qa-visualizacion-ventanas_8md.html',1,'']]]
+  ['pila_2ec_0',['pila.c',['../pila_8c.html',1,'']]],
+  ['pila_2eh_1',['pila.h',['../pila_8h.html',1,'']]],
+  ['pila_5fview_2ec_2',['pila_view.c',['../pila__view_8c.html',1,'']]],
+  ['pila_5fview_2eh_3',['pila_view.h',['../pila__view_8h.html',1,'']]],
+  ['plan_2dmodulo_2dgrafos_2emd_4',['plan-modulo-grafos.md',['../plan-modulo-grafos_8md.html',1,'']]]
 ];

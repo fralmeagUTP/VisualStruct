@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['5_201_20integracion_20de_20navegacion_0',['5.1 Integracion de navegacion',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md31',1,'']]],
-  ['5_202_20controles_20contextuales_1',['5.2 Controles contextuales',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md32',1,'']]],
-  ['5_203_20visualizacion_20en_20panel_20central_2',['5.3 Visualizacion en panel central',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md33',1,'']]],
-  ['5_20complejidad_20esperada_3',['5. Complejidad esperada',['../md_docs_2analisis-diseno-sublistas.html#autotoc_md43',1,'']]],
-  ['5_20complejidades_20esperadas_20referencia_20docente_4',['5. Complejidades esperadas (referencia docente)',['../md_docs_2analisis-diseno-grafos.html#autotoc_md19',1,'']]],
-  ['5_20diseno_20de_20interfaz_20y_20experiencia_5',['5. Diseno de interfaz y experiencia',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md30',1,'']]]
+  ['4_201_20estructura_20de_20datos_20seleccionada_0',['4.1 Estructura de datos seleccionada',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md30',1,'']]],
+  ['4_202_20justificacion_20tecnica_1',['4.2 Justificacion tecnica',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md31',1,'']]],
+  ['4_203_20complejidades_20esperadas_2',['4.3 Complejidades esperadas',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md32',1,'']]],
+  ['4_20modelo_20de_20datos_20y_20decisiones_20de_20diseno_3',['4. Modelo de datos y decisiones de diseno',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md29',1,'']]],
+  ['4_20requerimientos_20de_20interfaz_4',['4 Requerimientos de interfaz',['../md_docs_2analisis-diseno-grafos.html#autotoc_md21',1,'4. Requerimientos de interfaz'],['../md_docs_2sdd-secuenciales-vigente.html#autotoc_md118',1,'4. Requerimientos de interfaz']]],
+  ['4_20requerimientos_20funcionales_5',['4. Requerimientos funcionales',['../md_docs_2analisis-diseno-sublistas.html#autotoc_md45',1,'']]]
 ];

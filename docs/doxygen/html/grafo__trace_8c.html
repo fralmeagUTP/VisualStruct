@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">VisualStruct
    </div>
-   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+   <div id="projectbrief">Visualizador de estructuras secuenciales y grafos en C con Raylib</div>
   </td>
  </tr>
  </tbody>
@@ -93,11 +93,12 @@ $(function(){initNavTree('grafo__trace_8c.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>Implementación de la traza pedagógica.  
+<p>Implementacion de la traza pedagogica.  
 <a href="#details">Más...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="grafo__trace_8h_source.html">grafo_trace.h</a>&quot;</code><br />
-<code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="ui_8h_source.html">ui.h</a>&quot;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
 </div>
 <p><a href="grafo__trace_8c_source.html">Ir al código fuente de este archivo.</a></p>
 <table class="memberdecls">
@@ -125,7 +126,7 @@ Funciones</h2></td></tr>
 <tr class="memdesc:a8ee58096bc3478b64702ffbc5cc4fc1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Salta a un paso específico.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
-<div class="textblock"><p>Implementación de la traza pedagógica. </p>
+<div class="textblock"><p>Implementacion de la traza pedagogica. </p>
 
 <p class="definition">Definición en el archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
@@ -170,7 +171,7 @@ Funciones</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>true si se agregó exitosamente </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00029">29</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00032">32</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00029">GrafoTracePaso::aristas_examinadas</a>, <a class="el" href="grafo__trace_8h_source.html#l00039">GrafoTrace::cantidad_pasos</a>, <a class="el" href="grafo__trace_8h_source.html#l00026">GrafoTracePaso::descripcion</a>, <a class="el" href="grafo__trace_8h_source.html#l00030">GrafoTracePaso::linea_codigo_actual</a>, <a class="el" href="grafo__trace_8h_source.html#l00025">GrafoTracePaso::numero_paso</a>, <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a>, <a class="el" href="grafo__trace_8h_source.html#l00038">GrafoTrace::pasos</a>, <a class="el" href="grafo__trace_8h_source.html#l00027">GrafoTracePaso::variables</a> y <a class="el" href="grafo__trace_8h_source.html#l00028">GrafoTracePaso::vertices_procesados</a>.</p>
 
@@ -202,7 +203,7 @@ Funciones</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Estructura de traza inicializada </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00014">14</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00016">16</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00039">GrafoTrace::cantidad_pasos</a>, <a class="el" href="grafo__trace_8h_source.html#l00041">GrafoTrace::nombre_algoritmo</a>, <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a> y <a class="el" href="grafo__trace_8h_source.html#l00042">GrafoTrace::resultado_final</a>.</p>
 
@@ -238,11 +239,11 @@ Funciones</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00101">101</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00105">105</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00039">GrafoTrace::cantidad_pasos</a>, <a class="el" href="grafo__trace_8h_source.html#l00026">GrafoTracePaso::descripcion</a>, <a class="el" href="grafo__trace_8h_source.html#l00041">GrafoTrace::nombre_algoritmo</a>, <a class="el" href="grafo__trace_8h_source.html#l00025">GrafoTracePaso::numero_paso</a>, <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a>, <a class="el" href="grafo__trace_8h_source.html#l00038">GrafoTrace::pasos</a>, <a class="el" href="grafo__trace_8h_source.html#l00042">GrafoTrace::resultado_final</a> y <a class="el" href="grafo__trace_8h_source.html#l00027">GrafoTracePaso::variables</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00039">GrafoTrace::cantidad_pasos</a>, <a class="el" href="grafo__trace_8h_source.html#l00026">GrafoTracePaso::descripcion</a>, <a class="el" href="grafo__trace_8h_source.html#l00041">GrafoTrace::nombre_algoritmo</a>, <a class="el" href="grafo__trace_8h_source.html#l00025">GrafoTracePaso::numero_paso</a>, <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a>, <a class="el" href="grafo__trace_8h_source.html#l00038">GrafoTrace::pasos</a>, <a class="el" href="grafo__trace_8h_source.html#l00042">GrafoTrace::resultado_final</a>, <a class="el" href="ui_8c_source.html#l00076">ui_draw_text()</a> y <a class="el" href="grafo__trace_8h_source.html#l00027">GrafoTracePaso::variables</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01976">main()</a>.</p>
 
 </div>
 </div>
@@ -274,11 +275,11 @@ Funciones</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00149">149</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00160">160</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00039">GrafoTrace::cantidad_pasos</a> y <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00039">GrafoTrace::cantidad_pasos</a>, <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a> y <a class="el" href="ui_8c_source.html#l00076">ui_draw_text()</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01976">main()</a>.</p>
 
 </div>
 </div>
@@ -310,7 +311,7 @@ Funciones</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00061">61</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00065">65</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00042">GrafoTrace::resultado_final</a>.</p>
 
@@ -342,7 +343,7 @@ Funciones</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Puntero al paso actual </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00177">177</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00184">184</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00039">GrafoTrace::cantidad_pasos</a>, <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a> y <a class="el" href="grafo__trace_8h_source.html#l00038">GrafoTrace::pasos</a>.</p>
 
@@ -372,7 +373,7 @@ Funciones</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Cadena con "paso X de Y" </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00184">184</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00191">191</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00039">GrafoTrace::cantidad_pasos</a> y <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a>.</p>
 
@@ -402,7 +403,7 @@ Funciones</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>true si hay paso anterior </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00081">81</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00085">85</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a>.</p>
 
@@ -432,7 +433,7 @@ Funciones</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>true si hay siguiente paso </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00071">71</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00075">75</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00039">GrafoTrace::cantidad_pasos</a> y <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a>.</p>
 
@@ -467,7 +468,7 @@ Funciones</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>true si el paso existe </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00088">88</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__trace_8c_source.html#l00092">92</a> del archivo <a class="el" href="grafo__trace_8c_source.html">grafo_trace.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo__trace_8h_source.html#l00039">GrafoTrace::cantidad_pasos</a> y <a class="el" href="grafo__trace_8h_source.html#l00040">GrafoTrace::paso_actual</a>.</p>
 

@@ -150,7 +150,7 @@ static void app_state_sync_grafo_visual(AppState *state) {
             v->distancia = 0;
             v->predecesor = -1;
             v->orden_visitacion = 0;
-            v->radio = 15.0f;
+            v->radio = 18.0f;
 
             for (j = 0; j < old_count_vertices; j++) {
                 if (old_vertices[j].id == v->id) {

@@ -25,6 +25,7 @@ var grafo__controller_8c =
     [ "grafo_controller_pausar", "grafo__controller_8c.html#a7b5faa64a0fff515b3e73ab5efa3a8d2", null ],
     [ "grafo_controller_procesar_mouse", "grafo__controller_8c.html#a8b762fd3a3ef966b5d580afc9871ff56", null ],
     [ "grafo_controller_reanudar", "grafo__controller_8c.html#a4cbb41cfbdfdce017823ee3d38874a2f", null ],
+    [ "grafo_controller_rebind_vista_estado", "grafo__controller_8c.html#a4d73398ad056610338e76e36ca825ca6", null ],
     [ "grafo_controller_reiniciar", "grafo__controller_8c.html#a784f0a7b7b964e19f3415e3fdf1a5a11", null ],
     [ "grafo_controller_seleccionar_algoritmo", "grafo__controller_8c.html#aa14b561241e2e5c04877dbf9e441226d", null ],
     [ "grafo_controller_tipo_paso", "grafo__controller_8c.html#a2516e3d3896a5d271ce4e7928f5f15ef", null ],

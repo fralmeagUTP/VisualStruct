@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['6_20criterios_20de_20aceptacion_0',['6. Criterios de aceptacion',['../md_docs_2analisis-diseno-grafos.html#autotoc_md20',1,'']]],
-  ['6_20integracion_20de_20interfaz_1',['6. Integracion de interfaz',['../md_docs_2analisis-diseno-sublistas.html#autotoc_md44',1,'']]],
-  ['6_20integracion_20por_20capas_2',['6. Integracion por capas',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md34',1,'']]]
+  ['5_201_20integracion_20de_20navegacion_0',['5.1 Integracion de navegacion',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md34',1,'']]],
+  ['5_202_20controles_20contextuales_1',['5.2 Controles contextuales',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md35',1,'']]],
+  ['5_203_20visualizacion_20en_20panel_20central_2',['5.3 Visualizacion en panel central',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md36',1,'']]],
+  ['5_20complejidad_20esperada_3',['5. Complejidad esperada',['../md_docs_2analisis-diseno-sublistas.html#autotoc_md46',1,'']]],
+  ['5_20complejidades_20esperadas_20referencia_20docente_4',['5. Complejidades esperadas (referencia docente)',['../md_docs_2analisis-diseno-grafos.html#autotoc_md22',1,'']]],
+  ['5_20diseno_20de_20interfaz_20y_20experiencia_5',['5. Diseno de interfaz y experiencia',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md33',1,'']]],
+  ['5_20requerimientos_20tecnicos_6',['5. Requerimientos tecnicos',['../md_docs_2sdd-secuenciales-vigente.html#autotoc_md119',1,'']]]
 ];

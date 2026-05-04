@@ -39,3 +39,10 @@ Integrar el modulo de grafos a la app unificada sin romper el flujo de estructur
 3. Operaciones CRUD de vertices/aristas correctas.
 4. Algoritmos ejecutan y actualizan lienzo, codigo y traza.
 5. QA manual y QA visual actualizados.
+
+## Actualizacion de alcance UI (2026-05-04)
+1. Priorizar experiencia de usuario final en pantalla de construccion de grafo.
+2. Mantener un modo basico como vista por defecto y exponer modo avanzado bajo demanda.
+3. Estandarizar tipografia y legibilidad de paneles, incluyendo etiquetas de vertices y pesos.
+4. Asegurar que `Valor`, `Origen`, `Destino` y `Peso` se comporten como campos numericos.
+5. Bloquear aplicacion de `Origen/Destino` cuando el vertice no exista en el grafo.

@@ -1,2 +1,3 @@
 *.exe
 !visualstruct_eval_v11.exe
+backups/

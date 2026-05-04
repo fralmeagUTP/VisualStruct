@@ -383,6 +383,8 @@ bool ui_input_box(Rectangle bounds, const char *label, const char *value, bool a
     bool hover = CheckCollisionPointRec(mouse, bounds);
     float value_size = bounds.height >= 38.0f ? 17.0f : 15.0f;
     int valueWidth = measure_ui_text(body_font(), value, value_size, 0.10f);
+    float text_x = bounds.x + bounds.width - valueWidth - 12.0f;
+    float text_y = bounds.y + (bounds.height - value_size) * 0.5f - 1.0f;
     Color bg = active ? (Color){255, 255, 255, 255} : (Color){247, 250, 253, 255};
     Color border = active ? COLOR_PRIMARY : (Color){123, 150, 175, 255};
 
@@ -398,9 +400,21 @@ bool ui_input_box(Rectangle bounds, const char *label, const char *value, bool a
 
     DrawRectangleRounded(bounds, 0.18f, 10, bg);
     DrawRectangleRoundedLinesEx(bounds, 0.18f, 10, 2.0f, border);
-    draw_ui_text(body_font(), value, bounds.x + bounds.width - valueWidth - 12.0f,
-                 bounds.y + (bounds.height - value_size) * 0.5f - 1.0f, value_size, 0.10f,
-                 COLOR_TEXT);
+    draw_ui_text(body_font(), value, text_x, text_y, value_size, 0.10f, COLOR_TEXT);
+
+    if (active) {
+        float caret_x = text_x + (float)valueWidth + 2.0f;
+        float caret_top = bounds.y + 8.0f;
+        float caret_bottom = bounds.y + bounds.height - 8.0f;
+        if (caret_x < bounds.x + 8.0f) {
+            caret_x = bounds.x + 8.0f;
+        }
+        if (caret_x > bounds.x + bounds.width - 8.0f) {
+            caret_x = bounds.x + bounds.width - 8.0f;
+        }
+        DrawLineEx((Vector2){caret_x, caret_top}, (Vector2){caret_x, caret_bottom}, 1.6f,
+                   COLOR_PRIMARY_DEEP);
+    }
 
     return hover && IsMouseButtonPressed(MOUSE_BUTTON_LEFT);
 }

@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">VisualStruct
    </div>
-   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+   <div id="projectbrief">Visualizador de estructuras secuenciales y grafos en C con Raylib</div>
   </td>
  </tr>
  </tbody>
@@ -108,6 +108,7 @@ $(function(){initNavTree('globals_func_g.html','',''); });
 <li>grafo_codigo_bfs()&#160;:&#160;<a class="el" href="grafo__code__viewer_8h.html#a1e6ae904577eeb893431cb7f6dae91b7">grafo_code_viewer.h</a>, <a class="el" href="grafo__code__viewer_8c.html#a1e6ae904577eeb893431cb7f6dae91b7">grafo_code_viewer.c</a></li>
 <li>grafo_codigo_dfs()&#160;:&#160;<a class="el" href="grafo__code__viewer_8h.html#a4a8f4bfca0d8dfbe1f3b5618910140ce">grafo_code_viewer.h</a>, <a class="el" href="grafo__code__viewer_8c.html#a4a8f4bfca0d8dfbe1f3b5618910140ce">grafo_code_viewer.c</a></li>
 <li>grafo_codigo_dibujar()&#160;:&#160;<a class="el" href="grafo__code__viewer_8h.html#af6fca877dfc09ee149b16de63d373bb4">grafo_code_viewer.h</a>, <a class="el" href="grafo__code__viewer_8c.html#af6fca877dfc09ee149b16de63d373bb4">grafo_code_viewer.c</a></li>
+<li>grafo_codigo_dibujar_con_scroll()&#160;:&#160;<a class="el" href="grafo__code__viewer_8h.html#ab5c279ce76c32ab8cc2b996eaf1409c3">grafo_code_viewer.h</a>, <a class="el" href="grafo__code__viewer_8c.html#ab5c279ce76c32ab8cc2b996eaf1409c3">grafo_code_viewer.c</a></li>
 <li>grafo_codigo_dijkstra()&#160;:&#160;<a class="el" href="grafo__code__viewer_8h.html#ae07556bddc40f795df8e7a9a583d7805">grafo_code_viewer.h</a>, <a class="el" href="grafo__code__viewer_8c.html#ae07556bddc40f795df8e7a9a583d7805">grafo_code_viewer.c</a></li>
 <li>grafo_codigo_establecer_linea_actual()&#160;:&#160;<a class="el" href="grafo__code__viewer_8h.html#a937decef6e0583f0b0bd1826a76a0efd">grafo_code_viewer.h</a>, <a class="el" href="grafo__code__viewer_8c.html#a937decef6e0583f0b0bd1826a76a0efd">grafo_code_viewer.c</a></li>
 <li>grafo_codigo_kruskal()&#160;:&#160;<a class="el" href="grafo__code__viewer_8h.html#aa46e08e201576ce5cf6079168d25e2bf">grafo_code_viewer.h</a>, <a class="el" href="grafo__code__viewer_8c.html#aa46e08e201576ce5cf6079168d25e2bf">grafo_code_viewer.c</a></li>
@@ -141,6 +142,7 @@ $(function(){initNavTree('globals_func_g.html','',''); });
 <li>grafo_controller_pausar()&#160;:&#160;<a class="el" href="grafo__controller_8h.html#a7b5faa64a0fff515b3e73ab5efa3a8d2">grafo_controller.h</a>, <a class="el" href="grafo__controller_8c.html#a7b5faa64a0fff515b3e73ab5efa3a8d2">grafo_controller.c</a></li>
 <li>grafo_controller_procesar_mouse()&#160;:&#160;<a class="el" href="grafo__controller_8h.html#a8b762fd3a3ef966b5d580afc9871ff56">grafo_controller.h</a>, <a class="el" href="grafo__controller_8c.html#a8b762fd3a3ef966b5d580afc9871ff56">grafo_controller.c</a></li>
 <li>grafo_controller_reanudar()&#160;:&#160;<a class="el" href="grafo__controller_8h.html#a4cbb41cfbdfdce017823ee3d38874a2f">grafo_controller.h</a>, <a class="el" href="grafo__controller_8c.html#a4cbb41cfbdfdce017823ee3d38874a2f">grafo_controller.c</a></li>
+<li>grafo_controller_rebind_vista_estado()&#160;:&#160;<a class="el" href="grafo__controller_8c.html#a4d73398ad056610338e76e36ca825ca6">grafo_controller.c</a></li>
 <li>grafo_controller_reiniciar()&#160;:&#160;<a class="el" href="grafo__controller_8h.html#a784f0a7b7b964e19f3415e3fdf1a5a11">grafo_controller.h</a>, <a class="el" href="grafo__controller_8c.html#a784f0a7b7b964e19f3415e3fdf1a5a11">grafo_controller.c</a></li>
 <li>grafo_controller_seleccionar_algoritmo()&#160;:&#160;<a class="el" href="grafo__controller_8h.html#aa14b561241e2e5c04877dbf9e441226d">grafo_controller.h</a>, <a class="el" href="grafo__controller_8c.html#aa14b561241e2e5c04877dbf9e441226d">grafo_controller.c</a></li>
 <li>grafo_controller_tipo_paso()&#160;:&#160;<a class="el" href="grafo__controller_8c.html#a2516e3d3896a5d271ce4e7928f5f15ef">grafo_controller.c</a></li>
@@ -236,6 +238,9 @@ $(function(){initNavTree('globals_func_g.html','',''); });
 <li>grafo_vista_init()&#160;:&#160;<a class="el" href="grafo__view_8h.html#a0f9e7a2f602af36305839edba3c26dc5">grafo_view.h</a>, <a class="el" href="grafo__view_8c.html#a0f9e7a2f602af36305839edba3c26dc5">grafo_view.c</a></li>
 <li>grafo_vista_opciones_defecto()&#160;:&#160;<a class="el" href="grafo__view_8h.html#a12d9cb225073c78522257baf895c2169">grafo_view.h</a>, <a class="el" href="grafo__view_8c.html#a12d9cb225073c78522257baf895c2169">grafo_view.c</a></li>
 <li>grafo_vista_punto_en_linea()&#160;:&#160;<a class="el" href="grafo__view_8h.html#afda6bf6b371209ed7b1b0b9704b9a9ba">grafo_view.h</a>, <a class="el" href="grafo__view_8c.html#afda6bf6b371209ed7b1b0b9704b9a9ba">grafo_view.c</a></li>
+<li>grafo_vista_px()&#160;:&#160;<a class="el" href="grafo__view_8c.html#a1848a19844b8865ba8244d7efea6b47f">grafo_view.c</a></li>
+<li>grafo_vista_py()&#160;:&#160;<a class="el" href="grafo__view_8c.html#a35d0023625ed8850c018c78c30069e6e">grafo_view.c</a></li>
+<li>graph_vertex_exists()&#160;:&#160;<a class="el" href="main_8c.html#afbb572f9486e716ffa04db262d68810f">main.c</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

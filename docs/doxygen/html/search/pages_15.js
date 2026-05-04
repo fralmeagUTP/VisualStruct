@@ -1,9 +1,21 @@
 var searchData=
 [
-  ['navegacion_0',['Plan: Modulo de Grafos y Navegacion',['../md_docs_2plan-modulo-grafos.html',1,'']]],
-  ['navegacion_1',['5.1 Integracion de navegacion',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md31',1,'']]],
-  ['navegacion_20definida_2',['Navegacion definida',['../md_docs_2plan-modulo-grafos.html#autotoc_md76',1,'']]],
-  ['navegacion_20rapida_3',['Navegacion rapida',['../index.html#autotoc_md9',1,'']]],
-  ['notas_20de_20arquitectura_4',['Notas de Arquitectura',['../index.html#autotoc_md13',1,'']]],
-  ['nueva_5',['nueva',['../md_docs_2contribucion.html#autotoc_md63',1,'Cuando agregues una estructura nueva'],['../md_docs_2contribucion.html#autotoc_md61',1,'Cuando agregues una operacion nueva']]]
+  ['manuales_0',['Guia de Pruebas Manuales',['../md_docs_2qa-manual.html',1,'']]],
+  ['material_20legacy_1',['Material legacy',['../md_docs_2architecture.html#autotoc_md57',1,'']]],
+  ['matriz_20de_20prueba_20resolucion_2',['Matriz de prueba (resolucion)',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md108',1,'']]],
+  ['minima_3',['Validacion minima',['../md_docs_2plan-modulo-grafos.html#autotoc_md89',1,'']]],
+  ['minima_20esperada_4',['Documentacion minima esperada',['../md_docs_2contribucion.html#autotoc_md74',1,'']]],
+  ['minimo_5',['9. Plan de pruebas minimo',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md40',1,'']]],
+  ['minimo_20de_20pruebas_6',['9. Plan minimo de pruebas',['../md_docs_2analisis-diseno-sublistas.html#autotoc_md50',1,'']]],
+  ['mitigaciones_7',['mitigaciones',['../md_docs_2analisis-diseno-grafos.html#autotoc_md24',1,'7. Riesgos y mitigaciones'],['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md39',1,'8. Riesgos y mitigaciones'],['../md_docs_2analisis-diseno-sublistas.html#autotoc_md49',1,'8. Riesgos y mitigaciones']]],
+  ['modelo_20de_20datos_20exigido_8',['3. Modelo de datos exigido',['../md_docs_2analisis-diseno-sublistas.html#autotoc_md44',1,'']]],
+  ['modelo_20de_20datos_20y_20decisiones_20de_20diseno_9',['4. Modelo de datos y decisiones de diseno',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md29',1,'']]],
+  ['modulo_20de_20grafos_10',['Modulo de Grafos',['../index.html#autotoc_md9',1,'']]],
+  ['modulo_20de_20grafos_11',['Cambios funcionales en modulo de grafos',['../md_docs_2bitacora-cambios-2026-05-04.html#autotoc_md62',1,'']]],
+  ['modulo_20de_20grafos_20y_20navegacion_12',['Plan: Modulo de Grafos y Navegacion',['../md_docs_2plan-modulo-grafos.html',1,'']]],
+  ['modulo_20grafo_13',['Analisis y Diseno: Modulo Grafo',['../md_docs_2analisis-diseno-grafos.html',1,'']]],
+  ['modulo_20grafo_14',['modulo Grafo',['../md_docs_2plan-modulo-grafos.html#autotoc_md86',1,'Componentes del modulo Grafo'],['../md_docs_2contribucion.html#autotoc_md71',1,'Cuando extiendas el modulo Grafo']]],
+  ['modulo_20lista_20circular_15',['Analisis y Diseno: Modulo Lista Circular',['../md_docs_2analisis-diseno-lista-circular.html',1,'']]],
+  ['modulo_20secuencial_20visualstruct_16',['SDD Vigente: Modulo Secuencial (VisualStruct)',['../md_docs_2sdd-secuenciales-vigente.html',1,'']]],
+  ['modulo_20sublistas_17',['Analisis y Diseno: Modulo Sublistas',['../md_docs_2analisis-diseno-sublistas.html',1,'']]]
 ];

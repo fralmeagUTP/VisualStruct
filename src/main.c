@@ -673,7 +673,7 @@ static void draw_home_graph_screen(const UILayout *layout, AppState *app, Screen
 
 /** @brief Gestiona navegación de alto nivel entre menu principal y visualizador. */
 static void handle_navigation_keyboard(ScreenMode *mode, AppState *app, int *home_selected,
-                                       bool *activate_selected) {
+                                       bool *activate_selected, InputFocus focus) {
     *activate_selected = false;
     if (*mode == SCREEN_HELP) {
         return;
@@ -777,6 +777,10 @@ static void handle_navigation_keyboard(ScreenMode *mode, AppState *app, int *hom
     }
 
     if (*mode == SCREEN_VISUALIZER) {
+        if (focus != INPUT_NONE) {
+            return;
+        }
+
         int estructura_shortcut = estructura_from_shortcut();
 
         if (estructura_shortcut >= 0) {
@@ -1342,7 +1346,8 @@ static void draw_active_view(AppState *state, Rectangle panel, float content_top
 }
 
 /** @brief Dibuja los controles contextuales de operacion sobre el panel central. */
-static float draw_context_controls(AppState *app, Rectangle panel, bool *is_compact_mode) {
+static float draw_context_controls(AppState *app, Rectangle panel, bool *is_compact_mode,
+                                   bool graph_basic_mode) {
     float base_x = panel.x + 16.0f;
     float base_y = panel.y + 42.0f;
     float gap = 10.0f;
@@ -1374,6 +1379,52 @@ static float draw_context_controls(AppState *app, Rectangle panel, bool *is_comp
     }
 
     if (app->estructura_activa == ESTRUCTURA_GRAFO) {
+        if (graph_basic_mode) {
+            int graph_columns = 4;
+            float graph_btn_w = (panel.width - 32.0f - gap * (graph_columns - 1)) / graph_columns;
+            int action_count = 8;
+            float controls_y = base_y;
+            int action;
+
+            if (graph_btn_w < 132.0f) {
+                graph_btn_w = 132.0f;
+            }
+
+            for (action = 0; action < action_count; action++) {
+                Rectangle btn_graph = {base_x + (action % graph_columns) * (graph_btn_w + gap),
+                                       controls_y + (action / graph_columns) * row_step, graph_btn_w,
+                                       btn_h};
+                if (action == 0 && ui_button(btn_graph, "Inicializar (I)", false)) {
+                    app_state_operacion_inicializar(app);
+                } else if (action == 1 && ui_button(btn_graph, "Vertice + (A)", false)) {
+                    app_state_operacion_insertar(app);
+                } else if (action == 2 && ui_button(btn_graph, "Vertice - (D)", false)) {
+                    app_state_operacion_eliminar(app);
+                } else if (action == 3 && ui_button(btn_graph, "Arista + (G)", false)) {
+                    app_state_operacion_grafo_insertar_arista(app, app->grafo_vertice_inicio,
+                                                              app->grafo_vertice_destino,
+                                                              app->input_prioridad);
+                } else if (action == 4 && ui_button(btn_graph, "Arista - (X)", false)) {
+                    app_state_operacion_grafo_eliminar_arista(app, app->grafo_vertice_inicio,
+                                                              app->grafo_vertice_destino);
+                } else if (action == 5 &&
+                           ui_button(btn_graph, app->grafo_dirigido ? "Dirigido (T)"
+                                                                    : "No dirigido (T)",
+                                     false)) {
+                    app_state_grafo_toggle_dirigido(app);
+                } else if (action == 6 && ui_button(btn_graph, "Cargar demo (M)", false)) {
+                    app_state_grafo_cargar_demo(app);
+                } else if (action == 7 && ui_button(btn_graph, "Limpiar", false)) {
+                    app_state_operacion_inicializar(app);
+                }
+            }
+
+            ui_draw_text("Flujo recomendado: 1 Inicializar  2 Vertices  3 Aristas",
+                         panel.x + 16.0f, controls_y + row_step * 2.0f + 6.0f, 13.0f, 0.10f,
+                         (Color){54, 66, 82, 255}, false);
+            return controls_y + row_step * 2.0f + 24.0f;
+        }
+
         static int grafo_ui_mode = 0; /* 0 Construccion, 1 Recorridos, 2 Caminos, 3 MST */
         const char *tab_labels[4] = {"Construccion", "Recorridos", "Caminos", "MST"};
         float tab_gap = 8.0f;
@@ -1666,7 +1717,11 @@ static float draw_context_controls(AppState *app, Rectangle panel, bool *is_comp
 }
 
 /** @brief Atiende atajos globales de teclado para entradas y operaciones. */
-static void handle_keyboard(AppState *app) {
+static void handle_keyboard(AppState *app, InputFocus focus) {
+    if (focus != INPUT_NONE) {
+        return;
+    }
+
     if (IsKeyPressed(KEY_UP)) {
         app_state_ajustar_valor(app, 1);
     }
@@ -1841,17 +1896,51 @@ static bool parse_int_text(const char *text, int *value) {
     return true;
 }
 
+/** @brief Indica si un ID de vertice existe en el grafo activo. */
+static bool graph_vertex_exists(const AppState *app, int vertex_id) {
+    if (app == NULL || app->grafo == NULL || vertex_id < 0) {
+        return false;
+    }
+    return grafo_existe_vertice(app->grafo, vertex_id);
+}
+
 /** @brief Actualiza el buffer de la caja de entrada activa usando teclado. */
-static void edit_active_input(char *buffer, size_t size) {
+static void edit_active_input(char *buffer, size_t size, bool *replace_on_type) {
     int key = GetCharPressed();
     size_t len = strlen(buffer);
+    bool replace_now = (replace_on_type != NULL) ? *replace_on_type : false;
+    int numeric_value = 0;
+    bool has_numeric_value = parse_int_text(buffer, &numeric_value);
 
     while (key > 0) {
-        if ((key >= '0' && key <= '9') || (key == '-' && len == 0)) {
+        if (key >= '0' && key <= '9') {
+            if (replace_now) {
+                buffer[0] = '\0';
+                len = 0;
+                replace_now = false;
+            }
             if (len + 1 < size) {
-                buffer[len] = (char)key;
-                buffer[len + 1] = '\0';
-                len++;
+                if (key >= '0' && key <= '9' && len == 1 && buffer[0] == '0') {
+                    buffer[0] = (char)key;
+                } else if (key >= '0' && key <= '9' && len == 2 && buffer[0] == '-' &&
+                           buffer[1] == '0') {
+                    buffer[1] = (char)key;
+                } else {
+                    buffer[len] = (char)key;
+                    buffer[len + 1] = '\0';
+                    len++;
+                }
+            }
+        } else if (key == '-') {
+            if (replace_now) {
+                buffer[0] = '-';
+                buffer[1] = '\0';
+                len = 1;
+                replace_now = false;
+            } else if (len == 0 && size > 1) {
+                buffer[0] = '-';
+                buffer[1] = '\0';
+                len = 1;
             }
         }
         key = GetCharPressed();
@@ -1859,6 +1948,28 @@ static void edit_active_input(char *buffer, size_t size) {
 
     if (IsKeyPressed(KEY_BACKSPACE) && len > 0) {
         buffer[len - 1] = '\0';
+        replace_now = false;
+    }
+
+    /* Entradas se comportan como numericas con nudge por teclado. */
+    if (IsKeyPressed(KEY_UP) || IsKeyPressed(KEY_KP_ADD)) {
+        if (!has_numeric_value) {
+            numeric_value = 0;
+        }
+        numeric_value += 1;
+        snprintf(buffer, size, "%d", numeric_value);
+        replace_now = false;
+    } else if (IsKeyPressed(KEY_DOWN) || IsKeyPressed(KEY_KP_SUBTRACT)) {
+        if (!has_numeric_value) {
+            numeric_value = 0;
+        }
+        numeric_value -= 1;
+        snprintf(buffer, size, "%d", numeric_value);
+        replace_now = false;
+    }
+
+    if (replace_on_type != NULL) {
+        *replace_on_type = replace_now;
     }
 }
 
@@ -1894,9 +2005,14 @@ int main(void) {
     bool graph_origin_invalid;
     bool graph_dest_invalid;
     bool graph_weight_invalid;
+    bool graph_origin_exists;
+    bool graph_dest_exists;
     ScreenMode screen_mode = SCREEN_HOME_ROOT;
     int parsed_value;
     int parsed_priority;
+    int parsed_graph_origin;
+    int parsed_graph_dest;
+    int parsed_graph_weight;
     int home_selected = 0;
     bool home_activate = false;
     ScreenMode screen_before_help = SCREEN_HOME_ROOT;
@@ -1907,6 +2023,10 @@ int main(void) {
     const char *code_display_text;
     bool code_panel_compact = true;
     bool trace_advanced_mode = false;
+    bool graph_basic_mode = true;
+    bool graph_show_details = false;
+    InputFocus last_input_focus = INPUT_NONE;
+    bool replace_on_type = false;
 
     SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_WINDOW_HIGHDPI);
     InitWindow(screen_width, screen_height, "VisualStruct UTP");
@@ -1924,6 +2044,8 @@ int main(void) {
     SetTargetFPS(60);
 
     while (true) {
+        bool hide_graph_details = false;
+
         if (WindowShouldClose()) {
             if (screen_mode == SCREEN_VISUALIZER) {
                 screen_mode = SCREEN_HOME_ROOT;
@@ -1934,9 +2056,17 @@ int main(void) {
 
         ui_set_size(&ui, GetScreenWidth(), GetScreenHeight());
         layout = ui_get_layout(&ui);
+        hide_graph_details =
+            app.estructura_activa == ESTRUCTURA_GRAFO && graph_basic_mode && !graph_show_details;
+        if (hide_graph_details) {
+            layout.center.width = (layout.right.x + layout.right.width) - layout.center.x;
+            layout.center.height = (layout.bottom.y + layout.bottom.height) - layout.center.y;
+            layout.right = (Rectangle){0};
+            layout.bottom = (Rectangle){0};
+        }
         app_state_update_visuals(&app, GetFrameTime());
         grafo_controller_actualizar(&app.grafo_controller_state, GetFrameTime());
-        handle_navigation_keyboard(&screen_mode, &app, &home_selected, &home_activate);
+        handle_navigation_keyboard(&screen_mode, &app, &home_selected, &home_activate, input_focus);
         if (IsKeyPressed(KEY_F1)) {
             if (screen_mode == SCREEN_HELP) {
                 screen_mode = screen_before_help;
@@ -1981,13 +2111,14 @@ int main(void) {
             continue;
         }
 
-        if (CheckCollisionPointRec(GetMousePosition(), layout.right) && GetMouseWheelMove() != 0.0f) {
+        if (!hide_graph_details && CheckCollisionPointRec(GetMousePosition(), layout.right) &&
+            GetMouseWheelMove() != 0.0f) {
             code_scroll -= GetMouseWheelMove() * 22.0f;
-        } else if (CheckCollisionPointRec(GetMousePosition(), layout.bottom) &&
+        } else if (!hide_graph_details && CheckCollisionPointRec(GetMousePosition(), layout.bottom) &&
                    GetMouseWheelMove() != 0.0f) {
             trace_scroll -= GetMouseWheelMove() * 22.0f;
         }
-        handle_keyboard(&app);
+        handle_keyboard(&app, input_focus);
         sync_input_buffers(&app, value_text, sizeof(value_text), priority_text,
                            sizeof(priority_text), graph_origin_text,
                            sizeof(graph_origin_text), graph_dest_text,
@@ -1996,21 +2127,51 @@ int main(void) {
         value_invalid = !parse_int_text(value_text, &parsed_value);
         priority_invalid = !parse_int_text(priority_text, &parsed_priority) ||
                            parsed_priority < 1 || parsed_priority > 99;
-        graph_origin_invalid = !parse_int_text(graph_origin_text, NULL);
-        graph_dest_invalid = !parse_int_text(graph_dest_text, NULL);
-        graph_weight_invalid = !parse_int_text(graph_weight_text, &parsed_priority) ||
-                       parsed_priority < -999 || parsed_priority > 999;
+        graph_origin_invalid = !parse_int_text(graph_origin_text, &parsed_graph_origin);
+        graph_dest_invalid = !parse_int_text(graph_dest_text, &parsed_graph_dest);
+        graph_weight_invalid = !parse_int_text(graph_weight_text, &parsed_graph_weight) ||
+                               parsed_graph_weight < -999 || parsed_graph_weight > 999;
+        graph_origin_exists = false;
+        graph_dest_exists = false;
+
+        if (app.estructura_activa == ESTRUCTURA_GRAFO) {
+            if (!graph_origin_invalid) {
+                graph_origin_exists = graph_vertex_exists(&app, parsed_graph_origin);
+                graph_origin_invalid = !graph_origin_exists;
+            }
+            if (!graph_dest_invalid) {
+                graph_dest_exists = graph_vertex_exists(&app, parsed_graph_dest);
+                graph_dest_invalid = !graph_dest_exists;
+            }
+        }
+
+        if (app.estructura_activa == ESTRUCTURA_GRAFO) {
+            if (!graph_origin_invalid) {
+                app.grafo_vertice_inicio = parsed_graph_origin;
+            }
+            if (!graph_dest_invalid) {
+                app.grafo_vertice_destino = parsed_graph_dest;
+            }
+            if (!graph_weight_invalid) {
+                app_state_set_prioridad(&app, parsed_graph_weight);
+            }
+        }
+
+        if (input_focus != last_input_focus) {
+            replace_on_type = (input_focus != INPUT_NONE);
+            last_input_focus = input_focus;
+        }
 
         if (input_focus == INPUT_VALOR) {
-            edit_active_input(value_text, sizeof(value_text));
+            edit_active_input(value_text, sizeof(value_text), &replace_on_type);
         } else if (input_focus == INPUT_PRIORIDAD) {
-            edit_active_input(priority_text, sizeof(priority_text));
+            edit_active_input(priority_text, sizeof(priority_text), &replace_on_type);
         } else if (input_focus == INPUT_GRAFO_ORIGEN) {
-            edit_active_input(graph_origin_text, sizeof(graph_origin_text));
+            edit_active_input(graph_origin_text, sizeof(graph_origin_text), &replace_on_type);
         } else if (input_focus == INPUT_GRAFO_DESTINO) {
-            edit_active_input(graph_dest_text, sizeof(graph_dest_text));
+            edit_active_input(graph_dest_text, sizeof(graph_dest_text), &replace_on_type);
         } else if (input_focus == INPUT_GRAFO_PESO) {
-            edit_active_input(graph_weight_text, sizeof(graph_weight_text));
+            edit_active_input(graph_weight_text, sizeof(graph_weight_text), &replace_on_type);
         }
 
         if (IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_KP_ENTER)) {
@@ -2064,7 +2225,7 @@ int main(void) {
             status_label = "Error";
         }
 
-        {
+        if (!hide_graph_details) {
             char trace_text[1024];
             int code_lines = count_text_lines(code_display_text);
             int trace_lines;
@@ -2092,6 +2253,9 @@ int main(void) {
                                        trace_content_height > trace_viewport_height
                                            ? trace_content_height - trace_viewport_height
                                            : 0.0f);
+        } else {
+            code_scroll = 0.0f;
+            trace_scroll = 0.0f;
         }
 
         BeginDrawing();
@@ -2276,6 +2440,9 @@ int main(void) {
                     apply_input_focus(&app, INPUT_VALOR, value_text);
                 }
                 input_focus = INPUT_GRAFO_ORIGEN;
+                if (strcmp(graph_origin_text, "-1") == 0) {
+                    graph_origin_text[0] = '\0';
+                }
             }
             if (show_graph_inputs &&
                 ui_input_box(graph_dest_box, "Destino", graph_dest_text,
@@ -2284,6 +2451,9 @@ int main(void) {
                     apply_input_focus(&app, INPUT_VALOR, value_text);
                 }
                 input_focus = INPUT_GRAFO_DESTINO;
+                if (strcmp(graph_dest_text, "-1") == 0) {
+                    graph_dest_text[0] = '\0';
+                }
             }
             if (show_graph_inputs &&
                 ui_input_box(graph_weight_box, "Peso", graph_weight_text,
@@ -2349,7 +2519,23 @@ int main(void) {
         ui_draw_panel(layout.center, "Representacion Grafica");
         {
             bool compact_mode = false;
-            float view_top = draw_context_controls(&app, layout.center, &compact_mode);
+            float view_top;
+
+            if (app.estructura_activa == ESTRUCTURA_GRAFO) {
+                Rectangle mode_btn = {layout.center.x + layout.center.width - 296.0f,
+                                      layout.center.y + 10.0f, 132.0f, 24.0f};
+                Rectangle detail_btn = {layout.center.x + layout.center.width - 156.0f,
+                                        layout.center.y + 10.0f, 132.0f, 24.0f};
+                if (ui_button(mode_btn, graph_basic_mode ? "Modo avanzado" : "Modo basico", false)) {
+                    graph_basic_mode = !graph_basic_mode;
+                }
+                if (ui_button(detail_btn, graph_show_details ? "Ocultar detalles" : "Ver detalles",
+                              false)) {
+                    graph_show_details = !graph_show_details;
+                }
+            }
+
+            view_top = draw_context_controls(&app, layout.center, &compact_mode, graph_basic_mode);
 
             if (compact_mode) {
                 Rectangle compact_badge = {layout.center.x + layout.center.width - 142.0f,
@@ -2364,6 +2550,7 @@ int main(void) {
             draw_active_view(&app, layout.center, view_top);
         }
 
+        if (!hide_graph_details) {
         ui_draw_panel(layout.right, "Codigo C Asociado");
         DrawRectangleRounded((Rectangle){layout.right.x + 14.0f, layout.right.y + 40.0f,
                                          layout.right.width - 28.0f, 52.0f},
@@ -2741,6 +2928,7 @@ int main(void) {
                                                    16, (Color){48, 60, 76, 255}, 0.0f);
                 }
             }
+        }
         }
 
         EndDrawing();

@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">VisualStruct
    </div>
-   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+   <div id="projectbrief">Visualizador de estructuras secuenciales y grafos en C con Raylib</div>
   </td>
  </tr>
  </tbody>
@@ -92,11 +92,11 @@ $(function(){initNavTree('md_docs_2analisis-diseno-grafos.html','',''); });
   <div class="headertitle"><div class="title">Analisis y Diseno: Modulo Grafo </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md14"></a></p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md17"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
 1. Objetivo</h1>
 <p>Integrar un modulo de grafos en VisualStruct con enfoque docente, manteniendo separacion por capas y consistencia con los paneles pedagogicos de la aplicacion.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
 2. Alcance funcional</h1>
 <p>El modulo permite:</p>
 <ol type="1">
@@ -108,7 +108,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-grafos.html','',''); });
 <li>Ejecutar BFS, DFS, Dijkstra, Bellman-Ford, Prim y Kruskal.</li>
 <li>Navegar la ejecucion por pasos, autoplay y exportacion de resumen.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
 3. Estructura tecnica por capas</h1>
 <h2>Dominio</h2>
 <ul>
@@ -129,18 +129,21 @@ $(function(){initNavTree('md_docs_2analisis-diseno-grafos.html','',''); });
 <h2>Pedagogia</h2>
 <ul>
 <li><span class="tt"><a class="el" href="grafo__code__viewer_8c.html" title="Implementación del visualizador de código.">src/grafo_code_viewer.c</a></span>: snippet del algoritmo activo.</li>
-<li><span class="tt"><a class="el" href="grafo__trace_8c.html" title="Implementación de la traza pedagógica.">src/grafo_trace.c</a></span>: traza textual por algoritmo.</li>
+<li><span class="tt"><a class="el" href="grafo__trace_8c.html" title="Implementacion de la traza pedagogica.">src/grafo_trace.c</a></span>: traza textual por algoritmo.</li>
 <li><span class="tt"><a class="el" href="grafo__pedagogy_8c.html">src/grafo_pedagogy.c</a></span>: metricas por paso, camino parcial, tabla de distancias y exportacion.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
 4. Requerimientos de interfaz</h1>
 <ul>
 <li>Portada principal con dos entradas: <span class="tt">Secuenciales</span> y <span class="tt">Grafos</span>.</li>
 <li>Submenu de grafos con acceso a construccion y algoritmos.</li>
 <li>Campos laterales para <span class="tt">origen</span>, <span class="tt">destino</span> y <span class="tt">peso</span>.</li>
+<li>Entradas laterales de grafo con comportamiento numerico (no texto libre) y cursor visible en foco.</li>
+<li>Validacion en tiempo real para <span class="tt">origen</span> y <span class="tt">destino</span> contra vertices existentes.</li>
+<li>Modo basico para flujo de construccion y modo avanzado para controles/paneles extendidos.</li>
 <li>Panel inferior enriquecido con tipo de paso, progreso y metricas.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
 5. Complejidades esperadas (referencia docente)</h1>
 <ul>
 <li>BFS: <span class="tt">O(V + E)</span>.</li>
@@ -150,7 +153,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-grafos.html','',''); });
 <li>Prim (seleccion lineal): <span class="tt">O(V^2 + E)</span>.</li>
 <li>Kruskal: <span class="tt">O(E log E)</span> por ordenamiento de aristas.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
 6. Criterios de aceptacion</h1>
 <ol type="1">
 <li>La app compila con <span class="tt">-Wall -Wextra -pedantic</span>.</li>
@@ -160,7 +163,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-grafos.html','',''); });
 <li>La navegacion por pasos y autoplay mantiene coherencia visual.</li>
 <li>La exportacion textual entrega resumen util para clase.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
 7. Riesgos y mitigaciones</h1>
 <ul>
 <li>Riesgo: acoplar logica de algoritmo con UI.<ul>
@@ -168,11 +171,15 @@ $(function(){initNavTree('md_docs_2analisis-diseno-grafos.html','',''); });
 </ul>
 </li>
 <li>Riesgo: inconsistencias entre paneles pedagogicos.<ul>
-<li>Mitigacion: centralizar metricas y trazas en <span class="tt"><a class="el" href="grafo__pedagogy_8c.html">grafo_pedagogy.c</a></span> y <span class="tt"><a class="el" href="grafo__trace_8c.html" title="Implementación de la traza pedagógica.">grafo_trace.c</a></span>.</li>
+<li>Mitigacion: centralizar metricas y trazas en <span class="tt"><a class="el" href="grafo__pedagogy_8c.html">grafo_pedagogy.c</a></span> y <span class="tt"><a class="el" href="grafo__trace_8c.html" title="Implementacion de la traza pedagogica.">grafo_trace.c</a></span>.</li>
 </ul>
 </li>
 <li>Riesgo: sobrecarga visual en resoluciones bajas.<ul>
-<li>Mitigacion: validar con <span class="tt"><a class="el" href="qa-visualizacion-ventanas_8md.html">docs/qa-visualizacion-ventanas.md</a></span> y modo compacto. </li>
+<li>Mitigacion: validar con <span class="tt"><a class="el" href="qa-visualizacion-ventanas_8md.html">docs/qa-visualizacion-ventanas.md</a></span> y modo compacto.</li>
+</ul>
+</li>
+<li>Riesgo: entradas ambiguas en construccion de aristas (IDs inexistentes o texto invalido).<ul>
+<li>Mitigacion: restricciones de input numerico y validacion de existencia de vertice antes de aplicar cambios. </li>
 </ul>
 </li>
 </ul>

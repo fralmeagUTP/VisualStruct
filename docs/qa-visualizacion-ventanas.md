@@ -73,6 +73,8 @@ gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state
 - Botones del menu visibles y clicables
 - Seccion de contexto (Seleccion actual, Elementos, ayuda) no pisa inputs
 - Inputs Valor/Prioridad no se recortan
+- Inputs `Valor`, `Origen`, `Destino` y `Peso` muestran cursor visible en foco
+- Inputs numericos no presentan solape entre label y valor
 - Prioridad solo aparece en Cola de prioridad
 - Si el alto disponible es bajo, la ayuda se compacta sin superponerse
 
@@ -81,6 +83,8 @@ gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state
 - Lienzo muestra nodos completos sin cortar etiquetas
 - Si aparece "Modo compacto", no se superpone al titulo
 - En Grafo, verificar que leyenda, pesos de arista y etiquetas de vertice sigan legibles en todas las resoluciones de la matriz.
+- En Grafo dirigido, verificar flechas de direccion visibles en todas las resoluciones de la matriz.
+- Verificar que el peso de aristas tenga separacion visual respecto de la linea.
 
 3. Panel derecho (Codigo C Asociado):
 - Caja de resumen superior legible
@@ -92,6 +96,7 @@ gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state
 - Caja Resumen sin texto cortado
 - Caja Traza con titulo visible y scroll funcional
 - Estado (OK/Error/Estado) no se superpone a otros elementos
+- Verificar que variables y trazas no queden montadas sobre la barra de progreso.
 
 5. Pantalla de ayuda:
 - La banda superior (titulo, descripcion y `Volver`) no se recorta
@@ -104,6 +109,7 @@ gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state
 2. Cero recortes de texto en secciones clave (Resumen, Traza, Sidebar).
 3. Scroll funcional donde aplique (pila, cola, lista, lista circular, sublistas, grafo, codigo y traza).
 4. Navegacion estable al cambiar entre estructuras y volver al menu principal.
+5. Tipografia consistente en Arial en los paneles operativos y de estado.
 
 ## Registro de hallazgos
 

@@ -27,7 +27,7 @@ static float grafo_vista_py(const GrafoVista *vista, float local_y) {
 
 GrafoVistaColores grafo_vista_colores_defecto(void) {
     GrafoVistaColores c;
-    c.vertice_normal = GRAY;
+    c.vertice_normal = (Color){168, 168, 168, 255};
     c.vertice_visitado = DARKGRAY;
     c.vertice_inicial = BLUE;
     c.vertice_destino = RED;
@@ -128,28 +128,29 @@ void grafo_vista_punto_en_linea(float x1, float y1, float x2, float y2,
 
 void grafo_vista_dibujar_flecha(float x1, float y1, float x2, float y2, 
                                float grosor, Color color) {
-    DrawLineEx((Vector2){x1, y1}, (Vector2){x2, y2}, grosor, color);
-    
-    /* Calcular punta de flecha */
     float dx = x2 - x1;
     float dy = y2 - y1;
     float len = sqrtf(dx * dx + dy * dy);
-    
-    if (len > 0.001f) {
-        float px = x2 - (dx / len) * 15.0f;
-        float py = y2 - (dy / len) * 15.0f;
-        
-        /* Líneas laterales de punta */
-        float px1 = px + (dy / len) * 5.0f;
-        float py1 = py - (dx / len) * 5.0f;
-        float px2 = px - (dy / len) * 5.0f;
-        float py2 = py + (dx / len) * 5.0f;
-        
-        DrawLineEx((Vector2){x2, y2}, (Vector2){px1, py1}, grosor, color);
-        DrawLineEx((Vector2){x2, y2}, (Vector2){px2, py2}, grosor, color);
+
+    if (len <= 0.001f) {
+        return;
+    }
+
+    {
+        float ux = dx / len;
+        float uy = dy / len;
+        float head_len = 11.0f;
+        float head_half = 4.0f;
+        float shaft_end_x = x2 - ux * head_len;
+        float shaft_end_y = y2 - uy * head_len;
+        Vector2 tip = {x2, y2};
+        Vector2 left = {shaft_end_x + uy * head_half, shaft_end_y - ux * head_half};
+        Vector2 right = {shaft_end_x - uy * head_half, shaft_end_y + ux * head_half};
+
+        DrawLineEx((Vector2){x1, y1}, (Vector2){shaft_end_x, shaft_end_y}, grosor, color);
+        DrawTriangle(tip, left, right, color);
     }
 }
-
 int grafo_vista_detectar_vertice(const GrafoVista *vista, Vector2 mouse_pos) {
     if (!vista || !vista->estado) return -1;
     
@@ -226,21 +227,23 @@ void grafo_vista_dibujar_flechas(const GrafoVista *vista) {
         if (!v_origen || !v_destino) continue;
         
         Color color = grafo_vista_color_arista(vista, arista->estado);
-        
-        /* Calcular punto de inicio de flecha (desde borde del círculo) */
-        float px, py;
-        grafo_vista_punto_en_linea(grafo_vista_px(vista, v_origen->x),
-                                   grafo_vista_py(vista, v_origen->y),
-                                   grafo_vista_px(vista, v_destino->x),
-                                   grafo_vista_py(vista, v_destino->y),
-                                   v_origen->radio + 2.0f, &px, &py);
-        
-        grafo_vista_dibujar_flecha(px, py,
-                                   grafo_vista_px(vista, v_destino->x),
-                                   grafo_vista_py(vista, v_destino->y), 2.0f, color);
+        float ox = grafo_vista_px(vista, v_origen->x);
+        float oy = grafo_vista_py(vista, v_origen->y);
+        float dx = grafo_vista_px(vista, v_destino->x);
+        float dy = grafo_vista_py(vista, v_destino->y);
+        float vx = dx - ox;
+        float vy = dy - oy;
+        float len = sqrtf(vx * vx + vy * vy);
+        float px_inicio, py_inicio, px_fin, py_fin;
+
+        if (len <= 0.001f) continue;
+
+        grafo_vista_punto_en_linea(ox, oy, dx, dy, v_origen->radio + 2.0f, &px_inicio, &py_inicio);
+        grafo_vista_punto_en_linea(ox, oy, dx, dy, len - (v_destino->radio + 2.0f), &px_fin, &py_fin);
+
+        grafo_vista_dibujar_flecha(px_inicio, py_inicio, px_fin, py_fin, 2.0f, color);
     }
 }
-
 void grafo_vista_dibujar_vertice_individual(const GrafoVista *vista, 
                                             const GrafoVerticeVisual *vertice) {
     if (!vista || !vertice || !vertice->visible) return;
@@ -272,13 +275,29 @@ void grafo_vista_dibujar_pesos(const GrafoVista *vista) {
         
         if (!v_origen || !v_destino) continue;
         
-        /* Punto central de la arista */
-        float cx = (grafo_vista_px(vista, v_origen->x) + grafo_vista_px(vista, v_destino->x)) / 2.0f;
-        float cy = (grafo_vista_py(vista, v_origen->y) + grafo_vista_py(vista, v_destino->y)) / 2.0f;
+        /* Punto central de la arista con desplazamiento perpendicular para separar el peso */
+        float ox = grafo_vista_px(vista, v_origen->x);
+        float oy = grafo_vista_py(vista, v_origen->y);
+        float dx = grafo_vista_px(vista, v_destino->x);
+        float dy = grafo_vista_py(vista, v_destino->y);
+        float cx = (ox + dx) * 0.5f;
+        float cy = (oy + dy) * 0.5f;
+        float vx = dx - ox;
+        float vy = dy - oy;
+        float len = sqrtf(vx * vx + vy * vy);
+        float nx = 0.0f;
+        float ny = 0.0f;
+        float weight_offset = 12.0f;
+
+        if (len > 0.001f) {
+            nx = -vy / len;
+            ny = vx / len;
+        }
         
         char buffer[16];
         snprintf(buffer, sizeof(buffer), "%d", arista->peso);
-        ui_draw_text(buffer, cx - 8.0f, cy - 8.0f, 12.0f, 0.08f, vista->colores.texto_normal, false);
+        ui_draw_text(buffer, cx + nx * weight_offset - 8.0f, cy + ny * weight_offset - 8.0f, 14.0f,
+                     0.08f, vista->colores.texto_normal, false);
     }
 }
 
@@ -294,8 +313,8 @@ void grafo_vista_dibujar_etiquetas(const GrafoVista *vista) {
         
         /* ID del vértice */
         snprintf(buffer, sizeof(buffer), "V%d", v->id);
-        ui_draw_text(buffer, grafo_vista_px(vista, v->x) - 8.0f,
-                     grafo_vista_py(vista, v->y) + (float)offset_y, 12.0f, 0.08f,
+        ui_draw_text(buffer, grafo_vista_px(vista, v->x) - 10.0f,
+                     grafo_vista_py(vista, v->y) + (float)offset_y - 1.0f, 14.0f, 0.08f,
                      vista->colores.texto_normal, false);
         
         /* Distancia (si está activa) */

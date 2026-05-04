@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['9_20plan_20de_20pruebas_20minimo_0',['9. Plan de pruebas minimo',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md37',1,'']]],
-  ['9_20plan_20minimo_20de_20pruebas_1',['9. Plan minimo de pruebas',['../md_docs_2analisis-diseno-sublistas.html#autotoc_md47',1,'']]]
+  ['8_20riesgos_20y_20mitigaciones_0',['8 Riesgos y mitigaciones',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md39',1,'8. Riesgos y mitigaciones'],['../md_docs_2analisis-diseno-sublistas.html#autotoc_md49',1,'8. Riesgos y mitigaciones']]],
+  ['8_20validacion_20recomendada_1',['8. Validacion recomendada',['../md_docs_2sdd-secuenciales-vigente.html#autotoc_md122',1,'']]]
 ];

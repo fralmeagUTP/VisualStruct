@@ -1,4 +1,26 @@
 var searchData=
 [
-  ['qa_20de_20visualizacion_20de_20ventanas_0',['QA de Visualizacion de Ventanas',['../md_docs_2qa-visualizacion-ventanas.html',1,'']]]
+  ['panel_20central_0',['5.3 Visualizacion en panel central',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md36',1,'']]],
+  ['paneles_20pedagogicos_1',['Paneles pedagogicos',['../md_docs_2qa-manual.html#autotoc_md102',1,'']]],
+  ['pantalla_20de_20ayuda_2',['Pantalla de ayuda',['../md_docs_2qa-manual.html#autotoc_md103',1,'']]],
+  ['para_20clase_3',['Secuencia sugerida para clase',['../md_docs_2guia-docente.html#autotoc_md78',1,'']]],
+  ['pedagogicos_4',['Paneles pedagogicos',['../md_docs_2qa-manual.html#autotoc_md102',1,'']]],
+  ['pila_5',['Pila',['../md_docs_2qa-manual.html#autotoc_md95',1,'']]],
+  ['plan_20de_20pruebas_20minimo_6',['9. Plan de pruebas minimo',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md40',1,'']]],
+  ['plan_20minimo_20de_20pruebas_7',['9. Plan minimo de pruebas',['../md_docs_2analisis-diseno-sublistas.html#autotoc_md50',1,'']]],
+  ['plan_3a_20modulo_20de_20grafos_20y_20navegacion_8',['Plan: Modulo de Grafos y Navegacion',['../md_docs_2plan-modulo-grafos.html',1,'']]],
+  ['por_20capas_9',['por capas',['../md_docs_2analisis-diseno-grafos.html#autotoc_md20',1,'3. Estructura tecnica por capas'],['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md37',1,'6. Integracion por capas']]],
+  ['por_20estructura_10',['por estructura',['../md_docs_2sdd-secuenciales-vigente.html#autotoc_md117',1,'3. Operaciones por estructura'],['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md109',1,'Escenarios funcionales por estructura'],['../md_docs_2guia-docente.html#autotoc_md79',1,'Ideas por estructura']]],
+  ['por_20la_20refactorizacion_11',['Riesgos controlados por la refactorizacion',['../md_docs_2architecture.html#autotoc_md59',1,'']]],
+  ['por_20sistema_20operativo_12',['Entorno recomendado por sistema operativo',['../index.html#autotoc_md3',1,'']]],
+  ['preparacion_13',['Preparacion',['../md_docs_2qa-manual.html#autotoc_md93',1,'Preparacion'],['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md107',1,'Preparacion']]],
+  ['principalmente_14',['Archivos impactados (principalmente)',['../md_docs_2bitacora-cambios-2026-05-04.html#autotoc_md65',1,'']]],
+  ['prioridad_15',['Cola de prioridad',['../md_docs_2qa-manual.html#autotoc_md97',1,'']]],
+  ['problemas_16',['Solucion de problemas',['../index.html#autotoc_md12',1,'']]],
+  ['proposito_17',['Proposito',['../md_docs_2guia-docente.html#autotoc_md77',1,'']]],
+  ['prueba_20resolucion_18',['Matriz de prueba (resolucion)',['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md108',1,'']]],
+  ['pruebas_19',['9. Plan minimo de pruebas',['../md_docs_2analisis-diseno-sublistas.html#autotoc_md50',1,'']]],
+  ['pruebas_20manuales_20',['Guia de Pruebas Manuales',['../md_docs_2qa-manual.html',1,'']]],
+  ['pruebas_20minimo_21',['9. Plan de pruebas minimo',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md40',1,'']]],
+  ['puntos_20de_20extension_22',['Puntos de extension',['../md_docs_2architecture.html#autotoc_md56',1,'']]]
 ];

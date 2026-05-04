@@ -37,6 +37,9 @@ El modulo permite:
 - Portada principal con dos entradas: `Secuenciales` y `Grafos`.
 - Submenu de grafos con acceso a construccion y algoritmos.
 - Campos laterales para `origen`, `destino` y `peso`.
+- Entradas laterales de grafo con comportamiento numerico (no texto libre) y cursor visible en foco.
+- Validacion en tiempo real para `origen` y `destino` contra vertices existentes.
+- Modo basico para flujo de construccion y modo avanzado para controles/paneles extendidos.
 - Panel inferior enriquecido con tipo de paso, progreso y metricas.
 
 ## 5. Complejidades esperadas (referencia docente)
@@ -62,3 +65,5 @@ El modulo permite:
   - Mitigacion: centralizar metricas y trazas en `grafo_pedagogy.c` y `grafo_trace.c`.
 - Riesgo: sobrecarga visual en resoluciones bajas.
   - Mitigacion: validar con `docs/qa-visualizacion-ventanas.md` y modo compacto.
+- Riesgo: entradas ambiguas en construccion de aristas (IDs inexistentes o texto invalido).
+  - Mitigacion: restricciones de input numerico y validacion de existencia de vertice antes de aplicar cambios.

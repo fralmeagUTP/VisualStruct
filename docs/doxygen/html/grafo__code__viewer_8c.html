@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">VisualStruct
    </div>
-   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+   <div id="projectbrief">Visualizador de estructuras secuenciales y grafos en C con Raylib</div>
   </td>
  </tr>
  </tbody>
@@ -96,6 +96,7 @@ $(function(){initNavTree('grafo__code__viewer_8c.html','',''); });
 <p>Implementación del visualizador de código.  
 <a href="#details">Más...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="grafo__code__viewer_8h_source.html">grafo_code_viewer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ui_8h_source.html">ui.h</a>&quot;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 </div>
@@ -111,6 +112,7 @@ Funciones</h2></td></tr>
 <tr class="memdesc:a4a8f4bfca0d8dfbe1f3b5618910140ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el pseudocódigo de DFS.  <br /></td></tr>
 <tr class="memitem:af6fca877dfc09ee149b16de63d373bb4" id="r_af6fca877dfc09ee149b16de63d373bb4"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af6fca877dfc09ee149b16de63d373bb4">grafo_codigo_dibujar</a> (const <a class="el" href="struct_grafo_codigo_algoritmo.html">GrafoCodigoAlgoritmo</a> *codigo, Rectangle area_destino)</td></tr>
 <tr class="memdesc:af6fca877dfc09ee149b16de63d373bb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dibuja el pseudocódigo en pantalla.  <br /></td></tr>
+<tr class="memitem:ab5c279ce76c32ab8cc2b996eaf1409c3" id="r_ab5c279ce76c32ab8cc2b996eaf1409c3"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ab5c279ce76c32ab8cc2b996eaf1409c3">grafo_codigo_dibujar_con_scroll</a> (const <a class="el" href="struct_grafo_codigo_algoritmo.html">GrafoCodigoAlgoritmo</a> *codigo, Rectangle area_destino, float scroll_y)</td></tr>
 <tr class="memitem:ae07556bddc40f795df8e7a9a583d7805" id="r_ae07556bddc40f795df8e7a9a583d7805"><td class="memItemLeft"><a class="el" href="struct_grafo_codigo_algoritmo.html">GrafoCodigoAlgoritmo</a>&#160;</td><td class="memItemRight"><a class="el" href="#ae07556bddc40f795df8e7a9a583d7805">grafo_codigo_dijkstra</a> (void)</td></tr>
 <tr class="memdesc:ae07556bddc40f795df8e7a9a583d7805"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el pseudocódigo de Dijkstra.  <br /></td></tr>
 <tr class="memitem:a937decef6e0583f0b0bd1826a76a0efd" id="r_a937decef6e0583f0b0bd1826a76a0efd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a937decef6e0583f0b0bd1826a76a0efd">grafo_codigo_establecer_linea_actual</a> (<a class="el" href="struct_grafo_codigo_algoritmo.html">GrafoCodigoAlgoritmo</a> *codigo, int numero_linea)</td></tr>
@@ -145,11 +147,11 @@ Funciones</h2></td></tr>
 <p>Obtiene el pseudocódigo de Bellman-Ford. </p>
 <dl class="section return"><dt>Devuelve</dt><dd>Estructura con código de Bellman-Ford </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00104">104</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00105">105</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo__code__viewer_8h_source.html#l00037">GrafoCodigoAlgoritmo::cantidad_lineas</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00025">GrafoCodigoLinea::contenido</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00027">GrafoCodigoLinea::es_linea_actual</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00028">GrafoCodigoLinea::esta_resaltada</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00038">GrafoCodigoAlgoritmo::linea_actual</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00036">GrafoCodigoAlgoritmo::lineas</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00039">GrafoCodigoAlgoritmo::nombre_algoritmo</a> y <a class="el" href="grafo__code__viewer_8h_source.html#l00026">GrafoCodigoLinea::numero_linea</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00806">grafo_codigo_actual()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00851">grafo_codigo_actual()</a>.</p>
 
 </div>
 </div>
@@ -171,11 +173,11 @@ Funciones</h2></td></tr>
 <p>Obtiene el pseudocódigo de BFS. </p>
 <dl class="section return"><dt>Devuelve</dt><dd>Estructura con código de BFS </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00014">14</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00015">15</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo__code__viewer_8h_source.html#l00037">GrafoCodigoAlgoritmo::cantidad_lineas</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00025">GrafoCodigoLinea::contenido</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00027">GrafoCodigoLinea::es_linea_actual</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00028">GrafoCodigoLinea::esta_resaltada</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00038">GrafoCodigoAlgoritmo::linea_actual</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00036">GrafoCodigoAlgoritmo::lineas</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00039">GrafoCodigoAlgoritmo::nombre_algoritmo</a> y <a class="el" href="grafo__code__viewer_8h_source.html#l00026">GrafoCodigoLinea::numero_linea</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00806">grafo_codigo_actual()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00851">grafo_codigo_actual()</a>.</p>
 
 </div>
 </div>
@@ -197,11 +199,11 @@ Funciones</h2></td></tr>
 <p>Obtiene el pseudocódigo de DFS. </p>
 <dl class="section return"><dt>Devuelve</dt><dd>Estructura con código de DFS </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00044">44</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00045">45</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo__code__viewer_8h_source.html#l00037">GrafoCodigoAlgoritmo::cantidad_lineas</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00025">GrafoCodigoLinea::contenido</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00027">GrafoCodigoLinea::es_linea_actual</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00028">GrafoCodigoLinea::esta_resaltada</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00038">GrafoCodigoAlgoritmo::linea_actual</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00036">GrafoCodigoAlgoritmo::lineas</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00039">GrafoCodigoAlgoritmo::nombre_algoritmo</a> y <a class="el" href="grafo__code__viewer_8h_source.html#l00026">GrafoCodigoLinea::numero_linea</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00806">grafo_codigo_actual()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00851">grafo_codigo_actual()</a>.</p>
 
 </div>
 </div>
@@ -233,11 +235,41 @@ Funciones</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00193">193</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00239">239</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="grafo__code__viewer_8h_source.html#l00037">GrafoCodigoAlgoritmo::cantidad_lineas</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00025">GrafoCodigoLinea::contenido</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00027">GrafoCodigoLinea::es_linea_actual</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00028">GrafoCodigoLinea::esta_resaltada</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00036">GrafoCodigoAlgoritmo::lineas</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00039">GrafoCodigoAlgoritmo::nombre_algoritmo</a> y <a class="el" href="grafo__code__viewer_8h_source.html#l00026">GrafoCodigoLinea::numero_linea</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="grafo__code__viewer_8c_source.html#l00194">grafo_codigo_dibujar_con_scroll()</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
+</div>
+</div>
+<a id="ab5c279ce76c32ab8cc2b996eaf1409c3" name="ab5c279ce76c32ab8cc2b996eaf1409c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5c279ce76c32ab8cc2b996eaf1409c3">&#9670;&#160;</a></span>grafo_codigo_dibujar_con_scroll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void grafo_codigo_dibujar_con_scroll </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_grafo_codigo_algoritmo.html">GrafoCodigoAlgoritmo</a> *</td>          <td class="paramname"><span class="paramname"><em>codigo</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Rectangle</td>          <td class="paramname"><span class="paramname"><em>area_destino</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>scroll_y</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00194">194</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="grafo__code__viewer_8h_source.html#l00037">GrafoCodigoAlgoritmo::cantidad_lineas</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00025">GrafoCodigoLinea::contenido</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00027">GrafoCodigoLinea::es_linea_actual</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00028">GrafoCodigoLinea::esta_resaltada</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00036">GrafoCodigoAlgoritmo::lineas</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00039">GrafoCodigoAlgoritmo::nombre_algoritmo</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00026">GrafoCodigoLinea::numero_linea</a> y <a class="el" href="ui_8c_source.html#l00076">ui_draw_text()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="grafo__code__viewer_8c_source.html#l00239">grafo_codigo_dibujar()</a> y <a class="el" href="main_8c_source.html#l01976">main()</a>.</p>
 
 </div>
 </div>
@@ -259,11 +291,11 @@ Funciones</h2></td></tr>
 <p>Obtiene el pseudocódigo de Dijkstra. </p>
 <dl class="section return"><dt>Devuelve</dt><dd>Estructura con código de Dijkstra </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00074">74</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00075">75</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo__code__viewer_8h_source.html#l00037">GrafoCodigoAlgoritmo::cantidad_lineas</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00025">GrafoCodigoLinea::contenido</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00027">GrafoCodigoLinea::es_linea_actual</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00028">GrafoCodigoLinea::esta_resaltada</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00038">GrafoCodigoAlgoritmo::linea_actual</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00036">GrafoCodigoAlgoritmo::lineas</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00039">GrafoCodigoAlgoritmo::nombre_algoritmo</a> y <a class="el" href="grafo__code__viewer_8h_source.html#l00026">GrafoCodigoLinea::numero_linea</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00806">grafo_codigo_actual()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00851">grafo_codigo_actual()</a>.</p>
 
 </div>
 </div>
@@ -295,11 +327,11 @@ Funciones</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00231">231</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00243">243</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo__code__viewer_8h_source.html#l00037">GrafoCodigoAlgoritmo::cantidad_lineas</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00027">GrafoCodigoLinea::es_linea_actual</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00036">GrafoCodigoAlgoritmo::lineas</a> y <a class="el" href="grafo__code__viewer_8h_source.html#l00026">GrafoCodigoLinea::numero_linea</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01706">main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01976">main()</a>.</p>
 
 </div>
 </div>
@@ -321,11 +353,11 @@ Funciones</h2></td></tr>
 <p>Obtiene el pseudocódigo de Kruskal. </p>
 <dl class="section return"><dt>Devuelve</dt><dd>Estructura con código de Kruskal </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00161">161</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00162">162</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo__code__viewer_8h_source.html#l00037">GrafoCodigoAlgoritmo::cantidad_lineas</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00025">GrafoCodigoLinea::contenido</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00027">GrafoCodigoLinea::es_linea_actual</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00028">GrafoCodigoLinea::esta_resaltada</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00038">GrafoCodigoAlgoritmo::linea_actual</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00036">GrafoCodigoAlgoritmo::lineas</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00039">GrafoCodigoAlgoritmo::nombre_algoritmo</a> y <a class="el" href="grafo__code__viewer_8h_source.html#l00026">GrafoCodigoLinea::numero_linea</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00806">grafo_codigo_actual()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00851">grafo_codigo_actual()</a>.</p>
 
 </div>
 </div>
@@ -347,11 +379,11 @@ Funciones</h2></td></tr>
 <p>Obtiene el pseudocódigo de Prim. </p>
 <dl class="section return"><dt>Devuelve</dt><dd>Estructura con código de Prim </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00134">134</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00135">135</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo__code__viewer_8h_source.html#l00037">GrafoCodigoAlgoritmo::cantidad_lineas</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00025">GrafoCodigoLinea::contenido</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00027">GrafoCodigoLinea::es_linea_actual</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00028">GrafoCodigoLinea::esta_resaltada</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00038">GrafoCodigoAlgoritmo::linea_actual</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00036">GrafoCodigoAlgoritmo::lineas</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00039">GrafoCodigoAlgoritmo::nombre_algoritmo</a> y <a class="el" href="grafo__code__viewer_8h_source.html#l00026">GrafoCodigoLinea::numero_linea</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00806">grafo_codigo_actual()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00851">grafo_codigo_actual()</a>.</p>
 
 </div>
 </div>
@@ -389,7 +421,7 @@ Funciones</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00239">239</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo__code__viewer_8c_source.html#l00251">251</a> del archivo <a class="el" href="grafo__code__viewer_8c_source.html">grafo_code_viewer.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo__code__viewer_8h_source.html#l00037">GrafoCodigoAlgoritmo::cantidad_lineas</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00028">GrafoCodigoLinea::esta_resaltada</a>, <a class="el" href="grafo__code__viewer_8h_source.html#l00036">GrafoCodigoAlgoritmo::lineas</a> y <a class="el" href="grafo__code__viewer_8h_source.html#l00026">GrafoCodigoLinea::numero_linea</a>.</p>
 

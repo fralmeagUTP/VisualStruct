@@ -1,5 +1,26 @@
 var searchData=
 [
-  ['base_0',['Reglas base',['../md_docs_2contribucion.html#autotoc_md59',1,'']]],
-  ['basico_1',['Uso Basico',['../index.html#autotoc_md6',1,'']]]
+  ['aceptacion_0',['aceptacion',['../md_docs_2analisis-diseno-grafos.html#autotoc_md23',1,'6. Criterios de aceptacion'],['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md38',1,'7. Criterios de aceptacion'],['../md_docs_2analisis-diseno-sublistas.html#autotoc_md48',1,'7. Criterios de aceptacion'],['../md_docs_2sdd-secuenciales-vigente.html#autotoc_md121',1,'7. Criterios de aceptacion'],['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md111',1,'Criterios de aceptacion']]],
+  ['activa_1',['Aplicacion activa',['../md_docs_2architecture.html#autotoc_md52',1,'']]],
+  ['actual_2',['Actual',['../md_docs_2architecture.html',1,'Arquitectura Actual'],['../index.html#autotoc_md15',1,'Estado Actual']]],
+  ['actual_3',['Versionado actual',['../index.html#autotoc_md10',1,'']]],
+  ['actuales_4',['Controles Actuales',['../index.html#autotoc_md8',1,'']]],
+  ['actuales_5',['Limitaciones actuales',['../md_docs_2guia-docente.html#autotoc_md81',1,'']]],
+  ['actualizacion_20de_20alcance_20ui_202026_2005_2004_6',['Actualizacion de alcance UI (2026-05-04)',['../md_docs_2plan-modulo-grafos.html#autotoc_md90',1,'']]],
+  ['agregues_20una_20estructura_20nueva_7',['Cuando agregues una estructura nueva',['../md_docs_2contribucion.html#autotoc_md72',1,'']]],
+  ['agregues_20una_20operacion_20nueva_8',['Cuando agregues una operacion nueva',['../md_docs_2contribucion.html#autotoc_md70',1,'']]],
+  ['alcance_20funcional_9',['Alcance funcional',['../md_docs_2analisis-diseno-grafos.html#autotoc_md19',1,'2. Alcance funcional'],['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md27',1,'2. Alcance funcional'],['../md_docs_2analisis-diseno-sublistas.html#autotoc_md43',1,'2. Alcance funcional']]],
+  ['alcance_20funcional_20vigente_10',['2. Alcance funcional vigente',['../md_docs_2sdd-secuenciales-vigente.html#autotoc_md116',1,'']]],
+  ['alcance_20ui_202026_2005_2004_11',['Actualizacion de alcance UI (2026-05-04)',['../md_docs_2plan-modulo-grafos.html#autotoc_md90',1,'']]],
+  ['analisis_20y_20diseno_3a_20modulo_20grafo_12',['Analisis y Diseno: Modulo Grafo',['../md_docs_2analisis-diseno-grafos.html',1,'']]],
+  ['analisis_20y_20diseno_3a_20modulo_20lista_20circular_13',['Analisis y Diseno: Modulo Lista Circular',['../md_docs_2analisis-diseno-lista-circular.html',1,'']]],
+  ['analisis_20y_20diseno_3a_20modulo_20sublistas_14',['Analisis y Diseno: Modulo Sublistas',['../md_docs_2analisis-diseno-sublistas.html',1,'']]],
+  ['anteriores_15',['9. Relacion con documentos anteriores',['../md_docs_2sdd-secuenciales-vigente.html#autotoc_md123',1,'']]],
+  ['antes_20de_20cerrar_20un_20cambio_16',['Validacion recomendada antes de cerrar un cambio',['../md_docs_2contribucion.html#autotoc_md75',1,'']]],
+  ['aplicacion_20activa_17',['Aplicacion activa',['../md_docs_2architecture.html#autotoc_md52',1,'']]],
+  ['archivos_20existentes_18',['Integracion en archivos existentes',['../md_docs_2plan-modulo-grafos.html#autotoc_md88',1,'']]],
+  ['archivos_20impactados_20principalmente_19',['Archivos impactados (principalmente)',['../md_docs_2bitacora-cambios-2026-05-04.html#autotoc_md65',1,'']]],
+  ['arquitectura_20',['Notas de Arquitectura',['../index.html#autotoc_md16',1,'']]],
+  ['arquitectura_20actual_21',['Arquitectura Actual',['../md_docs_2architecture.html',1,'']]],
+  ['ayuda_22',['Pantalla de ayuda',['../md_docs_2qa-manual.html#autotoc_md103',1,'']]]
 ];

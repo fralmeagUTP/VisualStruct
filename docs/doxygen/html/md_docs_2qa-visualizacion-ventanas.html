@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">VisualStruct
    </div>
-   <div id="projectbrief">Visualizador de estructuras de datos secuenciales en C con Raylib</div>
+   <div id="projectbrief">Visualizador de estructuras secuenciales y grafos en C con Raylib</div>
   </td>
  </tr>
  </tbody>
@@ -92,12 +92,12 @@ $(function(){initNavTree('md_docs_2qa-visualizacion-ventanas.html','',''); });
   <div class="headertitle"><div class="title">QA de Visualizacion de Ventanas </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md95"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md105"></a></p>
 <p>Este documento define una prueba manual reproducible para validar layout, legibilidad y uso de espacio en la app VisualStruct.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md96"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md106"></a>
 Objetivo</h1>
 <p>Verificar que no existan solapes, recortes ni zonas inutiles en los paneles de la interfaz al cambiar tamano de ventana y estructura activa.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md97"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md107"></a>
 Preparacion</h1>
 <ol type="1">
 <li>Compilar el proyecto:</li>
@@ -107,7 +107,7 @@ Preparacion</h1>
 <li>Ejecutar:</li>
 </ol>
 <div class="fragment"><div class="line">./visualstruct_qa_layout.exe</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md98"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md108"></a>
 Matriz de prueba (resolucion)</h1>
 <ol type="1">
 <li>1100x680 (minima)</li>
@@ -115,7 +115,7 @@ Matriz de prueba (resolucion)</h1>
 <li>1366x768</li>
 <li>1600x900</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md99"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md109"></a>
 Escenarios funcionales por estructura</h1>
 <ol type="1">
 <li><a class="el" href="struct_pila.html">Pila</a>:</li>
@@ -179,7 +179,7 @@ Escenarios funcionales por estructura</h1>
 <li>Verificar titulo, subtitulo, boton <span class="tt">Volver</span> y area de texto con scroll</li>
 <li>Cerrar con <span class="tt">F1</span> y confirmar retorno a pantalla previa</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md100"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md110"></a>
 Checklist de visualizacion</h1>
 <ol type="1">
 <li>Panel lateral:</li>
@@ -188,6 +188,8 @@ Checklist de visualizacion</h1>
 <li>Botones del menu visibles y clicables</li>
 <li>Seccion de contexto (Seleccion actual, Elementos, ayuda) no pisa inputs</li>
 <li>Inputs Valor/Prioridad no se recortan</li>
+<li>Inputs <span class="tt">Valor</span>, <span class="tt">Origen</span>, <span class="tt">Destino</span> y <span class="tt">Peso</span> muestran cursor visible en foco</li>
+<li>Inputs numericos no presentan solape entre label y valor</li>
 <li>Prioridad solo aparece en <a class="el" href="struct_cola.html">Cola</a> de prioridad</li>
 <li>Si el alto disponible es bajo, la ayuda se compacta sin superponerse</li>
 </ul>
@@ -199,6 +201,8 @@ Checklist de visualizacion</h1>
 <li>Lienzo muestra nodos completos sin cortar etiquetas</li>
 <li>Si aparece "Modo compacto", no se superpone al titulo</li>
 <li>En <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>, verificar que leyenda, pesos de arista y etiquetas de vertice sigan legibles en todas las resoluciones de la matriz.</li>
+<li>En <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a> dirigido, verificar flechas de direccion visibles en todas las resoluciones de la matriz.</li>
+<li>Verificar que el peso de aristas tenga separacion visual respecto de la linea.</li>
 </ul>
 <ol type="1">
 <li>Panel derecho (Codigo C Asociado):</li>
@@ -216,6 +220,7 @@ Checklist de visualizacion</h1>
 <li>Caja Resumen sin texto cortado</li>
 <li>Caja Traza con titulo visible y scroll funcional</li>
 <li>Estado (OK/Error/Estado) no se superpone a otros elementos</li>
+<li>Verificar que variables y trazas no queden montadas sobre la barra de progreso.</li>
 </ul>
 <ol type="1">
 <li>Pantalla de ayuda:</li>
@@ -225,15 +230,16 @@ Checklist de visualizacion</h1>
 <li>El bloque de texto largo mantiene legibilidad y margen interno</li>
 <li>Scrollbar de ayuda visible cuando el contenido excede el viewport</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md101"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md111"></a>
 Criterios de aceptacion</h1>
 <ol type="1">
 <li>Cero solapes visibles entre textos, botones y cajas.</li>
 <li>Cero recortes de texto en secciones clave (Resumen, Traza, Sidebar).</li>
 <li>Scroll funcional donde aplique (pila, cola, lista, lista circular, sublistas, grafo, codigo y traza).</li>
 <li>Navegacion estable al cambiar entre estructuras y volver al menu principal.</li>
+<li>Tipografia consistente en Arial en los paneles operativos y de estado.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md102"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md112"></a>
 Registro de hallazgos</h1>
 <p>Usar esta plantilla por hallazgo:</p>
 <ul>
@@ -246,7 +252,7 @@ Registro de hallazgos</h1>
 <li>Resultado actual:</li>
 <li>Severidad (Alta/Media/Baja):</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md103"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md113"></a>
 Hallazgos corregidos en esta iteracion</h1>
 <ol type="1">
 <li>Sidebar con solape entre ayuda y campos de entrada en resoluciones ajustadas.</li>

@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VisualStruct: SDD Vigente: Modulo Secuencial (VisualStruct)</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VisualStruct
+   </div>
+   <div id="projectbrief">Visualizador de estructuras secuenciales y grafos en C con Raylib</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('md_docs_2sdd-secuenciales-vigente.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">SDD Vigente: Modulo Secuencial (VisualStruct) </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md114"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md115"></a>
+1. Informacion general</h1>
+<h2>1.1 Nombre</h2>
+<p>VisualStruct UTP - Modulo Secuencial (app unificada en C con Raylib).</p>
+<h2>1.2 Proposito</h2>
+<p>Definir el diseno y alcance vigente del modulo secuencial integrado en VisualStruct. Este documento reemplaza como referencia operativa al SDD inicial de "modulo 1" y refleja el estado actual del codigo en <span class="tt"><a class="el" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a></span>.</p>
+<h2>1.3 Contexto</h2>
+<ul>
+<li>Lenguaje: C11</li>
+<li>UI: Raylib</li>
+<li>Arquitectura: app unica con <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span> + <span class="tt"><a class="el" href="struct_app_state.html">AppState</a></span> + vistas por estructura.</li>
+<li>Integracion: convive con modulo <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a> dentro del mismo ejecutable.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md116"></a>
+2. Alcance funcional vigente</h1>
+<p>El modulo secuencial incluye seis estructuras:</p>
+<ol type="1">
+<li><a class="el" href="struct_pila.html">Pila</a></li>
+<li><a class="el" href="struct_cola.html">Cola</a> FIFO</li>
+<li><a class="el" href="struct_cola.html">Cola</a> de prioridad</li>
+<li><a class="el" href="struct_lista.html">Lista</a> enlazada simple</li>
+<li><a class="el" href="struct_lista.html">Lista</a> circular</li>
+<li>Sublistas (modelo padre-hijo)</li>
+</ol>
+<p>Cada estructura mantiene:</p>
+<ul>
+<li>visualizacion en panel central</li>
+<li>operaciones por botones y atajos</li>
+<li>snippet C asociado en panel derecho (historial)</li>
+<li>traza y complejidad en panel inferior</li>
+<li>feedback de estado (exito/error)</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md117"></a>
+3. Operaciones por estructura</h1>
+<h2>3.1 <a class="el" href="struct_pila.html">Pila</a></h2>
+<ul>
+<li>Inicializar</li>
+<li>Insertar (push)</li>
+<li>Eliminar (pop)</li>
+<li>Vaciar</li>
+</ul>
+<h2>3.2 <a class="el" href="struct_cola.html">Cola</a></h2>
+<ul>
+<li>Inicializar</li>
+<li>Insertar (encolar)</li>
+<li>Eliminar (desencolar)</li>
+<li>Vaciar</li>
+</ul>
+<h2>3.3 <a class="el" href="struct_cola.html">Cola</a> de prioridad</h2>
+<ul>
+<li>Inicializar</li>
+<li>Insertar con prioridad</li>
+<li>Eliminar siguiente por prioridad</li>
+<li>Vaciar</li>
+</ul>
+<h2>3.4 <a class="el" href="struct_lista.html">Lista</a> simple</h2>
+<ul>
+<li>Inicializar</li>
+<li>Insertar al inicio</li>
+<li>Insertar al final</li>
+<li>Buscar</li>
+<li>Eliminar primera ocurrencia</li>
+<li>Invertir</li>
+<li>Vaciar</li>
+</ul>
+<h2>3.5 <a class="el" href="struct_lista.html">Lista</a> circular</h2>
+<ul>
+<li>Inicializar</li>
+<li>Insertar al inicio</li>
+<li>Insertar al final</li>
+<li>Buscar</li>
+<li>Eliminar primera ocurrencia</li>
+<li>Invertir</li>
+<li>Vaciar</li>
+</ul>
+<h2>3.6 Sublistas</h2>
+<ul>
+<li>Inicializar</li>
+<li>Insertar padre</li>
+<li>Seleccionar padre activo (buscar)</li>
+<li>Eliminar padre</li>
+<li>Insertar hijo sobre padre activo</li>
+<li>Eliminar hijo sobre padre activo</li>
+<li>Vaciar</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md118"></a>
+4. Requerimientos de interfaz</h1>
+<ol type="1">
+<li>Navegacion secuencial desde Home (<span class="tt">1 Secuenciales</span>) y submenu (<span class="tt">1..6</span>).</li>
+<li>Visualizador unificado con cambio rapido de estructura (<span class="tt">TAB</span> y <span class="tt">1..7</span>).</li>
+<li>Campos de entrada:</li>
+</ol>
+<ul>
+<li><span class="tt">Valor</span> para todas las estructuras secuenciales.</li>
+<li><span class="tt">Prioridad</span> solo para cola de prioridad.</li>
+</ul>
+<ol type="1">
+<li>Ayuda interna con <span class="tt">F1</span> sin perder contexto de sesion.</li>
+<li>Scroll en vistas que exceden el area de dibujo:</li>
+</ol>
+<ul>
+<li>horizontal en cola/listas/cola de prioridad</li>
+<li>vertical en pila/sublistas segun contenido</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md119"></a>
+5. Requerimientos tecnicos</h1>
+<h2>5.1 Separacion por capas</h2>
+<ul>
+<li>Dominio: TAD en <span class="tt">src/*.c</span> sin <span class="tt">raylib.h</span>.</li>
+<li>Aplicacion: <span class="tt"><a class="el" href="app__state_8c.html" title="Implementacion del estado global y despacho de operaciones de alto nivel.">src/app_state.c</a></span> centraliza operaciones y mensajes.</li>
+<li>Presentacion: <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span>, <span class="tt"><a class="el" href="ui_8c.html" title="Implementacion de layout, widgets simples y recursos visuales compartidos.">src/ui.c</a></span>, <span class="tt">src/*_view.c</span>.</li>
+</ul>
+<h2>5.2 Invariantes</h2>
+<ol type="1">
+<li>Unico <span class="tt"><a class="el" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a></span> activo en <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span>.</li>
+<li>Toda mutacion pasa por API publica del TAD.</li>
+<li>La UI no manipula nodos internos directamente.</li>
+<li>El historial de codigo se acumula por operacion y puede limpiarse desde UI.</li>
+</ol>
+<h2>5.3 Build objetivo</h2>
+<ul>
+<li>Compilar con <span class="tt">-std=c11 -Wall -Wextra -pedantic</span>.</li>
+<li>Integrar solo codigo activo (excluir <span class="tt">src/legacy</span> del build principal).</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md120"></a>
+6. Complejidades de referencia docente</h1>
+<h2>6.1 <a class="el" href="struct_pila.html">Pila</a></h2>
+<ul>
+<li>Push/Pop: <span class="tt">O(1)</span></li>
+</ul>
+<h2>6.2 <a class="el" href="struct_cola.html">Cola</a></h2>
+<ul>
+<li>Encolar/Desencolar: <span class="tt">O(1)</span> amortizado segun implementacion enlazada</li>
+</ul>
+<h2>6.3 <a class="el" href="struct_cola.html">Cola</a> de prioridad</h2>
+<ul>
+<li>Insercion/Extraccion: depende de implementacion actual del TAD (lineal en lista enlazada)</li>
+</ul>
+<h2>6.4 <a class="el" href="struct_lista.html">Lista</a> simple y lista circular</h2>
+<ul>
+<li>Buscar/Eliminar por valor: <span class="tt">O(n)</span></li>
+<li>Insertar inicio: <span class="tt">O(1)</span></li>
+<li>Insertar final:</li>
+<li><a class="el" href="struct_lista.html">Lista</a> simple: <span class="tt">O(n)</span> si no hay puntero cola.</li>
+<li><a class="el" href="struct_lista.html">Lista</a> circular: <span class="tt">O(1)</span> con puntero cola.</li>
+</ul>
+<h2>6.5 Sublistas</h2>
+<ul>
+<li>Buscar padre: <span class="tt">O(n)</span></li>
+<li>Operaciones de hijo: <span class="tt">O(m)</span> sobre sublista activa</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md121"></a>
+7. Criterios de aceptacion</h1>
+<ol type="1">
+<li>La app compila y abre sin cierres inesperados.</li>
+<li>Las seis estructuras secuenciales son accesibles por menu y atajos.</li>
+<li>Operaciones validas e invalidas generan feedback coherente.</li>
+<li>Vista, snippet, traza y complejidad se mantienen sincronizados tras cada operacion.</li>
+<li>QA manual y QA de visualizacion pasan en la matriz de resoluciones definida.</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md122"></a>
+8. Validacion recomendada</h1>
+<ol type="1">
+<li><span class="tt">make clean &amp;&amp; make</span></li>
+<li><span class="tt">doxygen Doxyfile</span></li>
+<li>Ejecutar <span class="tt"><a class="el" href="qa-manual_8md.html">docs/qa-manual.md</a></span></li>
+<li>Ejecutar <span class="tt"><a class="el" href="qa-visualizacion-ventanas_8md.html">docs/qa-visualizacion-ventanas.md</a></span></li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md123"></a>
+9. Relacion con documentos anteriores</h1>
+<ul>
+<li>El PDF <span class="tt">Sdd Visualizador Estructuras Datos Secuenciales C Raylib.pdf</span> se conserva como antecedente historico del modulo inicial.</li>
+<li>Este documento representa el alcance vigente del modulo secuencial integrado. </li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

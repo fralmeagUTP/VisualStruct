@@ -1,11 +1,10 @@
 var searchData=
 [
-  ['ui_0',['Cuando toques la UI',['../md_docs_2contribucion.html#autotoc_md64',1,'']]],
-  ['un_20cambio_1',['Validacion recomendada antes de cerrar un cambio',['../md_docs_2contribucion.html#autotoc_md66',1,'']]],
-  ['un_20tad_2',['Cuando cambies un TAD',['../md_docs_2contribucion.html#autotoc_md60',1,'']]],
-  ['una_20estructura_20nueva_3',['Cuando agregues una estructura nueva',['../md_docs_2contribucion.html#autotoc_md63',1,'']]],
-  ['una_20operacion_20nueva_4',['Cuando agregues una operacion nueva',['../md_docs_2contribucion.html#autotoc_md61',1,'']]],
-  ['uso_5',['Recomendaciones de uso',['../md_docs_2guia-docente.html#autotoc_md71',1,'']]],
-  ['uso_20basico_6',['Uso Basico',['../index.html#autotoc_md6',1,'']]],
-  ['utp_3a_20estructuras_20secuenciales_20y_20grafos_20en_20c_20con_20raylib_7',['VisualStruct UTP: Estructuras Secuenciales y Grafos en C con Raylib',['../index.html',1,'']]]
+  ['tad_0',['Cuando cambies un TAD',['../md_docs_2contribucion.html#autotoc_md69',1,'']]],
+  ['tecnica_1',['Documentacion Tecnica',['../index.html#autotoc_md6',1,'']]],
+  ['tecnica_2',['4.2 Justificacion tecnica',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md31',1,'']]],
+  ['tecnica_20por_20capas_3',['3. Estructura tecnica por capas',['../md_docs_2analisis-diseno-grafos.html#autotoc_md20',1,'']]],
+  ['tecnicas_4',['Reglas tecnicas',['../md_docs_2plan-modulo-grafos.html#autotoc_md87',1,'']]],
+  ['tecnicos_5',['5. Requerimientos tecnicos',['../md_docs_2sdd-secuenciales-vigente.html#autotoc_md119',1,'']]],
+  ['toques_20la_20ui_6',['Cuando toques la UI',['../md_docs_2contribucion.html#autotoc_md73',1,'']]]
 ];

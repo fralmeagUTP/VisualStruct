@@ -85,6 +85,7 @@ doxygen Doxyfile
 - `docs/analisis-diseno-sublistas.md`: analisis funcional y tecnico del TAD jerarquico de sublistas.
 - `docs/analisis-diseno-grafos.md`: analisis funcional y tecnico del modulo de grafos y su integracion pedagogica.
 - `docs/plan-modulo-grafos.md`: plan incremental de implementacion del modulo de grafos.
+- `docs/bitacora-cambios-2026-05-04.md`: consolidado de mejoras UI/UX, validaciones y versionado aplicadas hoy.
 - `docs/Sdd Visualizador Estructuras Datos Secuenciales C Raylib.pdf`: antecedente historico del modulo secuencial inicial.
 
 ## Uso Basico
@@ -93,7 +94,7 @@ doxygen Doxyfile
 3. En `Secuenciales`, seleccionar: Pila, Cola, Cola de Prioridad, Lista, Lista Circular o Sublistas.
 4. En `Grafos`, elegir construccion o algoritmo (BFS, DFS, Dijkstra, Bellman-Ford, Prim, Kruskal).
 5. Usar los botones contextuales del panel central para ejecutar operaciones segun la estructura activa.
-6. En modo Grafo, editar `valor`, `origen`, `destino` y `peso` en el panel lateral o por teclado.
+6. En modo Grafo, editar `valor`, `origen`, `destino` y `peso` en el panel lateral o por teclado (solo valores numericos).
 7. Observar simultaneamente panel central (grafico), panel derecho (codigo C con historial acumulado) y panel inferior (traza y complejidad).
 8. Usar el boton `Limpiar` del panel de codigo para reiniciar el historial cuando se quiera comenzar una nueva secuencia.
 9. Abrir `Ayuda (F1)` para consultar explicaciones detalladas de cada modulo funcional y tecnico.
@@ -109,6 +110,8 @@ doxygen Doxyfile
 - `UP/DOWN`: cambiar valor
 - `LEFT/RIGHT`: cambiar prioridad
 - `ENTER`: confirmar valor/prioridad editados en los campos laterales
+- `UP/DOWN` (con foco en input): incrementar/decrementar valor del cuadro numerico activo
+- `KP + / KP -` (con foco en input): ajustar numericamente el cuadro activo
 - `G` (en Grafo): insertar arista con `origen`, `destino` y `peso`
 - `X` (en Grafo): eliminar arista entre `origen` y `destino`
 - `4`/`5`/`6`/`7`/`8`/`9` (en Grafo): BFS, DFS, Dijkstra, Bellman-Ford, Prim y Kruskal
@@ -130,10 +133,15 @@ doxygen Doxyfile
 ## Modulo de Grafos
 - Soporta BFS, DFS, Dijkstra, Bellman-Ford, Prim y Kruskal.
 - Permite construir grafos dirigidos o no dirigidos con insercion/eliminacion de vertices y aristas.
+- `Origen` y `Destino` se validan contra vertices existentes para evitar referencias invalidas.
 - El panel inferior muestra tipo de paso, progreso, arista actual, metricas por paso, tabla de distancias, camino parcial y conjunto de vertices cerrados.
 - El lienzo central incluye leyenda visual para vertice activo, arista procesada y mejora real.
 - `Cargar demo` cicla entre escenarios de recorrido, caminos, Bellman-Ford y MST.
 - `Exportar` copia al portapapeles un resumen textual con algoritmo, paso, metricas, camino y tabla de distancias.
+
+## Versionado actual
+- `v0.0.1`: version historica inicial del repositorio (primera subida).
+- `v0.0.2`: version actual con ajustes de presentacion, inputs numericos y mejoras de usabilidad en grafos.
 
 ## Navegacion rapida
 - Portada principal: `1` Secuenciales, `2` Grafos.
