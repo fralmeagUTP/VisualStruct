@@ -769,11 +769,14 @@ GrafoCamino grafo_dijkstra(const Grafo *grafo, int origen, int destino)
         actual = predecesor[actual];
     }
     
-    resultado.cantidad = tope;
-    resultado.aristas = (GrafoArista *)malloc(resultado.cantidad * sizeof(GrafoArista));
-    if (!resultado.aristas) {
-        resultado.estado = GRAFO_ERROR_MEMORIA;
-        return resultado;
+    resultado.cantidad = (tope > 0) ? (size_t)(tope - 1) : 0;
+    resultado.aristas = NULL;
+    if (resultado.cantidad > 0) {
+        resultado.aristas = (GrafoArista *)malloc(resultado.cantidad * sizeof(GrafoArista));
+        if (!resultado.aristas) {
+            resultado.estado = GRAFO_ERROR_MEMORIA;
+            return resultado;
+        }
     }
     
     for (int i = tope - 1; i > 0; i--) {
@@ -885,11 +888,14 @@ GrafoCamino grafo_bellman_ford(const Grafo *grafo, int origen, int destino)
         actual = predecesor[actual];
     }
     
-    resultado.cantidad = tope;
-    resultado.aristas = (GrafoArista *)malloc(resultado.cantidad * sizeof(GrafoArista));
-    if (!resultado.aristas) {
-        resultado.estado = GRAFO_ERROR_MEMORIA;
-        return resultado;
+    resultado.cantidad = (tope > 0) ? (size_t)(tope - 1) : 0;
+    resultado.aristas = NULL;
+    if (resultado.cantidad > 0) {
+        resultado.aristas = (GrafoArista *)malloc(resultado.cantidad * sizeof(GrafoArista));
+        if (!resultado.aristas) {
+            resultado.estado = GRAFO_ERROR_MEMORIA;
+            return resultado;
+        }
     }
     
     for (int i = tope - 1; i > 0; i--) {
