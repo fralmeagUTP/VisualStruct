@@ -4,6 +4,7 @@
  */
 
 #include "grafo_code_viewer.h"
+#include "ui.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -198,8 +199,8 @@ void grafo_codigo_dibujar_con_scroll(const GrafoCodigoAlgoritmo *codigo, Rectang
     DrawRectangleRec(area_destino, (Color){240, 240, 240, 255});
     DrawRectangleLinesEx(area_destino, 2.0f, (Color){100, 100, 100, 255});
     
-    DrawText(codigo->nombre_algoritmo, (int)area_destino.x + 10, 
-            (int)area_destino.y + 5, 14, BLACK);
+    ui_draw_text(codigo->nombre_algoritmo, area_destino.x + 10.0f,
+                 area_destino.y + 5.0f, 14.0f, 0.08f, BLACK, false);
     
     /* Lineas de codigo */
     int y_offset = (int)area_destino.y + 30 - (int)scroll_y;
@@ -226,7 +227,8 @@ void grafo_codigo_dibujar_con_scroll(const GrafoCodigoAlgoritmo *codigo, Rectang
             
             char buffer[280];
             snprintf(buffer, sizeof(buffer), "%2d: %s", linea->numero_linea, linea->contenido);
-            DrawText(buffer, (int)area_destino.x + 8, y_offset + 2, 12, color_texto);
+            ui_draw_text(buffer, area_destino.x + 8.0f, (float)y_offset + 2.0f,
+                         12.0f, 0.08f, color_texto, false);
         }
         
         y_offset += 20;

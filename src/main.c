@@ -113,6 +113,44 @@ static void append_code_history(char *history, size_t capacity, int *entries, co
     }
 }
 
+/** @brief Crea una vista previa multilinea limitada para paneles compactos. */
+static void build_compact_preview(const char *source, char *dest, size_t capacity, int max_lines) {
+    int lines = 1;
+    size_t used = 0;
+    bool truncated = false;
+
+    if (dest == NULL || capacity == 0) {
+        return;
+    }
+    dest[0] = '\0';
+    if (source == NULL || source[0] == '\0' || max_lines <= 0) {
+        return;
+    }
+
+    while (*source != '\0' && used + 1 < capacity) {
+        if (*source == '\r') {
+            source++;
+            continue;
+        }
+        if (*source == '\n') {
+            if (lines >= max_lines) {
+                truncated = true;
+                break;
+            }
+            lines++;
+        }
+        dest[used++] = *source++;
+    }
+    if (*source != '\0') {
+        truncated = true;
+    }
+    dest[used] = '\0';
+
+    if (truncated && used + 6 < capacity) {
+        snprintf(dest + used, capacity - used, "\n...");
+    }
+}
+
 /** @brief Retorna la estructura asociada a un atajo numerico, o -1 si no aplica. */
 static int estructura_from_shortcut(void) {
     if (IsKeyPressed(KEY_ONE)) {
@@ -368,7 +406,9 @@ static bool draw_home_card(Rectangle card, const char *title, const char *descri
 static bool draw_graph_sidebar_button(Rectangle bounds, const char *label, bool active) {
     Vector2 mouse = GetMousePosition();
     bool hover = CheckCollisionPointRec(mouse, bounds);
-    int label_width = ui_measure_text(label, 14.0f, 0.08f, false);
+    float label_size = bounds.height >= 34.0f ? 15.0f : 14.0f;
+    float label_spacing = 0.10f;
+    int label_width = ui_measure_text(label, label_size, label_spacing, false);
     Color bg = active ? (Color){223, 234, 246, 255} : (Color){248, 250, 253, 255};
     Color border = active ? (Color){10, 43, 92, 255} : (Color){160, 177, 196, 255};
 
@@ -381,8 +421,9 @@ static bool draw_graph_sidebar_button(Rectangle bounds, const char *label, bool 
     DrawRectangleRounded((Rectangle){bounds.x + 1.0f, bounds.y + 1.0f, 5.0f, bounds.height - 2.0f},
                          0.50f, 8, active ? (Color){198, 165, 102, 255}
                                             : Fade((Color){17, 69, 132, 255}, hover ? 0.42f : 0.16f));
-    ui_draw_text(label, bounds.x + (bounds.width - label_width) * 0.5f, bounds.y + 8.0f,
-                 14.0f, 0.08f, active ? (Color){10, 43, 92, 255} : (Color){52, 61, 74, 255}, false);
+    ui_draw_text(label, bounds.x + (bounds.width - label_width) * 0.5f,
+                 bounds.y + (bounds.height - label_size) * 0.5f - 1.0f, label_size, label_spacing,
+                 active ? (Color){10, 43, 92, 255} : (Color){38, 48, 61, 255}, false);
 
     return hover && IsMouseButtonPressed(MOUSE_BUTTON_LEFT);
 }
@@ -900,7 +941,8 @@ static void draw_scrollable_multiline_text(const char *text, Rectangle viewport,
     const char *line_end;
     char line[256];
     int line_index = 0;
-    int line_height = font_size + 6;
+    int render_size = font_size < 12 ? 12 : font_size;
+    int line_height = render_size + 7;
     size_t len;
 
     if (text == NULL) {
@@ -921,7 +963,7 @@ static void draw_scrollable_multiline_text(const char *text, Rectangle viewport,
 
         y = (int)(viewport.y - offset_y) + line_index * line_height;
         if (y + line_height >= (int)viewport.y - line_height && y <= (int)(viewport.y + viewport.height)) {
-            ui_draw_text(line, viewport.x, (float)y, (float)font_size, 0.25f, color, false);
+            ui_draw_text(line, viewport.x, (float)y, (float)render_size, 0.10f, color, false);
         }
 
         line_index++;
@@ -1331,6 +1373,198 @@ static float draw_context_controls(AppState *app, Rectangle panel, bool *is_comp
         *is_compact_mode = compact;
     }
 
+    if (app->estructura_activa == ESTRUCTURA_GRAFO) {
+        static int grafo_ui_mode = 0; /* 0 Construccion, 1 Recorridos, 2 Caminos, 3 MST */
+        const char *tab_labels[4] = {"Construccion", "Recorridos", "Caminos", "MST"};
+        float tab_gap = 8.0f;
+        float tab_h = 32.0f;
+        float tab_w = (panel.width - 32.0f - tab_gap * 3.0f) / 4.0f;
+        float tabs_y = base_y;
+        float controls_y = tabs_y + tab_h + 10.0f;
+        int graph_columns = compact ? 2 : 4;
+        float graph_btn_w = (panel.width - 32.0f - gap * (graph_columns - 1)) / graph_columns;
+        int action_count = 0;
+        int action;
+        float graph_hints_y;
+        const char *graph_hint = "Atajos: G/X aristas | Pasos: , . / Home End | Auto: P | Demo: M";
+
+        if (tab_w < 110.0f) {
+            tab_w = 110.0f;
+        }
+        if (graph_btn_w < 132.0f) {
+            graph_btn_w = 132.0f;
+        }
+
+        for (i = 0; i < 4; i++) {
+            Rectangle tab = {base_x + i * (tab_w + tab_gap), tabs_y, tab_w, tab_h};
+            if (draw_graph_sidebar_button(tab, tab_labels[i], grafo_ui_mode == i)) {
+                grafo_ui_mode = i;
+            }
+        }
+
+        switch (grafo_ui_mode) {
+        case 0:
+            action_count = 8;
+            graph_hint = "Construccion: I inicializar, A/D vertices, G/X aristas, T dirigido, M demo";
+            break;
+        case 1:
+            action_count = 10;
+            graph_hint = "Recorridos: 4 BFS, 5 DFS, pasos , . /, Home/End, autoplay P/O";
+            break;
+        case 2:
+            action_count = 10;
+            graph_hint =
+                "Caminos: 6 Dijkstra, 7 Bellman-Ford, pasos , . /, Home/End, autoplay P/O";
+            break;
+        default:
+            action_count = 10;
+            graph_hint = "MST: 8 Prim, 9/R Kruskal, pasos , . /, Home/End, autoplay P/O";
+            break;
+        }
+
+        for (action = 0; action < action_count; action++) {
+            Rectangle btn = {base_x + (action % graph_columns) * (graph_btn_w + gap),
+                             controls_y + (action / graph_columns) * row_step, graph_btn_w, btn_h};
+            if (grafo_ui_mode == 0) {
+                if (action == 0 && ui_button(btn, "Inicializar (I)", false)) {
+                    app_state_operacion_inicializar(app);
+                } else if (action == 1 && ui_button(btn, "Vertice + (A)", false)) {
+                    app_state_operacion_insertar(app);
+                } else if (action == 2 && ui_button(btn, "Vertice - (D)", false)) {
+                    app_state_operacion_eliminar(app);
+                } else if (action == 3 && ui_button(btn, "Arista + (G)", false)) {
+                    app_state_operacion_grafo_insertar_arista(app, app->grafo_vertice_inicio,
+                                                              app->grafo_vertice_destino,
+                                                              app->input_prioridad);
+                } else if (action == 4 && ui_button(btn, "Arista - (X)", false)) {
+                    app_state_operacion_grafo_eliminar_arista(app, app->grafo_vertice_inicio,
+                                                              app->grafo_vertice_destino);
+                } else if (action == 5 && ui_button(btn, app->grafo_dirigido ? "Dirigido (T)"
+                                                                              : "No dirigido (T)",
+                                                    false)) {
+                    app_state_grafo_toggle_dirigido(app);
+                } else if (action == 6 && ui_button(btn, "Cargar demo (M)", false)) {
+                    app_state_grafo_cargar_demo(app);
+                } else if (action == 7 && ui_button(btn, "Exportar (C)", false)) {
+                    grafo_exportar_resumen_clipboard(app);
+                }
+            } else if (grafo_ui_mode == 1) {
+                if (action == 0 && ui_button(btn, "BFS (4)", false)) {
+                    app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_BFS,
+                                                                 app->grafo_vertice_inicio,
+                                                                 app->grafo_vertice_destino);
+                } else if (action == 1 && ui_button(btn, "DFS (5)", false)) {
+                    app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_DFS,
+                                                                 app->grafo_vertice_inicio,
+                                                                 app->grafo_vertice_destino);
+                } else if (action == 2 && ui_button(btn, "Paso - (,)", false)) {
+                    grafo_controller_paso_anterior(&app->grafo_controller_state);
+                } else if (action == 3 && ui_button(btn, "Paso + (.)", false)) {
+                    grafo_controller_paso_siguiente(&app->grafo_controller_state);
+                } else if (action == 4 && ui_button(btn, "Reiniciar (/)", false)) {
+                    grafo_controller_reiniciar(&app->grafo_controller_state);
+                } else if (action == 5 && ui_button(btn, "Inicio (Home)", false)) {
+                    grafo_controller_ir_inicio(&app->grafo_controller_state);
+                } else if (action == 6 && ui_button(btn, "Final (End)", false)) {
+                    grafo_controller_ir_final(&app->grafo_controller_state);
+                } else if (action == 7 && ui_button(btn, app->grafo_controller_state.autoplay_activo
+                                                             ? "Auto: ON (P)"
+                                                             : "Auto: OFF (P)",
+                                                    false)) {
+                    grafo_controller_toggle_autoplay(&app->grafo_controller_state);
+                } else if (action == 8 && ui_button(btn,
+                                                    app->grafo_controller_state.autoplay_velocidad_idx == 0
+                                                        ? "Vel: Lenta (O)"
+                                                        : app->grafo_controller_state
+                                                                  .autoplay_velocidad_idx == 1
+                                                              ? "Vel: Media (O)"
+                                                              : "Vel: Rapida (O)",
+                                                    false)) {
+                    grafo_controller_cambiar_velocidad(&app->grafo_controller_state);
+                } else if (action == 9 && ui_button(btn, "Exportar (C)", false)) {
+                    grafo_exportar_resumen_clipboard(app);
+                }
+            } else if (grafo_ui_mode == 2) {
+                if (action == 0 && ui_button(btn, "Dijkstra (6)", false)) {
+                    app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_DIJKSTRA,
+                                                                 app->grafo_vertice_inicio,
+                                                                 app->grafo_vertice_destino);
+                } else if (action == 1 && ui_button(btn, "Bellman-Ford (7)", false)) {
+                    app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_BELLMAN_FORD,
+                                                                 app->grafo_vertice_inicio,
+                                                                 app->grafo_vertice_destino);
+                } else if (action == 2 && ui_button(btn, "Paso - (,)", false)) {
+                    grafo_controller_paso_anterior(&app->grafo_controller_state);
+                } else if (action == 3 && ui_button(btn, "Paso + (.)", false)) {
+                    grafo_controller_paso_siguiente(&app->grafo_controller_state);
+                } else if (action == 4 && ui_button(btn, "Reiniciar (/)", false)) {
+                    grafo_controller_reiniciar(&app->grafo_controller_state);
+                } else if (action == 5 && ui_button(btn, "Inicio (Home)", false)) {
+                    grafo_controller_ir_inicio(&app->grafo_controller_state);
+                } else if (action == 6 && ui_button(btn, "Final (End)", false)) {
+                    grafo_controller_ir_final(&app->grafo_controller_state);
+                } else if (action == 7 && ui_button(btn, app->grafo_controller_state.autoplay_activo
+                                                             ? "Auto: ON (P)"
+                                                             : "Auto: OFF (P)",
+                                                    false)) {
+                    grafo_controller_toggle_autoplay(&app->grafo_controller_state);
+                } else if (action == 8 && ui_button(btn,
+                                                    app->grafo_controller_state.autoplay_velocidad_idx == 0
+                                                        ? "Vel: Lenta (O)"
+                                                        : app->grafo_controller_state
+                                                                  .autoplay_velocidad_idx == 1
+                                                              ? "Vel: Media (O)"
+                                                              : "Vel: Rapida (O)",
+                                                    false)) {
+                    grafo_controller_cambiar_velocidad(&app->grafo_controller_state);
+                } else if (action == 9 && ui_button(btn, "Exportar (C)", false)) {
+                    grafo_exportar_resumen_clipboard(app);
+                }
+            } else {
+                if (action == 0 && ui_button(btn, "Prim (8)", false)) {
+                    app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_PRIM,
+                                                                 app->grafo_vertice_inicio,
+                                                                 app->grafo_vertice_destino);
+                } else if (action == 1 && ui_button(btn, "Kruskal (9/R)", false)) {
+                    app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_KRUSKAL,
+                                                                 app->grafo_vertice_inicio,
+                                                                 app->grafo_vertice_destino);
+                } else if (action == 2 && ui_button(btn, "Paso - (,)", false)) {
+                    grafo_controller_paso_anterior(&app->grafo_controller_state);
+                } else if (action == 3 && ui_button(btn, "Paso + (.)", false)) {
+                    grafo_controller_paso_siguiente(&app->grafo_controller_state);
+                } else if (action == 4 && ui_button(btn, "Reiniciar (/)", false)) {
+                    grafo_controller_reiniciar(&app->grafo_controller_state);
+                } else if (action == 5 && ui_button(btn, "Inicio (Home)", false)) {
+                    grafo_controller_ir_inicio(&app->grafo_controller_state);
+                } else if (action == 6 && ui_button(btn, "Final (End)", false)) {
+                    grafo_controller_ir_final(&app->grafo_controller_state);
+                } else if (action == 7 && ui_button(btn, app->grafo_controller_state.autoplay_activo
+                                                             ? "Auto: ON (P)"
+                                                             : "Auto: OFF (P)",
+                                                    false)) {
+                    grafo_controller_toggle_autoplay(&app->grafo_controller_state);
+                } else if (action == 8 && ui_button(btn,
+                                                    app->grafo_controller_state.autoplay_velocidad_idx == 0
+                                                        ? "Vel: Lenta (O)"
+                                                        : app->grafo_controller_state
+                                                                  .autoplay_velocidad_idx == 1
+                                                              ? "Vel: Media (O)"
+                                                              : "Vel: Rapida (O)",
+                                                    false)) {
+                    grafo_controller_cambiar_velocidad(&app->grafo_controller_state);
+                } else if (action == 9 && ui_button(btn, "Exportar (C)", false)) {
+                    grafo_exportar_resumen_clipboard(app);
+                }
+            }
+        }
+
+        graph_hints_y = controls_y + ((action_count - 1) / graph_columns + 1) * row_step + 6.0f;
+        ui_draw_text(graph_hint, panel.x + 16.0f, graph_hints_y, 13.0f, 0.10f,
+                     (Color){54, 66, 82, 255}, false);
+        return graph_hints_y + 18.0f;
+    }
+
     if (app->estructura_activa == ESTRUCTURA_LISTA ||
         app->estructura_activa == ESTRUCTURA_LISTA_CIRCULAR) {
         count = 7;
@@ -1341,9 +1575,6 @@ static float draw_context_controls(AppState *app, Rectangle panel, bool *is_comp
     } else if (app->estructura_activa == ESTRUCTURA_COLA_PRIORIDAD) {
         count = 4;
         hint = "Atajos: UP/DOWN valor, LEFT/RIGHT prioridad";
-    } else if (app->estructura_activa == ESTRUCTURA_GRAFO) {
-        count = 21;
-        hint = "Algoritmo: 4..6/R | Pasos: , . / Home End | Auto: P | Demo: M | Dirigido: T";
     } else {
         count = 4;
         hint = "Atajos: UP/DOWN valor";
@@ -1422,78 +1653,6 @@ static float draw_context_controls(AppState *app, Rectangle panel, bool *is_comp
                 app_state_operacion_sublista_eliminar_hijo(app);
             } else if (i == 6 && ui_button(btn, "Vaciar (V)", false)) {
                 app_state_operacion_vaciar(app);
-            }
-            break;
-        case ESTRUCTURA_GRAFO:
-            if (i == 0 && ui_button(btn, "Inicializar (I)", false)) {
-                app_state_operacion_inicializar(app);
-            } else if (i == 1 && ui_button(btn, "Vertice + (A)", false)) {
-                app_state_operacion_insertar(app);
-            } else if (i == 2 && ui_button(btn, "Vertice - (D)", false)) {
-                app_state_operacion_eliminar(app);
-            } else if (i == 3 && ui_button(btn, "Arista +", false)) {
-                app_state_operacion_grafo_insertar_arista(app, app->grafo_vertice_inicio,
-                                                          app->grafo_vertice_destino,
-                                                          app->input_prioridad);
-            } else if (i == 4 && ui_button(btn, "Arista -", false)) {
-                app_state_operacion_grafo_eliminar_arista(app, app->grafo_vertice_inicio,
-                                                          app->grafo_vertice_destino);
-            } else if (i == 5 && ui_button(btn, "BFS", false)) {
-                app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_BFS,
-                                                             app->grafo_vertice_inicio,
-                                                             app->grafo_vertice_destino);
-            } else if (i == 6 && ui_button(btn, "DFS", false)) {
-                app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_DFS,
-                                                             app->grafo_vertice_inicio,
-                                                             app->grafo_vertice_destino);
-            } else if (i == 7 && ui_button(btn, "Dijkstra", false)) {
-                app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_DIJKSTRA,
-                                                             app->grafo_vertice_inicio,
-                                                             app->grafo_vertice_destino);
-            } else if (i == 8 && ui_button(btn, "Bellman-Ford", false)) {
-                app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_BELLMAN_FORD,
-                                                             app->grafo_vertice_inicio,
-                                                             app->grafo_vertice_destino);
-            } else if (i == 9 && ui_button(btn, "Prim", false)) {
-                app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_PRIM,
-                                                             app->grafo_vertice_inicio,
-                                                             app->grafo_vertice_destino);
-            } else if (i == 10 && ui_button(btn, "Kruskal", false)) {
-                app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_KRUSKAL,
-                                                             app->grafo_vertice_inicio,
-                                                             app->grafo_vertice_destino);
-            } else if (i == 11 && ui_button(btn, "Paso - (,)", false)) {
-                grafo_controller_paso_anterior(&app->grafo_controller_state);
-            } else if (i == 12 && ui_button(btn, "Paso + (.)", false)) {
-                grafo_controller_paso_siguiente(&app->grafo_controller_state);
-            } else if (i == 13 && ui_button(btn, "Reiniciar (/)", false)) {
-                grafo_controller_reiniciar(&app->grafo_controller_state);
-            } else if (i == 14 && ui_button(btn, "Inicio", false)) {
-                grafo_controller_ir_inicio(&app->grafo_controller_state);
-            } else if (i == 15 && ui_button(btn, "Final", false)) {
-                grafo_controller_ir_final(&app->grafo_controller_state);
-            } else if (i == 16 && ui_button(btn,
-                                            app->grafo_controller_state.autoplay_activo
-                                                ? "Auto: ON"
-                                                : "Auto: OFF",
-                                            false)) {
-                grafo_controller_toggle_autoplay(&app->grafo_controller_state);
-            } else if (i == 17 && ui_button(btn,
-                                            app->grafo_controller_state.autoplay_velocidad_idx == 0
-                                                ? "Vel: Lenta"
-                                                : app->grafo_controller_state.autoplay_velocidad_idx == 1
-                                                      ? "Vel: Media"
-                                                      : "Vel: Rapida",
-                                            false)) {
-                grafo_controller_cambiar_velocidad(&app->grafo_controller_state);
-            } else if (i == 18 && ui_button(btn,
-                                            app->grafo_dirigido ? "Dirigido" : "No dirigido",
-                                            false)) {
-                app_state_grafo_toggle_dirigido(app);
-            } else if (i == 19 && ui_button(btn, "Cargar demo", false)) {
-                app_state_grafo_cargar_demo(app);
-            } else if (i == 20 && ui_button(btn, "Exportar", false)) {
-                grafo_exportar_resumen_clipboard(app);
             }
             break;
         default:
@@ -1746,6 +1905,8 @@ int main(void) {
     unsigned int code_history_last_serial = 0;
     int code_history_entries = 0;
     const char *code_display_text;
+    bool code_panel_compact = true;
+    bool trace_advanced_mode = false;
 
     SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_WINDOW_HIGHDPI);
     InitWindow(screen_width, screen_height, "VisualStruct UTP");
@@ -1943,11 +2104,7 @@ int main(void) {
             float sidebar_section_bottom;
 
             if (app.estructura_activa == ESTRUCTURA_GRAFO) {
-                float gap_y = 8.0f;
-                float grid_gap_x = 6.0f;
-                float cell_w;
-                float row_y;
-                int action_index;
+                Rectangle graph_status_box;
 
                 ui_draw_panel(layout.sidebar, "Menu Grafo");
                 btn = (Rectangle){layout.sidebar.x + 12.0f, layout.sidebar.y + 52.0f,
@@ -1964,93 +2121,24 @@ int main(void) {
                     screen_mode = SCREEN_HELP;
                 }
 
-                cell_w = (layout.sidebar.width - 24.0f - grid_gap_x) * 0.5f;
-                row_y = layout.sidebar.y + 152.0f;
-                for (action_index = 0; action_index < 14; action_index++) {
-                    Rectangle graph_btn = {layout.sidebar.x + 12.0f + (float)(action_index % 2) *
-                                           (cell_w + grid_gap_x),
-                                           row_y + (float)(action_index / 2) * (30.0f + gap_y),
-                                           cell_w, 30.0f};
-
-                    if (action_index == 0 &&
-                        draw_graph_sidebar_button(graph_btn, "Crear", false)) {
-                        app_state_operacion_inicializar(&app);
-                    } else if (action_index == 1 &&
-                               draw_graph_sidebar_button(graph_btn, "Vertice +", false)) {
-                        app_state_operacion_insertar(&app);
-                    } else if (action_index == 2 &&
-                               draw_graph_sidebar_button(graph_btn, "Vertice -", false)) {
-                        app_state_operacion_eliminar(&app);
-                    } else if (action_index == 3 &&
-                               draw_graph_sidebar_button(graph_btn, "Arista +", false)) {
-                        app_state_operacion_grafo_insertar_arista(&app, app.grafo_vertice_inicio,
-                                                                  app.grafo_vertice_destino,
-                                                                  app.input_prioridad);
-                    } else if (action_index == 4 &&
-                               draw_graph_sidebar_button(graph_btn, "Arista -", false)) {
-                        app_state_operacion_grafo_eliminar_arista(&app, app.grafo_vertice_inicio,
-                                                                  app.grafo_vertice_destino);
-                    } else if (action_index == 5 &&
-                               draw_graph_sidebar_button(graph_btn, "BFS",
-                                                         app.grafo_algoritmo_seleccionado ==
-                                                             GRAFO_ALGO_BFS)) {
-                        app_state_operacion_grafo_ejecutar_algoritmo(&app, GRAFO_ALGO_BFS,
-                                                                     app.grafo_vertice_inicio,
-                                                                     app.grafo_vertice_destino);
-                    } else if (action_index == 6 &&
-                               draw_graph_sidebar_button(graph_btn, "DFS",
-                                                         app.grafo_algoritmo_seleccionado ==
-                                                             GRAFO_ALGO_DFS)) {
-                        app_state_operacion_grafo_ejecutar_algoritmo(&app, GRAFO_ALGO_DFS,
-                                                                     app.grafo_vertice_inicio,
-                                                                     app.grafo_vertice_destino);
-                    } else if (action_index == 7 &&
-                               draw_graph_sidebar_button(graph_btn, "Dijkstra",
-                                                         app.grafo_algoritmo_seleccionado ==
-                                                             GRAFO_ALGO_DIJKSTRA)) {
-                        app_state_operacion_grafo_ejecutar_algoritmo(&app,
-                                                                     GRAFO_ALGO_DIJKSTRA,
-                                                                     app.grafo_vertice_inicio,
-                                                                     app.grafo_vertice_destino);
-                    } else if (action_index == 8 &&
-                               draw_graph_sidebar_button(graph_btn, "Bellman",
-                                                         app.grafo_algoritmo_seleccionado ==
-                                                             GRAFO_ALGO_BELLMAN_FORD)) {
-                        app_state_operacion_grafo_ejecutar_algoritmo(&app,
-                                                                     GRAFO_ALGO_BELLMAN_FORD,
-                                                                     app.grafo_vertice_inicio,
-                                                                     app.grafo_vertice_destino);
-                    } else if (action_index == 9 &&
-                               draw_graph_sidebar_button(graph_btn, "Prim",
-                                                         app.grafo_algoritmo_seleccionado ==
-                                                             GRAFO_ALGO_PRIM)) {
-                        app_state_operacion_grafo_ejecutar_algoritmo(&app, GRAFO_ALGO_PRIM,
-                                                                     app.grafo_vertice_inicio,
-                                                                     app.grafo_vertice_destino);
-                    } else if (action_index == 10 &&
-                               draw_graph_sidebar_button(graph_btn, "Kruskal",
-                                                         app.grafo_algoritmo_seleccionado ==
-                                                             GRAFO_ALGO_KRUSKAL)) {
-                        app_state_operacion_grafo_ejecutar_algoritmo(&app,
-                                                                     GRAFO_ALGO_KRUSKAL,
-                                                                     app.grafo_vertice_inicio,
-                                                                     app.grafo_vertice_destino);
-                    } else if (action_index == 11 &&
-                               draw_graph_sidebar_button(graph_btn, "Demo", false)) {
-                        app_state_grafo_cargar_demo(&app);
-                    } else if (action_index == 12 &&
-                               draw_graph_sidebar_button(graph_btn,
-                                                         app.grafo_dirigido ? "Dirigido"
-                                                                            : "No dirigido",
-                                                         false)) {
-                        app_state_grafo_toggle_dirigido(&app);
-                    } else if (action_index == 13 &&
-                               draw_graph_sidebar_button(graph_btn, "Exportar", false)) {
-                        grafo_exportar_resumen_clipboard(&app);
-                    }
-                }
-
-                sidebar_section_bottom = row_y + 7.0f * (30.0f + gap_y) - gap_y + 10.0f;
+                graph_status_box = (Rectangle){layout.sidebar.x + 12.0f, layout.sidebar.y + 152.0f,
+                                               layout.sidebar.width - 24.0f, 108.0f};
+                DrawRectangleRounded(graph_status_box, 0.18f, 8, Fade((Color){220, 232, 247, 255}, 0.80f));
+                DrawRectangleRoundedLinesEx(graph_status_box, 0.18f, 8, 1.0f,
+                                            Fade((Color){78, 110, 146, 255}, 0.25f));
+                ui_draw_text("Estado de grafo", graph_status_box.x + 10.0f, graph_status_box.y + 10.0f,
+                             14.0f, 0.10f, (Color){22, 46, 72, 255}, true);
+                ui_draw_text(TextFormat("Vertices: %d", cantidad_activa),
+                             graph_status_box.x + 10.0f, graph_status_box.y + 34.0f,
+                             13.0f, 0.08f, (Color){56, 68, 84, 255}, false);
+                ui_draw_text(TextFormat("Algoritmo: %s",
+                                        grafo_algoritmo_home_nombre(app.grafo_algoritmo_seleccionado)),
+                             graph_status_box.x + 10.0f, graph_status_box.y + 54.0f,
+                             13.0f, 0.08f, (Color){56, 68, 84, 255}, false);
+                ui_draw_text(app.grafo_dirigido ? "Tipo: dirigido" : "Tipo: no dirigido",
+                             graph_status_box.x + 10.0f, graph_status_box.y + 74.0f,
+                             13.0f, 0.08f, (Color){56, 68, 84, 255}, false);
+                sidebar_section_bottom = graph_status_box.y + graph_status_box.height + 12.0f;
             } else {
                 ui_draw_panel(layout.sidebar, "Estructuras");
                 btn = (Rectangle){layout.sidebar.x + 12.0f, layout.sidebar.y + 52.0f,
@@ -2139,18 +2227,8 @@ int main(void) {
                                            layout.sidebar.width - 24.0f, 38.0f};
 
             if (show_graph_inputs) {
-                ui_draw_text("Opciones de grafo:", layout.sidebar.x + 12.0f, info_y,
-                             14.0f, 0.12f, (Color){66, 76, 86, 255}, false);
-                ui_draw_text(TextFormat("Vertices: %d", cantidad_activa), layout.sidebar.x + 12.0f,
-                             info_y + 18.0f, meta_size, 0.16f, (Color){66, 76, 86, 255}, false);
-                ui_draw_text(TextFormat("Algoritmo: %s",
-                                         grafo_algoritmo_home_nombre(app.grafo_algoritmo_seleccionado)),
-                             layout.sidebar.x + 12.0f, info_y + 38.0f, meta_size, 0.14f,
-                             (Color){28, 52, 76, 255}, true);
-                if (available_info_h > 78.0f) {
-                    ui_draw_text("Campos: valor, origen, destino y peso.", layout.sidebar.x + 12.0f,
-                                 nav_y, help_size, 0.08f, (Color){76, 91, 110, 255}, false);
-                }
+                ui_draw_text("Entradas de grafo", layout.sidebar.x + 12.0f, info_y,
+                             14.0f, 0.10f, (Color){50, 64, 80, 255}, true);
             } else {
                 ui_draw_text("Seleccion actual:", layout.sidebar.x + 12.0f, info_y,
                              14.0f, 0.16f, (Color){66, 76, 86, 255}, false);
@@ -2286,7 +2364,7 @@ int main(void) {
             draw_active_view(&app, layout.center, view_top);
         }
 
-        ui_draw_panel(layout.right, "Codigo C Asociado (Historial)");
+        ui_draw_panel(layout.right, "Codigo C Asociado");
         DrawRectangleRounded((Rectangle){layout.right.x + 14.0f, layout.right.y + 40.0f,
                                          layout.right.width - 28.0f, 52.0f},
                              0.20f, 8, Fade((Color){224, 235, 248, 255}, 0.88f));
@@ -2294,13 +2372,20 @@ int main(void) {
                                                 layout.right.width - 28.0f, 52.0f},
                                     0.20f, 8, 1.2f, Fade((Color){42, 98, 158, 255}, 0.30f));
         ui_draw_text(TextFormat("Estructura: %s", estructura_nombre(app.estructura_activa)),
-                     layout.right.x + 20.0f, layout.right.y + 48.0f, 13.0f, 0.12f,
+                     layout.right.x + 20.0f, layout.right.y + 48.0f, 13.0f, 0.10f,
                      (Color){34, 52, 76, 255}, false);
-        ui_draw_text(TextFormat("Tiempo: %s | Espacio: %s", tiempo_texto, espacio_texto),
-                     layout.right.x + 20.0f, layout.right.y + 66.0f, 12.0f, 0.10f,
+        ui_draw_text(TextFormat("T: %s | E: %s", tiempo_texto, espacio_texto),
+                     layout.right.x + 20.0f, layout.right.y + 66.0f, 12.0f, 0.08f,
                      (Color){64, 76, 95, 255}, false);
-        if (ui_button((Rectangle){layout.right.x + layout.right.width - 136.0f, layout.right.y + 51.0f,
-                                  116.0f, 30.0f},
+        if (ui_button((Rectangle){layout.right.x + layout.right.width - 136.0f, layout.right.y + 45.0f,
+                                  116.0f, 26.0f},
+                      code_panel_compact ? "Expandir" : "Compacto", false)) {
+            code_panel_compact = !code_panel_compact;
+            code_scroll = 0.0f;
+        }
+        if (!code_panel_compact &&
+            ui_button((Rectangle){layout.right.x + layout.right.width - 136.0f, layout.right.y + 73.0f,
+                                  116.0f, 26.0f},
                       "Limpiar", false)) {
             code_history[0] = '\0';
             code_history_entries = 0;
@@ -2308,7 +2393,41 @@ int main(void) {
             code_scroll = 0.0f;
             code_display_text = snippet;
         }
-        if (app.estructura_activa == ESTRUCTURA_GRAFO) {
+
+        if (code_panel_compact) {
+            char preview_text[640];
+            Rectangle compact_box = {layout.right.x + 14.0f, layout.right.y + 102.0f,
+                                     layout.right.width - 28.0f, layout.right.height - 118.0f};
+            float preview_h = compact_box.height - 94.0f;
+            build_compact_preview(snippet, preview_text, sizeof(preview_text), 7);
+            DrawRectangleRounded(compact_box, 0.16f, 8, Fade(WHITE, 0.74f));
+            DrawRectangleRoundedLinesEx(compact_box, 0.16f, 8, 1.0f,
+                                        Fade((Color){42, 98, 158, 255}, 0.20f));
+            ui_draw_text("Resumen rapido", compact_box.x + 10.0f, compact_box.y + 8.0f,
+                         13.0f, 0.10f, (Color){24, 46, 76, 255}, true);
+            if (app.estructura_activa == ESTRUCTURA_GRAFO) {
+                ui_draw_text(TextFormat("Algoritmo: %s",
+                                        grafo_algoritmo_home_nombre(app.grafo_algoritmo_seleccionado)),
+                             compact_box.x + 10.0f, compact_box.y + 26.0f, 12.0f, 0.08f,
+                             (Color){56, 72, 92, 255}, false);
+            }
+            ui_draw_text(TextFormat("Operacion: %s", app.mensaje_operacion),
+                         compact_box.x + 10.0f, compact_box.y + 42.0f, 12.0f, 0.08f,
+                         (Color){56, 72, 92, 255}, false);
+            if (preview_h < 60.0f) {
+                preview_h = 60.0f;
+            }
+            draw_scrollable_multiline_text(preview_text,
+                                           (Rectangle){compact_box.x + 10.0f, compact_box.y + 62.0f,
+                                                        compact_box.width - 20.0f,
+                                                        preview_h},
+                                           15, (Color){44, 58, 74, 255}, 0.0f);
+            if (compact_box.height > 118.0f) {
+                ui_draw_text("Tip: pulsa Expandir para ver historial y desplazamiento.",
+                             compact_box.x + 10.0f, compact_box.y + compact_box.height - 18.0f,
+                             11.0f, 0.08f, (Color){88, 102, 120, 255}, false);
+            }
+        } else if (app.estructura_activa == ESTRUCTURA_GRAFO) {
             GrafoCodigoAlgoritmo codigo_grafo =
                 grafo_codigo_actual(app.grafo_algoritmo_seleccionado);
             int linea_activa = grafo_linea_desde_paso(app.grafo_algoritmo_seleccionado,
@@ -2343,8 +2462,16 @@ int main(void) {
         }
 
         ui_draw_panel(layout.bottom, "Operacion, Traza y Complejidad");
+        if (ui_button((Rectangle){layout.bottom.x + layout.bottom.width - 152.0f, layout.bottom.y + 8.0f,
+                                  136.0f, 24.0f},
+                      trace_advanced_mode ? "Cambiar a basica" : "Cambiar a avanzada", false)) {
+            trace_advanced_mode = !trace_advanced_mode;
+            trace_scroll = 0.0f;
+        }
         {
-            float summary_w = layout.bottom.width < 980.0f ? 228.0f : 258.0f;
+            float summary_w = trace_advanced_mode
+                                  ? (layout.bottom.width < 980.0f ? 228.0f : 258.0f)
+                                  : (layout.bottom.width < 980.0f ? 260.0f : 302.0f);
             float summary_line_step;
             float summary_text_y;
             Rectangle summary_box = {layout.bottom.x + 14.0f, layout.bottom.y + 40.0f, summary_w,
@@ -2375,14 +2502,24 @@ int main(void) {
             ui_draw_text(TextFormat("Elementos: %d", cantidad_activa), summary_box.x + 12.0f,
                          summary_text_y + summary_line_step * 2.0f, 12.0f, 0.10f,
                          (Color){42, 54, 70, 255}, false);
-            ui_draw_text(TextFormat("T: %s", tiempo_texto), summary_box.x + 12.0f,
-                         summary_text_y + summary_line_step * 3.0f, 12.0f, 0.10f,
-                         (Color){42, 54, 70, 255}, false);
-            ui_draw_text(TextFormat("E: %s", espacio_texto), summary_box.x + 12.0f,
-                         summary_text_y + summary_line_step * 4.0f, 12.0f, 0.10f,
-                         (Color){42, 54, 70, 255}, false);
+            if (trace_advanced_mode) {
+                ui_draw_text(TextFormat("T: %s", tiempo_texto), summary_box.x + 12.0f,
+                             summary_text_y + summary_line_step * 3.0f, 12.0f, 0.10f,
+                             (Color){42, 54, 70, 255}, false);
+                ui_draw_text(TextFormat("E: %s", espacio_texto), summary_box.x + 12.0f,
+                             summary_text_y + summary_line_step * 4.0f, 12.0f, 0.10f,
+                             (Color){42, 54, 70, 255}, false);
+            } else {
+                ui_draw_text(TextFormat("Complejidad: T=%s | E=%s", tiempo_texto, espacio_texto),
+                             summary_box.x + 12.0f, summary_text_y + summary_line_step * 3.0f,
+                             11.0f, 0.08f, (Color){52, 66, 84, 255}, false);
+                ui_draw_text("Tip: activa vista avanzada para metricas por paso.",
+                             summary_box.x + 12.0f, summary_text_y + summary_line_step * 4.0f,
+                             11.0f, 0.08f, (Color){84, 96, 112, 255}, false);
+            }
 
-            if (app.estructura_activa == ESTRUCTURA_GRAFO &&
+            if (trace_advanced_mode &&
+                app.estructura_activa == ESTRUCTURA_GRAFO &&
                 (app.grafo_algoritmo_seleccionado == GRAFO_ALGO_DIJKSTRA ||
                  app.grafo_algoritmo_seleccionado == GRAFO_ALGO_BELLMAN_FORD)) {
                 char tabla_multi[512];
@@ -2504,38 +2641,105 @@ int main(void) {
             DrawRectangleRounded(trace_box, 0.16f, 8, Fade(WHITE, 0.50f));
             DrawRectangleRoundedLinesEx(trace_box, 0.16f, 8, 1.2f,
                                         Fade((Color){42, 98, 158, 255}, 0.20f));
-            ui_draw_text("Traza", trace_box.x + 10.0f, trace_box.y + 8.0f, 13.0f, 0.12f,
+            ui_draw_text(trace_advanced_mode ? "Traza detallada" : "Traza esencial",
+                         trace_box.x + 10.0f, trace_box.y + 8.0f, 13.0f, 0.12f,
                          (Color){24, 46, 76, 255}, true);
 
             if (app.estructura_activa == ESTRUCTURA_GRAFO) {
                 GrafoTrace traza_grafo = grafo_trace_desde_estado(&app);
-                grafo_trace_dibujar(&traza_grafo,
-                                    (Rectangle){trace_box.x + 10.0f,
-                                                trace_box.y + 28.0f,
-                                                trace_box.width - 20.0f,
-                                                trace_box.height - 56.0f});
-                grafo_trace_dibujar_barra_progreso(
-                    &traza_grafo,
-                    (Rectangle){trace_box.x + 10.0f, trace_box.y + trace_box.height - 22.0f,
-                                trace_box.width - 20.0f, 12.0f});
+                if (trace_advanced_mode) {
+                    grafo_trace_dibujar(&traza_grafo,
+                                        (Rectangle){trace_box.x + 10.0f,
+                                                    trace_box.y + 28.0f,
+                                                    trace_box.width - 20.0f,
+                                                    trace_box.height - 56.0f});
+                } else {
+                    char paso_label[64];
+                    char estado_label[32];
+                    float progress_ratio = 0.0f;
+                    char progress_text[24];
+                    Rectangle bar_track;
+                    Rectangle bar_fill;
+                    float y_base = trace_box.y + 30.0f;
+                    snprintf(paso_label, sizeof(paso_label), "Paso: %d/%d",
+                             app.grafo_controller_state.total_pasos > 0
+                                 ? app.grafo_controller_state.paso_actual + 1
+                                 : 0,
+                             app.grafo_controller_state.total_pasos);
+                    snprintf(estado_label, sizeof(estado_label), "Auto: %s",
+                             app.grafo_controller_state.autoplay_activo ? "ON" : "OFF");
+                    ui_draw_text(TextFormat("Algoritmo: %s",
+                                            grafo_algoritmo_home_nombre(
+                                                app.grafo_algoritmo_seleccionado)),
+                                 trace_box.x + 10.0f, y_base, 12.0f, 0.08f,
+                                 (Color){56, 72, 92, 255}, false);
+                    ui_draw_text(TextFormat("Operacion: %s", app.mensaje_operacion),
+                                 trace_box.x + 10.0f, y_base + 18.0f, 12.0f, 0.08f,
+                                 (Color){56, 72, 92, 255}, false);
+                    ui_draw_text(paso_label, trace_box.x + 10.0f, y_base + 36.0f, 12.0f, 0.08f,
+                                 (Color){56, 72, 92, 255}, false);
+                    ui_draw_text(estado_label, trace_box.x + 10.0f, y_base + 52.0f, 12.0f, 0.08f,
+                                 (Color){56, 72, 92, 255}, false);
+
+                    if (app.grafo_controller_state.total_pasos > 0) {
+                        progress_ratio = (float)(app.grafo_controller_state.paso_actual + 1) /
+                                         (float)app.grafo_controller_state.total_pasos;
+                    }
+                    if (progress_ratio < 0.0f) {
+                        progress_ratio = 0.0f;
+                    }
+                    if (progress_ratio > 1.0f) {
+                        progress_ratio = 1.0f;
+                    }
+
+                    snprintf(progress_text, sizeof(progress_text), "%d%%",
+                             (int)(progress_ratio * 100.0f + 0.5f));
+                    bar_track = (Rectangle){trace_box.x + 10.0f, trace_box.y + trace_box.height - 24.0f,
+                                            trace_box.width - 20.0f, 10.0f};
+                    bar_fill = (Rectangle){bar_track.x, bar_track.y, bar_track.width * progress_ratio,
+                                           bar_track.height};
+                    DrawRectangleRounded(bar_track, 0.35f, 8, (Color){214, 226, 240, 255});
+                    DrawRectangleRounded(bar_fill, 0.35f, 8, (Color){39, 128, 224, 255});
+                    ui_draw_text(progress_text, bar_track.x + bar_track.width - 24.0f,
+                                 bar_track.y - 12.0f, 11.0f, 0.08f, (Color){56, 72, 92, 255}, false);
+                }
+                if (trace_advanced_mode) {
+                    grafo_trace_dibujar_barra_progreso(
+                        &traza_grafo,
+                        (Rectangle){trace_box.x + 10.0f, trace_box.y + trace_box.height - 22.0f,
+                                    trace_box.width - 20.0f, 12.0f});
+                }
             } else {
                 char trace_text[1024];
+                char pasos_preview[512];
 
                 snprintf(trace_text, sizeof(trace_text),
                          "Operacion: %s\n\n"
                          "Pasos:\n%s",
                          app.mensaje_operacion, info.pasos);
-                draw_scrollable_multiline_text(trace_text,
-                                               (Rectangle){trace_box.x + 10.0f,
-                                                           trace_box.y + 28.0f,
-                                                           trace_box.width - 20.0f - 10.0f,
-                                                           trace_box.height - 34.0f},
-                                               17, (Color){48, 60, 76, 255}, trace_scroll);
-                draw_scrollbar((Rectangle){trace_box.x + trace_box.width - 10.0f,
-                                           trace_box.y + 28.0f, 6.0f,
-                                           trace_box.height - 34.0f},
-                               count_text_lines(trace_text) * 22.0f, trace_box.height - 34.0f,
-                               trace_scroll);
+                if (trace_advanced_mode) {
+                    draw_scrollable_multiline_text(trace_text,
+                                                   (Rectangle){trace_box.x + 10.0f,
+                                                               trace_box.y + 28.0f,
+                                                               trace_box.width - 20.0f - 10.0f,
+                                                               trace_box.height - 34.0f},
+                                                   17, (Color){48, 60, 76, 255}, trace_scroll);
+                    draw_scrollbar((Rectangle){trace_box.x + trace_box.width - 10.0f,
+                                               trace_box.y + 28.0f, 6.0f,
+                                               trace_box.height - 34.0f},
+                                   count_text_lines(trace_text) * 22.0f, trace_box.height - 34.0f,
+                                   trace_scroll);
+                } else {
+                    build_compact_preview(info.pasos, pasos_preview, sizeof(pasos_preview), 6);
+                    ui_draw_text(TextFormat("Operacion: %s", app.mensaje_operacion),
+                                 trace_box.x + 10.0f, trace_box.y + 30.0f, 12.0f, 0.08f,
+                                 (Color){56, 72, 92, 255}, false);
+                    draw_scrollable_multiline_text(pasos_preview,
+                                                   (Rectangle){trace_box.x + 10.0f, trace_box.y + 52.0f,
+                                                               trace_box.width - 20.0f,
+                                                               trace_box.height - 76.0f},
+                                                   16, (Color){48, 60, 76, 255}, 0.0f);
+                }
             }
         }
 

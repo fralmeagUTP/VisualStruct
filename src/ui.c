@@ -12,8 +12,8 @@
 static const Color COLOR_PRIMARY = {17, 69, 132, 255};
 static const Color COLOR_PRIMARY_DEEP = {10, 43, 92, 255};
 static const Color COLOR_ACCENT = {198, 165, 102, 255};
-static const Color COLOR_TEXT = {52, 61, 74, 255};
-static const Color COLOR_TEXT_MUTED = {78, 90, 106, 255};
+static const Color COLOR_TEXT = {38, 48, 61, 255};
+static const Color COLOR_TEXT_MUTED = {66, 80, 98, 255};
 static const Color COLOR_PANEL = {240, 245, 250, 255};
 static const int HEADER_HEIGHT = 114;
 static const int FOOTER_HEIGHT = 42;
@@ -41,23 +41,35 @@ static const Font *body_font(void) {
 
 /** @brief Mide un texto usando fuente externa cuando existe. */
 static int measure_ui_text(const Font *font, const char *text, float size, float spacing) {
-    if (font != NULL) {
-        return (int)MeasureTextEx(*font, text, size, spacing).x;
+    float render_size = size < 12.0f ? 12.0f : size; /* Arial 9pt ~= 12px */
+    float render_spacing = spacing;
+
+    if (render_size <= 14.0f && render_spacing > 0.10f) {
+        render_spacing = 0.10f;
     }
-    return MeasureText(text, (int)size);
+    if (font != NULL) {
+        return (int)MeasureTextEx(*font, text, render_size, render_spacing).x;
+    }
+    return MeasureText(text, (int)render_size);
 }
 
 /** @brief Dibuja texto con fallback seguro a la fuente por defecto. */
 static void draw_ui_text(const Font *font, const char *text, float x, float y, float size,
                          float spacing, Color color) {
+    float render_size = size < 12.0f ? 12.0f : size; /* Arial 9pt ~= 12px */
+    float render_spacing = spacing;
     float draw_x = snap_px(x);
     float draw_y = snap_px(y);
 
+    if (render_size <= 14.0f && render_spacing > 0.10f) {
+        render_spacing = 0.10f;
+    }
+
     if (font != NULL) {
-        DrawTextEx(*font, text, (Vector2){draw_x, draw_y}, size, spacing, color);
+        DrawTextEx(*font, text, (Vector2){draw_x, draw_y}, render_size, render_spacing, color);
         return;
     }
-    DrawText(text, (int)draw_x, (int)draw_y, (int)size, color);
+    DrawText(text, (int)draw_x, (int)draw_y, (int)render_size, color);
 }
 
 /** @brief Dibuja texto reutilizando las fuentes compartidas de la UI. */
@@ -109,20 +121,19 @@ static void draw_logo_fallback(Rectangle bounds, const char *text) {
 /** @brief Inicializa logos y dimensiones base de la interfaz. */
 void ui_init(UIContext *ui, int width, int height) {
     const char *heading_candidates[] = {
-        "C:/Windows/Fonts/tahomabd.ttf",
-        "C:/Windows/Fonts/tahoma.ttf",
         "C:/Windows/Fonts/arialbd.ttf",
+        "C:/Windows/Fonts/tahomabd.ttf",
         "C:/Windows/Fonts/calibrib.ttf",
         "C:/Windows/Fonts/timesbd.ttf",
         "assets/fons/AtkinsonHyperlegible-Bold.ttf"
     };
     const char *body_candidates[] = {
-        "C:/Windows/Fonts/tahoma.ttf",
-        "C:/Windows/Fonts/tahomabd.ttf",
         "C:/Windows/Fonts/arial.ttf",
+        "C:/Windows/Fonts/tahoma.ttf",
         "C:/Windows/Fonts/calibri.ttf",
         "C:/Windows/Fonts/times.ttf",
-        "assets/fons/AtkinsonHyperlegible-Regular.ttf"
+        "assets/fons/AtkinsonHyperlegible-Regular.ttf",
+        "assets/fons/SourceSans3.ttf"
     };
     int i;
 
@@ -183,6 +194,22 @@ UILayout ui_get_layout(const UIContext *ui) {
     float bottomH = 172.0f;
     float centerH = contentHeight - bottomH - GAP;
 
+    if (ui->screenWidth <= 1366) {
+        sidebarW = 184.0f;
+        rightW = 286.0f;
+    }
+    if (ui->screenWidth <= 1280) {
+        sidebarW = 176.0f;
+        rightW = 270.0f;
+    }
+    if (ui->screenHeight <= 760) {
+        bottomH = 160.0f;
+    }
+    if (ui->screenHeight <= 720) {
+        bottomH = 148.0f;
+    }
+
+    centerH = contentHeight - bottomH - GAP;
     if (centerH < 200.0f) {
         centerH = 200.0f;
     }
@@ -325,9 +352,12 @@ void ui_draw_panel(Rectangle panel, const char *title) {
 bool ui_button(Rectangle bounds, const char *label, bool active) {
     Vector2 mouse = GetMousePosition();
     bool hover = CheckCollisionPointRec(mouse, bounds);
-        int labelWidth = measure_ui_text(body_font(), label, 18.0f, 0.15f);
+    float label_size = bounds.height >= 40.0f ? 17.0f : 15.0f;
+    float label_spacing = label_size >= 17.0f ? 0.12f : 0.10f;
+    int labelWidth = measure_ui_text(body_font(), label, label_size, label_spacing);
     Color bg = active ? (Color){216, 231, 246, 255} : (Color){248, 251, 254, 255};
     Color border = active ? COLOR_PRIMARY_DEEP : (Color){143, 163, 186, 255};
+    Color text = active ? COLOR_PRIMARY_DEEP : COLOR_TEXT;
 
     if (hover) {
         bg = (Color){231, 240, 249, 255};
@@ -339,8 +369,9 @@ bool ui_button(Rectangle bounds, const char *label, bool active) {
         DrawRectangleRounded((Rectangle){bounds.x + 1.0f, bounds.y + 1.0f, 4.0f, bounds.height - 2.0f},
                              0.40f, 8, Fade(COLOR_ACCENT, 0.95f));
     }
-        draw_ui_text(body_font(), label, bounds.x + (bounds.width - labelWidth) * 0.5f,
-                     bounds.y + 11.0f, 18.0f, 0.15f, COLOR_TEXT);
+    draw_ui_text(body_font(), label, bounds.x + (bounds.width - labelWidth) * 0.5f,
+                 bounds.y + (bounds.height - label_size) * 0.5f - 1.0f, label_size, label_spacing,
+                 text);
 
     return hover && IsMouseButtonPressed(MOUSE_BUTTON_LEFT);
 }
@@ -350,11 +381,12 @@ bool ui_input_box(Rectangle bounds, const char *label, const char *value, bool a
                   bool invalid) {
     Vector2 mouse = GetMousePosition();
     bool hover = CheckCollisionPointRec(mouse, bounds);
-    int valueWidth = measure_ui_text(body_font(), value, 19.0f, 0.1f);
+    float value_size = bounds.height >= 38.0f ? 17.0f : 15.0f;
+    int valueWidth = measure_ui_text(body_font(), value, value_size, 0.10f);
     Color bg = active ? (Color){255, 255, 255, 255} : (Color){247, 250, 253, 255};
     Color border = active ? COLOR_PRIMARY : (Color){123, 150, 175, 255};
 
-    draw_ui_text(body_font(), label, bounds.x + 1.0f, bounds.y - 19.0f, 15.0f, 0.3f,
+    draw_ui_text(body_font(), label, bounds.x + 1.0f, bounds.y - 14.0f, 11.0f, 0.08f,
                  COLOR_TEXT_MUTED);
     if (hover && !active) {
         bg = (Color){251, 253, 255, 255};
@@ -367,7 +399,8 @@ bool ui_input_box(Rectangle bounds, const char *label, const char *value, bool a
     DrawRectangleRounded(bounds, 0.18f, 10, bg);
     DrawRectangleRoundedLinesEx(bounds, 0.18f, 10, 2.0f, border);
     draw_ui_text(body_font(), value, bounds.x + bounds.width - valueWidth - 12.0f,
-                 bounds.y + 8.0f, 19.0f, 0.1f, COLOR_TEXT);
+                 bounds.y + (bounds.height - value_size) * 0.5f - 1.0f, value_size, 0.10f,
+                 COLOR_TEXT);
 
     return hover && IsMouseButtonPressed(MOUSE_BUTTON_LEFT);
 }
@@ -376,7 +409,9 @@ bool ui_input_box(Rectangle bounds, const char *label, const char *value, bool a
 bool ui_sidebar_button(Rectangle bounds, const char *label, bool active) {
     Vector2 mouse = GetMousePosition();
     bool hover = CheckCollisionPointRec(mouse, bounds);
-        int labelWidth = measure_ui_text(body_font(), label, 18.0f, 0.12f);
+    float label_size = bounds.height >= 40.0f ? 16.0f : 14.0f;
+    float label_spacing = 0.10f;
+    int labelWidth = measure_ui_text(body_font(), label, label_size, label_spacing);
     Color bg = active ? (Color){223, 234, 246, 255} : (Color){248, 250, 253, 255};
     Color border = active ? COLOR_PRIMARY_DEEP : (Color){160, 177, 196, 255};
 
@@ -388,8 +423,9 @@ bool ui_sidebar_button(Rectangle bounds, const char *label, bool active) {
     DrawRectangleRoundedLinesEx(bounds, 0.22f, 10, 2.0f, border);
     DrawRectangleRounded((Rectangle){bounds.x + 1.5f, bounds.y + 1.5f, 6.0f, bounds.height - 3.0f},
                          0.50f, 8, active ? COLOR_ACCENT : Fade(COLOR_PRIMARY, hover ? 0.45f : 0.18f));
-        draw_ui_text(body_font(), label, bounds.x + (bounds.width - labelWidth) * 0.5f,
-                     bounds.y + 12.0f, 18.0f, 0.12f, active ? COLOR_PRIMARY_DEEP : COLOR_TEXT);
+    draw_ui_text(body_font(), label, bounds.x + (bounds.width - labelWidth) * 0.5f,
+                 bounds.y + (bounds.height - label_size) * 0.5f - 1.0f, label_size, label_spacing,
+                 active ? COLOR_PRIMARY_DEEP : COLOR_TEXT);
 
     return hover && IsMouseButtonPressed(MOUSE_BUTTON_LEFT);
 }

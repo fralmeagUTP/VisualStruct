@@ -10,6 +10,13 @@
 
 static const float GRAFO_AUTOPLAY_INTERVALOS[] = {1.2f, 0.7f, 0.35f};
 
+static void grafo_controller_rebind_vista_estado(GrafoController *controller) {
+    if (controller == NULL) {
+        return;
+    }
+    controller->vista.estado = &controller->estado_visual;
+}
+
 static GrafoPasoTipo grafo_controller_tipo_paso(const GrafoController *controller, int paso) {
     if (controller == NULL) {
         return GRAFO_PASO_CONSOLIDACION;
@@ -290,6 +297,7 @@ GrafoController grafo_controller_crear(Grafo *grafo, Rectangle area_renderizado)
     controller.grafo_tad = grafo;
     controller.estado_visual = grafo_state_init();
     controller.vista = grafo_vista_init(&controller.estado_visual, area_renderizado);
+    grafo_controller_rebind_vista_estado(&controller);
     
     controller.modo = GRAFO_MODO_EDICION;
     controller.algoritmo_seleccionado = GRAFO_ALGO_NINGUNO;
@@ -558,11 +566,13 @@ const char* grafo_controller_obtener_error(const GrafoController *controller) {
 
 void grafo_controller_dibujar(GrafoController *controller) {
     if (!controller) return;
+    grafo_controller_rebind_vista_estado(controller);
     grafo_vista_dibujar(&controller->vista);
 }
 
 void grafo_controller_actualizar_area(GrafoController *controller, Rectangle nueva_area) {
     if (!controller) return;
+    grafo_controller_rebind_vista_estado(controller);
     grafo_vista_actualizar_area(&controller->vista, nueva_area);
 }
 

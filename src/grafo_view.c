@@ -4,6 +4,7 @@
  */
 
 #include "grafo_view.h"
+#include "ui.h"
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
@@ -11,6 +12,14 @@
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
+
+static float grafo_vista_px(const GrafoVista *vista, float local_x) {
+    return vista->area_renderizado.x + local_x;
+}
+
+static float grafo_vista_py(const GrafoVista *vista, float local_y) {
+    return vista->area_renderizado.y + local_y;
+}
 
 /* ============================================================================
  * Inicialización
@@ -148,8 +157,8 @@ int grafo_vista_detectar_vertice(const GrafoVista *vista, Vector2 mouse_pos) {
         const GrafoVerticeVisual *v = &vista->estado->vertices[i];
         if (!v->visible) continue;
         
-        float dx = mouse_pos.x - v->x;
-        float dy = mouse_pos.y - v->y;
+        float dx = mouse_pos.x - grafo_vista_px(vista, v->x);
+        float dy = mouse_pos.y - grafo_vista_py(vista, v->y);
         float dist = sqrtf(dx * dx + dy * dy);
         
         if (dist <= v->radio * 1.2f) {
@@ -182,8 +191,8 @@ void grafo_vista_dibujar_arista_individual(const GrafoVista *vista,
                     ? vista->opciones.grosor_arista_normal 
                     : vista->opciones.grosor_arista_destacada;
     
-    DrawLineEx((Vector2){v_origen->x, v_origen->y}, 
-              (Vector2){v_destino->x, v_destino->y}, 
+    DrawLineEx((Vector2){grafo_vista_px(vista, v_origen->x), grafo_vista_py(vista, v_origen->y)},
+              (Vector2){grafo_vista_px(vista, v_destino->x), grafo_vista_py(vista, v_destino->y)},
               grosor, color);
 }
 
@@ -220,10 +229,15 @@ void grafo_vista_dibujar_flechas(const GrafoVista *vista) {
         
         /* Calcular punto de inicio de flecha (desde borde del círculo) */
         float px, py;
-        grafo_vista_punto_en_linea(v_origen->x, v_origen->y, v_destino->x, v_destino->y,
-                                  v_origen->radio + 2.0f, &px, &py);
+        grafo_vista_punto_en_linea(grafo_vista_px(vista, v_origen->x),
+                                   grafo_vista_py(vista, v_origen->y),
+                                   grafo_vista_px(vista, v_destino->x),
+                                   grafo_vista_py(vista, v_destino->y),
+                                   v_origen->radio + 2.0f, &px, &py);
         
-        grafo_vista_dibujar_flecha(px, py, v_destino->x, v_destino->y, 2.0f, color);
+        grafo_vista_dibujar_flecha(px, py,
+                                   grafo_vista_px(vista, v_destino->x),
+                                   grafo_vista_py(vista, v_destino->y), 2.0f, color);
     }
 }
 
@@ -232,8 +246,10 @@ void grafo_vista_dibujar_vertice_individual(const GrafoVista *vista,
     if (!vista || !vertice || !vertice->visible) return;
     
     Color color = grafo_vista_color_vertice(vista, vertice->estado);
-    DrawCircle((int)vertice->x, (int)vertice->y, vertice->radio, color);
-    DrawCircleLines((int)vertice->x, (int)vertice->y, vertice->radio, vista->colores.texto_normal);
+    DrawCircle((int)grafo_vista_px(vista, vertice->x), (int)grafo_vista_py(vista, vertice->y),
+               vertice->radio, color);
+    DrawCircleLines((int)grafo_vista_px(vista, vertice->x), (int)grafo_vista_py(vista, vertice->y),
+                    vertice->radio, vista->colores.texto_normal);
 }
 
 void grafo_vista_dibujar_vertices(const GrafoVista *vista) {
@@ -257,12 +273,12 @@ void grafo_vista_dibujar_pesos(const GrafoVista *vista) {
         if (!v_origen || !v_destino) continue;
         
         /* Punto central de la arista */
-        float cx = (v_origen->x + v_destino->x) / 2.0f;
-        float cy = (v_origen->y + v_destino->y) / 2.0f;
+        float cx = (grafo_vista_px(vista, v_origen->x) + grafo_vista_px(vista, v_destino->x)) / 2.0f;
+        float cy = (grafo_vista_py(vista, v_origen->y) + grafo_vista_py(vista, v_destino->y)) / 2.0f;
         
         char buffer[16];
         snprintf(buffer, sizeof(buffer), "%d", arista->peso);
-        DrawText(buffer, (int)(cx - 8), (int)(cy - 8), 12, vista->colores.texto_normal);
+        ui_draw_text(buffer, cx - 8.0f, cy - 8.0f, 12.0f, 0.08f, vista->colores.texto_normal, false);
     }
 }
 
@@ -278,18 +294,24 @@ void grafo_vista_dibujar_etiquetas(const GrafoVista *vista) {
         
         /* ID del vértice */
         snprintf(buffer, sizeof(buffer), "V%d", v->id);
-        DrawText(buffer, (int)(v->x - 8), (int)(v->y + offset_y), 12, vista->colores.texto_normal);
+        ui_draw_text(buffer, grafo_vista_px(vista, v->x) - 8.0f,
+                     grafo_vista_py(vista, v->y) + (float)offset_y, 12.0f, 0.08f,
+                     vista->colores.texto_normal, false);
         
         /* Distancia (si está activa) */
         if (vista->opciones.mostrar_distancias && v->distancia > 0) {
             snprintf(buffer, sizeof(buffer), "d=%d", v->distancia);
-            DrawText(buffer, (int)(v->x - 16), (int)(v->y + offset_y + 15), 10, BLUE);
+            ui_draw_text(buffer, grafo_vista_px(vista, v->x) - 16.0f,
+                         grafo_vista_py(vista, v->y) + (float)offset_y + 15.0f, 10.0f, 0.08f,
+                         BLUE, false);
         }
         
         /* Orden de visitación */
         if (vista->opciones.mostrar_ordenes && v->orden_visitacion > 0) {
             snprintf(buffer, sizeof(buffer), "#%d", v->orden_visitacion);
-            DrawText(buffer, (int)(v->x - 12), (int)(v->y + offset_y + 28), 10, RED);
+            ui_draw_text(buffer, grafo_vista_px(vista, v->x) - 12.0f,
+                         grafo_vista_py(vista, v->y) + (float)offset_y + 28.0f, 10.0f, 0.08f,
+                         RED, false);
         }
     }
 }
@@ -301,8 +323,8 @@ void grafo_vista_dibujar_estado(const GrafoVista *vista) {
     int legend_y = (int)(vista->area_renderizado.y + vista->area_renderizado.height - 18.0f);
     
     /* Mensaje de estado */
-    DrawText(vista->estado->mensaje_estado, 
-            (int)vista->area_renderizado.x + 10, y_offset, 14, vista->colores.texto_normal);
+    ui_draw_text(vista->estado->mensaje_estado, vista->area_renderizado.x + 10.0f, (float)y_offset,
+                 14.0f, 0.08f, vista->colores.texto_normal, false);
     
     /* Información de algoritmo */
     if (vista->estado->algoritmo_activo != GRAFO_ALGO_NINGUNO) {
@@ -321,22 +343,22 @@ void grafo_vista_dibujar_estado(const GrafoVista *vista) {
         
         snprintf(algo_str, sizeof(algo_str), "Algoritmo: %s | Progreso %d/%d", 
             algo_nombre, vista->estado->paso_algoritmo + 1, vista->estado->total_pasos);
-        DrawText(algo_str, (int)vista->area_renderizado.x + 10, y_offset + 20, 12, 
-                vista->colores.texto_destacado);
+        ui_draw_text(algo_str, vista->area_renderizado.x + 10.0f, (float)y_offset + 20.0f, 12.0f,
+                     0.08f, vista->colores.texto_destacado, false);
     }
 
         DrawRectangleRounded((Rectangle){vista->area_renderizado.x + 10.0f, (float)legend_y, 9.0f, 9.0f},
                  0.25f, 4, Fade(vista->colores.vertice_actual, 0.55f));
-        DrawText("Activo", (int)vista->area_renderizado.x + 24, legend_y - 2, 10,
-             vista->colores.texto_normal);
+        ui_draw_text("Activo", vista->area_renderizado.x + 24.0f, (float)legend_y - 2.0f, 10.0f,
+                     0.08f, vista->colores.texto_normal, false);
         DrawRectangleRounded((Rectangle){vista->area_renderizado.x + 82.0f, (float)legend_y, 9.0f, 9.0f},
                  0.25f, 4, Fade(vista->colores.arista_relajada, 0.55f));
-        DrawText("Procesada", (int)vista->area_renderizado.x + 96, legend_y - 2, 10,
-             vista->colores.texto_normal);
+        ui_draw_text("Procesada", vista->area_renderizado.x + 96.0f, (float)legend_y - 2.0f, 10.0f,
+                     0.08f, vista->colores.texto_normal, false);
         DrawRectangleRounded((Rectangle){vista->area_renderizado.x + 172.0f, (float)legend_y, 9.0f, 9.0f},
                  0.25f, 4, Fade(vista->colores.arista_camino_minimo, 0.55f));
-        DrawText("Mejora", (int)vista->area_renderizado.x + 186, legend_y - 2, 10,
-             vista->colores.texto_normal);
+        ui_draw_text("Mejora", vista->area_renderizado.x + 186.0f, (float)legend_y - 2.0f, 10.0f,
+                     0.08f, vista->colores.texto_normal, false);
 }
 
 /* ============================================================================
