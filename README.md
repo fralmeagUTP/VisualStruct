@@ -80,10 +80,12 @@ doxygen Doxyfile
 - `docs/contribucion.md`: reglas para extender el proyecto sin romper la arquitectura actual.
 - `docs/qa-manual.md`: checklist de verificacion manual para UI, operaciones y paneles pedagogicos.
 - `docs/qa-visualizacion-ventanas.md`: verificacion de layout, legibilidad y uso de espacio.
+- `docs/sdd-secuenciales-vigente.md`: SDD operativo vigente del modulo secuencial en la app unificada.
 - `docs/analisis-diseno-lista-circular.md`: analisis tecnico y de interfaz para la funcionalidad de lista circular.
 - `docs/analisis-diseno-sublistas.md`: analisis funcional y tecnico del TAD jerarquico de sublistas.
 - `docs/analisis-diseno-grafos.md`: analisis funcional y tecnico del modulo de grafos y su integracion pedagogica.
 - `docs/plan-modulo-grafos.md`: plan incremental de implementacion del modulo de grafos.
+- `docs/Sdd Visualizador Estructuras Datos Secuenciales C Raylib.pdf`: antecedente historico del modulo secuencial inicial.
 
 ## Uso Basico
 1. Ejecutar la aplicacion.
