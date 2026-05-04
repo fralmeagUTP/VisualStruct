@@ -89,6 +89,8 @@ GrafoCodigoAlgoritmo grafo_codigo_kruskal(void);
  * @param area_destino Rectángulo donde dibuja
  */
 void grafo_codigo_dibujar(const GrafoCodigoAlgoritmo *codigo, Rectangle area_destino);
+void grafo_codigo_dibujar_con_scroll(const GrafoCodigoAlgoritmo *codigo, Rectangle area_destino,
+                                     float scroll_y);
 
 /**
  * @brief Establece la línea actual que se está ejecutando

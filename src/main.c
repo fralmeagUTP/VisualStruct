@@ -2264,7 +2264,7 @@ int main(void) {
                          0.2f, (Color){176, 54, 44, 255}, false);
         }
         if (app.estructura_activa == ESTRUCTURA_GRAFO && graph_weight_invalid) {
-            ui_draw_text("Peso: 1..999", graph_weight_box.x, graph_weight_box.y + 42.0f, 12.0f,
+            ui_draw_text("Peso: -999..999", graph_weight_box.x, graph_weight_box.y + 42.0f, 12.0f,
                          0.2f, (Color){176, 54, 44, 255}, false);
         }
 
@@ -2314,11 +2314,22 @@ int main(void) {
             int linea_activa = grafo_linea_desde_paso(app.grafo_algoritmo_seleccionado,
                                                       app.grafo_controller_state.paso_actual,
                                                       app.grafo_controller_state.total_pasos);
+            float graph_code_content_height;
+            float graph_code_viewport_height = layout.right.height - 118.0f;
             grafo_codigo_establecer_linea_actual(&codigo_grafo, linea_activa);
-            grafo_codigo_dibujar(&codigo_grafo,
-                                 (Rectangle){layout.right.x + 14.0f, layout.right.y + 102.0f,
-                                             layout.right.width - 28.0f,
-                                             layout.right.height - 118.0f});
+            graph_code_content_height = 30.0f + codigo_grafo.cantidad_lineas * 20.0f;
+            code_scroll = clamp_float(code_scroll, 0.0f,
+                                      graph_code_content_height > graph_code_viewport_height
+                                          ? graph_code_content_height - graph_code_viewport_height
+                                          : 0.0f);
+            grafo_codigo_dibujar_con_scroll(
+                &codigo_grafo,
+                (Rectangle){layout.right.x + 14.0f, layout.right.y + 102.0f,
+                            layout.right.width - 28.0f - 10.0f, layout.right.height - 118.0f},
+                code_scroll);
+            draw_scrollbar((Rectangle){layout.right.x + layout.right.width - 12.0f,
+                                       layout.right.y + 102.0f, 8.0f, layout.right.height - 118.0f},
+                           graph_code_content_height, layout.right.height - 118.0f, code_scroll);
         } else {
             draw_scrollable_multiline_text(code_display_text,
                                            (Rectangle){layout.right.x + 14.0f, layout.right.y + 102.0f,

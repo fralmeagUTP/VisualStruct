@@ -64,9 +64,9 @@ static void grafo_controller_construir_script(GrafoController *controller) {
                                              controller->vertice_destino)
                             : grafo_bellman_ford(controller->grafo_tad, controller->vertice_inicio,
                                                  controller->vertice_destino);
-        if (c.estado == GRAFO_OK && c.existe && c.aristas != NULL) {
+        if (c.estado == GRAFO_OK && c.existe) {
             int i;
-            int limite_aristas = (int)((c.cantidad > 0) ? c.cantidad - 1 : 0);
+            int limite_aristas = (c.cantidad > 256) ? 256 : (int)c.cantidad;
             if (limite_aristas > 256) {
                 limite_aristas = 256;
             }
@@ -81,6 +81,9 @@ static void grafo_controller_construir_script(GrafoController *controller) {
                     controller->script_vertices[i + 1] = c.aristas[i].destino;
                 }
                 controller->script_vertices_count = limite_aristas + 1;
+            } else if (controller->vertice_inicio >= 0) {
+                controller->script_vertices[0] = controller->vertice_inicio;
+                controller->script_vertices_count = 1;
             }
         }
         grafo_liberar_camino(&c);

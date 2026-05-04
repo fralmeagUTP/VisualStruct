@@ -190,19 +190,22 @@ GrafoCodigoAlgoritmo grafo_codigo_kruskal(void) {
  * Renderizado
  * ============================================================================ */
 
-void grafo_codigo_dibujar(const GrafoCodigoAlgoritmo *codigo, Rectangle area_destino) {
+void grafo_codigo_dibujar_con_scroll(const GrafoCodigoAlgoritmo *codigo, Rectangle area_destino,
+                                     float scroll_y) {
     if (!codigo) return;
     
-    /* Título */
+    /* Titulo */
     DrawRectangleRec(area_destino, (Color){240, 240, 240, 255});
     DrawRectangleLinesEx(area_destino, 2.0f, (Color){100, 100, 100, 255});
     
     DrawText(codigo->nombre_algoritmo, (int)area_destino.x + 10, 
             (int)area_destino.y + 5, 14, BLACK);
     
-    /* Líneas de código */
-    int y_offset = (int)area_destino.y + 30;
-    for (int i = 0; i < codigo->cantidad_lineas && y_offset < area_destino.y + area_destino.height; i++) {
+    /* Lineas de codigo */
+    int y_offset = (int)area_destino.y + 30 - (int)scroll_y;
+    BeginScissorMode((int)area_destino.x + 2, (int)area_destino.y + 30,
+                     (int)area_destino.width - 4, (int)area_destino.height - 32);
+    for (int i = 0; i < codigo->cantidad_lineas; i++) {
         const GrafoCodigoLinea *linea = &codigo->lineas[i];
         
         Color color_fondo = (Color){255, 255, 255, 255};
@@ -216,16 +219,23 @@ void grafo_codigo_dibujar(const GrafoCodigoAlgoritmo *codigo, Rectangle area_des
             color_texto = BLUE;
         }
         
-        /* Dibujar línea */
-        DrawRectangle((int)area_destino.x + 2, y_offset, 
-                     (int)area_destino.width - 4, 18, color_fondo);
-        
-        char buffer[280];
-        snprintf(buffer, sizeof(buffer), "%2d: %s", linea->numero_linea, linea->contenido);
-        DrawText(buffer, (int)area_destino.x + 8, y_offset + 2, 12, color_texto);
+        if (y_offset + 18 >= area_destino.y + 30 &&
+            y_offset <= area_destino.y + area_destino.height) {
+            DrawRectangle((int)area_destino.x + 2, y_offset, 
+                         (int)area_destino.width - 4, 18, color_fondo);
+            
+            char buffer[280];
+            snprintf(buffer, sizeof(buffer), "%2d: %s", linea->numero_linea, linea->contenido);
+            DrawText(buffer, (int)area_destino.x + 8, y_offset + 2, 12, color_texto);
+        }
         
         y_offset += 20;
     }
+    EndScissorMode();
+}
+
+void grafo_codigo_dibujar(const GrafoCodigoAlgoritmo *codigo, Rectangle area_destino) {
+    grafo_codigo_dibujar_con_scroll(codigo, area_destino, 0.0f);
 }
 
 void grafo_codigo_establecer_linea_actual(GrafoCodigoAlgoritmo *codigo, int numero_linea) {
