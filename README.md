@@ -9,6 +9,41 @@ El sistema visualiza estructuras secuenciales y grafos en C estandar mostrando s
 - Raylib instalada en el sistema
 - Windows, Linux o macOS con librerias graficas compatibles
 
+## Entorno recomendado por sistema operativo
+### Windows (MSYS2/MinGW)
+1. Instalar MSYS2 y abrir terminal `mingw64.exe` (o `ucrt64.exe`).
+2. Instalar toolchain y Raylib con `pacman`:
+```bash
+pacman -Syu
+pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-raylib make pkgconf
+```
+3. Verificar:
+```bash
+gcc --version
+pkg-config --modversion raylib
+```
+
+### Linux
+1. Instalar GCC, Make y Raylib desde el gestor de paquetes de tu distribucion.
+2. Verificar:
+```bash
+gcc --version
+pkg-config --modversion raylib
+```
+
+### macOS
+1. Instalar Xcode Command Line Tools.
+2. Instalar Raylib y `pkg-config`:
+```bash
+xcode-select --install
+brew install raylib pkg-config
+```
+3. Verificar:
+```bash
+clang --version
+pkg-config --modversion raylib
+```
+
 ## IntelliSense en VS Code
 - Se incluye `.vscode/c_cpp_properties.json` con `includePath` apuntando a `C:/msys64/mingw64/include`.
 - Si tu instalacion de Raylib usa otra ruta, ajusta ese archivo para que VS Code resuelva `raylib.h` sin advertencias.
@@ -63,15 +98,18 @@ doxygen Doxyfile
 
 ## Controles Actuales
 - `I`: inicializar estructura activa
-- `A`: insertar/push/encolar, insertar al final en lista/lista circular, o insertar padre en sublistas
+- `A`: insertar/push/encolar, insertar al final en lista/lista circular, insertar padre en sublistas, o insertar vertice en Grafo
 - `Z`: insertar al inicio en lista/lista circular o insertar hijo en sublistas
-- `D`: eliminar/pop/desencolar
+- `D`: eliminar/pop/desencolar o eliminar vertice en Grafo
 - `B`: buscar en lista/lista circular o seleccionar padre activo en sublistas
-- `R`: invertir lista/lista circular o eliminar hijo en sublistas
+- `R`: invertir lista/lista circular, eliminar hijo en sublistas, o ejecutar Kruskal en Grafo
 - `V`: vaciar estructura activa
 - `UP/DOWN`: cambiar valor
 - `LEFT/RIGHT`: cambiar prioridad
 - `ENTER`: confirmar valor/prioridad editados en los campos laterales
+- `G` (en Grafo): insertar arista con `origen`, `destino` y `peso`
+- `X` (en Grafo): eliminar arista entre `origen` y `destino`
+- `4`/`5`/`6`/`7`/`8`/`9` (en Grafo): BFS, DFS, Dijkstra, Bellman-Ford, Prim y Kruskal
 - `F1`: abrir/cerrar pantalla de ayuda detallada
 - `H` o `ESC` (en visualizador): volver al menu principal
 - `TAB` (en visualizador): recorrer estructuras activas (1..7)
@@ -104,6 +142,22 @@ doxygen Doxyfile
 ## Solucion de problemas
 - Si no ves `Lista Circular`, `Sublistas` o `Grafo`, asegurate de ejecutar el binario mas reciente (`visualstruct.exe` o `visualstruct_eval_v11.exe` actualizado).
 - Si compilas manualmente, incluye todos los `src/grafo_*.c` del comando de compilacion.
+
+## Flujo recomendado de compilacion y validacion
+1. Compilar:
+```bash
+make clean && make
+```
+2. Regenerar documentacion tecnica:
+```bash
+doxygen Doxyfile
+```
+3. Ejecutar QA manual funcional:
+- seguir `docs/qa-manual.md`
+4. Ejecutar QA visual de layout:
+- seguir `docs/qa-visualizacion-ventanas.md`
+5. Verificar salida Doxygen:
+- abrir `docs/doxygen/html/index.html`
 
 ## Estructura de Carpetas
 - include/: encabezados publicos
