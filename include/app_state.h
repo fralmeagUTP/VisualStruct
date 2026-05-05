@@ -47,6 +47,7 @@ typedef struct {
     TipoOperacion operacion_animada;
     int input_valor;
     int input_prioridad;
+    int input_peso_grafo;
     int ultimo_valor;
     int ultima_prioridad;
     int coincidencias_busqueda;
@@ -90,6 +91,10 @@ void app_state_set_valor(AppState *state, int value);
 void app_state_ajustar_prioridad(AppState *state, int delta);
 /** @brief Asigna prioridad de entrada dentro del rango valido. */
 void app_state_set_prioridad(AppState *state, int value);
+/** @brief Incrementa/decrementa peso de arista de grafo [-999..999]. */
+void app_state_ajustar_peso_grafo(AppState *state, int delta);
+/** @brief Asigna peso de arista de grafo dentro del rango valido. */
+void app_state_set_peso_grafo(AppState *state, int value);
 /** @brief Avanza animaciones visuales efimeras ligadas al estado. */
 void app_state_update_visuals(AppState *state, float delta_time);
 
@@ -117,6 +122,9 @@ void app_state_operacion_vaciar(AppState *state);
 /** @brief Inserta una arista en el grafo activo. */
 void app_state_operacion_grafo_insertar_arista(AppState *state, int origen, int destino,
                                                int peso);
+/** @brief Crea o actualiza el peso de una arista en el grafo activo. */
+void app_state_operacion_grafo_actualizar_peso_arista(AppState *state, int origen, int destino,
+                                                      int peso);
 /** @brief Elimina una arista del grafo activo. */
 void app_state_operacion_grafo_eliminar_arista(AppState *state, int origen, int destino);
 /** @brief Ejecuta un algoritmo de grafo con parametros de inicio/destino. */

@@ -1,7 +1,7 @@
 var searchData=
 [
   ['ui_0',['Cuando toques la UI',['../md_docs_2contribucion.html#autotoc_md73',1,'']]],
-  ['ui_202026_2005_2004_1',['Actualizacion de alcance UI (2026-05-04)',['../md_docs_2plan-modulo-grafos.html#autotoc_md90',1,'']]],
+  ['ui_20ux_20aplicadas_1',['4. Decisiones UI/UX aplicadas',['../md_docs_2analisis-diseno-grafos.html#autotoc_md16',1,'']]],
   ['ui_2ec_2',['ui.c',['../ui_8c.html',1,'']]],
   ['ui_2eh_3',['ui.h',['../ui_8h.html',1,'']]],
   ['ui_5fbutton_4',['ui_button',['../ui_8h.html#a870fa41831ea81dc71f38f239ba9e3b9',1,'ui_button(Rectangle bounds, const char *label, bool active):&#160;ui.c'],['../ui_8c.html#a870fa41831ea81dc71f38f239ba9e3b9',1,'ui_button(Rectangle bounds, const char *label, bool active):&#160;ui.c']]],
@@ -26,7 +26,6 @@ var searchData=
   ['una_20estructura_20nueva_23',['Cuando agregues una estructura nueva',['../md_docs_2contribucion.html#autotoc_md72',1,'']]],
   ['una_20operacion_20nueva_24',['Cuando agregues una operacion nueva',['../md_docs_2contribucion.html#autotoc_md70',1,'']]],
   ['usa_5ffuerza_5fdirigida_25',['usa_fuerza_dirigida',['../struct_grafo_layout_configuracion.html#a64586077ec26cb39f24b5ddb668a51d4',1,'GrafoLayoutConfiguracion']]],
-  ['uso_26',['Recomendaciones de uso',['../md_docs_2guia-docente.html#autotoc_md80',1,'']]],
-  ['uso_20basico_27',['Uso Basico',['../index.html#autotoc_md7',1,'']]],
-  ['utp_3a_20estructuras_20secuenciales_20y_20grafos_20en_20c_20con_20raylib_28',['VisualStruct UTP: Estructuras Secuenciales y Grafos en C con Raylib',['../index.html',1,'']]]
+  ['utp_3a_20estructuras_20secuenciales_20y_20grafos_20en_20c_20con_20raylib_26',['VisualStruct UTP: Estructuras Secuenciales y Grafos en C con Raylib',['../index.html',1,'']]],
+  ['ux_20aplicadas_27',['4. Decisiones UI/UX aplicadas',['../md_docs_2analisis-diseno-grafos.html#autotoc_md16',1,'']]]
 ];

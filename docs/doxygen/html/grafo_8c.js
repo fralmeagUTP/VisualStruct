@@ -19,6 +19,7 @@ var grafo_8c =
     [ "grafo_existe_vertice", "grafo_8c.html#a3367edbfa3fdb571215ff3b92280b28f", null ],
     [ "grafo_grado_entrada", "grafo_8c.html#a2658785567afd3fdfcb30dc9af730893", null ],
     [ "grafo_grado_salida", "grafo_8c.html#a6225a7665384cd3feb1d68faac823b5b", null ],
+    [ "grafo_idx_vertice_id", "grafo_8c.html#a790843f2f10a30821355e0240930d4c5", null ],
     [ "grafo_insertar_arista", "grafo_8c.html#aa2d8150846e7b63b2bfd25232bdadff8", null ],
     [ "grafo_insertar_arista_interna", "grafo_8c.html#a29a97d6a89c622a06819b5f25d92c26a", null ],
     [ "grafo_insertar_vertice", "grafo_8c.html#af50feaad0153f9da59e434bbfd09d659", null ],

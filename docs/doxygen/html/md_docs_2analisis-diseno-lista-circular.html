@@ -92,8 +92,8 @@ $(function(){initNavTree('md_docs_2analisis-diseno-lista-circular.html','',''); 
   <div class="headertitle"><div class="title">Analisis y Diseno: Modulo Lista Circular </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md25"></a></p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md21"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
 1. Objetivo de la funcionalidad</h1>
 <p>Agregar una nueva estructura visualizable llamada <span class="tt"><a class="el" href="struct_lista.html">Lista</a> Circular</span> al ecosistema de VisualStruct, manteniendo:</p>
 <ul>
@@ -101,7 +101,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-lista-circular.html','',''); 
 <li>separacion de capas (TAD, estado, presentacion),</li>
 <li>soporte pedagogico completo (vista grafica, snippet C, traza/complejidad, ayuda y QA).</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
 2. Alcance funcional</h1>
 <p>La estructura <span class="tt"><a class="el" href="struct_lista.html">Lista</a> Circular</span> debe permitir, desde UI y atajos:</p>
 <ol type="1">
@@ -121,7 +121,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-lista-circular.html','',''); 
 <li>historial de codigo C en panel derecho,</li>
 <li>traza y complejidad en panel inferior.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
 3. Requerimientos funcionales detallados</h1>
 <h2>RF-01: Registro de estructura en estado global</h2>
 <ul>
@@ -161,9 +161,9 @@ $(function(){initNavTree('md_docs_2analisis-diseno-lista-circular.html','',''); 
 <li><span class="tt">algorithm_trace</span> incluye pasos y complejidades por operacion.</li>
 <li>Ayuda interna y documentacion externa incorporan la nueva estructura.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
 4. Modelo de datos y decisiones de diseno</h1>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
 4.1 Estructura de datos seleccionada</h1>
 <p>Se usa lista simplemente enlazada circular con dos punteros:</p>
 <ul>
@@ -174,14 +174,14 @@ $(function(){initNavTree('md_docs_2analisis-diseno-lista-circular.html','',''); 
 <ul>
 <li>Si la lista no esta vacia, <span class="tt">cola-&gt;sgte == cabeza</span>.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
 4.2 Justificacion tecnica</h1>
 <ul>
 <li>Permite <span class="tt">insertar_inicio</span> e <span class="tt">insertar_final</span> en <span class="tt">O(1)</span>.</li>
 <li>Facilita el dibujo de circularidad en UI (conexion explicita cola-&gt;cabeza).</li>
 <li>Conserva simplicidad del TAD para objetivos docentes.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md32"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
 4.3 Complejidades esperadas</h1>
 <ul>
 <li>Inicializar: <span class="tt">O(1)</span></li>
@@ -193,9 +193,9 @@ $(function(){initNavTree('md_docs_2analisis-diseno-lista-circular.html','',''); 
 <li>Vaciar: <span class="tt">O(n)</span></li>
 <li>Espacio auxiliar en operaciones: <span class="tt">O(1)</span></li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md33"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
 5. Diseno de interfaz y experiencia</h1>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
 5.1 Integracion de navegacion</h1>
 <ul>
 <li>Home: quinta tarjeta para <span class="tt"><a class="el" href="struct_lista.html">Lista</a> Circular</span>.</li>
@@ -203,7 +203,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-lista-circular.html','',''); 
 <li>Atajos directos: <span class="tt">5</span> para seleccionar circular.</li>
 <li>Ciclo de <span class="tt">TAB</span>: en el submenu secuencial rota entre seis estructuras; en el visualizador global rota entre siete (incluyendo <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>).</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md35"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
 5.2 Controles contextuales</h1>
 <p>Comparte el set de siete operaciones de <span class="tt"><a class="el" href="struct_lista.html">Lista</a></span>:</p>
 <ul>
@@ -215,7 +215,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-lista-circular.html','',''); 
 <li><span class="tt">Invertir (R)</span></li>
 <li><span class="tt">Vaciar (V)</span></li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md36"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md32"></a>
 5.3 Visualizacion en panel central</h1>
 <ul>
 <li>Disposicion horizontal de nodos.</li>
@@ -223,7 +223,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-lista-circular.html','',''); 
 <li>Conexion superior de retorno desde ultimo nodo hacia <span class="tt">HEAD</span>.</li>
 <li>Scroll horizontal con rueda y barra de arrastre.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md37"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md33"></a>
 6. Integracion por capas</h1>
 <ol type="1">
 <li>Dominio:<ul>
@@ -253,7 +253,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-lista-circular.html','',''); 
 </ul>
 </li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md38"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
 7. Criterios de aceptacion</h1>
 <p>Se considera implementada correctamente cuando:</p>
 <ol type="1">
@@ -264,7 +264,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-lista-circular.html','',''); 
 <li>Snippets y trazas reflejan la operacion circular ejecutada.</li>
 <li>Documentacion y QA quedan sincronizados.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md39"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md35"></a>
 8. Riesgos y mitigaciones</h1>
 <ul>
 <li>Riesgo: romper contratos de listas existentes.<ul>
@@ -280,7 +280,7 @@ $(function(){initNavTree('md_docs_2analisis-diseno-lista-circular.html','',''); 
 </ul>
 </li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md40"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md36"></a>
 9. Plan de pruebas minimo</h1>
 <ol type="1">
 <li>Pruebas funcionales de las 7 operaciones en lista circular.</li>

@@ -550,6 +550,13 @@ void grafo_controller_procesar_mouse(GrafoController *controller,
     }
 }
 
+void grafo_controller_scroll_vista(GrafoController *controller, float wheel_delta, bool horizontal) {
+    if (controller == NULL || wheel_delta == 0.0f) {
+        return;
+    }
+    grafo_vista_scroll_rueda(&controller->vista, wheel_delta, horizontal);
+}
+
 void grafo_controller_establecer_modo(GrafoController *controller, GrafoControllerModo nuevo_modo) {
     if (!controller) return;
     controller->modo = nuevo_modo;

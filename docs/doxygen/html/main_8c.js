@@ -43,6 +43,8 @@ var main_8c =
     [ "grafo_algoritmo_home_nombre", "main_8c.html#a969013c0c8888fff10345035840db541", null ],
     [ "grafo_algoritmo_tiempo", "main_8c.html#a21aa737f797b0d26afa0dfdf18a500c2", null ],
     [ "grafo_codigo_actual", "main_8c.html#abc14ebc7de0be4641a5ce1533db2a54e", null ],
+    [ "grafo_formatear_orden_vertices", "main_8c.html#a8c85775f0b2c07555f75b1a5f182cd19", null ],
+    [ "grafo_formatear_orden_vertices_lista", "main_8c.html#a15ae23c8ed4e691461a1068adcf81af6", null ],
     [ "graph_vertex_exists", "main_8c.html#afbb572f9486e716ffa04db262d68810f", null ],
     [ "handle_keyboard", "main_8c.html#a27fd5c90913e179b9ad24c8761d8ce8e", null ],
     [ "handle_navigation_keyboard", "main_8c.html#aff2576b0708a20b2054a455bff72622f", null ],
@@ -56,5 +58,8 @@ var main_8c =
     [ "APP_HELP_TEXT_PART1B", "main_8c.html#a04dfd51a506fcbb018f16ba1d1fec688", null ],
     [ "APP_HELP_TEXT_PART2", "main_8c.html#aa57811c14fe892f49077bcde669cf218", null ],
     [ "APP_HELP_TEXT_PART3", "main_8c.html#a7ad37c7e848e354455117bc9e8cee130", null ],
-    [ "APP_HELP_TEXT_PART4", "main_8c.html#a3ae5143acac32dfc524d41fc2bbd6db7", null ]
+    [ "APP_HELP_TEXT_PART4", "main_8c.html#a3ae5143acac32dfc524d41fc2bbd6db7", null ],
+    [ "g_grafo_camino_algo", "main_8c.html#a4652f6a59c2460bb40d28f509d2c21e3", null ],
+    [ "g_grafo_recorrido_algo", "main_8c.html#a1c7d1426cf648715fbc37b8d3745c915", null ],
+    [ "g_grafo_ui_mode", "main_8c.html#aa3e320099dca678a2ac104336b608645", null ]
 ];

@@ -92,65 +92,59 @@ $(function(){initNavTree('md_docs_2plan-modulo-grafos.html','',''); });
   <div class="headertitle"><div class="title">Plan: Modulo de Grafos y Navegacion </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md82"></a></p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md83"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md91"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md92"></a>
 Contexto</h1>
-<p>Proyecto: <span class="tt">C:\Users\fralm\Desktop\VisualStruct  Version 2</span> Lenguaje: C estandar con Raylib.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md84"></a>
+<p>Proyecto: <span class="tt">VisualStruct Version 2</span> Lenguaje: C11 + Raylib.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md93"></a>
 Objetivo</h1>
-<p>Integrar el modulo de grafos a la app unificada sin romper el flujo de estructuras secuenciales y conservando la capa pedagogica (codigo, traza y complejidad).</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md85"></a>
-Navegacion definida</h1>
+<p>Mantener el modulo de grafos funcional, didactico y simple para usuario final sin perder capacidades avanzadas.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md94"></a>
+Estado implementado</h1>
 <ul>
-<li>Portada principal con dos rutas: <span class="tt">Secuenciales</span> y <span class="tt">Grafos</span>.</li>
-<li>Submenu Secuenciales: <a class="el" href="struct_pila.html">Pila</a>, <a class="el" href="struct_cola.html">Cola</a>, <a class="el" href="struct_cola.html">Cola</a> de Prioridad, <a class="el" href="struct_lista.html">Lista</a>, <a class="el" href="struct_lista.html">Lista</a> Circular, Sublistas.</li>
-<li>Submenu Grafos: Construccion + algoritmos (BFS, DFS, Dijkstra, Bellman-Ford, Prim, Kruskal).</li>
-<li>Ayuda global disponible con <span class="tt">F1</span>.</li>
+<li>Vistas: Construccion, Recorridos, Caminos, MST.</li>
+<li>Inputs numericos validados.</li>
+<li>Recorridos con inicio definido por usuario y lista de orden visible.</li>
+<li>Caminos minimos con pesos.</li>
+<li>MST con flujo basico y avanzado.</li>
+<li>Demo parametrica por numero de nodos y aleatoriedad dispersa.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md86"></a>
-Componentes del modulo Grafo</h1>
-<ol type="1">
-<li>TAD: <span class="tt"><a class="el" href="grafo_8h.html" title="TAD Grafo para visualización y análisis de algoritmos de grafos.">include/grafo.h</a></span>, <span class="tt"><a class="el" href="grafo_8c.html" title="Implementación del TAD Grafo con algoritmos clásicos.">src/grafo.c</a></span>.</li>
-<li>Estado visual: <span class="tt"><a class="el" href="grafo__state_8h.html" title="Estado visual del grafo para animaciones y visualización.">include/grafo_state.h</a></span>, <span class="tt"><a class="el" href="grafo__state_8c.html" title="Implementación del estado visual del grafo.">src/grafo_state.c</a></span>.</li>
-<li>Layout: <span class="tt"><a class="el" href="grafo__layout_8h.html" title="Algoritmo de layout circular para posicionamiento de vértices.">include/grafo_layout.h</a></span>, <span class="tt"><a class="el" href="grafo__layout_8c.html" title="Implementación del layout circular para grafos.">src/grafo_layout.c</a></span>.</li>
-<li>Vista: <span class="tt"><a class="el" href="grafo__view_8h.html" title="Renderizado visual de grafos con Raylib.">include/grafo_view.h</a></span>, <span class="tt"><a class="el" href="grafo__view_8c.html" title="Implementación del renderizado visual con Raylib.">src/grafo_view.c</a></span>.</li>
-<li>Controlador: <span class="tt"><a class="el" href="grafo__controller_8h.html" title="Controlador de interacción del grafo y ejecución de algoritmos.">include/grafo_controller.h</a></span>, <span class="tt"><a class="el" href="grafo__controller_8c.html" title="Implementación del controlador del grafo.">src/grafo_controller.c</a></span>.</li>
-<li>Pedagogia: <span class="tt"><a class="el" href="grafo__code__viewer_8h.html" title="Visualización de pseudocódigo de algoritmos.">include/grafo_code_viewer.h</a></span>, <span class="tt"><a class="el" href="grafo__code__viewer_8c.html" title="Implementación del visualizador de código.">src/grafo_code_viewer.c</a></span>, <span class="tt"><a class="el" href="grafo__trace_8h.html" title="Traza pedagógica de ejecución de algoritmos.">include/grafo_trace.h</a></span>, <span class="tt"><a class="el" href="grafo__trace_8c.html" title="Implementacion de la traza pedagogica.">src/grafo_trace.c</a></span>, <span class="tt"><a class="el" href="grafo__pedagogy_8h.html">include/grafo_pedagogy.h</a></span>, <span class="tt"><a class="el" href="grafo__pedagogy_8c.html">src/grafo_pedagogy.c</a></span>.</li>
-</ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md87"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md95"></a>
+Fases de mejora (vigentes)</h1>
+<h2>Fase 1: UX simplificada</h2>
+<ul>
+<li>Mantener flujo basico por vista con pocos botones.</li>
+<li>Dejar controles expertos en modo avanzado.</li>
+</ul>
+<h2>Fase 2: Robustez algoritmica</h2>
+<ul>
+<li>Refactor Prim/Kruskal para IDs no contiguos.</li>
+<li>Endurecer validaciones de entradas extremas.</li>
+</ul>
+<h2>Fase 3: Demo configurable</h2>
+<ul>
+<li>Exponer selector de densidad y rango de pesos.</li>
+<li>Guardar semilla opcional para reproducibilidad docente.</li>
+</ul>
+<h2>Fase 4: QA y documentacion continua</h2>
+<ul>
+<li>Ampliar smoke tests para escenarios de IDs grandes y grafos desconectados.</li>
+<li>Mantener bitacora de cambios por fecha.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md96"></a>
 Reglas tecnicas</h1>
 <ul>
-<li>TAD de grafo sin <span class="tt">raylib.h</span>.</li>
-<li>UI sin acceso directo a internals del TAD.</li>
-<li>Toda operacion pasa por <span class="tt">app_state</span> y/o <span class="tt">grafo_controller</span>.</li>
-<li>Resultados dinamicos de algoritmos deben liberarse correctamente.</li>
+<li>TAD grafo sin dependencias de render.</li>
+<li>Mutaciones solo via <span class="tt">app_state</span> y <span class="tt">grafo_controller</span>.</li>
+<li>Liberacion segura de estructuras dinamicas de algoritmos.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md88"></a>
-Integracion en archivos existentes</h1>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md97"></a>
+Criterio de cierre por fase</h1>
 <ul>
-<li><span class="tt"><a class="el" href="app__state_8h.html" title="Estado global y acciones de alto nivel de la aplicacion.">include/app_state.h</a></span>: registrar <span class="tt"><a class="el" href="app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a6e0d66a5cb536cd3e71fdd083062dd31">ESTRUCTURA_GRAFO</a></span> y estado asociado.</li>
-<li><span class="tt"><a class="el" href="app__state_8c.html" title="Implementacion del estado global y despacho de operaciones de alto nivel.">src/app_state.c</a></span>: agregar despacho de operaciones y sincronizacion visual.</li>
-<li><span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span>: integrar menu, atajos, controles y paneles de grafos.</li>
-<li><span class="tt">Makefile</span>: incluir todos los <span class="tt">src/grafo_*.c</span>.</li>
+<li>Compila sin errores.</li>
+<li>QA manual actualizado y aprobado.</li>
+<li>Documentacion sincronizada con comportamiento real. </li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md89"></a>
-Validacion minima</h1>
-<ol type="1">
-<li>Compila con <span class="tt">-std=c11 -Wall -Wextra -pedantic</span>.</li>
-<li>Navegacion estable entre menu principal, secuenciales y grafos.</li>
-<li>Operaciones CRUD de vertices/aristas correctas.</li>
-<li>Algoritmos ejecutan y actualizan lienzo, codigo y traza.</li>
-<li>QA manual y QA visual actualizados.</li>
-</ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md90"></a>
-Actualizacion de alcance UI (2026-05-04)</h1>
-<ol type="1">
-<li>Priorizar experiencia de usuario final en pantalla de construccion de grafo.</li>
-<li>Mantener un modo basico como vista por defecto y exponer modo avanzado bajo demanda.</li>
-<li>Estandarizar tipografia y legibilidad de paneles, incluyendo etiquetas de vertices y pesos.</li>
-<li>Asegurar que <span class="tt">Valor</span>, <span class="tt">Origen</span>, <span class="tt">Destino</span> y <span class="tt">Peso</span> se comporten como campos numericos.</li>
-<li>Bloquear aplicacion de <span class="tt">Origen/Destino</span> cuando el vertice no exista en el grafo. </li>
-</ol>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

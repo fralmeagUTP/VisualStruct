@@ -69,7 +69,9 @@ typedef struct {
     GrafoVistaColores colores;
     GrafoVistaOpciones opciones;
     
-    Rectangle area_renderizado;   /**< Área de pantalla donde renderizar */
+    Rectangle area_renderizado;   /**< Area de pantalla donde renderizar */
+    float offset_x;
+    float offset_y;
     bool necesita_redibujarse;    /**< Flag para optimizar redibujado */
 } GrafoVista;
 
@@ -231,5 +233,10 @@ int grafo_vista_detectar_vertice(const GrafoVista *vista, Vector2 mouse_pos);
  * @param nueva_area Nuevo rectángulo
  */
 void grafo_vista_actualizar_area(GrafoVista *vista, Rectangle nueva_area);
+void grafo_vista_desplazar(GrafoVista *vista, float delta_x, float delta_y);
+void grafo_vista_scroll_rueda(GrafoVista *vista, float wheel_delta, bool horizontal);
 
 #endif /* GRAFO_VIEW_H */
+
+
+

@@ -27,58 +27,64 @@ var NAVTREE =
   [ "VisualStruct", "index.html", [
     [ "VisualStruct UTP: Estructuras Secuenciales y Grafos en C con Raylib", "index.html", "index" ],
     [ "Analisis y Diseno: Modulo Grafo", "md_docs_2analisis-diseno-grafos.html", [
-      [ "1. Objetivo", "md_docs_2analisis-diseno-grafos.html#autotoc_md18", null ],
-      [ "2. Alcance funcional", "md_docs_2analisis-diseno-grafos.html#autotoc_md19", null ],
-      [ "3. Estructura tecnica por capas", "md_docs_2analisis-diseno-grafos.html#autotoc_md20", null ],
-      [ "4. Requerimientos de interfaz", "md_docs_2analisis-diseno-grafos.html#autotoc_md21", null ],
-      [ "5. Complejidades esperadas (referencia docente)", "md_docs_2analisis-diseno-grafos.html#autotoc_md22", null ],
-      [ "6. Criterios de aceptacion", "md_docs_2analisis-diseno-grafos.html#autotoc_md23", null ],
-      [ "7. Riesgos y mitigaciones", "md_docs_2analisis-diseno-grafos.html#autotoc_md24", null ]
+      [ "1. Objetivo", "md_docs_2analisis-diseno-grafos.html#autotoc_md13", null ],
+      [ "2. Alcance funcional actual", "md_docs_2analisis-diseno-grafos.html#autotoc_md14", null ],
+      [ "3. Arquitectura del modulo", "md_docs_2analisis-diseno-grafos.html#autotoc_md15", null ],
+      [ "4. Decisiones UI/UX aplicadas", "md_docs_2analisis-diseno-grafos.html#autotoc_md16", null ],
+      [ "5. Complejidades de referencia", "md_docs_2analisis-diseno-grafos.html#autotoc_md17", null ],
+      [ "6. Criterios de aceptacion", "md_docs_2analisis-diseno-grafos.html#autotoc_md18", null ],
+      [ "7. Riesgos pendientes", "md_docs_2analisis-diseno-grafos.html#autotoc_md19", null ],
+      [ "8. Siguiente mejora recomendada", "md_docs_2analisis-diseno-grafos.html#autotoc_md20", null ]
     ] ],
     [ "Analisis y Diseno: Modulo Lista Circular", "md_docs_2analisis-diseno-lista-circular.html", [
-      [ "1. Objetivo de la funcionalidad", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md26", null ],
-      [ "2. Alcance funcional", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md27", null ],
-      [ "3. Requerimientos funcionales detallados", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md28", null ],
-      [ "4. Modelo de datos y decisiones de diseno", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md29", null ],
-      [ "4.1 Estructura de datos seleccionada", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md30", null ],
-      [ "4.2 Justificacion tecnica", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md31", null ],
-      [ "4.3 Complejidades esperadas", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md32", null ],
-      [ "5. Diseno de interfaz y experiencia", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md33", null ],
-      [ "5.1 Integracion de navegacion", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md34", null ],
-      [ "5.2 Controles contextuales", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md35", null ],
-      [ "5.3 Visualizacion en panel central", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md36", null ],
-      [ "6. Integracion por capas", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md37", null ],
-      [ "7. Criterios de aceptacion", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md38", null ],
-      [ "8. Riesgos y mitigaciones", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md39", null ],
-      [ "9. Plan de pruebas minimo", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md40", null ]
+      [ "1. Objetivo de la funcionalidad", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md22", null ],
+      [ "2. Alcance funcional", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md23", null ],
+      [ "3. Requerimientos funcionales detallados", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md24", null ],
+      [ "4. Modelo de datos y decisiones de diseno", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md25", null ],
+      [ "4.1 Estructura de datos seleccionada", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md26", null ],
+      [ "4.2 Justificacion tecnica", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md27", null ],
+      [ "4.3 Complejidades esperadas", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md28", null ],
+      [ "5. Diseno de interfaz y experiencia", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md29", null ],
+      [ "5.1 Integracion de navegacion", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md30", null ],
+      [ "5.2 Controles contextuales", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md31", null ],
+      [ "5.3 Visualizacion en panel central", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md32", null ],
+      [ "6. Integracion por capas", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md33", null ],
+      [ "7. Criterios de aceptacion", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md34", null ],
+      [ "8. Riesgos y mitigaciones", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md35", null ],
+      [ "9. Plan de pruebas minimo", "md_docs_2analisis-diseno-lista-circular.html#autotoc_md36", null ]
     ] ],
     [ "Analisis y Diseno: Modulo Sublistas", "md_docs_2analisis-diseno-sublistas.html", [
-      [ "1. Objetivo de la funcionalidad", "md_docs_2analisis-diseno-sublistas.html#autotoc_md42", null ],
-      [ "2. Alcance funcional", "md_docs_2analisis-diseno-sublistas.html#autotoc_md43", null ],
-      [ "3. Modelo de datos exigido", "md_docs_2analisis-diseno-sublistas.html#autotoc_md44", null ],
-      [ "4. Requerimientos funcionales", "md_docs_2analisis-diseno-sublistas.html#autotoc_md45", null ],
-      [ "5. Complejidad esperada", "md_docs_2analisis-diseno-sublistas.html#autotoc_md46", null ],
-      [ "6. Integracion de interfaz", "md_docs_2analisis-diseno-sublistas.html#autotoc_md47", null ],
-      [ "7. Criterios de aceptacion", "md_docs_2analisis-diseno-sublistas.html#autotoc_md48", null ],
-      [ "8. Riesgos y mitigaciones", "md_docs_2analisis-diseno-sublistas.html#autotoc_md49", null ],
-      [ "9. Plan minimo de pruebas", "md_docs_2analisis-diseno-sublistas.html#autotoc_md50", null ]
+      [ "1. Objetivo de la funcionalidad", "md_docs_2analisis-diseno-sublistas.html#autotoc_md38", null ],
+      [ "2. Alcance funcional", "md_docs_2analisis-diseno-sublistas.html#autotoc_md39", null ],
+      [ "3. Modelo de datos exigido", "md_docs_2analisis-diseno-sublistas.html#autotoc_md40", null ],
+      [ "4. Requerimientos funcionales", "md_docs_2analisis-diseno-sublistas.html#autotoc_md41", null ],
+      [ "5. Complejidad esperada", "md_docs_2analisis-diseno-sublistas.html#autotoc_md42", null ],
+      [ "6. Integracion de interfaz", "md_docs_2analisis-diseno-sublistas.html#autotoc_md43", null ],
+      [ "7. Criterios de aceptacion", "md_docs_2analisis-diseno-sublistas.html#autotoc_md44", null ],
+      [ "8. Riesgos y mitigaciones", "md_docs_2analisis-diseno-sublistas.html#autotoc_md45", null ],
+      [ "9. Plan minimo de pruebas", "md_docs_2analisis-diseno-sublistas.html#autotoc_md46", null ]
     ] ],
     [ "Arquitectura Actual", "md_docs_2architecture.html", [
-      [ "Aplicacion activa", "md_docs_2architecture.html#autotoc_md52", null ],
-      [ "Flujo de ejecucion", "md_docs_2architecture.html#autotoc_md53", null ],
-      [ "Capas y responsabilidades", "md_docs_2architecture.html#autotoc_md54", null ],
-      [ "Invariantes de diseno", "md_docs_2architecture.html#autotoc_md55", null ],
-      [ "Puntos de extension", "md_docs_2architecture.html#autotoc_md56", null ],
-      [ "Material legacy", "md_docs_2architecture.html#autotoc_md57", null ],
-      [ "Regla de separacion", "md_docs_2architecture.html#autotoc_md58", null ],
-      [ "Riesgos controlados por la refactorizacion", "md_docs_2architecture.html#autotoc_md59", null ]
+      [ "Aplicacion activa", "md_docs_2architecture.html#autotoc_md48", null ],
+      [ "Flujo por frame", "md_docs_2architecture.html#autotoc_md49", null ],
+      [ "Capas y responsabilidades", "md_docs_2architecture.html#autotoc_md50", null ],
+      [ "Invariantes", "md_docs_2architecture.html#autotoc_md51", null ],
+      [ "Decisiones recientes de arquitectura (2026-05-05)", "md_docs_2architecture.html#autotoc_md52", null ],
+      [ "Riesgos vigentes", "md_docs_2architecture.html#autotoc_md53", null ],
+      [ "Extensiones recomendadas", "md_docs_2architecture.html#autotoc_md54", null ]
     ] ],
     [ "Bitacora de Cambios - 2026-05-04", "md_docs_2bitacora-cambios-2026-05-04.html", [
-      [ "Resumen", "md_docs_2bitacora-cambios-2026-05-04.html#autotoc_md61", null ],
-      [ "Cambios funcionales en modulo de grafos", "md_docs_2bitacora-cambios-2026-05-04.html#autotoc_md62", null ],
-      [ "Cambios de legibilidad visual", "md_docs_2bitacora-cambios-2026-05-04.html#autotoc_md63", null ],
-      [ "Versionado y respaldos (GitHub)", "md_docs_2bitacora-cambios-2026-05-04.html#autotoc_md64", null ],
-      [ "Archivos impactados (principalmente)", "md_docs_2bitacora-cambios-2026-05-04.html#autotoc_md65", null ]
+      [ "Resumen", "md_docs_2bitacora-cambios-2026-05-04.html#autotoc_md56", null ],
+      [ "Cambios funcionales en modulo de grafos", "md_docs_2bitacora-cambios-2026-05-04.html#autotoc_md57", null ],
+      [ "Cambios de legibilidad visual", "md_docs_2bitacora-cambios-2026-05-04.html#autotoc_md58", null ],
+      [ "Versionado y respaldos (GitHub)", "md_docs_2bitacora-cambios-2026-05-04.html#autotoc_md59", null ],
+      [ "Archivos impactados (principalmente)", "md_docs_2bitacora-cambios-2026-05-04.html#autotoc_md60", null ]
+    ] ],
+    [ "Bitacora de Cambios - 2026-05-05", "md_docs_2bitacora-cambios-2026-05-05.html", [
+      [ "Resumen", "md_docs_2bitacora-cambios-2026-05-05.html#autotoc_md62", null ],
+      [ "Cambios funcionales", "md_docs_2bitacora-cambios-2026-05-05.html#autotoc_md63", null ],
+      [ "Documentacion actualizada", "md_docs_2bitacora-cambios-2026-05-05.html#autotoc_md64", null ],
+      [ "Estado final", "md_docs_2bitacora-cambios-2026-05-05.html#autotoc_md65", null ]
     ] ],
     [ "Guia de Contribucion", "md_docs_2contribucion.html", [
       [ "Objetivo", "md_docs_2contribucion.html#autotoc_md67", null ],
@@ -93,56 +99,58 @@ var NAVTREE =
     ] ],
     [ "Guia Docente", "md_docs_2guia-docente.html", [
       [ "Proposito", "md_docs_2guia-docente.html#autotoc_md77", null ],
-      [ "Secuencia sugerida para clase", "md_docs_2guia-docente.html#autotoc_md78", null ],
-      [ "Ideas por estructura", "md_docs_2guia-docente.html#autotoc_md79", null ],
-      [ "Recomendaciones de uso", "md_docs_2guia-docente.html#autotoc_md80", null ],
-      [ "Limitaciones actuales", "md_docs_2guia-docente.html#autotoc_md81", null ]
+      [ "Flujo sugerido de clase", "md_docs_2guia-docente.html#autotoc_md78", null ],
+      [ "Recomendaciones por modulo", "md_docs_2guia-docente.html#autotoc_md79", null ],
+      [ "Demo de grafo para clase", "md_docs_2guia-docente.html#autotoc_md80", null ],
+      [ "Buenas practicas de sesion", "md_docs_2guia-docente.html#autotoc_md81", null ],
+      [ "Limitaciones conocidas", "md_docs_2guia-docente.html#autotoc_md82", null ]
+    ] ],
+    [ "Modulos y Funcionalidades", "md_docs_2modulos-funcionalidades.html", [
+      [ "Resumen", "md_docs_2modulos-funcionalidades.html#autotoc_md84", null ],
+      [ "Matriz de modulos", "md_docs_2modulos-funcionalidades.html#autotoc_md85", null ],
+      [ "Detalle del modulo Grafo", "md_docs_2modulos-funcionalidades.html#autotoc_md86", null ],
+      [ "Entradas numericas", "md_docs_2modulos-funcionalidades.html#autotoc_md87", null ],
+      [ "Demo aleatoria de grafos", "md_docs_2modulos-funcionalidades.html#autotoc_md88", null ],
+      [ "Controles de navegacion", "md_docs_2modulos-funcionalidades.html#autotoc_md89", null ],
+      [ "Archivos clave por capa", "md_docs_2modulos-funcionalidades.html#autotoc_md90", null ]
     ] ],
     [ "Plan: Modulo de Grafos y Navegacion", "md_docs_2plan-modulo-grafos.html", [
-      [ "Contexto", "md_docs_2plan-modulo-grafos.html#autotoc_md83", null ],
-      [ "Objetivo", "md_docs_2plan-modulo-grafos.html#autotoc_md84", null ],
-      [ "Navegacion definida", "md_docs_2plan-modulo-grafos.html#autotoc_md85", null ],
-      [ "Componentes del modulo Grafo", "md_docs_2plan-modulo-grafos.html#autotoc_md86", null ],
-      [ "Reglas tecnicas", "md_docs_2plan-modulo-grafos.html#autotoc_md87", null ],
-      [ "Integracion en archivos existentes", "md_docs_2plan-modulo-grafos.html#autotoc_md88", null ],
-      [ "Validacion minima", "md_docs_2plan-modulo-grafos.html#autotoc_md89", null ],
-      [ "Actualizacion de alcance UI (2026-05-04)", "md_docs_2plan-modulo-grafos.html#autotoc_md90", null ]
+      [ "Contexto", "md_docs_2plan-modulo-grafos.html#autotoc_md92", null ],
+      [ "Objetivo", "md_docs_2plan-modulo-grafos.html#autotoc_md93", null ],
+      [ "Estado implementado", "md_docs_2plan-modulo-grafos.html#autotoc_md94", null ],
+      [ "Fases de mejora (vigentes)", "md_docs_2plan-modulo-grafos.html#autotoc_md95", null ],
+      [ "Reglas tecnicas", "md_docs_2plan-modulo-grafos.html#autotoc_md96", null ],
+      [ "Criterio de cierre por fase", "md_docs_2plan-modulo-grafos.html#autotoc_md97", null ]
     ] ],
     [ "Guia de Pruebas Manuales", "md_docs_2qa-manual.html", [
-      [ "Objetivo", "md_docs_2qa-manual.html#autotoc_md92", null ],
-      [ "Preparacion", "md_docs_2qa-manual.html#autotoc_md93", null ],
-      [ "Chequeos globales", "md_docs_2qa-manual.html#autotoc_md94", null ],
-      [ "Pila", "md_docs_2qa-manual.html#autotoc_md95", null ],
-      [ "Cola", "md_docs_2qa-manual.html#autotoc_md96", null ],
-      [ "Cola de prioridad", "md_docs_2qa-manual.html#autotoc_md97", null ],
-      [ "Lista", "md_docs_2qa-manual.html#autotoc_md98", null ],
-      [ "Lista circular", "md_docs_2qa-manual.html#autotoc_md99", null ],
-      [ "Sublistas", "md_docs_2qa-manual.html#autotoc_md100", null ],
-      [ "Grafos", "md_docs_2qa-manual.html#autotoc_md101", null ],
-      [ "Paneles pedagogicos", "md_docs_2qa-manual.html#autotoc_md102", null ],
-      [ "Pantalla de ayuda", "md_docs_2qa-manual.html#autotoc_md103", null ],
-      [ "Criterios de salida", "md_docs_2qa-manual.html#autotoc_md104", null ]
+      [ "Objetivo", "md_docs_2qa-manual.html#autotoc_md99", null ],
+      [ "Preparacion", "md_docs_2qa-manual.html#autotoc_md100", null ],
+      [ "Checklist global", "md_docs_2qa-manual.html#autotoc_md101", null ],
+      [ "Secuenciales", "md_docs_2qa-manual.html#autotoc_md102", null ],
+      [ "Grafo", "md_docs_2qa-manual.html#autotoc_md103", null ],
+      [ "Paneles pedagogicos", "md_docs_2qa-manual.html#autotoc_md104", null ],
+      [ "Criterio de salida", "md_docs_2qa-manual.html#autotoc_md105", null ]
     ] ],
     [ "QA de Visualizacion de Ventanas", "md_docs_2qa-visualizacion-ventanas.html", [
-      [ "Objetivo", "md_docs_2qa-visualizacion-ventanas.html#autotoc_md106", null ],
-      [ "Preparacion", "md_docs_2qa-visualizacion-ventanas.html#autotoc_md107", null ],
-      [ "Matriz de prueba (resolucion)", "md_docs_2qa-visualizacion-ventanas.html#autotoc_md108", null ],
-      [ "Escenarios funcionales por estructura", "md_docs_2qa-visualizacion-ventanas.html#autotoc_md109", null ],
-      [ "Checklist de visualizacion", "md_docs_2qa-visualizacion-ventanas.html#autotoc_md110", null ],
-      [ "Criterios de aceptacion", "md_docs_2qa-visualizacion-ventanas.html#autotoc_md111", null ],
-      [ "Registro de hallazgos", "md_docs_2qa-visualizacion-ventanas.html#autotoc_md112", null ],
-      [ "Hallazgos corregidos en esta iteracion", "md_docs_2qa-visualizacion-ventanas.html#autotoc_md113", null ]
+      [ "Objetivo", "md_docs_2qa-visualizacion-ventanas.html#autotoc_md107", null ],
+      [ "Preparacion", "md_docs_2qa-visualizacion-ventanas.html#autotoc_md108", null ],
+      [ "Matriz de prueba (resolucion)", "md_docs_2qa-visualizacion-ventanas.html#autotoc_md109", null ],
+      [ "Escenarios funcionales por estructura", "md_docs_2qa-visualizacion-ventanas.html#autotoc_md110", null ],
+      [ "Checklist de visualizacion", "md_docs_2qa-visualizacion-ventanas.html#autotoc_md111", null ],
+      [ "Criterios de aceptacion", "md_docs_2qa-visualizacion-ventanas.html#autotoc_md112", null ],
+      [ "Registro de hallazgos", "md_docs_2qa-visualizacion-ventanas.html#autotoc_md113", null ],
+      [ "Hallazgos corregidos en esta iteracion", "md_docs_2qa-visualizacion-ventanas.html#autotoc_md114", null ]
     ] ],
     [ "SDD Vigente: Modulo Secuencial (VisualStruct)", "md_docs_2sdd-secuenciales-vigente.html", [
-      [ "1. Informacion general", "md_docs_2sdd-secuenciales-vigente.html#autotoc_md115", null ],
-      [ "2. Alcance funcional vigente", "md_docs_2sdd-secuenciales-vigente.html#autotoc_md116", null ],
-      [ "3. Operaciones por estructura", "md_docs_2sdd-secuenciales-vigente.html#autotoc_md117", null ],
-      [ "4. Requerimientos de interfaz", "md_docs_2sdd-secuenciales-vigente.html#autotoc_md118", null ],
-      [ "5. Requerimientos tecnicos", "md_docs_2sdd-secuenciales-vigente.html#autotoc_md119", null ],
-      [ "6. Complejidades de referencia docente", "md_docs_2sdd-secuenciales-vigente.html#autotoc_md120", null ],
-      [ "7. Criterios de aceptacion", "md_docs_2sdd-secuenciales-vigente.html#autotoc_md121", null ],
-      [ "8. Validacion recomendada", "md_docs_2sdd-secuenciales-vigente.html#autotoc_md122", null ],
-      [ "9. Relacion con documentos anteriores", "md_docs_2sdd-secuenciales-vigente.html#autotoc_md123", null ]
+      [ "1. Informacion general", "md_docs_2sdd-secuenciales-vigente.html#autotoc_md116", null ],
+      [ "2. Alcance funcional vigente", "md_docs_2sdd-secuenciales-vigente.html#autotoc_md117", null ],
+      [ "3. Operaciones por estructura", "md_docs_2sdd-secuenciales-vigente.html#autotoc_md118", null ],
+      [ "4. Requerimientos de interfaz", "md_docs_2sdd-secuenciales-vigente.html#autotoc_md119", null ],
+      [ "5. Requerimientos tecnicos", "md_docs_2sdd-secuenciales-vigente.html#autotoc_md120", null ],
+      [ "6. Complejidades de referencia docente", "md_docs_2sdd-secuenciales-vigente.html#autotoc_md121", null ],
+      [ "7. Criterios de aceptacion", "md_docs_2sdd-secuenciales-vigente.html#autotoc_md122", null ],
+      [ "8. Validacion recomendada", "md_docs_2sdd-secuenciales-vigente.html#autotoc_md123", null ],
+      [ "9. Relacion con documentos anteriores", "md_docs_2sdd-secuenciales-vigente.html#autotoc_md124", null ]
     ] ],
     [ "Estructuras de datos", "annotated.html", [
       [ "Estructuras de datos", "annotated.html", "annotated_dup" ],
@@ -170,10 +178,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "algorithm__trace_8c.html",
-"grafo_8h.html#a599ccab7dace77d1676cd190aef5a440",
-"grafo__trace_8h.html#a8b6f3ed55c6450dc7dd2c27c2dcd3c97",
-"md_docs_2architecture.html#autotoc_md56",
-"struct_grafo_vista_colores.html#a27bca291d3352dea039a301e14cb4dda"
+"grafo_8c.html#af50feaad0153f9da59e434bbfd09d659",
+"grafo__trace_8c.html#a43c9fc70194f8d4217e9a612438a0cbc",
+"md_docs_2analisis-diseno-lista-circular.html#autotoc_md36",
+"struct_grafo_trace_paso.html#ad9f202e7505bc9085ef7122781b9a52e"
 ];
 
 var SYNCONMSG = 'pulsar para deshabilitar sincronización';

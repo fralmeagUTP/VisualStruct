@@ -99,6 +99,12 @@ bool grafo_state_establecer_arista_estado(GrafoState *estado, int id_origen,
             estado->aristas[i].estado = nuevo_estado;
             return true;
         }
+        if (!estado->es_dirigido &&
+            estado->aristas[i].origen == id_destino &&
+            estado->aristas[i].destino == id_origen) {
+            estado->aristas[i].estado = nuevo_estado;
+            return true;
+        }
     }
     return false;
 }
@@ -163,6 +169,11 @@ const GrafoAristaVisual* grafo_state_obtener_arista(const GrafoState *estado,
     
     for (int i = 0; i < estado->cantidad_aristas; i++) {
         if (estado->aristas[i].origen == id_origen && estado->aristas[i].destino == id_destino) {
+            return &estado->aristas[i];
+        }
+        if (!estado->es_dirigido &&
+            estado->aristas[i].origen == id_destino &&
+            estado->aristas[i].destino == id_origen) {
             return &estado->aristas[i];
         }
     }

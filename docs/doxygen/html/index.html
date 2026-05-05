@@ -95,50 +95,28 @@ $(function(){initNavTree('index.html','',''); });
 <div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a></p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
 Objetivo</h1>
-<p>Aplicacion de escritorio para apoyo docente en la Universidad Tecnologica de Pereira. El sistema visualiza estructuras secuenciales y grafos en C estandar mostrando simultaneamente representacion grafica, operacion, codigo asociado, traza y complejidad.</p>
+<p>Aplicacion de escritorio para apoyo docente en la Universidad Tecnologica de Pereira. Visualiza estructuras secuenciales y grafos mostrando de forma sincronizada:</p><ul>
+<li>representacion grafica</li>
+<li>operacion y estado</li>
+<li>codigo C asociado (historial)</li>
+<li>traza y complejidad</li>
+</ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+Estado actual (2026-05-05)</h1>
+<ul>
+<li>App unificada estable para 7 modulos: <a class="el" href="struct_pila.html">Pila</a>, <a class="el" href="struct_cola.html">Cola</a>, <a class="el" href="struct_cola.html">Cola</a> de Prioridad, <a class="el" href="struct_lista.html">Lista</a>, <a class="el" href="struct_lista.html">Lista</a> Circular, Sublistas y <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>.</li>
+<li>Modulo de grafos con 4 vistas: Construccion, Recorridos, Caminos y MST.</li>
+<li>Entradas de grafo numericas (<span class="tt">Valor</span>, <span class="tt">Origen</span>, <span class="tt">Destino</span>, <span class="tt">Peso</span>) con cursor visible y validacion.</li>
+<li>Demo de grafo configurable por cantidad de nodos (<span class="tt">Valor</span>) con aristas aleatorias dispersas.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
 Requisitos</h1>
 <ul>
 <li>GCC con soporte C11</li>
-<li>Raylib instalada en el sistema</li>
+<li>Raylib instalada</li>
 <li>Windows, Linux o macOS con librerias graficas compatibles</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
-Entorno recomendado por sistema operativo</h1>
-<h2>Windows (MSYS2/MinGW)</h2>
-<ol type="1">
-<li>Instalar MSYS2 y abrir terminal <span class="tt">mingw64.exe</span> (o <span class="tt">ucrt64.exe</span>).</li>
-<li>Instalar toolchain y Raylib con <span class="tt">pacman</span>: <div class="fragment"><div class="line">pacman -Syu</div>
-<div class="line">pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-raylib make pkgconf</div>
-</div><!-- fragment --></li>
-<li>Verificar: <div class="fragment"><div class="line">gcc --version</div>
-<div class="line">pkg-config --modversion raylib</div>
-</div><!-- fragment --></li>
-</ol>
-<h2>Linux</h2>
-<ol type="1">
-<li>Instalar GCC, Make y Raylib desde el gestor de paquetes de tu distribucion.</li>
-<li>Verificar: <div class="fragment"><div class="line">gcc --version</div>
-<div class="line">pkg-config --modversion raylib</div>
-</div><!-- fragment --></li>
-</ol>
-<h2>macOS</h2>
-<ol type="1">
-<li>Instalar Xcode Command Line Tools.</li>
-<li>Instalar Raylib y <span class="tt">pkg-config</span>: <div class="fragment"><div class="line">xcode-select --install</div>
-<div class="line">brew install raylib pkg-config</div>
-</div><!-- fragment --></li>
-<li>Verificar: <div class="fragment"><div class="line">clang --version</div>
-<div class="line">pkg-config --modversion raylib</div>
-</div><!-- fragment --></li>
-</ol>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
-IntelliSense en VS Code</h1>
-<ul>
-<li>Se incluye <span class="tt">.vscode/c_cpp_properties.json</span> con <span class="tt">includePath</span> apuntando a <span class="tt">C:/msys64/mingw64/include</span>.</li>
-<li>Si tu instalacion de Raylib usa otra ruta, ajusta ese archivo para que VS Code resuelva <span class="tt">raylib.h</span> sin advertencias.</li>
-</ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
 Compilacion</h1>
 <h2>Opcion 1: Makefile</h2>
 <div class="fragment"><div class="line">make</div>
@@ -149,150 +127,109 @@ Compilacion</h1>
 <div class="line">  src/pila.c src/cola.c src/cola_prioridad.c src/lista.c src/lista_circular.c src/sublista.c \</div>
 <div class="line">  src/grafo.c src/grafo_state.c src/grafo_layout.c src/grafo_controller.c src/grafo_pedagogy.c src/grafo_code_viewer.c src/grafo_trace.c \</div>
 <div class="line">  -o visualstruct -lraylib -lopengl32 -lgdi32 -lwinmm</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+Ejecucion</h1>
+<div class="fragment"><div class="line">./visualstruct.exe</div>
 </div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
-Documentacion Tecnica</h1>
-<h2>Generar con Doxygen</h2>
-<div class="fragment"><div class="line">doxygen Doxyfile</div>
-</div><!-- fragment --><h2>Salida esperada</h2>
+Modulos y funcionalidades</h1>
+<h2>1) <a class="el" href="struct_pila.html">Pila</a></h2>
 <ul>
-<li>HTML en <span class="tt">docs/doxygen/html/index.html</span></li>
-<li>Se documenta solo la aplicacion activa y se excluye <span class="tt">src/legacy</span></li>
+<li>Inicializar, push, pop, vaciar.</li>
+<li>Visual LIFO con marca de tope.</li>
 </ul>
-<h2>Documentos incluidos</h2>
+<h2>2) <a class="el" href="struct_cola.html">Cola</a></h2>
 <ul>
-<li><span class="tt"><a class="el" href="architecture_8md.html">docs/architecture.md</a></span>: mapa tecnico de capas, flujo y extension.</li>
-<li><span class="tt"><a class="el" href="guia-docente_8md.html">docs/guia-docente.md</a></span>: sugerencias de uso en clase y secuencias de demostracion.</li>
-<li><span class="tt"><a class="el" href="contribucion_8md.html">docs/contribucion.md</a></span>: reglas para extender el proyecto sin romper la arquitectura actual.</li>
-<li><span class="tt"><a class="el" href="qa-manual_8md.html">docs/qa-manual.md</a></span>: checklist de verificacion manual para UI, operaciones y paneles pedagogicos.</li>
-<li><span class="tt"><a class="el" href="qa-visualizacion-ventanas_8md.html">docs/qa-visualizacion-ventanas.md</a></span>: verificacion de layout, legibilidad y uso de espacio.</li>
-<li><span class="tt"><a class="el" href="sdd-secuenciales-vigente_8md.html">docs/sdd-secuenciales-vigente.md</a></span>: SDD operativo vigente del modulo secuencial en la app unificada.</li>
-<li><span class="tt"><a class="el" href="analisis-diseno-lista-circular_8md.html">docs/analisis-diseno-lista-circular.md</a></span>: analisis tecnico y de interfaz para la funcionalidad de lista circular.</li>
-<li><span class="tt"><a class="el" href="analisis-diseno-sublistas_8md.html">docs/analisis-diseno-sublistas.md</a></span>: analisis funcional y tecnico del TAD jerarquico de sublistas.</li>
-<li><span class="tt"><a class="el" href="analisis-diseno-grafos_8md.html">docs/analisis-diseno-grafos.md</a></span>: analisis funcional y tecnico del modulo de grafos y su integracion pedagogica.</li>
-<li><span class="tt"><a class="el" href="plan-modulo-grafos_8md.html">docs/plan-modulo-grafos.md</a></span>: plan incremental de implementacion del modulo de grafos.</li>
-<li><span class="tt"><a class="el" href="bitacora-cambios-2026-05-04_8md.html">docs/bitacora-cambios-2026-05-04.md</a></span>: consolidado de mejoras UI/UX, validaciones y versionado aplicadas hoy.</li>
-<li><span class="tt">docs/Sdd Visualizador Estructuras Datos Secuenciales C Raylib.pdf</span>: antecedente historico del modulo secuencial inicial.</li>
+<li>Inicializar, encolar, desencolar, vaciar.</li>
+<li>Visual FIFO con <span class="tt">FRONT</span> y <span class="tt">BACK</span>.</li>
+</ul>
+<h2>3) <a class="el" href="struct_cola.html">Cola</a> de Prioridad</h2>
+<ul>
+<li>Insercion con prioridad.</li>
+<li>Extraccion por prioridad minima.</li>
+</ul>
+<h2>4) <a class="el" href="struct_lista.html">Lista</a></h2>
+<ul>
+<li>Insertar inicio/final, eliminar, buscar, invertir.</li>
+</ul>
+<h2>5) <a class="el" href="struct_lista.html">Lista</a> Circular</h2>
+<ul>
+<li>Insertar inicio/final, eliminar, buscar, invertir.</li>
+<li>Mantiene cierre circular en visualizacion.</li>
+</ul>
+<h2>6) Sublistas</h2>
+<ul>
+<li>Gestion de nodos padre e hijos.</li>
+<li>Seleccion de padre activo y operaciones sobre su sublista.</li>
+</ul>
+<h2>7) <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a></h2>
+<ul>
+<li>Construccion: crear/eliminar vertices y aristas, dirigido/no dirigido.</li>
+<li>Recorridos: BFS y DFS con vertice de inicio definido por el usuario.</li>
+<li>Caminos minimos: Dijkstra y Bellman-Ford (con pesos).</li>
+<li>MST: Prim y Kruskal (en no dirigido).</li>
+<li>Paso a paso, autoplay, traza pedagogica y resumen de estado.</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
-Uso Basico</h1>
-<ol type="1">
-<li>Ejecutar la aplicacion.</li>
-<li>En la portada, elegir <span class="tt">1 Secuenciales</span> o <span class="tt">2 Grafos</span>.</li>
-<li>En <span class="tt">Secuenciales</span>, seleccionar: <a class="el" href="struct_pila.html">Pila</a>, <a class="el" href="struct_cola.html">Cola</a>, <a class="el" href="struct_cola.html">Cola</a> de Prioridad, <a class="el" href="struct_lista.html">Lista</a>, <a class="el" href="struct_lista.html">Lista</a> Circular o Sublistas.</li>
-<li>En <span class="tt">Grafos</span>, elegir construccion o algoritmo (BFS, DFS, Dijkstra, Bellman-Ford, Prim, Kruskal).</li>
-<li>Usar los botones contextuales del panel central para ejecutar operaciones segun la estructura activa.</li>
-<li>En modo <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>, editar <span class="tt">valor</span>, <span class="tt">origen</span>, <span class="tt">destino</span> y <span class="tt">peso</span> en el panel lateral o por teclado (solo valores numericos).</li>
-<li>Observar simultaneamente panel central (grafico), panel derecho (codigo C con historial acumulado) y panel inferior (traza y complejidad).</li>
-<li>Usar el boton <span class="tt">Limpiar</span> del panel de codigo para reiniciar el historial cuando se quiera comenzar una nueva secuencia.</li>
-<li>Abrir <span class="tt">Ayuda (F1)</span> para consultar explicaciones detalladas de cada modulo funcional y tecnico.</li>
-</ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
-Controles Actuales</h1>
+Cambios recientes del modulo Grafo</h1>
 <ul>
-<li><span class="tt">I</span>: inicializar estructura activa</li>
-<li><span class="tt">A</span>: insertar/push/encolar, insertar al final en lista/lista circular, insertar padre en sublistas, o insertar vertice en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a></li>
-<li><span class="tt">Z</span>: insertar al inicio en lista/lista circular o insertar hijo en sublistas</li>
-<li><span class="tt">D</span>: eliminar/pop/desencolar o eliminar vertice en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a></li>
-<li><span class="tt">B</span>: buscar en lista/lista circular o seleccionar padre activo en sublistas</li>
-<li><span class="tt">R</span>: invertir lista/lista circular, eliminar hijo en sublistas, o ejecutar Kruskal en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a></li>
-<li><span class="tt">V</span>: vaciar estructura activa</li>
-<li><span class="tt">UP/DOWN</span>: cambiar valor</li>
-<li><span class="tt">LEFT/RIGHT</span>: cambiar prioridad</li>
-<li><span class="tt">ENTER</span>: confirmar valor/prioridad editados en los campos laterales</li>
-<li><span class="tt">UP/DOWN</span> (con foco en input): incrementar/decrementar valor del cuadro numerico activo</li>
-<li><span class="tt">KP + / KP -</span> (con foco en input): ajustar numericamente el cuadro activo</li>
-<li><span class="tt">G</span> (en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>): insertar arista con <span class="tt">origen</span>, <span class="tt">destino</span> y <span class="tt">peso</span></li>
-<li><span class="tt">X</span> (en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>): eliminar arista entre <span class="tt">origen</span> y <span class="tt">destino</span></li>
-<li><span class="tt">4</span>/<span class="tt">5</span>/<span class="tt">6</span>/<span class="tt">7</span>/<span class="tt">8</span>/<span class="tt">9</span> (en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>): BFS, DFS, Dijkstra, Bellman-Ford, Prim y Kruskal</li>
-<li><span class="tt">F1</span>: abrir/cerrar pantalla de ayuda detallada</li>
-<li><span class="tt">H</span> o <span class="tt">ESC</span> (en visualizador): volver al menu principal</li>
-<li><span class="tt">TAB</span> (en visualizador): recorrer estructuras activas (1..7)</li>
-<li><span class="tt">,</span> / <span class="tt">.</span> / <span class="tt">/</span> (en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>): paso anterior, paso siguiente y reinicio del algoritmo</li>
-<li><span class="tt">Home</span> / <span class="tt">End</span> (en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>): ir al inicio o al final del algoritmo</li>
-<li><span class="tt">P</span> (en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>): activar/desactivar autoplay</li>
-<li><span class="tt">O</span> (en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>): cambiar velocidad del autoplay</li>
-<li><span class="tt">T</span> (en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>): alternar entre grafo dirigido y no dirigido</li>
-<li><span class="tt">M</span> (en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>): cargar el siguiente escenario demo</li>
-<li><span class="tt">C</span> (en <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>): copiar al portapapeles un resumen textual del algoritmo actual</li>
-<li><span class="tt">Mouse wheel</span> sobre panel central en Cola/Lista/Lista Circular/Cola de Prioridad: desplazamiento horizontal para navegar nodos fuera de ancho</li>
-<li><span class="tt">Mouse wheel</span> sobre panel central en <a class="el" href="struct_pila.html">Pila</a>: desplazamiento vertical</li>
-<li>Boton <span class="tt">Limpiar</span> en panel de codigo: reinicia el historial de snippets</li>
-<li>Boton lateral <span class="tt">Ayuda (F1)</span>: acceso guiado al manual interno</li>
+<li>Legibilidad de texto mejorada (etiquetas y distancias) y ajuste de offsets.</li>
+<li>Correccion de resaltado de aristas en no dirigidos cuando la arista llega invertida.</li>
+<li>Vista MST simplificada en modo basico con ejecucion directa.</li>
+<li><span class="tt">Cargar demo</span> ahora:<ul>
+<li>usa <span class="tt">Valor</span> como cantidad de nodos</li>
+<li>respeta modo dirigido/no dirigido</li>
+<li>genera aristas y pesos aleatorios</li>
+<li>evita densidad excesiva (grafo disperso)</li>
+</ul>
+</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+Controles importantes</h1>
+<ul>
+<li><span class="tt">F1</span>: abrir/cerrar ayuda.</li>
+<li><span class="tt">H</span> o <span class="tt">ESC</span>: volver al menu principal desde visualizador.</li>
+<li><span class="tt">TAB</span>: cambiar estructura activa.</li>
+<li><a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>:<ul>
+<li><span class="tt">I</span>: inicializar</li>
+<li><span class="tt">A</span> / <span class="tt">D</span>: vertice + / vertice -</li>
+<li><span class="tt">G</span> / <span class="tt">X</span>: arista + / arista -</li>
+<li><span class="tt">T</span>: dirigido/no dirigido</li>
+<li><span class="tt">M</span>: cargar demo aleatoria</li>
+<li><span class="tt">,</span> <span class="tt">.</span> <span class="tt">/</span>: paso - / paso + / reiniciar</li>
+<li><span class="tt">Home</span> / <span class="tt">End</span>: inicio / final</li>
+<li><span class="tt">P</span>: autoplay</li>
+<li><span class="tt">O</span>: velocidad autoplay</li>
+<li><span class="tt">C</span>: exportar resumen al portapapeles</li>
+</ul>
+</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
-Modulo de Grafos</h1>
+Documentacion del proyecto</h1>
 <ul>
-<li>Soporta BFS, DFS, Dijkstra, Bellman-Ford, Prim y Kruskal.</li>
-<li>Permite construir grafos dirigidos o no dirigidos con insercion/eliminacion de vertices y aristas.</li>
-<li><span class="tt">Origen</span> y <span class="tt">Destino</span> se validan contra vertices existentes para evitar referencias invalidas.</li>
-<li>El panel inferior muestra tipo de paso, progreso, arista actual, metricas por paso, tabla de distancias, camino parcial y conjunto de vertices cerrados.</li>
-<li>El lienzo central incluye leyenda visual para vertice activo, arista procesada y mejora real.</li>
-<li><span class="tt">Cargar demo</span> cicla entre escenarios de recorrido, caminos, Bellman-Ford y MST.</li>
-<li><span class="tt">Exportar</span> copia al portapapeles un resumen textual con algoritmo, paso, metricas, camino y tabla de distancias.</li>
+<li><span class="tt"><a class="el" href="architecture_8md.html">docs/architecture.md</a></span>: arquitectura por capas.</li>
+<li><span class="tt"><a class="el" href="modulos-funcionalidades_8md.html">docs/modulos-funcionalidades.md</a></span>: matriz completa de modulos y flujos.</li>
+<li><span class="tt"><a class="el" href="guia-docente_8md.html">docs/guia-docente.md</a></span>: uso sugerido en clase.</li>
+<li><span class="tt"><a class="el" href="qa-manual_8md.html">docs/qa-manual.md</a></span>: checklist QA manual.</li>
+<li><span class="tt"><a class="el" href="analisis-diseno-grafos_8md.html">docs/analisis-diseno-grafos.md</a></span>: diseno funcional y tecnico de grafos.</li>
+<li><span class="tt"><a class="el" href="plan-modulo-grafos_8md.html">docs/plan-modulo-grafos.md</a></span>: plan de evolucion del modulo.</li>
+<li><span class="tt"><a class="el" href="bitacora-cambios-2026-05-04_8md.html">docs/bitacora-cambios-2026-05-04.md</a></span> y <span class="tt"><a class="el" href="bitacora-cambios-2026-05-05_8md.html">docs/bitacora-cambios-2026-05-05.md</a></span>.</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
-Versionado actual</h1>
+Versionado</h1>
 <ul>
-<li><span class="tt">v0.0.1</span>: version historica inicial del repositorio (primera subida).</li>
-<li><span class="tt">v0.0.2</span>: version actual con ajustes de presentacion, inputs numericos y mejoras de usabilidad en grafos.</li>
+<li><span class="tt">v0.0.1</span>: version historica inicial del repositorio.</li>
+<li><span class="tt">v0.0.2</span>: mejoras de UI/UX y validaciones de grafos.</li>
+<li><span class="tt">v0.0.3</span>: mejoras integrales de grafo (flujos, entradas numericas, MST y documentacion).</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
-Navegacion rapida</h1>
+Estructura de carpetas</h1>
 <ul>
-<li>Portada principal: <span class="tt">1</span> Secuenciales, <span class="tt">2</span> Grafos.</li>
-<li>Submenu Secuenciales: <span class="tt">1..6</span> seleccion directa de estructura.</li>
-<li>Visualizador: <span class="tt">1..7</span> seleccion directa (incluye <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>), <span class="tt">TAB</span> para avanzar.</li>
-<li>Ayuda global: <span class="tt">F1</span> desde cualquier pantalla.</li>
-</ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
-Solucion de problemas</h1>
-<ul>
-<li>Si no ves <span class="tt"><a class="el" href="struct_lista.html">Lista</a> Circular</span>, <span class="tt">Sublistas</span> o <span class="tt"><a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a></span>, asegurate de ejecutar el binario mas reciente (<span class="tt">visualstruct.exe</span> o <span class="tt">visualstruct_eval_v11.exe</span> actualizado).</li>
-<li>Si compilas manualmente, incluye todos los <span class="tt">src/grafo_*.c</span> del comando de compilacion.</li>
-</ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
-Flujo recomendado de compilacion y validacion</h1>
-<ol type="1">
-<li>Compilar: <div class="fragment"><div class="line">make clean &amp;&amp; make</div>
-</div><!-- fragment --></li>
-<li>Regenerar documentacion tecnica: <div class="fragment"><div class="line">doxygen Doxyfile</div>
-</div><!-- fragment --></li>
-<li>Ejecutar QA manual funcional:</li>
-</ol>
-<ul>
-<li>seguir <span class="tt"><a class="el" href="qa-manual_8md.html">docs/qa-manual.md</a></span></li>
-</ul>
-<ol type="1">
-<li>Ejecutar QA visual de layout:</li>
-</ol>
-<ul>
-<li>seguir <span class="tt"><a class="el" href="qa-visualizacion-ventanas_8md.html">docs/qa-visualizacion-ventanas.md</a></span></li>
-</ul>
-<ol type="1">
-<li>Verificar salida Doxygen:</li>
-</ol>
-<ul>
-<li>abrir <span class="tt">docs/doxygen/html/index.html</span></li>
-</ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
-Estructura de Carpetas</h1>
-<ul>
-<li>include/: encabezados publicos</li>
-<li>src/: implementaciones activas de la aplicacion unificada</li>
-<li>src/legacy/: demos antiguas con <span class="tt"><a class="el" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a></span> propio, conservadas como referencia de migracion</li>
-<li>assets/: logos y recursos visuales</li>
-<li>assets/fons/: fuentes tipograficas externas usadas por encabezado, pie y controles</li>
-<li>docs/: documentacion del proyecto</li>
-</ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
-Estado Actual</h1>
-<p>Arquitectura unificada operativa: app unica, estado global desacoplado, vistas por estructura (secuenciales + grafo), controles contextuales, ayuda interna detallada, historial de snippets C por operacion y soporte pedagogico ampliado para algoritmos de grafos.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
-Notas de Arquitectura</h1>
-<ul>
-<li>La app actual usa un unico punto de entrada en <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span>.</li>
-<li>Los archivos legacy <span class="tt">*_raylib.c</span> ya no forman parte del build principal.</li>
-<li>Los TAD permanecen separados de Raylib en <span class="tt">src/*.c</span> y <span class="tt">include/*.h</span>. </li>
+<li><span class="tt">include/</span>: encabezados publicos.</li>
+<li><span class="tt">src/</span>: implementacion activa.</li>
+<li><span class="tt">src/legacy/</span>: referencias historicas no incluidas en build principal.</li>
+<li><span class="tt">assets/</span>: logos y recursos.</li>
+<li><span class="tt">docs/</span>: documentacion funcional y tecnica.</li>
+<li><span class="tt">tests/</span>: pruebas de smoke/regresion. </li>
 </ul>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>

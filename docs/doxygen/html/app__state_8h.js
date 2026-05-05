@@ -23,6 +23,7 @@ var app__state_8h =
       [ "OPERACION_SUBLISTA_ELIMINAR_HIJO", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776a3e144a8e777c6e0fd4fc07716b25513c", null ],
       [ "OPERACION_VACIAR", "app__state_8h.html#af12172166a85efb2c6a53de3facb2776a8e57c4a24bae6bc52f40a8b924e9e943", null ]
     ] ],
+    [ "app_state_ajustar_peso_grafo", "app__state_8h.html#a743d69f6d1ac327473ea24cd8a158cc1", null ],
     [ "app_state_ajustar_prioridad", "app__state_8h.html#a36b6bf7a760d9edd415998ad4ca69f3a", null ],
     [ "app_state_ajustar_valor", "app__state_8h.html#a977416497520634dde6afa0135ea956f", null ],
     [ "app_state_grafo_cargar_demo", "app__state_8h.html#a0965d470fcd24813964da12accef3f35", null ],
@@ -30,6 +31,7 @@ var app__state_8h =
     [ "app_state_init", "app__state_8h.html#ac98f3937b8c68c08d699bdf8708fe09a", null ],
     [ "app_state_operacion_buscar", "app__state_8h.html#afb7c2a89fd3e6c630bda1bb4e871ffc6", null ],
     [ "app_state_operacion_eliminar", "app__state_8h.html#a96a70f09cb2567a06266136c07951dd6", null ],
+    [ "app_state_operacion_grafo_actualizar_peso_arista", "app__state_8h.html#a25d629a320ced92f044e42d5c708d855", null ],
     [ "app_state_operacion_grafo_ejecutar_algoritmo", "app__state_8h.html#addfa1e35212690353a68c7d61f0b07a1", null ],
     [ "app_state_operacion_grafo_eliminar_arista", "app__state_8h.html#a67083ce243c7331200837461555fd69b", null ],
     [ "app_state_operacion_grafo_insertar_arista", "app__state_8h.html#a4379d1a9266f26ebfaec4b4dc8607ead", null ],
@@ -42,6 +44,7 @@ var app__state_8h =
     [ "app_state_operacion_sublista_insertar_hijo", "app__state_8h.html#aa442eeb0093f47277aa1e1d79a925b85", null ],
     [ "app_state_operacion_vaciar", "app__state_8h.html#aafb9a085e0863b9d4dcc7597f2d5b6d5", null ],
     [ "app_state_set_estructura", "app__state_8h.html#a881246241a07b177b3accd398ba24e8d", null ],
+    [ "app_state_set_peso_grafo", "app__state_8h.html#a9fe102dd6926e1d42d7f67ad638fd8f1", null ],
     [ "app_state_set_prioridad", "app__state_8h.html#a6037881f01b6bdc4a7f5e1aac242f1db", null ],
     [ "app_state_set_valor", "app__state_8h.html#acb58e00364449839751d40d46a42c97b", null ],
     [ "app_state_shutdown", "app__state_8h.html#ab0848d4e5b9603c944d52adc414517ed", null ],

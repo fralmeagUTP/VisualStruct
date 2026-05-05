@@ -1,9 +1,9 @@
-/**
+﻿/**
  * @file grafo.c
- * @brief Implementación del TAD Grafo con algoritmos clásicos.
+ * @brief ImplementaciÃ³n del TAD Grafo con algoritmos clÃ¡sicos.
  *
  * Implementa grafos dirigidos y no dirigidos usando lista de adyacencia.
- * Los vértices se almacenan en una lista enlazada, y cada vértice tiene
+ * Los vÃ©rtices se almacenan en una lista enlazada, y cada vÃ©rtice tiene
  * una lista enlazada de aristas salientes.
  *
  * @author Francisco Alejandro Medina Aguirre
@@ -24,38 +24,80 @@
  * @brief Nodo de una arista en la lista de adyacencia.
  */
 typedef struct NodoArista {
-    int destino;                    /**< Vértice destino */
+    int destino;                    /**< VÃ©rtice destino */
     int peso;                       /**< Peso de la arista */
     struct NodoArista *siguiente;   /**< Siguiente arista */
 } NodoArista;
 
 /**
- * @brief Nodo de un vértice en la lista de vértices.
+ * @brief Nodo de un vÃ©rtice en la lista de vÃ©rtices.
  */
 typedef struct NodoVertice {
-    int vertice;                    /**< Identificador del vértice */
+    int vertice;                    /**< Identificador del vÃ©rtice */
     NodoArista *aristas;            /**< Lista de aristas salientes */
-    struct NodoVertice *siguiente;  /**< Siguiente vértice */
+    struct NodoVertice *siguiente;  /**< Siguiente vÃ©rtice */
 } NodoVertice;
 
 /**
  * @brief Estructura interna del grafo.
  */
 struct Grafo {
-    NodoVertice *cabeza;            /**< Cabeza de la lista de vértices */
+    NodoVertice *cabeza;            /**< Cabeza de la lista de vÃ©rtices */
     bool dirigido;                  /**< true si dirigido; false si no dirigido */
 };
+
+static int grafo_indice_vertice(const int *vertices, size_t n, int id_vertice)
+{
+    size_t i;
+    if (vertices == NULL) return -1;
+    for (i = 0; i < n; i++) {
+        if (vertices[i] == id_vertice) {
+            return (int)i;
+        }
+    }
+    return -1;
+}
+
+static int uf_find(int *padre, int x)
+{
+    int raiz = x;
+    while (padre[raiz] != raiz) {
+        raiz = padre[raiz];
+    }
+    while (padre[x] != x) {
+        int sig = padre[x];
+        padre[x] = raiz;
+        x = sig;
+    }
+    return raiz;
+}
+
+static void uf_union(int *padre, int *rango, int x, int y)
+{
+    int rx = uf_find(padre, x);
+    int ry = uf_find(padre, y);
+    if (rx == ry) return;
+
+    if (rango[rx] < rango[ry]) {
+        padre[rx] = ry;
+    } else if (rango[rx] > rango[ry]) {
+        padre[ry] = rx;
+    } else {
+        padre[ry] = rx;
+        rango[rx]++;
+    }
+}
 
 /* ============================================================================
  * Funciones auxiliares privadas
  * ============================================================================ */
 
 /**
- * @brief Busca un vértice en el grafo.
+ * @brief Busca un vÃ©rtice en el grafo.
  *
  * @param[in] grafo Puntero al grafo
- * @param[in] vertice Identificador del vértice
- * @return Puntero al nodo del vértice; NULL si no existe
+ * @param[in] vertice Identificador del vÃ©rtice
+ * @return Puntero al nodo del vÃ©rtice; NULL si no existe
  */
 static NodoVertice *grafo_buscar_vertice(const Grafo *grafo, int vertice)
 {
@@ -72,10 +114,10 @@ static NodoVertice *grafo_buscar_vertice(const Grafo *grafo, int vertice)
 }
 
 /**
- * @brief Busca una arista en la lista de adyacencia de un vértice.
+ * @brief Busca una arista en la lista de adyacencia de un vÃ©rtice.
  *
- * @param[in] nodo_vertice Puntero al nodo del vértice
- * @param[in] destino Vértice destino de la arista
+ * @param[in] nodo_vertice Puntero al nodo del vÃ©rtice
+ * @param[in] destino VÃ©rtice destino de la arista
  * @return Puntero a la arista; NULL si no existe
  */
 static NodoArista *grafo_buscar_arista(const NodoVertice *nodo_vertice, int destino)
@@ -95,10 +137,10 @@ static NodoArista *grafo_buscar_arista(const NodoVertice *nodo_vertice, int dest
 /**
  * @brief Inserta una arista en la lista de adyacencia (sin validar duplicados).
  *
- * @param[in,out] nodo_vertice Puntero al nodo del vértice
- * @param[in] destino Vértice destino
+ * @param[in,out] nodo_vertice Puntero al nodo del vÃ©rtice
+ * @param[in] destino VÃ©rtice destino
  * @param[in] peso Peso de la arista
- * @return true si la inserción fue exitosa; false si falla asignación de memoria
+ * @return true si la inserciÃ³n fue exitosa; false si falla asignaciÃ³n de memoria
  */
 static bool grafo_insertar_arista_interna(NodoVertice *nodo_vertice, int destino, int peso)
 {
@@ -118,9 +160,9 @@ static bool grafo_insertar_arista_interna(NodoVertice *nodo_vertice, int destino
 /**
  * @brief Elimina una arista de la lista de adyacencia.
  *
- * @param[in,out] nodo_vertice Puntero al nodo del vértice
- * @param[in] destino Vértice destino de la arista a eliminar
- * @return true si se eliminó; false si la arista no existe
+ * @param[in,out] nodo_vertice Puntero al nodo del vÃ©rtice
+ * @param[in] destino VÃ©rtice destino de la arista a eliminar
+ * @return true si se eliminÃ³; false si la arista no existe
  */
 static bool grafo_eliminar_arista_interna(NodoVertice *nodo_vertice, int destino)
 {
@@ -148,9 +190,9 @@ static bool grafo_eliminar_arista_interna(NodoVertice *nodo_vertice, int destino
 }
 
 /**
- * @brief Libera todas las aristas de un vértice.
+ * @brief Libera todas las aristas de un vÃ©rtice.
  *
- * @param[in,out] nodo_vertice Puntero al nodo del vértice
+ * @param[in,out] nodo_vertice Puntero al nodo del vÃ©rtice
  */
 static void grafo_liberar_aristas(NodoVertice *nodo_vertice)
 {
@@ -166,7 +208,7 @@ static void grafo_liberar_aristas(NodoVertice *nodo_vertice)
 }
 
 /* ============================================================================
- * Creación y destrucción
+ * CreaciÃ³n y destrucciÃ³n
  * ============================================================================ */
 
 Grafo *grafo_crear(bool dirigido)
@@ -260,7 +302,7 @@ GrafoEstado grafo_eliminar_vertice(Grafo *grafo, int vertice)
     NodoVertice *nodo = grafo_buscar_vertice(grafo, vertice);
     if (!nodo) return GRAFO_ERROR_NO_EXISTE;
     
-    /* Eliminar aristas incidentes de otros vértices */
+    /* Eliminar aristas incidentes de otros vÃ©rtices */
     NodoVertice *actual = grafo->cabeza;
     while (actual) {
         if (actual->vertice != vertice) {
@@ -269,7 +311,7 @@ GrafoEstado grafo_eliminar_vertice(Grafo *grafo, int vertice)
         actual = actual->siguiente;
     }
     
-    /* Eliminar el vértice de la lista */
+    /* Eliminar el vÃ©rtice de la lista */
     if (grafo->cabeza->vertice == vertice) {
         NodoVertice *temp = grafo->cabeza;
         grafo->cabeza = grafo->cabeza->siguiente;
@@ -421,7 +463,7 @@ GrafoEstado grafo_grado_entrada(const Grafo *grafo, int vertice, size_t *grado)
 }
 
 /* ============================================================================
- * Copias públicas de datos
+ * Copias pÃºblicas de datos
  * ============================================================================ */
 
 GrafoEstado grafo_obtener_vertices(const Grafo *grafo, int **vertices, size_t *cantidad)
@@ -670,255 +712,352 @@ GrafoRecorrido grafo_dfs(const Grafo *grafo, int inicio)
     return resultado;
 }
 
+static int grafo_idx_vertice_id(const int *vertices, size_t cantidad, int id) {
+    size_t i;
+    if (vertices == NULL) {
+        return -1;
+    }
+    for (i = 0; i < cantidad; i++) {
+        if (vertices[i] == id) {
+            return (int)i;
+        }
+    }
+    return -1;
+}
 GrafoCamino grafo_dijkstra(const Grafo *grafo, int origen, int destino)
 {
     GrafoCamino resultado = {NULL, 0, 0, false, GRAFO_ERROR_NULO};
-    
+    int *vertices = NULL;
+    size_t n_vertices = 0;
+    int *dist = NULL;
+    int *predecesor = NULL;
+    bool *visitado = NULL;
+    int *camino_aux = NULL;
+    int idx_origen;
+    int idx_destino;
+    size_t i;
     if (!grafo) return resultado;
-    
     if (!grafo_existe_vertice(grafo, origen) || !grafo_existe_vertice(grafo, destino)) {
         resultado.estado = GRAFO_ERROR_NO_EXISTE;
         return resultado;
     }
-    
-    /* Verificar pesos negativos */
-    int *vertices = NULL;
-    size_t n_vertices = 0;
-    if (grafo_obtener_vertices(grafo, &vertices, &n_vertices) != GRAFO_OK) {
+    if (grafo_obtener_vertices(grafo, &vertices, &n_vertices) != GRAFO_OK || vertices == NULL) {
         resultado.estado = GRAFO_ERROR_MEMORIA;
         return resultado;
     }
-    
-    for (size_t i = 0; i < n_vertices; i++) {
-        int *sucesores = NULL;
-        size_t cant = 0;
-        if (grafo_sucesores(grafo, vertices[i], &sucesores, &cant) == GRAFO_OK && sucesores) {
-            for (size_t j = 0; j < cant; j++) {
-                int peso = 0;
-                if (grafo_obtener_peso(grafo, vertices[i], sucesores[j], &peso) == GRAFO_OK && peso < 0) {
-                    free(vertices);
-                    free(sucesores);
-                    resultado.estado = GRAFO_ERROR_PESO_NEGATIVO;
-                    return resultado;
-                }
-            }
-            free(sucesores);
-        }
-    }
-    free(vertices);
-    
-    /* Arrays para Dijkstra */
-    int dist[5000];
-    int predecesor[5000];
-    bool visitado[5000] = {false};
-    
-    for (int i = 0; i < 5000; i++) {
-        dist[i] = INT_MAX;
-        predecesor[i] = -1;
-    }
-    
-    dist[origen] = 0;
-    
-    for (size_t i = 0; i < n_vertices; i++) {
-        int min_dist = INT_MAX;
-        int u = -1;
-        
-        if (grafo_obtener_vertices(grafo, &vertices, &n_vertices) == GRAFO_OK && vertices) {
-            for (size_t j = 0; j < n_vertices; j++) {
-                if (!visitado[vertices[j]] && dist[vertices[j]] < min_dist) {
-                    min_dist = dist[vertices[j]];
-                    u = vertices[j];
-                }
-            }
-            free(vertices);
-        }
-        
-        if (u == -1) break;
-        visitado[u] = true;
-        
-        int *sucesores = NULL;
-        size_t cant = 0;
-        if (grafo_sucesores(grafo, u, &sucesores, &cant) == GRAFO_OK && sucesores) {
-            for (size_t j = 0; j < cant; j++) {
-                int v = sucesores[j];
-                int peso = 0;
-                grafo_obtener_peso(grafo, u, v, &peso);
-                
-                if (dist[u] != INT_MAX && dist[u] + peso < dist[v]) {
-                    dist[v] = dist[u] + peso;
-                    predecesor[v] = u;
-                }
-            }
-            free(sucesores);
-        }
-    }
-    
-    if (dist[destino] == INT_MAX) {
-        resultado.estado = GRAFO_OK;
-        resultado.existe = false;
-        return resultado;
-    }
-    
-    /* Reconstruir camino */
-    int camino_aux[5000];
-    int tope = 0;
-    int actual = destino;
-    
-    while (actual != -1) {
-        camino_aux[tope++] = actual;
-        actual = predecesor[actual];
-    }
-    
-    resultado.cantidad = (tope > 0) ? (size_t)(tope - 1) : 0;
-    resultado.aristas = NULL;
-    if (resultado.cantidad > 0) {
-        resultado.aristas = (GrafoArista *)malloc(resultado.cantidad * sizeof(GrafoArista));
-        if (!resultado.aristas) {
-            resultado.estado = GRAFO_ERROR_MEMORIA;
-            return resultado;
-        }
-    }
-    
-    for (int i = tope - 1; i > 0; i--) {
-        int u = camino_aux[i];
-        int v = camino_aux[i - 1];
-        int peso = 0;
-        grafo_obtener_peso(grafo, u, v, &peso);
-        
-        resultado.aristas[tope - 1 - i].origen = u;
-        resultado.aristas[tope - 1 - i].destino = v;
-        resultado.aristas[tope - 1 - i].peso = peso;
-    }
-    
-    resultado.costo_total = dist[destino];
-    resultado.existe = true;
-    resultado.estado = GRAFO_OK;
-    return resultado;
-}
-
-GrafoCamino grafo_bellman_ford(const Grafo *grafo, int origen, int destino)
-{
-    GrafoCamino resultado = {NULL, 0, 0, false, GRAFO_ERROR_NULO};
-    
-    if (!grafo) return resultado;
-    
-    if (!grafo_existe_vertice(grafo, origen) || !grafo_existe_vertice(grafo, destino)) {
+    idx_origen = grafo_idx_vertice_id(vertices, n_vertices, origen);
+    idx_destino = grafo_idx_vertice_id(vertices, n_vertices, destino);
+    if (idx_origen < 0 || idx_destino < 0) {
+        free(vertices);
         resultado.estado = GRAFO_ERROR_NO_EXISTE;
         return resultado;
     }
-    
-    size_t n = grafo_orden(grafo);
-    int dist[5000];
-    int predecesor[5000] = {0};
-    
-    for (int i = 0; i < 5000; i++) {
+    dist = (int *)malloc(n_vertices * sizeof(int));
+    predecesor = (int *)malloc(n_vertices * sizeof(int));
+    visitado = (bool *)calloc(n_vertices, sizeof(bool));
+    camino_aux = (int *)malloc(n_vertices * sizeof(int));
+    if (dist == NULL || predecesor == NULL || visitado == NULL || camino_aux == NULL) {
+        free(vertices);
+        free(dist);
+        free(predecesor);
+        free(visitado);
+        free(camino_aux);
+        resultado.estado = GRAFO_ERROR_MEMORIA;
+        return resultado;
+    }
+    for (i = 0; i < n_vertices; i++) {
         dist[i] = INT_MAX;
         predecesor[i] = -1;
     }
-    
-    dist[origen] = 0;
-    
-    /* Relajación V-1 veces */
-    for (size_t i = 1; i < n; i++) {
-        int *vertices = NULL;
-        size_t cant_v = 0;
-        if (grafo_obtener_vertices(grafo, &vertices, &cant_v) == GRAFO_OK && vertices) {
-            for (size_t j = 0; j < cant_v; j++) {
-                int u = vertices[j];
-                int *sucesores = NULL;
-                size_t cant = 0;
-                if (grafo_sucesores(grafo, u, &sucesores, &cant) == GRAFO_OK && sucesores) {
-                    for (size_t k = 0; k < cant; k++) {
-                        int v = sucesores[k];
-                        int peso = 0;
-                        grafo_obtener_peso(grafo, u, v, &peso);
-                        
-                        if (dist[u] != INT_MAX && dist[u] + peso < dist[v]) {
-                            dist[v] = dist[u] + peso;
-                            predecesor[v] = u;
-                        }
-                    }
-                    free(sucesores);
-                }
+    dist[idx_origen] = 0;
+    for (i = 0; i < n_vertices; i++) {
+        int min_dist = INT_MAX;
+        int u_idx = -1;
+        size_t j;
+        for (j = 0; j < n_vertices; j++) {
+            if (!visitado[j] && dist[j] < min_dist) {
+                min_dist = dist[j];
+                u_idx = (int)j;
             }
-            free(vertices);
         }
-    }
-    
-    /* Verificar ciclos negativos */
-    int *vertices = NULL;
-    size_t cant_v = 0;
-    if (grafo_obtener_vertices(grafo, &vertices, &cant_v) == GRAFO_OK && vertices) {
-        for (size_t j = 0; j < cant_v; j++) {
-            int u = vertices[j];
+        if (u_idx < 0) {
+            break;
+        }
+        visitado[u_idx] = true;
+        {
+            int u_id = vertices[u_idx];
             int *sucesores = NULL;
             size_t cant = 0;
-            if (grafo_sucesores(grafo, u, &sucesores, &cant) == GRAFO_OK && sucesores) {
-                for (size_t k = 0; k < cant; k++) {
-                    int v = sucesores[k];
+            if (grafo_sucesores(grafo, u_id, &sucesores, &cant) == GRAFO_OK && sucesores != NULL) {
+                for (j = 0; j < cant; j++) {
+                    int v_id = sucesores[j];
+                    int v_idx = grafo_idx_vertice_id(vertices, n_vertices, v_id);
                     int peso = 0;
-                    grafo_obtener_peso(grafo, u, v, &peso);
-                    
-                    if (dist[u] != INT_MAX && dist[u] + peso < dist[v]) {
+                    if (v_idx < 0) {
+                        continue;
+                    }
+                    if (grafo_obtener_peso(grafo, u_id, v_id, &peso) != GRAFO_OK) {
+                        continue;
+                    }
+                    if (peso < 0) {
                         free(vertices);
+                        free(dist);
+                        free(predecesor);
+                        free(visitado);
+                        free(camino_aux);
                         free(sucesores);
-                        resultado.estado = GRAFO_ERROR_CICLO_NEGATIVO;
+                        resultado.estado = GRAFO_ERROR_PESO_NEGATIVO;
                         return resultado;
+                    }
+                    if (dist[u_idx] != INT_MAX) {
+                        long long candidato = (long long)dist[u_idx] + (long long)peso;
+                        if (candidato < (long long)dist[v_idx]) {
+                            dist[v_idx] = (int)candidato;
+                            predecesor[v_idx] = u_idx;
+                        }
                     }
                 }
                 free(sucesores);
             }
         }
-        free(vertices);
     }
-    
-    if (dist[destino] == INT_MAX) {
+    if (dist[idx_destino] == INT_MAX) {
+        free(vertices);
+        free(dist);
+        free(predecesor);
+        free(visitado);
+        free(camino_aux);
         resultado.estado = GRAFO_OK;
         resultado.existe = false;
         return resultado;
     }
-    
-    /* Reconstruir camino (igual que Dijkstra) */
-    int camino_aux[5000];
-    int tope = 0;
-    int actual = destino;
-    
-    while (actual != -1) {
-        camino_aux[tope++] = actual;
-        actual = predecesor[actual];
-    }
-    
-    resultado.cantidad = (tope > 0) ? (size_t)(tope - 1) : 0;
-    resultado.aristas = NULL;
-    if (resultado.cantidad > 0) {
-        resultado.aristas = (GrafoArista *)malloc(resultado.cantidad * sizeof(GrafoArista));
-        if (!resultado.aristas) {
-            resultado.estado = GRAFO_ERROR_MEMORIA;
+    {
+        int tope = 0;
+        int actual = idx_destino;
+        while (actual != -1 && tope < (int)n_vertices) {
+            camino_aux[tope++] = vertices[actual];
+            actual = predecesor[actual];
+        }
+        if (tope <= 0 || camino_aux[tope - 1] != origen) {
+            free(vertices);
+            free(dist);
+            free(predecesor);
+            free(visitado);
+            free(camino_aux);
+            resultado.estado = GRAFO_OK;
+            resultado.existe = false;
             return resultado;
         }
+        resultado.cantidad = (size_t)(tope - 1);
+        if (resultado.cantidad > 0) {
+            int k;
+            resultado.aristas = (GrafoArista *)malloc(resultado.cantidad * sizeof(GrafoArista));
+            if (resultado.aristas == NULL) {
+                free(vertices);
+                free(dist);
+                free(predecesor);
+                free(visitado);
+                free(camino_aux);
+                resultado.estado = GRAFO_ERROR_MEMORIA;
+                return resultado;
+            }
+            for (k = tope - 1; k > 0; k--) {
+                int u = camino_aux[k];
+                int v = camino_aux[k - 1];
+                int peso = 0;
+                grafo_obtener_peso(grafo, u, v, &peso);
+                resultado.aristas[tope - 1 - k].origen = u;
+                resultado.aristas[tope - 1 - k].destino = v;
+                resultado.aristas[tope - 1 - k].peso = peso;
+            }
+        }
     }
-    
-    for (int i = tope - 1; i > 0; i--) {
-        int u = camino_aux[i];
-        int v = camino_aux[i - 1];
-        int peso = 0;
-        grafo_obtener_peso(grafo, u, v, &peso);
-        
-        resultado.aristas[tope - 1 - i].origen = u;
-        resultado.aristas[tope - 1 - i].destino = v;
-        resultado.aristas[tope - 1 - i].peso = peso;
-    }
-    
-    resultado.costo_total = dist[destino];
+    resultado.costo_total = dist[idx_destino];
     resultado.existe = true;
     resultado.estado = GRAFO_OK;
+    free(vertices);
+    free(dist);
+    free(predecesor);
+    free(visitado);
+    free(camino_aux);
+    return resultado;
+}
+GrafoCamino grafo_bellman_ford(const Grafo *grafo, int origen, int destino)
+{
+    GrafoCamino resultado = {NULL, 0, 0, false, GRAFO_ERROR_NULO};
+    int *vertices = NULL;
+    size_t n_vertices = 0;
+    int *dist = NULL;
+    int *predecesor = NULL;
+    int *camino_aux = NULL;
+    int idx_origen;
+    int idx_destino;
+    size_t i;
+    if (!grafo) return resultado;
+    if (!grafo_existe_vertice(grafo, origen) || !grafo_existe_vertice(grafo, destino)) {
+        resultado.estado = GRAFO_ERROR_NO_EXISTE;
+        return resultado;
+    }
+    if (grafo_obtener_vertices(grafo, &vertices, &n_vertices) != GRAFO_OK || vertices == NULL) {
+        resultado.estado = GRAFO_ERROR_MEMORIA;
+        return resultado;
+    }
+    idx_origen = grafo_idx_vertice_id(vertices, n_vertices, origen);
+    idx_destino = grafo_idx_vertice_id(vertices, n_vertices, destino);
+    if (idx_origen < 0 || idx_destino < 0) {
+        free(vertices);
+        resultado.estado = GRAFO_ERROR_NO_EXISTE;
+        return resultado;
+    }
+    dist = (int *)malloc(n_vertices * sizeof(int));
+    predecesor = (int *)malloc(n_vertices * sizeof(int));
+    camino_aux = (int *)malloc(n_vertices * sizeof(int));
+    if (dist == NULL || predecesor == NULL || camino_aux == NULL) {
+        free(vertices);
+        free(dist);
+        free(predecesor);
+        free(camino_aux);
+        resultado.estado = GRAFO_ERROR_MEMORIA;
+        return resultado;
+    }
+    for (i = 0; i < n_vertices; i++) {
+        dist[i] = INT_MAX;
+        predecesor[i] = -1;
+    }
+    dist[idx_origen] = 0;
+    for (i = 1; i < n_vertices; i++) {
+        bool hubo_cambio = false;
+        size_t j;
+        for (j = 0; j < n_vertices; j++) {
+            int u_id = vertices[j];
+            int *sucesores = NULL;
+            size_t cant = 0;
+            if (grafo_sucesores(grafo, u_id, &sucesores, &cant) == GRAFO_OK && sucesores != NULL) {
+                size_t k;
+                for (k = 0; k < cant; k++) {
+                    int v_id = sucesores[k];
+                    int v_idx = grafo_idx_vertice_id(vertices, n_vertices, v_id);
+                    int peso = 0;
+                    if (v_idx < 0 || grafo_obtener_peso(grafo, u_id, v_id, &peso) != GRAFO_OK) {
+                        continue;
+                    }
+                    if (dist[j] != INT_MAX) {
+                        long long candidato = (long long)dist[j] + (long long)peso;
+                        if (candidato < (long long)dist[v_idx]) {
+                            dist[v_idx] = (int)candidato;
+                            predecesor[v_idx] = (int)j;
+                            hubo_cambio = true;
+                        }
+                    }
+                }
+                free(sucesores);
+            }
+        }
+        if (!hubo_cambio) {
+            break;
+        }
+    }
+    for (i = 0; i < n_vertices; i++) {
+        int u_id = vertices[i];
+        int *sucesores = NULL;
+        size_t cant = 0;
+        if (grafo_sucesores(grafo, u_id, &sucesores, &cant) == GRAFO_OK && sucesores != NULL) {
+            size_t k;
+            for (k = 0; k < cant; k++) {
+                int v_id = sucesores[k];
+                int v_idx = grafo_idx_vertice_id(vertices, n_vertices, v_id);
+                int peso = 0;
+                if (v_idx < 0 || grafo_obtener_peso(grafo, u_id, v_id, &peso) != GRAFO_OK) {
+                    continue;
+                }
+                if (dist[i] != INT_MAX) {
+                    long long candidato = (long long)dist[i] + (long long)peso;
+                    if (candidato < (long long)dist[v_idx]) {
+                        free(vertices);
+                        free(dist);
+                        free(predecesor);
+                        free(camino_aux);
+                        free(sucesores);
+                        resultado.estado = GRAFO_ERROR_CICLO_NEGATIVO;
+                        return resultado;
+                    }
+                }
+            }
+            free(sucesores);
+        }
+    }
+    if (dist[idx_destino] == INT_MAX) {
+        free(vertices);
+        free(dist);
+        free(predecesor);
+        free(camino_aux);
+        resultado.estado = GRAFO_OK;
+        resultado.existe = false;
+        return resultado;
+    }
+    {
+        int tope = 0;
+        int actual = idx_destino;
+        while (actual != -1 && tope < (int)n_vertices) {
+            camino_aux[tope++] = vertices[actual];
+            actual = predecesor[actual];
+        }
+        if (tope <= 0 || camino_aux[tope - 1] != origen) {
+            free(vertices);
+            free(dist);
+            free(predecesor);
+            free(camino_aux);
+            resultado.estado = GRAFO_OK;
+            resultado.existe = false;
+            return resultado;
+        }
+        resultado.cantidad = (size_t)(tope - 1);
+        if (resultado.cantidad > 0) {
+            int k;
+            resultado.aristas = (GrafoArista *)malloc(resultado.cantidad * sizeof(GrafoArista));
+            if (resultado.aristas == NULL) {
+                free(vertices);
+                free(dist);
+                free(predecesor);
+                free(camino_aux);
+                resultado.estado = GRAFO_ERROR_MEMORIA;
+                return resultado;
+            }
+            for (k = tope - 1; k > 0; k--) {
+                int u = camino_aux[k];
+                int v = camino_aux[k - 1];
+                int peso = 0;
+                grafo_obtener_peso(grafo, u, v, &peso);
+                resultado.aristas[tope - 1 - k].origen = u;
+                resultado.aristas[tope - 1 - k].destino = v;
+                resultado.aristas[tope - 1 - k].peso = peso;
+            }
+        }
+    }
+    resultado.costo_total = dist[idx_destino];
+    resultado.existe = true;
+    resultado.estado = GRAFO_OK;
+    free(vertices);
+    free(dist);
+    free(predecesor);
+    free(camino_aux);
     return resultado;
 }
 
 GrafoCamino grafo_prim(const Grafo *grafo, int inicio)
 {
     GrafoCamino resultado = {NULL, 0, 0, false, GRAFO_ERROR_NULO};
-    
+    int *vertices = NULL;
+    size_t n = 0;
+    int idx_inicio;
+    bool *en_mst = NULL;
+    int *clave = NULL;
+    int *padre = NULL;
+    size_t i;
+    int aristas_count = 0;
+    int idx = 0;
+    int costo = 0;
+
     if (!grafo) return resultado;
     if (grafo->dirigido) {
         resultado.estado = GRAFO_ERROR_YA_EXISTE;
@@ -929,86 +1068,111 @@ GrafoCamino grafo_prim(const Grafo *grafo, int inicio)
         resultado.estado = GRAFO_ERROR_NO_EXISTE;
         return resultado;
     }
-    
-    size_t n = grafo_orden(grafo);
+
+    n = grafo_orden(grafo);
     if (n == 0) {
         resultado.estado = GRAFO_OK;
         return resultado;
     }
-    
-    bool en_mst[5000] = {false};
-    int clave[5000];
-    int padre[5000];
-    
-    for (int i = 0; i < 5000; i++) {
+
+    if (grafo_obtener_vertices(grafo, &vertices, &n) != GRAFO_OK || vertices == NULL) {
+        resultado.estado = GRAFO_ERROR_MEMORIA;
+        return resultado;
+    }
+
+    idx_inicio = grafo_indice_vertice(vertices, n, inicio);
+    if (idx_inicio < 0) {
+        free(vertices);
+        resultado.estado = GRAFO_ERROR_NO_EXISTE;
+        return resultado;
+    }
+
+    en_mst = (bool *)calloc(n, sizeof(bool));
+    clave = (int *)malloc(n * sizeof(int));
+    padre = (int *)malloc(n * sizeof(int));
+    if (en_mst == NULL || clave == NULL || padre == NULL) {
+        free(vertices);
+        free(en_mst);
+        free(clave);
+        free(padre);
+        resultado.estado = GRAFO_ERROR_MEMORIA;
+        return resultado;
+    }
+
+    for (i = 0; i < n; i++) {
         clave[i] = INT_MAX;
         padre[i] = -1;
     }
-    
-    clave[inicio] = 0;
-    
-    for (size_t i = 0; i < n; i++) {
+    clave[idx_inicio] = 0;
+
+    for (i = 0; i < n; i++) {
         int min_clave = INT_MAX;
-        int u = -1;
-        
-        int *vertices = NULL;
-        size_t cant_v = 0;
-        if (grafo_obtener_vertices(grafo, &vertices, &cant_v) == GRAFO_OK && vertices) {
-            for (size_t j = 0; j < cant_v; j++) {
-                if (!en_mst[vertices[j]] && clave[vertices[j]] < min_clave) {
-                    min_clave = clave[vertices[j]];
-                    u = vertices[j];
-                }
-            }
-            free(vertices);
-        }
-        
-        if (u == -1 || min_clave == INT_MAX) break;
-        
-        en_mst[u] = true;
-        
+        int u_idx = -1;
+        int u_id;
         int *sucesores = NULL;
         size_t cant = 0;
-        if (grafo_sucesores(grafo, u, &sucesores, &cant) == GRAFO_OK && sucesores) {
-            for (size_t j = 0; j < cant; j++) {
-                int v = sucesores[j];
+        size_t j;
+
+        for (j = 0; j < n; j++) {
+            if (!en_mst[j] && clave[j] < min_clave) {
+                min_clave = clave[j];
+                u_idx = (int)j;
+            }
+        }
+        if (u_idx < 0 || min_clave == INT_MAX) break;
+
+        en_mst[u_idx] = true;
+        u_id = vertices[u_idx];
+
+        if (grafo_sucesores(grafo, u_id, &sucesores, &cant) == GRAFO_OK && sucesores) {
+            for (j = 0; j < cant; j++) {
+                int v_id = sucesores[j];
+                int v_idx = grafo_indice_vertice(vertices, n, v_id);
                 int peso = 0;
-                grafo_obtener_peso(grafo, u, v, &peso);
-                
-                if (!en_mst[v] && peso < clave[v]) {
-                    clave[v] = peso;
-                    padre[v] = u;
+                if (v_idx < 0) {
+                    continue;
+                }
+                grafo_obtener_peso(grafo, u_id, v_id, &peso);
+
+                if (!en_mst[v_idx] && peso < clave[v_idx]) {
+                    clave[v_idx] = peso;
+                    padre[v_idx] = u_idx;
                 }
             }
             free(sucesores);
         }
     }
-    
+
     /* Contar aristas del MST */
-    int aristas_count = 0;
-    for (int i = 0; i < 5000; i++) {
+    for (i = 0; i < n; i++) {
         if (padre[i] != -1) aristas_count++;
     }
-    
+
     resultado.cantidad = aristas_count;
     resultado.aristas = (GrafoArista *)malloc(resultado.cantidad * sizeof(GrafoArista));
     if (!resultado.aristas && resultado.cantidad > 0) {
+        free(vertices);
+        free(en_mst);
+        free(clave);
+        free(padre);
         resultado.estado = GRAFO_ERROR_MEMORIA;
         return resultado;
     }
-    
-    int idx = 0;
-    int costo = 0;
-    for (int i = 0; i < 5000; i++) {
+
+    for (i = 0; i < n; i++) {
         if (padre[i] != -1) {
-            resultado.aristas[idx].origen = padre[i];
-            resultado.aristas[idx].destino = i;
+            resultado.aristas[idx].origen = vertices[padre[i]];
+            resultado.aristas[idx].destino = vertices[i];
             resultado.aristas[idx].peso = clave[i];
             costo += clave[i];
             idx++;
         }
     }
-    
+
+    free(vertices);
+    free(en_mst);
+    free(clave);
+    free(padre);
     resultado.costo_total = costo;
     resultado.existe = (aristas_count == (int)n - 1);
     resultado.estado = GRAFO_OK;
@@ -1018,6 +1182,9 @@ GrafoCamino grafo_prim(const Grafo *grafo, int inicio)
 GrafoCamino grafo_kruskal(const Grafo *grafo)
 {
     GrafoCamino resultado = {NULL, 0, 0, false, GRAFO_ERROR_NULO};
+    int *vertices = NULL;
+    int *padre_uf = NULL;
+    int *rango_uf = NULL;
     
     if (!grafo) return resultado;
     if (grafo->dirigido) {
@@ -1030,16 +1197,22 @@ GrafoCamino grafo_kruskal(const Grafo *grafo)
         resultado.estado = GRAFO_OK;
         return resultado;
     }
+
+    if (grafo_obtener_vertices(grafo, &vertices, &n) != GRAFO_OK || vertices == NULL) {
+        resultado.estado = GRAFO_ERROR_MEMORIA;
+        return resultado;
+    }
     
     /* Obtener aristas */
     GrafoArista *aristas = NULL;
     size_t m = 0;
     if (grafo_obtener_aristas(grafo, &aristas, &m) != GRAFO_OK) {
+        free(vertices);
         resultado.estado = GRAFO_ERROR_MEMORIA;
         return resultado;
     }
     
-    /* Ordenar aristas por peso (burbuja simple para grafos pequeños) */
+    /* Ordenar aristas por peso (burbuja simple para grafos pequeÃ±os) */
     for (size_t i = 0; i < m; i++) {
         for (size_t j = i + 1; j < m; j++) {
             if (aristas[j].peso < aristas[i].peso) {
@@ -1051,35 +1224,48 @@ GrafoCamino grafo_kruskal(const Grafo *grafo)
     }
     
     /* Union-Find */
-    int padre_uf[5000];
-    for (int i = 0; i < 5000; i++) padre_uf[i] = i;
+    padre_uf = (int *)malloc(n * sizeof(int));
+    rango_uf = (int *)calloc(n, sizeof(int));
+    if (padre_uf == NULL || rango_uf == NULL) {
+        free(vertices);
+        free(aristas);
+        free(padre_uf);
+        free(rango_uf);
+        resultado.estado = GRAFO_ERROR_MEMORIA;
+        return resultado;
+    }
+    for (size_t i = 0; i < n; i++) padre_uf[i] = (int)i;
     
     resultado.aristas = (GrafoArista *)malloc(n * sizeof(GrafoArista));
     if (!resultado.aristas && n > 0) {
+        free(vertices);
         free(aristas);
+        free(padre_uf);
+        free(rango_uf);
         resultado.estado = GRAFO_ERROR_MEMORIA;
         return resultado;
     }
     
     int costo = 0;
     for (size_t i = 0; i < m && resultado.cantidad < n - 1; i++) {
-        /* Encontrar raíz de origen */
-        int u = aristas[i].origen;
-        while (padre_uf[u] != u) u = padre_uf[u];
-        
-        /* Encontrar raíz de destino */
-        int v = aristas[i].destino;
-        while (padre_uf[v] != v) v = padre_uf[v];
-        
-        if (u != v) {
-            padre_uf[u] = v;
+        int u_idx = grafo_indice_vertice(vertices, n, aristas[i].origen);
+        int v_idx = grafo_indice_vertice(vertices, n, aristas[i].destino);
+        if (u_idx < 0 || v_idx < 0) {
+            continue;
+        }
+
+        if (uf_find(padre_uf, u_idx) != uf_find(padre_uf, v_idx)) {
+            uf_union(padre_uf, rango_uf, u_idx, v_idx);
             resultado.aristas[resultado.cantidad] = aristas[i];
             costo += aristas[i].peso;
             resultado.cantidad++;
         }
     }
     
+    free(vertices);
     free(aristas);
+    free(padre_uf);
+    free(rango_uf);
     resultado.costo_total = costo;
     resultado.existe = (resultado.cantidad == n - 1);
     resultado.estado = GRAFO_OK;
@@ -1087,7 +1273,7 @@ GrafoCamino grafo_kruskal(const Grafo *grafo)
 }
 
 /* ============================================================================
- * Liberación de resultados
+ * LiberaciÃ³n de resultados
  * ============================================================================ */
 
 void grafo_liberar_recorrido(GrafoRecorrido *recorrido)
@@ -1137,3 +1323,4 @@ const char *grafo_estado_cadena(GrafoEstado estado)
             return "GRAFO_ERROR_DESCONOCIDO";
     }
 }
+

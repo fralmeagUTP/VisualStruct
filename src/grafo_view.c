@@ -13,12 +13,209 @@
 #define M_PI 3.14159265358979323846
 #endif
 
+static Rectangle grafo_vista_area_lienzo(const GrafoVista *vista) {
+    Rectangle canvas = vista->area_renderizado;
+    canvas.x += 2.0f;
+    canvas.y += 30.0f;
+    canvas.width -= 16.0f;
+    canvas.height -= 54.0f;
+    if (canvas.width < 40.0f) {
+        canvas.width = 40.0f;
+    }
+    if (canvas.height < 40.0f) {
+        canvas.height = 40.0f;
+    }
+    return canvas;
+}
+
 static float grafo_vista_px(const GrafoVista *vista, float local_x) {
-    return vista->area_renderizado.x + local_x;
+    return grafo_vista_area_lienzo(vista).x + vista->offset_x + local_x;
 }
 
 static float grafo_vista_py(const GrafoVista *vista, float local_y) {
-    return vista->area_renderizado.y + local_y;
+    return grafo_vista_area_lienzo(vista).y + vista->offset_y + local_y;
+}
+
+static void grafo_vista_limites_contenido(const GrafoVista *vista, float *min_x, float *max_x,
+                                          float *min_y, float *max_y) {
+    bool found = false;
+    float lx = 0.0f;
+    float rx = 0.0f;
+    float ty = 0.0f;
+    float by = 0.0f;
+
+    if (min_x == NULL || max_x == NULL || min_y == NULL || max_y == NULL) {
+        return;
+    }
+    if (vista == NULL || vista->estado == NULL || vista->estado->cantidad_vertices <= 0) {
+        *min_x = 0.0f;
+        *max_x = 0.0f;
+        *min_y = 0.0f;
+        *max_y = 0.0f;
+        return;
+    }
+
+    for (int i = 0; i < vista->estado->cantidad_vertices; i++) {
+        const GrafoVerticeVisual *v = &vista->estado->vertices[i];
+        float left;
+        float right;
+        float top;
+        float bottom;
+        if (!v->visible) {
+            continue;
+        }
+        left = v->x - v->radio - 20.0f;
+        right = v->x + v->radio + 20.0f;
+        top = v->y - v->radio - 20.0f;
+        bottom = v->y + v->radio + 36.0f;
+
+        if (!found) {
+            lx = left;
+            rx = right;
+            ty = top;
+            by = bottom;
+            found = true;
+            continue;
+        }
+        if (left < lx) {
+            lx = left;
+        }
+        if (right > rx) {
+            rx = right;
+        }
+        if (top < ty) {
+            ty = top;
+        }
+        if (bottom > by) {
+            by = bottom;
+        }
+    }
+
+    if (!found) {
+        lx = 0.0f;
+        rx = 0.0f;
+        ty = 0.0f;
+        by = 0.0f;
+    }
+
+    *min_x = lx;
+    *max_x = rx;
+    *min_y = ty;
+    *max_y = by;
+}
+
+static float grafo_vista_clampf(float value, float min_value, float max_value) {
+    if (value < min_value) {
+        return min_value;
+    }
+    if (value > max_value) {
+        return max_value;
+    }
+    return value;
+}
+
+static void grafo_vista_ajustar_offset(GrafoVista *vista) {
+    Rectangle canvas;
+    float min_x;
+    float max_x;
+    float min_y;
+    float max_y;
+    float graph_width;
+    float graph_height;
+    const float margin = 14.0f;
+
+    if (vista == NULL) {
+        return;
+    }
+
+    canvas = grafo_vista_area_lienzo(vista);
+    grafo_vista_limites_contenido(vista, &min_x, &max_x, &min_y, &max_y);
+    graph_width = max_x - min_x;
+    graph_height = max_y - min_y;
+
+    if (graph_width + margin * 2.0f <= canvas.width) {
+        vista->offset_x = (canvas.width - graph_width) * 0.5f - min_x;
+    } else {
+        float min_offset_x = canvas.width - margin - max_x;
+        float max_offset_x = margin - min_x;
+        vista->offset_x = grafo_vista_clampf(vista->offset_x, min_offset_x, max_offset_x);
+    }
+
+    if (graph_height + margin * 2.0f <= canvas.height) {
+        vista->offset_y = (canvas.height - graph_height) * 0.5f - min_y;
+    } else {
+        float min_offset_y = canvas.height - margin - max_y;
+        float max_offset_y = margin - min_y;
+        vista->offset_y = grafo_vista_clampf(vista->offset_y, min_offset_y, max_offset_y);
+    }
+}
+
+static void grafo_vista_dibujar_scrolls(const GrafoVista *vista) {
+    Rectangle canvas;
+    float min_x;
+    float max_x;
+    float min_y;
+    float max_y;
+    float graph_width;
+    float graph_height;
+    const float margin = 14.0f;
+
+    if (vista == NULL) {
+        return;
+    }
+
+    canvas = grafo_vista_area_lienzo(vista);
+    grafo_vista_limites_contenido(vista, &min_x, &max_x, &min_y, &max_y);
+    graph_width = max_x - min_x;
+    graph_height = max_y - min_y;
+
+    if (graph_width + margin * 2.0f > canvas.width) {
+        float min_offset_x = canvas.width - margin - max_x;
+        float max_offset_x = margin - min_x;
+        float t = (max_offset_x - min_offset_x) > 0.001f
+                      ? (vista->offset_x - min_offset_x) / (max_offset_x - min_offset_x)
+                      : 0.0f;
+        float track_w = canvas.width - 12.0f;
+        float thumb_w = track_w * (canvas.width / (graph_width + margin * 2.0f));
+        float thumb_x;
+        if (thumb_w < 22.0f) {
+            thumb_w = 22.0f;
+        }
+        if (t < 0.0f) {
+            t = 0.0f;
+        } else if (t > 1.0f) {
+            t = 1.0f;
+        }
+        DrawRectangleRounded((Rectangle){canvas.x + 6.0f, canvas.y + canvas.height - 6.0f, track_w, 4.0f},
+                             0.6f, 4, Fade((Color){100, 120, 140, 255}, 0.26f));
+        thumb_x = canvas.x + 6.0f + t * (track_w - thumb_w);
+        DrawRectangleRounded((Rectangle){thumb_x, canvas.y + canvas.height - 6.0f, thumb_w, 4.0f},
+                             0.6f, 4, Fade((Color){42, 98, 158, 255}, 0.70f));
+    }
+
+    if (graph_height + margin * 2.0f > canvas.height) {
+        float min_offset_y = canvas.height - margin - max_y;
+        float max_offset_y = margin - min_y;
+        float t = (max_offset_y - min_offset_y) > 0.001f
+                      ? (vista->offset_y - min_offset_y) / (max_offset_y - min_offset_y)
+                      : 0.0f;
+        float track_h = canvas.height - 12.0f;
+        float thumb_h = track_h * (canvas.height / (graph_height + margin * 2.0f));
+        float thumb_y;
+        if (thumb_h < 22.0f) {
+            thumb_h = 22.0f;
+        }
+        if (t < 0.0f) {
+            t = 0.0f;
+        } else if (t > 1.0f) {
+            t = 1.0f;
+        }
+        DrawRectangleRounded((Rectangle){canvas.x + canvas.width - 6.0f, canvas.y + 6.0f, 4.0f, track_h},
+                             0.6f, 4, Fade((Color){100, 120, 140, 255}, 0.26f));
+        thumb_y = canvas.y + 6.0f + t * (track_h - thumb_h);
+        DrawRectangleRounded((Rectangle){canvas.x + canvas.width - 6.0f, thumb_y, 4.0f, thumb_h},
+                             0.6f, 4, Fade((Color){42, 98, 158, 255}, 0.70f));
+    }
 }
 
 /* ============================================================================
@@ -66,11 +263,14 @@ GrafoVista grafo_vista_init(const GrafoState *estado, Rectangle area_renderizado
     GrafoVista vista;
     vista.estado = estado;
     vista.area_renderizado = area_renderizado;
+    vista.offset_x = 0.0f;
+    vista.offset_y = 0.0f;
     vista.layout_config = grafo_layout_config_defecto((int)area_renderizado.width, 
                                                       (int)area_renderizado.height);
     vista.colores = grafo_vista_colores_defecto();
     vista.opciones = grafo_vista_opciones_defecto();
     vista.necesita_redibujarse = true;
+    grafo_vista_ajustar_offset(&vista);
     return vista;
 }
 
@@ -319,10 +519,52 @@ void grafo_vista_dibujar_etiquetas(const GrafoVista *vista) {
         
         /* Distancia (si está activa) */
         if (vista->opciones.mostrar_distancias && v->distancia > 0) {
+            const float dist_font_size = 12.0f;
+            const float dist_padding_x = 4.0f;
+            const float dist_padding_y = 2.0f;
+            const float dist_gap = 8.0f;
+            const float panel_left = vista->area_renderizado.x + 4.0f;
+            const float panel_top = vista->area_renderizado.y + 4.0f;
+            const float panel_right = vista->area_renderizado.x + vista->area_renderizado.width - 4.0f;
+            const float panel_bottom = vista->area_renderizado.y + vista->area_renderizado.height - 4.0f;
+            float vx = grafo_vista_px(vista, v->x);
+            float vy = grafo_vista_py(vista, v->y);
+            float text_x;
+            float text_y;
+            int text_w;
+            float bg_x;
+            float bg_y;
+            float bg_w;
+            float bg_h;
+
             snprintf(buffer, sizeof(buffer), "d=%d", v->distancia);
-            ui_draw_text(buffer, grafo_vista_px(vista, v->x) - 16.0f,
-                         grafo_vista_py(vista, v->y) + (float)offset_y + 15.0f, 10.0f, 0.08f,
-                         BLUE, false);
+            text_w = ui_measure_text(buffer, dist_font_size, 0.08f, false);
+
+            /* Ubicar la distancia fuera del vertice: arriba-derecha por defecto */
+            text_x = vx + v->radio + dist_gap;
+            text_y = vy - v->radio - dist_font_size - dist_gap;
+
+            if (text_x + (float)text_w > panel_right) {
+                text_x = vx - v->radio - (float)text_w - dist_gap;
+            }
+            if (text_x < panel_left) {
+                text_x = panel_left;
+            }
+            if (text_y < panel_top) {
+                text_y = vy + v->radio + dist_gap;
+            }
+            if (text_y + dist_font_size > panel_bottom) {
+                text_y = panel_bottom - dist_font_size;
+            }
+
+            bg_x = text_x - dist_padding_x;
+            bg_y = text_y - dist_padding_y;
+            bg_w = (float)text_w + dist_padding_x * 2.0f;
+            bg_h = dist_font_size + dist_padding_y * 2.0f;
+            DrawRectangle((int)bg_x, (int)bg_y, (int)bg_w, (int)bg_h, Fade(RAYWHITE, 0.86f));
+            DrawRectangleLines((int)bg_x, (int)bg_y, (int)bg_w, (int)bg_h, Fade(BLUE, 0.35f));
+
+            ui_draw_text(buffer, text_x, text_y, dist_font_size, 0.08f, BLUE, false);
         }
         
         /* Orden de visitación */
@@ -385,15 +627,21 @@ void grafo_vista_dibujar_estado(const GrafoVista *vista) {
  * ============================================================================ */
 
 void grafo_vista_dibujar(GrafoVista *vista) {
+    Rectangle canvas;
     if (!vista || !vista->estado) return;
-    
+
+    grafo_vista_ajustar_offset(vista);
+    canvas = grafo_vista_area_lienzo(vista);
     grafo_vista_dibujar_fondo(vista);
+    BeginScissorMode((int)canvas.x, (int)canvas.y, (int)canvas.width, (int)canvas.height);
     grafo_vista_dibujar_aristas(vista);
     grafo_vista_dibujar_pesos(vista);
     grafo_vista_dibujar_flechas(vista);
     grafo_vista_dibujar_vertices(vista);
     grafo_vista_dibujar_etiquetas(vista);
+    EndScissorMode();
     grafo_vista_dibujar_estado(vista);
+    grafo_vista_dibujar_scrolls(vista);
 }
 
 /* ============================================================================
@@ -406,5 +654,27 @@ void grafo_vista_actualizar_area(GrafoVista *vista, Rectangle nueva_area) {
     vista->area_renderizado = nueva_area;
     vista->layout_config.ancho_panel = (int)nueva_area.width;
     vista->layout_config.alto_panel = (int)nueva_area.height;
+    grafo_vista_ajustar_offset(vista);
     vista->necesita_redibujarse = true;
+}
+
+void grafo_vista_desplazar(GrafoVista *vista, float delta_x, float delta_y) {
+    if (vista == NULL) {
+        return;
+    }
+    vista->offset_x += delta_x;
+    vista->offset_y += delta_y;
+    grafo_vista_ajustar_offset(vista);
+}
+
+void grafo_vista_scroll_rueda(GrafoVista *vista, float wheel_delta, bool horizontal) {
+    const float step = 32.0f;
+    if (vista == NULL || wheel_delta == 0.0f) {
+        return;
+    }
+    if (horizontal) {
+        grafo_vista_desplazar(vista, wheel_delta * step, 0.0f);
+    } else {
+        grafo_vista_desplazar(vista, 0.0f, wheel_delta * step);
+    }
 }

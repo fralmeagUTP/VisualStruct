@@ -2,7 +2,9 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdarg.h>
 #include <string.h>
+#include <time.h>
 
 /**
  * @file app_state.c
@@ -15,6 +17,15 @@
 #define APP_SWITCH_DURATION 0.42f
 /** @brief Duracion del pulso de panel al ejecutar operaciones validas. */
 #define APP_PANEL_PULSE_DURATION 0.52f
+
+static bool g_rng_seeded = false;
+
+static void app_state_seed_random_once(void) {
+    if (!g_rng_seeded) {
+        srand((unsigned int)time(NULL));
+        g_rng_seeded = true;
+    }
+}
 
 /** @brief Limita un entero a un rango cerrado. */
 static int clamp_int(int value, int min, int max) {
@@ -32,7 +43,167 @@ static void set_message(AppState *state, const char *text) {
     snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion), "%s", text);
 }
 
+/** @brief Convierte un codigo de estado del TAD Grafo a texto legible para UI. */
+static const char *grafo_estado_a_texto(GrafoEstado estado) {
+    switch (estado) {
+    case GRAFO_OK:
+        return "OK";
+    case GRAFO_ERROR_NULO:
+        return "referencia nula";
+    case GRAFO_ERROR_MEMORIA:
+        return "sin memoria";
+    case GRAFO_ERROR_NO_EXISTE:
+        return "vertice/arista inexistente";
+    case GRAFO_ERROR_YA_EXISTE:
+        return "elemento duplicado o no soportado";
+    case GRAFO_ERROR_PESO_NEGATIVO:
+        return "peso negativo no permitido";
+    case GRAFO_ERROR_CICLO_NEGATIVO:
+        return "ciclo negativo detectado";
+    default:
+        return "error desconocido";
+    }
+}
+
 static void trigger_feedback(AppState *state, TipoOperacion operacion);
+
+static void appendf(char *out, size_t out_size, size_t *used, const char *fmt, ...) {
+    char tmp[128];
+    va_list args;
+    int written;
+    size_t disponible;
+
+    if (out == NULL || out_size == 0 || used == NULL || fmt == NULL) {
+        return;
+    }
+    if (*used >= out_size - 1) {
+        return;
+    }
+
+    va_start(args, fmt);
+    written = vsnprintf(tmp, sizeof(tmp), fmt, args);
+    va_end(args);
+    if (written <= 0) {
+        return;
+    }
+
+    disponible = (out_size - 1) - *used;
+    strncat(out, tmp, disponible);
+    *used = strlen(out);
+}
+
+static void formatear_camino_vertices(const GrafoCamino *camino, int inicio, char *out,
+                                      size_t out_size) {
+    size_t used = 0;
+    size_t i;
+
+    if (out == NULL || out_size == 0) {
+        return;
+    }
+    out[0] = '\0';
+    if (camino == NULL) {
+        return;
+    }
+
+    if (camino->cantidad == 0) {
+        appendf(out, out_size, &used, "%d", inicio);
+        return;
+    }
+
+    appendf(out, out_size, &used, "%d", camino->aristas[0].origen);
+    for (i = 0; i < camino->cantidad; i++) {
+        appendf(out, out_size, &used, "->%d", camino->aristas[i].destino);
+    }
+}
+
+static void formatear_detalle_aristas(const GrafoCamino *camino, char *out, size_t out_size) {
+    size_t used = 0;
+    size_t i;
+
+    if (out == NULL || out_size == 0) {
+        return;
+    }
+    out[0] = '\0';
+    if (camino == NULL || camino->cantidad == 0) {
+        return;
+    }
+
+    for (i = 0; i < camino->cantidad; i++) {
+        if (i > 0) {
+            appendf(out, out_size, &used, "+");
+        }
+        appendf(out, out_size, &used, "(%d,%d,%d)", camino->aristas[i].origen,
+                camino->aristas[i].destino, camino->aristas[i].peso);
+    }
+}
+
+static void set_message_camino_minimo(AppState *state, const char *algoritmo, int inicio,
+                                      int destino, const GrafoCamino *camino) {
+    char camino_txt[96];
+    char detalle_txt[144];
+    int written;
+
+    if (state == NULL || algoritmo == NULL || camino == NULL) {
+        return;
+    }
+
+    if (!camino->existe) {
+        snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                 "%s(%d->%d) sin camino", algoritmo, inicio, destino);
+        return;
+    }
+
+    formatear_camino_vertices(camino, inicio, camino_txt, sizeof(camino_txt));
+    formatear_detalle_aristas(camino, detalle_txt, sizeof(detalle_txt));
+
+    if (detalle_txt[0] != '\0') {
+        written = snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                           "%s Distancia=%d | Camino=%s | Detalle=%s", algoritmo,
+                           camino->costo_total, camino_txt, detalle_txt);
+    } else {
+        written = snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                           "%s Distancia=%d | Camino=%s", algoritmo, camino->costo_total,
+                           camino_txt);
+    }
+
+    if (written >= (int)sizeof(state->mensaje_operacion)) {
+        snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                 "%s Distancia=%d | Camino=%s", algoritmo, camino->costo_total, camino_txt);
+    }
+}
+
+static void set_message_mst(AppState *state, const char *algoritmo, const GrafoCamino *camino,
+                            size_t esperado_aristas) {
+    char detalle_txt[160];
+    const char *tipo = "MST";
+    int written;
+
+    if (state == NULL || algoritmo == NULL || camino == NULL) {
+        return;
+    }
+
+    if (!camino->existe) {
+        tipo = "bosque";
+    }
+
+    formatear_detalle_aristas(camino, detalle_txt, sizeof(detalle_txt));
+    if (detalle_txt[0] != '\0') {
+        written = snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                           "%s %s peso=%d | Aristas=%d/%d | Detalle=%s", algoritmo, tipo,
+                           camino->costo_total, (int)camino->cantidad, (int)esperado_aristas,
+                           detalle_txt);
+    } else {
+        written = snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                           "%s %s peso=%d | Aristas=%d/%d", algoritmo, tipo,
+                           camino->costo_total, (int)camino->cantidad, (int)esperado_aristas);
+    }
+
+    if (written >= (int)sizeof(state->mensaje_operacion)) {
+        snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                 "%s %s peso=%d | Aristas=%d/%d", algoritmo, tipo, camino->costo_total,
+                 (int)camino->cantidad, (int)esperado_aristas);
+    }
+}
 
 static bool app_state_recrear_grafo(AppState *state, bool dirigido) {
     int *vertices = NULL;
@@ -81,30 +252,6 @@ static bool app_state_recrear_grafo(AppState *state, bool dirigido) {
     return true;
 }
 
-static void app_state_grafo_insertar_demo(AppState *state, const int *vertices, int vertices_count,
-                                          const GrafoArista *aristas, int aristas_count,
-                                          const char *mensaje) {
-    int i;
-
-    if (state == NULL) {
-        return;
-    }
-
-    app_state_operacion_inicializar(state);
-    for (i = 0; i < vertices_count; i++) {
-        grafo_controller_agregar_vertice(&state->grafo_controller_state, vertices[i]);
-    }
-    for (i = 0; i < aristas_count; i++) {
-        grafo_controller_agregar_arista(&state->grafo_controller_state, aristas[i].origen,
-                                        aristas[i].destino, aristas[i].peso);
-    }
-    state->ultima_operacion_ok = true;
-    state->operacion_actual = OPERACION_INICIALIZAR;
-    state->operacion_serial++;
-    set_message(state, mensaje);
-    trigger_feedback(state, OPERACION_INICIALIZAR);
-}
-
 /** @brief Dispara un feedback visual corto para la operacion indicada. */
 static void trigger_feedback(AppState *state, TipoOperacion operacion) {
     state->operacion_animada = operacion;
@@ -123,6 +270,7 @@ static void app_state_sync_grafo_visual(AppState *state) {
     int old_count_vertices;
     int old_count_aristas;
     int i;
+    bool requiere_layout = false;
 
     if (state == NULL || state->grafo == NULL) {
         return;
@@ -140,9 +288,13 @@ static void app_state_sync_grafo_visual(AppState *state) {
     if (grafo_obtener_vertices(state->grafo, &vertices, &n_vertices) == GRAFO_OK &&
         vertices != NULL) {
         int limite = (n_vertices > 64) ? 64 : (int)n_vertices;
+        if (limite != old_count_vertices) {
+            requiere_layout = true;
+        }
         for (i = 0; i < limite; i++) {
             GrafoVerticeVisual *v = &state->grafo_controller_state.estado_visual.vertices[i];
             int j;
+            bool encontrado = false;
 
             v->id = vertices[i];
             v->estado = GRAFO_VÉRTICE_NORMAL;
@@ -151,6 +303,8 @@ static void app_state_sync_grafo_visual(AppState *state) {
             v->predecesor = -1;
             v->orden_visitacion = 0;
             v->radio = 18.0f;
+            v->x = 0.0f;
+            v->y = 0.0f;
 
             for (j = 0; j < old_count_vertices; j++) {
                 if (old_vertices[j].id == v->id) {
@@ -158,8 +312,15 @@ static void app_state_sync_grafo_visual(AppState *state) {
                     v->distancia = old_vertices[j].distancia;
                     v->predecesor = old_vertices[j].predecesor;
                     v->orden_visitacion = old_vertices[j].orden_visitacion;
+                    v->x = old_vertices[j].x;
+                    v->y = old_vertices[j].y;
+                    v->radio = old_vertices[j].radio;
+                    encontrado = true;
                     break;
                 }
+            }
+            if (!encontrado) {
+                requiere_layout = true;
             }
         }
         state->grafo_controller_state.estado_visual.cantidad_vertices = limite;
@@ -194,7 +355,8 @@ static void app_state_sync_grafo_visual(AppState *state) {
         free(aristas);
     }
 
-    if (state->grafo_controller_state.vista.layout_config.ancho_panel > 0 &&
+    if (requiere_layout &&
+        state->grafo_controller_state.vista.layout_config.ancho_panel > 0 &&
         state->grafo_controller_state.vista.layout_config.alto_panel > 0) {
         grafo_layout_calcular_circular(&state->grafo_controller_state.estado_visual,
                                        &state->grafo_controller_state.vista.layout_config);
@@ -207,12 +369,14 @@ void app_state_init(AppState *state) {
         return;
     }
 
+    app_state_seed_random_once();
     memset(state, 0, sizeof(*state));
     state->estructura_activa = ESTRUCTURA_PILA;
     state->operacion_actual = OPERACION_INICIALIZAR;
     state->operacion_animada = OPERACION_NINGUNA;
     state->input_valor = 10;
     state->input_prioridad = 1;
+    state->input_peso_grafo = 1;
     state->animacion_feedback = 0.0f;
     state->animacion_cambio_estructura = 0.0f;
     state->animacion_pulso_panel = 0.0f;
@@ -306,6 +470,24 @@ void app_state_set_prioridad(AppState *state, int value) {
     }
 
     state->input_prioridad = clamp_int(value, 1, 99);
+}
+
+/** @brief Ajusta incrementalmente el peso de arista de grafo en rango permitido. */
+void app_state_ajustar_peso_grafo(AppState *state, int delta) {
+    if (state == NULL) {
+        return;
+    }
+
+    state->input_peso_grafo = clamp_int(state->input_peso_grafo + delta, -999, 999);
+}
+
+/** @brief Asigna el peso de arista de grafo aplicando validacion de rango. */
+void app_state_set_peso_grafo(AppState *state, int value) {
+    if (state == NULL) {
+        return;
+    }
+
+    state->input_peso_grafo = clamp_int(value, -999, 999);
 }
 
 /** @brief Avanza el estado de animaciones efimeras del feedback visual. */
@@ -720,6 +902,57 @@ void app_state_operacion_grafo_insertar_arista(AppState *state, int origen, int 
     }
 }
 
+void app_state_operacion_grafo_actualizar_peso_arista(AppState *state, int origen, int destino,
+                                                      int peso) {
+    bool existe;
+
+    if (state == NULL || state->estructura_activa != ESTRUCTURA_GRAFO) {
+        return;
+    }
+
+    if (origen < 0 || destino < 0) {
+        state->ultima_operacion_ok = false;
+        set_message(state, "Error grafo: origen y destino deben ser enteros no negativos");
+        return;
+    }
+    if (origen == destino) {
+        state->ultima_operacion_ok = false;
+        set_message(state, "Error grafo: una arista requiere vertices distintos");
+        return;
+    }
+    if (peso < -999 || peso > 999) {
+        state->ultima_operacion_ok = false;
+        set_message(state, "Error grafo: el peso debe estar entre -999 y 999");
+        return;
+    }
+
+    state->operacion_actual = OPERACION_INSERTAR;
+    state->operacion_serial++;
+
+    existe = grafo_existe_arista(state->grafo, origen, destino);
+    if (existe) {
+        if (!grafo_controller_eliminar_arista(&state->grafo_controller_state, origen, destino)) {
+            state->ultima_operacion_ok = false;
+            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion), "Error grafo: %s",
+                     grafo_controller_obtener_error(&state->grafo_controller_state));
+            return;
+        }
+    }
+
+    state->ultima_operacion_ok = grafo_controller_agregar_arista(
+        &state->grafo_controller_state, origen, destino, peso);
+    if (state->ultima_operacion_ok) {
+        trigger_feedback(state, OPERACION_INSERTAR);
+        snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                 existe ? "grafo_actualizar_peso(%d,%d,%d)"
+                        : "grafo_insertar_arista(%d,%d,%d)",
+                 origen, destino, peso);
+    } else {
+        snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion), "Error grafo: %s",
+                 grafo_controller_obtener_error(&state->grafo_controller_state));
+    }
+}
+
 void app_state_operacion_grafo_eliminar_arista(AppState *state, int origen, int destino) {
         if (origen < 0 || destino < 0) {
             state->ultima_operacion_ok = false;
@@ -750,6 +983,7 @@ void app_state_operacion_grafo_ejecutar_algoritmo(AppState *state, int algoritmo
                                                   int destino) {
     GrafoRecorrido recorrido;
     GrafoCamino camino;
+    size_t orden_grafo;
 
     if (state == NULL || state->estructura_activa != ESTRUCTURA_GRAFO) {
         return;
@@ -781,21 +1015,32 @@ void app_state_operacion_grafo_ejecutar_algoritmo(AppState *state, int algoritmo
     grafo_controller_seleccionar_algoritmo(&state->grafo_controller_state, algoritmo, inicio,
                                            destino);
     grafo_controller_iniciar_algoritmo(&state->grafo_controller_state);
+    orden_grafo = grafo_orden(state->grafo);
 
     state->ultima_operacion_ok = true;
     switch (algoritmo) {
     case GRAFO_ALGO_BFS:
         recorrido = grafo_bfs(state->grafo, inicio);
         state->ultima_operacion_ok = (recorrido.estado == GRAFO_OK);
-        snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
-                 "BFS(inicio=%d) -> %d vertice(s)", inicio, (int)recorrido.cantidad);
+        if (!state->ultima_operacion_ok) {
+            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                     "BFS error: %s", grafo_estado_a_texto(recorrido.estado));
+        } else {
+            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                     "BFS(inicio=%d) -> %d vertice(s)", inicio, (int)recorrido.cantidad);
+        }
         grafo_liberar_recorrido(&recorrido);
         break;
     case GRAFO_ALGO_DFS:
         recorrido = grafo_dfs(state->grafo, inicio);
         state->ultima_operacion_ok = (recorrido.estado == GRAFO_OK);
-        snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
-                 "DFS(inicio=%d) -> %d vertice(s)", inicio, (int)recorrido.cantidad);
+        if (!state->ultima_operacion_ok) {
+            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                     "DFS error: %s", grafo_estado_a_texto(recorrido.estado));
+        } else {
+            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                     "DFS(inicio=%d) -> %d vertice(s)", inicio, (int)recorrido.cantidad);
+        }
         grafo_liberar_recorrido(&recorrido);
         break;
     case GRAFO_ALGO_DIJKSTRA:
@@ -804,12 +1049,11 @@ void app_state_operacion_grafo_ejecutar_algoritmo(AppState *state, int algoritmo
         if (camino.estado == GRAFO_ERROR_PESO_NEGATIVO) {
             snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
                      "Dijkstra no admite pesos negativos");
-        } else if (camino.existe) {
+        } else if (!state->ultima_operacion_ok) {
             snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
-                     "Dijkstra(%d->%d) costo=%d", inicio, destino, camino.costo_total);
+                     "Dijkstra error: %s", grafo_estado_a_texto(camino.estado));
         } else {
-            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
-                     "Dijkstra(%d->%d) sin camino", inicio, destino);
+            set_message_camino_minimo(state, "Dijkstra", inicio, destino, &camino);
         }
         grafo_liberar_camino(&camino);
         break;
@@ -819,27 +1063,36 @@ void app_state_operacion_grafo_ejecutar_algoritmo(AppState *state, int algoritmo
         if (camino.estado == GRAFO_ERROR_CICLO_NEGATIVO) {
             snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
                      "Bellman-Ford detecto ciclo negativo");
-        } else if (camino.existe) {
+        } else if (!state->ultima_operacion_ok) {
             snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
-                     "Bellman-Ford(%d->%d) costo=%d", inicio, destino, camino.costo_total);
+                     "Bellman-Ford error: %s", grafo_estado_a_texto(camino.estado));
         } else {
-            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
-                     "Bellman-Ford(%d->%d) sin camino", inicio, destino);
+            set_message_camino_minimo(state, "Bellman-Ford", inicio, destino, &camino);
         }
         grafo_liberar_camino(&camino);
         break;
     case GRAFO_ALGO_PRIM:
         camino = grafo_prim(state->grafo, inicio);
         state->ultima_operacion_ok = (camino.estado == GRAFO_OK);
-        snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion), "Prim(inicio=%d)",
-                 inicio);
+        if (!state->ultima_operacion_ok) {
+            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                     "Prim error: %s", grafo_estado_a_texto(camino.estado));
+        } else {
+            size_t esperado = orden_grafo > 0 ? (orden_grafo - 1U) : 0U;
+            set_message_mst(state, "Prim", &camino, esperado);
+        }
         grafo_liberar_camino(&camino);
         break;
     case GRAFO_ALGO_KRUSKAL:
         camino = grafo_kruskal(state->grafo);
         state->ultima_operacion_ok = (camino.estado == GRAFO_OK);
-        snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion), "Kruskal() aristas=%d",
-                 (int)camino.cantidad);
+        if (!state->ultima_operacion_ok) {
+            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                     "Kruskal error: %s", grafo_estado_a_texto(camino.estado));
+        } else {
+            size_t esperado = orden_grafo > 0 ? (orden_grafo - 1U) : 0U;
+            set_message_mst(state, "Kruskal", &camino, esperado);
+        }
         grafo_liberar_camino(&camino);
         break;
     default:
@@ -848,10 +1101,7 @@ void app_state_operacion_grafo_ejecutar_algoritmo(AppState *state, int algoritmo
         break;
     }
 
-    if (!state->ultima_operacion_ok && strncmp(state->mensaje_operacion, "Bellman-Ford detecto ciclo negativo", 36) != 0 &&
-        strncmp(state->mensaje_operacion, "Dijkstra no admite pesos negativos", 34) != 0) {
-        snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion), "Error algoritmo");
-    } else {
+    if (state->ultima_operacion_ok) {
         trigger_feedback(state, OPERACION_BUSCAR);
     }
 }
@@ -874,54 +1124,94 @@ void app_state_grafo_toggle_dirigido(AppState *state) {
 }
 
 void app_state_grafo_cargar_demo(AppState *state) {
-    static const int demo_bfs_vertices[] = {1, 2, 3, 4, 5};
-    static const GrafoArista demo_bfs_aristas[] = {
-        {1, 2, 1}, {1, 3, 1}, {2, 4, 1}, {3, 5, 1}
-    };
-    static const int demo_camino_vertices[] = {1, 2, 3, 4, 5, 6};
-    static const GrafoArista demo_camino_aristas[] = {
-        {1, 2, 4}, {1, 3, 2}, {3, 2, 1}, {2, 4, 5}, {3, 5, 8}, {5, 4, 1}, {4, 6, 3}
-    };
-    static const int demo_bf_vertices[] = {1, 2, 3, 4, 5};
-    static const GrafoArista demo_bf_aristas[] = {
-        {1, 2, 6}, {1, 3, 7}, {2, 4, 5}, {2, 5, -2}, {3, 4, -3}, {4, 2, -2}, {5, 4, 7}
-    };
-    static const int demo_mst_vertices[] = {1, 2, 3, 4, 5, 6};
-    static const GrafoArista demo_mst_aristas[] = {
-        {1, 2, 3}, {1, 3, 1}, {2, 3, 7}, {2, 4, 5}, {3, 4, 2}, {3, 5, 4}, {4, 6, 6}, {5, 6, 2}
-    };
+    int n;
+    int i;
+    int extras_objetivo;
+    int extras_agregadas = 0;
+    int intentos = 0;
+    bool dirigido;
+    const int max_demo_vertices = 32;
 
     if (state == NULL || state->estructura_activa != ESTRUCTURA_GRAFO) {
         return;
     }
 
-    if (state->grafo_demo_idx == 0) {
-        app_state_recrear_grafo(state, false);
-        app_state_grafo_insertar_demo(state, demo_bfs_vertices, 5, demo_bfs_aristas, 4,
-                                      "Demo BFS cargada");
-        state->grafo_vertice_inicio = 1;
-        state->grafo_vertice_destino = 5;
-    } else if (state->grafo_demo_idx == 1) {
-        app_state_recrear_grafo(state, true);
-        app_state_grafo_insertar_demo(state, demo_camino_vertices, 6, demo_camino_aristas, 7,
-                                      "Demo de caminos cargada");
-        state->grafo_vertice_inicio = 1;
-        state->grafo_vertice_destino = 6;
-    } else if (state->grafo_demo_idx == 2) {
-        app_state_recrear_grafo(state, true);
-        app_state_grafo_insertar_demo(state, demo_bf_vertices, 5, demo_bf_aristas, 7,
-                                      "Demo Bellman-Ford cargada");
-        state->grafo_vertice_inicio = 1;
-        state->grafo_vertice_destino = 4;
-    } else {
-        app_state_recrear_grafo(state, false);
-        app_state_grafo_insertar_demo(state, demo_mst_vertices, 6, demo_mst_aristas, 8,
-                                      "Demo MST cargada");
-        state->grafo_vertice_inicio = 1;
-        state->grafo_vertice_destino = 6;
+    n = clamp_int(state->input_valor, 2, max_demo_vertices);
+    app_state_seed_random_once();
+    dirigido = state->grafo_dirigido;
+    state->input_valor = n;
+
+    state->operacion_actual = OPERACION_INICIALIZAR;
+    state->operacion_serial++;
+    state->ultima_operacion_ok = app_state_recrear_grafo(state, dirigido);
+    if (!state->ultima_operacion_ok) {
+        set_message(state, "Error grafo: no se pudo crear la demo");
+        return;
     }
-    state->grafo_demo_idx = (state->grafo_demo_idx + 1) % 4;
+
+    for (i = 1; i <= n; i++) {
+        if (!grafo_controller_agregar_vertice(&state->grafo_controller_state, i)) {
+            state->ultima_operacion_ok = false;
+            snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+                     "Error grafo: no se pudo insertar vertice %d", i);
+            return;
+        }
+    }
+
+    /* Base conectada: cadena 1->2->...->n */
+    for (i = 1; i < n; i++) {
+        int peso = 1 + (rand() % 9);
+        grafo_controller_agregar_arista(&state->grafo_controller_state, i, i + 1, peso);
+    }
+
+    /* Aristas extra aleatorias (baja densidad) para evitar grafos sobreconectados */
+    extras_objetivo = n / 3;
+    if (extras_objetivo < 1) {
+        extras_objetivo = 1;
+    }
+    if (extras_objetivo > 6) {
+        extras_objetivo = 6;
+    }
+    while (extras_agregadas < extras_objetivo && intentos < n * 24) {
+        int u;
+        int v;
+        int peso;
+
+        intentos++;
+        if (dirigido) {
+            /* Dirigido mas disperso: preferir avance u->v con u < v */
+            u = 1 + (rand() % (n - 1));
+            v = u + 1 + (rand() % (n - u));
+        } else {
+            u = 1 + (rand() % n);
+            v = 1 + (rand() % n);
+            if (u == v) {
+                continue;
+            }
+            /* En no dirigido evitar paralelas a la cadena base para no saturar */
+            if (abs(u - v) <= 1) {
+                continue;
+            }
+        }
+        if (grafo_existe_arista(state->grafo, u, v)) {
+            continue;
+        }
+
+        peso = 1 + (rand() % 9);
+        if (grafo_controller_agregar_arista(&state->grafo_controller_state, u, v, peso)) {
+            extras_agregadas++;
+        }
+    }
+
+    state->grafo_vertice_inicio = 1;
+    state->grafo_vertice_destino = n;
     state->grafo_algoritmo_seleccionado = GRAFO_ALGO_NINGUNO;
+    state->grafo_demo_idx = 0;
+    state->ultima_operacion_ok = true;
+    trigger_feedback(state, OPERACION_INICIALIZAR);
+    snprintf(state->mensaje_operacion, sizeof(state->mensaje_operacion),
+             "Demo aleatoria dispersa: %d nodos, %d aristas (%s)", n,
+             (int)grafo_tamano(state->grafo), dirigido ? "dirigido" : "no dirigido");
 }
 
 /** @brief Busca coincidencias en lista o lista circular. */

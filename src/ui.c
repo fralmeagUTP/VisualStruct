@@ -3,6 +3,8 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include <math.h>
+#include <stdio.h>
+#include <string.h>
 
 /**
  * @file ui.c
@@ -23,6 +25,64 @@ static Font FONT_HEADING = {0};
 static Font FONT_BODY = {0};
 static bool FONT_HEADING_LOADED = false;
 static bool FONT_BODY_LOADED = false;
+
+static int measure_ui_text(const Font *font, const char *text, float size, float spacing);
+
+/** @brief Ajusta texto/size para que quepa dentro de un ancho objetivo. */
+static void fit_text_to_width(const Font *font, const char *text, float max_width, float *size,
+                              float min_size, float spacing, char *out, size_t out_size) {
+    float current_size = size != NULL ? *size : min_size;
+    size_t len;
+
+    if (out == NULL || out_size == 0) {
+        return;
+    }
+    out[0] = '\0';
+    if (text == NULL) {
+        return;
+    }
+
+    if (current_size < min_size) {
+        current_size = min_size;
+    }
+
+    while (current_size > min_size &&
+           (float)measure_ui_text(font, text, current_size, spacing) > max_width) {
+        current_size -= 0.5f;
+    }
+    if (current_size < min_size) {
+        current_size = min_size;
+    }
+
+    len = strlen(text);
+    if ((float)measure_ui_text(font, text, current_size, spacing) <= max_width) {
+        snprintf(out, out_size, "%s", text);
+    } else {
+        size_t cut = len;
+        while (cut > 0) {
+            char candidate[128];
+            size_t keep = cut;
+            if (keep > sizeof(candidate) - 4) {
+                keep = sizeof(candidate) - 4;
+            }
+            memcpy(candidate, text, keep);
+            candidate[keep] = '\0';
+            strcat(candidate, "...");
+            if ((float)measure_ui_text(font, candidate, current_size, spacing) <= max_width) {
+                snprintf(out, out_size, "%s", candidate);
+                break;
+            }
+            cut--;
+        }
+        if (out[0] == '\0') {
+            snprintf(out, out_size, "...");
+        }
+    }
+
+    if (size != NULL) {
+        *size = current_size;
+    }
+}
 
 /** @brief Ajusta coordenadas a rejilla de pixeles para evitar texto borroso por subpixel. */
 static float snap_px(float value) {
@@ -192,7 +252,10 @@ UILayout ui_get_layout(const UIContext *ui) {
     float sidebarW = 196.0f;
     float rightW = 308.0f;
     float bottomH = 172.0f;
-    float centerH = contentHeight - bottomH - GAP;
+    float minBottomH = 116.0f;
+    float minCenterH = 250.0f;
+    float maxBottomH;
+    float centerH;
 
     if (ui->screenWidth <= 1366) {
         sidebarW = 184.0f;
@@ -209,10 +272,27 @@ UILayout ui_get_layout(const UIContext *ui) {
         bottomH = 148.0f;
     }
 
-    centerH = contentHeight - bottomH - GAP;
-    if (centerH < 200.0f) {
-        centerH = 200.0f;
+    if (ui->screenHeight <= 760) {
+        minCenterH = 230.0f;
+        minBottomH = 108.0f;
     }
+    if (ui->screenHeight <= 700) {
+        minCenterH = 210.0f;
+        minBottomH = 96.0f;
+    }
+
+    maxBottomH = contentHeight - minCenterH - GAP;
+    if (maxBottomH < minBottomH) {
+        bottomH = (maxBottomH > 80.0f) ? maxBottomH : 80.0f;
+    } else {
+        if (bottomH > maxBottomH) {
+            bottomH = maxBottomH;
+        }
+        if (bottomH < minBottomH) {
+            bottomH = minBottomH;
+        }
+    }
+    centerH = contentHeight - bottomH - GAP;
 
     layout.sidebar = (Rectangle){
         (float)GAP,
@@ -242,8 +322,8 @@ UILayout ui_get_layout(const UIContext *ui) {
     if (layout.center.width < 320.0f) {
         layout.center.width = 320.0f;
     }
-    if (layout.bottom.height < 100.0f) {
-        layout.bottom.height = 100.0f;
+    if (layout.bottom.height < 80.0f) {
+        layout.bottom.height = 80.0f;
     }
 
     return layout;
@@ -354,7 +434,8 @@ bool ui_button(Rectangle bounds, const char *label, bool active) {
     bool hover = CheckCollisionPointRec(mouse, bounds);
     float label_size = bounds.height >= 40.0f ? 17.0f : 15.0f;
     float label_spacing = label_size >= 17.0f ? 0.12f : 0.10f;
-    int labelWidth = measure_ui_text(body_font(), label, label_size, label_spacing);
+    char fitted_label[128];
+    int labelWidth;
     Color bg = active ? (Color){216, 231, 246, 255} : (Color){248, 251, 254, 255};
     Color border = active ? COLOR_PRIMARY_DEEP : (Color){143, 163, 186, 255};
     Color text = active ? COLOR_PRIMARY_DEEP : COLOR_TEXT;
@@ -363,13 +444,17 @@ bool ui_button(Rectangle bounds, const char *label, bool active) {
         bg = (Color){231, 240, 249, 255};
     }
 
+    fit_text_to_width(body_font(), label, bounds.width - 18.0f, &label_size, 12.0f, label_spacing,
+                      fitted_label, sizeof(fitted_label));
+    labelWidth = measure_ui_text(body_font(), fitted_label, label_size, label_spacing);
+
     DrawRectangleRounded(bounds, 0.20f, 10, bg);
     DrawRectangleRoundedLinesEx(bounds, 0.20f, 10, 2.0f, border);
     if (active || hover) {
         DrawRectangleRounded((Rectangle){bounds.x + 1.0f, bounds.y + 1.0f, 4.0f, bounds.height - 2.0f},
                              0.40f, 8, Fade(COLOR_ACCENT, 0.95f));
     }
-    draw_ui_text(body_font(), label, bounds.x + (bounds.width - labelWidth) * 0.5f,
+    draw_ui_text(body_font(), fitted_label, bounds.x + (bounds.width - labelWidth) * 0.5f,
                  bounds.y + (bounds.height - label_size) * 0.5f - 1.0f, label_size, label_spacing,
                  text);
 
@@ -425,7 +510,8 @@ bool ui_sidebar_button(Rectangle bounds, const char *label, bool active) {
     bool hover = CheckCollisionPointRec(mouse, bounds);
     float label_size = bounds.height >= 40.0f ? 16.0f : 14.0f;
     float label_spacing = 0.10f;
-    int labelWidth = measure_ui_text(body_font(), label, label_size, label_spacing);
+    char fitted_label[128];
+    int labelWidth;
     Color bg = active ? (Color){223, 234, 246, 255} : (Color){248, 250, 253, 255};
     Color border = active ? COLOR_PRIMARY_DEEP : (Color){160, 177, 196, 255};
 
@@ -433,11 +519,15 @@ bool ui_sidebar_button(Rectangle bounds, const char *label, bool active) {
         bg = (Color){233, 241, 249, 255};
     }
 
+    fit_text_to_width(body_font(), label, bounds.width - 20.0f, &label_size, 12.0f, label_spacing,
+                      fitted_label, sizeof(fitted_label));
+    labelWidth = measure_ui_text(body_font(), fitted_label, label_size, label_spacing);
+
     DrawRectangleRounded(bounds, 0.22f, 10, bg);
     DrawRectangleRoundedLinesEx(bounds, 0.22f, 10, 2.0f, border);
     DrawRectangleRounded((Rectangle){bounds.x + 1.5f, bounds.y + 1.5f, 6.0f, bounds.height - 3.0f},
                          0.50f, 8, active ? COLOR_ACCENT : Fade(COLOR_PRIMARY, hover ? 0.45f : 0.18f));
-    draw_ui_text(body_font(), label, bounds.x + (bounds.width - labelWidth) * 0.5f,
+    draw_ui_text(body_font(), fitted_label, bounds.x + (bounds.width - labelWidth) * 0.5f,
                  bounds.y + (bounds.height - label_size) * 0.5f - 1.0f, label_size, label_spacing,
                  active ? COLOR_PRIMARY_DEEP : COLOR_TEXT);
 

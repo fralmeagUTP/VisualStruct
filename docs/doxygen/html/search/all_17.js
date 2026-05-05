@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['objetivo_0',['Objetivo',['../md_docs_2analisis-diseno-grafos.html#autotoc_md18',1,'1. Objetivo'],['../index.html#autotoc_md1',1,'Objetivo'],['../md_docs_2contribucion.html#autotoc_md67',1,'Objetivo'],['../md_docs_2plan-modulo-grafos.html#autotoc_md84',1,'Objetivo'],['../md_docs_2qa-manual.html#autotoc_md92',1,'Objetivo'],['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md106',1,'Objetivo']]],
-  ['objetivo_20de_20la_20funcionalidad_1',['Objetivo de la funcionalidad',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md26',1,'1. Objetivo de la funcionalidad'],['../md_docs_2analisis-diseno-sublistas.html#autotoc_md42',1,'1. Objetivo de la funcionalidad']]],
+  ['objetivo_0',['Objetivo',['../md_docs_2analisis-diseno-grafos.html#autotoc_md13',1,'1. Objetivo'],['../index.html#autotoc_md1',1,'Objetivo'],['../md_docs_2contribucion.html#autotoc_md67',1,'Objetivo'],['../md_docs_2plan-modulo-grafos.html#autotoc_md93',1,'Objetivo'],['../md_docs_2qa-manual.html#autotoc_md99',1,'Objetivo'],['../md_docs_2qa-visualizacion-ventanas.html#autotoc_md107',1,'Objetivo']]],
+  ['objetivo_20de_20la_20funcionalidad_1',['Objetivo de la funcionalidad',['../md_docs_2analisis-diseno-lista-circular.html#autotoc_md22',1,'1. Objetivo de la funcionalidad'],['../md_docs_2analisis-diseno-sublistas.html#autotoc_md38',1,'1. Objetivo de la funcionalidad']]],
   ['opciones_2',['opciones',['../struct_grafo_vista.html#a68e330103d20ea19c8acbb380cc29820',1,'GrafoVista']]],
   ['open_5fgraph_5fvisualizer_3',['open_graph_visualizer',['../main_8c.html#ac3c2a21331ec159dc3eb25c1d0fc8694',1,'main.c']]],
   ['operacion_20nueva_4',['Cuando agregues una operacion nueva',['../md_docs_2contribucion.html#autotoc_md70',1,'']]],
@@ -20,9 +20,8 @@ var searchData=
   ['operacion_5fsublista_5feliminar_5fhijo_17',['OPERACION_SUBLISTA_ELIMINAR_HIJO',['../app__state_8h.html#af12172166a85efb2c6a53de3facb2776a3e144a8e777c6e0fd4fc07716b25513c',1,'app_state.h']]],
   ['operacion_5fsublista_5finsertar_5fhijo_18',['OPERACION_SUBLISTA_INSERTAR_HIJO',['../app__state_8h.html#af12172166a85efb2c6a53de3facb2776ad64fa995c2f47684cbe15121722bf20a',1,'app_state.h']]],
   ['operacion_5fvaciar_19',['OPERACION_VACIAR',['../app__state_8h.html#af12172166a85efb2c6a53de3facb2776a8e57c4a24bae6bc52f40a8b924e9e943',1,'app_state.h']]],
-  ['operaciones_20por_20estructura_20',['3. Operaciones por estructura',['../md_docs_2sdd-secuenciales-vigente.html#autotoc_md117',1,'']]],
-  ['operativo_21',['Entorno recomendado por sistema operativo',['../index.html#autotoc_md3',1,'']]],
-  ['orden_5fexaminacion_22',['orden_examinacion',['../struct_grafo_arista_visual.html#ac66ae905b2e990ff8f6fdd40ea299b1c',1,'GrafoAristaVisual']]],
-  ['orden_5fvisitacion_23',['orden_visitacion',['../struct_grafo_vertice_visual.html#a34fed5ea5e1425f6003a4e19f9d22a96',1,'GrafoVerticeVisual']]],
-  ['origen_24',['origen',['../struct_grafo_arista.html#a0604d3a1d013ea5f5f3b05f8cac9955d',1,'GrafoArista::origen'],['../struct_grafo_arista_visual.html#a2bf190d5fefacc474f6aefd9571a76bb',1,'GrafoAristaVisual::origen']]]
+  ['operaciones_20por_20estructura_20',['3. Operaciones por estructura',['../md_docs_2sdd-secuenciales-vigente.html#autotoc_md118',1,'']]],
+  ['orden_5fexaminacion_21',['orden_examinacion',['../struct_grafo_arista_visual.html#ac66ae905b2e990ff8f6fdd40ea299b1c',1,'GrafoAristaVisual']]],
+  ['orden_5fvisitacion_22',['orden_visitacion',['../struct_grafo_vertice_visual.html#a34fed5ea5e1425f6003a4e19f9d22a96',1,'GrafoVerticeVisual']]],
+  ['origen_23',['origen',['../struct_grafo_arista.html#a0604d3a1d013ea5f5f3b05f8cac9955d',1,'GrafoArista::origen'],['../struct_grafo_arista_visual.html#a2bf190d5fefacc474f6aefd9571a76bb',1,'GrafoAristaVisual::origen']]]
 ];

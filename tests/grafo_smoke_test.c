@@ -94,6 +94,42 @@ int main(void) {
     grafo_destruir(&g);
     CHECK(g == NULL, "grafo_destruir deja puntero en NULL");
 
+    {
+        Grafo *gs = grafo_crear(false);
+        CHECK(gs != NULL, "crear grafo no dirigido con IDs dispersos");
+        if (gs) {
+            CHECK(grafo_insertar_vertice(gs, 10) == GRAFO_OK, "insertar vertice 10");
+            CHECK(grafo_insertar_vertice(gs, 42) == GRAFO_OK, "insertar vertice 42");
+            CHECK(grafo_insertar_vertice(gs, 777) == GRAFO_OK, "insertar vertice 777");
+            CHECK(grafo_insertar_vertice(gs, 5000) == GRAFO_OK, "insertar vertice 5000");
+
+            CHECK(grafo_insertar_arista(gs, 10, 42, 1) == GRAFO_OK, "insertar arista 10-42");
+            CHECK(grafo_insertar_arista(gs, 42, 777, 2) == GRAFO_OK, "insertar arista 42-777");
+            CHECK(grafo_insertar_arista(gs, 777, 5000, 3) == GRAFO_OK, "insertar arista 777-5000");
+            CHECK(grafo_insertar_arista(gs, 10, 5000, 10) == GRAFO_OK, "insertar arista 10-5000");
+
+            {
+                GrafoCamino p_sparse = grafo_prim(gs, 10);
+                CHECK(p_sparse.estado == GRAFO_OK, "Prim IDs dispersos estado OK");
+                CHECK(p_sparse.existe, "Prim IDs dispersos construye MST");
+                CHECK(p_sparse.cantidad == 3, "Prim IDs dispersos devuelve n-1 aristas");
+                CHECK(p_sparse.costo_total == 6, "Prim IDs dispersos costo esperado = 6");
+                grafo_liberar_camino(&p_sparse);
+            }
+
+            {
+                GrafoCamino k_sparse = grafo_kruskal(gs);
+                CHECK(k_sparse.estado == GRAFO_OK, "Kruskal IDs dispersos estado OK");
+                CHECK(k_sparse.existe, "Kruskal IDs dispersos construye MST");
+                CHECK(k_sparse.cantidad == 3, "Kruskal IDs dispersos devuelve n-1 aristas");
+                CHECK(k_sparse.costo_total == 6, "Kruskal IDs dispersos costo esperado = 6");
+                grafo_liberar_camino(&k_sparse);
+            }
+
+            grafo_destruir(&gs);
+        }
+    }
+
     Grafo *gd = grafo_crear(true);
     CHECK(gd != NULL, "crear grafo dirigido");
     if (gd) {

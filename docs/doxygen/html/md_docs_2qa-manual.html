@@ -92,138 +92,102 @@ $(function(){initNavTree('md_docs_2qa-manual.html','',''); });
   <div class="headertitle"><div class="title">Guia de Pruebas Manuales </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md91"></a></p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md92"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md98"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md99"></a>
 Objetivo</h1>
-<p>Esta guia define una verificacion manual minima para confirmar que la app unificada mantiene comportamiento correcto y feedback pedagogico consistente.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md93"></a>
+<p>Verificar comportamiento funcional y consistencia pedagogica de todos los modulos.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md100"></a>
 Preparacion</h1>
 <ol type="1">
-<li>Compilar la aplicacion.</li>
-<li>Ejecutar el binario generado.</li>
-<li>Verificar que carguen la ventana principal, el menu lateral y los paneles de codigo y traza.</li>
-</ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md94"></a>
-Chequeos globales</h1>
-<ul>
-<li>Cambiar entre <a class="el" href="struct_pila.html">Pila</a>, <a class="el" href="struct_cola.html">Cola</a>, <a class="el" href="struct_cola.html">Cola</a> de Prioridad, <a class="el" href="struct_lista.html">Lista</a>, <a class="el" href="struct_lista.html">Lista</a> Circular, Sublistas y <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a> desde la barra lateral.</li>
-<li>Verificar que el titulo, los botones contextuales y el conteo de elementos cambian con la estructura activa.</li>
-<li>Confirmar que los campos <span class="tt">Valor</span> y <span class="tt">Prioridad</span> aceptan edicion.</li>
-<li>En <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a>, confirmar edicion de <span class="tt">Origen</span>, <span class="tt">Destino</span> y <span class="tt">Peso</span>.</li>
-<li>Confirmar que <span class="tt">Valor</span>, <span class="tt">Origen</span>, <span class="tt">Destino</span> y <span class="tt">Peso</span> solo aceptan entrada numerica.</li>
-<li>Confirmar que aparece cursor visible en el cuadro activo.</li>
-<li>Escribir una entrada invalida y comprobar que la caja se marca en rojo.</li>
-<li>Verificar que el estado de operacion muestre mensaje coherente tras acciones validas e invalidas.</li>
-<li>Abrir/cerrar ayuda con <span class="tt">F1</span> desde menu principal y visualizador sin bloqueos.</li>
-<li>Abrir ayuda desde boton lateral <span class="tt">Ayuda (F1)</span> y verificar retorno correcto con <span class="tt">Volver</span> o <span class="tt">ESC</span>.</li>
-</ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md95"></a>
-Pila</h1>
-<ol type="1">
-<li>Inicializar la pila.</li>
-<li>Insertar tres valores distintos.</li>
-<li>Confirmar que el ultimo insertado aparece en el tope y con marca <span class="tt">NEW</span>.</li>
-<li>Eliminar un elemento.</li>
-<li>Verificar que el tope cambia y que aparece el nodo fantasma con <span class="tt">POP</span>.</li>
-<li>Vaciar y confirmar el mensaje <span class="tt"><a class="el" href="struct_pila.html">Pila</a> vacia</span>.</li>
-</ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md96"></a>
-Cola</h1>
-<ol type="1">
-<li>Inicializar la cola.</li>
-<li>Insertar al menos tres valores (idealmente mas de los que caben sin scroll).</li>
-<li>Confirmar que aparecen <span class="tt">FRONT</span> y <span class="tt">BACK</span> en posiciones correctas.</li>
-<li>Usar rueda del mouse sobre el panel central y verificar desplazamiento horizontal.</li>
-<li>Eliminar un elemento.</li>
-<li>Verificar avance del frente y presencia del nodo fantasma <span class="tt">OUT</span>.</li>
-<li>Vaciar y confirmar el mensaje <span class="tt"><a class="el" href="struct_cola.html">Cola</a> vacia</span>.</li>
-</ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md97"></a>
-Cola de prioridad</h1>
-<ol type="1">
-<li>Inicializar la estructura.</li>
-<li>Insertar varios elementos con prioridades distintas (incluyendo mas de los visibles en ancho).</li>
-<li>Verificar que la marca <span class="tt">OUT</span> coincida con la menor prioridad.</li>
-<li>Usar rueda del mouse sobre el panel central y verificar desplazamiento horizontal.</li>
-<li>Eliminar un elemento.</li>
-<li>Confirmar que el nodo fantasma muestra <span class="tt">V:</span> y <span class="tt">P:</span> correctos.</li>
-<li>Editar una prioridad invalida y comprobar feedback en rojo.</li>
-</ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md98"></a>
-Lista</h1>
-<ol type="1">
-<li>Inicializar la lista.</li>
-<li>Insertar un valor al inicio y otro al final; luego agregar suficientes nodos para forzar overflow horizontal.</li>
-<li>Confirmar presencia de <span class="tt">HEAD</span> y <span class="tt">NULL</span>.</li>
-<li>Usar rueda del mouse sobre el panel central y verificar desplazamiento horizontal.</li>
-<li>Buscar un valor existente y verificar resaltado.</li>
-<li>Invertir la lista y observar cambio de orden.</li>
-<li>Eliminar y verificar nodo fantasma <span class="tt">DEL</span>.</li>
-</ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md99"></a>
-Lista circular</h1>
-<ol type="1">
-<li>Inicializar la lista circular.</li>
-<li>Insertar al inicio y al final al menos 6 valores para forzar overflow horizontal.</li>
-<li>Verificar que se muestre <span class="tt">HEAD</span> y la conexion de retorno (ultimo nodo vuelve al primero).</li>
-<li>Usar rueda del mouse sobre el panel central y verificar desplazamiento horizontal.</li>
-<li>Buscar un valor existente y comprobar resaltado de coincidencias.</li>
-<li>Invertir la lista y validar que se conserva la circularidad.</li>
-<li>Eliminar un valor y verificar nodo fantasma <span class="tt">DEL</span>.</li>
-</ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md100"></a>
-Sublistas</h1>
-<ol type="1">
-<li>Inicializar la estructura de sublistas.</li>
-<li>Insertar al menos dos nodos padre con valores distintos.</li>
-<li>Buscar uno de los padres para dejarlo activo.</li>
-<li>Insertar dos hijos sobre el padre activo y validar que se rendericen debajo del padre correcto.</li>
-<li>Cambiar de padre activo con <span class="tt">Buscar</span> y agregar un hijo adicional; confirmar independencia entre sublistas.</li>
-<li>Eliminar un hijo en el padre activo y validar feedback visual.</li>
-<li>Eliminar un padre y confirmar que tambien desaparece su sublista asociada.</li>
+<li>Compilar.</li>
+<li>Ejecutar <span class="tt">visualstruct.exe</span>.</li>
+<li>Confirmar carga de panel central, panel de codigo y panel de traza.</li>
 </ol>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md101"></a>
-Grafos</h1>
-<ol type="1">
-<li>Inicializar el grafo y alternar entre modo dirigido y no dirigido.</li>
-<li>Insertar vertices y aristas manualmente verificando validaciones de origen, destino y peso.</li>
-<li>Intentar usar <span class="tt">Origen</span> o <span class="tt">Destino</span> con un ID no existente y confirmar que el campo queda invalido y la accion no se aplica.</li>
-<li>Enfocar un campo numerico y escribir un nuevo numero confirmando reemplazo del valor previo (sin concatenacion tipo texto).</li>
-<li>Ajustar <span class="tt">Peso</span> con <span class="tt">UP/DOWN</span> o <span class="tt">KP +/-</span> para validar comportamiento numerico.</li>
-<li>En modo dirigido, confirmar flechas visibles en aristas.</li>
-<li>Cargar demos con el boton <span class="tt">Cargar demo</span> hasta recorrer los escenarios de BFS, caminos, Bellman-Ford y MST.</li>
-<li>Ejecutar BFS/DFS y comprobar que el panel inferior distingue seleccion de vertice frente a consolidacion.</li>
-<li>Ejecutar Dijkstra y confirmar en el panel inferior: arista actual, tipo de paso, camino parcial, cerrados y metricas <span class="tt">Mejoras</span>, <span class="tt">Sin cambio</span>, <span class="tt">Empeora</span>.</li>
-<li>Ejecutar Bellman-Ford y verificar el paso final explicito de chequeo/consolidacion.</li>
-<li>Activar autoplay, cambiar velocidad y usar <span class="tt">Home</span>/<span class="tt">End</span> sin bloqueos.</li>
-<li>Pulsar <span class="tt">C</span> o <span class="tt">Exportar</span> y comprobar que el resumen se copia al portapapeles.</li>
-<li>Confirmar que el lienzo central muestra leyenda para activo, procesada y mejora.</li>
-</ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md102"></a>
-Paneles pedagogicos</h1>
+Checklist global</h1>
 <ul>
-<li>Tras cada operacion, revisar que el panel <span class="tt">Codigo C Asociado (Historial)</span> agregue una nueva entrada con estructura, operacion y snippet.</li>
-<li>Presionar <span class="tt">Limpiar</span> en el panel de codigo y confirmar que el historial se reinicia.</li>
-<li>Confirmar que la traza textual y la complejidad cambian con la operacion actual.</li>
-<li>Probar scroll en panel de codigo y panel de traza cuando el texto excede el espacio visible.</li>
-<li>En Grafos, verificar que panel inferior, lienzo y traza se mantengan sincronizados al avanzar, retroceder, reiniciar y autoplay.</li>
+<li>Cambio estable entre 7 modulos.</li>
+<li>Mensajes de estado coherentes en exito/error.</li>
+<li>Inputs numericos operativos y con cursor visible.</li>
+<li>Ayuda (<span class="tt">F1</span>) abre y cierra sin perder contexto.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md102"></a>
+Secuenciales</h1>
+<h2><a class="el" href="struct_pila.html">Pila</a></h2>
+<ul>
+<li>Push x3, Pop x1, vaciar.</li>
+</ul>
+<h2><a class="el" href="struct_cola.html">Cola</a></h2>
+<ul>
+<li>Encolar x3, desencolar x1, validar <span class="tt">FRONT/BACK</span>.</li>
+</ul>
+<h2><a class="el" href="struct_cola.html">Cola</a> de prioridad</h2>
+<ul>
+<li>Insertar con prioridades distintas, validar orden de salida.</li>
+</ul>
+<h2><a class="el" href="struct_lista.html">Lista</a></h2>
+<ul>
+<li>Insertar inicio/final, buscar, invertir, eliminar.</li>
+</ul>
+<h2><a class="el" href="struct_lista.html">Lista</a> Circular</h2>
+<ul>
+<li>Insertar varios nodos, validar cierre, buscar, invertir.</li>
+</ul>
+<h2>Sublistas</h2>
+<ul>
+<li>Crear padres, seleccionar padre, agregar/eliminar hijos.</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md103"></a>
-Pantalla de ayuda</h1>
-<ul>
-<li>Verificar que el contenido sea extenso y legible en resolucion minima y base.</li>
-<li>Confirmar scroll vertical funcional dentro del cuerpo de ayuda.</li>
-<li>Validar que <span class="tt">F1</span> alterna apertura/cierre de ayuda conservando el contexto previo.</li>
-</ul>
+Grafo</h1>
+<h2>Construccion</h2>
+<ol type="1">
+<li>Inicializar.</li>
+<li>Insertar vertices.</li>
+<li>Insertar aristas con peso.</li>
+<li>Alternar dirigido/no dirigido.</li>
+<li>Validar que origen/destino invalidos no aplican cambios.</li>
+</ol>
+<h2>Demo configurable</h2>
+<ol type="1">
+<li>Definir <span class="tt">Valor</span> (ej. 8, luego 14).</li>
+<li>Pulsar <span class="tt">Cargar demo</span> en cada caso.</li>
+<li>Verificar que cantidad de vertices corresponde a <span class="tt">Valor</span>.</li>
+<li>Repetir <span class="tt">Cargar demo</span> con el mismo valor y confirmar variacion de aristas/pesos.</li>
+<li>Confirmar que el grafo no queda excesivamente denso.</li>
+</ol>
+<h2>Recorridos</h2>
+<ol type="1">
+<li>Definir inicio.</li>
+<li>Ejecutar BFS y DFS.</li>
+<li>Verificar lista de vertices recorridos y progreso de pasos.</li>
+</ol>
+<h2>Caminos minimos</h2>
+<ol type="1">
+<li>Definir origen/destino/peso.</li>
+<li>Ejecutar Dijkstra y Bellman-Ford.</li>
+<li>Confirmar ruta y costo.</li>
+</ol>
+<h2>MST</h2>
+<ol type="1">
+<li>Cambiar a vista MST.</li>
+<li>En modo basico ejecutar Prim y Kruskal.</li>
+<li>Verificar resultado y avance de paso.</li>
+<li>Activar modo avanzado y validar controles de paso/autoplay.</li>
+</ol>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md104"></a>
-Criterios de salida</h1>
-<p>Se considera aceptable una iteracion si:</p>
+Paneles pedagogicos</h1>
 <ul>
+<li><span class="tt">Codigo C Asociado</span>: agrega entrada por operacion.</li>
+<li><span class="tt">Limpiar</span>: reinicia historial.</li>
+<li><span class="tt">Operacion, Traza y Complejidad</span>: cambia segun accion actual.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md105"></a>
+Criterio de salida</h1>
+<p>Aprobado si:</p><ul>
 <li>no hay cierres inesperados</li>
-<li>la estructura visible coincide con la operacion aplicada</li>
-<li>el feedback visual de error funciona</li>
-<li>snippet, traza y complejidad permanecen sincronizados con la accion</li>
-<li>la app sigue compilando despues del cambio evaluado </li>
+<li>las operaciones afectan la estructura correcta</li>
+<li>codigo/traza/visualizacion permanecen sincronizados</li>
+<li>no hay regresiones visibles en inputs y controles de grafo </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

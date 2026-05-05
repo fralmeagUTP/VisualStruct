@@ -1,69 +1,61 @@
-# Analisis y Diseno: Modulo Grafo
+﻿# Analisis y Diseno: Modulo Grafo
 
 ## 1. Objetivo
-Integrar un modulo de grafos en VisualStruct con enfoque docente, manteniendo separacion por capas y consistencia con los paneles pedagogicos de la aplicacion.
+Ofrecer un modulo de grafos util para docencia, con flujo simple para usuario final y profundidad tecnica disponible en modo avanzado.
 
-## 2. Alcance funcional
-El modulo permite:
+## 2. Alcance funcional actual
+1. Construccion de grafo dirigido/no dirigido.
+2. CRUD de vertices y aristas ponderadas.
+3. Demos configurables por cantidad de nodos.
+4. Recorridos BFS/DFS con inicio definido por usuario.
+5. Caminos minimos con Dijkstra y Bellman-Ford.
+6. MST con Prim y Kruskal.
+7. Navegacion por pasos, autoplay y trazabilidad.
 
-1. Crear y reinicializar grafo.
-2. Insertar y eliminar vertices.
-3. Insertar y eliminar aristas con peso.
-4. Alternar entre modo dirigido y no dirigido.
-5. Cargar escenarios demo.
-6. Ejecutar BFS, DFS, Dijkstra, Bellman-Ford, Prim y Kruskal.
-7. Navegar la ejecucion por pasos, autoplay y exportacion de resumen.
-
-## 3. Estructura tecnica por capas
+## 3. Arquitectura del modulo
 ### Dominio
-- `include/grafo.h` y `src/grafo.c`.
-- TAD desacoplado de Raylib y expuesto por API publica.
+- `src/grafo.c` / `include/grafo.h`
+- Implementa estructuras y algoritmos.
 
-### Aplicacion y control
-- `src/app_state.c` coordina operaciones de alto nivel para `ESTRUCTURA_GRAFO`.
-- `src/grafo_controller.c` gestiona validaciones, ejecucion de algoritmos y estado de pasos.
+### Aplicacion
+- `src/app_state.c`: valida entradas, ejecuta operaciones y gestiona mensajes.
+- `src/grafo_controller.c`: convierte resultados de algoritmo a pasos visuales.
 
 ### Presentacion
-- `src/grafo_view.c` dibuja vertices, aristas y estados visuales.
-- `src/grafo_state.c` y `src/grafo_layout.c` mantienen snapshot y layout del lienzo.
-- `src/main.c` integra menu, controles y rutas de navegacion.
+- `src/grafo_state.c`: snapshot visual.
+- `src/grafo_layout.c`: posicionamiento de vertices.
+- `src/grafo_view.c`: render de vertices, aristas, etiquetas y leyenda.
+- `src/main.c`: UI de modos (Construccion, Recorridos, Caminos, MST).
 
 ### Pedagogia
-- `src/grafo_code_viewer.c`: snippet del algoritmo activo.
-- `src/grafo_trace.c`: traza textual por algoritmo.
-- `src/grafo_pedagogy.c`: metricas por paso, camino parcial, tabla de distancias y exportacion.
+- `src/grafo_code_viewer.c`, `src/grafo_trace.c`, `src/grafo_pedagogy.c`.
 
-## 4. Requerimientos de interfaz
-- Portada principal con dos entradas: `Secuenciales` y `Grafos`.
-- Submenu de grafos con acceso a construccion y algoritmos.
-- Campos laterales para `origen`, `destino` y `peso`.
-- Entradas laterales de grafo con comportamiento numerico (no texto libre) y cursor visible en foco.
-- Validacion en tiempo real para `origen` y `destino` contra vertices existentes.
-- Modo basico para flujo de construccion y modo avanzado para controles/paneles extendidos.
-- Panel inferior enriquecido con tipo de paso, progreso y metricas.
+## 4. Decisiones UI/UX aplicadas
+- Inputs de grafo numericos con cursor visible.
+- Modo basico para simplificar pantalla.
+- Modo avanzado para controles detallados.
+- Vista MST basica con ejecucion directa de Prim/Kruskal.
+- Demo aleatoria dispersa para evitar grafos sobreconectados.
 
-## 5. Complejidades esperadas (referencia docente)
-- BFS: `O(V + E)`.
-- DFS: `O(V + E)`.
-- Dijkstra (implementacion base sin heap): `O(V^2 + E)`.
-- Bellman-Ford: `O(V * E)`.
-- Prim (seleccion lineal): `O(V^2 + E)`.
-- Kruskal: `O(E log E)` por ordenamiento de aristas.
+## 5. Complejidades de referencia
+- BFS: O(V + E)
+- DFS: O(V + E)
+- Dijkstra (sin heap): O(V^2 + E)
+- Bellman-Ford: O(V * E)
+- Prim (seleccion lineal): O(V^2 + E)
+- Kruskal: O(E log E)
 
 ## 6. Criterios de aceptacion
-1. La app compila con `-Wall -Wextra -pedantic`.
-2. El menu permite entrar a grafos y volver sin perder estabilidad.
-3. Las operaciones de vertices/aristas reflejan estado valido e invalido.
-4. Cada algoritmo actualiza vista, codigo y traza de forma sincronizada.
-5. La navegacion por pasos y autoplay mantiene coherencia visual.
-6. La exportacion textual entrega resumen util para clase.
+1. Compilacion limpia con `-Wall -Wextra -pedantic`.
+2. Entradas invalidas no alteran el estado del grafo.
+3. Algoritmos sincronizan lienzo, panel de codigo y traza.
+4. Demos responden al valor de nodos y mantienen variabilidad.
+5. MST funciona en modo basico y avanzado.
 
-## 7. Riesgos y mitigaciones
-- Riesgo: acoplar logica de algoritmo con UI.
-  - Mitigacion: mantener TAD y controlador sin dependencias de render.
-- Riesgo: inconsistencias entre paneles pedagogicos.
-  - Mitigacion: centralizar metricas y trazas en `grafo_pedagogy.c` y `grafo_trace.c`.
-- Riesgo: sobrecarga visual en resoluciones bajas.
-  - Mitigacion: validar con `docs/qa-visualizacion-ventanas.md` y modo compacto.
-- Riesgo: entradas ambiguas en construccion de aristas (IDs inexistentes o texto invalido).
-  - Mitigacion: restricciones de input numerico y validacion de existencia de vertice antes de aplicar cambios.
+## 7. Riesgos pendientes
+- Prim/Kruskal usan indices por ID en arrays fijos: requiere refactor para IDs dispersos/grandes.
+- Ajuste de densidad de demo puede requerir parametrizacion por perfil docente.
+
+## 8. Siguiente mejora recomendada
+- Introducir configurador de demo (densidad, rango de pesos, dirigido).
+- Refactor interno de MST con mapeo de IDs a indices compactos.

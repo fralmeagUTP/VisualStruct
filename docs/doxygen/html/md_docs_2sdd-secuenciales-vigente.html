@@ -92,8 +92,8 @@ $(function(){initNavTree('md_docs_2sdd-secuenciales-vigente.html','',''); });
   <div class="headertitle"><div class="title">SDD Vigente: Modulo Secuencial (VisualStruct) </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md114"></a></p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md115"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md115"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md116"></a>
 1. Informacion general</h1>
 <h2>1.1 Nombre</h2>
 <p>VisualStruct UTP - Modulo Secuencial (app unificada en C con Raylib).</p>
@@ -106,7 +106,7 @@ $(function(){initNavTree('md_docs_2sdd-secuenciales-vigente.html','',''); });
 <li>Arquitectura: app unica con <span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span> + <span class="tt"><a class="el" href="struct_app_state.html">AppState</a></span> + vistas por estructura.</li>
 <li>Integracion: convive con modulo <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a> dentro del mismo ejecutable.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md116"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md117"></a>
 2. Alcance funcional vigente</h1>
 <p>El modulo secuencial incluye seis estructuras:</p>
 <ol type="1">
@@ -125,7 +125,7 @@ $(function(){initNavTree('md_docs_2sdd-secuenciales-vigente.html','',''); });
 <li>traza y complejidad en panel inferior</li>
 <li>feedback de estado (exito/error)</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md117"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md118"></a>
 3. Operaciones por estructura</h1>
 <h2>3.1 <a class="el" href="struct_pila.html">Pila</a></h2>
 <ul>
@@ -178,7 +178,7 @@ $(function(){initNavTree('md_docs_2sdd-secuenciales-vigente.html','',''); });
 <li>Eliminar hijo sobre padre activo</li>
 <li>Vaciar</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md118"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md119"></a>
 4. Requerimientos de interfaz</h1>
 <ol type="1">
 <li>Navegacion secuencial desde Home (<span class="tt">1 Secuenciales</span>) y submenu (<span class="tt">1..6</span>).</li>
@@ -197,7 +197,7 @@ $(function(){initNavTree('md_docs_2sdd-secuenciales-vigente.html','',''); });
 <li>horizontal en cola/listas/cola de prioridad</li>
 <li>vertical en pila/sublistas segun contenido</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md119"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md120"></a>
 5. Requerimientos tecnicos</h1>
 <h2>5.1 Separacion por capas</h2>
 <ul>
@@ -217,7 +217,7 @@ $(function(){initNavTree('md_docs_2sdd-secuenciales-vigente.html','',''); });
 <li>Compilar con <span class="tt">-std=c11 -Wall -Wextra -pedantic</span>.</li>
 <li>Integrar solo codigo activo (excluir <span class="tt">src/legacy</span> del build principal).</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md120"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md121"></a>
 6. Complejidades de referencia docente</h1>
 <h2>6.1 <a class="el" href="struct_pila.html">Pila</a></h2>
 <ul>
@@ -244,7 +244,7 @@ $(function(){initNavTree('md_docs_2sdd-secuenciales-vigente.html','',''); });
 <li>Buscar padre: <span class="tt">O(n)</span></li>
 <li>Operaciones de hijo: <span class="tt">O(m)</span> sobre sublista activa</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md121"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md122"></a>
 7. Criterios de aceptacion</h1>
 <ol type="1">
 <li>La app compila y abre sin cierres inesperados.</li>
@@ -253,7 +253,7 @@ $(function(){initNavTree('md_docs_2sdd-secuenciales-vigente.html','',''); });
 <li>Vista, snippet, traza y complejidad se mantienen sincronizados tras cada operacion.</li>
 <li>QA manual y QA de visualizacion pasan en la matriz de resoluciones definida.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md122"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md123"></a>
 8. Validacion recomendada</h1>
 <ol type="1">
 <li><span class="tt">make clean &amp;&amp; make</span></li>
@@ -261,7 +261,7 @@ $(function(){initNavTree('md_docs_2sdd-secuenciales-vigente.html','',''); });
 <li>Ejecutar <span class="tt"><a class="el" href="qa-manual_8md.html">docs/qa-manual.md</a></span></li>
 <li>Ejecutar <span class="tt"><a class="el" href="qa-visualizacion-ventanas_8md.html">docs/qa-visualizacion-ventanas.md</a></span></li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md123"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md124"></a>
 9. Relacion con documentos anteriores</h1>
 <ul>
 <li>El PDF <span class="tt">Sdd Visualizador Estructuras Datos Secuenciales C Raylib.pdf</span> se conserva como antecedente historico del modulo inicial.</li>

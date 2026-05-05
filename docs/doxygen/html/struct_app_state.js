@@ -14,6 +14,7 @@ var struct_app_state =
     [ "grafo_dirigido", "struct_app_state.html#ade8589ac8602d63bac0d6aee811e7efb", null ],
     [ "grafo_vertice_destino", "struct_app_state.html#ac603edfa4a31329ac6bc0ab066e4f1bd", null ],
     [ "grafo_vertice_inicio", "struct_app_state.html#a54c051b8b50f1caa7e2bee8585fee374", null ],
+    [ "input_peso_grafo", "struct_app_state.html#a47d45c04b66047f7d7662bba639ae83f", null ],
     [ "input_prioridad", "struct_app_state.html#ae6a17d5cd7127fb1b82c4a925df6f7e2", null ],
     [ "input_valor", "struct_app_state.html#afc971a81f176cfc9d6e1f5d983b244d3", null ],
     [ "lista", "struct_app_state.html#aa7d6a82e3d259d66b0c55005cb05d579", null ],

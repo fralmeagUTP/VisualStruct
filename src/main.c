@@ -194,6 +194,11 @@ typedef enum {
     SCREEN_HELP
 } ScreenMode;
 
+/* 0 Construccion, 1 Recorridos, 2 Caminos, 3 MST */
+static int g_grafo_ui_mode = 0;
+static int g_grafo_recorrido_algo = GRAFO_ALGO_BFS;
+static int g_grafo_camino_algo = GRAFO_ALGO_DIJKSTRA;
+
 /** @brief Retorna una descripcion corta para la estructura seleccionada. */
 static const char *estructura_descripcion(TipoEstructura tipo) {
     switch (tipo) {
@@ -451,6 +456,133 @@ static const char *grafo_algoritmo_home_nombre(int algoritmo) {
         return "Kruskal";
     default:
         return "Ninguno";
+    }
+}
+
+/** @brief Construye una cadena corta con el orden de vertices del recorrido actual. */
+static void grafo_formatear_orden_vertices(const GrafoController *gc, char *out, size_t out_size) {
+    int i;
+    int count;
+    size_t used;
+
+    if (out == NULL || out_size == 0) {
+        return;
+    }
+    out[0] = '\0';
+    if (gc == NULL || gc->script_vertices_count <= 0) {
+        snprintf(out, out_size, "-");
+        return;
+    }
+
+    count = gc->script_vertices_count;
+    used = 0;
+    for (i = 0; i < count; i++) {
+        char chunk[20];
+        int w;
+
+        if (i == 0) {
+            w = snprintf(chunk, sizeof(chunk), "V%d", gc->script_vertices[i]);
+        } else {
+            w = snprintf(chunk, sizeof(chunk), " -> V%d", gc->script_vertices[i]);
+        }
+        if (w <= 0) {
+            continue;
+        }
+        if (used + (size_t)w + 1 >= out_size) {
+            if (used + 4 < out_size) {
+                snprintf(out + used, out_size - used, " ...");
+            }
+            return;
+        }
+        snprintf(out + used, out_size - used, "%s", chunk);
+        used += (size_t)w;
+    }
+}
+
+/** @brief Alinea el algoritmo seleccionado con el modo visual de grafo activo. */
+static void sync_grafo_algoritmo_por_modo(AppState *app) {
+    if (app == NULL || app->estructura_activa != ESTRUCTURA_GRAFO) {
+        return;
+    }
+
+    if (g_grafo_ui_mode == 1) {
+        app->grafo_algoritmo_seleccionado = g_grafo_recorrido_algo;
+    } else if (g_grafo_ui_mode == 2) {
+        app->grafo_algoritmo_seleccionado = g_grafo_camino_algo;
+    } else if (g_grafo_ui_mode == 3) {
+        if (app->grafo_algoritmo_seleccionado != GRAFO_ALGO_PRIM &&
+            app->grafo_algoritmo_seleccionado != GRAFO_ALGO_KRUSKAL) {
+            app->grafo_algoritmo_seleccionado = GRAFO_ALGO_PRIM;
+        }
+    }
+}
+
+/** @brief Mensaje contextual al cambiar de modo para evitar errores heredados confusos. */
+static void grafo_set_modo_contexto(AppState *app) {
+    if (app == NULL || app->estructura_activa != ESTRUCTURA_GRAFO) {
+        return;
+    }
+
+    sync_grafo_algoritmo_por_modo(app);
+    app->operacion_actual = OPERACION_NINGUNA;
+    app->ultima_operacion_ok = true;
+
+    if (g_grafo_ui_mode == 0) {
+        snprintf(app->mensaje_operacion, sizeof(app->mensaje_operacion),
+                 "Modo Construccion: inicializa, crea vertices y luego aristas");
+    } else if (g_grafo_ui_mode == 1) {
+        snprintf(app->mensaje_operacion, sizeof(app->mensaje_operacion),
+                 "Modo Recorridos: define inicio y ejecuta %s",
+                 g_grafo_recorrido_algo == GRAFO_ALGO_BFS ? "BFS" : "DFS");
+    } else if (g_grafo_ui_mode == 2) {
+        snprintf(app->mensaje_operacion, sizeof(app->mensaje_operacion),
+                 "Modo Caminos: define origen/destino y ejecuta %s",
+                 g_grafo_camino_algo == GRAFO_ALGO_DIJKSTRA ? "Dijkstra" : "Bellman-Ford");
+    } else {
+        snprintf(app->mensaje_operacion, sizeof(app->mensaje_operacion),
+                 "Modo MST: ejecuta Prim o Kruskal sobre grafo no dirigido");
+    }
+}
+
+/** @brief Construye una lista multilinea numerada de vertices del recorrido. */
+static void grafo_formatear_orden_vertices_lista(const GrafoController *gc, char *out,
+                                                 size_t out_size, int max_items) {
+    int i;
+    int limite;
+    size_t used = 0;
+
+    if (out == NULL || out_size == 0) {
+        return;
+    }
+    out[0] = '\0';
+    if (gc == NULL || gc->script_vertices_count <= 0) {
+        snprintf(out, out_size, "Sin recorrido");
+        return;
+    }
+
+    limite = gc->script_vertices_count;
+    if (max_items > 0 && limite > max_items) {
+        limite = max_items;
+    }
+
+    for (i = 0; i < limite; i++) {
+        char line[32];
+        int w = snprintf(line, sizeof(line), "%d) V%d", i + 1, gc->script_vertices[i]);
+        if (w <= 0) {
+            continue;
+        }
+        if (used + (size_t)w + 2 >= out_size) {
+            break;
+        }
+        if (used > 0) {
+            out[used++] = '\n';
+        }
+        snprintf(out + used, out_size - used, "%s", line);
+        used += (size_t)w;
+    }
+
+    if (gc->script_vertices_count > limite && used + 8 < out_size) {
+        snprintf(out + used, out_size - used, "\n...");
     }
 }
 
@@ -1298,11 +1430,10 @@ static void draw_active_view(AppState *state, Rectangle panel, float content_top
     float pulse_fx = state->animacion_pulso_panel;
     float switch_smooth = switch_fx * switch_fx * (3.0f - 2.0f * switch_fx);
     float pulse_smooth = pulse_fx * pulse_fx * (3.0f - 2.0f * pulse_fx);
-    Rectangle area = {panel.x + 12.0f, content_top_y, panel.width - 24.0f,
-                      panel.height - (content_top_y - panel.y) - 12.0f};
-
-    if (area.height < 120.0f) {
-        area.height = 120.0f;
+    float max_height = panel.y + panel.height - 12.0f - content_top_y;
+    Rectangle area = {panel.x + 12.0f, content_top_y, panel.width - 24.0f, max_height};
+    if (area.height < 60.0f) {
+        area.height = 60.0f;
     }
 
     if (switch_smooth > 0.0f) {
@@ -1379,7 +1510,13 @@ static float draw_context_controls(AppState *app, Rectangle panel, bool *is_comp
     }
 
     if (app->estructura_activa == ESTRUCTURA_GRAFO) {
-        if (graph_basic_mode) {
+        sync_grafo_algoritmo_por_modo(app);
+        if (g_grafo_ui_mode != 2 &&
+            (app->grafo_algoritmo_seleccionado == GRAFO_ALGO_DIJKSTRA ||
+             app->grafo_algoritmo_seleccionado == GRAFO_ALGO_BELLMAN_FORD)) {
+            g_grafo_camino_algo = app->grafo_algoritmo_seleccionado;
+        }
+        if (graph_basic_mode && g_grafo_ui_mode == 0) {
             int graph_columns = 4;
             float graph_btn_w = (panel.width - 32.0f - gap * (graph_columns - 1)) / graph_columns;
             int action_count = 8;
@@ -1403,7 +1540,7 @@ static float draw_context_controls(AppState *app, Rectangle panel, bool *is_comp
                 } else if (action == 3 && ui_button(btn_graph, "Arista + (G)", false)) {
                     app_state_operacion_grafo_insertar_arista(app, app->grafo_vertice_inicio,
                                                               app->grafo_vertice_destino,
-                                                              app->input_prioridad);
+                                                              app->input_peso_grafo);
                 } else if (action == 4 && ui_button(btn_graph, "Arista - (X)", false)) {
                     app_state_operacion_grafo_eliminar_arista(app, app->grafo_vertice_inicio,
                                                               app->grafo_vertice_destino);
@@ -1425,58 +1562,78 @@ static float draw_context_controls(AppState *app, Rectangle panel, bool *is_comp
             return controls_y + row_step * 2.0f + 24.0f;
         }
 
-        static int grafo_ui_mode = 0; /* 0 Construccion, 1 Recorridos, 2 Caminos, 3 MST */
-        const char *tab_labels[4] = {"Construccion", "Recorridos", "Caminos", "MST"};
-        float tab_gap = 8.0f;
-        float tab_h = 32.0f;
-        float tab_w = (panel.width - 32.0f - tab_gap * 3.0f) / 4.0f;
-        float tabs_y = base_y;
-        float controls_y = tabs_y + tab_h + 10.0f;
+        float controls_y = base_y;
         int graph_columns = compact ? 2 : 4;
         float graph_btn_w = (panel.width - 32.0f - gap * (graph_columns - 1)) / graph_columns;
         int action_count = 0;
         int action;
         float graph_hints_y;
         const char *graph_hint = "Atajos: G/X aristas | Pasos: , . / Home End | Auto: P | Demo: M";
+        bool camino_origen_ok = false;
+        bool camino_destino_ok = false;
+        bool camino_extremos_validos = false;
+        bool camino_arista_actual_existe = false;
+        int camino_arista_peso_actual = 0;
+        bool mst_inicio_ok = false;
 
-        if (tab_w < 110.0f) {
-            tab_w = 110.0f;
-        }
         if (graph_btn_w < 132.0f) {
             graph_btn_w = 132.0f;
         }
 
-        for (i = 0; i < 4; i++) {
-            Rectangle tab = {base_x + i * (tab_w + tab_gap), tabs_y, tab_w, tab_h};
-            if (draw_graph_sidebar_button(tab, tab_labels[i], grafo_ui_mode == i)) {
-                grafo_ui_mode = i;
-            }
-        }
-
-        switch (grafo_ui_mode) {
+        switch (g_grafo_ui_mode) {
         case 0:
             action_count = 8;
             graph_hint = "Construccion: I inicializar, A/D vertices, G/X aristas, T dirigido, M demo";
             break;
         case 1:
-            action_count = 10;
-            graph_hint = "Recorridos: 4 BFS, 5 DFS, pasos , . /, Home/End, autoplay P/O";
+            action_count = 6;
+            graph_hint = "Flujo: 1) Definir inicio  2) Elegir algoritmo  3) Iniciar";
             break;
         case 2:
-            action_count = 10;
-            graph_hint =
-                "Caminos: 6 Dijkstra, 7 Bellman-Ford, pasos , . /, Home/End, autoplay P/O";
+            action_count = 7;
+            graph_hint = "Flujo: 1) Definir origen/destino/peso  2) Aplicar peso  3) Ejecutar";
             break;
         default:
-            action_count = 10;
-            graph_hint = "MST: 8 Prim, 9/R Kruskal, pasos , . /, Home/End, autoplay P/O";
+            action_count = graph_basic_mode ? 4 : 9;
+            graph_hint = graph_basic_mode
+                             ? "MST: Ejecuta Prim o Kruskal directamente"
+                             : "MST: 8 Prim, 9/R Kruskal, pasos , . /, Home/End, autoplay P/O";
             break;
+        }
+        if (g_grafo_ui_mode == 1) {
+            graph_columns = compact ? 2 : 3;
+            graph_btn_w = (panel.width - 32.0f - gap * (graph_columns - 1)) / graph_columns;
+            if (graph_btn_w < 132.0f) {
+                graph_btn_w = 132.0f;
+            }
+        } else if (g_grafo_ui_mode == 2) {
+            graph_columns = compact ? 2 : 3;
+            graph_btn_w = (panel.width - 32.0f - gap * (graph_columns - 1)) / graph_columns;
+            if (graph_btn_w < 132.0f) {
+                graph_btn_w = 132.0f;
+            }
+            camino_origen_ok = grafo_existe_vertice(app->grafo, app->grafo_vertice_inicio);
+            camino_destino_ok = grafo_existe_vertice(app->grafo, app->grafo_vertice_destino);
+            camino_extremos_validos = camino_origen_ok && camino_destino_ok;
+            if (camino_extremos_validos) {
+                camino_arista_actual_existe =
+                    grafo_obtener_peso(app->grafo, app->grafo_vertice_inicio,
+                                       app->grafo_vertice_destino,
+                                       &camino_arista_peso_actual) == GRAFO_OK;
+            }
+        } else if (g_grafo_ui_mode == 3 && graph_basic_mode) {
+            graph_columns = compact ? 1 : 3;
+            graph_btn_w = (panel.width - 32.0f - gap * (graph_columns - 1)) / graph_columns;
+            if (graph_btn_w < 156.0f) {
+                graph_btn_w = 156.0f;
+            }
+            mst_inicio_ok = grafo_existe_vertice(app->grafo, app->grafo_vertice_inicio);
         }
 
         for (action = 0; action < action_count; action++) {
             Rectangle btn = {base_x + (action % graph_columns) * (graph_btn_w + gap),
                              controls_y + (action / graph_columns) * row_step, graph_btn_w, btn_h};
-            if (grafo_ui_mode == 0) {
+            if (g_grafo_ui_mode == 0) {
                 if (action == 0 && ui_button(btn, "Inicializar (I)", false)) {
                     app_state_operacion_inicializar(app);
                 } else if (action == 1 && ui_button(btn, "Vertice + (A)", false)) {
@@ -1486,7 +1643,7 @@ static float draw_context_controls(AppState *app, Rectangle panel, bool *is_comp
                 } else if (action == 3 && ui_button(btn, "Arista + (G)", false)) {
                     app_state_operacion_grafo_insertar_arista(app, app->grafo_vertice_inicio,
                                                               app->grafo_vertice_destino,
-                                                              app->input_prioridad);
+                                                              app->input_peso_grafo);
                 } else if (action == 4 && ui_button(btn, "Arista - (X)", false)) {
                     app_state_operacion_grafo_eliminar_arista(app, app->grafo_vertice_inicio,
                                                               app->grafo_vertice_destino);
@@ -1496,122 +1653,243 @@ static float draw_context_controls(AppState *app, Rectangle panel, bool *is_comp
                     app_state_grafo_toggle_dirigido(app);
                 } else if (action == 6 && ui_button(btn, "Cargar demo (M)", false)) {
                     app_state_grafo_cargar_demo(app);
-                } else if (action == 7 && ui_button(btn, "Exportar (C)", false)) {
-                    grafo_exportar_resumen_clipboard(app);
+                } else if (action == 7 && ui_button(btn, "Limpiar", false)) {
+                    app_state_operacion_inicializar(app);
                 }
-            } else if (grafo_ui_mode == 1) {
-                if (action == 0 && ui_button(btn, "BFS (4)", false)) {
-                    app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_BFS,
-                                                                 app->grafo_vertice_inicio,
-                                                                 app->grafo_vertice_destino);
-                } else if (action == 1 && ui_button(btn, "DFS (5)", false)) {
-                    app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_DFS,
-                                                                 app->grafo_vertice_inicio,
-                                                                 app->grafo_vertice_destino);
-                } else if (action == 2 && ui_button(btn, "Paso - (,)", false)) {
+            } else if (g_grafo_ui_mode == 1) {
+                if (action == 0 &&
+                    ui_button(btn,
+                              g_grafo_recorrido_algo == GRAFO_ALGO_BFS ? "Algoritmo: BFS"
+                                                                       : "Algoritmo: DFS",
+                              false)) {
+                    g_grafo_recorrido_algo = (g_grafo_recorrido_algo == GRAFO_ALGO_BFS)
+                                                 ? GRAFO_ALGO_DFS
+                                                 : GRAFO_ALGO_BFS;
+                    app->grafo_algoritmo_seleccionado = g_grafo_recorrido_algo;
+                    snprintf(app->mensaje_operacion, sizeof(app->mensaje_operacion),
+                             "Recorridos: algoritmo seleccionado %s",
+                             g_grafo_recorrido_algo == GRAFO_ALGO_BFS ? "BFS" : "DFS");
+                    app->ultima_operacion_ok = true;
+                } else if (action == 1 &&
+                           ui_button(btn, TextFormat("Iniciar desde V%d", app->grafo_vertice_inicio),
+                                     false)) {
+                    if (!grafo_existe_vertice(app->grafo, app->grafo_vertice_inicio)) {
+                        snprintf(app->mensaje_operacion, sizeof(app->mensaje_operacion),
+                                 "Define un vertice de inicio valido para BFS/DFS");
+                        app->ultima_operacion_ok = false;
+                    } else {
+                        app_state_operacion_grafo_ejecutar_algoritmo(app, g_grafo_recorrido_algo,
+                                                                     app->grafo_vertice_inicio,
+                                                                     app->grafo_vertice_destino);
+                    }
+                } else if (action == 2 && ui_button(btn, "Anterior", false)) {
                     grafo_controller_paso_anterior(&app->grafo_controller_state);
-                } else if (action == 3 && ui_button(btn, "Paso + (.)", false)) {
+                } else if (action == 3 && ui_button(btn, "Siguiente", false)) {
                     grafo_controller_paso_siguiente(&app->grafo_controller_state);
-                } else if (action == 4 && ui_button(btn, "Reiniciar (/)", false)) {
+                } else if (action == 4 && ui_button(btn, "Reiniciar", false)) {
                     grafo_controller_reiniciar(&app->grafo_controller_state);
-                } else if (action == 5 && ui_button(btn, "Inicio (Home)", false)) {
-                    grafo_controller_ir_inicio(&app->grafo_controller_state);
-                } else if (action == 6 && ui_button(btn, "Final (End)", false)) {
-                    grafo_controller_ir_final(&app->grafo_controller_state);
-                } else if (action == 7 && ui_button(btn, app->grafo_controller_state.autoplay_activo
+                } else if (action == 5 && ui_button(btn, app->grafo_controller_state.autoplay_activo
+                                                             ? "Auto: ON"
+                                                             : "Auto: OFF",
+                                                    false)) {
+                    grafo_controller_toggle_autoplay(&app->grafo_controller_state);
+                }
+            } else if (g_grafo_ui_mode == 2) {
+                if (action == 0 &&
+                    ui_button(btn, g_grafo_camino_algo == GRAFO_ALGO_DIJKSTRA
+                                       ? "Algoritmo: Dijkstra"
+                                       : "Algoritmo: Bellman-Ford",
+                              false)) {
+                    g_grafo_camino_algo = (g_grafo_camino_algo == GRAFO_ALGO_DIJKSTRA)
+                                              ? GRAFO_ALGO_BELLMAN_FORD
+                                              : GRAFO_ALGO_DIJKSTRA;
+                    app->grafo_algoritmo_seleccionado = g_grafo_camino_algo;
+                    snprintf(app->mensaje_operacion, sizeof(app->mensaje_operacion),
+                             "Caminos: algoritmo seleccionado %s",
+                             g_grafo_camino_algo == GRAFO_ALGO_DIJKSTRA ? "Dijkstra"
+                                                                         : "Bellman-Ford");
+                    app->ultima_operacion_ok = true;
+                } else if (action == 1 &&
+                           ui_button(btn,
+                                     TextFormat("Aplicar peso %d a V%d->V%d", app->input_peso_grafo,
+                                                app->grafo_vertice_inicio,
+                                                app->grafo_vertice_destino),
+                                     false)) {
+                    if (!grafo_existe_vertice(app->grafo, app->grafo_vertice_inicio) ||
+                        !grafo_existe_vertice(app->grafo, app->grafo_vertice_destino)) {
+                        snprintf(app->mensaje_operacion, sizeof(app->mensaje_operacion),
+                                 "Define origen y destino validos para asignar peso");
+                        app->ultima_operacion_ok = false;
+                    } else {
+                        app_state_operacion_grafo_actualizar_peso_arista(
+                            app, app->grafo_vertice_inicio, app->grafo_vertice_destino,
+                            app->input_peso_grafo);
+                    }
+                } else if (action == 2 &&
+                           ui_button(btn,
+                                     TextFormat("Ejecutar V%d -> V%d", app->grafo_vertice_inicio,
+                                                app->grafo_vertice_destino),
+                                     false)) {
+                    if (!camino_extremos_validos) {
+                        snprintf(app->mensaje_operacion, sizeof(app->mensaje_operacion),
+                                 "Define origen y destino validos para camino minimo");
+                        app->ultima_operacion_ok = false;
+                    } else {
+                        app_state_operacion_grafo_ejecutar_algoritmo(app, g_grafo_camino_algo,
+                                                                     app->grafo_vertice_inicio,
+                                                                     app->grafo_vertice_destino);
+                    }
+                } else if (action == 3 && ui_button(btn, "Paso - (,)", false)) {
+                    grafo_controller_paso_anterior(&app->grafo_controller_state);
+                } else if (action == 4 && ui_button(btn, "Paso + (.)", false)) {
+                    grafo_controller_paso_siguiente(&app->grafo_controller_state);
+                } else if (action == 5 && ui_button(btn, "Reiniciar (/)", false)) {
+                    grafo_controller_reiniciar(&app->grafo_controller_state);
+                } else if (action == 6 && ui_button(btn, app->grafo_controller_state.autoplay_activo
                                                              ? "Auto: ON (P)"
                                                              : "Auto: OFF (P)",
                                                     false)) {
                     grafo_controller_toggle_autoplay(&app->grafo_controller_state);
-                } else if (action == 8 && ui_button(btn,
-                                                    app->grafo_controller_state.autoplay_velocidad_idx == 0
-                                                        ? "Vel: Lenta (O)"
-                                                        : app->grafo_controller_state
-                                                                  .autoplay_velocidad_idx == 1
-                                                              ? "Vel: Media (O)"
-                                                              : "Vel: Rapida (O)",
-                                                    false)) {
-                    grafo_controller_cambiar_velocidad(&app->grafo_controller_state);
-                } else if (action == 9 && ui_button(btn, "Exportar (C)", false)) {
-                    grafo_exportar_resumen_clipboard(app);
-                }
-            } else if (grafo_ui_mode == 2) {
-                if (action == 0 && ui_button(btn, "Dijkstra (6)", false)) {
-                    app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_DIJKSTRA,
-                                                                 app->grafo_vertice_inicio,
-                                                                 app->grafo_vertice_destino);
-                } else if (action == 1 && ui_button(btn, "Bellman-Ford (7)", false)) {
-                    app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_BELLMAN_FORD,
-                                                                 app->grafo_vertice_inicio,
-                                                                 app->grafo_vertice_destino);
-                } else if (action == 2 && ui_button(btn, "Paso - (,)", false)) {
-                    grafo_controller_paso_anterior(&app->grafo_controller_state);
-                } else if (action == 3 && ui_button(btn, "Paso + (.)", false)) {
-                    grafo_controller_paso_siguiente(&app->grafo_controller_state);
-                } else if (action == 4 && ui_button(btn, "Reiniciar (/)", false)) {
-                    grafo_controller_reiniciar(&app->grafo_controller_state);
-                } else if (action == 5 && ui_button(btn, "Inicio (Home)", false)) {
-                    grafo_controller_ir_inicio(&app->grafo_controller_state);
-                } else if (action == 6 && ui_button(btn, "Final (End)", false)) {
-                    grafo_controller_ir_final(&app->grafo_controller_state);
-                } else if (action == 7 && ui_button(btn, app->grafo_controller_state.autoplay_activo
-                                                             ? "Auto: ON (P)"
-                                                             : "Auto: OFF (P)",
-                                                    false)) {
-                    grafo_controller_toggle_autoplay(&app->grafo_controller_state);
-                } else if (action == 8 && ui_button(btn,
-                                                    app->grafo_controller_state.autoplay_velocidad_idx == 0
-                                                        ? "Vel: Lenta (O)"
-                                                        : app->grafo_controller_state
-                                                                  .autoplay_velocidad_idx == 1
-                                                              ? "Vel: Media (O)"
-                                                              : "Vel: Rapida (O)",
-                                                    false)) {
-                    grafo_controller_cambiar_velocidad(&app->grafo_controller_state);
-                } else if (action == 9 && ui_button(btn, "Exportar (C)", false)) {
-                    grafo_exportar_resumen_clipboard(app);
                 }
             } else {
-                if (action == 0 && ui_button(btn, "Prim (8)", false)) {
-                    app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_PRIM,
-                                                                 app->grafo_vertice_inicio,
-                                                                 app->grafo_vertice_destino);
-                } else if (action == 1 && ui_button(btn, "Kruskal (9/R)", false)) {
-                    app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_KRUSKAL,
-                                                                 app->grafo_vertice_inicio,
-                                                                 app->grafo_vertice_destino);
-                } else if (action == 2 && ui_button(btn, "Paso - (,)", false)) {
-                    grafo_controller_paso_anterior(&app->grafo_controller_state);
-                } else if (action == 3 && ui_button(btn, "Paso + (.)", false)) {
-                    grafo_controller_paso_siguiente(&app->grafo_controller_state);
-                } else if (action == 4 && ui_button(btn, "Reiniciar (/)", false)) {
-                    grafo_controller_reiniciar(&app->grafo_controller_state);
-                } else if (action == 5 && ui_button(btn, "Inicio (Home)", false)) {
-                    grafo_controller_ir_inicio(&app->grafo_controller_state);
-                } else if (action == 6 && ui_button(btn, "Final (End)", false)) {
-                    grafo_controller_ir_final(&app->grafo_controller_state);
-                } else if (action == 7 && ui_button(btn, app->grafo_controller_state.autoplay_activo
-                                                             ? "Auto: ON (P)"
-                                                             : "Auto: OFF (P)",
-                                                    false)) {
-                    grafo_controller_toggle_autoplay(&app->grafo_controller_state);
-                } else if (action == 8 && ui_button(btn,
-                                                    app->grafo_controller_state.autoplay_velocidad_idx == 0
-                                                        ? "Vel: Lenta (O)"
-                                                        : app->grafo_controller_state
-                                                                  .autoplay_velocidad_idx == 1
-                                                              ? "Vel: Media (O)"
-                                                              : "Vel: Rapida (O)",
-                                                    false)) {
-                    grafo_controller_cambiar_velocidad(&app->grafo_controller_state);
-                } else if (action == 9 && ui_button(btn, "Exportar (C)", false)) {
-                    grafo_exportar_resumen_clipboard(app);
+                if (graph_basic_mode) {
+                    if (action == 0 &&
+                        ui_button(btn, TextFormat("Ejecutar Prim desde V%d",
+                                                  app->grafo_vertice_inicio),
+                                  false)) {
+                        if (!mst_inicio_ok) {
+                            snprintf(app->mensaje_operacion, sizeof(app->mensaje_operacion),
+                                     "Define un vertice valido en Inicio Prim");
+                            app->ultima_operacion_ok = false;
+                        } else {
+                            app_state_operacion_grafo_ejecutar_algoritmo(
+                                app, GRAFO_ALGO_PRIM, app->grafo_vertice_inicio,
+                                app->grafo_vertice_destino);
+                        }
+                    } else if (action == 1 && ui_button(btn, "Ejecutar Kruskal", false)) {
+                        app_state_operacion_grafo_ejecutar_algoritmo(
+                            app, GRAFO_ALGO_KRUSKAL, app->grafo_vertice_inicio,
+                            app->grafo_vertice_destino);
+                    } else if (action == 2 && ui_button(btn, "Paso + (.)", false)) {
+                        grafo_controller_paso_siguiente(&app->grafo_controller_state);
+                    } else if (action == 3 && ui_button(btn, "Reiniciar", false)) {
+                        grafo_controller_reiniciar(&app->grafo_controller_state);
+                    }
+                } else {
+                    if (action == 0 && ui_button(btn, "Prim (8)", false)) {
+                        app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_PRIM,
+                                                                     app->grafo_vertice_inicio,
+                                                                     app->grafo_vertice_destino);
+                    } else if (action == 1 && ui_button(btn, "Kruskal (9/R)", false)) {
+                        app_state_operacion_grafo_ejecutar_algoritmo(app, GRAFO_ALGO_KRUSKAL,
+                                                                     app->grafo_vertice_inicio,
+                                                                     app->grafo_vertice_destino);
+                    } else if (action == 2 && ui_button(btn, "Paso - (,)", false)) {
+                        grafo_controller_paso_anterior(&app->grafo_controller_state);
+                    } else if (action == 3 && ui_button(btn, "Paso + (.)", false)) {
+                        grafo_controller_paso_siguiente(&app->grafo_controller_state);
+                    } else if (action == 4 && ui_button(btn, "Reiniciar (/)", false)) {
+                        grafo_controller_reiniciar(&app->grafo_controller_state);
+                    } else if (action == 5 && ui_button(btn, "Inicio (Home)", false)) {
+                        grafo_controller_ir_inicio(&app->grafo_controller_state);
+                    } else if (action == 6 && ui_button(btn, "Final (End)", false)) {
+                        grafo_controller_ir_final(&app->grafo_controller_state);
+                    } else if (action == 7 && ui_button(btn, app->grafo_controller_state.autoplay_activo
+                                                                 ? "Auto: ON (P)"
+                                                                 : "Auto: OFF (P)",
+                                                        false)) {
+                        grafo_controller_toggle_autoplay(&app->grafo_controller_state);
+                    } else if (action == 8 && ui_button(btn,
+                                                        app->grafo_controller_state.autoplay_velocidad_idx == 0
+                                                            ? "Vel: Lenta (O)"
+                                                            : app->grafo_controller_state
+                                                                      .autoplay_velocidad_idx == 1
+                                                                  ? "Vel: Media (O)"
+                                                                  : "Vel: Rapida (O)",
+                                                        false)) {
+                        grafo_controller_cambiar_velocidad(&app->grafo_controller_state);
+                    }
                 }
             }
         }
 
         graph_hints_y = controls_y + ((action_count - 1) / graph_columns + 1) * row_step + 6.0f;
-        ui_draw_text(graph_hint, panel.x + 16.0f, graph_hints_y, 13.0f, 0.10f,
+        if (g_grafo_ui_mode == 1) {
+            int total = app->grafo_controller_state.total_pasos;
+            int paso = app->grafo_controller_state.paso_actual;
+            const char *algo_label =
+                g_grafo_recorrido_algo == GRAFO_ALGO_BFS ? "BFS" : "DFS";
+            char paso_text[96];
+            char inicio_text[96];
+            char orden_text[512];
+
+            snprintf(paso_text, sizeof(paso_text), "Paso actual: %d de %d",
+                     total > 0 ? paso + 1 : 0, total);
+            snprintf(inicio_text, sizeof(inicio_text), "Inicio: V%d", app->grafo_vertice_inicio);
+            grafo_formatear_orden_vertices(&app->grafo_controller_state, orden_text,
+                                           sizeof(orden_text));
+
+            ui_draw_text(TextFormat("Recorrido seleccionado: %s", algo_label), panel.x + 16.0f,
+                         graph_hints_y, 15.0f, 0.08f, (Color){38, 60, 86, 255}, true);
+            ui_draw_text(inicio_text, panel.x + 16.0f, graph_hints_y + 16.0f, 14.0f, 0.08f,
+                         (Color){54, 66, 82, 255}, false);
+            ui_draw_text(paso_text, panel.x + 16.0f, graph_hints_y + 31.0f, 14.0f, 0.08f,
+                         (Color){54, 66, 82, 255}, false);
+            ui_draw_text(TextFormat("Orden: %s", orden_text), panel.x + 16.0f,
+                         graph_hints_y + 46.0f, 14.0f, 0.08f, (Color){54, 66, 82, 255}, false);
+            graph_hints_y += 61.0f;
+        } else if (g_grafo_ui_mode == 2) {
+            int total = app->grafo_controller_state.total_pasos;
+            int paso = app->grafo_controller_state.paso_actual;
+            char od_text[96];
+            char paso_text[96];
+            char orden_text[512];
+            snprintf(od_text, sizeof(od_text), "Origen: V%d  Destino: V%d",
+                     app->grafo_vertice_inicio, app->grafo_vertice_destino);
+            snprintf(paso_text, sizeof(paso_text), "Paso actual: %d de %d",
+                     total > 0 ? paso + 1 : 0, total);
+            grafo_formatear_orden_vertices(&app->grafo_controller_state, orden_text,
+                                           sizeof(orden_text));
+            ui_draw_text(TextFormat("Camino minimo: %s",
+                                    g_grafo_camino_algo == GRAFO_ALGO_DIJKSTRA
+                                        ? "Dijkstra"
+                                        : "Bellman-Ford"),
+                         panel.x + 16.0f, graph_hints_y, 15.0f, 0.08f,
+                         (Color){38, 60, 86, 255}, true);
+            ui_draw_text(od_text, panel.x + 16.0f, graph_hints_y + 16.0f, 14.0f, 0.08f,
+                         (Color){54, 66, 82, 255}, false);
+            ui_draw_text(camino_arista_actual_existe ? "Peso directo: definido"
+                                                     : "Peso directo: no definido",
+                         panel.x + 16.0f, graph_hints_y + 31.0f, 13.0f, 0.08f,
+                         (Color){54, 66, 82, 255}, false);
+            ui_draw_text(paso_text, panel.x + 16.0f, graph_hints_y + 46.0f, 13.0f, 0.08f,
+                         (Color){54, 66, 82, 255}, false);
+            ui_draw_text(TextFormat("Ruta: %s", orden_text), panel.x + 16.0f,
+                         graph_hints_y + 61.0f, 13.0f, 0.08f, (Color){54, 66, 82, 255}, false);
+            graph_hints_y += 76.0f;
+        } else if (g_grafo_ui_mode == 3 && graph_basic_mode) {
+            char inicio_mst[96];
+            char paso_text[96];
+
+            snprintf(inicio_mst, sizeof(inicio_mst), "Inicio Prim: V%d (%s)",
+                     app->grafo_vertice_inicio, mst_inicio_ok ? "OK" : "invalido");
+            snprintf(paso_text, sizeof(paso_text), "Paso actual: %d de %d",
+                     app->grafo_controller_state.total_pasos > 0
+                         ? app->grafo_controller_state.paso_actual + 1
+                         : 0,
+                     app->grafo_controller_state.total_pasos);
+
+            ui_draw_text("MST: Prim y Kruskal", panel.x + 16.0f,
+                         graph_hints_y, 15.0f, 0.08f, (Color){38, 60, 86, 255}, true);
+            ui_draw_text(inicio_mst, panel.x + 16.0f, graph_hints_y + 16.0f, 14.0f, 0.08f,
+                         (Color){54, 66, 82, 255}, false);
+            ui_draw_text("Kruskal no usa vertice de inicio.", panel.x + 16.0f,
+                         graph_hints_y + 31.0f, 13.0f, 0.08f, (Color){54, 66, 82, 255}, false);
+            ui_draw_text(paso_text, panel.x + 16.0f, graph_hints_y + 46.0f, 13.0f, 0.08f,
+                         (Color){54, 66, 82, 255}, false);
+            graph_hints_y += 61.0f;
+        }
+        ui_draw_text(graph_hint, panel.x + 16.0f, graph_hints_y, 15.0f, 0.10f,
                      (Color){54, 66, 82, 255}, false);
         return graph_hints_y + 18.0f;
     }
@@ -1729,10 +2007,20 @@ static void handle_keyboard(AppState *app, InputFocus focus) {
         app_state_ajustar_valor(app, -1);
     }
     if (IsKeyPressed(KEY_RIGHT)) {
-        app_state_ajustar_prioridad(app, 1);
+        if (app->estructura_activa == ESTRUCTURA_GRAFO &&
+            (g_grafo_ui_mode == 0 || g_grafo_ui_mode == 2)) {
+            app_state_ajustar_peso_grafo(app, 1);
+        } else {
+            app_state_ajustar_prioridad(app, 1);
+        }
     }
     if (IsKeyPressed(KEY_LEFT)) {
-        app_state_ajustar_prioridad(app, -1);
+        if (app->estructura_activa == ESTRUCTURA_GRAFO &&
+            (g_grafo_ui_mode == 0 || g_grafo_ui_mode == 2)) {
+            app_state_ajustar_peso_grafo(app, -1);
+        } else {
+            app_state_ajustar_prioridad(app, -1);
+        }
     }
     if (IsKeyPressed(KEY_I)) {
         app_state_operacion_inicializar(app);
@@ -1759,9 +2047,15 @@ static void handle_keyboard(AppState *app, InputFocus focus) {
     }
     if (app->estructura_activa == ESTRUCTURA_GRAFO) {
         if (IsKeyPressed(KEY_G)) {
-            app_state_operacion_grafo_insertar_arista(app, app->grafo_vertice_inicio,
-                                                      app->grafo_vertice_destino,
-                                                      app->input_prioridad);
+            if (g_grafo_ui_mode == 2) {
+                app_state_operacion_grafo_actualizar_peso_arista(
+                    app, app->grafo_vertice_inicio, app->grafo_vertice_destino,
+                    app->input_peso_grafo);
+            } else {
+                app_state_operacion_grafo_insertar_arista(app, app->grafo_vertice_inicio,
+                                                          app->grafo_vertice_destino,
+                                                          app->input_peso_grafo);
+            }
         }
         if (IsKeyPressed(KEY_X)) {
             app_state_operacion_grafo_eliminar_arista(app, app->grafo_vertice_inicio,
@@ -1809,9 +2103,6 @@ static void handle_keyboard(AppState *app, InputFocus focus) {
         if (IsKeyPressed(KEY_M)) {
             app_state_grafo_cargar_demo(app);
         }
-        if (IsKeyPressed(KEY_C)) {
-            grafo_exportar_resumen_clipboard(app);
-        }
     }
     if (IsKeyPressed(KEY_V)) {
         app_state_operacion_vaciar(app);
@@ -1852,7 +2143,7 @@ static void sync_input_buffers(const AppState *app, char *value_text, size_t val
         snprintf(graph_dest_text, graph_dest_size, "%d", app->grafo_vertice_destino);
     }
     if (focus != INPUT_GRAFO_PESO) {
-        snprintf(graph_weight_text, graph_weight_size, "%d", app->input_prioridad);
+        snprintf(graph_weight_text, graph_weight_size, "%d", app->input_peso_grafo);
     }
 }
 
@@ -1873,7 +2164,7 @@ static void apply_input_focus(AppState *app, InputFocus focus, const char *text)
     } else if (focus == INPUT_GRAFO_DESTINO) {
         app->grafo_vertice_destino = parsed;
     } else if (focus == INPUT_GRAFO_PESO) {
-        app_state_set_prioridad(app, parsed);
+        app_state_set_peso_grafo(app, parsed);
     }
 }
 
@@ -2039,12 +2330,13 @@ int main(void) {
     snprintf(priority_text, sizeof(priority_text), "%d", app.input_prioridad);
     snprintf(graph_origin_text, sizeof(graph_origin_text), "%d", app.grafo_vertice_inicio);
     snprintf(graph_dest_text, sizeof(graph_dest_text), "%d", app.grafo_vertice_destino);
-    snprintf(graph_weight_text, sizeof(graph_weight_text), "%d", app.input_prioridad);
+    snprintf(graph_weight_text, sizeof(graph_weight_text), "%d", app.input_peso_grafo);
 
     SetTargetFPS(60);
 
     while (true) {
         bool hide_graph_details = false;
+        bool graph_recorridos_simple = false;
 
         if (WindowShouldClose()) {
             if (screen_mode == SCREEN_VISUALIZER) {
@@ -2056,8 +2348,11 @@ int main(void) {
 
         ui_set_size(&ui, GetScreenWidth(), GetScreenHeight());
         layout = ui_get_layout(&ui);
-        hide_graph_details =
-            app.estructura_activa == ESTRUCTURA_GRAFO && graph_basic_mode && !graph_show_details;
+        graph_recorridos_simple =
+            app.estructura_activa == ESTRUCTURA_GRAFO && g_grafo_ui_mode == 1;
+        hide_graph_details = screen_mode == SCREEN_VISUALIZER &&
+                             app.estructura_activa == ESTRUCTURA_GRAFO && !graph_show_details &&
+                             (graph_basic_mode || graph_recorridos_simple);
         if (hide_graph_details) {
             layout.center.width = (layout.right.x + layout.right.width) - layout.center.x;
             layout.center.height = (layout.bottom.y + layout.bottom.height) - layout.center.y;
@@ -2111,12 +2406,24 @@ int main(void) {
             continue;
         }
 
-        if (!hide_graph_details && CheckCollisionPointRec(GetMousePosition(), layout.right) &&
-            GetMouseWheelMove() != 0.0f) {
-            code_scroll -= GetMouseWheelMove() * 22.0f;
-        } else if (!hide_graph_details && CheckCollisionPointRec(GetMousePosition(), layout.bottom) &&
-                   GetMouseWheelMove() != 0.0f) {
-            trace_scroll -= GetMouseWheelMove() * 22.0f;
+        {
+            float wheel_move = GetMouseWheelMove();
+            Rectangle graph_area = app.grafo_controller_state.vista.area_renderizado;
+            bool shift_horizontal = IsKeyDown(KEY_LEFT_SHIFT) || IsKeyDown(KEY_RIGHT_SHIFT);
+            if (wheel_move != 0.0f && app.estructura_activa == ESTRUCTURA_GRAFO &&
+                graph_area.width > 1.0f && graph_area.height > 1.0f &&
+                CheckCollisionPointRec(GetMousePosition(), graph_area)) {
+                grafo_controller_scroll_vista(&app.grafo_controller_state, wheel_move,
+                                              shift_horizontal);
+            } else if (!hide_graph_details &&
+                       CheckCollisionPointRec(GetMousePosition(), layout.right) &&
+                       wheel_move != 0.0f) {
+                code_scroll -= wheel_move * 22.0f;
+            } else if (!hide_graph_details &&
+                       CheckCollisionPointRec(GetMousePosition(), layout.bottom) &&
+                       wheel_move != 0.0f) {
+                trace_scroll -= wheel_move * 22.0f;
+            }
         }
         handle_keyboard(&app, input_focus);
         sync_input_buffers(&app, value_text, sizeof(value_text), priority_text,
@@ -2153,7 +2460,7 @@ int main(void) {
                 app.grafo_vertice_destino = parsed_graph_dest;
             }
             if (!graph_weight_invalid) {
-                app_state_set_prioridad(&app, parsed_graph_weight);
+                app_state_set_peso_grafo(&app, parsed_graph_weight);
             }
         }
 
@@ -2210,6 +2517,7 @@ int main(void) {
         tiempo_texto = info.tiempo;
         espacio_texto = info.espacio;
         if (app.estructura_activa == ESTRUCTURA_GRAFO) {
+            sync_grafo_algoritmo_por_modo(&app);
             tiempo_texto = grafo_algoritmo_tiempo(app.grafo_algoritmo_seleccionado);
             espacio_texto = grafo_algoritmo_espacio(app.grafo_algoritmo_seleccionado);
         }
@@ -2268,7 +2576,19 @@ int main(void) {
             float sidebar_section_bottom;
 
             if (app.estructura_activa == ESTRUCTURA_GRAFO) {
+                Rectangle graph_mode_box;
                 Rectangle graph_status_box;
+                float graph_mode_y;
+                float graph_btn_h = 32.0f;
+                float graph_btn_gap = 6.0f;
+                float graph_inputs_height;
+                float graph_inputs_top;
+                float status_y;
+                float status_h;
+                bool graph_mode_recorridos = g_grafo_ui_mode == 1;
+                bool graph_mode_caminos = g_grafo_ui_mode == 2;
+                Rectangle graph_mode_btn;
+                const char *graph_mode_labels[4] = {"Construccion", "Recorridos", "Caminos", "MST"};
 
                 ui_draw_panel(layout.sidebar, "Menu Grafo");
                 btn = (Rectangle){layout.sidebar.x + 12.0f, layout.sidebar.y + 52.0f,
@@ -2285,8 +2605,44 @@ int main(void) {
                     screen_mode = SCREEN_HELP;
                 }
 
-                graph_status_box = (Rectangle){layout.sidebar.x + 12.0f, layout.sidebar.y + 152.0f,
-                                               layout.sidebar.width - 24.0f, 108.0f};
+                graph_mode_y = layout.sidebar.y + 152.0f;
+                graph_inputs_height = graph_mode_recorridos
+                                          ? 42.0f
+                                          : (graph_mode_caminos ? 192.0f : 92.0f);
+                graph_inputs_top = layout.sidebar.y + layout.sidebar.height - graph_inputs_height;
+                graph_mode_box =
+                    (Rectangle){layout.sidebar.x + 12.0f, graph_mode_y, layout.sidebar.width - 24.0f,
+                                32.0f + 4.0f * (graph_btn_h + graph_btn_gap) + 4.0f};
+                DrawRectangleRounded(graph_mode_box, 0.18f, 8, Fade((Color){220, 232, 247, 255}, 0.80f));
+                DrawRectangleRoundedLinesEx(graph_mode_box, 0.18f, 8, 1.0f,
+                                            Fade((Color){78, 110, 146, 255}, 0.25f));
+                ui_draw_text("Vista de grafo", graph_mode_box.x + 10.0f, graph_mode_box.y + 10.0f,
+                             13.0f, 0.08f, (Color){22, 46, 72, 255}, true);
+
+                graph_mode_btn = (Rectangle){graph_mode_box.x + 8.0f, graph_mode_box.y + 30.0f,
+                                             graph_mode_box.width - 16.0f, graph_btn_h};
+                for (int mode_idx = 0; mode_idx < 4; mode_idx++) {
+                    if (draw_graph_sidebar_button(graph_mode_btn, graph_mode_labels[mode_idx],
+                                                  g_grafo_ui_mode == mode_idx)) {
+                        g_grafo_ui_mode = mode_idx;
+                        if (mode_idx != 0) {
+                            graph_basic_mode = false;
+                        }
+                        grafo_set_modo_contexto(&app);
+                    }
+                    graph_mode_btn.y += graph_btn_h + graph_btn_gap;
+                }
+
+                status_y = graph_mode_box.y + graph_mode_box.height + 10.0f;
+                status_h = graph_inputs_top - status_y - 12.0f;
+                if (status_h > 108.0f) {
+                    status_h = 108.0f;
+                }
+                if (status_h < 64.0f) {
+                    status_h = 64.0f;
+                }
+                graph_status_box = (Rectangle){layout.sidebar.x + 12.0f, status_y,
+                                               layout.sidebar.width - 24.0f, status_h};
                 DrawRectangleRounded(graph_status_box, 0.18f, 8, Fade((Color){220, 232, 247, 255}, 0.80f));
                 DrawRectangleRoundedLinesEx(graph_status_box, 0.18f, 8, 1.0f,
                                             Fade((Color){78, 110, 146, 255}, 0.25f));
@@ -2295,14 +2651,20 @@ int main(void) {
                 ui_draw_text(TextFormat("Vertices: %d", cantidad_activa),
                              graph_status_box.x + 10.0f, graph_status_box.y + 34.0f,
                              13.0f, 0.08f, (Color){56, 68, 84, 255}, false);
-                ui_draw_text(TextFormat("Algoritmo: %s",
-                                        grafo_algoritmo_home_nombre(app.grafo_algoritmo_seleccionado)),
-                             graph_status_box.x + 10.0f, graph_status_box.y + 54.0f,
-                             13.0f, 0.08f, (Color){56, 68, 84, 255}, false);
-                ui_draw_text(app.grafo_dirigido ? "Tipo: dirigido" : "Tipo: no dirigido",
-                             graph_status_box.x + 10.0f, graph_status_box.y + 74.0f,
-                             13.0f, 0.08f, (Color){56, 68, 84, 255}, false);
-                sidebar_section_bottom = graph_status_box.y + graph_status_box.height + 12.0f;
+                if (graph_status_box.height >= 90.0f) {
+                    ui_draw_text(TextFormat("Algoritmo: %s",
+                                            grafo_algoritmo_home_nombre(app.grafo_algoritmo_seleccionado)),
+                                 graph_status_box.x + 10.0f, graph_status_box.y + 54.0f,
+                                 13.0f, 0.08f, (Color){56, 68, 84, 255}, false);
+                    ui_draw_text(app.grafo_dirigido ? "Tipo: dirigido" : "Tipo: no dirigido",
+                                 graph_status_box.x + 10.0f, graph_status_box.y + 74.0f,
+                                 13.0f, 0.08f, (Color){56, 68, 84, 255}, false);
+                } else {
+                    ui_draw_text(app.grafo_dirigido ? "Tipo: dirigido" : "Tipo: no dirigido",
+                                 graph_status_box.x + 10.0f, graph_status_box.y + 54.0f,
+                                 13.0f, 0.08f, (Color){56, 68, 84, 255}, false);
+                }
+                sidebar_section_bottom = graph_status_box.y + graph_status_box.height + 8.0f;
             } else {
                 ui_draw_panel(layout.sidebar, "Estructuras");
                 btn = (Rectangle){layout.sidebar.x + 12.0f, layout.sidebar.y + 52.0f,
@@ -2350,6 +2712,7 @@ int main(void) {
                 btn.y += 50.0f;
                 if (ui_sidebar_button(btn, "Grafo", app.estructura_activa == ESTRUCTURA_GRAFO)) {
                     app_state_set_estructura(&app, ESTRUCTURA_GRAFO);
+                    grafo_set_modo_contexto(&app);
                 }
 
                 sidebar_section_bottom = btn.y + 56.0f;
@@ -2362,8 +2725,24 @@ int main(void) {
         {
             bool show_priority = app.estructura_activa == ESTRUCTURA_COLA_PRIORIDAD;
             bool show_graph_inputs = app.estructura_activa == ESTRUCTURA_GRAFO;
+            bool show_graph_recorridos = show_graph_inputs && g_grafo_ui_mode == 1;
+            bool show_graph_caminos = show_graph_inputs && g_grafo_ui_mode == 2;
+            bool show_graph_mst = show_graph_inputs && g_grafo_ui_mode == 3;
+            bool show_value_input = !show_graph_inputs || g_grafo_ui_mode == 0;
+            bool show_graph_origin_input = show_graph_inputs;
+            bool show_graph_dest_input =
+                show_graph_inputs && (g_grafo_ui_mode == 0 || g_grafo_ui_mode == 2);
+            bool show_graph_weight_input =
+                show_graph_inputs && (g_grafo_ui_mode == 0 || g_grafo_ui_mode == 2);
             float info_y = sidebar_section_bottom + 8.0f;
-            float inputs_height = show_graph_inputs ? 192.0f : (show_priority ? 92.0f : 42.0f);
+            float inputs_height = show_graph_inputs
+                                      ? (show_graph_recorridos
+                                             ? 42.0f
+                                             : (show_graph_weight_input ? 192.0f
+                                                                        : (show_graph_dest_input
+                                                                               ? 142.0f
+                                                                               : 92.0f)))
+                                      : (show_priority ? 92.0f : 42.0f);
             float inputs_top = layout.sidebar.y + layout.sidebar.height - inputs_height;
             float available_info_h = inputs_top - info_y;
             float help_y = info_y + 70.0f;
@@ -2381,7 +2760,7 @@ int main(void) {
                                        layout.sidebar.y + layout.sidebar.height - 42.0f,
                                        layout.sidebar.width - 24.0f, 38.0f};
             graph_origin_box = (Rectangle){layout.sidebar.x + 12.0f,
-                                           value_box.y + 50.0f,
+                                           show_value_input ? (value_box.y + 50.0f) : value_box.y,
                                            layout.sidebar.width - 24.0f, 38.0f};
             graph_dest_box = (Rectangle){layout.sidebar.x + 12.0f,
                                          graph_origin_box.y + 50.0f,
@@ -2391,8 +2770,25 @@ int main(void) {
                                            layout.sidebar.width - 24.0f, 38.0f};
 
             if (show_graph_inputs) {
-                ui_draw_text("Entradas de grafo", layout.sidebar.x + 12.0f, info_y,
-                             14.0f, 0.10f, (Color){50, 64, 80, 255}, true);
+                if (available_info_h >= 22.0f) {
+                    ui_draw_text("Entradas de grafo", layout.sidebar.x + 12.0f, info_y,
+                                 14.0f, 0.10f, (Color){50, 64, 80, 255}, true);
+                }
+                if (available_info_h >= 40.0f) {
+                    if (show_graph_recorridos) {
+                        ui_draw_text("Recorridos: usar Inicio.", layout.sidebar.x + 12.0f,
+                                     info_y + 18.0f, 11.0f, 0.08f, (Color){76, 91, 110, 255},
+                                     false);
+                    } else if (show_graph_caminos) {
+                        ui_draw_text("Caminos: Origen, Destino y Peso.", layout.sidebar.x + 12.0f,
+                                     info_y + 18.0f, 11.0f, 0.08f, (Color){76, 91, 110, 255},
+                                     false);
+                    } else if (show_graph_mst) {
+                        ui_draw_text("MST: Inicio solo para Prim.", layout.sidebar.x + 12.0f,
+                                     info_y + 18.0f, 11.0f, 0.08f, (Color){76, 91, 110, 255},
+                                     false);
+                    }
+                }
             } else {
                 ui_draw_text("Seleccion actual:", layout.sidebar.x + 12.0f, info_y,
                              14.0f, 0.16f, (Color){66, 76, 86, 255}, false);
@@ -2413,7 +2809,8 @@ int main(void) {
                 }
             }
 
-            if (ui_input_box(value_box, "Valor", value_text, input_focus == INPUT_VALOR,
+            if (show_value_input &&
+                ui_input_box(value_box, "Valor", value_text, input_focus == INPUT_VALOR,
                              value_invalid)) {
                 if (input_focus == INPUT_PRIORIDAD && !priority_invalid) {
                     apply_input_focus(&app, INPUT_PRIORIDAD, priority_text);
@@ -2433,8 +2830,11 @@ int main(void) {
                 }
                 input_focus = INPUT_PRIORIDAD;
             }
-            if (show_graph_inputs &&
-                ui_input_box(graph_origin_box, "Origen", graph_origin_text,
+            if (show_graph_origin_input &&
+                ui_input_box(graph_origin_box,
+                             show_graph_recorridos ? "Inicio BFS/DFS"
+                                                   : (show_graph_mst ? "Inicio Prim" : "Origen"),
+                             graph_origin_text,
                              input_focus == INPUT_GRAFO_ORIGEN, graph_origin_invalid)) {
                 if (input_focus == INPUT_VALOR && !value_invalid) {
                     apply_input_focus(&app, INPUT_VALOR, value_text);
@@ -2444,7 +2844,7 @@ int main(void) {
                     graph_origin_text[0] = '\0';
                 }
             }
-            if (show_graph_inputs &&
+            if (show_graph_dest_input &&
                 ui_input_box(graph_dest_box, "Destino", graph_dest_text,
                              input_focus == INPUT_GRAFO_DESTINO, graph_dest_invalid)) {
                 if (input_focus == INPUT_VALOR && !value_invalid) {
@@ -2455,7 +2855,7 @@ int main(void) {
                     graph_dest_text[0] = '\0';
                 }
             }
-            if (show_graph_inputs &&
+            if (show_graph_weight_input &&
                 ui_input_box(graph_weight_box, "Peso", graph_weight_text,
                              input_focus == INPUT_GRAFO_PESO, graph_weight_invalid)) {
                 if (input_focus == INPUT_VALOR && !value_invalid) {
@@ -2464,28 +2864,43 @@ int main(void) {
                 input_focus = INPUT_GRAFO_PESO;
             }
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) &&
-                !CheckCollisionPointRec(GetMousePosition(), value_box) &&
+                (!show_value_input || !CheckCollisionPointRec(GetMousePosition(), value_box)) &&
                 (!show_priority || !CheckCollisionPointRec(GetMousePosition(), priority_box)) &&
-                (!show_graph_inputs || !CheckCollisionPointRec(GetMousePosition(), graph_origin_box)) &&
-                (!show_graph_inputs || !CheckCollisionPointRec(GetMousePosition(), graph_dest_box)) &&
-                (!show_graph_inputs || !CheckCollisionPointRec(GetMousePosition(), graph_weight_box))) {
+                (!show_graph_origin_input ||
+                 !CheckCollisionPointRec(GetMousePosition(), graph_origin_box)) &&
+                (!show_graph_dest_input ||
+                 !CheckCollisionPointRec(GetMousePosition(), graph_dest_box)) &&
+                (!show_graph_weight_input ||
+                 !CheckCollisionPointRec(GetMousePosition(), graph_weight_box))) {
                 if (input_focus == INPUT_VALOR && !value_invalid) {
                     apply_input_focus(&app, INPUT_VALOR, value_text);
                 } else if (show_priority && input_focus == INPUT_PRIORIDAD && !priority_invalid) {
                     apply_input_focus(&app, INPUT_PRIORIDAD, priority_text);
-                } else if (show_graph_inputs && input_focus == INPUT_GRAFO_ORIGEN &&
+                } else if (show_graph_origin_input && input_focus == INPUT_GRAFO_ORIGEN &&
                            !graph_origin_invalid) {
                     apply_input_focus(&app, INPUT_GRAFO_ORIGEN, graph_origin_text);
-                } else if (show_graph_inputs && input_focus == INPUT_GRAFO_DESTINO &&
+                } else if (show_graph_dest_input && input_focus == INPUT_GRAFO_DESTINO &&
                            !graph_dest_invalid) {
                     apply_input_focus(&app, INPUT_GRAFO_DESTINO, graph_dest_text);
-                } else if (show_graph_inputs && input_focus == INPUT_GRAFO_PESO &&
+                } else if (show_graph_weight_input && input_focus == INPUT_GRAFO_PESO &&
                            !graph_weight_invalid) {
                     apply_input_focus(&app, INPUT_GRAFO_PESO, graph_weight_text);
                 }
                 input_focus = INPUT_NONE;
             }
+            if (!show_value_input && input_focus == INPUT_VALOR) {
+                input_focus = INPUT_NONE;
+            }
             if (show_priority == false && input_focus == INPUT_PRIORIDAD) {
+                input_focus = INPUT_NONE;
+            }
+            if (!show_graph_origin_input && input_focus == INPUT_GRAFO_ORIGEN) {
+                input_focus = INPUT_NONE;
+            }
+            if (!show_graph_dest_input && input_focus == INPUT_GRAFO_DESTINO) {
+                input_focus = INPUT_NONE;
+            }
+            if (!show_graph_weight_input && input_focus == INPUT_GRAFO_PESO) {
                 input_focus = INPUT_NONE;
             }
             if (show_graph_inputs == false &&
@@ -2495,7 +2910,7 @@ int main(void) {
             }
         }
         }
-        if (value_invalid) {
+        if (value_invalid && !(app.estructura_activa == ESTRUCTURA_GRAFO && g_grafo_ui_mode != 0)) {
             ui_draw_text("Valor invalido", value_box.x, value_box.y + 42.0f, 12.0f, 0.2f,
                          (Color){176, 54, 44, 255}, false);
         }
@@ -2508,12 +2923,16 @@ int main(void) {
                          12.0f, 0.2f, (Color){176, 54, 44, 255}, false);
         }
         if (app.estructura_activa == ESTRUCTURA_GRAFO && graph_dest_invalid) {
-            ui_draw_text("Destino invalido", graph_dest_box.x, graph_dest_box.y + 42.0f, 12.0f,
-                         0.2f, (Color){176, 54, 44, 255}, false);
+            if (g_grafo_ui_mode == 0 || g_grafo_ui_mode == 2) {
+                ui_draw_text("Destino invalido", graph_dest_box.x, graph_dest_box.y + 42.0f, 12.0f,
+                             0.2f, (Color){176, 54, 44, 255}, false);
+            }
         }
         if (app.estructura_activa == ESTRUCTURA_GRAFO && graph_weight_invalid) {
-            ui_draw_text("Peso: -999..999", graph_weight_box.x, graph_weight_box.y + 42.0f, 12.0f,
-                         0.2f, (Color){176, 54, 44, 255}, false);
+            if (g_grafo_ui_mode == 0 || g_grafo_ui_mode == 2) {
+                ui_draw_text("Peso: -999..999", graph_weight_box.x, graph_weight_box.y + 42.0f, 12.0f,
+                             0.2f, (Color){176, 54, 44, 255}, false);
+            }
         }
 
         ui_draw_panel(layout.center, "Representacion Grafica");
@@ -2522,10 +2941,20 @@ int main(void) {
             float view_top;
 
             if (app.estructura_activa == ESTRUCTURA_GRAFO) {
-                Rectangle mode_btn = {layout.center.x + layout.center.width - 296.0f,
-                                      layout.center.y + 10.0f, 132.0f, 24.0f};
-                Rectangle detail_btn = {layout.center.x + layout.center.width - 156.0f,
-                                        layout.center.y + 10.0f, 132.0f, 24.0f};
+                float top_btn_gap = 8.0f;
+                float top_btn_w = (layout.center.width - 48.0f - top_btn_gap) * 0.5f;
+                Rectangle detail_btn;
+                Rectangle mode_btn;
+                if (top_btn_w > 132.0f) {
+                    top_btn_w = 132.0f;
+                }
+                if (top_btn_w < 106.0f) {
+                    top_btn_w = 106.0f;
+                }
+                detail_btn = (Rectangle){layout.center.x + layout.center.width - 24.0f - top_btn_w,
+                                         layout.center.y + 10.0f, top_btn_w, 24.0f};
+                mode_btn = (Rectangle){detail_btn.x - top_btn_gap - top_btn_w, layout.center.y + 10.0f,
+                                       top_btn_w, 24.0f};
                 if (ui_button(mode_btn, graph_basic_mode ? "Modo avanzado" : "Modo basico", false)) {
                     graph_basic_mode = !graph_basic_mode;
                 }
@@ -2551,26 +2980,30 @@ int main(void) {
         }
 
         if (!hide_graph_details) {
-        ui_draw_panel(layout.right, "Codigo C Asociado");
+        bool graph_paths_summary_mode =
+            app.estructura_activa == ESTRUCTURA_GRAFO && g_grafo_ui_mode == 2;
+        ui_draw_panel(layout.right, graph_paths_summary_mode ? "Resultado de Camino" : "Codigo C Asociado");
         DrawRectangleRounded((Rectangle){layout.right.x + 14.0f, layout.right.y + 40.0f,
                                          layout.right.width - 28.0f, 52.0f},
-                             0.20f, 8, Fade((Color){224, 235, 248, 255}, 0.88f));
+                            0.20f, 8, Fade((Color){224, 235, 248, 255}, 0.88f));
         DrawRectangleRoundedLinesEx((Rectangle){layout.right.x + 14.0f, layout.right.y + 40.0f,
                                                 layout.right.width - 28.0f, 52.0f},
                                     0.20f, 8, 1.2f, Fade((Color){42, 98, 158, 255}, 0.30f));
         ui_draw_text(TextFormat("Estructura: %s", estructura_nombre(app.estructura_activa)),
-                     layout.right.x + 20.0f, layout.right.y + 48.0f, 13.0f, 0.10f,
-                     (Color){34, 52, 76, 255}, false);
+                    layout.right.x + 20.0f, layout.right.y + 48.0f, 13.0f, 0.10f,
+                    (Color){34, 52, 76, 255}, false);
         ui_draw_text(TextFormat("T: %s | E: %s", tiempo_texto, espacio_texto),
-                     layout.right.x + 20.0f, layout.right.y + 66.0f, 12.0f, 0.08f,
-                     (Color){64, 76, 95, 255}, false);
-        if (ui_button((Rectangle){layout.right.x + layout.right.width - 136.0f, layout.right.y + 45.0f,
+                    layout.right.x + 20.0f, layout.right.y + 66.0f, 12.0f, 0.08f,
+                    (Color){64, 76, 95, 255}, false);
+
+        if (!graph_paths_summary_mode &&
+            ui_button((Rectangle){layout.right.x + layout.right.width - 136.0f, layout.right.y + 45.0f,
                                   116.0f, 26.0f},
                       code_panel_compact ? "Expandir" : "Compacto", false)) {
             code_panel_compact = !code_panel_compact;
             code_scroll = 0.0f;
         }
-        if (!code_panel_compact &&
+        if (!graph_paths_summary_mode && !code_panel_compact &&
             ui_button((Rectangle){layout.right.x + layout.right.width - 136.0f, layout.right.y + 73.0f,
                                   116.0f, 26.0f},
                       "Limpiar", false)) {
@@ -2581,7 +3014,97 @@ int main(void) {
             code_display_text = snippet;
         }
 
-        if (code_panel_compact) {
+        if (graph_paths_summary_mode) {
+            Rectangle result_box = {layout.right.x + 14.0f, layout.right.y + 102.0f,
+                                    layout.right.width - 28.0f, layout.right.height - 118.0f};
+            char ruta_text[512];
+            char ruta_preview[256];
+            char estado_text[128];
+            char costo_text[64];
+            char peso_directo_text[96];
+            char paso_text[64];
+            bool result_compact = (result_box.height < 250.0f) || graph_basic_mode;
+            int peso_directo = 0;
+            int costo_total = 0;
+            int i;
+            bool hay_peso_directo =
+                grafo_obtener_peso(app.grafo, app.grafo_vertice_inicio, app.grafo_vertice_destino,
+                                   &peso_directo) == GRAFO_OK;
+
+            for (i = 0; i < app.grafo_controller_state.script_aristas_count; i++) {
+                costo_total += app.grafo_controller_state.script_aristas[i].peso;
+            }
+            grafo_formatear_orden_vertices(&app.grafo_controller_state, ruta_text, sizeof(ruta_text));
+            if (ruta_text[0] == '\0') {
+                snprintf(ruta_text, sizeof(ruta_text), "-");
+            }
+
+            if (strstr(app.mensaje_operacion, "sin camino") != NULL) {
+                snprintf(estado_text, sizeof(estado_text), "Estado: Sin camino");
+                snprintf(costo_text, sizeof(costo_text), "Costo total: N/A");
+            } else if (strstr(app.mensaje_operacion, "ciclo negativo") != NULL) {
+                snprintf(estado_text, sizeof(estado_text), "Estado: Ciclo negativo");
+                snprintf(costo_text, sizeof(costo_text), "Costo total: N/A");
+            } else if (app.ultima_operacion_ok &&
+                       (app.grafo_algoritmo_seleccionado == GRAFO_ALGO_DIJKSTRA ||
+                        app.grafo_algoritmo_seleccionado == GRAFO_ALGO_BELLMAN_FORD)) {
+                snprintf(estado_text, sizeof(estado_text), "Estado: OK");
+                snprintf(costo_text, sizeof(costo_text), "Costo total: %d", costo_total);
+            } else {
+                snprintf(estado_text, sizeof(estado_text), "Estado: Pendiente");
+                snprintf(costo_text, sizeof(costo_text), "Costo total: -");
+            }
+
+            if (hay_peso_directo) {
+                snprintf(peso_directo_text, sizeof(peso_directo_text),
+                         "Peso directo V%d->V%d: %d", app.grafo_vertice_inicio,
+                         app.grafo_vertice_destino, peso_directo);
+            } else {
+                snprintf(peso_directo_text, sizeof(peso_directo_text),
+                         "Peso directo V%d->V%d: no definido", app.grafo_vertice_inicio,
+                         app.grafo_vertice_destino);
+            }
+            snprintf(paso_text, sizeof(paso_text), "Paso: %d/%d",
+                     app.grafo_controller_state.total_pasos > 0
+                         ? app.grafo_controller_state.paso_actual + 1
+                         : 0,
+                     app.grafo_controller_state.total_pasos);
+
+            DrawRectangleRounded(result_box, 0.16f, 8, Fade(WHITE, 0.74f));
+            DrawRectangleRoundedLinesEx(result_box, 0.16f, 8, 1.0f,
+                                        Fade((Color){42, 98, 158, 255}, 0.20f));
+            ui_draw_text("Resumen de ejecucion", result_box.x + 10.0f, result_box.y + 8.0f,
+                         13.0f, 0.10f, (Color){24, 46, 76, 255}, true);
+            ui_draw_text(TextFormat("Algoritmo: %s",
+                                    grafo_algoritmo_home_nombre(app.grafo_algoritmo_seleccionado)),
+                         result_box.x + 10.0f, result_box.y + 28.0f, 12.0f, 0.08f,
+                         (Color){56, 72, 92, 255}, false);
+            ui_draw_text(TextFormat("Origen: V%d | Destino: V%d", app.grafo_vertice_inicio,
+                                    app.grafo_vertice_destino),
+                         result_box.x + 10.0f, result_box.y + 44.0f, 12.0f, 0.08f,
+                         (Color){56, 72, 92, 255}, false);
+            ui_draw_text(estado_text, result_box.x + 10.0f, result_box.y + 60.0f, 12.0f, 0.08f,
+                         (Color){56, 72, 92, 255}, false);
+            ui_draw_text(costo_text, result_box.x + 10.0f, result_box.y + 76.0f, 12.0f, 0.08f,
+                         (Color){56, 72, 92, 255}, false);
+            ui_draw_text(paso_text, result_box.x + 10.0f, result_box.y + 92.0f, 12.0f, 0.08f,
+                         (Color){56, 72, 92, 255}, false);
+            if (!result_compact) {
+                ui_draw_text(peso_directo_text, result_box.x + 10.0f, result_box.y + 108.0f, 12.0f,
+                             0.08f, (Color){56, 72, 92, 255}, false);
+                ui_draw_text("Ruta actual:", result_box.x + 10.0f, result_box.y + 128.0f, 12.0f,
+                             0.08f, (Color){36, 58, 86, 255}, true);
+                draw_scrollable_multiline_text(
+                    ruta_text,
+                    (Rectangle){result_box.x + 10.0f, result_box.y + 146.0f, result_box.width - 20.0f,
+                                result_box.height - 166.0f},
+                    14, (Color){44, 58, 74, 255}, 0.0f);
+            } else {
+                build_compact_preview(ruta_text, ruta_preview, sizeof(ruta_preview), 2);
+                ui_draw_text(TextFormat("Ruta: %s", ruta_preview), result_box.x + 10.0f,
+                             result_box.y + 108.0f, 12.0f, 0.08f, (Color){56, 72, 92, 255}, false);
+            }
+        } else if (code_panel_compact) {
             char preview_text[640];
             Rectangle compact_box = {layout.right.x + 14.0f, layout.right.y + 102.0f,
                                      layout.right.width - 28.0f, layout.right.height - 118.0f};
@@ -2824,6 +3347,33 @@ int main(void) {
                     }
                 }
             }
+            if (trace_advanced_mode &&
+                app.estructura_activa == ESTRUCTURA_GRAFO &&
+                (app.grafo_algoritmo_seleccionado == GRAFO_ALGO_BFS ||
+                 app.grafo_algoritmo_seleccionado == GRAFO_ALGO_DFS)) {
+                char lista_vertices_adv[640];
+                Rectangle lista_adv_box = {summary_box.x + 10.0f,
+                                           summary_text_y + summary_line_step * 5.0f + 6.0f,
+                                           summary_box.width - 20.0f,
+                                           summary_box.height - (summary_text_y - summary_box.y) -
+                                               summary_line_step * 5.0f - 16.0f};
+                if (lista_adv_box.height > 28.0f) {
+                    grafo_formatear_orden_vertices_lista(&app.grafo_controller_state,
+                                                         lista_vertices_adv,
+                                                         sizeof(lista_vertices_adv), 12);
+                    DrawRectangleRounded(lista_adv_box, 0.12f, 8, Fade(WHITE, 0.78f));
+                    DrawRectangleRoundedLinesEx(lista_adv_box, 0.12f, 8, 1.0f,
+                                                Fade((Color){42, 98, 158, 255}, 0.25f));
+                    ui_draw_text("Vertices del recorrido", lista_adv_box.x + 8.0f,
+                                 lista_adv_box.y + 6.0f, 11.0f, 0.10f,
+                                 (Color){24, 46, 76, 255}, true);
+                    draw_scrollable_multiline_text(
+                        lista_vertices_adv,
+                        (Rectangle){lista_adv_box.x + 8.0f, lista_adv_box.y + 22.0f,
+                                    lista_adv_box.width - 16.0f, lista_adv_box.height - 26.0f},
+                        12, (Color){56, 72, 92, 255}, 0.0f);
+                }
+            }
 
             DrawRectangleRounded(trace_box, 0.16f, 8, Fade(WHITE, 0.50f));
             DrawRectangleRoundedLinesEx(trace_box, 0.16f, 8, 1.2f,
@@ -2843,10 +3393,15 @@ int main(void) {
                 } else {
                     char paso_label[64];
                     char estado_label[32];
+                    char lista_vertices[640];
+                    bool mostrar_lista_recorrido =
+                        app.grafo_algoritmo_seleccionado == GRAFO_ALGO_BFS ||
+                        app.grafo_algoritmo_seleccionado == GRAFO_ALGO_DFS;
                     float progress_ratio = 0.0f;
                     char progress_text[24];
                     Rectangle bar_track;
                     Rectangle bar_fill;
+                    Rectangle lista_box;
                     float y_base = trace_box.y + 30.0f;
                     snprintf(paso_label, sizeof(paso_label), "Paso: %d/%d",
                              app.grafo_controller_state.total_pasos > 0
@@ -2867,6 +3422,28 @@ int main(void) {
                                  (Color){56, 72, 92, 255}, false);
                     ui_draw_text(estado_label, trace_box.x + 10.0f, y_base + 52.0f, 12.0f, 0.08f,
                                  (Color){56, 72, 92, 255}, false);
+
+                    if (mostrar_lista_recorrido) {
+                        grafo_formatear_orden_vertices_lista(&app.grafo_controller_state,
+                                                             lista_vertices,
+                                                             sizeof(lista_vertices), 12);
+                        lista_box = (Rectangle){trace_box.x + 10.0f, y_base + 70.0f,
+                                                trace_box.width - 20.0f,
+                                                trace_box.height - 108.0f};
+                        if (lista_box.height > 28.0f) {
+                            DrawRectangleRounded(lista_box, 0.12f, 8, Fade((Color){232, 240, 250, 255}, 0.65f));
+                            DrawRectangleRoundedLinesEx(lista_box, 0.12f, 8, 1.0f,
+                                                        Fade((Color){42, 98, 158, 255}, 0.28f));
+                            ui_draw_text("Vertices del recorrido", lista_box.x + 8.0f,
+                                         lista_box.y + 6.0f, 11.0f, 0.08f,
+                                         (Color){24, 46, 76, 255}, true);
+                            draw_scrollable_multiline_text(
+                                lista_vertices,
+                                (Rectangle){lista_box.x + 8.0f, lista_box.y + 22.0f,
+                                            lista_box.width - 16.0f, lista_box.height - 26.0f},
+                                12, (Color){56, 72, 92, 255}, 0.0f);
+                        }
+                    }
 
                     if (app.grafo_controller_state.total_pasos > 0) {
                         progress_ratio = (float)(app.grafo_controller_state.paso_actual + 1) /

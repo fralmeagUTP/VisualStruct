@@ -95,87 +95,68 @@ $(function(){initNavTree('md_docs_2guia-docente.html','',''); });
 <div class="textblock"><p><a class="anchor" id="autotoc_md76"></a></p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md77"></a>
 Proposito</h1>
-<p>Esta aplicacion esta pensada para explicar estructuras secuenciales y grafos mostrando tres planos al mismo tiempo:</p>
-<ul>
-<li>estado grafico de la estructura</li>
-<li>historial de codigo C relacionado con cada operacion ejecutada</li>
-<li>explicacion breve con complejidad</li>
-</ul>
+<p>Usar VisualStruct para explicar estructuras y algoritmos con evidencia visual y traza tecnica sincronizada.</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md78"></a>
-Secuencia sugerida para clase</h1>
+Flujo sugerido de clase</h1>
 <ol type="1">
-<li>Seleccionar la estructura a estudiar.</li>
-<li>Inicializar o vaciar para partir de un estado conocido.</li>
-<li>Insertar algunos elementos variando <span class="tt">valor</span> y <span class="tt">prioridad</span>.</li>
-<li>Pedir al estudiante que anticipe el resultado de la siguiente operacion.</li>
-<li>Ejecutar la accion y comparar la prediccion con el cambio visual.</li>
-<li>Relacionar el resultado con el snippet y la complejidad mostrada.</li>
-<li>Al finalizar una secuencia, usar <span class="tt">Limpiar</span> en el panel de codigo para comenzar un nuevo bloque didactico.</li>
-<li>Usar <span class="tt">F1</span> para abrir la ayuda interna cuando se necesite reforzar conceptos de uso o arquitectura.</li>
+<li>Seleccionar modulo.</li>
+<li>Inicializar.</li>
+<li>Cargar/crear caso de prueba.</li>
+<li>Pedir prediccion al estudiante.</li>
+<li>Ejecutar operacion/algoritmo.</li>
+<li>Validar contra visual, codigo y traza.</li>
 </ol>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md79"></a>
-Ideas por estructura</h1>
-<h2><a class="el" href="struct_pila.html">Pila</a></h2>
+Recomendaciones por modulo</h1>
+<h2><a class="el" href="struct_pila.html">Pila</a> y <a class="el" href="struct_cola.html">Cola</a></h2>
 <ul>
-<li>Explicar LIFO con varias inserciones seguidas y un <span class="tt">pop</span>.</li>
-<li>Usar el marcador de tope para reforzar el concepto.</li>
+<li>Empezar con 3-5 elementos.</li>
+<li>Contrastar LIFO vs FIFO con el mismo conjunto de valores.</li>
 </ul>
-<h2><a class="el" href="struct_cola.html">Cola</a></h2>
+<h2><a class="el" href="struct_cola.html">Cola</a> de Prioridad</h2>
 <ul>
-<li>Contrastar <span class="tt">FRONT</span> y <span class="tt">BACK</span>.</li>
-<li>Mostrar como el elemento que entra ultimo no es el primero en salir.</li>
+<li>Variar prioridad manteniendo valor para mostrar desacople entre orden de llegada y salida.</li>
 </ul>
-<h2><a class="el" href="struct_cola.html">Cola</a> de prioridad</h2>
+<h2><a class="el" href="struct_lista.html">Lista</a> y <a class="el" href="struct_lista.html">Lista</a> Circular</h2>
 <ul>
-<li>Variar prioridades para discutir por que el orden visual de insercion no siempre coincide con la salida.</li>
-<li>Usar el indicador <span class="tt">OUT</span> para anticipar el siguiente elemento extraido.</li>
-</ul>
-<h2><a class="el" href="struct_lista.html">Lista</a></h2>
-<ul>
-<li>Demostrar insercion al inicio y al final.</li>
-<li>Ejecutar busqueda para remarcar coincidencias.</li>
-<li>Invertir la lista y observar el efecto estructural.</li>
-</ul>
-<h2><a class="el" href="struct_lista.html">Lista</a> circular</h2>
-<ul>
-<li>Explicar el cierre del ciclo: el ultimo nodo vuelve al primero.</li>
-<li>Comparar insercion al inicio y al final resaltando que ambas mantienen circularidad.</li>
-<li>Buscar un valor y discutir por que el recorrido debe detenerse al volver a <span class="tt">HEAD</span>.</li>
-<li>Invertir y verificar que la estructura sigue cerrada (sin <span class="tt">NULL</span> final).</li>
+<li>Enfatizar diferencia entre fin en <span class="tt">NULL</span> vs cierre circular.</li>
+<li>Usar invertir para verificar comprension de enlaces.</li>
 </ul>
 <h2>Sublistas</h2>
 <ul>
-<li>Explicar la relacion padre-hijo: cada nodo padre mantiene una sublista propia.</li>
-<li>Insertar padres y luego hijos para mostrar que cada sublista es independiente.</li>
-<li>Seleccionar distintos padres con <span class="tt">Buscar</span> para contrastar contexto activo.</li>
-<li>Eliminar hijos y padres para discutir impacto local frente a impacto estructural.</li>
+<li>Trabajar con 2 padres y 2-3 hijos por padre para evidenciar independencia.</li>
 </ul>
 <h2><a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a></h2>
 <ul>
-<li>Comenzar con un demo pequeno y alternar entre modo dirigido/no dirigido para fijar conceptos base.</li>
-<li>Ejecutar BFS/DFS para diferenciar recorrido por anchura frente a profundidad usando el mismo grafo.</li>
-<li>Usar Dijkstra y Bellman-Ford con el mismo origen/destino para discutir pesos, mejoras y relajaciones.</li>
-<li>Presentar Prim y Kruskal sobre grafo no dirigido para comparar dos estrategias de MST.</li>
-<li>Aprovechar <span class="tt">autoplay</span>, <span class="tt">paso siguiente</span> y <span class="tt">tabla de distancias</span> para analizar cada iteracion.</li>
+<li>Construccion: crear vertices/aristas y alternar dirigido/no dirigido.</li>
+<li>Recorridos: definir inicio y comparar BFS vs DFS.</li>
+<li>Caminos: demostrar impacto del peso con Dijkstra y Bellman-Ford.</li>
+<li>MST:<ul>
+<li>modo basico: ejecutar Prim/Kruskal directo</li>
+<li>modo avanzado: usar paso a paso y autoplay para analisis fino</li>
+</ul>
+</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md80"></a>
-Recomendaciones de uso</h1>
-<ul>
-<li>Mantener pocos elementos al inicio para que el patron sea evidente.</li>
-<li>Pedir predicciones antes de pulsar el boton de operacion.</li>
-<li>Repetir una misma secuencia cambiando un solo valor para comparar comportamientos.</li>
-<li>Usar los mensajes de estado y el panel de traza como apoyo para estudiantes que recien comienzan.</li>
-<li>Aprovechar el historial de codigo para reconstruir toda la secuencia ejecutada sin depender de memoria de pasos previos.</li>
-<li>Integrar la pantalla de ayuda como apoyo transversal para aclarar modulos, atajos y errores comunes.</li>
+Demo de grafo para clase</h1>
+<p><span class="tt">Cargar demo (M)</span>:</p><ul>
+<li>usa <span class="tt">Valor</span> como numero de nodos</li>
+<li>genera aristas aleatorias dispersas</li>
+<li>mantiene conectividad base para que recorridos y caminos sean ejecutables</li>
+<li>recomienda usar 6-15 nodos para explicacion en pantalla</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md81"></a>
-Limitaciones actuales</h1>
+Buenas practicas de sesion</h1>
 <ul>
-<li>La visualizacion prioriza claridad pedagogica sobre animaciones complejas.</li>
-<li>El proyecto integra estructuras secuenciales y un modulo de grafos en una sola aplicacion.</li>
-<li>El visualizador secuencial incluye seis estructuras: pila, cola, cola de prioridad, lista, lista circular y sublistas.</li>
-<li>El modulo de grafos incluye construccion del grafo y ejecucion pedagogica de BFS, DFS, Dijkstra, Bellman-Ford, Prim y Kruskal.</li>
-<li>El material en <span class="tt">src/legacy</span> no representa la arquitectura vigente. </li>
+<li>Limpiar historial de codigo al cerrar cada bloque tematico.</li>
+<li>Registrar en pizarra: entrada -&gt; algoritmo -&gt; resultado esperado.</li>
+<li>Cambiar un solo parametro por iteracion para facilitar comparacion.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md82"></a>
+Limitaciones conocidas</h1>
+<ul>
+<li>Prim/Kruskal actualmente requieren cuidado con IDs de vertices muy grandes.</li>
+<li>En grafos muy grandes, la lectura de etiquetas puede requerir zoom visual (modo avanzado + menos nodos por practica). </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

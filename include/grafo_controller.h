@@ -208,6 +208,7 @@ void grafo_controller_actualizar(GrafoController *controller, float delta_time);
  */
 void grafo_controller_procesar_mouse(GrafoController *controller, 
                                     Vector2 mouse_pos, bool boton_pulsado);
+void grafo_controller_scroll_vista(GrafoController *controller, float wheel_delta, bool horizontal);
 
 /**
  * @brief Establece modo de operación

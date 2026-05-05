@@ -93,7 +93,7 @@ $(function(){initNavTree('grafo_8c.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>Implementación del TAD <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a> con algoritmos clásicos.  
+<p>ImplementaciÃ³n del TAD <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a> con algoritmos clÃ¡sicos.  
 <a href="#details">Más...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="grafo_8h_source.html">grafo.h</a>&quot;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
@@ -107,7 +107,7 @@ typedefs</h2></td></tr>
 <tr class="memitem:abd427583fa34c095e918a59cdb42088e" id="r_abd427583fa34c095e918a59cdb42088e"><td class="memItemLeft">typedef struct NodoArista&#160;</td><td class="memItemRight"><a class="el" href="#abd427583fa34c095e918a59cdb42088e">NodoArista</a></td></tr>
 <tr class="memdesc:abd427583fa34c095e918a59cdb42088e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="cola_8h.html#a46556b0fd3be65be11d967516d9866f1">Nodo</a> de una arista en la lista de adyacencia.  <br /></td></tr>
 <tr class="memitem:ac3a3c85af21523d55ac36cecabcc3c0c" id="r_ac3a3c85af21523d55ac36cecabcc3c0c"><td class="memItemLeft">typedef struct NodoVertice&#160;</td><td class="memItemRight"><a class="el" href="#ac3a3c85af21523d55ac36cecabcc3c0c">NodoVertice</a></td></tr>
-<tr class="memdesc:ac3a3c85af21523d55ac36cecabcc3c0c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="cola_8h.html#a46556b0fd3be65be11d967516d9866f1">Nodo</a> de un vértice en la lista de vértices.  <br /></td></tr>
+<tr class="memdesc:ac3a3c85af21523d55ac36cecabcc3c0c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="cola_8h.html#a46556b0fd3be65be11d967516d9866f1">Nodo</a> de un vÃ©rtice en la lista de vÃ©rtices.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Funciones</h2></td></tr>
@@ -116,9 +116,9 @@ Funciones</h2></td></tr>
 <tr class="memitem:a4ff33fa6151f77304077574e7b4ceb3b" id="r_a4ff33fa6151f77304077574e7b4ceb3b"><td class="memItemLeft"><a class="el" href="struct_grafo_recorrido.html">GrafoRecorrido</a>&#160;</td><td class="memItemRight"><a class="el" href="#a4ff33fa6151f77304077574e7b4ceb3b">grafo_bfs</a> (const Grafo *grafo, int inicio)</td></tr>
 <tr class="memdesc:a4ff33fa6151f77304077574e7b4ceb3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ejecuta BFS (búsqueda en amplitud) desde un vértice inicial.  <br /></td></tr>
 <tr class="memitem:ae8a5f68b0d0085fd405c0f629fcd6e64" id="r_ae8a5f68b0d0085fd405c0f629fcd6e64"><td class="memItemLeft">static NodoArista *&#160;</td><td class="memItemRight"><a class="el" href="#ae8a5f68b0d0085fd405c0f629fcd6e64">grafo_buscar_arista</a> (const NodoVertice *nodo_vertice, int destino)</td></tr>
-<tr class="memdesc:ae8a5f68b0d0085fd405c0f629fcd6e64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Busca una arista en la lista de adyacencia de un vértice.  <br /></td></tr>
+<tr class="memdesc:ae8a5f68b0d0085fd405c0f629fcd6e64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Busca una arista en la lista de adyacencia de un vÃ©rtice.  <br /></td></tr>
 <tr class="memitem:a70b21d7ac606664715e2f0a06af48cf4" id="r_a70b21d7ac606664715e2f0a06af48cf4"><td class="memItemLeft">static NodoVertice *&#160;</td><td class="memItemRight"><a class="el" href="#a70b21d7ac606664715e2f0a06af48cf4">grafo_buscar_vertice</a> (const Grafo *grafo, int vertice)</td></tr>
-<tr class="memdesc:a70b21d7ac606664715e2f0a06af48cf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Busca un vértice en el grafo.  <br /></td></tr>
+<tr class="memdesc:a70b21d7ac606664715e2f0a06af48cf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Busca un vÃ©rtice en el grafo.  <br /></td></tr>
 <tr class="memitem:a16e6f1399d26e21ece03acf5ba31bf46" id="r_a16e6f1399d26e21ece03acf5ba31bf46"><td class="memItemLeft">Grafo *&#160;</td><td class="memItemRight"><a class="el" href="#a16e6f1399d26e21ece03acf5ba31bf46">grafo_crear</a> (bool dirigido)</td></tr>
 <tr class="memdesc:a16e6f1399d26e21ece03acf5ba31bf46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un nuevo grafo.  <br /></td></tr>
 <tr class="memitem:a5ab290b6904b40b9663649124cdd876e" id="r_a5ab290b6904b40b9663649124cdd876e"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a5ab290b6904b40b9663649124cdd876e">grafo_destruir</a> (Grafo **grafo)</td></tr>
@@ -145,6 +145,7 @@ Funciones</h2></td></tr>
 <tr class="memdesc:a2658785567afd3fdfcb30dc9af730893"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el grado de entrada de un vértice (solo en dirigidos).  <br /></td></tr>
 <tr class="memitem:a6225a7665384cd3feb1d68faac823b5b" id="r_a6225a7665384cd3feb1d68faac823b5b"><td class="memItemLeft"><a class="el" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">GrafoEstado</a>&#160;</td><td class="memItemRight"><a class="el" href="#a6225a7665384cd3feb1d68faac823b5b">grafo_grado_salida</a> (const Grafo *grafo, int vertice, size_t *grado)</td></tr>
 <tr class="memdesc:a6225a7665384cd3feb1d68faac823b5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el grado de salida de un vértice.  <br /></td></tr>
+<tr class="memitem:a790843f2f10a30821355e0240930d4c5" id="r_a790843f2f10a30821355e0240930d4c5"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a790843f2f10a30821355e0240930d4c5">grafo_idx_vertice_id</a> (const int *vertices, size_t cantidad, int id)</td></tr>
 <tr class="memitem:aa2d8150846e7b63b2bfd25232bdadff8" id="r_aa2d8150846e7b63b2bfd25232bdadff8"><td class="memItemLeft"><a class="el" href="grafo_8h.html#a76958afe18cba4eda58c99ce897e3b5e">GrafoEstado</a>&#160;</td><td class="memItemRight"><a class="el" href="#aa2d8150846e7b63b2bfd25232bdadff8">grafo_insertar_arista</a> (Grafo *grafo, int origen, int destino, int peso)</td></tr>
 <tr class="memdesc:aa2d8150846e7b63b2bfd25232bdadff8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserta una arista entre dos vértices.  <br /></td></tr>
 <tr class="memitem:a29a97d6a89c622a06819b5f25d92c26a" id="r_a29a97d6a89c622a06819b5f25d92c26a"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a29a97d6a89c622a06819b5f25d92c26a">grafo_insertar_arista_interna</a> (NodoVertice *nodo_vertice, int destino, int peso)</td></tr>
@@ -154,7 +155,7 @@ Funciones</h2></td></tr>
 <tr class="memitem:a040a3ebfc0bcecad320305013348fc17" id="r_a040a3ebfc0bcecad320305013348fc17"><td class="memItemLeft"><a class="el" href="struct_grafo_camino.html">GrafoCamino</a>&#160;</td><td class="memItemRight"><a class="el" href="#a040a3ebfc0bcecad320305013348fc17">grafo_kruskal</a> (const Grafo *grafo)</td></tr>
 <tr class="memdesc:a040a3ebfc0bcecad320305013348fc17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula el árbol de expansión mínima con Kruskal.  <br /></td></tr>
 <tr class="memitem:ae30e8651f2ff1a67cf699bacaec4d725" id="r_ae30e8651f2ff1a67cf699bacaec4d725"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ae30e8651f2ff1a67cf699bacaec4d725">grafo_liberar_aristas</a> (NodoVertice *nodo_vertice)</td></tr>
-<tr class="memdesc:ae30e8651f2ff1a67cf699bacaec4d725"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libera todas las aristas de un vértice.  <br /></td></tr>
+<tr class="memdesc:ae30e8651f2ff1a67cf699bacaec4d725"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libera todas las aristas de un vÃ©rtice.  <br /></td></tr>
 <tr class="memitem:a0b51bac05f8bd3ca26a58f4642eb34c4" id="r_a0b51bac05f8bd3ca26a58f4642eb34c4"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0b51bac05f8bd3ca26a58f4642eb34c4">grafo_liberar_camino</a> (<a class="el" href="struct_grafo_camino.html">GrafoCamino</a> *camino)</td></tr>
 <tr class="memdesc:a0b51bac05f8bd3ca26a58f4642eb34c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libera un camino mínimo/MST y su array de aristas.  <br /></td></tr>
 <tr class="memitem:a7b6f2e3aa6fbff8523911e2dd4c0296f" id="r_a7b6f2e3aa6fbff8523911e2dd4c0296f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a7b6f2e3aa6fbff8523911e2dd4c0296f">grafo_liberar_recorrido</a> (<a class="el" href="struct_grafo_recorrido.html">GrafoRecorrido</a> *recorrido)</td></tr>
@@ -177,8 +178,8 @@ Funciones</h2></td></tr>
 <tr class="memdesc:adafca82e2e59cb9a0826ab5a107e362c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna el tamaño del grafo (cantidad de aristas).  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
-<div class="textblock"><p>Implementación del TAD <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a> con algoritmos clásicos. </p>
-<p>Implementa grafos dirigidos y no dirigidos usando lista de adyacencia. Los vértices se almacenan en una lista enlazada, y cada vértice tiene una lista enlazada de aristas salientes.</p>
+<div class="textblock"><p>ImplementaciÃ³n del TAD <a class="el" href="grafo_8h.html#adab04f64457aac52a13e71e40915bd43" title="Tipo opaco que representa un grafo.">Grafo</a> con algoritmos clÃ¡sicos. </p>
+<p>Implementa grafos dirigidos y no dirigidos usando lista de adyacencia. Los vÃ©rtices se almacenan en una lista enlazada, y cada vÃ©rtice tiene una lista enlazada de aristas salientes.</p>
 <dl class="section author"><dt>Autor</dt><dd>Francisco Alejandro Medina Aguirre </dd></dl>
 <dl class="section date"><dt>Fecha</dt><dd>2026 </dd></dl>
 <dl class="section version"><dt>Versión</dt><dd>1.0 </dd></dl>
@@ -213,7 +214,7 @@ Funciones</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="cola_8h.html#a46556b0fd3be65be11d967516d9866f1">Nodo</a> de un vértice en la lista de vértices. </p>
+<p><a class="el" href="cola_8h.html#a46556b0fd3be65be11d967516d9866f1">Nodo</a> de un vÃ©rtice en la lista de vÃ©rtices. </p>
 
 </div>
 </div>
@@ -257,11 +258,11 @@ Funciones</h2></td></tr>
 <dl class="section note"><dt>Nota</dt><dd>El usuario debe liberar con <code><a class="el" href="grafo_8h.html#a0b51bac05f8bd3ca26a58f4642eb34c4" title="Libera un camino mínimo/MST y su array de aristas.">grafo_liberar_camino()</a></code> </dd></dl>
 <p><b>Complejidad:</b> O(V·E) con búsquedas lineales </p>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l00799">799</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l00843">843</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="grafo_8h_source.html#l00084">GrafoCamino::aristas</a>, <a class="el" href="grafo_8h_source.html#l00085">GrafoCamino::cantidad</a>, <a class="el" href="grafo_8h_source.html#l00086">GrafoCamino::costo_total</a>, <a class="el" href="grafo_8h_source.html#l00062">GrafoArista::destino</a>, <a class="el" href="grafo_8h_source.html#l00088">GrafoCamino::estado</a>, <a class="el" href="grafo_8h_source.html#l00087">GrafoCamino::existe</a>, <a class="el" href="grafo_8h_source.html#l00048">GRAFO_ERROR_CICLO_NEGATIVO</a>, <a class="el" href="grafo_8h_source.html#l00044">GRAFO_ERROR_MEMORIA</a>, <a class="el" href="grafo_8h_source.html#l00045">GRAFO_ERROR_NO_EXISTE</a>, <a class="el" href="grafo_8h_source.html#l00043">GRAFO_ERROR_NULO</a>, <a class="el" href="grafo_8c_source.html#l00321">grafo_existe_vertice()</a>, <a class="el" href="grafo_8c_source.html#l00336">grafo_obtener_peso()</a>, <a class="el" href="grafo_8c_source.html#l00427">grafo_obtener_vertices()</a>, <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>, <a class="el" href="grafo_8c_source.html#l00350">grafo_orden()</a>, <a class="el" href="grafo_8c_source.html#l00482">grafo_sucesores()</a>, <a class="el" href="grafo_8h_source.html#l00061">GrafoArista::origen</a> y <a class="el" href="grafo_8h_source.html#l00063">GrafoArista::peso</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="grafo_8h_source.html#l00084">GrafoCamino::aristas</a>, <a class="el" href="grafo_8h_source.html#l00085">GrafoCamino::cantidad</a>, <a class="el" href="grafo_8h_source.html#l00086">GrafoCamino::costo_total</a>, <a class="el" href="grafo_8h_source.html#l00062">GrafoArista::destino</a>, <a class="el" href="grafo_8h_source.html#l00088">GrafoCamino::estado</a>, <a class="el" href="grafo_8h_source.html#l00087">GrafoCamino::existe</a>, <a class="el" href="grafo_8h_source.html#l00048">GRAFO_ERROR_CICLO_NEGATIVO</a>, <a class="el" href="grafo_8h_source.html#l00044">GRAFO_ERROR_MEMORIA</a>, <a class="el" href="grafo_8h_source.html#l00045">GRAFO_ERROR_NO_EXISTE</a>, <a class="el" href="grafo_8h_source.html#l00043">GRAFO_ERROR_NULO</a>, <a class="el" href="grafo_8c_source.html#l00321">grafo_existe_vertice()</a>, <a class="el" href="grafo_8c_source.html#l00673">grafo_idx_vertice_id()</a>, <a class="el" href="grafo_8c_source.html#l00336">grafo_obtener_peso()</a>, <a class="el" href="grafo_8c_source.html#l00427">grafo_obtener_vertices()</a>, <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>, <a class="el" href="grafo_8c_source.html#l00482">grafo_sucesores()</a>, <a class="el" href="grafo_8h_source.html#l00061">GrafoArista::origen</a> y <a class="el" href="grafo_8h_source.html#l00063">GrafoArista::peso</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00749">app_state_operacion_grafo_ejecutar_algoritmo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00043">grafo_controller_construir_script()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00982">app_state_operacion_grafo_ejecutar_algoritmo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00043">grafo_controller_construir_script()</a>.</p>
 
 </div>
 </div>
@@ -301,7 +302,7 @@ Funciones</h2></td></tr>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo_8h_source.html#l00073">GrafoRecorrido::cantidad</a>, <a class="el" href="grafo_8h_source.html#l00074">GrafoRecorrido::estado</a>, <a class="el" href="grafo_8h_source.html#l00044">GRAFO_ERROR_MEMORIA</a>, <a class="el" href="grafo_8h_source.html#l00045">GRAFO_ERROR_NO_EXISTE</a>, <a class="el" href="grafo_8h_source.html#l00043">GRAFO_ERROR_NULO</a>, <a class="el" href="grafo_8c_source.html#l00321">grafo_existe_vertice()</a>, <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>, <a class="el" href="grafo_8c_source.html#l00350">grafo_orden()</a>, <a class="el" href="grafo_8c_source.html#l00482">grafo_sucesores()</a> y <a class="el" href="grafo_8h_source.html#l00072">GrafoRecorrido::vertices</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00749">app_state_operacion_grafo_ejecutar_algoritmo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00043">grafo_controller_construir_script()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00982">app_state_operacion_grafo_ejecutar_algoritmo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00043">grafo_controller_construir_script()</a>.</p>
 
 </div>
 </div>
@@ -332,11 +333,11 @@ Funciones</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Busca una arista en la lista de adyacencia de un vértice. </p>
+<p>Busca una arista en la lista de adyacencia de un vÃ©rtice. </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">nodo_vertice</td><td>Puntero al nodo del vértice </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">destino</td><td>Vértice destino de la arista </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">nodo_vertice</td><td>Puntero al nodo del vÃ©rtice </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">destino</td><td>VÃ©rtice destino de la arista </td></tr>
   </table>
   </dd>
 </dl>
@@ -375,15 +376,15 @@ Funciones</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Busca un vértice en el grafo. </p>
+<p>Busca un vÃ©rtice en el grafo. </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">grafo</td><td>Puntero al grafo </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">vertice</td><td>Identificador del vértice </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">vertice</td><td>Identificador del vÃ©rtice </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Devuelve</dt><dd>Puntero al nodo del vértice; NULL si no existe </dd></dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Puntero al nodo del vÃ©rtice; NULL si no existe </dd></dl>
 
 <p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l00060">60</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
 
@@ -419,7 +420,7 @@ Funciones</h2></td></tr>
 
 <p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l00172">172</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00205">app_state_init()</a>, <a class="el" href="app__state_8c_source.html#l00343">app_state_operacion_inicializar()</a>, <a class="el" href="app__state_8c_source.html#l01101">app_state_operacion_vaciar()</a>, <a class="el" href="app__state_8c_source.html#l00037">app_state_recrear_grafo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00392">grafo_controller_limpiar()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00367">app_state_init()</a>, <a class="el" href="app__state_8c_source.html#l00525">app_state_operacion_inicializar()</a>, <a class="el" href="app__state_8c_source.html#l01391">app_state_operacion_vaciar()</a>, <a class="el" href="app__state_8c_source.html#l00208">app_state_recrear_grafo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00392">grafo_controller_limpiar()</a>.</p>
 
 </div>
 </div>
@@ -453,7 +454,7 @@ Funciones</h2></td></tr>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo_8c_source.html#l00155">grafo_liberar_aristas()</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00343">app_state_operacion_inicializar()</a>, <a class="el" href="app__state_8c_source.html#l01101">app_state_operacion_vaciar()</a>, <a class="el" href="app__state_8c_source.html#l00037">app_state_recrear_grafo()</a>, <a class="el" href="app__state_8c_source.html#l00244">app_state_shutdown()</a> y <a class="el" href="grafo__controller_8c_source.html#l00392">grafo_controller_limpiar()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00525">app_state_operacion_inicializar()</a>, <a class="el" href="app__state_8c_source.html#l01391">app_state_operacion_vaciar()</a>, <a class="el" href="app__state_8c_source.html#l00208">app_state_recrear_grafo()</a>, <a class="el" href="app__state_8c_source.html#l00408">app_state_shutdown()</a> y <a class="el" href="grafo__controller_8c_source.html#l00392">grafo_controller_limpiar()</a>.</p>
 
 </div>
 </div>
@@ -493,7 +494,7 @@ Funciones</h2></td></tr>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo_8h_source.html#l00073">GrafoRecorrido::cantidad</a>, <a class="el" href="grafo_8h_source.html#l00074">GrafoRecorrido::estado</a>, <a class="el" href="grafo_8h_source.html#l00044">GRAFO_ERROR_MEMORIA</a>, <a class="el" href="grafo_8h_source.html#l00045">GRAFO_ERROR_NO_EXISTE</a>, <a class="el" href="grafo_8h_source.html#l00043">GRAFO_ERROR_NULO</a>, <a class="el" href="grafo_8c_source.html#l00321">grafo_existe_vertice()</a>, <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>, <a class="el" href="grafo_8c_source.html#l00350">grafo_orden()</a>, <a class="el" href="grafo_8c_source.html#l00482">grafo_sucesores()</a> y <a class="el" href="grafo_8h_source.html#l00072">GrafoRecorrido::vertices</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00749">app_state_operacion_grafo_ejecutar_algoritmo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00043">grafo_controller_construir_script()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00982">app_state_operacion_grafo_ejecutar_algoritmo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00043">grafo_controller_construir_script()</a>.</p>
 
 </div>
 </div>
@@ -536,11 +537,11 @@ Funciones</h2></td></tr>
 <dl class="section note"><dt>Nota</dt><dd>El usuario debe liberar con <code><a class="el" href="grafo_8h.html#a0b51bac05f8bd3ca26a58f4642eb34c4" title="Libera un camino mínimo/MST y su array de aristas.">grafo_liberar_camino()</a></code> </dd></dl>
 <p><b>Complejidad:</b> O(V² + E·V) con selección lineal (sin heap) </p>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l00673">673</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l00685">685</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="grafo_8h_source.html#l00084">GrafoCamino::aristas</a>, <a class="el" href="grafo_8h_source.html#l00085">GrafoCamino::cantidad</a>, <a class="el" href="grafo_8h_source.html#l00086">GrafoCamino::costo_total</a>, <a class="el" href="grafo_8h_source.html#l00062">GrafoArista::destino</a>, <a class="el" href="grafo_8h_source.html#l00088">GrafoCamino::estado</a>, <a class="el" href="grafo_8h_source.html#l00087">GrafoCamino::existe</a>, <a class="el" href="grafo_8h_source.html#l00044">GRAFO_ERROR_MEMORIA</a>, <a class="el" href="grafo_8h_source.html#l00045">GRAFO_ERROR_NO_EXISTE</a>, <a class="el" href="grafo_8h_source.html#l00043">GRAFO_ERROR_NULO</a>, <a class="el" href="grafo_8h_source.html#l00047">GRAFO_ERROR_PESO_NEGATIVO</a>, <a class="el" href="grafo_8c_source.html#l00321">grafo_existe_vertice()</a>, <a class="el" href="grafo_8c_source.html#l00336">grafo_obtener_peso()</a>, <a class="el" href="grafo_8c_source.html#l00427">grafo_obtener_vertices()</a>, <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>, <a class="el" href="grafo_8c_source.html#l00482">grafo_sucesores()</a>, <a class="el" href="grafo_8h_source.html#l00061">GrafoArista::origen</a> y <a class="el" href="grafo_8h_source.html#l00063">GrafoArista::peso</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="grafo_8h_source.html#l00084">GrafoCamino::aristas</a>, <a class="el" href="grafo_8h_source.html#l00085">GrafoCamino::cantidad</a>, <a class="el" href="grafo_8h_source.html#l00086">GrafoCamino::costo_total</a>, <a class="el" href="grafo_8h_source.html#l00062">GrafoArista::destino</a>, <a class="el" href="grafo_8h_source.html#l00088">GrafoCamino::estado</a>, <a class="el" href="grafo_8h_source.html#l00087">GrafoCamino::existe</a>, <a class="el" href="grafo_8h_source.html#l00044">GRAFO_ERROR_MEMORIA</a>, <a class="el" href="grafo_8h_source.html#l00045">GRAFO_ERROR_NO_EXISTE</a>, <a class="el" href="grafo_8h_source.html#l00043">GRAFO_ERROR_NULO</a>, <a class="el" href="grafo_8h_source.html#l00047">GRAFO_ERROR_PESO_NEGATIVO</a>, <a class="el" href="grafo_8c_source.html#l00321">grafo_existe_vertice()</a>, <a class="el" href="grafo_8c_source.html#l00673">grafo_idx_vertice_id()</a>, <a class="el" href="grafo_8c_source.html#l00336">grafo_obtener_peso()</a>, <a class="el" href="grafo_8c_source.html#l00427">grafo_obtener_vertices()</a>, <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>, <a class="el" href="grafo_8c_source.html#l00482">grafo_sucesores()</a>, <a class="el" href="grafo_8h_source.html#l00061">GrafoArista::origen</a> y <a class="el" href="grafo_8h_source.html#l00063">GrafoArista::peso</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00749">app_state_operacion_grafo_ejecutar_algoritmo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00043">grafo_controller_construir_script()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00982">app_state_operacion_grafo_ejecutar_algoritmo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00043">grafo_controller_construir_script()</a>.</p>
 
 </div>
 </div>
@@ -620,12 +621,12 @@ Funciones</h2></td></tr>
 <p>Elimina una arista de la lista de adyacencia. </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">nodo_vertice</td><td>Puntero al nodo del vértice </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">destino</td><td>Vértice destino de la arista a eliminar </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">nodo_vertice</td><td>Puntero al nodo del vÃ©rtice </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">destino</td><td>VÃ©rtice destino de la arista a eliminar </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Devuelve</dt><dd>true si se eliminó; false si la arista no existe </dd></dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si se eliminÃ³; false si la arista no existe </dd></dl>
 
 <p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l00125">125</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
 
@@ -700,7 +701,7 @@ Funciones</h2></td></tr>
 
 <p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l00199">199</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00116">app_state_sync_grafo_visual()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00263">app_state_sync_grafo_visual()</a>.</p>
 
 </div>
 </div>
@@ -730,7 +731,7 @@ Funciones</h2></td></tr>
 <dl class="section return"><dt>Devuelve</dt><dd>Cadena de texto descriptiva (ej: "GRAFO_OK", "GRAFO_ERROR_NO_EXISTE")</dd></dl>
 <dl class="section note"><dt>Nota</dt><dd>La cadena retornada es estática y no debe liberarse </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l01119">1119</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l01206">1206</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo_8h_source.html#l00048">GRAFO_ERROR_CICLO_NEGATIVO</a>, <a class="el" href="grafo_8h_source.html#l00044">GRAFO_ERROR_MEMORIA</a>, <a class="el" href="grafo_8h_source.html#l00045">GRAFO_ERROR_NO_EXISTE</a>, <a class="el" href="grafo_8h_source.html#l00043">GRAFO_ERROR_NULO</a>, <a class="el" href="grafo_8h_source.html#l00047">GRAFO_ERROR_PESO_NEGATIVO</a>, <a class="el" href="grafo_8h_source.html#l00046">GRAFO_ERROR_YA_EXISTE</a> y <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>.</p>
 
@@ -778,7 +779,7 @@ Funciones</h2></td></tr>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo_8c_source.html#l00081">grafo_buscar_arista()</a> y <a class="el" href="grafo_8c_source.html#l00060">grafo_buscar_vertice()</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="grafo_8c_source.html#l00294">grafo_eliminar_arista()</a>, <a class="el" href="grafo_8c_source.html#l00403">grafo_grado_entrada()</a>, <a class="el" href="grafo_8c_source.html#l00228">grafo_insertar_arista()</a> y <a class="el" href="grafo_8c_source.html#l00514">grafo_predecesores()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l01126">app_state_grafo_cargar_demo()</a>, <a class="el" href="app__state_8c_source.html#l00905">app_state_operacion_grafo_actualizar_peso_arista()</a>, <a class="el" href="grafo_8c_source.html#l00294">grafo_eliminar_arista()</a>, <a class="el" href="grafo_8c_source.html#l00403">grafo_grado_entrada()</a>, <a class="el" href="grafo_8c_source.html#l00228">grafo_insertar_arista()</a> y <a class="el" href="grafo_8c_source.html#l00514">grafo_predecesores()</a>.</p>
 
 </div>
 </div>
@@ -816,7 +817,7 @@ Funciones</h2></td></tr>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo_8c_source.html#l00060">grafo_buscar_vertice()</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00928">app_state_operacion_buscar()</a>, <a class="el" href="grafo_8c_source.html#l00799">grafo_bellman_ford()</a>, <a class="el" href="grafo_8c_source.html#l00555">grafo_bfs()</a>, <a class="el" href="grafo_8c_source.html#l00614">grafo_dfs()</a>, <a class="el" href="grafo_8c_source.html#l00673">grafo_dijkstra()</a>, <a class="el" href="grafo_8c_source.html#l00403">grafo_grado_entrada()</a>, <a class="el" href="grafo_8c_source.html#l00209">grafo_insertar_vertice()</a>, <a class="el" href="grafo_8c_source.html#l00514">grafo_predecesores()</a>, <a class="el" href="grafo_8c_source.html#l00918">grafo_prim()</a> y <a class="el" href="main_8c_source.html#l01900">graph_vertex_exists()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l01218">app_state_operacion_buscar()</a>, <a class="el" href="main_8c_source.html#l01436">draw_context_controls()</a>, <a class="el" href="grafo_8c_source.html#l00843">grafo_bellman_ford()</a>, <a class="el" href="grafo_8c_source.html#l00555">grafo_bfs()</a>, <a class="el" href="grafo_8c_source.html#l00614">grafo_dfs()</a>, <a class="el" href="grafo_8c_source.html#l00685">grafo_dijkstra()</a>, <a class="el" href="grafo_8c_source.html#l00403">grafo_grado_entrada()</a>, <a class="el" href="grafo_8c_source.html#l00209">grafo_insertar_vertice()</a>, <a class="el" href="grafo_8c_source.html#l00514">grafo_predecesores()</a>, <a class="el" href="grafo_8c_source.html#l01005">grafo_prim()</a> y <a class="el" href="main_8c_source.html#l02163">graph_vertex_exists()</a>.</p>
 
 </div>
 </div>
@@ -906,6 +907,44 @@ Funciones</h2></td></tr>
 
 </div>
 </div>
+<a id="a790843f2f10a30821355e0240930d4c5" name="a790843f2f10a30821355e0240930d4c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a790843f2f10a30821355e0240930d4c5">&#9670;&#160;</a></span>grafo_idx_vertice_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int grafo_idx_vertice_id </td>
+          <td>(</td>
+          <td class="paramtype">const int *</td>          <td class="paramname"><span class="paramname"><em>vertices</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>cantidad</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l00673">673</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="grafo_8c_source.html#l00843">grafo_bellman_ford()</a> y <a class="el" href="grafo_8c_source.html#l00685">grafo_dijkstra()</a>.</p>
+
+</div>
+</div>
 <a id="aa2d8150846e7b63b2bfd25232bdadff8" name="aa2d8150846e7b63b2bfd25232bdadff8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa2d8150846e7b63b2bfd25232bdadff8">&#9670;&#160;</a></span>grafo_insertar_arista()</h2>
 
@@ -954,7 +993,7 @@ Funciones</h2></td></tr>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo_8c_source.html#l00060">grafo_buscar_vertice()</a>, <a class="el" href="grafo_8c_source.html#l00125">grafo_eliminar_arista_interna()</a>, <a class="el" href="grafo_8h_source.html#l00044">GRAFO_ERROR_MEMORIA</a>, <a class="el" href="grafo_8h_source.html#l00045">GRAFO_ERROR_NO_EXISTE</a>, <a class="el" href="grafo_8h_source.html#l00043">GRAFO_ERROR_NULO</a>, <a class="el" href="grafo_8h_source.html#l00046">GRAFO_ERROR_YA_EXISTE</a>, <a class="el" href="grafo_8c_source.html#l00326">grafo_existe_arista()</a>, <a class="el" href="grafo_8c_source.html#l00103">grafo_insertar_arista_interna()</a> y <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00037">app_state_recrear_grafo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00362">grafo_controller_agregar_arista()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00208">app_state_recrear_grafo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00362">grafo_controller_agregar_arista()</a>.</p>
 
 </div>
 </div>
@@ -993,13 +1032,13 @@ Funciones</h2></td></tr>
 <p>Inserta una arista en la lista de adyacencia (sin validar duplicados). </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">nodo_vertice</td><td>Puntero al nodo del vértice </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">destino</td><td>Vértice destino </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">nodo_vertice</td><td>Puntero al nodo del vÃ©rtice </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">destino</td><td>VÃ©rtice destino </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">peso</td><td>Peso de la arista </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Devuelve</dt><dd>true si la inserción fue exitosa; false si falla asignación de memoria </dd></dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si la inserciÃ³n fue exitosa; false si falla asignaciÃ³n de memoria </dd></dl>
 
 <p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l00103">103</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
 
@@ -1043,7 +1082,7 @@ Funciones</h2></td></tr>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo_8h_source.html#l00044">GRAFO_ERROR_MEMORIA</a>, <a class="el" href="grafo_8h_source.html#l00043">GRAFO_ERROR_NULO</a>, <a class="el" href="grafo_8h_source.html#l00046">GRAFO_ERROR_YA_EXISTE</a>, <a class="el" href="grafo_8c_source.html#l00321">grafo_existe_vertice()</a> y <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00037">app_state_recrear_grafo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00336">grafo_controller_agregar_vertice()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00208">app_state_recrear_grafo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00336">grafo_controller_agregar_vertice()</a>.</p>
 
 </div>
 </div>
@@ -1077,11 +1116,11 @@ El grafo debe ser no dirigido </dd></dl>
 <dl class="section note"><dt>Nota</dt><dd>El usuario debe liberar con <code><a class="el" href="grafo_8h.html#a0b51bac05f8bd3ca26a58f4642eb34c4" title="Libera un camino mínimo/MST y su array de aristas.">grafo_liberar_camino()</a></code> </dd></dl>
 <p><b>Complejidad:</b> O(E log E + E·α(V)) con búsquedas lineales de índices </p>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l01018">1018</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l01105">1105</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo_8h_source.html#l00084">GrafoCamino::aristas</a>, <a class="el" href="grafo_8h_source.html#l00085">GrafoCamino::cantidad</a>, <a class="el" href="grafo_8h_source.html#l00086">GrafoCamino::costo_total</a>, <a class="el" href="grafo_8h_source.html#l00062">GrafoArista::destino</a>, <a class="el" href="grafo_8h_source.html#l00088">GrafoCamino::estado</a>, <a class="el" href="grafo_8h_source.html#l00087">GrafoCamino::existe</a>, <a class="el" href="grafo_8h_source.html#l00044">GRAFO_ERROR_MEMORIA</a>, <a class="el" href="grafo_8h_source.html#l00043">GRAFO_ERROR_NULO</a>, <a class="el" href="grafo_8h_source.html#l00046">GRAFO_ERROR_YA_EXISTE</a>, <a class="el" href="grafo_8c_source.html#l00450">grafo_obtener_aristas()</a>, <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>, <a class="el" href="grafo_8c_source.html#l00350">grafo_orden()</a>, <a class="el" href="grafo_8h_source.html#l00061">GrafoArista::origen</a> y <a class="el" href="grafo_8h_source.html#l00063">GrafoArista::peso</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00749">app_state_operacion_grafo_ejecutar_algoritmo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00043">grafo_controller_construir_script()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00982">app_state_operacion_grafo_ejecutar_algoritmo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00043">grafo_controller_construir_script()</a>.</p>
 
 </div>
 </div>
@@ -1108,10 +1147,10 @@ El grafo debe ser no dirigido </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p>Libera todas las aristas de un vértice. </p>
+<p>Libera todas las aristas de un vÃ©rtice. </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">nodo_vertice</td><td>Puntero al nodo del vértice </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">nodo_vertice</td><td>Puntero al nodo del vÃ©rtice </td></tr>
   </table>
   </dd>
 </dl>
@@ -1147,11 +1186,11 @@ El grafo debe ser no dirigido </dd></dl>
 <dl class="section pre"><dt>Precondición</dt><dd>camino no debe ser NULL </dd></dl>
 <dl class="section post"><dt>Postcondición</dt><dd>El array de aristas es liberado y los campos se anulan </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l01105">1105</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l01192">1192</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo_8h_source.html#l00084">GrafoCamino::aristas</a>, <a class="el" href="grafo_8h_source.html#l00085">GrafoCamino::cantidad</a>, <a class="el" href="grafo_8h_source.html#l00086">GrafoCamino::costo_total</a>, <a class="el" href="grafo_8h_source.html#l00088">GrafoCamino::estado</a>, <a class="el" href="grafo_8h_source.html#l00087">GrafoCamino::existe</a> y <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00749">app_state_operacion_grafo_ejecutar_algoritmo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00043">grafo_controller_construir_script()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00982">app_state_operacion_grafo_ejecutar_algoritmo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00043">grafo_controller_construir_script()</a>.</p>
 
 </div>
 </div>
@@ -1180,11 +1219,11 @@ El grafo debe ser no dirigido </dd></dl>
 <dl class="section pre"><dt>Precondición</dt><dd>recorrido no debe ser NULL </dd></dl>
 <dl class="section post"><dt>Postcondición</dt><dd>El array de vértices es liberado y los campos se anulan </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l01093">1093</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l01180">1180</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo_8h_source.html#l00073">GrafoRecorrido::cantidad</a>, <a class="el" href="grafo_8h_source.html#l00074">GrafoRecorrido::estado</a>, <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a> y <a class="el" href="grafo_8h_source.html#l00072">GrafoRecorrido::vertices</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00749">app_state_operacion_grafo_ejecutar_algoritmo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00043">grafo_controller_construir_script()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00982">app_state_operacion_grafo_ejecutar_algoritmo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00043">grafo_controller_construir_script()</a>.</p>
 
 </div>
 </div>
@@ -1230,7 +1269,7 @@ El grafo debe ser no dirigido </dd></dl>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo_8h_source.html#l00044">GRAFO_ERROR_MEMORIA</a>, <a class="el" href="grafo_8h_source.html#l00043">GRAFO_ERROR_NULO</a>, <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a> y <a class="el" href="grafo_8c_source.html#l00363">grafo_tamano()</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00037">app_state_recrear_grafo()</a>, <a class="el" href="app__state_8c_source.html#l00116">app_state_sync_grafo_visual()</a> y <a class="el" href="grafo_8c_source.html#l01018">grafo_kruskal()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00208">app_state_recrear_grafo()</a>, <a class="el" href="app__state_8c_source.html#l00263">app_state_sync_grafo_visual()</a> y <a class="el" href="grafo_8c_source.html#l01105">grafo_kruskal()</a>.</p>
 
 </div>
 </div>
@@ -1281,7 +1320,7 @@ El grafo debe ser no dirigido </dd></dl>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo_8c_source.html#l00081">grafo_buscar_arista()</a>, <a class="el" href="grafo_8c_source.html#l00060">grafo_buscar_vertice()</a>, <a class="el" href="grafo_8h_source.html#l00045">GRAFO_ERROR_NO_EXISTE</a>, <a class="el" href="grafo_8h_source.html#l00043">GRAFO_ERROR_NULO</a> y <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="grafo_8c_source.html#l00799">grafo_bellman_ford()</a>, <a class="el" href="grafo_8c_source.html#l00673">grafo_dijkstra()</a> y <a class="el" href="grafo_8c_source.html#l00918">grafo_prim()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l01436">draw_context_controls()</a>, <a class="el" href="grafo_8c_source.html#l00843">grafo_bellman_ford()</a>, <a class="el" href="grafo_8c_source.html#l00685">grafo_dijkstra()</a>, <a class="el" href="grafo_8c_source.html#l01005">grafo_prim()</a> y <a class="el" href="main_8c_source.html#l02239">main()</a>.</p>
 
 </div>
 </div>
@@ -1327,7 +1366,7 @@ El grafo debe ser no dirigido </dd></dl>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo_8h_source.html#l00044">GRAFO_ERROR_MEMORIA</a>, <a class="el" href="grafo_8h_source.html#l00043">GRAFO_ERROR_NULO</a>, <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a> y <a class="el" href="grafo_8c_source.html#l00350">grafo_orden()</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00037">app_state_recrear_grafo()</a>, <a class="el" href="app__state_8c_source.html#l00116">app_state_sync_grafo_visual()</a>, <a class="el" href="grafo_8c_source.html#l00799">grafo_bellman_ford()</a>, <a class="el" href="grafo_8c_source.html#l00673">grafo_dijkstra()</a>, <a class="el" href="grafo_8c_source.html#l00918">grafo_prim()</a> y <a class="el" href="grafo__pedagogy_8c_source.html#l00054">grafo_recolectar_ids()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00208">app_state_recrear_grafo()</a>, <a class="el" href="app__state_8c_source.html#l00263">app_state_sync_grafo_visual()</a>, <a class="el" href="grafo_8c_source.html#l00843">grafo_bellman_ford()</a>, <a class="el" href="grafo_8c_source.html#l00685">grafo_dijkstra()</a>, <a class="el" href="grafo_8c_source.html#l01005">grafo_prim()</a> y <a class="el" href="grafo__pedagogy_8c_source.html#l00054">grafo_recolectar_ids()</a>.</p>
 
 </div>
 </div>
@@ -1358,7 +1397,7 @@ El grafo debe ser no dirigido </dd></dl>
 
 <p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l00350">350</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00749">app_state_operacion_grafo_ejecutar_algoritmo()</a>, <a class="el" href="main_8c_source.html#l00600">draw_home_graph_screen()</a>, <a class="el" href="main_8c_source.html#l00882">estructura_cantidad()</a>, <a class="el" href="grafo_8c_source.html#l00799">grafo_bellman_ford()</a>, <a class="el" href="grafo_8c_source.html#l00555">grafo_bfs()</a>, <a class="el" href="grafo_8c_source.html#l00614">grafo_dfs()</a>, <a class="el" href="grafo_8c_source.html#l01018">grafo_kruskal()</a>, <a class="el" href="grafo_8c_source.html#l00427">grafo_obtener_vertices()</a>, <a class="el" href="grafo_8c_source.html#l00918">grafo_prim()</a> y <a class="el" href="main_8c_source.html#l00458">launch_graph_algorithm_from_home()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00982">app_state_operacion_grafo_ejecutar_algoritmo()</a>, <a class="el" href="main_8c_source.html#l00687">draw_home_graph_screen()</a>, <a class="el" href="main_8c_source.html#l00969">estructura_cantidad()</a>, <a class="el" href="grafo_8c_source.html#l00555">grafo_bfs()</a>, <a class="el" href="grafo_8c_source.html#l00614">grafo_dfs()</a>, <a class="el" href="grafo_8c_source.html#l01105">grafo_kruskal()</a>, <a class="el" href="grafo_8c_source.html#l00427">grafo_obtener_vertices()</a>, <a class="el" href="grafo_8c_source.html#l01005">grafo_prim()</a> y <a class="el" href="main_8c_source.html#l00545">launch_graph_algorithm_from_home()</a>.</p>
 
 </div>
 </div>
@@ -1446,11 +1485,11 @@ El grafo debe ser no dirigido </dd></dl>
 <dl class="section note"><dt>Nota</dt><dd>El usuario debe liberar con <code><a class="el" href="grafo_8h.html#a0b51bac05f8bd3ca26a58f4642eb34c4" title="Libera un camino mínimo/MST y su array de aristas.">grafo_liberar_camino()</a></code> </dd></dl>
 <p><b>Complejidad:</b> O(V² + E·V) con selección lineal </p>
 
-<p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l00918">918</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l01005">1005</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo_8h_source.html#l00084">GrafoCamino::aristas</a>, <a class="el" href="grafo_8h_source.html#l00085">GrafoCamino::cantidad</a>, <a class="el" href="grafo_8h_source.html#l00086">GrafoCamino::costo_total</a>, <a class="el" href="grafo_8h_source.html#l00062">GrafoArista::destino</a>, <a class="el" href="grafo_8h_source.html#l00088">GrafoCamino::estado</a>, <a class="el" href="grafo_8h_source.html#l00087">GrafoCamino::existe</a>, <a class="el" href="grafo_8h_source.html#l00044">GRAFO_ERROR_MEMORIA</a>, <a class="el" href="grafo_8h_source.html#l00045">GRAFO_ERROR_NO_EXISTE</a>, <a class="el" href="grafo_8h_source.html#l00043">GRAFO_ERROR_NULO</a>, <a class="el" href="grafo_8h_source.html#l00046">GRAFO_ERROR_YA_EXISTE</a>, <a class="el" href="grafo_8c_source.html#l00321">grafo_existe_vertice()</a>, <a class="el" href="grafo_8c_source.html#l00336">grafo_obtener_peso()</a>, <a class="el" href="grafo_8c_source.html#l00427">grafo_obtener_vertices()</a>, <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>, <a class="el" href="grafo_8c_source.html#l00350">grafo_orden()</a>, <a class="el" href="grafo_8c_source.html#l00482">grafo_sucesores()</a>, <a class="el" href="grafo_8h_source.html#l00061">GrafoArista::origen</a> y <a class="el" href="grafo_8h_source.html#l00063">GrafoArista::peso</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00749">app_state_operacion_grafo_ejecutar_algoritmo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00043">grafo_controller_construir_script()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l00982">app_state_operacion_grafo_ejecutar_algoritmo()</a> y <a class="el" href="grafo__controller_8c_source.html#l00043">grafo_controller_construir_script()</a>.</p>
 
 </div>
 </div>
@@ -1501,7 +1540,7 @@ El grafo debe ser no dirigido </dd></dl>
 
 <p class="reference">Hace referencia a <a class="el" href="grafo_8c_source.html#l00060">grafo_buscar_vertice()</a>, <a class="el" href="grafo_8h_source.html#l00044">GRAFO_ERROR_MEMORIA</a>, <a class="el" href="grafo_8h_source.html#l00045">GRAFO_ERROR_NO_EXISTE</a>, <a class="el" href="grafo_8h_source.html#l00043">GRAFO_ERROR_NULO</a> y <a class="el" href="grafo_8h_source.html#l00042">GRAFO_OK</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="grafo_8c_source.html#l00799">grafo_bellman_ford()</a>, <a class="el" href="grafo_8c_source.html#l00555">grafo_bfs()</a>, <a class="el" href="grafo_8c_source.html#l00614">grafo_dfs()</a>, <a class="el" href="grafo_8c_source.html#l00673">grafo_dijkstra()</a> y <a class="el" href="grafo_8c_source.html#l00918">grafo_prim()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="grafo_8c_source.html#l00843">grafo_bellman_ford()</a>, <a class="el" href="grafo_8c_source.html#l00555">grafo_bfs()</a>, <a class="el" href="grafo_8c_source.html#l00614">grafo_dfs()</a>, <a class="el" href="grafo_8c_source.html#l00685">grafo_dijkstra()</a> y <a class="el" href="grafo_8c_source.html#l01005">grafo_prim()</a>.</p>
 
 </div>
 </div>
@@ -1533,7 +1572,7 @@ El grafo debe ser no dirigido </dd></dl>
 
 <p class="definition">Definición en la línea <a class="el" href="grafo_8c_source.html#l00363">363</a> del archivo <a class="el" href="grafo_8c_source.html">grafo.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="grafo_8c_source.html#l00450">grafo_obtener_aristas()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="app__state_8c_source.html#l01126">app_state_grafo_cargar_demo()</a> y <a class="el" href="grafo_8c_source.html#l00450">grafo_obtener_aristas()</a>.</p>
 
 </div>
 </div>

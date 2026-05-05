@@ -92,96 +92,83 @@ $(function(){initNavTree('md_docs_2analisis-diseno-grafos.html','',''); });
   <div class="headertitle"><div class="title">Analisis y Diseno: Modulo Grafo </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md17"></a></p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md12"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
 1. Objetivo</h1>
-<p>Integrar un modulo de grafos en VisualStruct con enfoque docente, manteniendo separacion por capas y consistencia con los paneles pedagogicos de la aplicacion.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
-2. Alcance funcional</h1>
-<p>El modulo permite:</p>
+<p>Ofrecer un modulo de grafos util para docencia, con flujo simple para usuario final y profundidad tecnica disponible en modo avanzado.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
+2. Alcance funcional actual</h1>
 <ol type="1">
-<li>Crear y reinicializar grafo.</li>
-<li>Insertar y eliminar vertices.</li>
-<li>Insertar y eliminar aristas con peso.</li>
-<li>Alternar entre modo dirigido y no dirigido.</li>
-<li>Cargar escenarios demo.</li>
-<li>Ejecutar BFS, DFS, Dijkstra, Bellman-Ford, Prim y Kruskal.</li>
-<li>Navegar la ejecucion por pasos, autoplay y exportacion de resumen.</li>
+<li>Construccion de grafo dirigido/no dirigido.</li>
+<li>CRUD de vertices y aristas ponderadas.</li>
+<li>Demos configurables por cantidad de nodos.</li>
+<li>Recorridos BFS/DFS con inicio definido por usuario.</li>
+<li>Caminos minimos con Dijkstra y Bellman-Ford.</li>
+<li>MST con Prim y Kruskal.</li>
+<li>Navegacion por pasos, autoplay y trazabilidad.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
-3. Estructura tecnica por capas</h1>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+3. Arquitectura del modulo</h1>
 <h2>Dominio</h2>
 <ul>
-<li><span class="tt"><a class="el" href="grafo_8h.html" title="TAD Grafo para visualización y análisis de algoritmos de grafos.">include/grafo.h</a></span> y <span class="tt"><a class="el" href="grafo_8c.html" title="Implementación del TAD Grafo con algoritmos clásicos.">src/grafo.c</a></span>.</li>
-<li>TAD desacoplado de Raylib y expuesto por API publica.</li>
+<li><span class="tt"><a class="el" href="grafo_8c.html" title="ImplementaciÃ³n del TAD Grafo con algoritmos clÃ¡sicos.">src/grafo.c</a></span> / <span class="tt"><a class="el" href="grafo_8h.html" title="TAD Grafo para visualización y análisis de algoritmos de grafos.">include/grafo.h</a></span></li>
+<li>Implementa estructuras y algoritmos.</li>
 </ul>
-<h2>Aplicacion y control</h2>
+<h2>Aplicacion</h2>
 <ul>
-<li><span class="tt"><a class="el" href="app__state_8c.html" title="Implementacion del estado global y despacho de operaciones de alto nivel.">src/app_state.c</a></span> coordina operaciones de alto nivel para <span class="tt"><a class="el" href="app__state_8h.html#ad3ecc3533311a0714ffa3b53775243b6a6e0d66a5cb536cd3e71fdd083062dd31">ESTRUCTURA_GRAFO</a></span>.</li>
-<li><span class="tt"><a class="el" href="grafo__controller_8c.html" title="Implementación del controlador del grafo.">src/grafo_controller.c</a></span> gestiona validaciones, ejecucion de algoritmos y estado de pasos.</li>
+<li><span class="tt"><a class="el" href="app__state_8c.html" title="Implementacion del estado global y despacho de operaciones de alto nivel.">src/app_state.c</a></span>: valida entradas, ejecuta operaciones y gestiona mensajes.</li>
+<li><span class="tt"><a class="el" href="grafo__controller_8c.html" title="Implementación del controlador del grafo.">src/grafo_controller.c</a></span>: convierte resultados de algoritmo a pasos visuales.</li>
 </ul>
 <h2>Presentacion</h2>
 <ul>
-<li><span class="tt"><a class="el" href="grafo__view_8c.html" title="Implementación del renderizado visual con Raylib.">src/grafo_view.c</a></span> dibuja vertices, aristas y estados visuales.</li>
-<li><span class="tt"><a class="el" href="grafo__state_8c.html" title="Implementación del estado visual del grafo.">src/grafo_state.c</a></span> y <span class="tt"><a class="el" href="grafo__layout_8c.html" title="Implementación del layout circular para grafos.">src/grafo_layout.c</a></span> mantienen snapshot y layout del lienzo.</li>
-<li><span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span> integra menu, controles y rutas de navegacion.</li>
+<li><span class="tt"><a class="el" href="grafo__state_8c.html" title="Implementación del estado visual del grafo.">src/grafo_state.c</a></span>: snapshot visual.</li>
+<li><span class="tt"><a class="el" href="grafo__layout_8c.html" title="Implementación del layout circular para grafos.">src/grafo_layout.c</a></span>: posicionamiento de vertices.</li>
+<li><span class="tt"><a class="el" href="grafo__view_8c.html" title="Implementación del renderizado visual con Raylib.">src/grafo_view.c</a></span>: render de vertices, aristas, etiquetas y leyenda.</li>
+<li><span class="tt"><a class="el" href="main_8c.html" title="Punto de entrada y orquestacion principal de la app VisualStruct.">src/main.c</a></span>: UI de modos (Construccion, Recorridos, Caminos, MST).</li>
 </ul>
 <h2>Pedagogia</h2>
 <ul>
-<li><span class="tt"><a class="el" href="grafo__code__viewer_8c.html" title="Implementación del visualizador de código.">src/grafo_code_viewer.c</a></span>: snippet del algoritmo activo.</li>
-<li><span class="tt"><a class="el" href="grafo__trace_8c.html" title="Implementacion de la traza pedagogica.">src/grafo_trace.c</a></span>: traza textual por algoritmo.</li>
-<li><span class="tt"><a class="el" href="grafo__pedagogy_8c.html">src/grafo_pedagogy.c</a></span>: metricas por paso, camino parcial, tabla de distancias y exportacion.</li>
+<li><span class="tt"><a class="el" href="grafo__code__viewer_8c.html" title="Implementación del visualizador de código.">src/grafo_code_viewer.c</a></span>, <span class="tt"><a class="el" href="grafo__trace_8c.html" title="Implementacion de la traza pedagogica.">src/grafo_trace.c</a></span>, <span class="tt"><a class="el" href="grafo__pedagogy_8c.html">src/grafo_pedagogy.c</a></span>.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
-4. Requerimientos de interfaz</h1>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+4. Decisiones UI/UX aplicadas</h1>
 <ul>
-<li>Portada principal con dos entradas: <span class="tt">Secuenciales</span> y <span class="tt">Grafos</span>.</li>
-<li>Submenu de grafos con acceso a construccion y algoritmos.</li>
-<li>Campos laterales para <span class="tt">origen</span>, <span class="tt">destino</span> y <span class="tt">peso</span>.</li>
-<li>Entradas laterales de grafo con comportamiento numerico (no texto libre) y cursor visible en foco.</li>
-<li>Validacion en tiempo real para <span class="tt">origen</span> y <span class="tt">destino</span> contra vertices existentes.</li>
-<li>Modo basico para flujo de construccion y modo avanzado para controles/paneles extendidos.</li>
-<li>Panel inferior enriquecido con tipo de paso, progreso y metricas.</li>
+<li>Inputs de grafo numericos con cursor visible.</li>
+<li>Modo basico para simplificar pantalla.</li>
+<li>Modo avanzado para controles detallados.</li>
+<li>Vista MST basica con ejecucion directa de Prim/Kruskal.</li>
+<li>Demo aleatoria dispersa para evitar grafos sobreconectados.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
-5. Complejidades esperadas (referencia docente)</h1>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+5. Complejidades de referencia</h1>
 <ul>
-<li>BFS: <span class="tt">O(V + E)</span>.</li>
-<li>DFS: <span class="tt">O(V + E)</span>.</li>
-<li>Dijkstra (implementacion base sin heap): <span class="tt">O(V^2 + E)</span>.</li>
-<li>Bellman-Ford: <span class="tt">O(V * E)</span>.</li>
-<li>Prim (seleccion lineal): <span class="tt">O(V^2 + E)</span>.</li>
-<li>Kruskal: <span class="tt">O(E log E)</span> por ordenamiento de aristas.</li>
+<li>BFS: O(V + E)</li>
+<li>DFS: O(V + E)</li>
+<li>Dijkstra (sin heap): O(V^2 + E)</li>
+<li>Bellman-Ford: O(V * E)</li>
+<li>Prim (seleccion lineal): O(V^2 + E)</li>
+<li>Kruskal: O(E log E)</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
 6. Criterios de aceptacion</h1>
 <ol type="1">
-<li>La app compila con <span class="tt">-Wall -Wextra -pedantic</span>.</li>
-<li>El menu permite entrar a grafos y volver sin perder estabilidad.</li>
-<li>Las operaciones de vertices/aristas reflejan estado valido e invalido.</li>
-<li>Cada algoritmo actualiza vista, codigo y traza de forma sincronizada.</li>
-<li>La navegacion por pasos y autoplay mantiene coherencia visual.</li>
-<li>La exportacion textual entrega resumen util para clase.</li>
+<li>Compilacion limpia con <span class="tt">-Wall -Wextra -pedantic</span>.</li>
+<li>Entradas invalidas no alteran el estado del grafo.</li>
+<li>Algoritmos sincronizan lienzo, panel de codigo y traza.</li>
+<li>Demos responden al valor de nodos y mantienen variabilidad.</li>
+<li>MST funciona en modo basico y avanzado.</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
-7. Riesgos y mitigaciones</h1>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
+7. Riesgos pendientes</h1>
 <ul>
-<li>Riesgo: acoplar logica de algoritmo con UI.<ul>
-<li>Mitigacion: mantener TAD y controlador sin dependencias de render.</li>
+<li>Prim/Kruskal usan indices por ID en arrays fijos: requiere refactor para IDs dispersos/grandes.</li>
+<li>Ajuste de densidad de demo puede requerir parametrizacion por perfil docente.</li>
 </ul>
-</li>
-<li>Riesgo: inconsistencias entre paneles pedagogicos.<ul>
-<li>Mitigacion: centralizar metricas y trazas en <span class="tt"><a class="el" href="grafo__pedagogy_8c.html">grafo_pedagogy.c</a></span> y <span class="tt"><a class="el" href="grafo__trace_8c.html" title="Implementacion de la traza pedagogica.">grafo_trace.c</a></span>.</li>
-</ul>
-</li>
-<li>Riesgo: sobrecarga visual en resoluciones bajas.<ul>
-<li>Mitigacion: validar con <span class="tt"><a class="el" href="qa-visualizacion-ventanas_8md.html">docs/qa-visualizacion-ventanas.md</a></span> y modo compacto.</li>
-</ul>
-</li>
-<li>Riesgo: entradas ambiguas en construccion de aristas (IDs inexistentes o texto invalido).<ul>
-<li>Mitigacion: restricciones de input numerico y validacion de existencia de vertice antes de aplicar cambios. </li>
-</ul>
-</li>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
+8. Siguiente mejora recomendada</h1>
+<ul>
+<li>Introducir configurador de demo (densidad, rango de pesos, dirigido).</li>
+<li>Refactor interno de MST con mapeo de IDs a indices compactos. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
