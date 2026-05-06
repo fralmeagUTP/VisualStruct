@@ -22,17 +22,31 @@ Validaciones automaticas incluidas:
 - resolucion minima por captura
 - diversidad visual minima por pantalla
 - densidad minima de trazado en escenas de grafo
+- presencia de contenido en regiones de header, panel derecho y panel inferior
+- presencia de contenido y variacion visual en area de dibujo para escenas de grafo
 
 Evidencias generadas:
 - `artifacts/e2e_visual/*.png`
 - `artifacts/e2e_visual/report.json`
 - `docs/informe-e2e-visual-YYYY-MM-DD.md`
 
+## Matriz E2E visual (cobertura ampliada)
+Ejecutar:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\run_visual_e2e_matrix.ps1 -ExePath .\visualstruct.exe -OutputRoot .\artifacts\e2e_visual_matrix -Runs 3
+```
+
+Validaciones adicionales:
+- estabilidad de PASS en multiples corridas
+- verificacion de variacion visual entre corridas para escenas de grafo (aleatoriedad)
+
 ## Checklist global
 - Cambio estable entre 7 modulos.
 - Mensajes de estado coherentes en exito/error.
 - Inputs numericos operativos y con cursor visible.
 - Ayuda (`F1`) abre y cierra sin perder contexto.
+- Header institucional sin solapes: logos visibles, proporcionales y sin cruzar la linea inferior.
 
 ## Secuenciales
 ### Pila

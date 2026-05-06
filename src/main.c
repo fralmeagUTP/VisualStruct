@@ -3511,6 +3511,7 @@ int main(int argc, char **argv) {
                 Rectangle bar_track;
                 Rectangle bar_fill;
                 Rectangle lista_box;
+                float progress_bar_top = trace_box.y + trace_box.height - 20.0f;
                 float y_base = tiny_trace ? (trace_box.y + 8.0f) : (trace_box.y + 30.0f);
                 snprintf(paso_label, sizeof(paso_label), "Paso: %d/%d",
                          app.grafo_controller_state.total_pasos > 0
@@ -3520,16 +3521,34 @@ int main(int argc, char **argv) {
                 snprintf(estado_label, sizeof(estado_label), "Auto: %s",
                          app.grafo_controller_state.autoplay_activo ? "ON" : "OFF");
                 if (graph_mode_construccion) {
+                    float line1_y = trace_box.y + 18.0f;
+                    float line2_y = line1_y + 18.0f;
+                    float line_min_y = trace_box.y + 10.0f;
+                    float max_line2_y = progress_bar_top - 16.0f;
+                    bool draw_two_lines = (line2_y <= max_line2_y);
+
+                    if (line1_y < line_min_y) {
+                        line1_y = line_min_y;
+                    }
+                    if (!draw_two_lines) {
+                        line1_y = max_line2_y - 10.0f;
+                        if (line1_y < line_min_y) {
+                            line1_y = line_min_y;
+                        }
+                    }
+
                     snprintf(resumen_compacto, sizeof(resumen_compacto),
                              "Construccion | Vertices: %d | Aristas: %d | %s",
                              app.grafo_controller_state.estado_visual.cantidad_vertices,
                              app.grafo_controller_state.estado_visual.cantidad_aristas,
                              estado_label);
-                    ui_draw_text(resumen_compacto, trace_box.x + 10.0f, trace_box.y + 30.0f,
-                                 13.0f, 0.08f, (Color){56, 72, 92, 255}, false);
-                    ui_draw_text("Flujo sugerido: Inicializar -> Vertices -> Aristas",
-                                 trace_box.x + 10.0f, trace_box.y + 48.0f,
-                                 12.0f, 0.08f, (Color){76, 91, 110, 255}, false);
+                    ui_draw_text(resumen_compacto, trace_box.x + 10.0f, line1_y,
+                                 12.0f, 0.08f, (Color){56, 72, 92, 255}, false);
+                    if (draw_two_lines) {
+                        ui_draw_text("Flujo sugerido: Inicializar -> Vertices -> Aristas",
+                                     trace_box.x + 10.0f, line2_y,
+                                     11.0f, 0.08f, (Color){76, 91, 110, 255}, false);
+                    }
                 } else if (compact_trace) {
                     const char *msg = app.mensaje_operacion;
                     char operacion_corta[64];
@@ -3599,7 +3618,7 @@ int main(int argc, char **argv) {
 
                 snprintf(progress_text, sizeof(progress_text), "%d%%",
                          (int)(progress_ratio * 100.0f + 0.5f));
-                bar_track = (Rectangle){trace_box.x + 10.0f, trace_box.y + trace_box.height - 20.0f,
+                bar_track = (Rectangle){trace_box.x + 10.0f, progress_bar_top,
                                         trace_box.width - 20.0f, 10.0f};
                 bar_fill = (Rectangle){bar_track.x, bar_track.y, bar_track.width * progress_ratio,
                                        bar_track.height};

@@ -349,9 +349,9 @@ void ui_draw_header(const UIContext *ui) {
     DrawLine(0, HEADER_HEIGHT - 8, ui->screenWidth, HEADER_HEIGHT - 8,
              Fade(COLOR_ACCENT, 0.70f));
 
-    left_logo_box = (Rectangle){14.0f, 10.0f, 162.0f, 82.0f};
-    right_logo_box = (Rectangle){(float)ui->screenWidth - 152.0f, 10.0f, 138.0f, 82.0f};
-    title_band = (Rectangle){188.0f, 12.0f, (float)ui->screenWidth - 376.0f, 78.0f};
+    left_logo_box = (Rectangle){8.0f, 1.0f, 238.0f, 102.0f};
+    right_logo_box = (Rectangle){(float)ui->screenWidth - 246.0f, 1.0f, 238.0f, 102.0f};
+    title_band = (Rectangle){254.0f, 12.0f, (float)ui->screenWidth - 508.0f, 78.0f};
 
     DrawRectangleRounded(left_logo_box, 0.18f, 10, Fade(WHITE, 0.88f));
     DrawRectangleRounded(right_logo_box, 0.18f, 10, Fade(WHITE, 0.88f));
@@ -359,9 +359,9 @@ void ui_draw_header(const UIContext *ui) {
     DrawRectangleRoundedLinesEx(left_logo_box, 0.18f, 10, 1.5f, Fade(COLOR_PRIMARY, 0.18f));
     DrawRectangleRoundedLinesEx(right_logo_box, 0.18f, 10, 1.5f, Fade(COLOR_PRIMARY, 0.18f));
 
-    draw_texture_fit(ui->logoUTP, left_logo_box, 8.0f);
+    draw_texture_fit(ui->logoUTP, left_logo_box, 0.0f);
     if (ui->logoISC.id != 0) {
-        draw_texture_fit(ui->logoISC, right_logo_box, 10.0f);
+        draw_texture_fit(ui->logoISC, right_logo_box, 0.0f);
     } else {
         draw_logo_fallback(right_logo_box, "ISC");
     }

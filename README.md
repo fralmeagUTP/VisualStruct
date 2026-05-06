@@ -8,7 +8,7 @@ Visualiza estructuras secuenciales y grafos mostrando de forma sincronizada:
 - codigo C asociado (historial)
 - traza y complejidad
 
-## Estado actual (2026-05-05)
+## Estado actual (2026-05-06)
 - App unificada estable para 7 modulos: Pila, Cola, Cola de Prioridad, Lista, Lista Circular, Sublistas y Grafo.
 - Modulo de grafos con 4 vistas: Construccion, Recorridos, Caminos y MST.
 - Entradas de grafo numericas (`Valor`, `Origen`, `Destino`, `Peso`) con cursor visible y validacion.
@@ -17,6 +17,9 @@ Visualiza estructuras secuenciales y grafos mostrando de forma sincronizada:
   - resumen derecho compacto
   - panel inferior de estado reducido a una sola traza util
   - separacion vertical reforzada en inputs para evitar texto montado
+- Encabezado institucional ajustado:
+  - logos UTP e ISC con contenedores proporcionales (mismo ancho/alto)
+  - mayor area util de logo sin invadir la linea inferior del header
 
 ## Requisitos
 - GCC con soporte C11
@@ -55,6 +58,17 @@ Salida esperada:
 - Capturas PNG en `artifacts/e2e_visual/` (home + grafos por modo/algoritmo).
 - `manifest.txt` y `report.json`.
 - Informe Markdown en `docs/informe-e2e-visual-YYYY-MM-DD.md`.
+
+Matriz (cobertura ampliada por corridas):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\run_visual_e2e_matrix.ps1 -ExePath .\visualstruct.exe -OutputRoot .\artifacts\e2e_visual_matrix -Runs 3
+```
+
+Genera:
+- Reportes por corrida en `artifacts/e2e_visual_matrix/run_XX/`
+- Consolidado: `artifacts/e2e_visual_matrix/matrix_report.json`
+- Informe: `docs/informe-e2e-visual-matriz-YYYY-MM-DD.md`
 
 ## Modulos y funcionalidades
 ### 1) Pila
@@ -129,13 +143,15 @@ Salida esperada:
 - `docs/informe-e2e-visual-YYYY-MM-DD.md`: resultado de pruebas E2E visuales automaticas.
 - `docs/analisis-diseno-grafos.md`: diseno funcional y tecnico de grafos.
 - `docs/plan-modulo-grafos.md`: plan de evolucion del modulo.
-- `docs/bitacora-cambios-2026-05-04.md` y `docs/bitacora-cambios-2026-05-05.md`.
+- `docs/bitacora-cambios-2026-05-04.md`, `docs/bitacora-cambios-2026-05-05.md` y `docs/bitacora-cambios-2026-05-06.md`.
 
 ## Versionado
 - `v0.0.1`: version historica inicial del repositorio.
 - `v0.0.2`: mejoras de UI/UX y validaciones de grafos.
 - `v0.0.3`: mejoras integrales de grafo (flujos, entradas numericas, MST y documentacion).
 - `v0.0.4`: consolidacion visual de grafos (scroll, resumen pedagogico y flujo didactico).
+- `v0.0.5`: E2E visual automatizado, reporte matrix multi-corrida y refinamientos de layout.
+- `v0.0.6`: ajustes de header institucional (logos proporcionales), mejoras de QA visual y documentacion actualizada.
 
 ## Estructura de carpetas
 - `include/`: encabezados publicos.
