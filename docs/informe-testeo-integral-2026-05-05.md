@@ -102,3 +102,13 @@ Cobertura automatizada total ejecutada en esta ronda:
 1. Ejecutar checklist visual por pantalla con la matriz `docs/qa-checklist-pantallas-2026-05-05.md`.
 2. Agregar pruebas automatizadas para `app_state` (flujo UI-lógico).
 3. Mantener este informe por fecha para trazabilidad de regresiones.
+
+## 9) Nota de sincronizacion documental (actualizacion tarde 2026-05-05)
+Tras este informe se aplicaron ajustes adicionales de UI/UX en Grafo:
+- simplificacion de botonera en vista Caminos (sin `Aplicar peso a arista`)
+- mensajes de camino directo (`Sin arista directa Vx->Vy`)
+- compactacion de paneles en Construccion
+- correccion de superposiciones en inputs de sidebar
+
+La validacion operativa de estos cambios debe registrarse con la matriz:
+- `docs/qa-checklist-pantallas-2026-05-05.md` (casos GV-C06, GV-M05, GV-M06, GV-T04).

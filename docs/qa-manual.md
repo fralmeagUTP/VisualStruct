@@ -11,6 +11,23 @@ Verificar comportamiento funcional y consistencia pedagogica de todos los modulo
 2. Ejecutar `visualstruct.exe`.
 3. Confirmar carga de panel central, panel de codigo y panel de traza.
 
+## Prueba E2E visual automatica
+Ejecutar:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\run_visual_e2e.ps1 -ExePath .\visualstruct.exe -OutputDir .\artifacts\e2e_visual
+```
+
+Validaciones automaticas incluidas:
+- resolucion minima por captura
+- diversidad visual minima por pantalla
+- densidad minima de trazado en escenas de grafo
+
+Evidencias generadas:
+- `artifacts/e2e_visual/*.png`
+- `artifacts/e2e_visual/report.json`
+- `docs/informe-e2e-visual-YYYY-MM-DD.md`
+
 ## Checklist global
 - Cambio estable entre 7 modulos.
 - Mensajes de estado coherentes en exito/error.
@@ -43,6 +60,7 @@ Verificar comportamiento funcional y consistencia pedagogica de todos los modulo
 3. Insertar aristas con peso.
 4. Alternar dirigido/no dirigido.
 5. Validar que origen/destino invalidos no aplican cambios.
+6. Confirmar que mensajes `Origen invalido` / `Destino invalido` no se montan sobre otros campos.
 
 ### Demo configurable
 1. Definir `Valor` (ej. 8, luego 14).
@@ -60,6 +78,9 @@ Verificar comportamiento funcional y consistencia pedagogica de todos los modulo
 1. Definir origen/destino/peso.
 2. Ejecutar Dijkstra y Bellman-Ford.
 3. Confirmar ruta y costo.
+4. Verificar que no existe boton `Aplicar peso a arista` en esta vista.
+5. Si no hay arista directa origen->destino, validar texto:
+   - `Sin arista directa Vx->Vy`.
 
 ### MST
 1. Cambiar a vista MST.
@@ -71,6 +92,9 @@ Verificar comportamiento funcional y consistencia pedagogica de todos los modulo
 - `Codigo C Asociado`: agrega entrada por operacion.
 - `Limpiar`: reinicia historial.
 - `Operacion, Traza y Complejidad`: cambia segun accion actual.
+- En modo Grafo/Construccion:
+  - panel derecho compacto (estado, conteos y siguiente paso)
+  - panel inferior con traza corta (sin duplicacion de textos largos).
 
 ## Criterio de salida
 Aprobado si:

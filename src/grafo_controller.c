@@ -145,6 +145,7 @@ static int grafo_controller_idx_vertice(const GrafoState *estado, int id) {
 }
 
 /** @brief Aplica resaltado visual según el paso actual del algoritmo. */
+/** @brief Aplica resaltado visual segun el paso actual del algoritmo. */
 static void grafo_controller_aplicar_visual_paso(GrafoController *controller) {
     GrafoState *estado;
     int i;
@@ -153,10 +154,14 @@ static void grafo_controller_aplicar_visual_paso(GrafoController *controller) {
     int dist_acumulada;
     int dist_previa[64];
     int count_dist = 0;
+    bool es_mst;
+    bool es_camino_minimo;
+    bool mst_paso_final;
 
     if (controller == NULL) {
         return;
     }
+
     estado = &controller->estado_visual;
     grafo_state_reiniciar_visuales(estado);
     estado->algoritmo_activo = controller->algoritmo_seleccionado;
@@ -166,11 +171,17 @@ static void grafo_controller_aplicar_visual_paso(GrafoController *controller) {
     controller->paso_mejora = false;
     controller->arista_actual_valida = false;
 
-    if (controller->vertice_inicio >= 0) {
+    es_mst = (controller->algoritmo_seleccionado == GRAFO_ALGO_PRIM ||
+              controller->algoritmo_seleccionado == GRAFO_ALGO_KRUSKAL);
+    es_camino_minimo = (controller->algoritmo_seleccionado == GRAFO_ALGO_DIJKSTRA ||
+                        controller->algoritmo_seleccionado == GRAFO_ALGO_BELLMAN_FORD);
+    mst_paso_final = false;
+
+    if (!es_mst && controller->vertice_inicio >= 0) {
         grafo_state_establecer_vertice_estado(estado, controller->vertice_inicio,
                                               GRAFO_VÉRTICE_INICIAL);
     }
-    if (controller->vertice_destino >= 0) {
+    if (!es_mst && controller->vertice_destino >= 0) {
         grafo_state_establecer_vertice_estado(estado, controller->vertice_destino,
                                               GRAFO_VÉRTICE_DESTINO);
     }
@@ -191,7 +202,8 @@ static void grafo_controller_aplicar_visual_paso(GrafoController *controller) {
         for (i = 0; i < visitados; i++) {
             grafo_state_marcar_vertice_visitado(estado, controller->script_vertices[i], i + 1);
         }
-        current_idx = grafo_controller_idx_vertice(estado, controller->script_vertices[visitados - 1]);
+        current_idx = grafo_controller_idx_vertice(estado,
+                                                   controller->script_vertices[visitados - 1]);
         if (current_idx >= 0) {
             estado->vertices[current_idx].estado = GRAFO_VÉRTICE_ACTUAL;
         }
@@ -209,9 +221,12 @@ static void grafo_controller_aplicar_visual_paso(GrafoController *controller) {
         }
 
         dist_acumulada = 0;
-        if (controller->vertice_inicio >= 0 &&
-            (controller->algoritmo_seleccionado == GRAFO_ALGO_DIJKSTRA ||
-             controller->algoritmo_seleccionado == GRAFO_ALGO_BELLMAN_FORD)) {
+        mst_paso_final = es_mst &&
+                         controller->script_aristas_count > 0 &&
+                         destacadas >= controller->script_aristas_count &&
+                         controller->paso_actual >= controller->total_pasos - 1;
+
+        if (controller->vertice_inicio >= 0 && es_camino_minimo) {
             grafo_state_actualizar_distancia_vertice(estado, controller->vertice_inicio, 0, -1);
         }
 
@@ -221,23 +236,21 @@ static void grafo_controller_aplicar_visual_paso(GrafoController *controller) {
         }
 
         for (i = 0; i < destacadas; i++) {
-            GrafoAristaEstadoVisual est = GRAFO_ARISTA_RELAJADA;
-
-            if (controller->algoritmo_seleccionado == GRAFO_ALGO_PRIM ||
-                controller->algoritmo_seleccionado == GRAFO_ALGO_KRUSKAL) {
-                est = GRAFO_ARISTA_MST;
-            }
+            GrafoAristaEstadoVisual est = es_mst ? GRAFO_ARISTA_MST : GRAFO_ARISTA_RELAJADA;
 
             grafo_state_establecer_arista_estado(estado, controller->script_aristas[i].origen,
                                                  controller->script_aristas[i].destino, est);
-            grafo_state_marcar_vertice_visitado(estado, controller->script_aristas[i].origen,
-                                                i + 1);
-            grafo_state_marcar_vertice_visitado(estado, controller->script_aristas[i].destino,
-                                                i + 1);
 
-            if (controller->algoritmo_seleccionado == GRAFO_ALGO_DIJKSTRA ||
-                controller->algoritmo_seleccionado == GRAFO_ALGO_BELLMAN_FORD) {
-                int destino_idx = grafo_controller_idx_vertice(estado, controller->script_aristas[i].destino);
+            if (!es_mst) {
+                grafo_state_marcar_vertice_visitado(estado, controller->script_aristas[i].origen,
+                                                    i + 1);
+                grafo_state_marcar_vertice_visitado(estado, controller->script_aristas[i].destino,
+                                                    i + 1);
+            }
+
+            if (es_camino_minimo) {
+                int destino_idx = grafo_controller_idx_vertice(estado,
+                                                               controller->script_aristas[i].destino);
 
                 dist_acumulada += controller->script_aristas[i].peso;
                 if (destino_idx >= 0 && destino_idx < count_dist &&
@@ -252,20 +265,42 @@ static void grafo_controller_aplicar_visual_paso(GrafoController *controller) {
                     controller->script_aristas[i].origen);
             }
 
-            current_idx = grafo_controller_idx_vertice(estado, controller->script_aristas[i].destino);
-            if (current_idx >= 0) {
-                estado->vertices[current_idx].estado = GRAFO_VÉRTICE_ACTUAL;
+            if (es_mst) {
+                if (i == destacadas - 1 && !mst_paso_final) {
+                    current_idx = grafo_controller_idx_vertice(estado,
+                                                               controller->script_aristas[i].destino);
+                    if (current_idx >= 0) {
+                        estado->vertices[current_idx].estado = GRAFO_VÉRTICE_ACTUAL;
+                    }
+                }
+            } else {
+                current_idx = grafo_controller_idx_vertice(estado,
+                                                           controller->script_aristas[i].destino);
+                if (current_idx >= 0) {
+                    estado->vertices[current_idx].estado = GRAFO_VÉRTICE_ACTUAL;
+                }
             }
         }
 
         if (destacadas > 0) {
+            GrafoAristaEstadoVisual estado_actual = controller->paso_mejora
+                                                        ? GRAFO_ARISTA_CAMINO_MINIMO
+                                                        : GRAFO_ARISTA_RELAJADA;
             controller->arista_actual_origen = controller->script_aristas[destacadas - 1].origen;
             controller->arista_actual_destino = controller->script_aristas[destacadas - 1].destino;
             controller->arista_actual_valida = true;
+            if (es_mst) {
+                estado_actual = GRAFO_ARISTA_MST;
+            }
             grafo_state_establecer_arista_estado(estado, controller->arista_actual_origen,
-                                                 controller->arista_actual_destino,
-                                                 controller->paso_mejora ? GRAFO_ARISTA_CAMINO_MINIMO
-                                                                         : GRAFO_ARISTA_RELAJADA);
+                                                 controller->arista_actual_destino, estado_actual);
+        }
+
+        if (mst_paso_final) {
+            for (i = 0; i < estado->cantidad_vertices; i++) {
+                estado->vertices[i].estado = GRAFO_VÉRTICE_NORMAL;
+                estado->vertices[i].orden_visitacion = 0;
+            }
         }
     }
 

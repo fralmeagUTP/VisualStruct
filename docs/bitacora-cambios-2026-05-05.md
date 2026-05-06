@@ -37,3 +37,23 @@ Se consolido la actualizacion funcional y documental de la app, con foco en el m
 - Compilacion local exitosa.
 - Ejecutable principal actualizado.
 - Documentacion alineada con el comportamiento actual.
+
+## Actualizacion adicional (2026-05-05 tarde)
+1. Reorganizacion visual de Construccion:
+- sidebar de entradas con espaciado mayor para evitar texto montado
+- mensajes de validacion (`Origen invalido`, `Destino invalido`) sin superposicion.
+
+2. Simplificacion en vista Caminos:
+- se elimino boton `Aplicar peso a arista`
+- botonera redistribuida a 6 acciones clave
+- texto de resumen actualizado a:
+  - `Sin arista directa Vx->Vy` cuando aplica.
+
+3. Ajuste de visual en MST:
+- en Prim/Kruskal no se marca vertice `Final`
+- durante pasos se marca un unico vertice activo
+- al cierre los vertices vuelven a color base y se conserva MST en lila.
+
+4. Paneles pedagogicos refinados:
+- modo Construccion con resumen derecho compacto
+- traza inferior compacta para reducir redundancia visual.

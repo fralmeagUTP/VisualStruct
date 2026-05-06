@@ -80,6 +80,7 @@ Pantallas incluidas:
 | GV-C03 | Aristas | Definir origen/destino/peso y crear arista | Se crea arista con peso correcto | S2 | |
 | GV-C04 | Modo dirigido | Toggle dirigido/no dirigido | Flechas coherentes en dirigido | S2 | |
 | GV-C05 | Demo | Definir `Valor` y cargar demo | Respeta nodos y mantiene conectividad base | S2 | |
+| GV-C06 | Validacion visual inputs | Forzar origen/destino invalidos | Mensajes no se superponen con labels/campos | S1 | |
 
 ### 4.2 Submodulo Grafo - Recorridos
 
@@ -98,6 +99,8 @@ Pantallas incluidas:
 | GV-M02 | Dijkstra | Ejecutar camino minimo | Ruta/costo coherentes con pesos | S2 | |
 | GV-M03 | Bellman-Ford | Ejecutar camino minimo | Ruta/costo coherentes; errores negativos bien reportados | S2 | |
 | GV-M04 | Resumen camino | Revisar panel derecho | Muestra algoritmo, estado, costo y ruta | S3 | |
+| GV-M05 | Botonera simplificada | Entrar a vista Caminos | No aparece boton `Aplicar peso a arista` | S2 | |
+| GV-M06 | Arista directa ausente | Ejecutar caso sin arista directa | Muestra `Sin arista directa Vx->Vy` | S3 | |
 
 ### 4.4 Submodulo Grafo - MST
 
@@ -106,6 +109,7 @@ Pantallas incluidas:
 | GV-T01 | Prim | Ejecutar desde inicio valido | Genera arbol y costo | S2 | |
 | GV-T02 | Kruskal | Ejecutar algoritmo | Genera arbol y costo | S2 | |
 | GV-T03 | Control de pasos | Paso+/Paso-/Reiniciar | Estado sincronizado en traza y grafo | S3 | |
+| GV-T04 | Estado final de vertices | Completar Prim/Kruskal | Vertices vuelven a color base al final | S3 | |
 
 ---
 

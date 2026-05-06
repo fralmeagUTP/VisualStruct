@@ -31,6 +31,7 @@ Usar VisualStruct para explicar estructuras y algoritmos con evidencia visual y 
 - Construccion: crear vertices/aristas y alternar dirigido/no dirigido.
 - Recorridos: definir inicio y comparar BFS vs DFS.
 - Caminos: demostrar impacto del peso con Dijkstra y Bellman-Ford.
+  - los pesos se definen en Construccion (no en la vista Caminos).
 - MST:
   - modo basico: ejecutar Prim/Kruskal directo
   - modo avanzado: usar paso a paso y autoplay para analisis fino
@@ -41,6 +42,13 @@ Usar VisualStruct para explicar estructuras y algoritmos con evidencia visual y 
 - genera aristas aleatorias dispersas
 - mantiene conectividad base para que recorridos y caminos sean ejecutables
 - recomienda usar 6-15 nodos para explicacion en pantalla
+
+## Nota didactica reciente
+- En resumen de caminos, si no existe arista directa origen->destino, la app muestra:
+  - `Sin arista directa Vx->Vy`
+- Esto permite diferenciar entre:
+  - costo total de ruta (multiarista)
+  - peso de arista directa (si existe).
 
 ## Buenas practicas de sesion
 - Limpiar historial de codigo al cerrar cada bloque tematico.

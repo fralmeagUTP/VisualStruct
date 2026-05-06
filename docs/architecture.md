@@ -46,6 +46,10 @@ Componentes principales:
 - Generacion aleatoria de aristas/pesos con baja densidad para evitar sobreconexion.
 - Sincronizacion visual de layout preserva posiciones existentes y evita recircularizar cada refresco.
 - Vista MST en modo basico prioriza ejecucion directa (Prim/Kruskal) y deja controles finos en modo avanzado.
+- Vista Caminos elimina accion de peso en runtime para separar responsabilidades:
+  - Construccion define pesos.
+  - Caminos consume pesos y ejecuta algoritmo.
+- Paneles pedagogicos en Construccion se compactan para reducir duplicidad entre resumen y traza.
 
 ## Riesgos vigentes
 - IDs de vertices muy grandes en Prim/Kruskal pueden requerir refactor a indices compactos.

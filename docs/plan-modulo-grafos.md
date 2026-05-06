@@ -14,11 +14,15 @@ Mantener el modulo de grafos funcional, didactico y simple para usuario final si
 - Caminos minimos con pesos.
 - MST con flujo basico y avanzado.
 - Demo parametrica por numero de nodos y aleatoriedad dispersa.
+- Botonera de Caminos simplificada (sin accion de aplicar peso).
+- Panel de Construccion con resumen/traza compactados para reducir redundancia.
+- Sidebar de entradas con espaciado anti-solape para mensajes de error.
 
 ## Fases de mejora (vigentes)
 ### Fase 1: UX simplificada
 - Mantener flujo basico por vista con pocos botones.
 - Dejar controles expertos en modo avanzado.
+- Estado: en progreso avanzado (botoneras y paneles principales ajustados).
 
 ### Fase 2: Robustez algoritmica
 - Refactor Prim/Kruskal para IDs no contiguos.
@@ -31,6 +35,7 @@ Mantener el modulo de grafos funcional, didactico y simple para usuario final si
 ### Fase 4: QA y documentacion continua
 - Ampliar smoke tests para escenarios de IDs grandes y grafos desconectados.
 - Mantener bitacora de cambios por fecha.
+- Verificar en cada release ausencia de superposiciones visuales en sidebar y panel inferior.
 
 ## Reglas tecnicas
 - TAD grafo sin dependencias de render.

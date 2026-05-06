@@ -60,7 +60,8 @@ gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state
 - Insertar vertices/aristas y alternar dirigido/no dirigido
 - Ejecutar BFS, Dijkstra y Kruskal verificando que cambien overlays del lienzo y panel inferior
 - Validar controles de paso (`,`, `.`, `/`), `Home`, `End`, `P` y `O`
-- Confirmar que `Cargar demo` y `Exportar` no rompen layout de paneles
+- Confirmar que `Cargar demo` no rompe layout de paneles
+- En vista Caminos confirmar ausencia de boton `Aplicar peso a arista`
 
 8. Ayuda interna:
 - Abrir con `F1` desde menu principal
@@ -75,6 +76,7 @@ gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state
 - Inputs Valor/Prioridad no se recortan
 - Inputs `Valor`, `Origen`, `Destino` y `Peso` muestran cursor visible en foco
 - Inputs numericos no presentan solape entre label y valor
+- Mensajes `Origen invalido` / `Destino invalido` no se montan con labels o con el siguiente input
 - Prioridad solo aparece en Cola de prioridad
 - Si el alto disponible es bajo, la ayuda se compacta sin superponerse
 
@@ -97,6 +99,7 @@ gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/ui.c src/app_state
 - Caja Traza con titulo visible y scroll funcional
 - Estado (OK/Error/Estado) no se superpone a otros elementos
 - Verificar que variables y trazas no queden montadas sobre la barra de progreso.
+- En Grafo/Construccion validar traza compacta (sin duplicidad excesiva frente al panel derecho).
 
 5. Pantalla de ayuda:
 - La banda superior (titulo, descripcion y `Volver`) no se recorta

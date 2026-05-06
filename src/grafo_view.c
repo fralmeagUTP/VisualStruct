@@ -578,48 +578,88 @@ void grafo_vista_dibujar_etiquetas(const GrafoVista *vista) {
 }
 
 void grafo_vista_dibujar_estado(const GrafoVista *vista) {
-    if (!vista || !vista->estado) return;
-    
-    int y_offset = (int)vista->area_renderizado.y + 10;
-    int legend_y = (int)(vista->area_renderizado.y + vista->area_renderizado.height - 18.0f);
-    
-    /* Mensaje de estado */
-    ui_draw_text(vista->estado->mensaje_estado, vista->area_renderizado.x + 10.0f, (float)y_offset,
-                 14.0f, 0.08f, vista->colores.texto_normal, false);
-    
-    /* Información de algoritmo */
-    if (vista->estado->algoritmo_activo != GRAFO_ALGO_NINGUNO) {
-        char algo_str[128];
-        const char *algo_nombre = "";
-        
-        switch (vista->estado->algoritmo_activo) {
-            case GRAFO_ALGO_BFS: algo_nombre = "BFS"; break;
-            case GRAFO_ALGO_DFS: algo_nombre = "DFS"; break;
-            case GRAFO_ALGO_DIJKSTRA: algo_nombre = "Dijkstra"; break;
-            case GRAFO_ALGO_BELLMAN_FORD: algo_nombre = "Bellman-Ford"; break;
-            case GRAFO_ALGO_PRIM: algo_nombre = "Prim"; break;
-            case GRAFO_ALGO_KRUSKAL: algo_nombre = "Kruskal"; break;
-            default: break;
-        }
-        
-        snprintf(algo_str, sizeof(algo_str), "Algoritmo: %s | Progreso %d/%d", 
-            algo_nombre, vista->estado->paso_algoritmo + 1, vista->estado->total_pasos);
-        ui_draw_text(algo_str, vista->area_renderizado.x + 10.0f, (float)y_offset + 20.0f, 12.0f,
-                     0.08f, vista->colores.texto_destacado, false);
+    int i;
+    int item_count = 0;
+    int text_size = 10;
+    float text_spacing = 0.08f;
+    float row_h = 14.0f;
+    float x_left;
+    float x_right;
+    float x_cursor;
+    float y_cursor;
+    bool mostrar_inicio = false;
+    bool mostrar_final = false;
+    bool mostrar_mst = false;
+    struct {
+        const char *label;
+        Color color;
+    } items[6];
+
+    if (!vista || !vista->estado) {
+        return;
     }
 
-        DrawRectangleRounded((Rectangle){vista->area_renderizado.x + 10.0f, (float)legend_y, 9.0f, 9.0f},
-                 0.25f, 4, Fade(vista->colores.vertice_actual, 0.55f));
-        ui_draw_text("Activo", vista->area_renderizado.x + 24.0f, (float)legend_y - 2.0f, 10.0f,
-                     0.08f, vista->colores.texto_normal, false);
-        DrawRectangleRounded((Rectangle){vista->area_renderizado.x + 82.0f, (float)legend_y, 9.0f, 9.0f},
-                 0.25f, 4, Fade(vista->colores.arista_relajada, 0.55f));
-        ui_draw_text("Procesada", vista->area_renderizado.x + 96.0f, (float)legend_y - 2.0f, 10.0f,
-                     0.08f, vista->colores.texto_normal, false);
-        DrawRectangleRounded((Rectangle){vista->area_renderizado.x + 172.0f, (float)legend_y, 9.0f, 9.0f},
-                 0.25f, 4, Fade(vista->colores.arista_camino_minimo, 0.55f));
-        ui_draw_text("Mejora", vista->area_renderizado.x + 186.0f, (float)legend_y - 2.0f, 10.0f,
-                     0.08f, vista->colores.texto_normal, false);
+    for (i = 0; i < vista->estado->cantidad_vertices; i++) {
+        if (!vista->estado->vertices[i].visible) {
+            continue;
+        }
+        if (vista->estado->vertices[i].estado == GRAFO_VÉRTICE_INICIAL) {
+            mostrar_inicio = true;
+        } else if (vista->estado->vertices[i].estado == GRAFO_VÉRTICE_DESTINO) {
+            mostrar_final = true;
+        }
+    }
+    for (i = 0; i < vista->estado->cantidad_aristas; i++) {
+        if (!vista->estado->aristas[i].visible) {
+            continue;
+        }
+        if (vista->estado->aristas[i].estado == GRAFO_ARISTA_MST) {
+            mostrar_mst = true;
+            break;
+        }
+    }
+
+    items[item_count].label = "Activo";
+    items[item_count++].color = Fade(vista->colores.vertice_actual, 0.65f);
+    items[item_count].label = "Procesada";
+    items[item_count++].color = Fade(vista->colores.arista_relajada, 0.65f);
+    items[item_count].label = "Mejora";
+    items[item_count++].color = Fade(vista->colores.arista_camino_minimo, 0.65f);
+    if (mostrar_mst) {
+        items[item_count].label = "MST";
+        items[item_count++].color = Fade(vista->colores.arista_mst, 0.75f);
+    }
+    if (mostrar_inicio) {
+        items[item_count].label = "Inicio";
+        items[item_count++].color = Fade(vista->colores.vertice_inicial, 0.75f);
+    }
+    if (mostrar_final) {
+        items[item_count].label = "Final";
+        items[item_count++].color = Fade(vista->colores.vertice_destino, 0.75f);
+    }
+
+    x_left = vista->area_renderizado.x + 10.0f;
+    x_right = vista->area_renderizado.x + vista->area_renderizado.width - 10.0f;
+    x_cursor = x_left;
+    y_cursor = vista->area_renderizado.y + vista->area_renderizado.height - 18.0f;
+
+    for (i = 0; i < item_count; i++) {
+        int label_w = ui_measure_text(items[i].label, (float)text_size, text_spacing, false);
+        float chip_w = 9.0f + 6.0f + (float)label_w + 8.0f;
+
+        if (x_cursor + chip_w > x_right) {
+            x_cursor = x_left;
+            y_cursor -= row_h;
+        }
+
+        DrawRectangleRounded((Rectangle){x_cursor - 3.0f, y_cursor - 2.0f, chip_w, 12.0f},
+                             0.25f, 4, Fade((Color){232, 240, 250, 255}, 0.62f));
+        DrawRectangleRounded((Rectangle){x_cursor, y_cursor, 9.0f, 9.0f},
+                             0.25f, 4, items[i].color);
+        ui_draw_text(items[i].label, x_cursor + 15.0f, y_cursor - 2.0f, (float)text_size,
+                     text_spacing, vista->colores.texto_normal, false);
+        x_cursor += chip_w + 6.0f;
+    }
 }
 
 /* ============================================================================

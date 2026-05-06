@@ -36,6 +36,13 @@ Ofrecer un modulo de grafos util para docencia, con flujo simple para usuario fi
 - Modo avanzado para controles detallados.
 - Vista MST basica con ejecucion directa de Prim/Kruskal.
 - Demo aleatoria dispersa para evitar grafos sobreconectados.
+- Vista Caminos simplificada:
+  - sin boton `Aplicar peso a arista`
+  - pesos se gestionan en Construccion.
+- Mensajeria de camino directo mas clara:
+  - `Sin arista directa Vx->Vy` cuando no existe arista origen->destino.
+- Panel izquierdo de entradas con mayor separacion vertical para evitar solapes de errores.
+- Modo Construccion con menor redundancia entre panel derecho e inferior.
 
 ## 5. Complejidades de referencia
 - BFS: O(V + E)
@@ -51,6 +58,9 @@ Ofrecer un modulo de grafos util para docencia, con flujo simple para usuario fi
 3. Algoritmos sincronizan lienzo, panel de codigo y traza.
 4. Demos responden al valor de nodos y mantienen variabilidad.
 5. MST funciona en modo basico y avanzado.
+6. En Construccion no hay superposicion de mensajes de validacion en sidebar.
+7. En Caminos no aparece boton de aplicacion de peso y la botonera queda ordenada.
+8. En Prim/Kruskal no se etiqueta vertice final al cierre.
 
 ## 7. Riesgos pendientes
 - Prim/Kruskal usan indices por ID en arrays fijos: requiere refactor para IDs dispersos/grandes.

@@ -22,6 +22,8 @@ VisualStruct integra 7 modulos funcionales en una sola app y sincroniza visualiz
 - Insertar/eliminar aristas con peso.
 - Alternar dirigido/no dirigido.
 - Cargar demo aleatoria configurable por numero de nodos.
+- Panel lateral de entradas con espaciado fijo para validaciones:
+  - evita superposicion de `Origen invalido` / `Destino invalido`.
 
 ### 2) Recorridos
 - BFS y DFS.
@@ -30,14 +32,21 @@ VisualStruct integra 7 modulos funcionales en una sola app y sincroniza visualiz
 
 ### 3) Caminos minimos
 - Dijkstra y Bellman-Ford.
-- Uso explicito de pesos en aristas.
+- Uso explicito de pesos en aristas (definidos en Construccion o demo).
 - Validacion de origen/destino.
 - Resumen de ruta, costo y estados por paso.
+- Sin boton `Aplicar peso a arista` en vista Caminos (flujo simplificado).
+- Si no hay arista directa origen->destino se informa:
+  - `Sin arista directa Vx->Vy`.
 
 ### 4) MST
 - Prim (requiere inicio) y Kruskal.
 - Modo basico simplificado para usuario final.
 - Modo avanzado con control de pasos, autoplay y velocidad.
+- Visual de cierre:
+  - no se marca vertice `Final`
+  - se mantiene arbol MST en lila
+  - vertices vuelven a color base al terminar.
 
 ## Entradas numericas
 En Grafo, los campos `Valor`, `Origen`, `Destino` y `Peso`:
@@ -57,7 +66,7 @@ En Grafo, los campos `Valor`, `Origen`, `Destino` y `Peso`:
 - `F1`: ayuda
 - `TAB`: cambiar estructura
 - `H` / `ESC`: volver al menu
-- En grafo: `,` `.` `/` `Home` `End` `P` `O` `T` `M` `C`
+- En grafo: `,` `.` `/` `Home` `End` `P` `O` `T` `M`
 
 ## Archivos clave por capa
 - Dominio: `src/pila.c`, `src/cola.c`, `src/cola_prioridad.c`, `src/lista.c`, `src/lista_circular.c`, `src/sublista.c`, `src/grafo.c`
